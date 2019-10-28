@@ -10,7 +10,7 @@ app.listen(3000);
 //tVn8kGPaRDD1Hq4j
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.net/FoodNow?retryWrites=true&w=majority',  
-	{ useUnifiedTopology: true ,useNewUrlParser: true},
+	{ useUnifiedTopology: true ,useNewUrlParser: true,useFindAndModify: false},
 	function(err){	
 		if(err) 
 			console.log("MongoDb connect error : " + err); 
@@ -88,25 +88,26 @@ app.post("/addChiNhanh", urlEncodeParser, function(req,res){
 				Thuc_Don_Tai_Chi_Nhanh_id : [],
 				Hoa_Don_id : []		
 			});
-			newChiNhanh.save(function(err){
-				if(err)
-					res.send("Thêm chi nhánh mới bị lỗi : " + err);
-				else
-				{
-					res.send("Thêm chi nhánh mới thành công !");
-					KHU_VUC.findOneAndUpdate(
-						{ _id : req.body.idkhuvuc },
-						{ $push: {Chi_Nhanh_id : newChiNhanh._id}},
-						function(err) {
-							if(err)
-								res.send("Thêm chi nhánh mới vào khu vực gặp lỗi : " + err);
-							else 
-								res.send("Thêm chi nhánh mới vào khu vực thành công !");
-								
-						}
-					);
-				}
-			});
+		var result = "";
+		newChiNhanh.save(function(err){
+			if(err)
+				res.send("Thêm chi nhánh mới bị lỗi : " + err);
+			else
+			{
+				result += "Thêm chi nhánh mới thành công !";
+				KHU_VUC.findOneAndUpdate(
+					{ _id : req.body.idkhuvuc },
+					{ $push: {Chi_Nhanh_id : newChiNhanh._id}},
+					function(err) {
+						if(err)
+							result += "\nThêm chi nhánh mới vào khu vực gặp lỗi : " + err;
+						else
+							result += "\nThêm chi nhánh mới vào khu vực thành công !";
+						res.send(result);
+					}
+				);
+			}
+		});
 	}
 	else
 		res.send("Params error !");
@@ -121,4 +122,37 @@ app.get("/chinhanh", function(req, res){
 		else
 			res.send(items);
 	});
+});
+
+//route xóa 1 chi nhánh
+//method POST
+//params idChiNhanh là chi nhánh cần xóa, xóa chi nhánh khỏi khu vực của chi nhánh đó
+app.post("/deleteChiNhanh", urlEncodeParser, function(req,res){
+	var result = "";
+	CHI_NHANH.findByIdAndDelete(
+		{_id: req.body.idChiNhanh},
+		function(err) {
+			if(err)
+			{
+				result += "\nXóa bị lỗi : " + err;
+				console.log("\nXóa bị lỗi : " + err);
+			}
+			else{
+				result += "\nĐã xóa : " + req.body.idChiNhanh;
+				console.log("\nĐã xóa : " + req.body.idChiNhanh);
+				KHU_VUC.findOneAndUpdate(
+					{Chi_Nhanh_id: {$in: [req.body.idChiNhanh]}},
+					{ $pull: {Chi_Nhanh_id : req.body.idChiNhanh}},
+					function(err) {
+						if(err)
+							result += "\nXóa chi nhánh trong khu vực gặp lỗi : " + err;
+						else
+							result += "\nXóa chi nhánh trong khu vực thành công !";
+						res.send(result);
+						console.log(result);
+					}
+				);
+			}
+		}
+	);
 });
