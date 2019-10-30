@@ -56,7 +56,8 @@ app.post("/addKhuVuc", urlEncodeParser, function(req,res){
 			});
 	}
 	else
-		res.send("Params error !");
+		//res.send(JSON.stringify(req.body));
+		res.send("Params error !" + req.body.tenkhuvuc);
 });
 
 //route lấy tất cả các khu vực
