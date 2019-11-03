@@ -6,7 +6,6 @@ const chinhanhSchema = new mongoose.Schema({
     So_dien_thoai_chi_nhanh : String,
     Mo_ta_chi_nhanh : String,
     Thuc_Don_Tai_Chi_Nhanh_id : [{type : mongoose.Types.ObjectId}],
-    Hoa_Don_id : [{type : mongoose.Types.ObjectId}]
 });
 
 module.exports = mongoose.model("CHI_NHANH", chinhanhSchema);
