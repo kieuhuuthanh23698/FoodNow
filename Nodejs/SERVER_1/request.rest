@@ -1,10 +1,9 @@
 @host = localhost:3000
 
 # GET  http://{{host}}/khuvuc
-# GET  http://{{host}}/chinhanh
+# GET  http://{{host}}/chinhan
 
-//--------------------------------------------------------------
-
+//--------------------------------------------------------INSERT
 # POST http://{{host}}/addKhuVuc
 # content-type: application/x-www-form-urlencoded
 
@@ -12,23 +11,24 @@
 # &
 # motakhuvuc=Test
 
-# POST http://{{host}}/addChiNhanh
+//@@@@@@@@@@@@@@@@@@@@@@@@
+
+POST http://{{host}}/addChiNhanh
+content-type: application/x-www-form-urlencoded
+
+idkhuvuc=5db5b8e2b2bd89108cb44670&idcuahang=5dc539b1fdf2d32c6006e056&ten=Chè Út LyLy - Cống Lỡ&diachi=106/40 Cống Lỡ, P.15, Tân Bình, TP.HCM&sdt=Test&mota=Test
+
+//@@@@@@@@@@@@@@@@@@@@@@@@
+
+# POST http://{{host}}/addCuaHang
 # content-type: application/x-www-form-urlencoded
 
-# idkhuvuc=Test 
-# &
-# ten=Test
-# &
-# diachi=Test
-# &
-# sdt=Test
-# &
-# mota=Test
+# Ten_cua_hang=Chè Út LyLy&Dia_chi_cua_hang_chinh=test&So_dien_thoai_cua_hang=test&Mo_ta_cua_hang=test
 
-
-//----------------------------------------------------------
+//----------------------------------------------------------DELETE
 
 # POST http://{{host}}/deleteChiNhanh
 # content-type: application/x-www-form-urlencoded
 
 # idChiNhanh=Test 
+
