@@ -19,13 +19,14 @@ mongoose.connect('mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.ne
 const KHU_VUC = require("./Models/KHU_VUC");
 const CHI_NHANH = require("./Models/CHI_NHANH");
 const CUA_HANG = require("./Models/CUA_HANG");
-const THUc_DON = require("./Models/THUC_DON");
+const MON_AN = require("./Models/MON_AN");
 const KHACH_HANG = require("./Models/KHACH_HANG");
 const DON_HANG = require("./Models/DON_HANG");
 const CHI_TIET_DON_HANG = require("./Models/CHI_TIET_DON_HANG");
 
 ///-----------------------------------------------------------------------------------------------------------------------------------------
 
+//-------------------------------------------------------------------KHU VỰC----------------------------------------------------------------
 //route thêm khu vực
 //method POST
 //params  : tenkhuvuc, motakhuvuc
@@ -59,6 +60,49 @@ app.get("/khuvuc", function(req, res){
 	});
 });
 
+//-------------------------------------------------------------------CỬA HÀNG----------------------------------------------------------------
+//route thêm cửa hàng
+//method POST
+//param : Ten_cua_hang, Dia_chi_cua_hang_chinh, So_dien_thoai_cua_hang, Mo_ta_cua_hang
+app.post("/addCuaHang", urlEncodeParser, function(req,res){
+	if(req.body.Ten_cua_hang != null && req.body.Dia_chi_cua_hang_chinh != null 
+		&& req.body.So_dien_thoai_cua_hang != null && req.body.Mo_ta_cua_hang != null)
+	{
+		if(req.body.Ten_cua_hang != "" && req.body.Dia_chi_cua_hang_chinh != "" 
+			&& req.body.So_dien_thoai_cua_hang != "" && req.body.Mo_ta_cua_hang != "")
+		{
+			var newCuaHang = new CUA_HANG({
+				Ten_cua_hang : req.body.Ten_cua_hang,
+				Dia_chi_cua_hang_chinh : req.body.Dia_chi_cua_hang_chinh,
+				So_dien_thoai_cua_hang : req.body.So_dien_thoai_cua_hang,
+				Mo_ta_cua_hang : req.body.Mo_ta_cua_hang,
+				Chi_Nhanh_id : []
+			});
+			newCuaHang.save(function(err){
+				if(err)
+					res.send("Thêm cửa hàng mới bị lỗi : " + err);
+				else
+					res.send("Thêm cửa hàng mới thành công !");
+			});
+		}
+		else
+			res.send("Params error 2 !");
+	}
+	else
+		res.send("Params error 1 !");
+});
+
+//route get danh sách cửa hàng
+app.get("/cuahang", function(req, res){
+	CUA_HANG.find(function(err, items){
+		if(err)
+			res.send("Lấy danh sách cửa hàng gặp lỗi !");
+		else
+			res.send(items);
+	});
+});
+
+//-------------------------------------------------------------------CHI NHÁNH----------------------------------------------------------------
 //route thêm chi nhanh
 //method POST
 //params  : idkhuvuc, idcuahang, ten, diachi, sdt, mota
@@ -73,7 +117,7 @@ app.post("/addChiNhanh", urlEncodeParser, function(req,res){
 					Dia_chi_chi_nhanh : req.body.diachi,
 					So_dien_thoai_chi_nhanh : req.body.sdt,
 					Mo_ta_chi_nhanh : req.body.mota,
-					Thuc_Don_Tai_Chi_Nhanh_id : []
+					Mon_An_Tai_Chi_Nhanh_id : []
 				});
 			var result = "";
 			newChiNhanh.save(function(err){
@@ -167,79 +211,38 @@ app.post("/deleteChiNhanh", urlEncodeParser, function(req,res){
 	);
 });
 
-//route thêm cửa hàng
+//-------------------------------------------------------------------MÓN ĂN----------------------------------------------------------------
+//route thêm món ăn vào 1 chi nhánh
 //method POST
-//param : Ten_cua_hang, Dia_chi_cua_hang_chinh, So_dien_thoai_cua_hang, Mo_ta_cua_hang
-app.post("/addCuaHang", urlEncodeParser, function(req,res){
-	if(req.body.Ten_cua_hang != null && req.body.Dia_chi_cua_hang_chinh != null 
-		&& req.body.So_dien_thoai_cua_hang != null && req.body.Mo_ta_cua_hang != null)
+//params : idChiNhanh, Ten_MON_AN, Mo_ta_MON_AN, Don_gia_MON_AN, Hinh_anh_MON_AN, Don_vi_tinh
+app.post("/addMonAn", urlEncodeParser, function(req,res){
+	if(req.body.idChiNhanh != null && req.body.Ten_mon_an != null && req.body.Mo_ta_mon_an != null 
+		&& req.body.Don_gia_mon_an != null && req.body.Hinh_anh_mon_an != null && req.body.Don_vi_tinh != null)
 	{
-		if(req.body.Ten_cua_hang != "" && req.body.Dia_chi_cua_hang_chinh != "" 
-			&& req.body.So_dien_thoai_cua_hang != "" && req.body.Mo_ta_cua_hang != "")
+		if(req.body.idChiNhanh != "" && req.body.Ten_mon_an != "" && req.body.Mo_ta_mon_an != "" 
+			&& req.body.Don_gia_mon_an != "" && req.body.Hinh_anh_mon_an != "" && req.body.Don_vi_tinh != "")
 		{
-			var newCuaHang = new CUA_HANG({
-				Ten_cua_hang : req.body.Ten_cua_hang,
-				Dia_chi_cua_hang_chinh : req.body.Dia_chi_cua_hang_chinh,
-				So_dien_thoai_cua_hang : req.body.So_dien_thoai_cua_hang,
-				Mo_ta_cua_hang : req.body.Mo_ta_cua_hang,
-				Chi_Nhanh_id : [],
-				Thuc_Don_id: []
-			});
-			newCuaHang.save(function(err){
-				if(err)
-					res.send("Thêm cửa hàng mới bị lỗi : " + err);
-				else
-					res.send("Thêm cửa hàng mới thành công !");
-			});
-		}
-		else
-			res.send("Params error 2 !");
-	}
-	else
-		res.send("Params error 1 !");
-});
-
-//route get danh sách cửa hàng
-app.get("/cuahang", function(req, res){
-	CUA_HANG.find(function(err, items){
-		if(err)
-			res.send("Lấy danh sách cửa hàng gặp lỗi !");
-		else
-			res.send(items);
-	});
-});
-
-//route thêm món ăn vào 1 cửa hàng
-//method POST
-//params : idCuaHang, Ten_thuc_don, Mo_ta_thuc_don, Don_gia_thuc_don, Hinh_anh_thuc_don, Don_vi_tinh
-app.post("/addThucDon", urlEncodeParser, function(req,res){
-	if(req.body.idCuaHang != null && req.body.Ten_thuc_don != null && req.body.Mo_ta_thuc_don != null 
-		&& req.body.Don_gia_thuc_don != null && req.body.Hinh_anh_thuc_don != null && req.body.Don_vi_tinh != null)
-	{
-		if(req.body.idCuaHang != "" && req.body.Ten_thuc_don != "" && req.body.Mo_ta_thuc_don != "" 
-			&& req.body.Don_gia_thuc_don != "" && req.body.Hinh_anh_thuc_don != "" && req.body.Don_vi_tinh != "")
-		{
-			var newThucDon = new THUc_DON({
-				Ten_thuc_don : req.body.Ten_thuc_don,
-				Mo_ta_thuc_don : req.body.Mo_ta_thuc_don,
-				Don_gia_thuc_don : req.body.Don_gia_thuc_don,
-				Hinh_anh_thuc_don : req.body.Hinh_anh_thuc_don,
+			var newMonAn = new MON_AN({
+				Ten_mon_an : req.body.Ten_mon_an,
+				Mo_ta_mon_an : req.body.Mo_ta_mon_an,
+				Don_gia_mon_an : req.body.Don_gia_mon_an,
+				Hinh_anh_mon_an : req.body.Hinh_anh_mon_an,
 				Don_vi_tinh:req.body.Don_vi_tinh
 			});
-			newThucDon.save(function(err){
+			newMonAn.save(function(err){
 				if(err)
-					res.send("Thêm cửa món ăn mới bị lỗi !");
+					res.send("Thêm món ăn mới bị lỗi !");
 				else
 				{
 					var kqCreate = "Thêm món ăn mới thành công !\n";
-					CUA_HANG.findOneAndUpdate(
+					CHI_NHANH.findOneAndUpdate(
 						{ _id : req.body.idCuaHang },
-						{ $push: {Thuc_Don_id : newThucDon._id}},
+						{ $push: {Mon_An_Tai_Chi_Nhanh_id : newMonAn._id}},
 						function(err) {
 							if(err)
-								res.send(kqCreate + "Thêm món ăn mới vào thực đơn của cửa hàng bị lỗi !");
+								res.send(kqCreate + "Thêm món ăn mới vào thực đơn của chi nhánh bị lỗi !");
 							else
-								res.send(kqCreate + "Thêm món ăn mới vào thực đơn của cửa hàng thành công !");
+								res.send(kqCreate + "Thêm món ăn mới vào thực đơn của chi nhánh thành công !");
 						}
 					);
 				}
@@ -253,19 +256,19 @@ app.post("/addThucDon", urlEncodeParser, function(req,res){
 });
 
 
-//route lấy tất cả các món ăn của 1 cửa hàng
+//route lấy tất cả các món ăn của 1 chi nhánh
 //method GET
-//params : idCuaHang
-app.post("/thucDon", urlEncodeParser, function(req, res){
-	if(req.body.idCuaHang != null)
+//params : idChiNhanh
+app.post("/monan", urlEncodeParser, function(req, res){
+	if(req.body.idChiNhanh != null)
 	{
-		if(req.body.idCuaHang != "")
+		if(req.body.idChiNhanh != "")
 		{
-			CUA_HANG.findOne({_id : req.body.idCuaHang}, function(err, result){
+			CHI_NHANH.findOne({_id : req.body.idChiNhanh}, function(err, result){
 				if(err)
-					res.send("Tìm cửa hàng gặp lỗi :" + err);
+					res.send("Tìm chi nhánh gặp lỗi :" + err);
 				else
-					res.send(result.Thuc_Don_id);
+					res.send(result.Mon_An_Tai_Chi_Nhanh_id);
 			});
 		}
 		else
@@ -277,8 +280,8 @@ app.post("/thucDon", urlEncodeParser, function(req, res){
 
 //route lấy tất cả các món ăn
 //method GET
-app.get("/allthucdon", function(req, res){
-	THUc_DON.find(function(err, items){
+app.get("/allmonan", function(req, res){
+	MON_AN.find(function(err, items){
 		if(err)
 			res.send("Lấy danh sách món ăn gặp lỗi : " + err);
 		else
@@ -286,27 +289,24 @@ app.get("/allthucdon", function(req, res){
 	});
 });
 
-
-//route thêm món ăn của cửa hàng vào 1 chi nhánh
+//route lấy thông tin của một món ăn
 //method POST
-//params : idChiNhanh, idThucDon
-app.post("/addThucDon_To_ChiNhanh", urlEncodeParser, function(req, res){
-	if(req.body.idChiNhanh != null && req.body.idThucDon != null){
-		if(req.body.idChiNhanh != "" && req.body.idThucDon != ""){
-			CHI_NHANH.findOneAndUpdate(
-				{ _id : req.body.idChiNhanh },
-				{ $push: {Thuc_Don_Tai_Chi_Nhanh_id : req.body.idThucDon}},
-				function(err) {
-					if(err)
-						res.send("\nThêm món ăn vào chi nhánh gặp lỗi : " + err);
-					else
-						res.send("\nThêm món ăn vào chi nhánh thành công !");
-				}
-			);
-		}
-		else
-			res.send("Params error 2 !");
-	}
-	else
-		res.send("Params error 1 !");
-});
+//params : idMonAn
+
+//route đăng ký tài khoảng
+//method POST
+//params : Ten_khach_hang, Tai_khoan, Mat_khau
+
+
+//route đăng nhập
+//method POST
+//params : Tai_khoan, Mat_khau
+
+
+//route chọn hàng (thêm, xóa, update số lượng)
+//method POST
+//params idKhachHang, idMonAN
+
+//route đặt hàng, chuyển những hàng được chọn vào đơn hàng mới và xóa giỏ hàng
+//method POST
+//parmams : idKhachHang

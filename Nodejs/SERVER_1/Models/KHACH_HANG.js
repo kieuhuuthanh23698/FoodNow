@@ -5,6 +5,7 @@ const khachhangSchema = new mongoose.Schema({
     Tai_khoan: String,
     Mat_khau: String,
     Don_hang_id: [{type:mongoose.Types.ObjectId}],
+    Ct_Gio_Hang_id: [{type:mongoose.Types.ObjectId}],
     
 });
 

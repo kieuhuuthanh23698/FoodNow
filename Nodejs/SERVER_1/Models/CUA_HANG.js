@@ -6,7 +6,6 @@ const cuahangSchema = new mongoose.Schema({
     So_dien_thoai_cua_hang : String,
     Mo_ta_cua_hang : String,
     Chi_Nhanh_id : [{type : mongoose.Types.ObjectId}],
-    Thuc_Don_id : [{type : mongoose.Types.ObjectId}],
 });
 
 module.exports = mongoose.model("CUA_HANG", cuahangSchema);
