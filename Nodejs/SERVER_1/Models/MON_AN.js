@@ -8,4 +8,4 @@ const monanSchema = new mongoose.Schema({
     Don_vi_tinh:String,
 });
 
-module.exports = mongoose.model("MON_AN", thucdonSchema);
+module.exports = mongoose.model("MON_AN", monanSchema);
