@@ -31,4 +31,11 @@ idkhuvuc=5db5b8e2b2bd89108cb44670&idcuahang=5dc539b1fdf2d32c6006e056&ten=Chè Ú
 # content-type: application/x-www-form-urlencoded
 
 # idChiNhanh=Test 
+//---------------------------------------------------------
+#POST http://{{host}}/addKhachHang
+# content-type: application/x-www-form-urlencoded
+# TenKhachHang=Test&TaiKhoan=accounttest&MatKhau=123456
+//---------------------------------------------------------
+#POST http://{{host}}/DangNhap
+# content-type: application/x-www-form-urlencoded
 

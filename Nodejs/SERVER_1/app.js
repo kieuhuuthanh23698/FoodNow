@@ -1,6 +1,9 @@
+
+
 var express = require("express");
 var bodyParser = require("body-parser");
 const mongoose = require('mongoose');
+const jwt=require("jsonwebtoken");
 
 var urlEncodeParser = bodyParser.urlencoded({ extended: false });
 var app = new express();
@@ -15,6 +18,7 @@ mongoose.connect('mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.ne
 			console.log("MongoDb connect success !");
 	}
 );
+
 
 const KHU_VUC = require("./Models/KHU_VUC");
 const CHI_NHANH = require("./Models/CHI_NHANH");
@@ -286,12 +290,78 @@ app.get("/allmonan", function (req, res) {
 //route đăng ký tài khoảng
 //method POST
 //params : Ten_khach_hang, Tai_khoan, Mat_khau
-
+app.post("/addKhachHang",urlEncodeParser,function(req,res){
+	if(req.body.TenKhachHang!=null&& req.body.TaiKhoan!=null&& req.body.MatKhau!=null)
+	{
+		if(req.body.TenKhachHang!=""&& req.body.TaiKhoan!=""&& req.body.MatKhau!="")
+		{
+			KHACH_HANG.findOne({Tai_khoan: req.body.TaiKhoan},function(error,result){
+				if(error)
+				{
+					res.send("Lỗi tìm tài khoản");
+				}
+				else
+				{
+					if(!result)
+					{
+						var newKhachHang=new KHACH_HANG({
+							Ten_khach_hang: req.body.TenKhachHang,
+							Tai_khoan: req.body.TaiKhoan,
+							Mat_khau: req.body.MatKhau,
+							Don_hang_id:[],
+							Ct_Gio_Hang_id:[]
+						});
+						newKhachHang.save(function(err){
+							if(err)
+							{
+								res.send("Xảy ra lỗi");
+							}
+							else
+							{
+								res.send("Thêm thành công");
+							}
+						});
+					}
+					else
+					{
+						res.send("Trùng tên đăng nhập");
+					}
+				}
+			})
+			
+		}
+					
+	}
+});
 
 //route đăng nhập
 //method POST
-//params : Tai_khoan, Mat_khau
-
+//params : TaiKhoan, MatKhau
+app.post("/DangNhap",urlEncodeParser,function(req,res){
+	if(req.body.TaiKhoan!=null&&req.body.MatKhau!=null)
+	{
+		if(req.body.TaiKhoan!=""&&req.body.MatKhau!="")
+		{
+			KHACH_HANG.findOne({
+				Tai_khoan:req.body.TaiKhoan
+			},function(error,result){
+				if(error) res.send("Lỗi tìm kiếm!");
+				if(!result) res.send("Tên đăng nhập không chính xác.");
+				else if(result){
+					if(result.Mat_khau!=req.body.MatKhau)
+					{
+						res.send("Mật khẩu không chính xác");
+					}
+					else
+					{
+						res.send({token:jwt.sign({Tai_khoan:result.Tai_khoan,
+							Mat_khau:result.Mat_khau},"secretkey",{expiresIn:'20m'})});
+					}
+				}
+			})
+		}
+	}
+});
 
 //route chọn hàng (thêm, xóa, update số lượng)
 //method POST
