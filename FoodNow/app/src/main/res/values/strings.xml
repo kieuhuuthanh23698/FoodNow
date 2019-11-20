@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">FoodNow</string>
+    <string name="ipv4">192.168.43.67:3000</string>
+</resources>

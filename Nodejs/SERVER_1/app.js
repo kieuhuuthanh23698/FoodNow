@@ -9,7 +9,7 @@ var urlEncodeParser = bodyParser.urlencoded({ extended: false });
 var app = new express();
 app.listen(3000);
 //tVn8kGPaRDD1Hq4j
-mongoose.connect('mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.net/FoodNow?retryWrites=true&w=majority',
+mongoose.connect('mongodb://localhost:27017/FoodNow',
 	{ useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false },
 	function (err) {
 		if (err)
@@ -18,7 +18,15 @@ mongoose.connect('mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.ne
 			console.log("MongoDb connect success !");
 	}
 );
-
+// mongoose.connect('mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.net/FoodNow?retryWrites=true&w=majority',
+// 	{ useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false },
+// 	function (err) {
+// 		if (err)
+// 			console.log("MongoDb connect error : " + err);
+// 		else
+// 			console.log("MongoDb connect success !");
+// 	}
+// );
 
 const KHU_VUC = require("./Models/KHU_VUC");
 const CHI_NHANH = require("./Models/CHI_NHANH");
@@ -168,6 +176,18 @@ app.get("/chinhanh", function (req, res) {
 	});
 });
 
+//route get 1 chi nhánh
+//method POST
+//params : idChiNhanh
+app.post("/OneChiNhanh", urlEncodeParser,function (req, res) {
+	CHI_NHANH.findById({_id : req.body.idChiNhanh},function (err, result) {
+		if (err)
+			res.send("Lấy thông tin chi nhánh gặp lỗi !");
+		else
+			res.send(result);
+	});
+});
+
 //route xóa 1 chi nhánh
 //method POST
 //params idChiNhanh là chi nhánh cần xóa, xóa chi nhánh khỏi khu vực của chi nhánh đó
@@ -298,7 +318,8 @@ app.post("/addKhachHang",urlEncodeParser,function(req,res){
 			KHACH_HANG.findOne({Tai_khoan: req.body.TaiKhoan},function(error,result){
 				if(error)
 				{
-					res.send("Lỗi tìm tài khoản");
+					console.log("Tìm tài khoảng bị lỗi !");
+					res.send("-1");
 				}
 				else
 				{
@@ -314,17 +335,20 @@ app.post("/addKhachHang",urlEncodeParser,function(req,res){
 						newKhachHang.save(function(err){
 							if(err)
 							{
-								res.send("Xảy ra lỗi");
+								console.log("Thêm tài khoảng bị lỗi !");
+								res.send("-1");
 							}
 							else
 							{
-								res.send("Thêm thành công");
+								console.log("Đăng ký tài khoảng thành công !");
+								res.send("1");
 							}
 						});
 					}
 					else
 					{
-						res.send("Trùng tên đăng nhập");
+						console.log("Tài khoảng đã tồn tại !");
+						res.send("-1");
 					}
 				}
 			})
@@ -342,21 +366,36 @@ app.post("/DangNhap",urlEncodeParser,function(req,res){
 	{
 		if(req.body.TaiKhoan!=""&&req.body.MatKhau!="")
 		{
-			KHACH_HANG.findOne({
-				Tai_khoan:req.body.TaiKhoan
-			},function(error,result){
-				if(error) res.send("Lỗi tìm kiếm!");
-				if(!result) res.send("Tên đăng nhập không chính xác.");
-				else if(result){
-					if(result.Mat_khau!=req.body.MatKhau)
+			KHACH_HANG.findOne({Tai_khoan:req.body.TaiKhoan},function(error,result){
+				if(error)
+				{
+					console.log("Lỗi tìm kiếm!");
+					res.send("-1");
+				} 
+				else 
+				{
+					if(result == null)
 					{
-						res.send("Mật khẩu không chính xác");
+						console.log("Tên đăng nhập không chính xác.");
+						res.send("-1");
+					}
+					else if(result.Tai_khoan == req.body.TaiKhoan && result.Mat_khau == req.body.MatKhau)
+					{
+						console.log("Đăng nhập thành công !");
+						res.send(
+							[
+								{
+									"token" : jwt.sign({Tai_khoan:result.Tai_khoan, Mat_khau:result.Mat_khau},"secretkey",{expiresIn:'20m'}),
+									"name" : result.Ten_khach_hang
+								}
+							]
+						);
 					}
 					else
-					{
-						res.send({token:jwt.sign({Tai_khoan:result.Tai_khoan,
-							Mat_khau:result.Mat_khau},"secretkey",{expiresIn:'20m'})});
-					}
+						{
+							console.log("Mật khẩu không chính xác !");
+							res.send("-1");
+						}
 				}
 			})
 		}
