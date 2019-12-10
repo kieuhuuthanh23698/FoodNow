@@ -19,7 +19,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
-    public static String TOKEN;
+    public static String TOKEN = "";
+    public static String NAME = "";
 
     TextView hyperlink, register;
     EditText username, password;

@@ -72,6 +72,29 @@ app.get("/khuvuc", function (req, res) {
 	});
 });
 
+//route cập nhật mô tả 1 khu vực
+//method PUT
+//params : idKhuVuc, value
+app.put("/updateMoTaKhuVuc", urlEncodeParser, function (req, res) {
+	if (req.body.idkhuvuc != "" && req.body.idkhuvuc != null && req.body.value != "" && req.body.value != null) {
+		var result = "";
+		KHU_VUC.findOneAndUpdate(
+			{ _id: req.body.idkhuvuc },
+			{
+				$set : {Mo_ta_khu_vuc : req.body.value}
+			},
+			function (err) {
+				if (err)
+					res.send("\nCập nhật mô tả khu vực gặp lỗi : " + err);
+				else
+					res.send("\nCập nhật mô tả khu vực thành công !");
+			}
+		);
+	}
+	else
+		res.send("Params error !");
+});
+
 //-------------------------------------------------------------------CỬA HÀNG----------------------------------------------------------------
 //route thêm cửa hàng
 //method POST
@@ -101,7 +124,7 @@ app.post("/addCuaHang", urlEncodeParser, function (req, res) {
 	else
 		res.send("Params error 1 !");
 });
-
+	
 //route get danh sách cửa hàng
 app.get("/cuahang", function (req, res) {
 	CUA_HANG.find(function (err, items) {
@@ -182,7 +205,7 @@ app.get("/chinhanh", function (req, res) {
 app.post("/OneChiNhanh", urlEncodeParser,function (req, res) {
 	CHI_NHANH.findById({_id : req.body.idChiNhanh},function (err, result) {
 		if (err)
-			res.send("Lấy thông tin chi nhánh gặp lỗi !");
+			res.send("Lấy thông tin chi nhánh gặp lỗi !" + err);
 		else
 			res.send(result);
 	});
@@ -191,7 +214,7 @@ app.post("/OneChiNhanh", urlEncodeParser,function (req, res) {
 //route xóa 1 chi nhánh
 //method POST
 //params idChiNhanh là chi nhánh cần xóa, xóa chi nhánh khỏi khu vực của chi nhánh đó
-app.post("/deleteChiNhanh", urlEncodeParser, function (req, res) {
+app.delete("/deleteChiNhanh", urlEncodeParser, function (req, res) {
 	var result = "";
 	CHI_NHANH.findByIdAndDelete(
 		{ _id: req.body.idChiNhanh },
@@ -252,7 +275,7 @@ app.post("/addMonAn", urlEncodeParser, function (req, res) {
 				else {
 					var kqCreate = "Thêm món ăn mới thành công !\n";
 					CHI_NHANH.findOneAndUpdate(
-						{ _id: req.body.idCuaHang },
+						{ _id: req.body.idChiNhanh },
 						{ $push: { Mon_An_Tai_Chi_Nhanh_id: newMonAn._id } },
 						function (err) {
 							if (err)
@@ -273,7 +296,7 @@ app.post("/addMonAn", urlEncodeParser, function (req, res) {
 
 
 //route lấy tất cả các món ăn của 1 chi nhánh
-//method GET
+//method POST
 //params : idChiNhanh
 app.post("/monan", urlEncodeParser, function (req, res) {
 	if (req.body.idChiNhanh != null) {
@@ -307,7 +330,7 @@ app.get("/allmonan", function (req, res) {
 //method POST
 //params : idMonAn
 
-//route đăng ký tài khoảng
+//route đăng ký tài khoản
 //method POST
 //params : Ten_khach_hang, Tai_khoan, Mat_khau
 app.post("/addKhachHang",urlEncodeParser,function(req,res){

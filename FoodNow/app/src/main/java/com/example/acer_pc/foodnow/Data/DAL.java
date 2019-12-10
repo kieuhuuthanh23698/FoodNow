@@ -15,14 +15,18 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.acer_pc.foodnow.HomeFragment;
 import com.example.acer_pc.foodnow.LoginActivity;
 import com.example.acer_pc.foodnow.MainActivity;
+import com.example.acer_pc.foodnow.Object.Store;
 import com.example.acer_pc.foodnow.R;
 import com.example.acer_pc.foodnow.RegisterActivity;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,7 +42,8 @@ public class DAL {
     public void login(final String username, final String password){
         StringRequest insertRequest = new StringRequest(
                 Request.Method.POST,
-              Utils.url,     new Response.Listener<String>() {
+                Utils.urlLogin,
+                new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.e("TEST", "Login respone : " + response.toString());// -1 or token
@@ -49,7 +54,6 @@ public class DAL {
             public void onErrorResponse(VolleyError error) {
                 Log.e("TEST","Login error : " +  error.toString());
                 login("-1");
-                //showAlertDialog();
             }
         }) {
             @Override
@@ -63,10 +67,99 @@ public class DAL {
         VolleySingleton.getInstance(this.context).getRequestQueue().add(insertRequest);
     }
 
+    public void getOneChiNhanh(final String idChiNhanh, final String name,final ArrayList<Store> stores){
+        StringRequest insertRequest = new StringRequest(
+                Request.Method.POST,
+                Utils.urlOneChiNhanh,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.e("TEST", "Load one chi nhánh respone : " + response);
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            stores.add(new Store(name, jsonObject.getString("Dia_chi_cua_hang_chinh")));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("TEST","Load one chi nhánh error : " +  error.toString());
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("idChiNhanh", idChiNhanh);
+                return params;
+            }
+        };
+        VolleySingleton.getInstance(this.context).getRequestQueue().add(insertRequest);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void loadCuaHang(){
+        StringRequest insertRequest = new StringRequest(
+                Request.Method.GET,
+                Utils.urlCuaHang,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.e("TEST", "Load stores respone : " + response.toString());
+                        ArrayList<Store> arrayList = new ArrayList<>();
+                        JSONArray jsonArray = null;
+                        try {
+                            jsonArray = new JSONArray(response.toString());
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        for (int j = 0; j < jsonArray.length(); j++) {
+                            Store store = null;
+                            try {
+                                JSONObject storeObj = jsonArray.getJSONObject(j);
+                                JSONArray chiNhanhS = storeObj.getJSONArray("Chi_Nhanh_id");
+                                if(chiNhanhS.length() == 0)
+                                    //store = new Store(storeObj.getString("Ten_cua_hang"), storeObj.getString( "Dia_chi_cua_hang_chinh"));
+                                    continue;
+                                if(chiNhanhS.length() == 1)
+                                {
+                                    //getOneChiNhanh(chiNhanhS.get(0).toString(), storeObj.getString("Ten_cua_hang"), arrayList);
+                                    continue;
+                                }
+                                else {
+                                    store = new Store(storeObj.getString("Ten_cua_hang"), "Có " + storeObj.getJSONArray("Chi_Nhanh_id").length() + " chi nhánh !");
+                                }
+                                arrayList.add(store);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        HomeFragment.createList(context, arrayList);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("TEST","Load stores error : " +  error.toString());
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                return params;
+            }
+        };
+        VolleySingleton.getInstance(this.context).getRequestQueue().add(insertRequest);
+    }
+
     public void register(final String username, final String email, final String password) {
         StringRequest insertRequest = new StringRequest(
                 Request.Method.POST,
-                "http://" + context.getResources().getString(R.string.ipv4) + "/addKhachHang",
+                Utils.urlRegister,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -94,6 +187,7 @@ public class DAL {
     }
 
 
+
     private void register(String res)
     {
         Log.e("TEST", "res : " + res);
@@ -106,13 +200,28 @@ public class DAL {
         }
     }
 
-    private void login(String TOKEN)
-    {
+    private void login(String TOKEN){
         if(TOKEN.equals("-1"))
             Toast.makeText(context,"Thông tin đăng nhập sai !", Toast.LENGTH_SHORT).show();
         else
         {
-            LoginActivity.TOKEN = TOKEN;
+            JSONArray jsonArray = null;
+            JSONObject jsonObject = null;
+            try {
+                jsonArray = new JSONArray(TOKEN);
+                jsonObject = jsonArray.optJSONObject(0);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            try {
+                if(jsonObject != null)
+                {
+                    LoginActivity.TOKEN = jsonObject.getString("token");
+                    LoginActivity.NAME = jsonObject.getString("name");
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             Toast.makeText(context,TOKEN, Toast.LENGTH_SHORT).show();
             Intent intent=new Intent(context,MainActivity.class);
             context.startActivity(intent);

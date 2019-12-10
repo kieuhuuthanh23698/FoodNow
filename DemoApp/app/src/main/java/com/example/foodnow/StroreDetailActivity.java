@@ -10,7 +10,6 @@ public class StroreDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_strore_detail);
-
         getSupportActionBar().setTitle("Cửa hàng Phúc Long");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
