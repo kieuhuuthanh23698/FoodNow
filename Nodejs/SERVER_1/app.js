@@ -437,3 +437,13 @@ app.post("/DangNhap",urlEncodeParser,function(req,res){
 //viết request
 //tìm hiểu json token nodejs
 //tạo giao diện , viết code xử lý : login, register, ds cửa hàng, ds chi nhánh, ds món ăn, giỏ hàng
+
+
+
+//1 load cua hang, => load chi nhanh
+//2 load chi tiet gio hang ()tao 1 coll ct
+//3 load hoa don, load chi tiet hoa don
+//4 load thong tin khach hang (full)
+
+
+
