@@ -35,6 +35,7 @@ const MON_AN = require("./Models/MON_AN");
 const KHACH_HANG = require("./Models/KHACH_HANG");
 const DON_HANG = require("./Models/DON_HANG");
 const CHI_TIET_DON_HANG = require("./Models/CHI_TIET_DON_HANG");
+const CHI_TIET_GIO_HANG=require('./Models/CT_GIO_HANG');
 
 ///-----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -199,6 +200,34 @@ app.get("/chinhanh", function (req, res) {
 	});
 });
 
+
+//route get chi nhánh của cửa hàng
+//method POST
+//params : idCuaHang
+app.post("/ChiNhanhCuaCuaHang", urlEncodeParser,function (req, res) {
+	if(req.body.idCuahang!=null)
+	{
+		if(req.body.idChiNhanh!="")
+		{
+			CUA_HANG.findOne({_id : req.body.idCuahang},function (err, result) {
+				if (err)
+					res.send("Lấy thông tin chi nhánh gặp lỗi !" + err);
+				else
+					res.send(result.Chi_Nhanh_id);
+			});
+		}
+		else
+		{
+			res.send('Params error 2!')
+		}
+		
+	}
+	else
+	{
+		res.send('Params error 1!')
+	}
+	
+});
 //route get 1 chi nhánh
 //method POST
 //params : idChiNhanh
@@ -329,7 +358,7 @@ app.get("/allmonan", function (req, res) {
 //route lấy thông tin của một món ăn
 //method POST
 //params : idMonAn
-
+//----------------------------------------------------------Tài khoản------------------------------------------------------------
 //route đăng ký tài khoản
 //method POST
 //params : Ten_khach_hang, Tai_khoan, Mat_khau
@@ -425,20 +454,6 @@ app.post("/DangNhap",urlEncodeParser,function(req,res){
 	}
 });
 
-//route chọn hàng (thêm, xóa, update số lượng)
-//method POST
-//params idKhachHang, idMonAN
-
-//route đặt hàng, chuyển những hàng được chọn vào đơn hàng mới và xóa giỏ hàng
-//method POST
-//parmams : idKhachHang
-
-
-//viết request
-//tìm hiểu json token nodejs
-//tạo giao diện , viết code xử lý : login, register, ds cửa hàng, ds chi nhánh, ds món ăn, giỏ hàng
-
-
 
 //1 load cua hang, => load chi nhanh
 //2 load chi tiet gio hang ()tao 1 coll ct
@@ -446,4 +461,164 @@ app.post("/DangNhap",urlEncodeParser,function(req,res){
 //4 load thong tin khach hang (full)
 
 
+//----------------------------------------------------------------------GIỎ HÀNG-----------------------------------------------------
 
+
+//route Chi tiết giỏ hàng của 1 tài khoản
+//method POST
+//Params: IDKhachHang
+
+app.post("/getGioHang",urlEncodeParser,function(req,res){
+	if(req.body.idKhachHang!=null)
+	{
+		if(req.body.idKhachHang!="")
+		{
+			KHACH_HANG.findOne({_id:req.body.idKhachHang},function(error,result){
+				if(error)
+				{
+					res.send("Lỗi tìm kiếm!");
+				} 
+				else 
+				{
+					res.send(result.Ct_Gio_Hang_id);
+				}
+			});
+		}
+		else
+		{
+			res.send('Params error 2!')
+		}
+	}
+	else
+	{
+		res.send('Params error 1!');
+	}
+});
+
+
+//route load chi tiết giở hàng
+//method POST
+//Params : idChiTietGioHang
+
+app.post("/CTGioHang",urlEncodeParser,function(req,res){
+	if(req.body.idGioHang!=null)
+	{
+		if(req.body.idGioHang!="")
+		{
+			CHI_TIET_GIO_HANG.findOne({_id:req.body.idGioHang},function(error,result){
+				if(error)
+				{
+					res.send("Lỗi tìm kiếm!");
+				} 
+				else 
+				{
+					res.send(result);
+				}
+			});
+		}
+		else
+		{
+			res.send('Params error 2!')
+		}
+	}
+	else
+	{
+		res.send('Params error 1!');
+	}
+});
+
+//------------------------------------------------------------------------ĐƠN HÀNG------------------------------------------------------
+
+//route Dơn hàng của khách hàng
+//method POST
+//Params: IdKhachHang
+
+app.post("/getDonHang",urlEncodeParser,function(req,res){
+	if(req.body.idKhachHang!=null)
+	{
+		if(req.body.idKhachHang!="")
+		{
+			KHACH_HANG.findOne({_id:req.body.idKhachHang},function(error,result){
+				if(error)
+				{
+					res.send("Lỗi tìm kiếm!");
+				} 
+				else 
+				{
+					res.send(result.Don_hang_id);
+				}
+			});
+		}
+		else
+		{
+			res.send('Params error 2!')
+		}
+	}
+	else
+	{
+		res.send('Params error 1!');
+	}
+});
+
+
+//route Thông tin đơn hàng
+//method POST
+//Params: IdDonHang
+
+app.post("/DonHang",urlEncodeParser,function(req,res){
+	if(req.body.idDonHang!=null)
+	{
+		if(req.body.idDonHang!="")
+		{
+			DON_HANG.findOne({_id:req.body.idDonHang},function(error,result){
+				if(error)
+				{
+					res.send("Lỗi tìm kiếm!");
+				} 
+				else 
+				{
+					res.send(result);
+				}
+			});
+		}
+		else
+		{
+			res.send('Params error 2!')
+		}
+	}
+	else
+	{
+		res.send('Params error 1!');
+	}
+});
+
+//route load chi tiếtđơn hàng
+//method POST
+//Params : idChiTietDonHang
+
+app.post("/CTDonHang",urlEncodeParser,function(req,res){
+	if(req.body.idCTDonHang!=null)
+	{
+		if(req.body.idCTDonHang!="")
+		{
+			CHI_TIET_DON_HANG.findOne({_id:req.body.idCTDonHang},function(error,result){
+				if(error)
+				{
+					res.send("Lỗi tìm kiếm!");
+				} 
+				else 
+				{
+					res.send(result);
+				}
+			});
+		}
+		else
+		{
+			res.send('Params error 2!')
+		}
+	}
+	else
+	{
+		res.send('Params error 1!');
+	}
+});
