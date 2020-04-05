@@ -9,16 +9,7 @@ var urlEncodeParser = bodyParser.urlencoded({ extended: false });
 var app = new express();
 app.listen(3000);
 //tVn8kGPaRDD1Hq4j
-mongoose.connect('mongodb://localhost:27017/FoodNow',
-	{ useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false },
-	function (err) {
-		if (err)
-			console.log("MongoDb connect error : " + err);
-		else
-			console.log("MongoDb connect success !");
-	}
-);
-// mongoose.connect('mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.net/FoodNow?retryWrites=true&w=majority',
+// mongoose.connect('mongodb://localhost:27017/FoodNow',
 // 	{ useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false },
 // 	function (err) {
 // 		if (err)
@@ -27,6 +18,15 @@ mongoose.connect('mongodb://localhost:27017/FoodNow',
 // 			console.log("MongoDb connect success !");
 // 	}
 // );
+mongoose.connect('mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.net/FoodNow?retryWrites=true&w=majority',
+	{ useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false },
+	function (err) {
+		if (err)
+			console.log("MongoDb connect error : " + err);
+		else
+			console.log("MongoDb connect success !");
+	}
+);
 
 const KHU_VUC = require("./Models/KHU_VUC");
 const CHI_NHANH = require("./Models/CHI_NHANH");
