@@ -1,9 +1,9 @@
-
-
 var express = require("express");
 var bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const jwt=require("jsonwebtoken");
+const socket_io = require('socket.io');
+var io = socket_io();
 
 var urlEncodeParser = bodyParser.urlencoded({ extended: false });
 var app = new express();
@@ -19,16 +19,7 @@ app.listen(3000);
 
 
 //tVn8kGPaRDD1Hq4j
-mongoose.connect('mongodb://localhost:27017/FoodNow',
-	{ useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false },
-	function (err) {
-		if (err)
-			console.log("MongoDb connect error : " + err);
-		else
-			console.log("MongoDb connect success !");
-	}
-);
-// mongoose.connect('mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.net/FoodNow?retryWrites=true&w=majority',
+// mongoose.connect('mongodb://localhost:27017/FoodNow',
 // 	{ useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false },
 // 	function (err) {
 // 		if (err)
@@ -37,6 +28,15 @@ mongoose.connect('mongodb://localhost:27017/FoodNow',
 // 			console.log("MongoDb connect success !");
 // 	}
 // );
+mongoose.connect('mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.net/FoodNow?retryWrites=true&w=majority',
+	{ useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false },
+	function (err) {
+		if (err)
+			console.log("MongoDb connect error : " + err);
+		else
+			console.log("MongoDb connect success !");
+	}
+);
 
 const KHU_VUC = require("./Models/KHU_VUC");
 const CHI_NHANH = require("./Models/CHI_NHANH");
@@ -47,7 +47,48 @@ const DON_HANG = require("./Models/DON_HANG");
 const CHI_TIET_DON_HANG = require("./Models/CHI_TIET_DON_HANG");
 const CHI_TIET_GIO_HANG=require('./Models/CT_GIO_HANG');
 
-///-----------------------------------------------------------------------------------------------------------------------------------------
+///-------------------------------------------------------------------TEST SERVER SEND EVENT----------------------------------------------------------------
+const data_khu_vuc_change = '_';
+function sseDemo(req, res) {
+    let messageId = 0;
+
+    const intervalId = setInterval(() => {
+        res.write(`\nid: ${messageId}\n`);
+        res.write(`data: Test Message -- ${Date.now()}\n\n`);
+		if(data_khu_vuc_change != '_'){
+        	res.write(` data : ${data_khu_vuc_change}`);
+			data_khu_vuc_change = '_';
+		}
+		messageId += 1;
+    }, 1000);
+
+    req.on('close', () => {
+        clearInterval(intervalId);
+    });
+}
+
+app.get('/event-stream-khuvuc', (req, res) => {
+    // SSE Setup
+    res.writeHead(200, {
+		'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive',
+    });
+    res.write('\n');
+
+    sseDemo(req, res);
+});
+
+const changeStream = KHU_VUC.watch();
+
+changeStream.on('change', (change) => {
+	console.log('Data collection khu vuc have changed !')
+	console.log('id khu vuc thay doi :' + change.documentKey._id);
+	//data_khu_vuc_change = '{' + change.documentKey._id + '}';
+	data_khu_vuc_change = 'co su thay doi';
+    io.emit('changeData', change);
+}); 
 
 //-------------------------------------------------------------------KHU VỰC----------------------------------------------------------------
 //route thêm khu vực
