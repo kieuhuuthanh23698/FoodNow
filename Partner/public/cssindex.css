@@ -1,0 +1,1137 @@
+.onerow{
+	display: inline-block;
+	width: 105px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	font-weight: bold;
+}
+.short_desc{
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+	}
+.sign{
+	margin-top: 10px;
+	text-align: center;
+	font-style: italic;
+	color: #d7d7d7 !important;
+}
+.sign a{
+	margin-top: 10px;
+	text-align: center;
+	font-style: italic;
+	color: #d7d7d7 !important;
+	text-decoration: none;
+}
+.pagination{
+	float: right;
+}
+.active-pagi{
+	background: #337ab7 !important;
+    color: #FFF !important;
+    border: 1px solid #337ab7 !important;
+}
+#home img{
+	height: 100%;
+	width: 100%;
+}
+.container
+{
+	padding-right: 0px;
+	padding-left: 0px;
+}
+.imgslider
+{
+	margin-bottom: 15px;
+}
+.tincctablet
+	 {
+	 	display: none;
+	 }
+.dangnhapheader
+{
+	display: none;
+}
+.dangkyheader
+{
+	display: none;
+}
+.thumbnail img
+{
+	height: 133.1px; 
+	width: 207px;
+}
+.navbar-form .input-group > .form-control
+{
+	width: 260px;
+}
+.navbar
+{
+	margin-bottom: 10px;
+}
+.navbar-brand
+{
+	padding-top: 5px;
+	padding-left: 25px;
+
+}
+.navbar-default .navbar-nav > li > a
+{
+	color: #000000;
+	font-size: 17px;
+  	display: block;
+}
+.navbar-default .navbar-nav > li .active
+{
+	color: #0090ff;
+	border: 1px solid #0090ff;
+}
+.navbar-default .navbar-nav > li > a:hover
+{
+	color: #0090ff;
+	border: 1px solid #0090ff;
+}
+.carousel-control.left
+{
+	left: 16px;
+}
+.carousel-control.right
+{
+	right: 16px;
+}
+.tatca
+{
+	float: right;
+}
+.tatca a
+{
+	color: #FFFFFF;
+}
+.panel-body
+{
+	padding: 11px;
+	margin-bottom: -13px;
+}
+.table > thead > tr > td
+{
+	font-size: 12px;
+	padding: 6px;
+	font-size: 14px;
+}
+#ghichu
+{
+	color: #a699b3;
+	padding-top: 0px;
+	font-size: 1.2rem;
+}
+.panel>.list-group, .panel>.panel-collapse>.list-group
+{
+	margin-bottom: 0;
+}
+.carousel-inner .item >img 
+  {
+  	height: 274px;
+  }
+.media
+{
+	padding-bottom: 0;
+	margin-bottom: 0px;
+	margin-top: 10px;
+	/*margin-top: -12px;*/
+}
+hr {
+margin-top: 20px;
+margin-bottom: 0px;
+border: 0;
+border-top: 1px solid #eee;
+}
+.media-heading
+{
+	color: #337ab7;
+	padding-right: 10px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+.media-body:hover
+{
+	text-decoration: none;
+}
+hr
+{
+	margin-top: 0px;
+}
+.media > a:hover
+{
+	text-decoration: none;
+	#outline-color: #337ab7;
+}
+.media > a .media-body .media-heading:hover
+{
+	color:#337ab7;
+}
+.footer{
+	padding: 7px 20px;
+	background: #337ab7;
+}
+.footer h4{
+	font-size: 20px;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+.footer ul
+{
+	padding: 0;
+	margin: 0;
+
+}
+.footer ul li{
+	float: left;
+	list-style: none;
+	margin-right: 10px;
+}
+.footer p
+{
+	color: #ffffff;
+}
+.panel-body{
+	width: 100%;
+}
+.panel-body > ul{
+	padding-left: 0px;
+}
+.panel-body > ul > li
+{
+	list-style: none;
+	padding: 5px 5px;
+}
+.panel-body #khachhang{
+	padding-left: 0px;
+}
+.panel-body #khachhang li
+{
+	list-style: none;
+	padding: 5px 5px;
+}
+.panel-body > ul > li.active
+{
+	background: #337ab7;
+	color: #FFF000;
+	text-decoration: none;
+	text-decoration-color: #FFF000;
+	cursor: pointer;
+}
+.panel-body > ul > li > a.active
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.panel-body > ul > li:hover > a
+{
+	background: #337ab7;
+	color: #FFFFFF;
+	text-decoration: none;
+	text-decoration-color: #FFF000;
+	cursor: pointer;
+}
+.panel-body > ul > li:hover
+{
+	background: #337ab7;
+	cursor: pointer;
+}
+.panel-title	
+{
+	 text-align: center;
+}
+.panel-primary
+{
+	margin-bottom: 10px;
+	padding-bottom: 15px;
+}
+.col-md-2
+{
+	padding: 0;
+}
+.col-md-4
+{
+	padding-left: 0;
+	margin-right: -7px;
+}
+.table > thead > tr > td
+{
+	padding: 0;
+	padding-left: 3px;
+}
+.form-control
+{
+	padding: 0;
+	padding-right: 3px;
+}
+#gia
+{
+	padding-top: 13px;
+}
+.btn-default{
+	color: #337ab7;
+}
+#timkiem{
+	text-align: center;
+}
+.glyphicon-shopping-cart
+{
+	color: #337ab7;
+}
+.glyphicon-home
+{
+	color: #337ab7;
+}
+.glyphicon-phone
+{
+	color: #337ab7;
+}
+.glyphicon-earphone
+{
+	color: #337ab7;
+}
+.glyphicon-globe
+{
+	color: #337ab7;
+}
+.thumbnail
+{
+	width: 237px;
+	height: 317.09px;
+	margin: 5px;
+	margin-left: 15px;
+}
+.thumbnail:hover
+{
+	border-color: #337ab7;
+}
+.btn-info
+{
+	background: #FF7600;
+}
+.btn-info:hover
+{
+	background: #e86c00;
+	border-color: #e86c00;
+}
+.caption h3
+{
+	color: #337ab7;
+}
+.caption p
+{
+	color: #c10017;
+	font-weight: bold;
+	font-size: 17px;
+}
+.tieude
+{
+	/*padding-top: 15px;*/
+}
+.textboxtieude
+{
+	padding-top: 10px;
+}
+.footer2
+{
+	display: none;
+}
+#thongtin > p > img
+	 {
+	 	height: 100%;
+	 	width: 100%;
+	 }
+ #thongtin > p > strong > img
+ {
+ 	height: 100%;
+ 	width: 100%;
+ }
+ .tieude
+ {
+ 	font-size: 2rem;
+ 	color: #337ab7;
+ 	font-weight: bold;
+ }
+ .short_desc{
+ 	color: gray;
+ 	font-style: italic;
+ }
+ .chitiet img{
+ 	width: 100%;
+ }
+ .time{
+ 	font-size: 1.2rem;
+ 	color: #337ab7;
+ }
+ .giatien
+ {
+ 	 font-size: 30px;
+ 	 color: #FF0007;
+ 	 font-weight: bold;
+ 	 height: 40px;
+ }
+@media (min-width: 768px) and (max-width: 991px) {
+   .navbar-header {
+      float: none;
+  }
+  .navbar-left,.navbar-right {
+      float: none !important;
+  }
+  .navbar-toggle {
+      display: block;
+  }
+  .navbar-collapse {
+      border-top: 1px solid transparent;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+  .navbar-fixed-top {
+      top: 0;
+      border-width: 0 0 1px;
+  }
+  .navbar-collapse.collapse {
+      display: none!important;
+  }
+  .navbar-nav {
+      float: none!important;
+      margin-top: 7.5px;
+  }
+  .navbar-nav>li {
+      float: none;
+  }
+  .navbar-nav>li>a {
+      padding-top: 10px;
+      padding-bottom: 10px;
+  }
+  .collapse.in{
+      display:block !important;
+  }
+  .footer1
+  {
+  	display: none;
+  }
+  .footer2
+  {
+  	display: block;
+  }
+}
+@media (min-width: 320px) and (max-width: 375px) {
+	body{
+		padding: 3px;
+	}
+	
+	.navbar-form
+	{
+		margin-top:0px;
+		margin-bottom: 0px;
+	}
+	.header{
+		width: 100%;
+	}
+	.input-group
+	{
+		width: 100%;
+	}
+	.navbar-form .input-group > .form-control
+	{
+		width: 80%;
+	}
+	.input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group
+	{
+		margin-left: -17px;
+	}
+	.navbar-default
+	{
+		padding-left: 10px;
+		width: 100%;
+		padding-bottom: 0%;
+		margin-bottom: 1%;
+	}
+	.tincongnghe1
+	{
+		display: none;
+	}
+	.navbar-default .navbar-toggle
+	{
+		margin-top: 2%;
+		margin-right: 15%;
+		margin-bottom: 0%;
+		padding-bottom: 2%;
+	}
+	.navbar-left
+	{
+		padding-right: 2%;
+		width: 100%;
+		padding-left: 10%;
+	}
+	.navbar-nav > li > a
+	{
+		width: 93%;
+		margin-left: 2%;
+	}
+	.footer1
+  {
+  	display: none;
+  }
+  .footer2
+  {
+  	display: block;
+  }
+  .httt
+  {
+  	display: none;
+  }
+  .dangnhap
+  {
+  	display: none;
+  }
+  .dangnhapheader{
+  	display: block;
+  }
+  .dangkyheader{
+  	display: block;
+  	margin-top: 6px;
+  	margin-left: 5%;
+  }
+  .hang{
+  	display: none;
+  }
+  .tktheogia{
+  	display: none;
+  }
+  .tcsp{
+  	display: none;
+  }
+  .spm
+  {
+  	padding-left: 0px;
+  	padding-right: 0px;
+  }
+  .thumbnail img
+  {
+  	width: 130px;
+  	height: 82px;
+  }
+  .thumbnail
+  {
+  	width: 122%;
+	height: 266px;
+  }
+  .thumbnail h3
+  {
+  	font-size: 14px;
+  	
+  }
+  .thumbnail p
+  {
+	font-size: 14px;
+  }
+  .thumbnail .btn
+  {
+  	font-size: 13px;
+  }
+  .ctsp
+  {
+  	float: left;
+  	width: 40%;
+  	margin-right: 19px;
+  }
+  .buttonhang
+  {
+  	width: 30%;
+  }
+  .buttonhang .active
+  {
+  	background: #000000;
+  }
+	 .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default
+	 {
+	 	background: #337ab7;
+	 	color: #FFFFFF;
+	 }
+	 #thongtin > p > img
+	 {
+	 	height: 100%;
+	 	width: 100%;
+	 }
+	 #thongtin > p > strong > img
+	 {
+	 	height: 100%;
+	 	width: 100%;
+	 }
+		 .tieude
+	 {
+	 	font-size: 20px;
+	 	color: #337ab7;
+	 	font-weight: bold;
+	 }
+	 .giatien
+	 {
+	 	 font-size: 20px;
+	 	 color: #FF0007;
+	 	 font-weight: bold;
+	 	 height: 40px;
+	 }
+	 .nav-pills > li
+	 {
+	 	width: 100%;
+	 }
+}
+@media (min-width: 376px) and (max-width: 424px) {
+	body{
+		padding: 3px;
+	}
+	.navbar-form
+	{
+		margin-top:0px;
+		margin-bottom: 0px;
+	}
+	.header{
+		width: 100%;
+	}
+	.input-group
+	{
+		width: 100%;
+	}
+	.navbar-form .input-group > .form-control
+	{
+		width: 80%;
+	}
+	.input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group
+	{
+		margin-left: -17px;
+	}
+	.navbar-default
+	{
+		padding-left: 10px;
+		width: 100%;
+		padding-bottom: 0%;
+		margin-bottom: 1%;
+	}
+	.tincongnghe1
+	{
+		display: none;
+	}
+	.navbar-default .navbar-toggle
+	{
+		margin-top: 2%;
+		margin-right: 8%;
+		margin-bottom: 0%;
+		padding-bottom: 2%;
+	}
+	.navbar-left
+	{
+		padding-right: 2%;
+		width: 100%;
+		padding-left: 10%;
+	}
+	.navbar-nav > li > a
+	{
+		width: 93%;
+		margin-left: 2%;
+	}
+	.footer1
+  {
+  	display: none;
+  }
+  .footer2
+  {
+  	display: block;
+  }
+  .httt
+  {
+  	display: none;
+  }
+  .dangnhap
+  {
+  	display: none;
+  }
+  .dangnhapheader{
+  	display: block;
+  }
+  .dangkyheader{
+  	display: block;
+  	margin-top: 6px;
+  	margin-left: 5%;
+  }
+  .hang{
+  	display: none;
+  }
+  .tktheogia{
+  	display: none;
+  }
+  .tcsp{
+  	display: none;
+  }
+  .spm
+  {
+  	padding-left: 0px;
+  	padding-right: 0px;
+  }
+  .thumbnail img
+  {
+  	width: 130px;
+  	height: 82px;
+  }
+  .thumbnail
+  {
+  	width: 89%;
+	height: 266px;
+	margin-left: 9%;
+  }
+  .thumbnail h3
+  {
+  	font-size: 15px;
+  	
+  }
+  .thumbnail p
+  {
+	font-size: 13px;
+  }
+  .thumbnail .btn
+  {
+  	font-size: 13px;
+  }
+  .ctsp
+  {
+  	float: left;
+  	width: 38%;
+  	margin-right: -6%;
+  }
+  .buttonhang
+  {
+  	width: 30%;
+  }
+  .buttonhang .active
+  {
+  	background: #000000;
+  }
+	 .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default
+	 {
+	 	background: #337ab7;
+	 	color: #FFFFFF;
+	 }
+	 #thongtin > p > img
+	 {
+	 	height: 100%;
+	 	width: 100%;
+	 }
+	 #thongtin > p > strong > img
+	 {
+	 	height: 100%;
+	 	width: 100%;
+	 }
+		 .tieude
+	 {
+	 	font-size: 20px;
+	 	color: #337ab7;
+	 	font-weight: bold;
+	 }
+	 .giatien
+	 {
+	 	 font-size: 20px;
+	 	 color: #FF0007;
+	 	 font-weight: bold;
+	 	 height: 40px;
+	 }
+	 .nav-pills > li
+	 {
+	 	width: 100%;
+	 }
+}
+
+@media (min-width: 425px) and (max-width: 767px) {
+	body{
+		padding: 3px;
+	}
+	.navbar-form
+	{
+		margin-top:0px;
+		margin-bottom: 0px;
+	}
+	.header{
+		width: 100%;
+	}
+	.input-group
+	{
+		width: 100%;
+	}
+	.navbar-form .input-group > .form-control
+	{
+		width: 80%;
+	}
+	.input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group
+	{
+		margin-left: -17px;
+	}
+	.navbar-default
+	{
+		padding-left: 10px;
+		width: 100%;
+		padding-bottom: 0%;
+		margin-bottom: 1%;
+	}
+	.tincongnghe1
+	{
+		display: none;
+	}
+	.navbar-default .navbar-toggle
+	{
+		margin-top: 2%;
+		margin-right: 8%;
+		margin-bottom: 0%;
+		padding-bottom: 2%;
+	}
+	.navbar-left
+	{
+		padding-right: 2%;
+		width: 100%;
+		padding-left: 10%;
+	}
+	.navbar-nav > li > a
+	{
+		width: 93%;
+		margin-left: 2%;
+	}
+	.footer1
+  {
+  	display: none;
+  }
+  .footer2
+  {
+  	display: block;
+  }
+  .httt
+  {
+  	display: none;
+  }
+  .dangnhap
+  {
+  	display: none;
+  }
+  .dangnhapheader{
+  	display: block;
+  }
+  .dangkyheader{
+  	display: block;
+  	margin-top: 6px;
+  	margin-left: 5%;
+  }
+  .hang{
+  	display: none;
+  }
+  .tktheogia{
+  	display: none;
+  }
+  .tcsp{
+  	display: none;
+  }
+  .spm
+  {
+  	padding-left: 0px;
+  	padding-right: 0px;
+  }
+  .thumbnail img
+  {
+  	width: 130px;
+  	height: 82px;
+  }
+  .thumbnail
+  {
+  	width: 89%;
+	height: 266px;
+	margin-left: 9%;
+  }
+  .thumbnail h3
+  {
+  	font-size: 15px;
+  	
+  }
+  .thumbnail p
+  {
+	font-size: 13px;
+  }
+  .thumbnail .btn
+  {
+  	font-size: 13px;
+  }
+  .ctsp
+  {
+  	float: left;
+  	width: 38%;
+  	margin-right: -6%;
+  }
+  .buttonhang
+  {
+  	width: 30%;
+  }
+  .buttonhang .active
+  {
+  	background: #000000;
+  }
+	 .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default
+	 {
+	 	background: #337ab7;
+	 	color: #FFFFFF;
+	 }
+	 #thongtin > p > img
+	 {
+	 	height: 100%;
+	 	width: 100%;
+	 }
+	 #thongtin > p > strong > img
+	 {
+	 	height: 100%;
+	 	width: 100%;
+	 }
+		 .tieude
+	 {
+	 	font-size: 20px;
+	 	color: #337ab7;
+	 	font-weight: bold;
+	 }
+	 .giatien
+	 {
+	 	 font-size: 20px;
+	 	 color: #FF0007;
+	 	 font-weight: bold;
+	 	 height: 40px;
+	 }
+	 .nav-pills > li
+	 {
+	 	width: 100%;
+	 }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+	body{
+		padding: 3px;
+	}
+	.navbar-form
+	{
+		margin-top:0px;
+		margin-bottom: 0px;
+	}
+	.header{
+		width: 100%;
+	}
+	.input-group
+	{
+		width: 80%;
+		padding-top: 5px;
+	}
+	.navbar-form .input-group > .form-control
+	{
+		width: 80%;
+	}
+	.input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group
+	{
+		margin-left: -17px;
+	}
+	.navbar-default
+	{
+		padding-left: 10px;
+		width: 100%;
+		padding-bottom: 0%;
+		margin-bottom: 1%;
+	}
+	.tincongnghe1
+	{
+		display: none;
+	}
+	.tincongnghe2
+	{
+		display: none;
+	}
+	.navbar-default .navbar-toggle
+	{
+		margin-top: 1%;
+		margin-right: 3%;
+		margin-bottom: 0%;
+		padding-bottom: 2%;
+	}
+	.navbar-left
+	{
+		padding-right: 2%;
+		width: 100%;
+		padding-left: 10%;
+	}
+	.navbar-nav > li > a
+	{
+		width: 93%;
+		margin-left: 2%;
+	}
+	.footer1
+  {
+  	display: none;
+  }
+  .footer2
+  {
+  	display: block;
+  }
+  .httt
+  {
+  	display: none;
+  }
+  .dangnhap
+  {
+  	display: none;
+  }
+  .dangnhapheader{
+  	display: block;
+  }
+  .dangkyheader
+  {
+  	display: block;
+  }
+  .tktheohang2
+  {
+  	display: none;
+  }
+  .tcsp{
+  	display: none;
+  }
+  .thumbnail img
+  {
+  	width: 130px;
+  	height: 82px;
+  }
+  .thumbnail
+  {
+  	width: 89%;
+	height: 254px;
+	margin-left: 9%;
+  }
+  .thumbnail h3
+  {
+  	font-size: 15px;
+  	
+  }
+  .thumbnail p
+  {
+	font-size: 13px;
+  }
+  .thumbnail .btn
+  {
+  	font-size: 13px;
+  }
+  .ctsp
+  {
+  	float: left;
+  	width: 38%;
+  	margin-right: -5%;
+  	margin-left: -1%;
+  }
+  .buttonhang
+  {
+  	width: 30%;
+  }
+  .buttonhang .active
+  {
+  	background: #000000;
+  }
+	 .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default
+	 {
+	 	background: #337ab7;
+	 	color: #FFFFFF;
+	 }
+	 #thongtin > p > img
+	 {
+	 	height: 100%;
+	 	width: 100%;
+	 }
+	 #thongtin > p > strong > img
+	 {
+	 	height: 100%;
+	 	width: 100%;
+	 }
+		 .tieude
+	 {
+	 	font-size: 20px;
+	 	color: #337ab7;
+	 	font-weight: bold;
+	 }
+	 .spm
+	 {
+	 	padding-right: 0px;
+	 }
+	 .giatien
+	 {
+	 	 font-size: 20px;
+	 	 color: #FF0007;
+	 	 font-weight: bold;
+	 	 height: 40px;
+	 }
+	 .nav-pills > li
+	 {
+	 	width: 100%;
+	 }
+	 .httt1
+	 {
+	 	padding-left: 0px;
+	 	margin-bottom: -7%;
+	 }
+	 .tincctablet
+	 {
+	 	display: block;
+	 }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+	.navbar-default .navbar-nav > li > a
+	{
+		font-size: 15px;
+	}
+	.thumbnail img
+  {
+  	width: 150px;
+  	height: 102px;
+  }
+  .thumbnail
+  {
+  	width: 95%;
+	height: 300px;
+	margin-left: 9%;
+  }
+  .thumbnail h3
+  {
+  	font-size: 20px;
+  	
+  }
+  .thumbnail p
+  {
+	font-size: 17px;
+  }
+  .thumbnail .btn
+  {
+  	font-size: 13px;
+  }
+  .ctsp
+  {
+  	float: left;
+  	width: 35%;
+  	margin-right: -2%;
+  	margin-left: -1%;
+  }
+  .carousel-inner
+  {
+  	height: 290px;
+  }
+  .carousel-inner .item >img 
+  {
+  	height: 290px;
+  }
+  #khachhang .form-group >li >span
+  {
+  	font-size: 13px;
+  }
+  #khachhang .form-group >li >p
+  {
+  	font-size: 12px;
+  }
+}
