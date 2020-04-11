@@ -7,7 +7,17 @@ const jwt=require("jsonwebtoken");
 
 var urlEncodeParser = bodyParser.urlencoded({ extended: false });
 var app = new express();
+
+app.set("view engine", "ejs");
+app.use("/Public",express.static('Public'));
+// app.get("/", function(req, res){
+//   res.render("main");
+// });
+//app.use(express.static(__dirname + '/Public/'));
 app.listen(3000);
+
+
+
 //tVn8kGPaRDD1Hq4j
 mongoose.connect('mongodb://localhost:27017/FoodNow',
 	{ useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false },
@@ -454,11 +464,6 @@ app.post("/DangNhap",urlEncodeParser,function(req,res){
 	}
 });
 
-
-//1 load cua hang, => load chi nhanh
-//2 load chi tiet gio hang ()tao 1 coll ct
-//3 load hoa don, load chi tiet hoa don
-//4 load thong tin khach hang (full)
 
 
 //----------------------------------------------------------------------GIỎ HÀNG-----------------------------------------------------

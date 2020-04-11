@@ -5,6 +5,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -67,7 +69,7 @@ public class DAL {
         VolleySingleton.getInstance(this.context).getRequestQueue().add(insertRequest);
     }
 
-    public void getOneChiNhanh(final String idChiNhanh, final String name,final ArrayList<Store> stores){
+    public void getOneChiNhanh(final String idChiNhanh, final String name){
         StringRequest insertRequest = new StringRequest(
                 Request.Method.POST,
                 Utils.urlOneChiNhanh,
@@ -77,7 +79,8 @@ public class DAL {
                         Log.e("TEST", "Load one chi nhánh respone : " + response);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            stores.add(new Store(name, jsonObject.getString("Dia_chi_cua_hang_chinh")));
+                            HomeFragment.arrayList.add(new Store(name, jsonObject.getString("Dia_chi_chi_nhanh")));
+                            HomeFragment.adapter.notifyDataSetChanged();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -104,6 +107,15 @@ public class DAL {
     }
 
     public void loadCuaHang(){
+
+        final AlertDialog.Builder alertdialog = new AlertDialog.Builder(context);
+        alertdialog.setTitle("Please wait......."); // Alert Box Title
+        alertdialog.setMessage("");
+        alertdialog.setIcon(R.drawable.loading);
+
+        final AlertDialog alt = alertdialog.create();
+        alt.show();
+
         StringRequest insertRequest = new StringRequest(
                 Request.Method.GET,
                 Utils.urlCuaHang,
@@ -111,7 +123,6 @@ public class DAL {
                     @Override
                     public void onResponse(String response) {
                         Log.e("TEST", "Load stores respone : " + response.toString());
-                        ArrayList<Store> arrayList = new ArrayList<>();
                         JSONArray jsonArray = null;
                         try {
                             jsonArray = new JSONArray(response.toString());
@@ -128,22 +139,24 @@ public class DAL {
                                     continue;
                                 if(chiNhanhS.length() == 1)
                                 {
-                                    //getOneChiNhanh(chiNhanhS.get(0).toString(), storeObj.getString("Ten_cua_hang"), arrayList);
+                                    getOneChiNhanh(chiNhanhS.get(0).toString(), storeObj.getString("Ten_cua_hang"));
                                     continue;
                                 }
                                 else {
                                     store = new Store(storeObj.getString("Ten_cua_hang"), "Có " + storeObj.getJSONArray("Chi_Nhanh_id").length() + " chi nhánh !");
                                 }
-                                arrayList.add(store);
+                                HomeFragment.arrayList.add(store);
+                                HomeFragment.adapter.notifyDataSetChanged();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
                         }
-                        HomeFragment.createList(context, arrayList);
+                        alt.cancel();
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                alt.cancel();
                 Log.e("TEST","Load stores error : " +  error.toString());
             }
         }) {
@@ -222,7 +235,7 @@ public class DAL {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            Toast.makeText(context,TOKEN, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context,"Đăng nhập thành công !", Toast.LENGTH_SHORT).show();
             Intent intent=new Intent(context,MainActivity.class);
             context.startActivity(intent);
         }
