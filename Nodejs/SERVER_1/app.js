@@ -52,9 +52,18 @@ const data_khu_vuc_change = '_';
 function sseDemo(req, res) {
     let messageId = 0;
 
+	changeStream.on('change', (change) => {
+		console.log('Data collection khu vuc have changed !')
+		console.log('id khu vuc thay doi :' + change.documentKey._id);
+		data_khu_vuc_change = '{' + change.documentKey._id + '}';
+		//data_khu_vuc_change = 'co su thay doi';
+		io.emit('changeData', change);
+	}); 
+
     const intervalId = setInterval(() => {
         res.write(`\nid: ${messageId}\n`);
-        res.write(`data: Test Message -- ${Date.now()}\n\n`);
+		res.write(`data: Test Message -- ${Date.now()}\n\n`);
+		//res.write(data_khu_vuc_change);
 		if(data_khu_vuc_change != '_'){
         	res.write(` data : ${data_khu_vuc_change}`);
 			data_khu_vuc_change = '_';
@@ -82,13 +91,13 @@ app.get('/event-stream-khuvuc', (req, res) => {
 
 const changeStream = KHU_VUC.watch();
 
-changeStream.on('change', (change) => {
-	console.log('Data collection khu vuc have changed !')
-	console.log('id khu vuc thay doi :' + change.documentKey._id);
-	//data_khu_vuc_change = '{' + change.documentKey._id + '}';
-	data_khu_vuc_change = 'co su thay doi';
-    io.emit('changeData', change);
-}); 
+// changeStream.on('change', (change) => {
+// 	console.log('Data collection khu vuc have changed !')
+// 	console.log('id khu vuc thay doi :' + change.documentKey._id);
+// 	//data_khu_vuc_change = '{' + change.documentKey._id + '}';
+// 	data_khu_vuc_change = 'co su thay doi';
+//     io.emit('changeData', change);
+// }); 
 
 //-------------------------------------------------------------------KHU VỰC----------------------------------------------------------------
 //route thêm khu vực
