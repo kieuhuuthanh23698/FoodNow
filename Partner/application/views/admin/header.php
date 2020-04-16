@@ -16,7 +16,7 @@
 
 		<div class="navbar-header pull-left">
 			<a href="index.html" class="navbar-brand">
-				<small>
+				<small id='head'>
 					FoodNow | Partner - Quản lý dữ liệu
 				</small>
 			</a>

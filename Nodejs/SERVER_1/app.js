@@ -2,11 +2,18 @@ var express = require("express");
 var bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const jwt=require("jsonwebtoken");
-const socket_io = require('socket.io');
-var io = socket_io();
+// var io = socket_io('http://localhost:3000', {
+// 	extraHeaders: {
+// //		Authorization: "Bearer authorization_token_here"
+// // 		'Access-Control-Allow-Origin': '*'
+// 	}
+// });
+//var io = socket_io();
 
 var urlEncodeParser = bodyParser.urlencoded({ extended: false });
 var app = new express();
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
 
 app.set("view engine", "ejs");
 app.use("/Public",express.static('Public'));
@@ -14,7 +21,7 @@ app.use("/Public",express.static('Public'));
 //   res.render("main");
 // });
 //app.use(express.static(__dirname + '/Public/'));
-app.listen(3000);
+server.listen(3000);
 
 
 
@@ -48,56 +55,97 @@ const CHI_TIET_DON_HANG = require("./Models/CHI_TIET_DON_HANG");
 const CHI_TIET_GIO_HANG=require('./Models/CT_GIO_HANG');
 
 ///-------------------------------------------------------------------TEST SERVER SEND EVENT----------------------------------------------------------------
-const data_khu_vuc_change = '_';
-function sseDemo(req, res) {
-    let messageId = 0;
 
-	changeStream.on('change', (change) => {
-		console.log('Data collection khu vuc have changed !')
-		console.log('id khu vuc thay doi :' + change.documentKey._id);
-		data_khu_vuc_change = '{' + change.documentKey._id + '}';
-		//data_khu_vuc_change = 'co su thay doi';
-		io.emit('changeData', change);
-	}); 
+// let data_khu_vuc_change = `Time - ${Date.now()} : Data is normal !`;
+// function getMessage(){
+// 	changeStream.on('change', (change) => {
+// 		//console.log('Data collection khu vuc have changed !')
+// 		//console.log('id khu vuc thay doi :' + change.documentKey._id);
+// 		data_khu_vuc_change = '{' + change.documentKey._id + '}';
+// 		//data_khu_vuc_change = 'co su thay doi';
+// 		io.emit('changeData', change);
+// 	});
+// 	return data_khu_vuc_change;
+// }
 
-    const intervalId = setInterval(() => {
-        res.write(`\nid: ${messageId}\n`);
-		res.write(`data: Test Message -- ${Date.now()}\n\n`);
-		//res.write(data_khu_vuc_change);
-		if(data_khu_vuc_change != '_'){
-        	res.write(` data : ${data_khu_vuc_change}`);
-			data_khu_vuc_change = '_';
-		}
-		messageId += 1;
-    }, 1000);
+// function sseDemo(req, res) {
+// 	let messageId = 0;
+	 
 
-    req.on('close', () => {
-        clearInterval(intervalId);
-    });
+//     const intervalId = setInterval(() => {
+// 		console.log(`Server sent event : ${messageId} - ${data_khu_vuc_change}`)
+//     	res.write('hello');
+// 		//res.write(`${getMessage()}`);
+// 		data_khu_vuc_change = `Time - ${Date.now()} : Data is normal !`;
+// 		//res.write(data_khu_vuc_change);
+// 		//if(data_khu_vuc_change != '_'){
+//         	//res.write(`\ndata : ${data_khu_vuc_change}\n`);
+// 		//}
+// 		messageId += 1;
+//     }, 1000);
+	
+// 	data_khu_vuc_change = 'Data is normal !';
+
+//     req.on('close', () => {
+//         clearInterval(intervalId);
+//     });
+// }
+
+// app.get('/event-stream-khuvuc', (req, res) => {
+//     // SSE Setup
+//     res.writeHead(200, {
+// 		'Access-Control-Allow-Origin': '*',
+//         'Content-Type': 'text/event-stream',
+//         'Cache-Control': 'no-cache',
+//         'Connection': 'keep-alive',
+//     });
+//     res.write('\n');
+
+//     sseDemo(req, res);
+// });
+
+const changeStream = CHI_NHANH.watch();
+let list = [];
+
+function getSocketIdWithIdParner(partnerID){
+	var result = list.find(item => item.partner_id === partnerID);
+	return result.socket_id;
 }
 
-app.get('/event-stream-khuvuc', (req, res) => {
-    // SSE Setup
-    res.writeHead(200, {
-		'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'text/event-stream',
-        'Cache-Control': 'no-cache',
-        'Connection': 'keep-alive',
-    });
-    res.write('\n');
 
-    sseDemo(req, res);
+
+io.on("connection",function(socket){
+	//list.push(socket.id);
+	// console.log("Some one connected with id : " + socket.id);
+	socket.on('partner-server', function(data){
+		console.log("client id " + socket.id + " just emit : " + data);
+		socket.join(data);
+		var item = {socket_id : socket.id, partner_id : data};
+		list.push(item);
+		//console.log('123 : ' + list[0].socket_id);
+		console.log('Connecting people are : ' + list.length);
+	});
+
+
 });
 
-const changeStream = KHU_VUC.watch();
-
-// changeStream.on('change', (change) => {
-// 	console.log('Data collection khu vuc have changed !')
-// 	console.log('id khu vuc thay doi :' + change.documentKey._id);
-// 	//data_khu_vuc_change = '{' + change.documentKey._id + '}';
-// 	data_khu_vuc_change = 'co su thay doi';
-//     io.emit('changeData', change);
-// }); 
+changeStream.on('change', (change) => {
+	console.log(change);
+	//console.log('Data collection khu vuc have changed !')
+	//console.log('id khu vuc thay doi :' + change.documentKey._id);
+//	var socket_id = getSocketIdWithIdParner('5dc53b64fdf2d32c6006e057');
+	
+//	var socket_id = '5dc53b64fdf2d32c6006e057';
+	//var socket_id = change.documentKey._id;
+	//io.to(socket_id).emit('data of partner 1');
+	//io.sockets.in(socket_id).emit('partner-server', 'hello ');
+	//console.log('vua emit to ' + socket_id);
+	//io.to(getSocketIdWithIdParner('5dc53bc6fdf2d32c6006e058')).emit('data of partner 2');
+	//io.to(getSocketIdWithIdParner('5dc56d8c6b2d0520e0658441')).emit('data of partner 3');
+	//data_khu_vuc_change = '{' + change.documentKey._id + '}';
+	//data_khu_vuc_change = 'co su thay doi';
+	//io.emit('partner-server', 'hello');
+}); 
 
 //-------------------------------------------------------------------KHU VỰC----------------------------------------------------------------
 //route thêm khu vực
@@ -260,7 +308,6 @@ app.get("/chinhanh", function (req, res) {
 	});
 });
 
-
 //route get chi nhánh của cửa hàng
 //method POST
 //params : idCuaHang
@@ -288,6 +335,7 @@ app.post("/ChiNhanhCuaCuaHang", urlEncodeParser,function (req, res) {
 	}
 	
 });
+
 //route get 1 chi nhánh
 //method POST
 //params : idChiNhanh
@@ -549,7 +597,6 @@ app.post("/getGioHang",urlEncodeParser,function(req,res){
 		res.send('Params error 1!');
 	}
 });
-
 
 //route load chi tiết giở hàng
 //method POST

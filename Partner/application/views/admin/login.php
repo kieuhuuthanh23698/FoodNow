@@ -24,6 +24,7 @@
 	
 <script type="text/javascript">
 	$("#dangnhap").click(function(event) {
+		localStorage.setItem("partnerID", $('#username').val());
 		// $.ajax({
 		// 	url: '<?php echo base_url()?>admin/checkAccount',
 		// 	type: 'POST',
@@ -36,7 +37,7 @@
 				window.location = '<?php echo base_url()?>admin/homeAdmin';
 
 		// 		// this.windown.location.href = 'google.com.vn';
-		 		alert("Đăng nhập thành công !");
+		 		alert(localStorage.getItem('partnerID') + " đăng nhập thành công !");
 		// 	}
 		// 	else if(data == 0)
 		// 	{
