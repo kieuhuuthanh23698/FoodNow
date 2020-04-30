@@ -5,34 +5,25 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
-import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
-import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.acer_pc.foodnow.HomeFragment;
 import com.example.acer_pc.foodnow.LoginActivity;
 import com.example.acer_pc.foodnow.MainActivity;
 import com.example.acer_pc.foodnow.Object.Store;
 import com.example.acer_pc.foodnow.R;
-import com.example.acer_pc.foodnow.RegisterActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.example.acer_pc.foodnow.LoginActivity.TOKEN;
 
 public class DAL {
     Context context;
@@ -79,7 +70,7 @@ public class DAL {
                         Log.e("TEST", "Load one chi nhánh respone : " + response);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            HomeFragment.arrayList.add(new Store(name, jsonObject.getString("Dia_chi_chi_nhanh")));
+                            HomeFragment.arrayList.add(new Store(null, null));
                             HomeFragment.adapter.notifyDataSetChanged();
                         } catch (JSONException e) {
                             e.printStackTrace();

@@ -8,10 +8,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:background="@color/colorRed"
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@android:color/white"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_marginLeft="15dp"
+                android:drawableLeft="@drawable/ic_location_on_black_24dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:paddingLeft="0dp"
+                android:text="Số 6, Phan Đình Giót, Phường 2, Tân Bình..."
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_dehaze_black_24dp"
+                android:layout_marginRight="15dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp" />
+
+        </RelativeLayout>
 
         <EditText
             android:id="@+id/editText"
@@ -20,27 +45,661 @@
             android:layout_centerInParent="true"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:hint="Search"
-            android:focusable="false"
-            android:background="#ffffff"
+            android:textSize="15dp"
+            android:hint="Tìm nhà hàng, món ăn"
+            android:background="@drawable/border_button"
+            android:backgroundTint="#F5F2F2"
             android:drawableLeft="@drawable/ic_search_black_24dp"
             android:ems="10"
+            android:focusable="false"
+            android:layout_marginBottom="20dp"
             android:inputType="textPersonName"
             android:paddingLeft="5dp"/>
-    </RelativeLayout>
 
-    <LinearLayout
+    </LinearLayout>
+
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="1dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <ListView
-            android:id="@+id/list_store"
+        <LinearLayout
+            android:background="#F5F2F2"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        </ListView>
-    </LinearLayout>
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_centerVertical="true"
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:layout_marginBottom="10dp"/>
 
+            <LinearLayout
+                android:layout_marginBottom="10dp"
+                android:background="#F5F2F2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:weightSum="4"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        style="@style/menu_item"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="90dp">
+
+                        <ImageView
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/di_cho"
+                            style="@style/sizeOfSliderMain_1" />
+
+                        <TextView
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:text="Đi chợ"
+                            android:textStyle="bold"
+                            android:textSize="17dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        style="@style/menu_item"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="90dp">
+
+                        <ImageView
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/chuoi"
+                            style="@style/sizeOfSliderMain_1" />
+
+                        <TextView
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:text="Chuỗi"
+                            android:textStyle="bold"
+                            android:textSize="17dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        style="@style/menu_item"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="90dp">
+
+                        <ImageView
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/mo_han"
+                            style="@style/sizeOfSliderMain_1"/>
+
+                        <TextView
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:text="Món hàn"
+                            android:textStyle="bold"
+                            android:textSize="17dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        style="@style/menu_item"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="90dp">
+
+                        <ImageView
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/tra_sua"
+                            style="@style/sizeOfSliderMain_1"/>
+
+                        <TextView
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:text="Trà sữa"
+                            android:textStyle="bold"
+                            android:textSize="17dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:weightSum="4"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        style="@style/menu_item"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="90dp">
+
+                        <ImageView
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/com_phan"
+                            style="@style/sizeOfSliderMain_1" />
+
+                        <TextView
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:text="Cơm phần"
+                            android:textStyle="bold"
+                            android:textSize="17dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        style="@style/menu_item"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="90dp">
+
+                        <ImageView
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ga_ran"
+                            style="@style/sizeOfSliderMain_1" />
+
+                        <TextView
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:text="Gà rán"
+                            android:textStyle="bold"
+                            android:textSize="17dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        style="@style/menu_item"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="90dp">
+
+                        <ImageView
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/bun_pho"
+                            style="@style/sizeOfSliderMain_1" />
+
+                        <TextView
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:text="Bún phở"
+                            android:textStyle="bold"
+                            android:textSize="17dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        style="@style/menu_item"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="90dp">
+
+                        <ImageView
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/an_vat"
+                            style="@style/sizeOfSliderMain_1"/>
+
+                        <TextView
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:text="Ăn vặt"
+                            android:textStyle="bold"
+                            android:textSize="17dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:layout_marginBottom="10dp"
+                android:measureAllChildren="false"
+                android:scrollbars="none"
+                android:fillViewport="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:background="@android:color/white"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:id="@+id/scrollViewVoucher"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_margin="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="10dp"
+                        android:background="@drawable/border_voucher"
+                        android:backgroundTint="@color/colorMain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="70dp" >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_voucher1" />
+
+                            <TextView
+                                android:text=" NHẬP ANTRUA 50% Off/ 13h - 15h"
+                                android:layout_width="150dp"
+                                android:layout_height="match_parent"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/white"
+                                android:textStyle="bold"
+                                android:gravity="center_horizontal|center_vertical"
+                                android:layout_centerVertical="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerInParent="true"/>
+
+                            <ImageView
+                                android:layout_gravity="center_vertical|center_horizontal"
+                                android:src="@drawable/ic_dot"
+                                android:scaleType="fitXY"
+                                android:layout_width="10dp"
+                                android:layout_height="10dp" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_margin="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="10dp"
+                        android:background="@drawable/border_voucher"
+                        android:backgroundTint="@color/colorMain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="70dp" >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_voucher1" />
+
+                            <TextView
+                                android:text=" NHẬP ANTRUA 50% Off/ 13h - 15h"
+                                android:layout_width="150dp"
+                                android:layout_height="match_parent"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/white"
+                                android:textStyle="bold"
+                                android:gravity="center_horizontal|center_vertical"
+                                android:layout_centerVertical="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerInParent="true"/>
+
+                            <ImageView
+                                android:layout_gravity="center_vertical|center_horizontal"
+                                android:src="@drawable/ic_dot"
+                                android:scaleType="fitXY"
+                                android:layout_width="10dp"
+                                android:layout_height="10dp" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_margin="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="10dp"
+                        android:background="@drawable/border_voucher"
+                        android:backgroundTint="@color/colorMain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="70dp" >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_voucher1" />
+
+                            <TextView
+                                android:text=" NHẬP ANTRUA 50% Off/ 13h - 15h"
+                                android:layout_width="150dp"
+                                android:layout_height="match_parent"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/white"
+                                android:textStyle="bold"
+                                android:gravity="center_horizontal|center_vertical"
+                                android:layout_centerVertical="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerInParent="true"/>
+
+                            <ImageView
+                                android:layout_gravity="center_vertical|center_horizontal"
+                                android:src="@drawable/ic_dot"
+                                android:scaleType="fitXY"
+                                android:layout_width="10dp"
+                                android:layout_height="10dp" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_margin="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="10dp"
+                        android:background="@drawable/border_voucher"
+                        android:backgroundTint="@color/colorMain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="70dp" >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_voucher1" />
+
+                            <TextView
+                                android:text=" NHẬP ANTRUA 50% Off/ 13h - 15h"
+                                android:layout_width="150dp"
+                                android:layout_height="match_parent"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/white"
+                                android:textStyle="bold"
+                                android:gravity="center_horizontal|center_vertical"
+                                android:layout_centerVertical="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerInParent="true"/>
+
+                            <ImageView
+                                android:layout_gravity="center_vertical|center_horizontal"
+                                android:src="@drawable/ic_dot"
+                                android:scaleType="fitXY"
+                                android:layout_width="10dp"
+                                android:layout_height="10dp" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_margin="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="10dp"
+                        android:background="@drawable/border_voucher"
+                        android:backgroundTint="@color/colorMain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="70dp" >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_voucher1" />
+
+                            <TextView
+                                android:text=" NHẬP ANTRUA 50% Off/ 13h - 15h"
+                                android:layout_width="150dp"
+                                android:layout_height="match_parent"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/white"
+                                android:textStyle="bold"
+                                android:gravity="center_horizontal|center_vertical"
+                                android:layout_centerVertical="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerInParent="true"/>
+
+                            <ImageView
+                                android:layout_gravity="center_vertical|center_horizontal"
+                                android:src="@drawable/ic_dot"
+                                android:scaleType="fitXY"
+                                android:layout_width="10dp"
+                                android:layout_height="10dp" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <TextView
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                style="@style/title"
+                android:text="Hôm nay ăn gì ?"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <HorizontalScrollView
+            android:layout_marginBottom="10dp"
+            android:measureAllChildren="false"
+            android:scrollbars="none"
+            android:fillViewport="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:background="@android:color/white"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_margin="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp"
+                    android:background="@drawable/tip1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            android:textColor="@android:color/white"
+                            android:text="Lần đầu Order tại FoodNow bạn ăn gì ?"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:textStyle="bold"
+                            android:textSize="12dp"
+                            android:textColor="@android:color/white"
+                            android:text="Khao bạn 45K menu này nha!"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_margin="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp"
+                    android:background="@drawable/tip1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            android:textColor="@android:color/white"
+                            android:text="Lần đầu Order tại FoodNow bạn ăn gì ?"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:textStyle="bold"
+                            android:textSize="12dp"
+                            android:textColor="@android:color/white"
+                            android:text="Khao bạn 45K menu này nha!"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_margin="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp"
+                    android:background="@drawable/tip1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            android:textColor="@android:color/white"
+                            android:text="Lần đầu Order tại FoodNow bạn ăn gì ?"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:textStyle="bold"
+                            android:textSize="12dp"
+                            android:textColor="@android:color/white"
+                            android:text="Khao bạn 45K menu này nha!"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_margin="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp"
+                    android:background="@drawable/tip1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            android:textColor="@android:color/white"
+                            android:text="Lần đầu Order tại FoodNow bạn ăn gì ?"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:textStyle="bold"
+                            android:textSize="12dp"
+                            android:textColor="@android:color/white"
+                            android:text="Khao bạn 45K menu này nha!"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+            <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                android:id="@+id/susggestList"
+                android:orientation="vertical"
+                app:msrv_ms_per_inch="120"
+                app:msrv_snap_count="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                style="@style/title"
+                android:text="Quanh đây có gì ngon ?"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                android:id="@+id/storeNeartList"
+                android:orientation="vertical"
+                app:msrv_ms_per_inch="120"
+                app:msrv_snap_count="2"
+                android:background="@android:color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#CF2127</color>
+    <color name="colorPrimaryDark">#E8F3EE</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="colorRed">#CF2127</color>
+    <color name="colorRed">#E8F3EE</color>
+    <color name="colorMain">#2ECD9D</color>
+    <color name="colorBackShoppingCartAct">#879f9f9f</color>
 </resources>

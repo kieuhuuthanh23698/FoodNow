@@ -1,5 +1,6 @@
 package com.example.acer_pc.foodnow;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class UserFragment extends Fragment {
     TextView txtName;
@@ -25,5 +27,13 @@ public class UserFragment extends Fragment {
             btnLogout.setVisibility(View.GONE);
         }
         return view;
+    }
+
+    @Override
+    public void onDestroy() {
+        Toast.makeText(getContext(),"Home fragment exit !", Toast.LENGTH_SHORT).show();
+        super.onDestroy();
+//        Intent intent = new Intent(getContext(),WelcomeActivity.class);
+//        startActivity(intent);
     }
 }
