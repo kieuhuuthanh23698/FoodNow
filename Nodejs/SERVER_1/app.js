@@ -170,6 +170,7 @@ app.post("/addKhuVuc", urlEncodeParser, function (req, res) {
 		res.send("Params error !" + req.body.tenkhuvuc);
 });
 
+
 //route lấy tất cả các khu vực
 //method GET
 app.get("/khuvuc", function (req, res) {
