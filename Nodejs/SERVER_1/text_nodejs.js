@@ -527,38 +527,96 @@ mongoose.connect('mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.ne
 
 
             // app.get("/chinhanh", function (req, res) {
-            // CHI_NHANH.find(function (err, items) {
+            // CHINHANH.find(function (err, items) {
             //     if (err)
-            //         res.send("Lấy danh sách chi nhánh gặp lỗi : " + err);
+            //         console.log("Lấy danh sách chi nhánh gặp lỗi : " + err);
             //     else
-            //         res.send(items);
-            // });
+            //         console.log(items);
             // });
 
-            // DANHMUC_LOAIMONAN.findById({ _id: "" }, function (err, res) {
+            // CUAHANG.find(function (err, items) {
+            //     if (err)
+            //         console.log("Lấy danh sách chi nhánh gặp lỗi : " + err);
+            //     else
+            //         console.log(items);
+            // });
+            
+            //Hiển thị danh sách các cửa hàng nằm trong danh mục loại món ăn khi truyền id danh mục loại món ăn//
+            // DANHMUC_LOAIMONAN.findById({ '_id': "5eba0fb0d1dd3f376cee4b63" }, function (err, res) {
             //     if (err) {
-            //         console.log("Lấy danh sách cửa hàng trong danh mục loại món ăn");
+            //         console.log("Lấy danh sách cửa hàng trong danh mục loại món ăn : " + err);
             //     }
             //     else {
-            //         CUAHANG.find({ _id: { $in: res } },
+            //         CUAHANG.find({ '_id': { $in: res.DanhSach_CH } },
             //             function (err, items) {
             //                 if (err)
-            //                     res.send("Lấy danh sách chi nhánh gặp lỗi : " + err);
+            //                     console.log("Lấy danh sách chi nhánh gặp lỗi : " + err);
             //                 else
-            //                     res.send(items);
+            //                 console.log(items);
             //             }
             //         );
             //     }
             // });
 
-            KHUYENMAI_HETHONG.find(
-                function (err, items) {
-                    if (err)
-                        console.log("Lấy danh sách cửa hàng khuyến mãi hệ thống");
-                    else
-                        console.log(item);
-                }
-            );
+
+            //Hiển thị danh sách các cửa hàng nằm trong khuyến mãi hệ thống//
+            // KHUYENMAI_HETHONG.findById({ '_id': "5eb81a357321d731646501eb" }, function (err, res) {
+            //     if (err) {
+            //         console.log("Lấy danh sách cửa hàng trong khuyến mãi hệ thống : " + err);
+            //     }
+            //     else {
+            //         CUAHANG.find({ '_id': { $in: res.DanhSach_CH } },
+            //             function (err, items) {
+            //                 if (err)
+            //                     console.log("Lấy danh sách cửa hàng gặp lỗi : " + err);
+            //                 else
+            //                 console.log(items);
+            //             }
+            //         );
+            //     }
+            // });
+
+
+             //Hiển thị danh sách các cửa hàng nằm trong danh sách cửa hàng hôm nay//
+            // DANHSACH_CUAHANG_HOMNAY.findById({ '_id': "5ebabdafe4481445a896a794" }, function (err, res) {
+            //     if (err) {
+            //         console.log("Lấy danh sách cửa hàng trong danh sách cửa hàng hôm nay : " + err);
+            //     }
+            //     else {
+            //         CUAHANG.find({ '_id': { $in: res.DanhSach_CH } },
+            //             function (err, items) {
+            //                 if (err)
+            //                     console.log("Lấy danh sách cửa hàng gặp lỗi : " + err);
+            //                 else
+            //                 console.log(items);
+            //             }
+            //         );
+            //     }
+            // });
+
+            // DANHMUC_LOAIMONAN.aggregate([
+            //     { $lookup:
+            //        {
+            //          from: 'cuahangs',  
+            //          localField: '_id',
+            //          foreignField: '_id',
+            //          as: 'detail'
+            //        }
+            //      }
+            //     ]).toArray(function(err, res) {
+            //     if (err) 
+            //         throw err;
+            //     console.log(JSON.stringify(res));
+            // });
+
+            // KHUYENMAI_HETHONG.find(
+            //     function (err, items) {
+            //         if (err)
+            //             console.log("Lấy danh sách cửa hàng khuyến mãi hệ thống");
+            //         else
+            //             console.log(items);
+            //     }
+            // );
 
 
             //Hiển thị các cửa hàng thuộc danh sách cửa hàng hôm nay//
@@ -579,8 +637,73 @@ mongoose.connect('mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.ne
             //     }
             // );
 
+            // MongoClient.connect(url, function(err, db) {
+            //     if (err) throw err;
+            //     var dbo = db.db("mydb");
+            //     dbo.collection('orders').aggregate([
+            //       { $lookup:
+            //         {
+            //           from: 'products',
+            //           localField: 'product_id',
+            //           foreignField: '_id',
+            //           as: 'orderdetails'
+            //         }
+            //       }
+            //     ]).toArray(function(err, res) {
+            //       if (err) throw err;
+            //       console.log(JSON.stringify(res));
+            //       db.close();
+            //     });
 
 
+            // DANHMUC_CUAHANG_TRANGCHU.aggregate([{
+            //     $lookup : {
+            //         from: 'cuahangs',
+            //         localField: 'DanhSach_CH',
+            //         foreignField: '_id',
+            //         as: 'lstCH'
+            //     }
+            // }], function(err, data){
+            //     if(err)
+            //         console.log(err);
+            //    else
+            //        console.log(data);
+            // });
+
+            //hàm aggre gate có 2 parameter : 1 là điều kiện , 2 là callback xử lý kết quả
+            //cũng tương tự hàm find, findById...
+            // CUAHANG.aggregate(
+            //     [{
+            //         $lookup : {
+            //             from: "khuyenmai_cuahangs",
+            //             localField: "Khuyen_Mai_CH",
+            //             foreignField:"_id",
+            //             as: "lstKhuyenMai"
+            //         }
+            //     }], 
+            //     function(err, ketQua){
+            //         if(err)
+            //         console.log(err);
+            //         else
+            //         console.log(ketQua);
+            //     });
+
+            //Hiển thị danh sách khuyến mãi của 1 cửa hàng//
+            CUAHANG.findById({ '_id': "5eba0ad05f15d311d4d6b67f" }, function (err, res) {
+                if (err) {
+                    console.log("Lấy danh sách khuyến mãi cửa hàng : " + err);
+                }
+                else {
+                    KHUYENMAI_CUAHANG.find({ '_id': { $in: res.Khuyen_Mai_CH } },
+                        function (err, items) {
+                            if (err)
+                                console.log("Lấy danh sách khuyến mãi  gặp lỗi : " + err);
+                            else
+                                console.log(items);
+                        }
+                    );
+                }
+            });
         }
 
     }
