@@ -338,8 +338,8 @@ mongoose.connect('mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.ne
 
             //Thêm cửa hàng vào chi nhánh//
             // CHINHANH.findOneAndUpdate(
-            //     { _id: "5eba197716ec7530ecb08d2b" },
-            //     { $push: { DanhSach_CH: "5eba0ad05f15d311d4d6b686" } },
+            //     { _id: "5eba197716ec7530ecb08d2c" },
+            //     { $push: { DanhSach_CH: "5eba0ad05f15d311d4d6b687" } },
             //     function (err) {
             //         if (err)
             //             console.log("Thêm cửa hàng vào chi nhánh mới bị lỗi : " + err);
@@ -525,6 +525,32 @@ mongoose.connect('mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.ne
             // });
 
 
+            /*Thêm khách hàng */
+            // let listKH = [];
+
+            // listKH.push({Ten_khach_hang:"Kiều Hữu Thành", So_dien_thoai:"0908447355", Email:"kieuhuuthanh@gmail.com", Dia_chi_nha:"140 Lê Trọng Tấn, P.Tây Thạnh, Q. Tân Phú", Dia_chi_cong_ty:"Số 6, Phan Đình Giót, P.2, Q.Tân Bình", Tai_khoan:"hatranganh@gmail.com", Mat_khau:"123"});//Cơm//
+            // listKH.push({Ten_khach_hang:"Lê Thị Ngọc Hiền", So_dien_thoai:"0908447355", Email:"lethingochien@gmail.com", Dia_chi_nha:"140 Lê Trọng Tấn, P.Tây Thạnh, Q. Tân Phú", Dia_chi_cong_ty:"Số 6, Phan Đình Giót, P.2, Q.Tân Bình", Tai_khoan:"dominhminh@gmail.com", Mat_khau:"123"});//Cơm//
+            // KHACH_HANG.db.dropCollection();
+
+            // listKH.forEach(function insert(currentValue, index, array) {
+            //     var newKH = new KHACH_HANG({
+            //         Ten_khach_hang: currentValue.Ten_khach_hang,
+            //         So_dien_thoai: currentValue.So_dien_thoai,
+            //         Email: currentValue.Email,
+            //         Dia_chi_khac: [],
+            //         Tai_khoan: currentValue.Tai_khoan,
+            //         Mat_khau: currentValue.Mat_khau,
+            //         Don_hang_id: [],
+            //         Ct_Gio_Hang_id: [],
+            //     });
+            //     newKH.save(function (err) {
+            //         if (err)
+            //             console.log("\nThêm khách hàng mới bị lỗi : " + err);
+            //         else
+            //             console.log("\nThêm khách hàng mới thành công !");
+            //     });
+            // });
+
 
             // app.get("/chinhanh", function (req, res) {
             // CHINHANH.find(function (err, items) {
@@ -609,6 +635,8 @@ mongoose.connect('mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.ne
             //     console.log(JSON.stringify(res));
             // });
 
+
+            //Hiển thị danh sách khuyến mãi hệ thống//
             // KHUYENMAI_HETHONG.find(
             //     function (err, items) {
             //         if (err)
@@ -729,25 +757,6 @@ mongoose.connect('mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.ne
             //     }
             // );
 
-            // MongoClient.connect(url, function(err, db) {
-            //     if (err) throw err;
-            //     var dbo = db.db("mydb");
-            //     dbo.collection('orders').aggregate([
-            //       { $lookup:
-            //         {
-            //           from: 'products',
-            //           localField: 'product_id',
-            //           foreignField: '_id',
-            //           as: 'orderdetails'
-            //         }
-            //       }
-            //     ]).toArray(function(err, res) {
-            //       if (err) throw err;
-            //       console.log(JSON.stringify(res));
-            //       db.close();
-            //     });
-
-
             // DANHMUC_CUAHANG_TRANGCHU.aggregate([{
             //     $lookup : {
             //         from: 'cuahangs',
@@ -779,6 +788,8 @@ mongoose.connect('mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.ne
             //         else
             //         console.log(ketQua);
             //     });
+
+
 
             //Hiển thị danh sách khuyến mãi của 1 cửa hàng//
             // CUAHANG.findById({ '_id': "5eba0ad05f15d311d4d6b67f" }, function (err, res) {

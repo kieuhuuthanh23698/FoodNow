@@ -839,7 +839,7 @@ app.post("/Khuyenmaihethong",urlEncodeParser,function(req,res){
 });
 
 
-//route get KHUYENMAICUAHANG trong CUAHANG
+//route post KHUYENMAICUAHANG trong CUAHANG
 //method post(truyền vào ID)
 //Params: idCuahang
 app.post("/KhuyenMaiCuaHang",urlEncodeParser,function(req,res){
@@ -879,25 +879,29 @@ app.get("/DanhMucCuaHang", function(req,res){
 	});
 });
 
+//Hiển thị thông tin cửa hàng và cả danh sách khuyến mãi nằm trong cửa hàng//
 
-app.get("/KhuyenMaiCuaHang", function(req,res){
-	CUAHANG.aggregate(
-		[{
-			$lookup : {
-				from: "khuyenmai_cuahangs",
-				localField: "Khuyen_Mai_CH",
-				foreignField:"_id",
-				as: "lstKhuyenMai"
-			}
-		}], 
-		function(err, ketQua){
-			if(err)
-			res.send(err);
-			else
-			res.send(ketQua);
-		});
+// app.get("/KhuyenMaiCuaHang", function(req,res){
+// 	CUAHANG.aggregate(
+// 		[{
+// 			$lookup : {
+// 				from: "khuyenmai_cuahangs",
+// 				localField: "Khuyen_Mai_CH",
+// 				foreignField:"_id",
+// 				as: "lstKhuyenMai"
+// 			}
+// 		}], 
+// 		function(err, ketQua){
+// 			if(err)
+// 			res.send(err);
+// 			else
+// 			res.send(ketQua);
+// 		});
 
-});
+// });
+
+
+// });
 
 app.get("/test", function(req,res){
 	CHINHANH.find(
@@ -938,4 +942,29 @@ app.get("/test", function(req,res){
 
 			}
 	});
+//route get khuyến mãi hệ thống
+//method get
+app.get("/Danhsachkhuyenmaihethong",function(req,res){
+	KHUYENMAI_HETHONG.find(
+                function (err, items) {
+                    if (err)
+                        res.send("Lấy danh sách khuyến mãi hệ thống" + err);
+                    else
+                        res.send(items);
+                }
+            );
+});
+
+
+//route get cửa hàng hôm nay
+//method get
+app.get("/Danhsachcuahanghomnayhienthi",function(req,res){
+	DANHSACH_CUAHANG_HOMNAY.find(
+                function (err, items) {
+                    if (err)
+                        res.send("Lấy danh sách cửa hàng hôm nay" + err);
+                    else
+                        res.send(items);
+                }
+            );
 });
