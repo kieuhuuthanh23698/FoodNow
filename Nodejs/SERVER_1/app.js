@@ -898,3 +898,44 @@ app.get("/KhuyenMaiCuaHang", function(req,res){
 		});
 
 });
+
+app.get("/test", function(req,res){
+	CHINHANH.find(
+		{  'DanhSach_CH': { $in: "5eba0ad05f15d311d4d6b684"} },
+		function (err, chiNhanh) {
+			if (err)
+				res.send(err);
+			else{
+//				res.send(chiNhanh[0].Loai_MonAn);
+				CHINHANH.aggregate(
+				[
+					{ $match: { _id: chiNhanh[0]._id}},
+					{
+						$lookup: {
+							from: 'loai_monans',
+							localField: 'Loai_MonAn',
+							foreignField: '_id',
+							as: 'loai_mon_ans'
+						}
+					},
+					{"$unwind": "$loai_mon_ans"},
+					{
+						$lookup: {
+							from: 'mon_ans',
+							localField: 'Danh_sach_mon_an',
+							foreignField: '_id',
+							as: 'monans'
+						}
+					}
+
+				]
+				, function (err, result) {
+					if (err)
+						res.send(err);
+					else
+						res.send(result);
+				});
+
+			}
+	});
+});

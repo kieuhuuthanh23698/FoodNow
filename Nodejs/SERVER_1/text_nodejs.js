@@ -540,7 +540,7 @@ mongoose.connect('mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.ne
             //     else
             //         console.log(items);
             // });
-            
+
             //Hiển thị danh sách các cửa hàng nằm trong danh mục loại món ăn khi truyền id danh mục loại món ăn//
             // DANHMUC_LOAIMONAN.findById({ '_id': "5eba0fb0d1dd3f376cee4b63" }, function (err, res) {
             //     if (err) {
@@ -577,7 +577,7 @@ mongoose.connect('mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.ne
             // });
 
 
-             //Hiển thị danh sách các cửa hàng nằm trong danh sách cửa hàng hôm nay//
+            //Hiển thị danh sách các cửa hàng nằm trong danh sách cửa hàng hôm nay//
             // DANHSACH_CUAHANG_HOMNAY.findById({ '_id': "5ebabdafe4481445a896a794" }, function (err, res) {
             //     if (err) {
             //         console.log("Lấy danh sách cửa hàng trong danh sách cửa hàng hôm nay : " + err);
@@ -618,7 +618,99 @@ mongoose.connect('mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.ne
             //     }
             // );
 
+            // CUAHANG.aggregate(
+            //     [{
+            //         $lookup: {
+            //             from: 'khuyenmai_cuahangs',
+            //             localField: 'Khuyen_Mai_CH',
+            //             foreignField: '_id',
+            //             as: 'thongTinKM'
+            //         }
+            //     }]
+            // });
+            
+            let response = {};
+            // CUAHANG.aggregate(
+            // [
+            //     { $match: { _id: mongoose.Types.ObjectId('5eba0ad05f15d311d4d6b67f')}},
+            //     { $project: { "Ten_Cua_Hang:": 0, "Danh_Gia:": 0} },
+            //     {
+            //         $lookup: {
+            //             from: 'khuyenmai_cuahangs',
+            //             localField: 'Khuyen_Mai_CH',
+            //             foreignField: '_id',
+            //             as: 'thongTinKM'
+            //         }
+            //     }
+            // ]
+            // , function (err, result) {
+            //     if (err)
+            //         console.log(err);
+            //     else
+            //         response.thongTinCuaHang = result;
+            // });
+            // console.log(response);
+            // CUAHANG.findById(
+            //     { '_id': '5eba0ad05f15d311d4d6b67f' },
+            //     function (err, thongTinCH) {
+            //         if (err)
+            //             console.log(err);
+            //         else
+            //         {
+            //             result.thongTinCuaHang = thongTinCH;
+            //             KHUYENMAI_CUAHANG.find({ '_id': { $in: thongTinCH.Khuyen_Mai_CH } },
+            //             function (err, khuyenMaiCH) {
+            //                 if (err)
+            //                     console.log(err);
+            //                 else{
+            //                     result.khuyenMai = khuyenMaiCH;
+                                response.ltsFood = [];
+                                CHINHANH.find(
+                                    {  'DanhSach_CH': { $in: "5eba0ad05f15d311d4d6b684"} },
+                                    function (err, chiNhanh) {
+                                        if (err)
+                                            console.log(err);
+                                        else{
+                                            //console.log(chiNhanh[0].Loai_MonAn);
+                                            CHINHANH.aggregate(
+                                            [
+                                                { $match: { _id: chiNhanh[0]._id}},
+                                                {
+                                                    $lookup: {
+                                                        from: 'loai_monans',
+                                                        localField: 'Loai_MonAn',
+                                                        foreignField: '_id',
+                                                        as: 'loai_mon_ans'
+                                                    }
+                                                },
+                                                {"$unwind": "$loai_mon_ans"},
+                                                {
+                                                    $lookup: {
+                                                        from: 'mon_ans',
+                                                        localField: 'Danh_sach_mon_an',
+                                                        foreignField: '_id',
+                                                        as: 'monans'
+                                                    }
+                                                }
 
+                                            ]
+                                            , function (err, result) {
+                                                if (err)
+                                                    console.log(err);
+                                                else
+                                                    // response.thongTinCuaHang = result;
+                                                    console.log(result);
+                                            });
+
+                                        }
+                                });
+
+            //                 }
+            //             }
+            //             );
+            //         }
+            //     }
+            // );
             //Hiển thị các cửa hàng thuộc danh sách cửa hàng hôm nay//
             // DANHSACH_CUAHANG_HOMNAY.find(
             //     function (err, items) {
@@ -689,21 +781,21 @@ mongoose.connect('mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.ne
             //     });
 
             //Hiển thị danh sách khuyến mãi của 1 cửa hàng//
-            CUAHANG.findById({ '_id': "5eba0ad05f15d311d4d6b67f" }, function (err, res) {
-                if (err) {
-                    console.log("Lấy danh sách khuyến mãi cửa hàng : " + err);
-                }
-                else {
-                    KHUYENMAI_CUAHANG.find({ '_id': { $in: res.Khuyen_Mai_CH } },
-                        function (err, items) {
-                            if (err)
-                                console.log("Lấy danh sách khuyến mãi  gặp lỗi : " + err);
-                            else
-                                console.log(items);
-                        }
-                    );
-                }
-            });
+            // CUAHANG.findById({ '_id': "5eba0ad05f15d311d4d6b67f" }, function (err, res) {
+            //     if (err) {
+            //         console.log("Lấy danh sách khuyến mãi cửa hàng : " + err);
+            //     }
+            //     else {
+            //         KHUYENMAI_CUAHANG.find({ '_id': { $in: res.Khuyen_Mai_CH } },
+            //             function (err, items) {
+            //                 if (err)
+            //                     console.log("Lấy danh sách khuyến mãi  gặp lỗi : " + err);
+            //                 else
+            //                     console.log(items);
+            //             }
+            //         );
+            //     }
+            // });
         }
 
     }
