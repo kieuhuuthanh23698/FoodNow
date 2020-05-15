@@ -60,7 +60,7 @@ const DANHMUC_CUAHANG_TRANGCHU = require('./Models/DANHMUC_CUAHANG_TRANGCHU');
 const DANHMUC_LOAIMONAN = require('./Models/DANHMUC_LOAIMONAN');
 const DIACHI = require('./Models/DIACHI');
 const LOAI_MONAN = require('./Models/LOAI_MONAN');
-
+const MONAN_GOIY = require('./Models/MONAN_GOIY');
 
 ///-------------------------------------------------------------------TEST SERVER SEND EVENT----------------------------------------------------------------
 
@@ -956,7 +956,7 @@ app.get("/Danhsachkhuyenmaihethong",function(req,res){
 });
 
 
-//route get cửa hàng hôm nay
+//route get Danhsachcuahanghomnayhienthi
 //method get
 app.get("/Danhsachcuahanghomnayhienthi",function(req,res){
 	DANHSACH_CUAHANG_HOMNAY.find(
@@ -967,4 +967,32 @@ app.get("/Danhsachcuahanghomnayhienthi",function(req,res){
                         res.send(items);
                 }
             );
+});
+});
+
+//route get Danhsachmonangoiy
+//method get
+app.get("/Danhsachmonangoiy",function(req,res){
+	MONAN_GOIY.find(
+                function (err, items) {
+                    if (err)
+                        res.send("Lấy danh sách món ăn gợi ý" + err);
+                    else
+                        res.send(items);
+                }
+            );
+});
+
+
+//route get Danhsachmonantimkiemhienthi
+//method post(truyền id món ăn tìm kiếm)
+//Param idMonantimkiem
+
+app.post("/Danhsachmonantimkiemhienthi",urlEncodeParser,function(req,res){
+	MON_AN.find( {"Ten_mon_an": req.body.Ten_mon_an}, function(err, items){
+		if(err)
+		res.send("Lấy tên món ăn bị lỗi : " + err);
+		else
+		res.send(items);
+});
 });

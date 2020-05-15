@@ -551,6 +551,43 @@ mongoose.connect('mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.ne
             //     });
             // });
 
+            /*Thêm món ăn gợi ý*/
+            // let listMAGY = [];
+
+            // listMAGY.push({Ten_mon_an_goi_y:"Cơm gà"});
+            // listMAGY.push({Ten_mon_an_goi_y:"Bún đậu"});
+            // listMAGY.push({Ten_mon_an_goi_y:"Hủ tíu"});
+            // listMAGY.push({Ten_mon_an_goi_y:"Bún bò"});
+            // listMAGY.push({Ten_mon_an_goi_y:"Cơm tấm"});
+            // listMAGY.push({Ten_mon_an_goi_y:"Pizza"});
+            // listMAGY.push({Ten_mon_an_goi_y:"Cháo"});
+            // listMAGY.push({Ten_mon_an_goi_y:"Mì cay"});
+            // listMAGY.push({Ten_mon_an_goi_y:"Sinh tố"});
+            // listMAGY.push({Ten_mon_an_goi_y:"Gỏi cuốn"});
+            // listMAGY.push({Ten_mon_an_goi_y:"Chè"});
+            // listMAGY.push({Ten_mon_an_goi_y:"Trà sữa"});
+            // MONAN_GOIY.db.dropCollection();
+
+            // listMAGY.forEach(function insert(currentValue, index, array) {
+            //     var newMAGY = new MONAN_GOIY({
+            //        Ten_mon_an_goi_y: currentValue.Ten_mon_an_goi_y,
+            //     });
+            //     newMAGY.save(function (err) {
+            //         if (err)
+            //             console.log("\nThêm món ăn gợi ý mới bị lỗi : " + err);
+            //         else
+            //             console.log("\nThêm món ăn gợi ý mới thành công !");
+            //     });
+            // });
+
+            //Tìm món ăn gợi ý//
+            // MONAN_GOIY.find(function (err, items) {
+            //     if (err)
+            //         console.log("Lấy tên món ăn gợi ý gặp lỗi : " + err);
+            //     else
+            //         console.log(items);
+            // });
+
 
             // app.get("/chinhanh", function (req, res) {
             // CHINHANH.find(function (err, items) {
@@ -656,89 +693,136 @@ mongoose.connect('mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.ne
             //         }
             //     }]
             // });
-            
-            let response = {};
-            // CUAHANG.aggregate(
-            // [
-            //     { $match: { _id: mongoose.Types.ObjectId('5eba0ad05f15d311d4d6b67f')}},
-            //     { $project: { "Ten_Cua_Hang:": 0, "Danh_Gia:": 0} },
-            //     {
-            //         $lookup: {
-            //             from: 'khuyenmai_cuahangs',
-            //             localField: 'Khuyen_Mai_CH',
-            //             foreignField: '_id',
-            //             as: 'thongTinKM'
+
+
+            //Hiển thị danh sách cửa hàng khi tìm kiếm món ăn//
+            // let response = {};
+            // CHINHANH.aggregate(
+            //     [
+            //         { $match: { _id: mongoose.Types.ObjectId('5eba197716ec7530ecb08d2c') } },
+            //         { $project: { "Ten_Chi_Nhanh:": 0 } },
+            //         {
+            //             $lookup: {
+            //                 from: 'loai_monans',
+            //                 localField: 'Danh_sach_mon_an',
+            //                 foreignField: '_id',
+            //                 as: 'thongTinMonAn'
+            //             }
             //         }
-            //     }
-            // ]
-            // , function (err, result) {
-            //     if (err)
-            //         console.log(err);
-            //     else
-            //         response.thongTinCuaHang = result;
-            // });
+            //     ]
+            //     , function (err, result) {
+            //         if (err)
+            //             console.log(err);
+            //         else
+            //             response.thongTinMonAn = result;
+            //     });
+            // console.log(response);
+            CHINHANH.aggregate([
+                { "$unwind": "$CHINHANH" },
+                { "$unwind": "$CHINHANH.Danhsach_CH" },
+                {
+                    "$lookup": {
+                        "from": "Danhsach_CH",
+                        "localField": "CHINHANH.Danhsach_CH",
+                        "foreignField": "_id",
+                        "as": "resultingTagsArray"
+                    }
+                },
+                { "$unwind": "$resultingTagsArray" },
+                {
+                    "$group": {
+                        "_id": null,
+                        "allTags": { "$addToSet": "$resultingTagsArray" },
+                        "count": { "$sum": 1 }
+                    }
+                }
+             ]).exec(function(err, results){
+                console.log(results);
+             })
+
+            // let response = {};
+            // CUAHANG.aggregate(
+            //     [
+            //         { $match: { _id: mongoose.Types.ObjectId('5eba0ad05f15d311d4d6b67f') } },
+            //         { $project: { "Ten_Cua_Hang:": 0, "Danh_Gia:": 0 } },
+            //         {
+            //             $lookup: {
+            //                 from: 'khuyenmai_cuahangs',
+            //                 localField: 'Khuyen_Mai_CH',
+            //                 foreignField: '_id',
+            //                 as: 'thongTinKM'
+            //             }
+            //         }
+            //     ]
+            //     , function (err, result) {
+            //         if (err)
+            //             console.log(err);
+            //         else
+            //             response.thongTinCuaHang = result;
+            //     });
             // console.log(response);
             // CUAHANG.findById(
             //     { '_id': '5eba0ad05f15d311d4d6b67f' },
             //     function (err, thongTinCH) {
             //         if (err)
             //             console.log(err);
-            //         else
-            //         {
+            //         else {
             //             result.thongTinCuaHang = thongTinCH;
             //             KHUYENMAI_CUAHANG.find({ '_id': { $in: thongTinCH.Khuyen_Mai_CH } },
-            //             function (err, khuyenMaiCH) {
-            //                 if (err)
-            //                     console.log(err);
-            //                 else{
-            //                     result.khuyenMai = khuyenMaiCH;
-                                response.ltsFood = [];
-                                CHINHANH.find(
-                                    {  'DanhSach_CH': { $in: "5eba0ad05f15d311d4d6b684"} },
-                                    function (err, chiNhanh) {
-                                        if (err)
-                                            console.log(err);
-                                        else{
-                                            //console.log(chiNhanh[0].Loai_MonAn);
-                                            CHINHANH.aggregate(
-                                            [
-                                                { $match: { _id: chiNhanh[0]._id}},
-                                                {
-                                                    $lookup: {
-                                                        from: 'loai_monans',
-                                                        localField: 'Loai_MonAn',
-                                                        foreignField: '_id',
-                                                        as: 'loai_mon_ans'
-                                                    }
-                                                },
-                                                {"$unwind": "$loai_mon_ans"},
-                                                {
-                                                    $lookup: {
-                                                        from: 'mon_ans',
-                                                        localField: 'Danh_sach_mon_an',
-                                                        foreignField: '_id',
-                                                        as: 'monans'
-                                                    }
-                                                }
+            //                 function (err, khuyenMaiCH) {
+            //                     if (err)
+            //                         console.log(err);
+            //                     else {
+            //                         result.khuyenMai = khuyenMaiCH;
+            //                         response.ltsFood = [];
+            //                         CHINHANH.find(
+            //                             { 'DanhSach_CH': { $in: "5eba0ad05f15d311d4d6b684" } },
+            //                             function (err, chiNhanh) {
+            //                                 if (err)
+            //                                     console.log(err);
+            //                                 else {
+            //                                     //console.log(chiNhanh[0].Loai_MonAn);
+            //                                     CHINHANH.aggregate(
+            //                                         [
+            //                                             { $match: { _id: chiNhanh[0]._id } },
+            //                                             {
+            //                                                 $lookup: {
+            //                                                     from: 'loai_monans',
+            //                                                     localField: 'Loai_MonAn',
+            //                                                     foreignField: '_id',
+            //                                                     as: 'loai_mon_ans'
+            //                                                 }
+            //                                             },
+            //                                             { "$unwind": "$loai_mon_ans" },
+            //                                             {
+            //                                                 $lookup: {
+            //                                                     from: 'mon_ans',
+            //                                                     localField: 'Danh_sach_mon_an',
+            //                                                     foreignField: '_id',
+            //                                                     as: 'monans'
+            //                                                 }
+            //                                             }
 
-                                            ]
-                                            , function (err, result) {
-                                                if (err)
-                                                    console.log(err);
-                                                else
-                                                    // response.thongTinCuaHang = result;
-                                                    console.log(result);
-                                            });
+            //                                         ]
+            //                                         , function (err, result) {
+            //                                             if (err)
+            //                                                 console.log(err);
+            //                                             else
+            //                                                 // response.thongTinCuaHang = result;
+            //                                                 console.log(result);
+            //                                         });
 
-                                        }
-                                });
+            //                                 }
+            //                             });
 
+            //                     }
             //                 }
-            //             }
             //             );
             //         }
             //     }
             // );
+
+            
             //Hiển thị các cửa hàng thuộc danh sách cửa hàng hôm nay//
             // DANHSACH_CUAHANG_HOMNAY.find(
             //     function (err, items) {
@@ -807,6 +891,34 @@ mongoose.connect('mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.ne
             //         );
             //     }
             // });
+
+            //Hiển thị tìm kiếm gần giống khi tìm món ăn//
+            // MON_AN.find( {"Ten_mon_an": /Cơm/}, function(err, res){
+            //     if(err)
+            //     console.log("Lấy tên món ăn bị lỗi : " + err);
+            //     else
+            //     console.log(res);
+            // }).pretty();
+
+
+            //Hiển thị danh sách các đơn hàng của một khách hàng//
+            // KHACH_HANG.findById({ '_id': "5ebce3b56d098b0da418591d" }, function (err, res) {
+            //     if (err) {
+            //         console.log("Lấy thông tin khách hàng lỗi : " + err);
+            //     }
+            //     else {
+            //         DON_HANG.find({ '_id': { $in: res.Thong_tin_khach_hang_dat_don} },
+            //             function (err, items) {
+            //                 if (err)
+            //                     console.log("Lấy danh sách đơn hàng bị lỗi : " + err);
+            //                 else
+            //                     console.log(items);
+            //             }
+            //         );
+            //     }
+            // });
+
+
         }
 
     }
@@ -826,6 +938,7 @@ const DANHMUC_CUAHANG_TRANGCHU = require('./Models/DANHMUC_CUAHANG_TRANGCHU');
 const DANHMUC_LOAIMONAN = require('./Models/DANHMUC_LOAIMONAN');
 const DIACHI = require('./Models/DIACHI');
 const LOAI_MONAN = require('./Models/LOAI_MONAN');
+const MONAN_GOIY = require('./Models/MONAN_GOIY');
 
 //Một CHINHANH có nhiều CUAHANG
 //CUAHANG riêng biệt sẽ có 1 CHINHANH riêng biệt
