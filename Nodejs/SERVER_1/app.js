@@ -903,45 +903,65 @@ app.get("/DanhMucCuaHang", function(req,res){
 
 // });
 
-app.get("/test", function(req,res){
+app.post("/thongTinCuaHang",urlEncodeParser, function(req,res){
+	let response = {};
+	CUAHANG.aggregate(
+	[
+	    { $match: { _id: mongoose.Types.ObjectId(req.body.idCuahang)}},
+	    {
+	        $lookup: {
+	            from: 'khuyenmai_cuahangs',
+	            localField: 'Khuyen_Mai_CH',
+	            foreignField: '_id',
+	            as: 'thongTinKM'
+	        }
+	    }
+	]
+	, function (err, result) {
+	    if (err)
+	        console.log(err);
+	    else
+	        response.thongTinCuaHang = result;
+	});
 	CHINHANH.find(
-		{  'DanhSach_CH': { $in: "5eba0ad05f15d311d4d6b684"} },
+		{  'DanhSach_CH': { $in: [req.body.idCuahang]} },
 		function (err, chiNhanh) {
 			if (err)
 				res.send(err);
 			else{
-//				res.send(chiNhanh[0].Loai_MonAn);
-				CHINHANH.aggregate(
-				[
-					{ $match: { _id: chiNhanh[0]._id}},
-					{
-						$lookup: {
-							from: 'loai_monans',
-							localField: 'Loai_MonAn',
-							foreignField: '_id',
-							as: 'loai_mon_ans'
-						}
-					},
-					{"$unwind": "$loai_mon_ans"},
-					{
-						$lookup: {
-							from: 'mon_ans',
-							localField: 'Danh_sach_mon_an',
-							foreignField: '_id',
-							as: 'monans'
-						}
-					}
-
-				]
-				, function (err, result) {
-					if (err)
+				CHINHANH.find({_id : chiNhanh[0]._id}, function(err, chiNhanh){
+					if(err)
 						res.send(err);
-					else
-						res.send(result);
-				});
+					else{
+						LOAI_MONAN.aggregate(
+							[
+								{ $match: { _id: {$in : chiNhanh[0].Loai_MonAn}}},
+								{
+									$lookup: {
+										from: 'mon_ans',
+										localField: 'Danh_sach_mon_an',
+										foreignField: '_id',
+										as: 'monans'
+									}
+								},
+								{$project : {'Ten_loai_mon_an': 1, 'monans' : 1}}
+							], function(err, monans){
+								if(err)
+									res.send(err);
+								else
+									{
+										response.lstMonAn = monans;
+										res.send(response);
+									}
+							}
+						);
+					}
+				})
 
 			}
 	});
+});
+
 //route get khuyến mãi hệ thống
 //method get
 app.get("/Danhsachkhuyenmaihethong",function(req,res){
