@@ -41,12 +41,6 @@ public class StoreOfSuggestAdapter extends RecyclerView.Adapter<StoreOfSuggestAd
     public void onBindViewHolder(StoreSuggestViewHolder holder, int position) {
         final Store store = arrStore.get(position);
         holder.imageView.setImageResource(store.getImgStore());
-        holder.imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent intent = new Intent(activity, InformationStoreActivity.class);
-            }
-        });
         holder.textView.setText(store.getName());
     }
 

@@ -57,6 +57,9 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+                Intent intent = new Intent(SearchActivity.this, MainActivity.class);
+                startActivity(intent);
+
             }
         });
 
@@ -116,12 +119,6 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String s) {
-//                //searching
-//                if(s.trim().length() > 0)
-//                {
-//
-//                }
-//                //end searching
                 if(s.trim().length() == 0)
                 {
                     resultSearch.setVisibility(View.GONE);
@@ -197,10 +194,12 @@ public class SearchActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Intent intent = new Intent(SearchActivity.this, MainActivity.class);
-        startActivity(intent);
-    }
+
+
+//    @Override
+//    protected void onDestroy() {
+//        Intent intent = new Intent(SearchActivity.this, MainActivity.class);
+//        startActivity(intent);
+//        super.onDestroy();
+//    }
 }

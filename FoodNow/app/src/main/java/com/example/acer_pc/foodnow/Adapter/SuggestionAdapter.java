@@ -3,6 +3,7 @@ package com.example.acer_pc.foodnow.Adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -48,6 +49,7 @@ public class SuggestionAdapter extends RecyclerView.Adapter<SuggestionAdapter.Su
         holder.suggestion_list_store.setLayoutManager(friendsLayoutManager);
         //holder.suggestion_list_store.setLayoutManager(new GridLayoutManager(context, 1));
         holder.suggestion_list_store.setAdapter(storeOfSuggestAdapter);
+        holder.suggestion_list_store.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL));
         //holder.suggestion_list_store.setNestedScrollingEnabled(false);
     }
 

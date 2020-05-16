@@ -162,84 +162,101 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"/>
 
-                <android.support.v7.widget.CardView
-                    android:id="@+id/view3"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    app:cardCornerRadius="5dp"
-                    app:cardElevation="5dp"
-                    app:cardBackgroundColor="#F5F2F2"
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <LinearLayout
-                        android:orientation="vertical"
+                    <FrameLayout
+                        android:layout_marginTop="10dp"
                         android:background="@android:color/white"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"/>
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/view3"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="5dp"
+                        app:cardBackgroundColor="#F5F2F2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <ImageView
-                            android:src="@drawable/ic_turned_in_green_24dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="-5dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:background="@android:color/white"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
 
-                        <TextView
-                            android:text="ĐỐI TÁC CỦA FOODNOW"
-                            android:layout_gravity="center"
-                            android:textSize="15dp"
-                            android:textColor="@color/colorMain"
-                            android:fontFamily="@font/nunito_extralight"
-                            android:textStyle="bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            <ImageView
+                                android:src="@drawable/ic_turned_in_green_24dp"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="-5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
 
-                        <TextView
-                            android:id="@+id/txt_storename_inforAct"
-                            android:text="CƠM GÀ DÌ HỒNG"
-                            android:textAlignment="center"
-                            android:gravity="center"
-                            android:layout_gravity="center"
-                            android:textSize="25dp"
-                            android:textColor="@android:color/black"
-                            android:fontFamily="@font/nunito_extralight"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            <TextView
+                                android:text="ĐỐI TÁC CỦA FOODNOW"
+                                android:layout_gravity="center"
+                                android:textSize="15dp"
+                                android:textColor="@color/colorMain"
+                                android:fontFamily="@font/nunito_extralight"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                            <TextView
+                                android:id="@+id/txt_storename_inforAct"
+                                android:text="CƠM GÀ DÌ HỒNG"
+                                android:textAlignment="center"
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:textSize="25dp"
+                                android:textColor="@android:color/black"
+                                android:fontFamily="@font/nunito_extralight"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
 
 
-                        <TextView
-                            android:id="@+id/txt_storeAddress_inforAct"
-                            android:text="50 Hoa Cúc, P7, Phú Nhuận, TP.HCM"
-                            android:layout_gravity="center"
-                            android:textSize="15dp"
-                            android:textColor="@android:color/darker_gray"
-                            android:fontFamily="@font/nunito_extralight"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            <TextView
+                                android:id="@+id/txt_storeAddress_inforAct"
+                                android:linksClickable="true"
+                                android:textColorLink="@color/colorMain"
+                                android:clickable="true"
+                                android:text="50 Hoa Cúc, P7, Phú Nhuận, TP.HCM"
+                                android:layout_gravity="center"
+                                android:textSize="15dp"
+                                android:textColor="@android:color/darker_gray"
+                                android:fontFamily="@font/nunito_extralight"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
 
-                        <RatingBar
-                            android:layout_gravity="center"
-                            android:numStars="5"
-                            android:rating="4.6"
-                            android:scaleX=".5"
-                            android:scaleY=".5"
-                            android:id="@+id/ratingStore"
-                            android:layout_marginTop="-10dp"
-                            android:progressTint="#fff000"
-                            android:stepSize="0.1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="40dp" />
+                            <RatingBar
+                                android:layout_gravity="center"
+                                android:numStars="5"
+                                android:rating="4.6"
+                                android:scaleX=".5"
+                                android:scaleY=".5"
+                                android:id="@+id/ratingStore"
+                                android:layout_marginTop="-10dp"
+                                android:progressTint="#fff000"
+                                android:stepSize="0.1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp" />
 
-                    </LinearLayout>
+                        </LinearLayout>
 
-                </android.support.v7.widget.CardView>
+                    </android.support.v7.widget.CardView>
+
+                </RelativeLayout>
+
 
                 <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
                     android:background="@android:color/white"
                     android:id="@+id/store_list_foods_type"
                     android:orientation="vertical"
-                    android:layout_marginTop="10dp"
                     app:msrv_ms_per_inch="120"
                     app:msrv_snap_count="2"
                     android:layout_width="match_parent"
@@ -251,16 +268,74 @@
 
     </LinearLayout>
 
-
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnGotoShoppingCartAct"
+    <RelativeLayout
+        android:background="@android:color/white"
+        android:layout_weight="1"
+        android:id="@+id/infor_store_group_shopping_cart"
+        android:visibility="gone"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_gravity="right"
-        android:layout_margin="20dp"
-        android:background="@color/colorMain"
-        app:backgroundTint="@android:color/background_light" />
+        android:layout_marginTop="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_gravity="center_vertical"
+                android:layout_width="40dp"
+                android:layout_height="40dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="3dp"
+                    android:background="@drawable/ic_app_1" />
+
+                <TextView
+                    android:id="@+id/infor_store_number_shopping_cart"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/circle"
+                    android:gravity="center"
+                    android:text="99"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="12dp"
+                    app:fontFamily="sans-serif" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/infor_store_total_cost"
+                android:text="999.999 đ"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/nunito_extralight"
+                android:layout_marginLeft="10dp"
+                android:textAlignment="center"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/infor_store_confirm_cart_btn"
+            android:backgroundTint="@android:color/holo_red_light"
+            android:background="@drawable/border_button"
+            android:text="Giao hàng"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:layout_alignParentRight="true"
+            android:layout_margin="5dp"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

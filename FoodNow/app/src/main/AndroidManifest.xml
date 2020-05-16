@@ -5,6 +5,20 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature
+        android:name="android.hardware.location"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -16,6 +30,9 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_api_key" />
 
         <activity android:name=".WelcomeActivity">
             <intent-filter>
@@ -24,11 +41,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MapAddressStoreActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".SearchActivity" />
+        <activity android:name=".ConfirmCartActivity" />
+        <activity
+            android:name=".ShoppingCartActivity"
+            android:theme="@style/AppTheme.ShoppingCart" />
+        <activity
+            android:name=".NoteItemActivity"
+            android:theme="@style/AppTheme.NoteItem" />
         <activity android:name=".InformationStoreActivity" />
-        <activity android:name=".ShoppingCartActivity" android:theme="@style/AppTheme.ShoppingCart"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".LoadingActivity" android:theme="@style/AppTheme.ShoppingCart" />
+        <activity android:name=".Main2Activity" />
+        <activity android:name=".FlashActivity" />
     </application>
 
 </manifest>

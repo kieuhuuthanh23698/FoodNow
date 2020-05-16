@@ -1,5 +1,6 @@
 package com.example.acer_pc.foodnow;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -11,6 +12,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
@@ -29,7 +31,8 @@ import java.util.ArrayList;
 
 public class InformationStoreActivity extends AppCompatActivity {
     ImageView btnBackAct, btnFavoriteStore,imgInforStore;
-    TextView txtNameStore, txtAddressStore;
+    public static TextView txtNameStore;
+    TextView txtAddressStore;
     RatingBar ratingBarStore;
     InforStoreFoodTypeAdapter inforStoreFoodTypeAdapter;
     RecyclerView recyclerViewListFoods;
@@ -41,23 +44,16 @@ public class InformationStoreActivity extends AppCompatActivity {
     //RelativeLayout view1;
     LinearLayout view2;
     CardView view3;
-    FloatingActionButton floatingActionButton;
     public static ArrayList<Food> shoppingCart;
+    RelativeLayout groupShoppingCart;
+    TextView infor_store_number_shopping_cart;
+    Button infor_store_confirm_cart_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information_store);
         shoppingCart = new ArrayList<>();
-
-        floatingActionButton = findViewById(R.id.btnGotoShoppingCartAct);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(InformationStoreActivity.this, ShoppingCartActivity.class);
-                startActivity(intent);
-            }
-        });
 
         btnBackAct = findViewById(R.id.btnBackActInforStore);
         btnFavoriteStore = findViewById(R.id.imgFavoriteStore);
@@ -77,6 +73,12 @@ public class InformationStoreActivity extends AppCompatActivity {
             }
         });
 
+        if(store.isFavorite()) {
+            btnFavoriteStore.setImageResource(R.drawable.ic_favorite_black_24dp);
+        } else{
+            btnFavoriteStore.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+        }
+
         btnFavoriteStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,6 +97,17 @@ public class InformationStoreActivity extends AppCompatActivity {
         imgInforStore.setImageResource(store.getImgStore());
         txtNameStore.setText(store.getName());
         txtAddressStore.setText(store.getAddress());
+        txtAddressStore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(InformationStoreActivity.this, MapAddressStoreActivity.class);
+                intent.setAction(Intent.ACTION_SEND);
+                intent.putExtra("lat", store.getLat());
+                intent.putExtra("lng", store.getLng());
+                intent.putExtra("name", store.getName().trim());
+                startActivity(intent);
+            }
+        });
         ratingBarStore.setRating(store.getStar_float());
 
         tabsTypeFood = findViewById(R.id.tabsTypeFood);
@@ -151,37 +164,11 @@ public class InformationStoreActivity extends AppCompatActivity {
 
 
         nestedScrollViewFoods = findViewById(R.id.scrollViewFoodsScroll);
-//        nestedScrollViewFoods.addOnScrollListener(new NestedScrollView.OnScrollListener() {
-//            @Override
-//            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-//                super.onScrollStateChanged(recyclerView, newState);
-//                if(newState == RecyclerView.SCROLL_STATE_DRAGGING) {
-//                    isUserScrolling = true;
-//                } else if(newState == RecyclerView.SCROLL_STATE_IDLE){
-//                    isUserScrolling = false;
-//                }
-//            }
-//
-//            @Override
-//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-//                super.onScrolled(recyclerView, dx, dy);
-//                Log.i("scroll", "dx :" + dx);
-//                Log.i("scroll", "dy :" + dy);
-//                if(isUserScrolling){
-//                    int itemPosition = friendsLayoutManager.findLastVisibleItemPosition();
-//                    TabLayout.Tab tab = tabsTypeFood.getTabAt(itemPosition);
-//                    if(tab != null)
-//                        tab.select();
-//                }
-//            }
-//        });
-        //view1 = findViewById(R.id.view1);
         view2 = findViewById(R.id.view2);
         nestedScrollViewFoods.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
             @Override
             public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 Log.i("yyyy", String.valueOf(recyclerViewListFoods.getY()));
-                //Log.i("tab_index", "dy :" + scrollY + " | old dy " + oldScrollY);
                 float y = scrollY - recyclerViewListFoods.getY()*2 + 50;
                 for (int i = 0; i < recyclerViewListFoods.getChildCount(); i++) {
                     float abs = Math.abs(friendsLayoutManager.getChildAt(i).getY()- y);
@@ -203,7 +190,7 @@ public class InformationStoreActivity extends AppCompatActivity {
 //                    int itemPosition = friendsLayoutManager.findFirstCompletelyVisibleItemPosition();
 //                    Log.i("scroll", "index item recycleview: " + itemPosition);
 
-                    if(Math.abs(scrollY - oldScrollY) > 1000) {
+                    if(Math.abs(scrollY - oldScrollY) > 500) {
                         Log.i("scroll", "Ping" + Math.abs(scrollY - oldScrollY));
                         //view1.setAlpha((float)1.0);
                         view2.setAlpha((float)1.0);
@@ -232,6 +219,25 @@ public class InformationStoreActivity extends AppCompatActivity {
                     }
                 }
                 //nestedScrollViewFoods.scrollTo(scrollX, scrollY);
+//                groupShoppingCart = findViewById(R.id.infor_store_group_shopping_cart);
+                groupShoppingCart.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(InformationStoreActivity.this, ShoppingCartActivity.class);
+                        startActivity(intent);
+                    }
+                });
+
+                infor_store_confirm_cart_btn = findViewById(R.id.infor_store_confirm_cart_btn);
+                infor_store_confirm_cart_btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if(shoppingCart.size() > 0) {
+                            Intent intent = new Intent(InformationStoreActivity.this, ConfirmCartActivity.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
             }
         });
 
@@ -252,9 +258,47 @@ public class InformationStoreActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-//        Intent intent = new Intent(InformationStoreActivity.this, MainActivity.class);
-//        startActivity(intent);
+    protected void onResume() {
+        super.onResume();
+        groupShoppingCart = findViewById(R.id.infor_store_group_shopping_cart);
+        if(shoppingCart.size() == 0)
+        {
+            groupShoppingCart.setVisibility(View.GONE);
+            for (FoodType j : store.getArrayListFood()) {
+                for (Food t : j.getArrayListFoods()) {
+                    t.setCount(0);
+                    Log.i("Cart", "Update cart item " + t.getId());
+                }
+            }
+            inforStoreFoodTypeAdapter.notifyDataSetChanged();
+        }
+        else
+        {
+            groupShoppingCart.setVisibility(View.VISIBLE);
+            infor_store_number_shopping_cart = findViewById(R.id.infor_store_number_shopping_cart);
+            infor_store_number_shopping_cart.setText(String.format("%d", shoppingCart.size()));
+            for (Food i : shoppingCart) {
+                for (FoodType j : store.getArrayListFood()) {
+                    for (Food t : j.getArrayListFoods()) {
+                        if(i.getId().equals(t.getId()))
+                        {
+                            t.setCount(i.getCountInt());
+                            Log.i("Cart", "Update cart item " + t.getId());
+                        }
+                    }
+                }
+            }
+            inforStoreFoodTypeAdapter.notifyDataSetChanged();
+            TextView textView = findViewById(R.id.infor_store_total_cost);
+            textView.setText(calculateCost() + " đ");
+        }
+    }
+
+    public static String calculateCost(){
+        float payCost = 0;
+        for (Food item : InformationStoreActivity.shoppingCart) {
+            payCost += item.getPriceDouble()*item.getCountInt();
+        }
+        return "" + payCost;
     }
 }

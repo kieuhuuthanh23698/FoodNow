@@ -26,13 +26,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         Timer timer = new Timer();
-//        timer.scheduleAtFixedRate(new TimerTask() {
-//
-//            @Override
-//            public void run() {
-//                changeSlider();
-//            }
-//        }, 2000, 4000);
     }
     private BottomNavigationView.OnNavigationItemSelectedListener
             mOnNavigationItemSelectedListener
@@ -63,23 +56,19 @@ public class MainActivity extends AppCompatActivity {
                     loadFragment(fragmentBill);
                     return true;
                 case R.id.navigation_account:
-                    fragment = new UserFragment();
-                    loadFragment(fragment);
+                    if(fragmentAccount == null)
+                        fragmentAccount = new UserFragment();
+                    loadFragment(fragmentAccount);
                     return true;
             }
             return false;
         }
     };
 
-
-//    public static void goToActivity(Intent intent){
-//
-//    }
-
     private void loadFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.nav_host_fragment, fragment);
-        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         transaction.addToBackStack(null);
         transaction.commit();
     }

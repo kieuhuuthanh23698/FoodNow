@@ -20,12 +20,12 @@ public class UserFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_user, container, false);
-        txtName = view.findViewById(R.id.txtName);
-        btnLogout = view.findViewById(R.id.button);
-        if(!LoginActivity.TOKEN.isEmpty()){
-            txtName.setText(LoginActivity.NAME);
-            btnLogout.setVisibility(View.GONE);
-        }
+//        txtName = view.findViewById(R.id.txtName);
+//        btnLogout = view.findViewById(R.id.button);
+//        if(!LoginActivity.TOKEN.isEmpty()){
+//            txtName.setText(LoginActivity.NAME);
+//            btnLogout.setVisibility(View.GONE);
+//        }
         return view;
     }
 

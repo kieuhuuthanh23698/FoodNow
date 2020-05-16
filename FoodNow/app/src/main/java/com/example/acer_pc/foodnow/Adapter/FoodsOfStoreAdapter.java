@@ -32,7 +32,8 @@ public class FoodsOfStoreAdapter extends RecyclerView.Adapter<FoodsOfStoreAdapte
         Food itemFood = foodArrayList.get(position);
         holder.imageView.setImageResource(itemFood.getImg());
         holder.txtNameFood.setText(itemFood.getName());
-        holder.txtPriceFoods.setText(itemFood.getPrice());
+        holder.txtPriceFoods.setText(itemFood.getDes());
+        holder.txtPriceFoods.setText(itemFood.getTotal());
     }
 
     @Override

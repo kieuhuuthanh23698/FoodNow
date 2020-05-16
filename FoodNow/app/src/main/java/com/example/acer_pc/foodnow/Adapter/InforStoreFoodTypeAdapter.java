@@ -1,6 +1,7 @@
 package com.example.acer_pc.foodnow.Adapter;
 
 import android.content.Context;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -16,6 +17,7 @@ import com.example.acer_pc.foodnow.R;
 import java.util.ArrayList;
 
 public class InforStoreFoodTypeAdapter extends RecyclerView.Adapter<InforStoreFoodTypeAdapter.InforStoreFoodTypeViewHolder>{
+    public static InforStoreFoodsAdapter inforStoreFoodsAdapter;
     ArrayList<FoodType> arrayListFoodType;
     Context context;
 
@@ -36,11 +38,12 @@ public class InforStoreFoodTypeAdapter extends RecyclerView.Adapter<InforStoreFo
     public void onBindViewHolder(InforStoreFoodTypeViewHolder holder, int position) {
         final FoodType item = arrayListFoodType.get(position);
         holder.txtNameType.setText(item.getNameType());
-        InforStoreFoodsAdapter inforStoreFoodsAdapter = new InforStoreFoodsAdapter(item.getArrayListFoods(), this.context);
+        inforStoreFoodsAdapter = new InforStoreFoodsAdapter(item.getArrayListFoods(), this.context);
         holder.recyclerViewListFoods.setAdapter(inforStoreFoodsAdapter);
         LinearLayoutManager friendsLayoutManager = new LinearLayoutManager(context.getApplicationContext(), android.support.v7.widget.LinearLayoutManager.VERTICAL, false);
         holder.recyclerViewListFoods.setLayoutManager(friendsLayoutManager);
         holder.recyclerViewListFoods.setNestedScrollingEnabled(false);
+        holder.recyclerViewListFoods.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
     }
 
     @Override
