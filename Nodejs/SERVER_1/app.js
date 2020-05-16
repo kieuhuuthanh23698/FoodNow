@@ -962,6 +962,61 @@ app.post("/thongTinCuaHang",urlEncodeParser, function(req,res){
 	});
 });
 
+//Hiển thị kết quả tìm kiếm gồm danh sách cửa hàng và món ăn cửa hàng đó//
+app.post("/KetQuaTimKiemDanhSachCuaHangMonAn",urlEncodeParser, function(req,res){
+	let response = {};
+            CHINHANH.aggregate(
+            [
+                { $match: { _id: mongoose.Types.ObjectId(req.body.idChiNhanh)}},
+                {
+                    $lookup: {
+                        from: 'cuahangs',
+                        localField: 'DanhSach_CH',
+                        foreignField: '_id',
+                        as: 'thongTinCH'
+                    }
+                }
+            ]
+            , function (err, result) {
+                if (err)
+                    res.send(err);
+                else
+                    response.thongTinCH = result;
+                    // res.send(result);
+			});
+			// CHINHANH.find(
+            //     {  'Loai_MonAn': { $in: [req.body.idDanhmucloaimonan]} },
+            //     function (err, danhSachLoaiMonAn) {
+            //         if (err)
+            //             res.send(err);
+            //         else{
+            //             LOAI_MONAN.aggregate(
+			// 				[
+			// 					{ $match: { _id: {$in : danhSachLoaiMonAn[0].Ten_mon_an}}},
+			// 					{
+			// 						$lookup: {
+			// 							from: 'mon_ans',
+			// 							localField: 'Danh_sach_mon_an',
+			// 							foreignField: '_id',
+			// 							as: 'monans'
+			// 						}
+			// 					},
+			// 					{$project : {'DanhSach_CH': 1, 'monans' : 1}}
+			// 				], function(err, monans){
+			// 					if(err)
+			// 						res.send(err);
+			// 					else
+			// 						{
+			// 							response.lstMonAn = monans;
+			// 							res.send(monans);
+			// 						}
+			// 				}
+			// 			);
+            //         }
+            // });
+});
+
+
 //route get khuyến mãi hệ thống
 //method get
 app.get("/Danhsachkhuyenmaihethong",function(req,res){
@@ -988,7 +1043,7 @@ app.get("/Danhsachcuahanghomnayhienthi",function(req,res){
                 }
             );
 });
-});
+
 
 //route get Danhsachmonangoiy
 //method get
