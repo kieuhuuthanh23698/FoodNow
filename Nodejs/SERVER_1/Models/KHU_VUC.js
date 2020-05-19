@@ -6,3 +6,11 @@ const khuvucSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model("KHU_VUC", khuvucSchema);
+
+const createExampleData = function(){
+        let listKHUVUC = [];
+        listKHUVUC.push({ Ten_khu_vuc: "TP.HCM" });
+        return listKHUVUC;
+    }
+
+module.exports = {createExampleData}

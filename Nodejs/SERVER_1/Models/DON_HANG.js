@@ -9,7 +9,11 @@ const donhangSchema = new mongoose.Schema({
     Ghi_chu_NVGH: String,
     Trang_thai_don_hang: String,
     Thong_tin_khach_hang_dat_don: [{type : mongoose.Types.ObjectId}],
-    Chi_tiet_dh_id: [{type : mongoose.Types.ObjectId}]
+    Chi_tiet_DH: [{
+        idCT : mongoose.Types.ObjectId,
+        SoLuong : String,
+        GhiChu: String
+    }]
     
 });
 
