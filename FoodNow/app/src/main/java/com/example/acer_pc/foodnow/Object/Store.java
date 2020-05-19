@@ -11,6 +11,23 @@ public class Store {
     private int time = 0;
     private ArrayList<FoodType> arrayListFood;
     private boolean isFavorite;
+    private double lat, lng;
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLng() {
+        return lng;
+    }
+
+    public void setLng(double lng) {
+        this.lng = lng;
+    }
 
     public Store(String name, String address) {
         this.name = name;
@@ -20,12 +37,14 @@ public class Store {
         this.distance = 0.3;
         this.time = 10;
         this.arrayListFood = new ArrayList<>();
-        this.arrayListFood.add(new FoodType());
-        this.arrayListFood.add(new FoodType());
-        this.arrayListFood.add(new FoodType());
-        this.arrayListFood.add(new FoodType());
-        this.arrayListFood.add(new FoodType());
-        this.arrayListFood.add(new FoodType());
+        for (int i = 0; i < 6; i++) {
+            FoodType foodType = new FoodType();
+            foodType.setNameType("Food Type " + i);
+            this.arrayListFood.add(foodType);
+        }
+        this.isFavorite = false;
+        this.lat = 10.788968;
+        this.lng = 106.660849;
     }
 
     public Store() {
@@ -41,18 +60,9 @@ public class Store {
             foodType.setNameType("Food Type " + i);
             this.arrayListFood.add(foodType);
         }
-//        this.arrayListFood.add(new FoodType());
-//        this.arrayListFood.add(new FoodType());
-//        this.arrayListFood.add(new FoodType());
-//        this.arrayListFood.add(new FoodType());
-//        this.arrayListFood.add(new FoodType());
-//        this.arrayListFood.add(new FoodType());
-//        this.arrayListFood.add(new FoodType());
-//        this.arrayListFood.add(new FoodType());
-//        this.arrayListFood.add(new FoodType());
-//        this.arrayListFood.add(new FoodType());
-//        this.arrayListFood.add(new FoodType());
         this.isFavorite = false;
+        this.lat = 10.800313;
+        this.lng = 106.626781;
     }
 
     public Store(int imgStore, String name, String address, double star, double distance, int time, ArrayList<FoodType> arrFoods, boolean isFavorite) {

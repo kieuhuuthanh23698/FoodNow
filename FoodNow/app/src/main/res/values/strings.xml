@@ -9,4 +9,7 @@
     <string name="tab_text_2">Tab 2</string>
     <string name="tab_text_3">Tab 3</string>
     <string name="title_activity_test">test</string>
+    <string name="google_api_key">AIzaSyBpfe5LCma0AfpfNrbJlqxSCOLvOQGQDTg</string>
+    <string name="non_plastic">Dụng cụ ăn uống nhựa sẽ không được cung cấp\nCảm ơn bạn đã tham gia giảm thiểu đồ nhựa cùng Now !</string>
+    <string name="plastic">Dụng cụ ăn uống nhựa sẽ được cung cấp\nHãy cùng giảm dùng đồ nhựa cho đơn hàng lần sau !</string>
 </resources>

@@ -1069,5 +1069,50 @@ app.post("/Danhsachmonantimkiemhienthi",urlEncodeParser,function(req,res){
 		res.send("Lấy tên món ăn bị lỗi : " + err);
 		else
 		res.send(items);
+	});
 });
+
+
+app.post("/search",urlEncodeParser,function(req,res){
+	// var vlaaaaa =  req.body.valueSearch;
+	CHINHANH.aggregate(
+    [
+        { 
+            "$lookup" : { 
+                "from" : "loai_monans", 
+                "localField" : "Loai_MonAn", 
+                "foreignField" : "_id", 
+                "as" : "menus"
+            }
+        }, 
+        { 
+            "$lookup" : { 
+                "from" : "mon_ans", 
+                "localField" : "menus.Danh_sach_mon_an", 
+                "foreignField" : "_id", 
+                "as" : "thongTinMonAns"
+            }
+        }, 
+        { 
+            "$project" : { 
+                "Ten_Chi_Nhanh" : 1.0, 
+                "Hinh_Anh_Chi_Nhanh" : 1.0, 
+                "DanhSach_CH" : 1.0, 
+                "thongTinMonAns" : 1.0
+            }
+        }, 
+        { 
+            "$match" : { 
+                "Ten_Chi_Nhanh" : { $regex: req.body.valueSearch, $options: 'i' }
+            }
+        }
+	],
+	 function(err, result){
+		if(err)
+			res.send(err);
+		else
+			res.send(result);
+	}
+);
+
 });

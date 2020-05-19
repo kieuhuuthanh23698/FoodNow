@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_margin="5dp"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/shopping_cart_name_item"
+                android:text="Canh rong biển"
+                android:textColor="@android:color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/shopping_cart_price_item"
+                android:text="21,000 đ"
+                android:layout_marginTop="5dp"
+                android:textColor="@android:color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_margin="5dp"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/shopping_cart_remove_btn"
+                android:background="@drawable/ic_remove_circle_outline_black_24dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:id="@+id/shopping_cart_number_item"
+                android:layout_margin="5dp"
+                android:text="1"
+                android:textColor="@android:color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <Button
+                android:id="@+id/shopping_cart_add_btn"
+                android:background="@drawable/ic_add_circle_black_24dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/shopping_cart_note_item"
+        android:drawableLeft="@drawable/ic_event_note_black_24dp"
+        android:gravity="center_vertical"
+        android:hint="  Ghi chú..."
+        android:lines="1"
+        android:ellipsize="end"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:background="@color/colorGrayLight"
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
+</LinearLayout>

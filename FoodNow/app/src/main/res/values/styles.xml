@@ -24,7 +24,13 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowCloseOnTouchOutside">true</item>
         <!--<item name = "android:windowBackground" > @android:color/transparent</item>-->
-        <item name = "android:windowBackground" >@color/colorBackShoppingCartAct</item>
+        <item name = "android:windowBackground" >@color/colorGray</item>
+    </style>
+
+    <style name="AppTheme.NoteItem">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name = "android:windowBackground" >@color/colorGray</item>
     </style>
 
     <style name="title">
@@ -32,6 +38,10 @@
         <item name="android:fontFamily">serif</item>
         <item name="android:textSize">20dp</item>
         <item name="android:textStyle">bold</item>
+    </style>
+    
+    <style name="row_layout" parent="@android:style/Widget.Holo.TextView">
+        <item name="android:height">50dp</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

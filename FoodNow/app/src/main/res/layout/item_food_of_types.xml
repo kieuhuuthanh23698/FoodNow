@@ -9,9 +9,9 @@
 
     <ImageView
         android:id="@+id/imgFood"
-        android:layout_width="100dp"
-        android:scaleType="fitXY"
-        android:layout_height="match_parent"
+        android:layout_width="120dp"
+        android:scaleType="centerCrop"
+        android:layout_height="120dp"
         android:src="@drawable/img_store2"
         android:layout_margin="5dp" />
 
@@ -74,25 +74,51 @@
         <RelativeLayout
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <TextView
                 android:text="90,000 đ"
                 android:textSize="16dp"
                 android:textStyle="bold"
+                android:gravity="center_vertical"
                 android:id="@+id/txtFoodPrice"
                 android:textColor="@android:color/black"
                 android:fontFamily="@font/nunito_extralight"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent" />
 
-            <ImageView
-                android:id="@+id/btnAddToCart"
-                android:layout_marginRight="10dp"
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_margin="5dp"
                 android:layout_alignParentRight="true"
-                android:src="@drawable/ic_add_circle_black_24dp"
+                android:gravity="center_vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/infor_store_remove_btn"
+                    android:visibility="gone"
+                    android:background="@drawable/ic_remove_circle_outline_black_24dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
+
+                <TextView
+                    android:id="@+id/infor_store_number_item"
+                    android:layout_margin="5dp"
+                    android:text="1"
+                    android:visibility="gone"
+                    android:textColor="@android:color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    android:id="@+id/infor_store_add_btn"
+                    android:background="@drawable/ic_add_circle_black_24dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
+
+            </LinearLayout>
+
 
         </RelativeLayout>
 

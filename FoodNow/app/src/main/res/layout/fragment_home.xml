@@ -15,26 +15,29 @@
         android:layout_height="wrap_content">
 
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
 
             <TextView
+                android:id="@+id/fm_home_myAddress"
                 android:layout_marginLeft="15dp"
                 android:drawableLeft="@drawable/ic_location_on_black_24dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:paddingLeft="0dp"
+                android:ellipsize="end"
+                android:lines="1"
                 android:text="Số 6, Phan Đình Giót, Phường 2, Tân Bình..."
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <Button
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:background="@drawable/ic_dehaze_black_24dp"
-                android:layout_marginRight="15dp"
-                android:layout_width="35dp"
-                android:layout_height="35dp" />
+            <!--<Button-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:background="@drawable/ic_dehaze_black_24dp"-->
+                <!--android:layout_marginRight="15dp"-->
+                <!--android:layout_width="35dp"-->
+                <!--android:layout_height="35dp" />-->
 
         </RelativeLayout>
 
@@ -695,6 +698,7 @@
                 android:orientation="vertical"
                 app:msrv_ms_per_inch="120"
                 app:msrv_snap_count="2"
+
                 android:background="@android:color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>

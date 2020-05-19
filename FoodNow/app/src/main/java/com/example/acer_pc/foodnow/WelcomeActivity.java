@@ -49,7 +49,7 @@ public class WelcomeActivity extends AppCompatActivity {
         sliderDotspanel = (LinearLayout) findViewById(R.id.SliderDots);
         ArrayList<Integer> arrImg = new ArrayList<Integer>();
         arrImg.add(R.drawable.slider1);
-        arrImg.add(R.drawable.slider1);
+        arrImg.add(R.drawable.ic_app);
         arrImg.add(R.drawable.slider1);
         Slider slider = new Slider(arrImg);
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this, slider);
