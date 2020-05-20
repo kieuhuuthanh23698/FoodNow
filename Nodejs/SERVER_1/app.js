@@ -962,60 +962,6 @@ app.post("/thongTinCuaHang",urlEncodeParser, function(req,res){
 	});
 });
 
-//Hiển thị kết quả tìm kiếm gồm danh sách cửa hàng và món ăn cửa hàng đó//
-app.post("/KetQuaTimKiemDanhSachCuaHangMonAn",urlEncodeParser, function(req,res){
-	let response = {};
-            CHINHANH.aggregate(
-            [
-                { $match: { _id: mongoose.Types.ObjectId(req.body.idChiNhanh)}},
-                {
-                    $lookup: {
-                        from: 'cuahangs',
-                        localField: 'DanhSach_CH',
-                        foreignField: '_id',
-                        as: 'thongTinCH'
-                    }
-                }
-            ]
-            , function (err, result) {
-                if (err)
-                    res.send(err);
-                else
-                    response.thongTinCH = result;
-                    // res.send(result);
-			});
-			// CHINHANH.find(
-            //     {  'Loai_MonAn': { $in: [req.body.idDanhmucloaimonan]} },
-            //     function (err, danhSachLoaiMonAn) {
-            //         if (err)
-            //             res.send(err);
-            //         else{
-            //             LOAI_MONAN.aggregate(
-			// 				[
-			// 					{ $match: { _id: {$in : danhSachLoaiMonAn[0].Ten_mon_an}}},
-			// 					{
-			// 						$lookup: {
-			// 							from: 'mon_ans',
-			// 							localField: 'Danh_sach_mon_an',
-			// 							foreignField: '_id',
-			// 							as: 'monans'
-			// 						}
-			// 					},
-			// 					{$project : {'DanhSach_CH': 1, 'monans' : 1}}
-			// 				], function(err, monans){
-			// 					if(err)
-			// 						res.send(err);
-			// 					else
-			// 						{
-			// 							response.lstMonAn = monans;
-			// 							res.send(monans);
-			// 						}
-			// 				}
-			// 			);
-            //         }
-            // });
-});
-
 
 //route get khuyến mãi hệ thống
 //method get
@@ -1073,7 +1019,11 @@ app.post("/Danhsachmonantimkiemhienthi",urlEncodeParser,function(req,res){
 });
 
 
-app.post("/search",urlEncodeParser,function(req,res){
+//route post Hienthiketqua_timkiemmonan
+//method post(truyền valueSearch)
+//Param  valueSearch
+//Hiển thị kết quả tìm kiếm gồm danh sách cửa hàng và món ăn cửa hàng đó//
+app.post("/Hienthiketqua_timkiemmonan",urlEncodeParser,function(req,res){
 	// var vlaaaaa =  req.body.valueSearch;
 	CHINHANH.aggregate(
     [
@@ -1116,3 +1066,126 @@ app.post("/search",urlEncodeParser,function(req,res){
 );
 
 });
+
+
+
+//route post HienThiCuaHang_KhachHangYeuThich
+//method post(truyền idKhachHang)
+//Param  idKhachHang
+app.post("/HienThiCuaHang_KhachHangYeuThich",urlEncodeParser,function(req,res){
+	KHACH_HANG.aggregate(
+
+		[
+	
+			{
+				$match: {
+					// "_id":ObjectId("5ebce3b56d098b0da418591d")
+					_id: mongoose.Types.ObjectId(req.body.idKhachHang)
+				}
+			},
+	
+			{
+				$project: {
+				   "Cua_hang_yeu_thich" :1.0
+					
+				}
+			},
+	
+			{
+				$unwind: {
+					path: "$Cua_hang_yeu_thich",
+					
+				}
+			},
+	
+			{
+				$lookup: 
+				{
+					from: "cuahangs",
+					localField: "Cua_hang_yeu_thich",
+					foreignField: "_id",
+					as: "ThongTinCuaHang"
+				}
+			},
+	
+			{
+				$lookup: 
+				{
+					from: "diachis",
+					localField: "ThongTinCuaHang.Dia_Chi_Cua_Hang",
+					foreignField: "_id",
+					as: "DiaChiCuaHang"
+				}
+			},
+	
+			{
+				$project: {
+					"ThongTinCuaHang.Ten_Cua_Hang":1.0,
+					"ThongTinCuaHang.Hinh_Anh_Cua_Hang":1.0,
+					"ThongTinCuaHang.Danh_Gia":1.0,
+					"DiaChiCuaHang":1.0					
+				}
+			},
+	
+		],
+		function(err, result){
+			if(err)
+				res.send(err);
+			else
+				res.send(result);
+		}
+	
+	);
+	
+});
+
+
+//route post Hienthithongtin_taikhoankhachhang
+//method post(truyền idKhachHang)
+//Param  idKhachHang
+app.post("/Hienthithongtin_taikhoankhachhang",urlEncodeParser,function(req,res){
+	KHACH_HANG.aggregate(
+		[
+			{ 
+				"$match" : { 
+					"_id" : mongoose.Types.ObjectId(req.body.idKhachHang)
+				}
+			}, 
+			{ 
+				"$project" : { 
+					"Ten_khach_hang" : 1.0, 
+					"Hinh_anh_khach_hang" : 1.0
+				}
+			}
+		], 
+		function(err, result){
+			if(err)
+				res.send(err);
+			else
+				res.send(result);
+		}
+	);
+});
+
+
+
+//route post Capnhatthongtin_taikhoancanhan
+//method post(truyền idKhachHang)
+//Param  idKhachHang
+app.post("/Capnhatthongtin_taikhoancanhan",urlEncodeParser,function(req,res)
+{
+	// var tenKH, soDT, email, ngaySinh, gioiTinh;
+	KHACH_HANG.findOneAndUpdate(
+	{ _id: mongoose.Types.ObjectId(req.body.idKhachHang) },
+	{
+		$set : {Ten_khach_hang : "Ngọc Hiền" , So_dien_thoai: "09098877665", Email: "lengochien@gmail.com", Ngay_sinh: "05/20/1998", Gioi_tinh:"Nữ"}
+	},
+	function (err) {
+		if (err)
+			res.send("\nCập nhật thông tin cá nhân lỗi : " + err);
+		else
+			res.send("\nCập nhật  thông tin cá nhân thành công !");
+	}
+);
+});
+ 
