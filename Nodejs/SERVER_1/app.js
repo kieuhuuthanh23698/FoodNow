@@ -1,7 +1,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 const mongoose = require('mongoose');
-const jwt=require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 // var io = socket_io('http://localhost:3000', {
 // 	extraHeaders: {
 // //		Authorization: "Bearer authorization_token_here"
@@ -16,7 +16,7 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
 app.set("view engine", "ejs");
-app.use("/Public",express.static('Public'));
+app.use("/Public", express.static('Public'));
 // app.get("/", function(req, res){
 //   res.render("main");
 // });
@@ -35,7 +35,10 @@ server.listen(3000);
 // 			console.log("MongoDb connect success !");
 // 	}
 // );
-mongoose.connect('mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.net/FoodNow?retryWrites=true&w=majority',
+// const connectString = 'mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb';
+const connectString = 'mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.net/FoodNow?retryWrites=true&w=majority';
+
+mongoose.connect(connectString,
 	{ useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false },
 	function (err) {
 		if (err)
@@ -78,7 +81,7 @@ const MONAN_GOIY = require('./Models/MONAN_GOIY');
 
 // function sseDemo(req, res) {
 // 	let messageId = 0;
-	 
+
 
 //     const intervalId = setInterval(() => {
 // 		console.log(`Server sent event : ${messageId} - ${data_khu_vuc_change}`)
@@ -91,7 +94,7 @@ const MONAN_GOIY = require('./Models/MONAN_GOIY');
 // 		//}
 // 		messageId += 1;
 //     }, 1000);
-	
+
 // 	data_khu_vuc_change = 'Data is normal !';
 
 //     req.on('close', () => {
@@ -112,48 +115,48 @@ const MONAN_GOIY = require('./Models/MONAN_GOIY');
 //     sseDemo(req, res);
 // });
 
-const changeStream = CHINHANH.watch();
-let list = [];
+// const changeStream = CHINHANH.watch();
+// let list = [];
 
-function getSocketIdWithIdParner(partnerID){
-	var result = list.find(item => item.partner_id === partnerID);
-	return result.socket_id;
-}
-
-
-
-io.on("connection",function(socket){
-	//list.push(socket.id);
-	// console.log("Some one connected with id : " + socket.id);
-	socket.on('partner-server', function(data){
-		console.log("client id " + socket.id + " just emit : " + data);
-		socket.join(data);
-		var item = {socket_id : socket.id, partner_id : data};
-		list.push(item);
-		//console.log('123 : ' + list[0].socket_id);
-		console.log('Connecting people are : ' + list.length);
-	});
+// function getSocketIdWithIdParner(partnerID){
+// 	var result = list.find(item => item.partner_id === partnerID);
+// 	return result.socket_id;
+// }
 
 
-});
 
-changeStream.on('change', (change) => {
-	console.log(change);
-	//console.log('Data collection khu vuc have changed !')
-	//console.log('id khu vuc thay doi :' + change.documentKey._id);
-//	var socket_id = getSocketIdWithIdParner('5dc53b64fdf2d32c6006e057');
-	
-//	var socket_id = '5dc53b64fdf2d32c6006e057';
-	//var socket_id = change.documentKey._id;
-	//io.to(socket_id).emit('data of partner 1');
-	//io.sockets.in(socket_id).emit('partner-server', 'hello ');
-	//console.log('vua emit to ' + socket_id);
-	//io.to(getSocketIdWithIdParner('5dc53bc6fdf2d32c6006e058')).emit('data of partner 2');
-	//io.to(getSocketIdWithIdParner('5dc56d8c6b2d0520e0658441')).emit('data of partner 3');
-	//data_khu_vuc_change = '{' + change.documentKey._id + '}';
-	//data_khu_vuc_change = 'co su thay doi';
-	//io.emit('partner-server', 'hello');
-}); 
+// io.on("connection",function(socket){
+// 	//list.push(socket.id);
+// 	// console.log("Some one connected with id : " + socket.id);
+// 	socket.on('partner-server', function(data){
+// 		console.log("client id " + socket.id + " just emit : " + data);
+// 		socket.join(data);
+// 		var item = {socket_id : socket.id, partner_id : data};
+// 		list.push(item);
+// 		//console.log('123 : ' + list[0].socket_id);
+// 		console.log('Connecting people are : ' + list.length);
+// 	});
+
+
+// });
+
+// changeStream.on('change', (change) => {
+// 	console.log(change);
+// 	//console.log('Data collection khu vuc have changed !')
+// 	//console.log('id khu vuc thay doi :' + change.documentKey._id);
+// //	var socket_id = getSocketIdWithIdParner('5dc53b64fdf2d32c6006e057');
+
+// //	var socket_id = '5dc53b64fdf2d32c6006e057';
+// 	//var socket_id = change.documentKey._id;
+// 	//io.to(socket_id).emit('data of partner 1');
+// 	//io.sockets.in(socket_id).emit('partner-server', 'hello ');
+// 	//console.log('vua emit to ' + socket_id);
+// 	//io.to(getSocketIdWithIdParner('5dc53bc6fdf2d32c6006e058')).emit('data of partner 2');
+// 	//io.to(getSocketIdWithIdParner('5dc56d8c6b2d0520e0658441')).emit('data of partner 3');
+// 	//data_khu_vuc_change = '{' + change.documentKey._id + '}';
+// 	//data_khu_vuc_change = 'co su thay doi';
+// 	//io.emit('partner-server', 'hello');
+// }); 
 
 //-------------------------------------------------------------------KHU VỰC----------------------------------------------------------------
 //route thêm khu vực
@@ -199,7 +202,7 @@ app.put("/updateMoTaKhuVuc", urlEncodeParser, function (req, res) {
 		KHU_VUC.findOneAndUpdate(
 			{ _id: req.body.idkhuvuc },
 			{
-				$set : {Mo_ta_khu_vuc : req.body.value}
+				$set: { Mo_ta_khu_vuc: req.body.value }
 			},
 			function (err) {
 				if (err)
@@ -242,7 +245,7 @@ app.post("/addCuaHang", urlEncodeParser, function (req, res) {
 	else
 		res.send("Params error 1 !");
 });
-	
+
 //route get danh sách cửa hàng
 app.get("/cuahang", function (req, res) {
 	CUAHANG.find(function (err, items) {
@@ -320,36 +323,32 @@ app.get("/chinhanh", function (req, res) {
 //route get chi nhánh của cửa hàng
 //method POST
 //params : idCuaHang
-app.post("/ChiNhanhCuaCuaHang", urlEncodeParser,function (req, res) {
-	if(req.body.idCuahang!=null)
-	{
-		if(req.body.idChiNhanh!="")
-		{
-			CUAHANG.findOne({_id : req.body.idCuahang},function (err, result) {
+app.post("/ChiNhanhCuaCuaHang", urlEncodeParser, function (req, res) {
+	if (req.body.idCuahang != null) {
+		if (req.body.idChiNhanh != "") {
+			CUAHANG.findOne({ _id: req.body.idCuahang }, function (err, result) {
 				if (err)
 					res.send("Lấy thông tin chi nhánh gặp lỗi !" + err);
 				else
 					res.send(result.Chi_Nhanh_id);
 			});
 		}
-		else
-		{
+		else {
 			res.send('Params error 2!')
 		}
-		
+
 	}
-	else
-	{
+	else {
 		res.send('Params error 1!')
 	}
-	
+
 });
 
 //route get 1 chi nhánh
 //method POST
 //params : idChiNhanh
-app.post("/OneChiNhanh", urlEncodeParser,function (req, res) {
-	CHINHANH.findById({_id : req.body.idChiNhanh},function (err, result) {
+app.post("/OneChiNhanh", urlEncodeParser, function (req, res) {
+	CHINHANH.findById({ _id: req.body.idChiNhanh }, function (err, result) {
 		if (err)
 			res.send("Lấy thông tin chi nhánh gặp lỗi !" + err);
 		else
@@ -479,92 +478,77 @@ app.get("/allmonan", function (req, res) {
 //route đăng ký tài khoản
 //method POST
 //params : Ten_khach_hang, Tai_khoan, Mat_khau
-app.post("/addKhachHang",urlEncodeParser,function(req,res){
-	if(req.body.TenKhachHang!=null&& req.body.TaiKhoan!=null&& req.body.MatKhau!=null)
-	{
-		if(req.body.TenKhachHang!=""&& req.body.TaiKhoan!=""&& req.body.MatKhau!="")
-		{
-			KHACH_HANG.findOne({Tai_khoan: req.body.TaiKhoan},function(error,result){
-				if(error)
-				{
+app.post("/addKhachHang", urlEncodeParser, function (req, res) {
+	if (req.body.TenKhachHang != null && req.body.TaiKhoan != null && req.body.MatKhau != null) {
+		if (req.body.TenKhachHang != "" && req.body.TaiKhoan != "" && req.body.MatKhau != "") {
+			KHACH_HANG.findOne({ Tai_khoan: req.body.TaiKhoan }, function (error, result) {
+				if (error) {
 					console.log("Tìm tài khoảng bị lỗi !");
 					res.send("-1");
 				}
-				else
-				{
-					if(!result)
-					{
-						var newKhachHang=new KHACH_HANG({
+				else {
+					if (!result) {
+						var newKhachHang = new KHACH_HANG({
 							Ten_khach_hang: req.body.TenKhachHang,
 							Tai_khoan: req.body.TaiKhoan,
 							Mat_khau: req.body.MatKhau,
-							Don_hang_id:[],
-							Ct_Gio_Hang_id:[]
+							Don_hang_id: [],
+							Ct_Gio_Hang_id: []
 						});
-						newKhachHang.save(function(err){
-							if(err)
-							{
+						newKhachHang.save(function (err) {
+							if (err) {
 								console.log("Thêm tài khoảng bị lỗi !");
 								res.send("-1");
 							}
-							else
-							{
+							else {
 								console.log("Đăng ký tài khoảng thành công !");
 								res.send("1");
 							}
 						});
 					}
-					else
-					{
+					else {
 						console.log("Tài khoảng đã tồn tại !");
 						res.send("-1");
 					}
 				}
 			})
-			
+
 		}
-					
+
 	}
 });
 
 //route đăng nhập
 //method POST
 //params : TaiKhoan, MatKhau
-app.post("/DangNhap",urlEncodeParser,function(req,res){
-	if(req.body.TaiKhoan!=null&&req.body.MatKhau!=null)
-	{
-		if(req.body.TaiKhoan!=""&&req.body.MatKhau!="")
-		{
-			KHACH_HANG.findOne({Tai_khoan:req.body.TaiKhoan},function(error,result){
-				if(error)
-				{
+app.post("/DangNhap", urlEncodeParser, function (req, res) {
+	if (req.body.TaiKhoan != null && req.body.MatKhau != null) {
+		if (req.body.TaiKhoan != "" && req.body.MatKhau != "") {
+			KHACH_HANG.findOne({ Tai_khoan: req.body.TaiKhoan }, function (error, result) {
+				if (error) {
 					console.log("Lỗi tìm kiếm!");
 					res.send("-1");
-				} 
-				else 
-				{
-					if(result == null)
-					{
+				}
+				else {
+					if (result == null) {
 						console.log("Tên đăng nhập không chính xác.");
 						res.send("-1");
 					}
-					else if(result.Tai_khoan == req.body.TaiKhoan && result.Mat_khau == req.body.MatKhau)
-					{
+					else if (result.Tai_khoan == req.body.TaiKhoan && result.Mat_khau == req.body.MatKhau) {
 						console.log("Đăng nhập thành công !");
 						res.send(
 							[
 								{
-									"token" : jwt.sign({Tai_khoan:result.Tai_khoan, Mat_khau:result.Mat_khau},"secretkey",{expiresIn:'20m'}),
-									"name" : result.Ten_khach_hang
+									"token": jwt.sign({ Tai_khoan: result.Tai_khoan, Mat_khau: result.Mat_khau }, "secretkey", { expiresIn: '20m' }),
+									"name": result.Ten_khach_hang
 								}
 							]
 						);
 					}
-					else
-						{
-							console.log("Mật khẩu không chính xác !");
-							res.send("-1");
-						}
+					else {
+						console.log("Mật khẩu không chính xác !");
+						res.send("-1");
+					}
 				}
 			})
 		}
@@ -580,29 +564,23 @@ app.post("/DangNhap",urlEncodeParser,function(req,res){
 //method POST
 //Params: IDKhachHang
 
-app.post("/getGioHang",urlEncodeParser,function(req,res){
-	if(req.body.idKhachHang!=null)
-	{
-		if(req.body.idKhachHang!="")
-		{
-			KHACH_HANG.findOne({_id:req.body.idKhachHang},function(error,result){
-				if(error)
-				{
+app.post("/getGioHang", urlEncodeParser, function (req, res) {
+	if (req.body.idKhachHang != null) {
+		if (req.body.idKhachHang != "") {
+			KHACH_HANG.findOne({ _id: req.body.idKhachHang }, function (error, result) {
+				if (error) {
 					res.send("Lỗi tìm kiếm!");
-				} 
-				else 
-				{
+				}
+				else {
 					res.send(result.Ct_Gio_Hang_id);
 				}
 			});
 		}
-		else
-		{
+		else {
 			res.send('Params error 2!')
 		}
 	}
-	else
-	{
+	else {
 		res.send('Params error 1!');
 	}
 });
@@ -611,29 +589,23 @@ app.post("/getGioHang",urlEncodeParser,function(req,res){
 //method POST
 //Params : idChiTietGioHang
 
-app.post("/CTGioHang",urlEncodeParser,function(req,res){
-	if(req.body.idGioHang!=null)
-	{
-		if(req.body.idGioHang!="")
-		{
-			CHI_TIET_GIO_HANG.findOne({_id:req.body.idGioHang},function(error,result){
-				if(error)
-				{
+app.post("/CTGioHang", urlEncodeParser, function (req, res) {
+	if (req.body.idGioHang != null) {
+		if (req.body.idGioHang != "") {
+			CHI_TIET_GIO_HANG.findOne({ _id: req.body.idGioHang }, function (error, result) {
+				if (error) {
 					res.send("Lỗi tìm kiếm!");
-				} 
-				else 
-				{
+				}
+				else {
 					res.send(result);
 				}
 			});
 		}
-		else
-		{
+		else {
 			res.send('Params error 2!')
 		}
 	}
-	else
-	{
+	else {
 		res.send('Params error 1!');
 	}
 });
@@ -644,29 +616,23 @@ app.post("/CTGioHang",urlEncodeParser,function(req,res){
 //method POST
 //Params: IdKhachHang
 
-app.post("/getDonHang",urlEncodeParser,function(req,res){
-	if(req.body.idKhachHang!=null)
-	{
-		if(req.body.idKhachHang!="")
-		{
-			KHACH_HANG.findOne({_id:req.body.idKhachHang},function(error,result){
-				if(error)
-				{
+app.post("/getDonHang", urlEncodeParser, function (req, res) {
+	if (req.body.idKhachHang != null) {
+		if (req.body.idKhachHang != "") {
+			KHACH_HANG.findOne({ _id: req.body.idKhachHang }, function (error, result) {
+				if (error) {
 					res.send("Lỗi tìm kiếm!");
-				} 
-				else 
-				{
+				}
+				else {
 					res.send(result.Don_hang_id);
 				}
 			});
 		}
-		else
-		{
+		else {
 			res.send('Params error 2!')
 		}
 	}
-	else
-	{
+	else {
 		res.send('Params error 1!');
 	}
 });
@@ -676,29 +642,23 @@ app.post("/getDonHang",urlEncodeParser,function(req,res){
 //method POST
 //Params: IdDonHang
 
-app.post("/DonHang",urlEncodeParser,function(req,res){
-	if(req.body.idDonHang!=null)
-	{
-		if(req.body.idDonHang!="")
-		{
-			DON_HANG.findOne({_id:req.body.idDonHang},function(error,result){
-				if(error)
-				{
+app.post("/DonHang", urlEncodeParser, function (req, res) {
+	if (req.body.idDonHang != null) {
+		if (req.body.idDonHang != "") {
+			DON_HANG.findOne({ _id: req.body.idDonHang }, function (error, result) {
+				if (error) {
 					res.send("Lỗi tìm kiếm!");
-				} 
-				else 
-				{
+				}
+				else {
 					res.send(result);
 				}
 			});
 		}
-		else
-		{
+		else {
 			res.send('Params error 2!')
 		}
 	}
-	else
-	{
+	else {
 		res.send('Params error 1!');
 	}
 });
@@ -707,29 +667,23 @@ app.post("/DonHang",urlEncodeParser,function(req,res){
 //method POST
 //Params : idChiTietDonHang
 
-app.post("/CTDonHang",urlEncodeParser,function(req,res){
-	if(req.body.idCTDonHang!=null)
-	{
-		if(req.body.idCTDonHang!="")
-		{
-			CHI_TIET_DON_HANG.findOne({_id:req.body.idCTDonHang},function(error,result){
-				if(error)
-				{
+app.post("/CTDonHang", urlEncodeParser, function (req, res) {
+	if (req.body.idCTDonHang != null) {
+		if (req.body.idCTDonHang != "") {
+			CHI_TIET_DON_HANG.findOne({ _id: req.body.idCTDonHang }, function (error, result) {
+				if (error) {
 					res.send("Lỗi tìm kiếm!");
-				} 
-				else 
-				{
+				}
+				else {
 					res.send(result);
 				}
 			});
 		}
-		else
-		{
+		else {
 			res.send('Params error 2!')
 		}
 	}
-	else
-	{
+	else {
 		res.send('Params error 1!');
 	}
 });
@@ -738,34 +692,30 @@ app.post("/CTDonHang",urlEncodeParser,function(req,res){
 //method post(truyền vào ID)
 //Params: idDanhmucloaimonan
 
-app.post("/Danhmucloaimonan",urlEncodeParser,function(req,res){
-	if(req.body.idDanhmucloaimonan!=null)
-	{
-		if(req.body.idDanhmucloaimonan!="")
-		{
-			DANHMUC_LOAIMONAN.findById({ '_id': req.body.idDanhmucloaimonan}, function (err, danhMucLoaiMonAn) {
-                if (err) {
-                    res.send("Lấy danh sách cửa hàng trong danh mục loại món ăn : " + err);
-                }
-                else {
-                    CUAHANG.find({ '_id': { $in: danhMucLoaiMonAn.DanhSach_CH } },
-                        function (err, listCuaHang) {
-                            if (err)
-							res.send("Lấy danh sách chi nhánh gặp lỗi : " + err);
-                            else
-                            res.send(listCuaHang);
-                        }
-                    );
-                }
-            });
+app.post("/Danhmucloaimonan", urlEncodeParser, function (req, res) {
+	if (req.body.idDanhmucloaimonan != null) {
+		if (req.body.idDanhmucloaimonan != "") {
+			DANHMUC_LOAIMONAN.findById({ '_id': req.body.idDanhmucloaimonan }, function (err, danhMucLoaiMonAn) {
+				if (err) {
+					res.send("Lấy danh sách cửa hàng trong danh mục loại món ăn : " + err);
+				}
+				else {
+					CUAHANG.find({ '_id': { $in: danhMucLoaiMonAn.DanhSach_CH } },
+						function (err, listCuaHang) {
+							if (err)
+								res.send("Lấy danh sách chi nhánh gặp lỗi : " + err);
+							else
+								res.send(listCuaHang);
+						}
+					);
+				}
+			});
 		}
-		else
-		{
+		else {
 			res.send('Params error 2!')
 		}
 	}
-	else
-	{
+	else {
 		res.send('Params error 1!');
 	}
 });
@@ -776,31 +726,29 @@ app.post("/Danhmucloaimonan",urlEncodeParser,function(req,res){
 //method post(truyền vào ID)
 //Params: idDanhsachcuahanghomnay
 
-app.post("/Danhsachcuahanghomnay",urlEncodeParser,function(req,res){
-	if(req.body.idDanhsachcuahanghomnay!=null){
-		if(req.body.idDanhsachcuahanghomnay!="")
-		{
-			DANHSACH_CUAHANG_HOMNAY.findById({ '_id': req.body.idDanhsachcuahanghomnay}, function (err, DanhSachCuaHangHomNay) {
-                if (err) {
-                    res.send("Lấy danh sách cửa hàng trong danh mục cửa hàng hôm nay : " + err);
-                }
-                else {
-                    CUAHANG.find({ '_id': { $in: DanhSachCuaHangHomNay.DanhSach_CH } },
-                        function (err, listCuaHang) {
-                            if (err)
-							res.send("Lấy danh sách cửa hàng gặp lỗi : " + err);
-                            else
-                            res.send(listCuaHang);
-                        }
-                    );
-                }
-            });
+app.post("/Danhsachcuahanghomnay", urlEncodeParser, function (req, res) {
+	if (req.body.idDanhsachcuahanghomnay != null) {
+		if (req.body.idDanhsachcuahanghomnay != "") {
+			DANHSACH_CUAHANG_HOMNAY.findById({ '_id': req.body.idDanhsachcuahanghomnay }, function (err, DanhSachCuaHangHomNay) {
+				if (err) {
+					res.send("Lấy danh sách cửa hàng trong danh mục cửa hàng hôm nay : " + err);
+				}
+				else {
+					CUAHANG.find({ '_id': { $in: DanhSachCuaHangHomNay.DanhSach_CH } },
+						function (err, listCuaHang) {
+							if (err)
+								res.send("Lấy danh sách cửa hàng gặp lỗi : " + err);
+							else
+								res.send(listCuaHang);
+						}
+					);
+				}
+			});
 		}
-		else
-		{
+		else {
 			res.send('Params error 2!')
 		}
-	}else{
+	} else {
 		res.send('Params error 1!');
 	}
 });
@@ -809,31 +757,29 @@ app.post("/Danhsachcuahanghomnay",urlEncodeParser,function(req,res){
 //method post(truyền vào ID)
 //Params: idKhuyenmaihethong
 
-app.post("/Khuyenmaihethong",urlEncodeParser,function(req,res){
-	if(req.body.idKhuyenmaihethong!=null){
-		if(req.body.idKhuyenmaihethong!="")
-		{
-			KHUYENMAI_HETHONG.findById({ '_id': req.body.idKhuyenmaihethong}, function (err, KhuyenMaiHeThong) {
-                if (err) {
-                    res.send("Lấy danh sách cửa hàng trong khuyến mãi hệ thống : " + err);
-                }
-                else {
-                    CUAHANG.find({ '_id': { $in: KhuyenMaiHeThong.DanhSach_CH } },
-                        function (err, listCuaHang) {
-                            if (err)
-							res.send("Lấy danh sách cửa hàng gặp lỗi : " + err);
-                            else
-                            res.send(listCuaHang);
-                        }
-                    );
-                }
-            });
+app.post("/Khuyenmaihethong", urlEncodeParser, function (req, res) {
+	if (req.body.idKhuyenmaihethong != null) {
+		if (req.body.idKhuyenmaihethong != "") {
+			KHUYENMAI_HETHONG.findById({ '_id': req.body.idKhuyenmaihethong }, function (err, KhuyenMaiHeThong) {
+				if (err) {
+					res.send("Lấy danh sách cửa hàng trong khuyến mãi hệ thống : " + err);
+				}
+				else {
+					CUAHANG.find({ '_id': { $in: KhuyenMaiHeThong.DanhSach_CH } },
+						function (err, listCuaHang) {
+							if (err)
+								res.send("Lấy danh sách cửa hàng gặp lỗi : " + err);
+							else
+								res.send(listCuaHang);
+						}
+					);
+				}
+			});
 		}
-		else
-		{
+		else {
 			res.send('Params error 2!')
 		}
-	}else{
+	} else {
 		res.send('Params error 1!');
 	}
 });
@@ -842,8 +788,8 @@ app.post("/Khuyenmaihethong",urlEncodeParser,function(req,res){
 //route post KHUYENMAICUAHANG trong CUAHANG
 //method post(truyền vào ID)
 //Params: idCuahang
-app.post("/KhuyenMaiCuaHang",urlEncodeParser,function(req,res){
-	CUAHANG.findById({ '_id': req.body.idCuahang}, function (err, KhuyenMaiCuaHang) {
+app.post("/KhuyenMaiCuaHang", urlEncodeParser, function (req, res) {
+	CUAHANG.findById({ '_id': req.body.idCuahang }, function (err, KhuyenMaiCuaHang) {
 		if (err) {
 			res.send("Lấy danh sách khuyến mãi cửa hàng : " + err);
 		}
@@ -851,31 +797,31 @@ app.post("/KhuyenMaiCuaHang",urlEncodeParser,function(req,res){
 			KHUYENMAI_CUAHANG.find({ '_id': { $in: KhuyenMaiCuaHang.Khuyen_Mai_CH } },
 				function (err, listKhuyenMai) {
 					if (err)
-					res.send("Lấy danh sách khuyến mãi  gặp lỗi : " + err);
+						res.send("Lấy danh sách khuyến mãi  gặp lỗi : " + err);
 					else
-					res.send(listKhuyenMai);
+						res.send(listKhuyenMai);
 				}
 			);
 		}
 	});
-	
+
 });
 
 
 
-app.get("/DanhMucCuaHang", function(req,res){
+app.get("/DanhMucCuaHang", function (req, res) {
 	DANHMUC_CUAHANG_TRANGCHU.aggregate([{
-		$lookup : {
+		$lookup: {
 			from: 'cuahangs',
 			localField: 'DanhSach_CH',
 			foreignField: '_id',
 			as: 'lstCH'
 		}
-	}], function(err, data){
-		if(err)
+	}], function (err, data) {
+		if (err)
 			res.send(err);
-	   else
-	   		res.send(data);
+		else
+			res.send(data);
 	});
 });
 
@@ -903,39 +849,39 @@ app.get("/DanhMucCuaHang", function(req,res){
 
 // });
 
-app.post("/thongTinCuaHang",urlEncodeParser, function(req,res){
+app.post("/thongTinCuaHang", urlEncodeParser, function (req, res) {
 	let response = {};
 	CUAHANG.aggregate(
-	[
-	    { $match: { _id: mongoose.Types.ObjectId(req.body.idCuahang)}},
-	    {
-	        $lookup: {
-	            from: 'khuyenmai_cuahangs',
-	            localField: 'Khuyen_Mai_CH',
-	            foreignField: '_id',
-	            as: 'thongTinKM'
-	        }
-	    }
-	]
-	, function (err, result) {
-	    if (err)
-	        console.log(err);
-	    else
-	        response.thongTinCuaHang = result;
-	});
+		[
+			{ $match: { _id: mongoose.Types.ObjectId(req.body.idCuahang) } },
+			{
+				$lookup: {
+					from: 'khuyenmai_cuahangs',
+					localField: 'Khuyen_Mai_CH',
+					foreignField: '_id',
+					as: 'thongTinKM'
+				}
+			}
+		]
+		, function (err, result) {
+			if (err)
+				console.log(err);
+			else
+				response.thongTinCuaHang = result;
+		});
 	CHINHANH.find(
-		{  'DanhSach_CH': { $in: [req.body.idCuahang]} },
+		{ 'DanhSach_CH': { $in: [req.body.idCuahang] } },
 		function (err, chiNhanh) {
 			if (err)
 				res.send(err);
-			else{
-				CHINHANH.find({_id : chiNhanh[0]._id}, function(err, chiNhanh){
-					if(err)
+			else {
+				CHINHANH.find({ _id: chiNhanh[0]._id }, function (err, chiNhanh) {
+					if (err)
 						res.send(err);
-					else{
+					else {
 						LOAI_MONAN.aggregate(
 							[
-								{ $match: { _id: {$in : chiNhanh[0].Loai_MonAn}}},
+								{ $match: { _id: { $in: chiNhanh[0].Loai_MonAn } } },
 								{
 									$lookup: {
 										from: 'mon_ans',
@@ -944,64 +890,63 @@ app.post("/thongTinCuaHang",urlEncodeParser, function(req,res){
 										as: 'monans'
 									}
 								},
-								{$project : {'Ten_loai_mon_an': 1, 'monans' : 1}}
-							], function(err, monans){
-								if(err)
+								{ $project: { 'Ten_loai_mon_an': 1, 'monans': 1 } }
+							], function (err, monans) {
+								if (err)
 									res.send(err);
-								else
-									{
-										response.lstMonAn = monans;
-										res.send(response);
-									}
+								else {
+									response.lstMonAn = monans;
+									res.send(response);
+								}
 							}
 						);
 					}
 				})
 
 			}
-	});
+		});
 });
 
 
 //route get khuyến mãi hệ thống
 //method get
-app.get("/Danhsachkhuyenmaihethong",function(req,res){
+app.get("/Danhsachkhuyenmaihethong", function (req, res) {
 	KHUYENMAI_HETHONG.find(
-                function (err, items) {
-                    if (err)
-                        res.send("Lấy danh sách khuyến mãi hệ thống" + err);
-                    else
-                        res.send(items);
-                }
-            );
+		function (err, items) {
+			if (err)
+				res.send("Lấy danh sách khuyến mãi hệ thống" + err);
+			else
+				res.send(items);
+		}
+	);
 });
 
 
 //route get Danhsachcuahanghomnayhienthi
 //method get
-app.get("/Danhsachcuahanghomnayhienthi",function(req,res){
+app.get("/Danhsachcuahanghomnayhienthi", function (req, res) {
 	DANHSACH_CUAHANG_HOMNAY.find(
-                function (err, items) {
-                    if (err)
-                        res.send("Lấy danh sách cửa hàng hôm nay" + err);
-                    else
-                        res.send(items);
-                }
-            );
+		function (err, items) {
+			if (err)
+				res.send("Lấy danh sách cửa hàng hôm nay" + err);
+			else
+				res.send(items);
+		}
+	);
 });
 
 
 //route get Danhsachmonangoiy
 //method get
-app.get("/Danhsachmonangoiy",function(req,res){
+app.get("/Danhsachmonangoiy", function (req, res) {
 	MONAN_GOIY.find(
-                function (err, items) {
-                    if (err)
-                        res.send("Lấy danh sách món ăn gợi ý" + err);
-                    else
-                        res.send(items);
-                }
-            );
+		function (err, items) {
+			if (err)
+				res.send("Lấy danh sách món ăn gợi ý" + err);
+			else
+				res.send(items);
+		}
+	);
 });
 
 
@@ -1009,12 +954,12 @@ app.get("/Danhsachmonangoiy",function(req,res){
 //method post(truyền id món ăn tìm kiếm)
 //Param idMonantimkiem
 
-app.post("/Danhsachmonantimkiemhienthi",urlEncodeParser,function(req,res){
-	MON_AN.find( {"Ten_mon_an": req.body.Ten_mon_an}, function(err, items){
-		if(err)
-		res.send("Lấy tên món ăn bị lỗi : " + err);
+app.post("/Danhsachmonantimkiemhienthi", urlEncodeParser, function (req, res) {
+	MON_AN.find({ "Ten_mon_an": req.body.Ten_mon_an }, function (err, items) {
+		if (err)
+			res.send("Lấy tên món ăn bị lỗi : " + err);
 		else
-		res.send(items);
+			res.send(items);
 	});
 });
 
@@ -1023,47 +968,47 @@ app.post("/Danhsachmonantimkiemhienthi",urlEncodeParser,function(req,res){
 //method post(truyền valueSearch)
 //Param  valueSearch
 //Hiển thị kết quả tìm kiếm gồm danh sách cửa hàng và món ăn cửa hàng đó//
-app.post("/Hienthiketqua_timkiemmonan",urlEncodeParser,function(req,res){
+app.post("/Hienthiketqua_timkiemmonan", urlEncodeParser, function (req, res) {
 	// var vlaaaaa =  req.body.valueSearch;
 	CHINHANH.aggregate(
-    [
-        { 
-            "$lookup" : { 
-                "from" : "loai_monans", 
-                "localField" : "Loai_MonAn", 
-                "foreignField" : "_id", 
-                "as" : "menus"
-            }
-        }, 
-        { 
-            "$lookup" : { 
-                "from" : "mon_ans", 
-                "localField" : "menus.Danh_sach_mon_an", 
-                "foreignField" : "_id", 
-                "as" : "thongTinMonAns"
-            }
-        }, 
-        { 
-            "$project" : { 
-                "Ten_Chi_Nhanh" : 1.0, 
-                "Hinh_Anh_Chi_Nhanh" : 1.0, 
-                "DanhSach_CH" : 1.0, 
-                "thongTinMonAns" : 1.0
-            }
-        }, 
-        { 
-            "$match" : { 
-                "Ten_Chi_Nhanh" : { $regex: req.body.valueSearch, $options: 'i' }
-            }
-        }
-	],
-	 function(err, result){
-		if(err)
-			res.send(err);
-		else
-			res.send(result);
-	}
-);
+		[
+			{
+				"$lookup": {
+					"from": "loai_monans",
+					"localField": "Loai_MonAn",
+					"foreignField": "_id",
+					"as": "menus"
+				}
+			},
+			{
+				"$lookup": {
+					"from": "mon_ans",
+					"localField": "menus.Danh_sach_mon_an",
+					"foreignField": "_id",
+					"as": "thongTinMonAns"
+				}
+			},
+			{
+				"$project": {
+					"Ten_Chi_Nhanh": 1.0,
+					"Hinh_Anh_Chi_Nhanh": 1.0,
+					"DanhSach_CH": 1.0,
+					"thongTinMonAns": 1.0
+				}
+			},
+			{
+				"$match": {
+					"Ten_Chi_Nhanh": { $regex: req.body.valueSearch, $options: 'i' }
+				}
+			}
+		],
+		function (err, result) {
+			if (err)
+				res.send(err);
+			else
+				res.send(result);
+		}
+	);
 
 });
 
@@ -1072,34 +1017,34 @@ app.post("/Hienthiketqua_timkiemmonan",urlEncodeParser,function(req,res){
 //route post HienThiCuaHang_KhachHangYeuThich
 //method post(truyền idKhachHang)
 //Param  idKhachHang
-app.post("/HienThiCuaHang_KhachHangYeuThich",urlEncodeParser,function(req,res){
+app.post("/HienThiCuaHang_KhachHangYeuThich", urlEncodeParser, function (req, res) {
 	KHACH_HANG.aggregate(
 
 		[
-	
+
 			{
 				$match: {
 					// "_id":ObjectId("5ebce3b56d098b0da418591d")
 					_id: mongoose.Types.ObjectId(req.body.idKhachHang)
 				}
 			},
-	
+
 			{
 				$project: {
-				   "Cua_hang_yeu_thich" :1.0
-					
+					"Cua_hang_yeu_thich": 1.0
+
 				}
 			},
-	
+
 			{
 				$unwind: {
 					path: "$Cua_hang_yeu_thich",
-					
+
 				}
 			},
-	
+
 			{
-				$lookup: 
+				$lookup:
 				{
 					from: "cuahangs",
 					localField: "Cua_hang_yeu_thich",
@@ -1107,9 +1052,9 @@ app.post("/HienThiCuaHang_KhachHangYeuThich",urlEncodeParser,function(req,res){
 					as: "ThongTinCuaHang"
 				}
 			},
-	
+
 			{
-				$lookup: 
+				$lookup:
 				{
 					from: "diachis",
 					localField: "ThongTinCuaHang.Dia_Chi_Cua_Hang",
@@ -1117,49 +1062,49 @@ app.post("/HienThiCuaHang_KhachHangYeuThich",urlEncodeParser,function(req,res){
 					as: "DiaChiCuaHang"
 				}
 			},
-	
+
 			{
 				$project: {
-					"ThongTinCuaHang.Ten_Cua_Hang":1.0,
-					"ThongTinCuaHang.Hinh_Anh_Cua_Hang":1.0,
-					"ThongTinCuaHang.Danh_Gia":1.0,
-					"DiaChiCuaHang":1.0					
+					"ThongTinCuaHang.Ten_Cua_Hang": 1.0,
+					"ThongTinCuaHang.Hinh_Anh_Cua_Hang": 1.0,
+					"ThongTinCuaHang.Danh_Gia": 1.0,
+					"DiaChiCuaHang": 1.0
 				}
 			},
-	
+
 		],
-		function(err, result){
-			if(err)
+		function (err, result) {
+			if (err)
 				res.send(err);
 			else
 				res.send(result);
 		}
-	
+
 	);
-	
+
 });
 
 
 //route post Hienthithongtin_taikhoankhachhang
 //method post(truyền idKhachHang)
 //Param  idKhachHang
-app.post("/Hienthithongtin_taikhoankhachhang",urlEncodeParser,function(req,res){
+app.post("/Hienthithongtin_taikhoankhachhang", urlEncodeParser, function (req, res) {
 	KHACH_HANG.aggregate(
 		[
-			{ 
-				"$match" : { 
-					"_id" : mongoose.Types.ObjectId(req.body.idKhachHang)
+			{
+				"$match": {
+					"_id": mongoose.Types.ObjectId(req.body.idKhachHang)
 				}
-			}, 
-			{ 
-				"$project" : { 
-					"Ten_khach_hang" : 1.0, 
-					"Hinh_anh_khach_hang" : 1.0
+			},
+			{
+				"$project": {
+					"Ten_khach_hang": 1.0,
+					"Hinh_anh_khach_hang": 1.0
 				}
 			}
-		], 
-		function(err, result){
-			if(err)
+		],
+		function (err, result) {
+			if (err)
 				res.send(err);
 			else
 				res.send(result);
@@ -1172,20 +1117,104 @@ app.post("/Hienthithongtin_taikhoankhachhang",urlEncodeParser,function(req,res){
 //route post Capnhatthongtin_taikhoancanhan
 //method post(truyền idKhachHang)
 //Param  idKhachHang
-app.post("/Capnhatthongtin_taikhoancanhan",urlEncodeParser,function(req,res)
-{
+app.post("/Capnhatthongtin_taikhoancanhan", urlEncodeParser, function (req, res) {
 	// var tenKH, soDT, email, ngaySinh, gioiTinh;
 	KHACH_HANG.findOneAndUpdate(
-	{ _id: mongoose.Types.ObjectId(req.body.idKhachHang) },
-	{
-		$set : {Ten_khach_hang : "Ngọc Hiền" , So_dien_thoai: "09098877665", Email: "lengochien@gmail.com", Ngay_sinh: "05/20/1998", Gioi_tinh:"Nữ"}
-	},
-	function (err) {
-		if (err)
-			res.send("\nCập nhật thông tin cá nhân lỗi : " + err);
-		else
-			res.send("\nCập nhật  thông tin cá nhân thành công !");
-	}
-);
+		{ _id: mongoose.Types.ObjectId(req.body.idKhachHang) },
+		{
+			$set: { Ten_khach_hang: "Ngọc Hiền", So_dien_thoai: "09098877665", Email: "lengochien@gmail.com", Ngay_sinh: "05/20/1998", Gioi_tinh: "Nữ", Hinh_anh_khach_hang: "pick.png" }
+		},
+		function (err) {
+			if (err)
+				res.send("\nCập nhật thông tin cá nhân lỗi : " + err);
+			else
+				res.send("\nCập nhật  thông tin cá nhân thành công !");
+		}
+	);
 });
- 
+
+
+//route post Themcuahangyeuthich_khachhang
+//method post(truyền idKhachHang)
+//Param  idKhachHang
+// app.post("/Themcuahangyeuthich_khachhang", urlEncodeParser, function (req, res) {
+// 	KHACH_HANG.find(
+// 		{
+// 			'_id': mongoose.Types.ObjectId(req.body.idKhachHang)
+// 		},
+// 		function (err, result) {
+// 			if (err)
+// 				console.log("Thêm cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + err);
+// 			else
+// 			{
+// 				if (result != null) {
+// 					if(req.body.favorite == "0"){
+// 						KHACH_HANG.findOneAndUpdate(
+// 							{ '_id': req.body.idKhachHang },
+// 							{ $pull: { 'Cua_hang_yeu_thich': req.body.idCuahang } },
+// 							function (err, result) {
+// 								if (err)
+// 									res.send("Bỏ cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + err);
+// 								else
+// 									res.send("Bỏ cửa hàng vào cửa hàng yêu thích mới thành công !" + result);
+// 							}
+// 						);
+// 					} else if(req.body.favorite == "1"){
+// 						KHACH_HANG.findOneAndUpdate(
+// 							{ '_id':req.body.idKhachHang },
+// 							{ $push: { 'Cua_hang_yeu_thich': req.body.idCuahang } },
+// 							function (err, result) {
+// 								if (err)
+// 									res.send("Thêm cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + err);
+// 								else
+// 									res.send("Thêm cửa hàng vào cửa hàng yêu thích mới thành công !" + result);
+// 							}
+	
+// 						);
+// 					}
+// 				}
+// 			}
+// 		}
+// 	);
+// });
+
+app.post("/Themcuahangyeuthich_khachhang", urlEncodeParser, function (req, res) {
+	KHACH_HANG.find(
+		{
+			'_id': mongoose.Types.ObjectId(req.body.idKhachHang)
+		},
+		function (err, result) {
+			if (err)
+				console.log("Thêm cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + err);
+			else
+			{
+				if (result != null) {
+					if(req.body.favorite == "0"){
+						KHACH_HANG.findOneAndUpdate(
+							{ '_id': req.body.idKhachHang },
+							{ $pull: { 'Cua_hang_yeu_thich': req.body.idCuahang } },
+							function (err, result) {
+								if (err)
+									res.send("Bỏ cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + err);
+								else
+									res.send("Bỏ cửa hàng vào cửa hàng yêu thích mới thành công !" + result);
+							}
+						);
+					} else if(req.body.favorite == "1"){
+						KHACH_HANG.findOneAndUpdate(
+							{ '_id':req.body.idKhachHang },
+							{ $push: { 'Cua_hang_yeu_thich': req.body.idCuahang } },
+							function (err, result) {
+								if (err)
+									res.send("Thêm cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + err);
+								else
+									res.send("Thêm cửa hàng vào cửa hàng yêu thích mới thành công !" + result);
+							}
+	
+						);
+					}
+				}
+			}
+		}
+	);
+});

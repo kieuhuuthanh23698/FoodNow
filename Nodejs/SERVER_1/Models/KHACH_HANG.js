@@ -6,6 +6,7 @@ const khachhangSchema = new mongoose.Schema({
     Email: String,
     Ngay_sinh: Date,
     Gioi_tinh: String,
+    Hinh_anh_khach_hang: String,
     Dia_chi_nha: mongoose.Types.ObjectId,
     Dia_chi_cong_ty: mongoose.Types.ObjectId,
     Dia_chi_khac: [{ type: mongoose.Types.ObjectId }],

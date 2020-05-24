@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 var app = new express();
 const server = require('http').Server(app);
 server.listen(3000);
-// const connectString = 'mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb';
-const connectString = 'mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.net/FoodNow?retryWrites=true&w=majority';
+const connectString = 'mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb';
+// const connectString = 'mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.net/FoodNow?retryWrites=true&w=majority';
 mongoose.connect(connectString,
     { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false },
     function (err) {
@@ -567,8 +567,8 @@ mongoose.connect(connectString,
             /*Thêm khách hàng */
             // let listKH = [];
 
-            // listKH.push({Ten_khach_hang:"Kiều Hữu Thành", So_dien_thoai:"0908447355", Email:"kieuhuuthanh@gmail.com", Ngay_sinh:"06/24/1998", Gioi_tinh:"Nam", Dia_chi_nha:"140 Lê Trọng Tấn, P.Tây Thạnh, Q. Tân Phú", Dia_chi_cong_ty:"Số 6, Phan Đình Giót, P.2, Q.Tân Bình", Tai_khoan:"hatranganh@gmail.com", Mat_khau:"123"});//Cơm//
-            // listKH.push({Ten_khach_hang:"Lê Thị Ngọc Hiền", So_dien_thoai:"0908447355", Email:"lethingochien@gmail.com",Ngay_sinh:"05/22/1998", Gioi_tinh:"Nữ", Dia_chi_nha:"140 Lê Trọng Tấn, P.Tây Thạnh, Q. Tân Phú", Dia_chi_cong_ty:"Số 6, Phan Đình Giót, P.2, Q.Tân Bình", Tai_khoan:"dominhminh@gmail.com", Mat_khau:"123"});//Cơm//
+            // listKH.push({Ten_khach_hang:"Kiều Hữu Thành", So_dien_thoai:"0908447355", Email:"kieuhuuthanh@gmail.com", Ngay_sinh:"06/24/1998", Gioi_tinh:"Nam", Hinh_anh_khach_hang:"unnamed.png", Dia_chi_nha:"140 Lê Trọng Tấn, P.Tây Thạnh, Q. Tân Phú", Dia_chi_cong_ty:"Số 6, Phan Đình Giót, P.2, Q.Tân Bình", Tai_khoan:"hatranganh@gmail.com", Mat_khau:"123"});//Cơm//
+            // listKH.push({Ten_khach_hang:"Lê Thị Ngọc Hiền", So_dien_thoai:"0908447355", Email:"lethingochien@gmail.com",Ngay_sinh:"05/22/1998", Gioi_tinh:"Nữ",  Hinh_anh_khach_hang:"unnamed.png", Dia_chi_nha:"140 Lê Trọng Tấn, P.Tây Thạnh, Q. Tân Phú", Dia_chi_cong_ty:"Số 6, Phan Đình Giót, P.2, Q.Tân Bình", Tai_khoan:"dominhminh@gmail.com", Mat_khau:"123"});//Cơm//
             // KHACH_HANG.db.dropCollection();
 
             // listKH.forEach(function insert(currentValue, index, array) {
@@ -578,6 +578,7 @@ mongoose.connect(connectString,
             //         Email: currentValue.Email,
             //         Ngay_sinh: currentValue.Ngay_sinh,
             //         Gioi_tinh: currentValue.Gioi_tinh,
+            //         Hinh_anh_khach_hang: currentValue.Hinh_anh_khach_hang,
             //         Dia_chi_khac: [],
             //         Tai_khoan: currentValue.Tai_khoan,
             //         Mat_khau: currentValue.Mat_khau,
@@ -903,7 +904,47 @@ mongoose.connect(connectString,
             //     }
             // });
 
+            //Thêm cửa hàng vào cửa hàng yêu thích trong khách hàng
+            KHACH_HANG.find(
+                {
+                    'Cua_hang_yeu_thich': { $in: [mongoose.Types.ObjectId("5eba0ad05f15d311d4d6b67f")] },
+                    '_id': mongoose.Types.ObjectId("5ebce3b56d098b0da418591d")
+                },
+                // {$match: {_id: mongoose.Types.ObjectId("5eba0ad05f15d311d4d6b682")}},
 
+                function (err, result) {
+                    if (err)
+                        console.log("Thêm cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + err);
+                    else
+                        if (result != null) {
+                            KHACH_HANG.findOneAndUpdate(
+                                { '_id': mongoose.Types.ObjectId("5ebce3b56d098b0da418591d") },
+                                { $pull: { 'Cua_hang_yeu_thich': mongoose.Types.ObjectId("5eba0ad05f15d311d4d6b67f") } },
+                                function (err,result) {
+                                    if (err)
+                                        console.log("Bỏ cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + err);
+                                    else
+                                        console.log("Bỏ cửa hàng vào cửa hàng yêu thích mới thành công !" + result);
+                                }
+
+                            );
+                        }
+                        else {
+                            KHACH_HANG.findOneAndUpdate(
+                                { '_id': mongoose.Types.ObjectId("5ebce3b56d098b0da418591d") },
+                                { $push: { 'Cua_hang_yeu_thich': mongoose.Types.ObjectId("5eba2fe316e456336430257f") } },
+                                function (err, result) {
+                                    if (err)
+                                        console.log("Thêm cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + err);
+                                    else
+                                        console.log("Thêm cửa hàng vào cửa hàng yêu thích mới thành công !" + result);
+                                }
+
+                            );
+                        }
+
+                }
+            );
         }
 
     }
