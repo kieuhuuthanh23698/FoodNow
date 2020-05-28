@@ -24,3 +24,4 @@ module.exports = mongoose.model("KHUYENMAI_CUAHANG", khuyenmaicuahangSchema);
 // }
 
 // module.exports = { createExampleData }
+

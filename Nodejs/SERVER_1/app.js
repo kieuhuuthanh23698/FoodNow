@@ -17,6 +17,24 @@ const io = require('socket.io')(server);
 
 app.set("view engine", "ejs");
 app.use("/Public", express.static('Public'));
+app.use(function (req, res, next) {
+
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:81');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
+});
 // app.get("/", function(req, res){
 //   res.render("main");
 // });
@@ -794,14 +812,21 @@ app.post("/KhuyenMaiCuaHang", urlEncodeParser, function (req, res) {
 			res.send("Lấy danh sách khuyến mãi cửa hàng : " + err);
 		}
 		else {
-			KHUYENMAI_CUAHANG.find({ '_id': { $in: KhuyenMaiCuaHang.Khuyen_Mai_CH } },
-				function (err, listKhuyenMai) {
-					if (err)
-						res.send("Lấy danh sách khuyến mãi  gặp lỗi : " + err);
-					else
-						res.send(listKhuyenMai);
-				}
-			);
+			if(KhuyenMaiCuaHang.Khuyen_Mai_CH != null){
+				KHUYENMAI_CUAHANG.find({ '_id': { $in: KhuyenMaiCuaHang.Khuyen_Mai_CH } },
+					function (err, listKhuyenMai) {
+						if (err)
+							res.send("Lấy danh sách khuyến mãi  gặp lỗi : " + err);
+						else
+							res.send(listKhuyenMai);
+					}
+				);
+			} else {
+				res.send({
+					return_code: "-1",
+					error_infor: "Cửa hàng không có khuyến mãi !"
+				});
+			}
 		}
 	});
 

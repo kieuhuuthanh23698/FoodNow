@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Login Admin - Camera Minh Long</title>
 	<link rel="icon" href="<?php echo base_url();?>images/logo-ver40x40.png">
-<link rel="stylesheet" href="<?php echo base_url()?>css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="<?php echo base_url()?>css/bootstrap.min.css">
 <script src="<?php echo base_url()?>js/jquery.js" ></script>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/mycss.css">
 </head>

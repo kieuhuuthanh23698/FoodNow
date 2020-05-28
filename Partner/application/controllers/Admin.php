@@ -24,11 +24,11 @@ class Admin extends CI_Controller {
  		// 	redirect(base_url('admin'));
  		// else
  		// {
-			$giaodien['header'] = $this->load->view('admin/header', NULL, TRUE);
-			$giaodien['body'] = $this->load->view('admin/body', NULL, TRUE);
-			$giaodien['content'] = $this->load->view('admin/content', NULL,TRUE);
-			$giaodien['footer'] = $this->load->view('admin/footer', NULL, TRUE);
-			$this->load->view('page/masterAdmin', $giaodien);
+			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
+			$data['left_content'] = $this->load->view('new_admin/left_content', NULL, TRUE);
+			$data['content'] = $this->load->view('new_admin/content', NULL,TRUE);
+			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
+			$this->load->view('page/page', $data);
 		//}
  	}
 }

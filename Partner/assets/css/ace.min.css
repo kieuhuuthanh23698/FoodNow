@@ -263,7 +263,6 @@ h6.bigger {
 ol,
 ul {
 				padding: 0;
-				margin: 0 0 10px 25px
 }
 
 ol.margin-5,
@@ -2183,7 +2182,7 @@ pre.prettyprint {
 				top: 0;
 				bottom: 0;
 				z-index: -1;
-				background-color: inherit;
+				background-color: #2a3a51;
 				border-style: inherit;
 				border-color: inherit;
 				border-width: inherit
@@ -5621,7 +5620,7 @@ body.mob-safari .sidebar.sidebar-fixed {
 				color: #FFF!important;
 				text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
 				background-image: none!important;
-				border: 5px solid #FFF;
+				/*border: 5px solid #FFF;*/
 				border-radius: 0;
 				box-shadow: none!important;
 				-webkit-transition: background-color .15s, border-color .15s, opacity .15s;
@@ -5629,7 +5628,8 @@ body.mob-safari .sidebar.sidebar-fixed {
 				transition: background-color .15s, border-color .15s, opacity .15s;
 				vertical-align: middle;
 				margin: 0;
-				position: relative
+				position: relative;
+
 }
 
 .btn-group .dropdown-toggle,
@@ -21568,9 +21568,9 @@ input.typeahead.scrollable~.tt-menu {
 }
 
 .no-skin .sidebar {
-				background-color: #F2F2F2;
+				background-color: #2a3a51;
 				border-style: solid;
-				border-color: #CCC;
+				border-color: #2a3a51;
 				border-width: 0 1px 0 0
 }
 
@@ -21689,8 +21689,8 @@ input.typeahead.scrollable~.tt-menu {
 }
 
 .no-skin .sidebar-toggle {
-				background-color: #F3F3F3;
-				border-color: #E0E0E0
+				background-color: #2a3a51;
+				border-color: #2a3a51;
 }
 
 .no-skin .sidebar-toggle>.ace-icon {

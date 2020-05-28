@@ -904,6 +904,11 @@ mongoose.connect(connectString,
             //     }
             // });
 
+
+             //Login
+            CUAHANG.find()
+
+
             //Thêm cửa hàng vào cửa hàng yêu thích trong khách hàng
             KHACH_HANG.find(
                 {
