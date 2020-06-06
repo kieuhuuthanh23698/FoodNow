@@ -25,7 +25,8 @@ class Admin extends CI_Controller {
  		// else
  		// {
 			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
-			$data['left_content'] = $this->load->view('new_admin/left_content', NULL, TRUE);
+			$view['kmht'] = "ksdfsdmht";
+			$data['left_content'] = $this->load->view('new_admin/left_content',$view , TRUE);
 			$data['content'] = $this->load->view('new_admin/content', NULL,TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);

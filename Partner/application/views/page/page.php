@@ -26,35 +26,14 @@
   <!-- Daterange picker -->
   <link rel="stylesheet" href="<?php echo base_url();?>plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
-  <link rel="stylesheet" href="<?php echo base_url();?>plugins/summernote/summernote-bs4.css">
+  <!-- <link rel="stylesheet" href="<?php echo base_url();?>plugins/summernote/summernote-bs4.css"> -->
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="sidebar-mini layout-fixed" onload="loadSanPham()" style="height: auto;
-    font-size: 1rem !important;
-    font-weight: 400 !important;
-    line-height: 1.5 !important;">
-  <style type="text/css">
-  </style>
-<div class="wrapper">
-
-  <!-- Navbar -->
-  <?php echo isset($header) ? $header : '';?>
-  <!-- /.navbar -->
-
-  <!-- Main Sidebar Container -->
-  <?php echo isset($left_content) ? $left_content : '';?>
-
-  <!-- Content Wrapper. Contains page content -->
-  <?php echo isset($content) ? $content : '';?>
-
-  <!-- footer -->
-  <?php echo isset($footer) ? $footer : '';?>
-  
-<!-- ./wrapper -->
-
-</div>
-<!-- ./wrapper -->
+<body class="sidebar-mini layout-fixed" style="height: auto;
+    font-size: "1rem !important";
+    font-weight: "400 !important";
+    line-height: "1.5 !important";>
 <!-- jQuery -->
 <script src="<?php echo base_url()?>plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -108,14 +87,27 @@
       });
 </script>
 
+<script type="text/javascript">
+  $(function () {
+        $("#example2").DataTable({
+          "responsive": true,
+          "autoWidth": false,
+        });
+      });
+</script>
+
+<script type="text/javascript">
+  $(function () {
+        $("#example3").DataTable({
+          "responsive": true,
+          "autoWidth": false,
+        });
+      });
+</script>
 <!-- Check đúng khi save -->
 <link rel="stylesheet" href="<?php echo base_url()?>plugins/toastr/toastr.min.css">
 <script src="<?php echo base_url()?>plugins/toastr/toastr.min.js"></script>
-<script type="text/javascript">
-  $('.toastrDefaultSuccess').click(function() {
-      toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
-    });
-</script>
+
 
 <!-- Ghi chú KMCH -->
 <script src="<?php echo base_url()?>dist/js/adminlte.min.js"></script>
@@ -142,7 +134,7 @@
         </script>
 
 <!-- Chưa điền thông tin -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 $(document).ready(function () {
   $.validator.setDefaults({
     submitHandler: function () {
@@ -187,14 +179,32 @@ $(document).ready(function () {
     }
   });
 });
-</script>
+</script> -->
 
 </script>
 <!-- Ngày giờ bắt đầu - Ngày giờ kết thúc -->
 
 <!-- Đồng hồ -->
 
+<div class="wrapper">
 
+  <!-- Navbar -->
+  <?php echo isset($header) ? $header : '';?>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <?php echo isset($left_content) ? $left_content : '';?>
+
+  <!-- Content Wrapper. Contains page content -->
+  <?php echo isset($content) ? $content : '';?>
+
+  <!-- footer -->
+  <?php echo isset($footer) ? $footer : '';?>
+  
+<!-- ./wrapper -->
+
+</div>
+<!-- ./wrapper -->
 <div class="jqvmap-label" style="display: none;"></div></body></html>
 
 

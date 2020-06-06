@@ -24,26 +24,29 @@
 	
 <script type="text/javascript">
 	$("#dangnhap").click(function(event) {
-		localStorage.setItem("partnerID", $('#username').val());
-		// $.ajax({
-		// 	url: '<?php echo base_url()?>admin/checkAccount',
-		// 	type: 'POST',
-		// 	//dataType: 'html',
-		// 	data: { username: $('#username').val() , password: $("#password").val()},
-		// })
-		// .done(function(data) {
-		// 	if(data == 1)
-		// 	{
-				window.location = '<?php echo base_url()?>admin/homeAdmin';
+		$.ajax({
+			url: 'http://localhost:3000/Danhnhapcuahhang',
+			type: 'POST',
+			dataType: 'json',
+			data: { tenTaikhoan: $('#username').val() , matKhau: $("#password").val()},
+		})
+		.done(function(data) {
+			debugger;
+			if(data.return_code == "1")
+			{
 
-		// 		// this.windown.location.href = 'google.com.vn';
+			localStorage.setItem("partnerID", data.id);
+			// 		// this.windown.location.href = 'google.com.vn';
 		 		alert(localStorage.getItem('partnerID') + " đăng nhập thành công !");
-		// 	}
-		// 	else if(data == 0)
-		// 	{
-		// 		alert("Bạn đã đăng nhập thất bại !");
-		// 	}
-		// })
+		 		// alert(localStorage.getItem('partnerID') + " đăng nhập thành công !");
+				window.location = '<?php echo base_url()?>admin/homeAdmin';
+			}
+			else if(data.return_code == "0")
+			{
+				alert("Bạn đã đăng nhập thất bại !");
+				alert("Error : " + data.error_infor);
+			}
+		})
 	});
 </script>
 </body>

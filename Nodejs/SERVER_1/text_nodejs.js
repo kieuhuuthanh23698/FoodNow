@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 var app = new express();
 const server = require('http').Server(app);
 server.listen(3000);
-const connectString = 'mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb';
-// const connectString = 'mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.net/FoodNow?retryWrites=true&w=majority';
+// const connectString = 'mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb';
+const connectString = 'mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.net/FoodNow?retryWrites=true&w=majority';
 mongoose.connect(connectString,
     { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false },
     function (err) {
@@ -107,6 +107,8 @@ mongoose.connect(connectString,
             // listKHHT.push({ gioBD: "12", gioKT: "16", icon: "bay.png", magg : "TIEPSUCVN", phanTramGg : "40"});
             // listKHHT.push({ gioBD: "8", gioKT: "12", icon: "bay.png", magg : "CONOWGIAO", phanTramGg : "40"});
             // listKHHT.push({ gioBD: "12", gioKT: "15", icon: "bay.png", magg : "NOWNEW", phanTramGg : "20"});
+            // listKHHT.push({ gioBD: "12", gioKT: "15", icon: "bay.png", magg : "BUATOI", phanTramGg : "20"});
+
             // KHUYENMAI_HETHONG.db.dropCollection();
             // listKHHT.forEach(function insert(currentValue, index, array) {
             //     var newKhuyenMai_HT = new KHUYENMAI_HETHONG({
@@ -183,8 +185,8 @@ mongoose.connect(connectString,
 
             /*Thêm cửa hàng vào danh sách hôm nay ăn gì*/
             // DANHSACH_CUAHANG_HOMNAY.findOneAndUpdate(
-            //     { _id: "5ebabdafe4481445a896a794" },
-            //     { $push: { DanhSach_CH: "5eba0ad05f15d311d4d6b682" } },
+            //     { _id: "5ebabdafe4481445a896a795" },
+            //     { $push: { DanhSach_CH: "5eba0ad05f15d311d4d6b67f" } },
             //     function (err) {
             //         if (err)
             //             console.log("Thêm cửa hàng trong danh sách hôm nay mới bị lỗi : " + err);
@@ -229,8 +231,8 @@ mongoose.connect(connectString,
 
             /*Thêm cửa hàng trong danh mục cửa hàng trang chủ*/
             // DANHMUC_CUAHANG_TRANGCHU.findOneAndUpdate(
-            //     { _id: "5eb97ce18e532614d02938cf" },
-            //     { $push: { DanhSach_CH: "5ec39da122336e32d01a2403" } },
+            //     { _id: "5eb97ce18e532614d02938cc" },
+            //     { $push: { DanhSach_CH: "5eba0ad05f15d311d4d6b687" } },
             //     function (err) {
             //         if (err)
             //             console.log("Thêm cửa hàng trong danh mục cửa hàng trang chủ mới bị lỗi : " + err);
@@ -369,103 +371,103 @@ mongoose.connect(connectString,
             // );
 
             /*Thêm cửa hàng */
-            let listCUAHANG = [];
+            // let listCUAHANG = [];
 
             // listCUAHANG.push({
-            //     Ten_Cua_Hang: "Thành Đạt - Hủ Tiếu Nam Vang - Nguyễn Hữu Cầu", Dia_Chi_Cua_Hang: "22B Nguyễn Hữu Cầu, P.Tân Định, Quận 1, TP.HCM", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
-            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Ten_Tai_Khoan: "FOOD00000001", Mat_Khau: "FOOD00000001", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            //     Ten_Cua_Hang: "Thành Đạt - Hủ Tiếu Nam Vang - Nguyễn Hữu Cầu", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
             // });
+            //Dia_Chi_Cua_Hang: "22B Nguyễn Hữu Cầu, P.Tân Định, Quận 1, TP.HCM"
             // listCUAHANG.push({
             //     Ten_Cua_Hang: "Thành Đạt - Hủ Tiếu Nam Vang - Nguyễn Thị Nhỏ", Dia_Chi_Cua_Hang: "29 Nguyễn Thị Nhỏ, P.9, Tân Bình, TP.HCM", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
-            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Ten_Tai_Khoan: "FOOD00000002", Mat_Khau: "FOOD00000002", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
             // });
             // listCUAHANG.push({
             //     Ten_Cua_Hang: "Thành Đạt - Hủ Tiếu Nam Vang - Âu Cơ", Dia_Chi_Cua_Hang: "609 Âu Cơ, Phú Trung, Tân Phú, TP.HCM", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
-            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Ten_Tai_Khoan: "FOOD00000003", Mat_Khau: "FOOD00000003", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
             // });
             // listCUAHANG.push({
             //     Ten_Cua_Hang: "Thành Đạt - Hủ Tiếu Nam Vang - Nguyễn Thượng Hiển", Dia_Chi_Cua_Hang: "316 Nguyễn Thượng Hiển, P.4, Quận 3, TP.HCM", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
-            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Ten_Tai_Khoan: "FOOD00000004", Mat_Khau: "FOOD00000004", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
             // });
             // listCUAHANG.push({
             //     Ten_Cua_Hang: "Đại Đồng Delivery - Cơm Tấm & Bún Thịt Nướng - Kha Vạn Cận", Dia_Chi_Cua_Hang: "942/1 Kha Vạn Cận, P.Trường Thọ, Thủ Đức, TP.HCM", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
-            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Ten_Tai_Khoan: "FOOD00000005", Mat_Khau: "FOOD00000005", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
             // });
             // listCUAHANG.push({
             //     Ten_Cua_Hang: "Đại Đồng Delivery - Cơm Tấm & Bún Thịt Nướng - Đường 17", Dia_Chi_Cua_Hang: "25/38 Đường 17, P.Linh Trung, Thủ Đức, TP.HCM", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
-            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Ten_Tai_Khoan: "FOOD00000006", Mat_Khau: "FOOD00000006", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg",  Trang_Thai_Cua_Hang: "Đang mở cửa"
             // });
             // listCUAHANG.push({
             //     Ten_Cua_Hang: "Bánh Mì Hà Nội - Bánh Mì Thịt Nướng - Hòa Hưng", Dia_Chi_Cua_Hang: "246/55A Hòa Hưng, P.13, Quận 10, TP.HCM", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
-            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Ten_Tai_Khoan: "FOOD00000007", Mat_Khau: "FOOD00000007", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
             // });
             // listCUAHANG.push({
             //     Ten_Cua_Hang: "Bánh Mì Hà Nội - Bánh Mì Thịt Nướng - Nguyễn Sơn", Dia_Chi_Cua_Hang: "76/10/10 Nguyễn Sơn, P.Phú Thọ Hòa, Tân Phú, TP.HCM", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
-            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Ten_Tai_Khoan: "FOOD00000008", Mat_Khau: "FOOD00000008", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg",  Trang_Thai_Cua_Hang: "Đang mở cửa"
             // });
             // listCUAHANG.push({
             //     Ten_Cua_Hang: "GUTA CAFE - Nguyễn Phúc Chu", Dia_Chi_Cua_Hang: "53 Nguyễn Phúc Chu, P.15, Tân Bình, TP.HCM", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
-            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Ten_Tai_Khoan: "FOOD00000010", Mat_Khau: "FOOD00000010", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg",  Trang_Thai_Cua_Hang: "Đang mở cửa"
             // });
             // listCUAHANG.push({
             //     Ten_Cua_Hang: "GUTA CAFE - Ấp Bắc", Dia_Chi_Cua_Hang: "40 Ấp Bắc, Phường 13, Tân Bình, TP.HCM", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
-            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Ten_Tai_Khoan: "FOOD00000011", Mat_Khau: "FOOD00000011", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg",  Trang_Thai_Cua_Hang: "Đang mở cửa"
             // });
             // listCUAHANG.push({
             //     Ten_Cua_Hang: "GUTA CAFE - Bàu Cát 2", Dia_Chi_Cua_Hang: "102 Bàu Cát 2, P.12, Tân Bình, TP.HCM", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
-            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Ten_Tai_Khoan: "FOOD00000012", Mat_Khau: "FOOD00000012", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg",  Trang_Thai_Cua_Hang: "Đang mở cửa"
             // });
             // listCUAHANG.push({
             //     Ten_Cua_Hang: "Cơm Tâm Sườn Que - Trần Hưng Đạo", Dia_Chi_Cua_Hang: "714 Trần Hưng Đạo, P.2, Quận 5, TP.HCM", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
-            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Ten_Tai_Khoan: "FOOD00000013", Mat_Khau: "FOOD00000013", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
             // });
             // listCUAHANG.push({
             //     Ten_Cua_Hang: "Cơm Tâm Sườn Que - Điện Biên Phủ", Dia_Chi_Cua_Hang: "371 Điện Biên Phủ, P25, Bình Thạnh, TP.HCM", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
-            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Ten_Tai_Khoan: "FOOD00000014", Mat_Khau: "FOOD00000014", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg",  Trang_Thai_Cua_Hang: "Đang mở cửa"
             // });
 
             // listCUAHANG.push({
             //     Ten_Cua_Hang: "Đậu Nành Mix - Lê Văn Sỹ", Dia_Chi_Cua_Hang: "262 Lê Văn Sỹ, P1, Tân Bình, TP.HCM", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
-            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Ten_Tai_Khoan: "FOOD00000015", Mat_Khau: "FOOD00000015", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
             // });
 
             // listCUAHANG.push({
             //     Ten_Cua_Hang: "Đậu Nành Mix - Cách Mạng Tháng 8", Dia_Chi_Cua_Hang: "517 Cách Mạng Tháng Tám, P.13, Q.10, TP.HCM", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
-            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Ten_Tai_Khoan: "FOOD00000016", Mat_Khau: "FOOD00000016", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
             // });
 
             // listCUAHANG.push({
             //     Ten_Cua_Hang: "Nũng Nịu -Cơm Gà Xối Mỡ - Cây Trâm", Dia_Chi_Cua_Hang: "430 Cây Trâm, Gò Vấp, TP.HCM", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
-            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Ten_Tai_Khoan: "FOOD00000017", Mat_Khau: "FOOD00000017", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
             // });
 
             // listCUAHANG.push({
             //     Ten_Cua_Hang: "Nũng Nịu -Cơm Gà Xối Mỡ - Lê Đức Thọ", Dia_Chi_Cua_Hang: "175 Lê Đức Thọ, P.17, Gò Vấp, TP.HCM", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
-            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Ten_Tai_Khoan: "FOOD00000018", Mat_Khau: "FOOD00000018", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg",  Trang_Thai_Cua_Hang: "Đang mở cửa"
             // });
 
             // listCUAHANG.push({
             //     Ten_Cua_Hang: "Nũng Nịu -Cơm Gà Xối Mỡ - Lê Đức Thọ", Dia_Chi_Cua_Hang: "175 Lê Đức Thọ, P.17, Gò Vấp, TP.HCM", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
-            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Ten_Tai_Khoan: "FOOD00000019", Mat_Khau: "FOOD00000019", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg",  Trang_Thai_Cua_Hang: "Đang mở cửa"
             // });
 
             // listCUAHANG.push({
             //     Ten_Cua_Hang: "Đậu Nành Mix - Nguyễn Thái Học", Dia_Chi_Cua_Hang: "193 Nguyễn Thái Học, P.Phạm Ngũ Lão, Q.1, TP.HCM", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
-            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Ten_Tai_Khoan: "FOOD00000014", Mat_Khau: "FOOD00000014", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
             // });
 
             // CUAHANG.db.dropCollection();
             // listCUAHANG.forEach(function insert(currentValue, index, array) {
             //     var newCH = new CUAHANG({
             //         Ten_Cua_Hang: currentValue.Ten_Cua_Hang,
-            //         Dia_Chi_Cua_Hang: currentValue.Dia_Chi_Cua_Hang,
-            //         Mo_Ta_Cua_Hang: currentValue.Mo_Ta_Cua_Hang,
-            //         Thoi_Gian_Bat_Dau: currentValue.Thoi_Gian_Bat_Dau,
-            //         Thoi_Gian_Ket_Thuc: currentValue.Thoi_Gian_Ket_Thuc,
-            //         Danh_Gia: currentValue.Danh_Gia,
-            //         Hinh_Anh_Cua_Hang: currentValue.Hinh_Anh_Cua_Hang,
-            //         Ten_Tai_Khoan: currentValue.Ten_Tai_Khoan,
-            //         Mat_Khau: currentValue.Mat_Khau,
+                    // Dia_Chi_Cua_Hang: currentValue.Dia_Chi_Cua_Hang,
+                    // Mo_Ta_Cua_Hang: currentValue.Mo_Ta_Cua_Hang,
+                    // Thoi_Gian_Bat_Dau: currentValue.Thoi_Gian_Bat_Dau,
+                    // Thoi_Gian_Ket_Thuc: currentValue.Thoi_Gian_Ket_Thuc,
+                    // Danh_Gia: currentValue.Danh_Gia,
+                    // Hinh_Anh_Cua_Hang: currentValue.Hinh_Anh_Cua_Hang,
+                    // Tai_Khoan: currentValue.Tai_Khoan,
             //         Trang_Thai_Cua_Hang: currentValue.Trang_Thai_Cua_Hang,
             //         Khuyen_Mai_CH: [],
             //         Thong_Tin_KH_Dat_Don: [],
@@ -906,50 +908,146 @@ mongoose.connect(connectString,
 
 
              //Login
-            CUAHANG.find()
+            // CUAHANG.find()
 
 
             //Thêm cửa hàng vào cửa hàng yêu thích trong khách hàng
-            KHACH_HANG.find(
-                {
-                    'Cua_hang_yeu_thich': { $in: [mongoose.Types.ObjectId("5eba0ad05f15d311d4d6b67f")] },
-                    '_id': mongoose.Types.ObjectId("5ebce3b56d098b0da418591d")
-                },
-                // {$match: {_id: mongoose.Types.ObjectId("5eba0ad05f15d311d4d6b682")}},
+            // KHACH_HANG.find(
+            //     {
+            //         'Cua_hang_yeu_thich': { $in: [mongoose.Types.ObjectId("5eba0ad05f15d311d4d6b67f")] },
+            //         '_id': mongoose.Types.ObjectId("5ebce3b56d098b0da418591d")
+            //     },
+            //     // {$match: {_id: mongoose.Types.ObjectId("5eba0ad05f15d311d4d6b682")}},
 
-                function (err, result) {
-                    if (err)
-                        console.log("Thêm cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + err);
-                    else
-                        if (result != null) {
-                            KHACH_HANG.findOneAndUpdate(
-                                { '_id': mongoose.Types.ObjectId("5ebce3b56d098b0da418591d") },
-                                { $pull: { 'Cua_hang_yeu_thich': mongoose.Types.ObjectId("5eba0ad05f15d311d4d6b67f") } },
-                                function (err,result) {
-                                    if (err)
-                                        console.log("Bỏ cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + err);
-                                    else
-                                        console.log("Bỏ cửa hàng vào cửa hàng yêu thích mới thành công !" + result);
-                                }
+            //     function (err, result) {
+            //         if (err)
+            //             console.log("Thêm cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + err);
+            //         else
+            //             if (result != null) {
+            //                 KHACH_HANG.findOneAndUpdate(
+            //                     { '_id': mongoose.Types.ObjectId("5ebce3b56d098b0da418591d") },
+            //                     { $pull: { 'Cua_hang_yeu_thich': mongoose.Types.ObjectId("5eba0ad05f15d311d4d6b67f") } },
+            //                     function (err,result) {
+            //                         if (err)
+            //                             console.log("Bỏ cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + err);
+            //                         else
+            //                             console.log("Bỏ cửa hàng vào cửa hàng yêu thích mới thành công !" + result);
+            //                     }
 
-                            );
-                        }
-                        else {
-                            KHACH_HANG.findOneAndUpdate(
-                                { '_id': mongoose.Types.ObjectId("5ebce3b56d098b0da418591d") },
-                                { $push: { 'Cua_hang_yeu_thich': mongoose.Types.ObjectId("5eba2fe316e456336430257f") } },
-                                function (err, result) {
-                                    if (err)
-                                        console.log("Thêm cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + err);
-                                    else
-                                        console.log("Thêm cửa hàng vào cửa hàng yêu thích mới thành công !" + result);
-                                }
+            //                 );
+            //             }
+            //             else {
+            //                 KHACH_HANG.findOneAndUpdate(
+            //                     { '_id': mongoose.Types.ObjectId("5ebce3b56d098b0da418591d") },
+            //                     { $push: { 'Cua_hang_yeu_thich': mongoose.Types.ObjectId("5eba2fe316e456336430257f") } },
+            //                     function (err, result) {
+            //                         if (err)
+            //                             console.log("Thêm cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + err);
+            //                         else
+            //                             console.log("Thêm cửa hàng vào cửa hàng yêu thích mới thành công !" + result);
+            //                     }
 
-                            );
-                        }
+            //                 );
+            //             }
 
-                }
-            );
+            //     }
+            // );
+
+
+             /*Thêm quản lý người dùng*/
+            // let listQLND = [];
+
+            // listQLND.push({Ten_dang_nhap:"FOODCH000001", Mat_khau:"FOODCH000001", Trang_thai:"1"});//Cuahang//
+            // listQLND.push({Ten_dang_nhap:"FOODCN000001", Mat_khau:"FOODCN000001", Trang_thai:"1"});//Chi nhanh//
+            // listQLND.push({Ten_dang_nhap:"FOODAM000001", Mat_khau:"FOODAM000001", Trang_thai:"1"});//Admin//
+            // listQLND.push({Ten_dang_nhap:"FOODSM000001", Mat_khau:"FOODSM000001", Trang_thai:"1"});//SuperAdmin//
+
+
+            // QUANLY_NGUOIDUNG.db.dropCollection();
+            // listQLND.forEach(function insert(currentValue, index, array) {
+            //     var newQuanLy_NguoiDung = new QUANLY_NGUOIDUNG({
+            //        Ten_dang_nhap: currentValue.Ten_dang_nhap,
+            //        Mat_khau: currentValue.Mat_khau,
+            //        Trang_thai: currentValue.Trang_thai
+            //     });
+            //     newQuanLy_NguoiDung.save(function (err) {
+            //         if (err)
+            //             console.log("\nThêm quản lý người dùng mới bị lỗi : " + err);
+            //         else
+            //             console.log("\nThêm quản lý người dùng mới thành công !");
+            //     });
+            // });
+
+            //Thêm quản lý người dùng vào Cửa hàng//
+            // CUAHANG.findOneAndUpdate(
+            //     { _id: "5ed5dc8a925f5d5444e7e651" },
+            //     { $set: { Tai_Khoan: "FOODCH000001" } },
+            //     function (err) {
+            //         if (err)
+            //             console.log("Thêm quản lý người dùng vào cửa hàng mới bị lỗi : " + err);
+            //         else
+            //             console.log("Thêm quản lý người dùng vào cửa hàng mới thành công !");
+            //     }
+            // );
+
+            //Thêm quản lý người dùng vào chi nhánh//
+            // CHINHANH.findOneAndUpdate(
+            //     { _id: "5eba197716ec7530ecb08d29" },
+            //     { $set: { Tai_Khoan: "FOODCN000001" } },
+            //     function (err) {
+            //         if (err)
+            //             console.log("Thêm quản lý người dùng vào chi nhánh mới bị lỗi : " + err);
+            //         else
+            //             console.log("Thêm quản lý người dùng vào chi nhánh mới thành công !");
+            //     }
+            // );
+
+
+            /*Thêm quản lý nhóm người dùng*/
+            // let listQLNND = [];
+
+            // listQLNND.push({Ten_nhom:"Cửa hàng"});//Cuahang//
+            // listQLNND.push({Ten_nhom:"Chi nhánh"});//Chinhanh//
+            // listQLNND.push({Ten_nhom:"Admin"});//Admin//
+            // listQLNND.push({Ten_nhom:"Supper Admin"});//SupperAdmin//
+
+            // QL_NHOM_NGUOIDUNG.db.dropCollection();
+            // listQLNND.forEach(function insert(currentValue, index, array) {
+            //     var newQL_Nhom_NguoiDung = new QL_NHOM_NGUOIDUNG({
+            //        Ten_nhom: currentValue.Ten_nhom,
+            //        DanhSach_NguoiDung :[]
+            //     });
+            //     newQL_Nhom_NguoiDung.save(function (err) {
+            //         if (err)
+            //             console.log("\nThêm quản lý nhóm người dùng mới bị lỗi : " + err);
+            //         else
+            //             console.log("\nThêm quản lý nhóm người dùng mới thành công !");
+            //     });
+            // });
+
+            // *Thêm quản lý người dùng vào danh sách người dùng*/
+            // QL_NHOM_NGUOIDUNG.findOneAndUpdate(
+            //     { _id: "5ed5eec8cfcd901dcccc799f"},
+            //     { $push: { DanhSach_NguoiDung: mongoose.Types.ObjectId("5ed5f0f5715159572cf6b628") } },
+            //     function (err) {
+            //         if (err)
+            //             console.log("Thêm người dùng vào danh sách người dùng mới bị lỗi : " + err);
+            //         else
+            //             console.log("Thêm người dùng vào danh sách người dùng mới thành công !");
+            //     }
+            // );
+
+            //Thêm khuyến mãi vào cửa hàng //
+            // CUAHANG.findOneAndUpdate(
+            //     { _id: "5ed5dc8a925f5d5444e7e651" },
+            //     { $push: { Khuyen_Mai_CH: "5ed202b28154a02058331ba0" } },
+            //     function (err) {
+            //         if (err)
+            //             console.log("Thêm khuyến mãi cửa hàng vào cửa hàng mới bị lỗi : " + err);
+            //         else
+            //             console.log("Thêm khuyến mãi cửa hàng vào cửa hàng mới thành công !");
+            //     }
+            // );
         }
 
     }
@@ -970,6 +1068,9 @@ const DANHMUC_LOAIMONAN = require('./Models/DANHMUC_LOAIMONAN');
 const DIACHI = require('./Models/DIACHI');
 const LOAI_MONAN = require('./Models/LOAI_MONAN');
 const MONAN_GOIY = require('./Models/MONAN_GOIY');
+const QUANLY_NGUOIDUNG = require('./Models/QUANLY_NGUOIDUNG');
+const QL_NHOM_NGUOIDUNG = require('./Models/QL_NHOM_NGUOIDUNG');
+
 
 //Một CHINHANH có nhiều CUAHANG
 //CUAHANG riêng biệt sẽ có 1 CHINHANH riêng biệt

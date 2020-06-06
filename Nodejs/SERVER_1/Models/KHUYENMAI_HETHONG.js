@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
 const khuyenmaihethongSchema = new mongoose.Schema({
+    MaGiamGia: String,
     GioBD: String,
     GioKT: String,
     Icon: String,
-    DanhSach_CH: [{ type: mongoose.Types.ObjectId }],
-    MaGiamGia: String,
-    PhanTram_GiamGia: String
+    PhanTram_GiamGia: String,
+    DanhSach_CH: [{ type: mongoose.Types.ObjectId }]
 });
 
 module.exports = mongoose.model("KHUYENMAI_HETHONG", khuyenmaihethongSchema);
