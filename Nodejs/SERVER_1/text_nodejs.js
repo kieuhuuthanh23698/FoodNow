@@ -217,10 +217,10 @@ mongoose.connect(connectString,
             // listDMCHTC.push({ Chu_De_Chinh: "Ăn mì, bún, phở ở nhà"});
             // // DANHMUC_CUAHANG_TRANGCHU.db.dropCollection();
             // listDMCHTC.forEach(function insert(currentValue, index, array) {
-            //     var newDanhMuc_CHTC = new DANHMUC_CUAHANG_TRANGCHU({
-            //         Chu_De_Chinh: currentValue.Chu_De_Chinh,
-            //         DanhSach_CH:[] 
-            //     });
+                // var newDanhMuc_CHTC = new DANHMUC_CUAHANG_TRANGCHU({
+                //     Chu_De_Chinh: currentValue.Chu_De_Chinh,
+                //     DanhSach_CH:[] 
+                // });
             //     newDanhMuc_CHTC .save(function (err) {
             //         if (err)
             //             console.log("\nThêm danh mục cửa hàng trang chủ mới bị lỗi : " + err);
@@ -230,16 +230,16 @@ mongoose.connect(connectString,
             // });
 
             /*Thêm cửa hàng trong danh mục cửa hàng trang chủ*/
-            // DANHMUC_CUAHANG_TRANGCHU.findOneAndUpdate(
-            //     { _id: "5eb97ce18e532614d02938cc" },
-            //     { $push: { DanhSach_CH: "5eba0ad05f15d311d4d6b687" } },
-            //     function (err) {
-            //         if (err)
-            //             console.log("Thêm cửa hàng trong danh mục cửa hàng trang chủ mới bị lỗi : " + err);
-            //         else
-            //             console.log("Thêm cửa hàng trong danh mục cửa hàng trang chủ mới thành công !");
-            //     }
-            // );
+            DANHMUC_CUAHANG_TRANGCHU.findOneAndUpdate(
+                { _id: "5edf78189f6ffd1524eb3557" },
+                { $push: { DanhSach_CH: "5eba0ad05f15d311d4d6b682" } },
+                function (err) {
+                    if (err)
+                        console.log("Thêm cửa hàng trong danh mục cửa hàng trang chủ mới bị lỗi : " + err);
+                    else
+                        console.log("Thêm cửa hàng trong danh mục cửa hàng trang chủ mới thành công !");
+                }
+            );
 
 
             /*Thêm danh mục loại món ăn*/
@@ -312,7 +312,7 @@ mongoose.connect(connectString,
 
 
             /*Thêm chi nhánh */
-            // let listCHINHANH = [];
+            let listCHINHANH = [];
 
             // listCHINHANH.push({ Ten_Chi_Nhanh: "Hủ Tiếu Nam Vang Thành Đạt", Hinh_Anh_Chi_Nhanh: "MiQuangNamSon.png" });
             // listCHINHANH.push({ Ten_Chi_Nhanh: "Đại Đồng Delivery - Cơm Tấm & Bún Thịt Nướng", Hinh_Anh_Chi_Nhanh: "TraSua_ChowTea.jpg" });
@@ -328,13 +328,32 @@ mongoose.connect(connectString,
             // listCHINHANH.push({ Ten_Chi_Nhanh: "Bánh Mì Que Đà Nẵng", Hinh_Anh_Chi_Nhanh: "TraSua_ChowTea.jpg" });
             // listCHINHANH.push({ Ten_Chi_Nhanh: "Say Coffee 24h", Hinh_Anh_Chi_Nhanh: "TraSua_ChowTea.jpg" });
             // listCHINHANH.push({ Ten_Chi_Nhanh: "Bánh Mì Má Hải", Hinh_Anh_Chi_Nhanh: "TraSua_ChowTea.jpg" });
-            // listCHINHANH.push({ Ten_Chi_Nhanh: "Passio Cooffee", Hinh_Anh_Chi_Nhanh: "TraSua_ChowTea.jpg" });
+            // listCHINHANH.push({ Ten_Chi_Nhanh: "Cơm Tấm Cây Me", Hinh_Anh_Chi_Nhanh: "TraSua_ChowTea.jpg" });
+            // listCHINHANH.push({ Ten_Chi_Nhanh: "Cơm Văn Phòng Libbi", Hinh_Anh_Chi_Nhanh: "Com_1(1).jpg" });
+            // listCHINHANH.push({ Ten_Chi_Nhanh: "Cơm Món Xào", Hinh_Anh_Chi_Nhanh: "Com_1(2).jpg" });
+            // listCHINHANH.push({ Ten_Chi_Nhanh: "Cơm Sườn Nướng", Hinh_Anh_Chi_Nhanh: "Com_1(3).jpg" });
+            // listCHINHANH.push({ Ten_Chi_Nhanh: "Cơm Gà", Hinh_Anh_Chi_Nhanh: "Com_1(4).jpg" });
+            // listCHINHANH.push({ Ten_Chi_Nhanh: "Cơm Tấm Thanh", Hinh_Anh_Chi_Nhanh: "Com_1(5).jpg" });
+            // listCHINHANH.push({ Ten_Chi_Nhanh: "Cơm Tấm Đêm Mũi Tàu", Hinh_Anh_Chi_Nhanh: "Com_1(6).jpg" });
+            // listCHINHANH.push({ Ten_Chi_Nhanh: "Cơm Tấm Tiến Nhật", Hinh_Anh_Chi_Nhanh: "Com_1(7).jpg" });
+            // listCHINHANH.push({ Ten_Chi_Nhanh: "Cơm Trưa Văn Phòng", Hinh_Anh_Chi_Nhanh: "Com_1(8).jpg" });
+            // listCHINHANH.push({ Ten_Chi_Nhanh: "Cơm Tấm Tiết Kiệm", Hinh_Anh_Chi_Nhanh: "Com_1(9).jpg" });
+            // listCHINHANH.push({ Ten_Chi_Nhanh: "Thế Giới Cơm Tấm", Hinh_Anh_Chi_Nhanh: "Com_1(10).jpg" });
+            // listCHINHANH.push({ Ten_Chi_Nhanh: "Mì An Phở Bún Thịt Nướng", Hinh_Anh_Chi_Nhanh: "BunPho_1.jpg" });
+            // listCHINHANH.push({ Ten_Chi_Nhanh: "Quán Cơm A Trường", Hinh_Anh_Chi_Nhanh: "BunPho_2.jpg" });
+            // listCHINHANH.push({ Ten_Chi_Nhanh: "Tuyết Nhiệt Đới Milk Tea", Hinh_Anh_Chi_Nhanh: "TraSua_1.jpg" });
+            // listCHINHANH.push({ Ten_Chi_Nhanh: "Lục Cafe", Hinh_Anh_Chi_Nhanh: "TraSua_2.jpg" });
+            // listCHINHANH.push({ Ten_Chi_Nhanh: "Kai Coffee", Hinh_Anh_Chi_Nhanh: "TraSua_3.jpg" });
+            // listCHINHANH.push({ Ten_Chi_Nhanh: "Hooga Cafe", Hinh_Anh_Chi_Nhanh: "TraSua_4.jpg" });
+            // listCHINHANH.push({ Ten_Chi_Nhanh: "Phúc Long Coffee", Hinh_Anh_Chi_Nhanh: "TraSua_5.jpg" });
+            // listCHINHANH.push({ Ten_Chi_Nhanh: "Gờ Cafe", Hinh_Anh_Chi_Nhanh: "TraSua_6.jpg" });
 
             // CHINHANH.db.dropCollection();
             // listCHINHANH.forEach(function insert(currentValue, index, array) {
             //     var newChiNhanh = new CHINHANH({
             //         Ten_Chi_Nhanh: currentValue.Ten_Chi_Nhanh,
             //         Hinh_Anh_Chi_Nhanh: currentValue.Hinh_Anh_Chi_Nhanh,
+            //         Tai_Khoan: mongoose.Types.ObjectId(),
             //         DanhSach_CH: [],
             //         Loai_MonAn: []
             //     });
@@ -348,8 +367,8 @@ mongoose.connect(connectString,
 
             //Thêm cửa hàng vào chi nhánh//
             // CHINHANH.findOneAndUpdate(
-            //     { _id: "5eba197716ec7530ecb08d2c" },
-            //     { $push: { DanhSach_CH: "5eba0ad05f15d311d4d6b687" } },
+            //     { _id: "5edd167d8ffa1d2e28e64c46" },
+            //     { $push: { DanhSach_CH: "5edeee4854f9e63750153917" } },
             //     function (err) {
             //         if (err)
             //             console.log("Thêm cửa hàng vào chi nhánh mới bị lỗi : " + err);
@@ -360,8 +379,8 @@ mongoose.connect(connectString,
 
             //Thêm loại món ăn vào chi nhánh//
             // CHINHANH.findOneAndUpdate(
-            //     { _id: "5eba197716ec7530ecb08d2c" },
-            //     { $push: { Loai_MonAn: "5eba211b54974f0b54da7b00" } },
+            //     { _id: "5edd167d8ffa1d2e28e64c30" },
+            //     { $push: { Loai_MonAn: "5edf01e2955e171fec5e700f" } },
             //     function (err) {
             //         if (err)
             //             console.log("Thêm loại món ăn vào chi nhánh mới bị lỗi : " + err);
@@ -371,7 +390,7 @@ mongoose.connect(connectString,
             // );
 
             /*Thêm cửa hàng */
-            // let listCUAHANG = [];
+            let listCUAHANG = [];
 
             // listCUAHANG.push({
             //     Ten_Cua_Hang: "Thành Đạt - Hủ Tiếu Nam Vang - Nguyễn Hữu Cầu", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
@@ -457,17 +476,107 @@ mongoose.connect(connectString,
             //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunBoHue.jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
             // });
 
+            //  listCUAHANG.push({
+            //     Ten_Cua_Hang: "Cơm Văn Phòng Libbi Số 1", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "Com_1(1).jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            // });
+
+            //   listCUAHANG.push({
+            //     Ten_Cua_Hang: "Cơm Món Xào Số 1", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "Com_1(2).jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            // });
+
+            // listCUAHANG.push({
+            //     Ten_Cua_Hang: "Cơm Sườn Nướng Số 1", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "Com_1(3).jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            // });
+
+            // listCUAHANG.push({
+            //     Ten_Cua_Hang: "Cơm Gà Số 1", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "Com_1(4).jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            // });
+
+            // listCUAHANG.push({
+            //     Ten_Cua_Hang: "Cơm Tấm Thanh Số 1", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "Com_1(5).jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            // });
+
+            // listCUAHANG.push({
+            //     Ten_Cua_Hang: "Cơm Tấm Đêm Mũi Tàu Số 1", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "Com_1(7).jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            // });
+
+            // listCUAHANG.push({
+            //     Ten_Cua_Hang: "Cơm Tấm Tiến Nhật Số 1", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "Com_1(8).jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            // });
+
+            // listCUAHANG.push({
+            //     Ten_Cua_Hang: "Cơm Trưa Văn Phòng Số 1", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "Com_1(9).jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            // });
+            
+            // listCUAHANG.push({
+            //     Ten_Cua_Hang: "Cơm Tấm Tiết Kiệm Số 1", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "Com_1(6).jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            // });
+
+            // listCUAHANG.push({
+            //     Ten_Cua_Hang: "Thế Giới Cơm Tấm Số 1", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "Com_1(10).jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            // });
+            
+            // listCUAHANG.push({
+            //     Ten_Cua_Hang: "Mì An Phở Bún Thịt Nướng Số 1", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunPho_1.jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            // });
+            
+            // listCUAHANG.push({
+            //     Ten_Cua_Hang: "Quán Cơm A Trường Số 1", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "BunPho_2.jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            // });
+            
+            // listCUAHANG.push({
+            //     Ten_Cua_Hang: "Tuyết Nhiệt Đới Milk Tea Số 1", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "TraSua_1.jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            // });
+                       
+            // listCUAHANG.push({
+            //     Ten_Cua_Hang: "Lục Cafe Số 1", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "TraSua_2.jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            // });
+
+            // listCUAHANG.push({
+            //     Ten_Cua_Hang: "Kai Coffee Số 1", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "TraSua_3.jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            // });
+
+            // listCUAHANG.push({
+            //     Ten_Cua_Hang: "Hooga Cafe Số 1", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "TraSua_5.jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            // });
+
+            // listCUAHANG.push({
+            //     Ten_Cua_Hang: "Phúc Long Coffee Số 1", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "TraSua_4.jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            // });
+
+            // listCUAHANG.push({
+            //     Ten_Cua_Hang: "Gờ Cafe Số 1", Mo_Ta_Cua_Hang: "", Thoi_Gian_Bat_Dau: "8", Thoi_Gian_Ket_Thuc: "19",
+            //     Danh_Gia: "4", Hinh_Anh_Cua_Hang: "TraSua_6.jpg", Trang_Thai_Cua_Hang: "Đang mở cửa"
+            // });
+
             // CUAHANG.db.dropCollection();
             // listCUAHANG.forEach(function insert(currentValue, index, array) {
             //     var newCH = new CUAHANG({
             //         Ten_Cua_Hang: currentValue.Ten_Cua_Hang,
-                    // Dia_Chi_Cua_Hang: currentValue.Dia_Chi_Cua_Hang,
-                    // Mo_Ta_Cua_Hang: currentValue.Mo_Ta_Cua_Hang,
-                    // Thoi_Gian_Bat_Dau: currentValue.Thoi_Gian_Bat_Dau,
-                    // Thoi_Gian_Ket_Thuc: currentValue.Thoi_Gian_Ket_Thuc,
-                    // Danh_Gia: currentValue.Danh_Gia,
-                    // Hinh_Anh_Cua_Hang: currentValue.Hinh_Anh_Cua_Hang,
-                    // Tai_Khoan: currentValue.Tai_Khoan,
+            //         Dia_Chi_Cua_Hang: mongoose.Types.ObjectId() ,
+            //         Mo_Ta_Cua_Hang: currentValue.Mo_Ta_Cua_Hang,
+            //         Thoi_Gian_Bat_Dau: currentValue.Thoi_Gian_Bat_Dau,
+            //         Thoi_Gian_Ket_Thuc: currentValue.Thoi_Gian_Ket_Thuc,
+            //         Danh_Gia: currentValue.Danh_Gia,
+            //         Hinh_Anh_Cua_Hang: currentValue.Hinh_Anh_Cua_Hang,
+            //         Tai_Khoan: mongoose.Types.ObjectId(),
             //         Trang_Thai_Cua_Hang: currentValue.Trang_Thai_Cua_Hang,
             //         Khuyen_Mai_CH: [],
             //         Thong_Tin_KH_Dat_Don: [],
@@ -493,7 +602,7 @@ mongoose.connect(connectString,
             // );
 
             /*Thêm loại món ăn  */
-            // let listLOAIMA = [];
+            let listLOAIMA = [];
 
             // listLOAIMA.push({ Ten_loai_mon_an: "Món đặc trưng"});//Trà Sữa//
             // listLOAIMA.push({ Ten_loai_mon_an: "Sinh tố"});
@@ -505,6 +614,10 @@ mongoose.connect(connectString,
             // listLOAIMA.push({ Ten_loai_mon_an: "Cơm trưa"});
             // listLOAIMA.push({ Ten_loai_mon_an: "Món đặc trưng"});
 
+            // listLOAIMA.push({ Ten_loai_mon_an: "Món chính"});
+            // listLOAIMA.push({ Ten_loai_mon_an: "Thức uống"});
+
+            // listLOAIMA.push({ Ten_loai_mon_an: "Thực đơn"});
             // LOAI_MONAN.db.dropCollection();
             // listLOAIMA.forEach(function insert(currentValue, index, array) {
             //     var newLoaiMA = new LOAI_MONAN({
@@ -522,8 +635,8 @@ mongoose.connect(connectString,
 
             //Thêm món ăn vào loại món ăn//
             // LOAI_MONAN.findOneAndUpdate(
-            //     { _id: "5eba211b54974f0b54da7b00" },
-            //     { $push: { Danh_sach_mon_an: "5eba2fe316e456336430257f" } },
+            //     { _id: "5edf01e2955e171fec5e700f" },
+            //     { $push: { Danh_sach_mon_an: "5edeffbd8538581b30172470" } },
             //     function (err) {
             //         if (err)
             //             console.log("Thêm món ăn vào loại món ăn mới bị lỗi : " + err);
@@ -544,6 +657,60 @@ mongoose.connect(connectString,
             // listMA.push({ Ten_mon_an: "Sữa Tươi Trân Châu Đường Đen", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
             // listMA.push({ Ten_mon_an: "Nước Ép Dứa Cà Rốt", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
             // listMA.push({ Ten_mon_an: "Sinh Tố Cà Chua", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            //Trà sữa//
+            // listMA.push({ Ten_mon_an: "Hồng trà việt quất", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Dâu tằm kem phô mai", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Trà xanh kiwi chanh leo", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Trà dứa nhiệt đới", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Trà xanh xoài", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Trà sữa bánh pudding", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Trà nhật đậu đỏ", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Hồng trà", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Trà sữa ô long", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+
+            // listMA.push({ Ten_mon_an: "Cơm sườn non kho", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm ếch xào xả ớt", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm mắm ruốc xào thịt", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm măng xào thịt", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm canh chua cá hú", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm thịt kho đậu hũ", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm gà kho xả ớt", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm thịt kho trứng cút", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm sườn non kho trứng", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm thu nhật sốt cà", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm sườn ram", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm xíu mại", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm canh khổ qua dồn thịt", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm gà kho gừng", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm gà luộc muối tiêu chanh", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm cá hú kho", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm đậu hũ dồn thịt", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm thịt kho tiêu", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm ốc xào xả ớt", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm cá trê chiên mắm gừng", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm chả cá kho tiêu", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm cá lóc kho tiêu", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm sườn nướng", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm cá mó chiên", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm mướp xào lòng gà", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            //Phở bún - Bò kho//
+            // listMA.push({ Ten_mon_an: "Bánh mì bò kho", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Hủ tiếu bò kho", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Hoành thánh tô lớn", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Bánh canh xương heo", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Hủ tiếu giò heo", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Hủ tiếu bò viên", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Mì giò heo", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Mì xương", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Hủ tiếu gà", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Hủ tiếu tôm", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+
+            //Thức uống thêm//
+            // listMA.push({ Ten_mon_an: "Cà phê sữa đá", Mo_ta_mon_an: "", Don_gia_mon_an: "12.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Nước sâm", Mo_ta_mon_an: "", Don_gia_mon_an: "10.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Nước rong biển", Mo_ta_mon_an: "", Don_gia_mon_an: "10.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cà phê đen", Mo_ta_mon_an: "", Don_gia_mon_an: "10.000", Hinh_anh_mon_an: "Com_1(1).jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+
 
             // // MON_AN.db.dropCollection();
 

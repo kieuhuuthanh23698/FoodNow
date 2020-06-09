@@ -965,6 +965,34 @@ app.get("/Danhsachcuahanghomnayhienthi", function (req, res) {
 });
 
 
+//route get Hienthitendanhmuccuahangtrangchu
+//method get
+app.get("/Hienthitendanhmuccuahangtrangchu", function (req, res) {
+	DANHMUC_CUAHANG_TRANGCHU.aggregate(
+		[
+			{ 
+				"$project" : { 
+					"Chu_De_Chinh" : 1.0
+				}
+			}
+		], 
+		function (err, result) {
+			if (err)
+			{	res.send(err);
+				return_code :"0"
+			}
+				
+			else
+			{
+				res.send(result);
+				return_code :"1"
+			}
+				
+		}
+	);
+	
+});
+
 //route get Danhsachmonangoiy
 //method get
 app.get("/Danhsachmonangoiy", function (req, res) {
@@ -1541,4 +1569,159 @@ KHUYENMAI_HETHONG.aggregate(
 			
 	}
 );
+});
+
+
+
+//route addDanhmuccuahangtrangchu
+//method POST
+//params  : chuDechinh
+app.post("/addDanhmuccuahangtrangchu", urlEncodeParser, function (req, response) {
+
+	console.log(JSON.stringify(req.body));
+	if (req.body.chuDechinh != null && req.body.chuDechinh != "") {
+		var newDanhMuc_CHTC = new DANHMUC_CUAHANG_TRANGCHU({
+			Chu_De_Chinh: req.body.chuDechinh,
+			DanhSach_CH:[] 
+		});
+		var result = "";
+		newDanhMuc_CHTC.save(function (err) {
+			if (err) {
+				console.log("\nThêm danh mục cửa hàng trang chủ mới bị lỗi : " + err);
+				response.send({ return_code: "0" });
+			}
+			else {
+				result += "Thêm danh mục cửa hàng trang chủ mới thành công !";
+				console.log(result);
+				response.send({ return_code: "1" });
+			}
+		});
+
+	}
+	else {
+		// res.send(JSON.stringify(req.body));
+		console.log("Params error !" + err);
+		response.send({ return_code: "0" });
+	}
+
+});
+
+
+//Xóa 
+//route deleteDanhmuccuahangtrangchu 
+//method delete
+//params  : idDanhmuccuahangtrangchu
+app.delete("/deleteDanhmuccuahangtrangchu", urlEncodeParser, function (req, res) {
+	var result = "";
+	DANHMUC_CUAHANG_TRANGCHU.findByIdAndDelete(
+		{ _id: req.body.idDanhmuccuahangtrangchu },
+		function (err) {
+			if (err) {
+				result += "\nXóa bị lỗi : " + err;
+				res.send({ return_code: "0" });
+			}
+			else {
+				result += "\nĐã xóa : " + req.body.idDanhmuccuahangtrangchu;
+				res.send({ return_code: "1" });
+			}
+		}
+	);
+});
+
+
+//route Hienthicuahangtrongdanhmuctrangchu 
+//method post
+//params  : idKhuyenmaihethong
+app.post("/Hienthicuahangtrongdanhmuctrangchu", urlEncodeParser, function (req, res) {
+	DANHMUC_CUAHANG_TRANGCHU.aggregate(
+		[
+			{ 
+				"$match" : { 
+					"_id" : mongoose.Types.ObjectId(req.body.idDanhmuccuahangtrangchu)
+				}
+			}, 
+			{ 
+				"$project" : { 
+					"DanhSach_CH" : 1.0
+				}
+			}, 
+			{ 
+				"$lookup" : { 
+					"from" : "cuahangs", 
+					"localField" : "DanhSach_CH", 
+					"foreignField" : "_id", 
+					"as" : "CuaHang_TrangChu"
+				}
+			}, 
+			{ 
+				"$project" : { 
+					"CuaHang_TrangChu" : 1.0, 
+					"_id" : 0.0
+				}
+			}, 
+			{ 
+				"$unwind" : { 
+					"path" : "$CuaHang_TrangChu"
+				}
+			}, 
+			{ 
+				"$lookup" : { 
+					"from" : "diachis", 
+					"localField" : "CuaHang_TrangChu.Dia_Chi_Cua_Hang", 
+					"foreignField" : "_id", 
+					"as" : "DiaChi_CH"
+				}
+			}
+		],
+		function (err, result) {
+			if (err)
+			{	res.send(err);
+				return_code :"0"
+			}
+				
+			else
+			{
+				res.send(result);
+				return_code :"1"
+			}
+				
+		}
+	);
+	});
+
+
+
+//Xóa cửa hàng ra khỏi cửa hàng trang chủ
+//route deleteCuahangtrongdanhmuctrangchu 
+//method delete
+//params  : idcuahang, idDanhmuccuahangtrangchu
+app.delete("/deleteCuahangtrongdanhmuctrangchu", urlEncodeParser, function (req, res) {
+	var result = "";
+	CUAHANG.findByIdAndDelete(
+		{ _id: req.body.idcuahang },
+		function (err) {
+			if (err) {
+				result += "\nXóa bị lỗi : " + err;
+				res.send({ return_code: "0" });
+			}
+			else {
+				result += "\nĐã xóa : " + req.body.idcuahang;
+				DANHMUC_CUAHANG_TRANGCHU.findOneAndUpdate(
+					{ _id: mongoose.Types.ObjectId(req.body.idDanhmuccuahangtrangchu) },
+					{ $pull: { DanhSach_CH: req.body.idcuahang } },
+					function (err) {
+						if (err) {
+							result += "\nXóa cửa hàng trong danh mục trang chủ gặp lỗi : " + err;
+							res.send({ return_code: "0" });
+						}
+						else {
+							result += "\nXóa cửa hàng trong danh mục trang chủ thành công !";
+							res.send({ return_code: "1" });
+						}
+
+					}
+				);
+			}
+		}
+	);
 });
