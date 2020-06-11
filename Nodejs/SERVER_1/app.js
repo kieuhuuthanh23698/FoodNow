@@ -1850,56 +1850,6 @@ function capNhatDonHang(iCART, iDONHANG, error_query, res) {
 	}
 }
 
-app.post("/chonSanPham_test", urlEncodeParser, function (req, res) {
-	console.log("Thông tin cửa hàng :" + req.body.idCuaHang);
-	console.log("Thông tin khách hàng : " + req.body.idKhachHang);
-	if (req.body.cart != null && req.body.cart != '') {//cập nhật giỏ hàng
-		console.log("\nCập nhật giỏ hàng\nThông tin chi tiết giỏ hàng :");
-		var cart = JSON.parse(req.body.cart);
-		if (cart.length != null && cart.length > 0) {
-			// cart.forEach(element => {
-			// 	console.log("id :" + element.id + "| count :" + element.count + "| note:" + element.note);
-			// });
-
-			var mapped_monans = cart.map(function (idMONAN) {
-
-			});
-		}
-
-
-
-
-
-
-
-
-	} else {
-		console.log("\nXóa giỏ hàng");
-		// DON_HANG.findByIdAndDelete(
-		// 	{ "IdKhachHang": req.body.idKhachHang, "IdCuaHang": req.body.idCuaHang },
-		// 	function (err, resultDonHang) {
-		// 		//xử lý sau khi xóa đơn hàng
-		// 		if (errXoaDH) {
-		// 		} else {
-		// 			KHACH_HANG.findByIdAndUpdate(
-		// 				{ _id: mongoose.Types.ObjectId(req.body.idCuaHang) },
-		// 				{ $pull: { Don_hang_id: resultDonHang._id } },
-		// 				function (errPullDH, resultPullDH) {
-		// 					if (err) {
-		// 					} else {
-		// 						console.log("\nXóa đơn hàng thành công !");
-		// 					}
-		// 				}
-		// 			);
-		// 		}
-		// 	}
-		// )
-	}
-
-
-
-	res.send({ return_code: "1" });
-});
 
 //route cập nhật giỏ hàng
 //method post
