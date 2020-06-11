@@ -1984,7 +1984,7 @@ app.post("/datHang", urlEncodeParser, function (req, res) {
 						} else {
 							CUAHANG.findByIdAndUpdate(
 								{_id: mongoose.Types.ObjectId(req.body.idCuaHang)}, 
-								{ $push: { Thong_Tin_KH_Dat_Don: resultDH._id } },
+								{ $push: { Thong_Tin_KH_Dat_Don: resultDH[0]._id } },
 								function(err, success){
 									if(err){
 										console.log(err);
@@ -2000,10 +2000,6 @@ app.post("/datHang", urlEncodeParser, function (req, res) {
 				} else {
 					res.send(error_query);
 				}
-				res.send({
-					return_code: "0",
-					error_infor: err
-				});
 			}
 		}
 	);
