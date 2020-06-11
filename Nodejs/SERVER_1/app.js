@@ -708,6 +708,28 @@ app.post("/CTDonHang", urlEncodeParser, function (req, res) {
 	}
 });
 
+
+//route get danh mục loại món ăn
+//method get
+app.get("/getDanhmucloaimonan", function (req, res) {
+	DANHMUC_LOAIMONAN.find(
+		function (err, items) {
+			if (err)
+			{
+				res.send("Lấy danh mục loại món ăn lỗi" + err);
+				return_code : "0";
+			}
+				
+			else
+			{
+				res.send(items);
+				return_code : "1";
+			}
+				
+		}
+	);
+});
+
 //route get CUAHANG trong DANHMUC_LOAIMONAN
 //method post(truyền vào ID)
 //Params: idDanhmucloaimonan
@@ -746,31 +768,61 @@ app.post("/Danhmucloaimonan", urlEncodeParser, function (req, res) {
 //method post(truyền vào ID)
 //Params: idDanhsachcuahanghomnay
 
-app.post("/Danhsachcuahanghomnay", urlEncodeParser, function (req, res) {
-	if (req.body.idDanhsachcuahanghomnay != null) {
-		if (req.body.idDanhsachcuahanghomnay != "") {
-			DANHSACH_CUAHANG_HOMNAY.findById({ '_id': req.body.idDanhsachcuahanghomnay }, function (err, DanhSachCuaHangHomNay) {
-				if (err) {
-					res.send("Lấy danh sách cửa hàng trong danh mục cửa hàng hôm nay : " + err);
+app.post("/Danhsachcuahanghomnay_hienthicuahang", urlEncodeParser, function (req, res) {
+	DANHSACH_CUAHANG_HOMNAY.aggregate(
+		[
+			{ 
+				"$match" : { 
+					"_id" : mongoose.Types.ObjectId(req.body.idDanhsachcuahanghomnay)
 				}
-				else {
-					CUAHANG.find({ '_id': { $in: DanhSachCuaHangHomNay.DanhSach_CH } },
-						function (err, listCuaHang) {
-							if (err)
-								res.send("Lấy danh sách cửa hàng gặp lỗi : " + err);
-							else
-								res.send(listCuaHang);
-						}
-					);
+			}, 
+			{ 
+				"$project" : { 
+					"DanhSach_CH" : 1.0
 				}
-			});
+			}, 
+			{ 
+				"$lookup" : { 
+					"from" : "cuahangs", 
+					"localField" : "DanhSach_CH", 
+					"foreignField" : "_id", 
+					"as" : "CuaHang_HomNay"
+				}
+			}, 
+			{ 
+				"$project" : { 
+					"CuaHang_HomNay" : 1.0, 
+					"_id" : 0.0
+				}
+			}, 
+			{ 
+				"$unwind" : { 
+					"path" : "$CuaHang_HomNay"
+				}
+			}, 
+			{ 
+				"$lookup" : { 
+					"from" : "diachis", 
+					"localField" : "CuaHang_HomNay.Dia_Chi_Cua_Hang", 
+					"foreignField" : "_id", 
+					"as" : "DiaChi_CH"
+				}
+			}
+		],
+		function (err, result) {
+			if (err)
+			{	res.send(err);
+				return_code :"0"
+			}
+				
+			else
+			{
+				res.send(result);
+				return_code :"1"
+			}
+				
 		}
-		else {
-			res.send('Params error 2!')
-		}
-	} else {
-		res.send('Params error 1!');
-	}
+	);
 });
 
 //route get CUAHANG trong KHUYENMAI_HETHONG
@@ -955,15 +1007,113 @@ app.get("/Danhsachkhuyenmaihethong", function (req, res) {
 //method get
 app.get("/Danhsachcuahanghomnayhienthi", function (req, res) {
 	DANHSACH_CUAHANG_HOMNAY.find(
-		function (err, items) {
+		function (err, result) {
 			if (err)
-				res.send("Lấy danh sách cửa hàng hôm nay" + err);
+			{	res.send("Lấy danh sách gặp lỗi" + err);
+				return_code :"0"
+			}
+				
 			else
-				res.send(items);
+			{
+				res.send(result);
+				return_code :"1"
+			}
+				
 		}
 	);
 });
 
+//route addDanhsachcuahanghomnay
+//method POST
+//params  : chuDechinh
+app.post("/addDanhsachcuahanghomnay", urlEncodeParser, function (req, response) {
+
+	console.log(JSON.stringify(req.body));
+	if (req.body.Thongtin_Chinh != null && req.body.Thongtin_Chinh != "" && req.body.Thongtin_Phu != null && req.body.Thongtin_Phu != "" && req.body.HinhAnh_CH != null && req.body.HinhAnh_CH != "") {
+		var newDanhMuc_CHHN = new DANHSACH_CUAHANG_HOMNAY({
+			Thongtin_Chinh: req.body.Thongtin_Chinh,
+			Thongtin_Phu : req.body.Thongtin_Phu,
+			HinhAnh_CH : req.body.HinhAnh_CH,
+			DanhSach_CH:[] 
+		});
+		var result = "";
+		newDanhMuc_CHHN.save(function (err) {
+			if (err) {
+				console.log("\nThêm danh mục cửa hàng hôm nay mới bị lỗi : " + err);
+				response.send({ return_code: "0" });
+			}
+			else {
+				result += "Thêm danh mục cửa hàng hôm nay mới thành công !";
+				console.log(result);
+				response.send({ return_code: "1" });
+			}
+		});
+
+	}
+	else {
+		// res.send(JSON.stringify(req.body));
+		console.log("Params error !" + err);
+		response.send({ return_code: "0" });
+	}
+
+});
+
+//Xóa 
+//route deleteDanhmuccuahanghomnay 
+//method delete
+//params  : idDanhmuccuahanghomnay
+app.delete("/deleteDanhmuccuahanghomnay ", urlEncodeParser, function (req, res) {
+	var result = "";
+	DANHSACH_CUAHANG_HOMNAY.findByIdAndDelete(
+		{ _id: req.body.idDanhmuccuahanghomnay },
+		function (err) {
+			if (err) {
+				result += "\nXóa bị lỗi : " + err;
+				res.send({ return_code: "0" });
+			}
+			else {
+				result += "\nĐã xóa : " + req.body.idDanhmuccuahanghomnay;
+				res.send({ return_code: "1" });
+			}
+		}
+	);
+});
+
+
+//Xóa cửa hàng ra khỏi cửa hàng hôm nay
+//route deleteCuahangtrongdanhmuchomnay 
+//method delete
+//params  : idcuahang, idDanhmuccuahanghomnay
+app.delete("/deleteCuahangtrongdanhmuchomnay", urlEncodeParser, function (req, res) {
+	var result = "";
+	CUAHANG.findByIdAndDelete(
+		{ _id: req.body.idcuahang },
+		function (err) {
+			if (err) {
+				result += "\nXóa bị lỗi : " + err;
+				res.send({ return_code: "0" });
+			}
+			else {
+				result += "\nĐã xóa : " + req.body.idcuahang;
+				DANHSACH_CUAHANG_HOMNAY.findOneAndUpdate(
+					{ _id: mongoose.Types.ObjectId(req.body.idDanhmuccuahanghomnay) },
+					{ $pull: { DanhSach_CH: req.body.idcuahang } },
+					function (err) {
+						if (err) {
+							result += "\nXóa cửa hàng trong danh mục hôm nay gặp lỗi : " + err;
+							res.send({ return_code: "0" });
+						}
+						else {
+							result += "\nXóa cửa hàng trong danh mục hôm nay thành công !";
+							res.send({ return_code: "1" });
+						}
+
+					}
+				);
+			}
+		}
+	);
+});
 
 //route get Hienthitendanhmuccuahangtrangchu
 //method get

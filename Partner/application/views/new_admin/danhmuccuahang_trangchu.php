@@ -440,7 +440,7 @@
             $('#tableCuaHang li').remove();
              for (i=0; i< res.length; i++){ 
 
-                $("#tableCuaHang").append('<li id="'+ res[i].CuaHang_TrangChu._id +'" class="item"><div class="product-img"><img src="http://localhost:3000/Public/Images/'+ res[i].CuaHang_TrangChu.Hinh_Anh_Cua_Hang +'" alt="Product Image" class="img-size-50"></div><div class="product-info"><a href="javascript:void(0)" class="product-title">'+ res[i].CuaHang_TrangChu.Ten_Cua_Hang+'<span class="badge badge-danger float-right"><button class="btn" onclick="xoa_cuahangtrongdanhmuc(' + "'" + res[i].CuaHang_TrangChu._id + "'"  + ',' + "'"  + idDanhmuccuahangtrangchu + "'" + ')" ><i class="fas fa-trash-alt"></i></button></span></a><span class="product-description">'+res[i].DiaChi_CH[0].Dia_Chi_Nha+'</span></div></li>');
+                $("#tableCuaHang").append('<li id="'+ res[i].CuaHang_TrangChu._id +'" class="item"><div class="product-img"><img src="http://localhost:3000/Public/Images/'+ res[i].CuaHang_TrangChu.Hinh_Anh_Cua_Hang +'" alt="Product Image" class="img-size-50"></div><div class="product-info"><a href="javascript:void(0)" class="product-title">'+ res[i].CuaHang_TrangChu.Ten_Cua_Hang+'<span class="badge badge-danger float-right"><button class="btn" onclick="xoa_cuahangtrongdanhmuc(' + "'" + res[i].CuaHang_TrangChu._id + "'"  + ',' + "'"  + idDanhmuccuahangtrangchu + "'" + ')" ><i class="fas fa-trash-alt"></i></button></span></a><span class="product-description">'+res[i].DiaChi_CH[0].Dia_Chi +'</span></div></li>');
                 console.log("add");
 
             };

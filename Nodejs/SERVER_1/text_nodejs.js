@@ -185,8 +185,8 @@ mongoose.connect(connectString,
 
             /*Thêm cửa hàng vào danh sách hôm nay ăn gì*/
             // DANHSACH_CUAHANG_HOMNAY.findOneAndUpdate(
-            //     { _id: "5ebabdafe4481445a896a795" },
-            //     { $push: { DanhSach_CH: "5eba0ad05f15d311d4d6b67f" } },
+            //     { _id: "5ee08ed1f5b7a828b89e08fe" },
+            //     { $push: { DanhSach_CH: "5eba0ad05f15d311d4d6b68a" } },
             //     function (err) {
             //         if (err)
             //             console.log("Thêm cửa hàng trong danh sách hôm nay mới bị lỗi : " + err);
@@ -230,16 +230,16 @@ mongoose.connect(connectString,
             // });
 
             /*Thêm cửa hàng trong danh mục cửa hàng trang chủ*/
-            DANHMUC_CUAHANG_TRANGCHU.findOneAndUpdate(
-                { _id: "5edf78189f6ffd1524eb3557" },
-                { $push: { DanhSach_CH: "5eba0ad05f15d311d4d6b682" } },
-                function (err) {
-                    if (err)
-                        console.log("Thêm cửa hàng trong danh mục cửa hàng trang chủ mới bị lỗi : " + err);
-                    else
-                        console.log("Thêm cửa hàng trong danh mục cửa hàng trang chủ mới thành công !");
-                }
-            );
+            // DANHMUC_CUAHANG_TRANGCHU.findOneAndUpdate(
+            //     { _id: "5edf78189f6ffd1524eb3557" },
+            //     { $push: { DanhSach_CH: "5eba0ad05f15d311d4d6b682" } },
+            //     function (err) {
+            //         if (err)
+            //             console.log("Thêm cửa hàng trong danh mục cửa hàng trang chủ mới bị lỗi : " + err);
+            //         else
+            //             console.log("Thêm cửa hàng trong danh mục cửa hàng trang chủ mới thành công !");
+            //     }
+            // );
 
 
             /*Thêm danh mục loại món ăn*/
@@ -271,8 +271,8 @@ mongoose.connect(connectString,
 
             /*Thêm cửa hàng trong danh mục loại món ăn*/
             // DANHMUC_LOAIMONAN.findOneAndUpdate(
-            //     { _id: "5eba0fb0d1dd3f376cee4b63" },//Loại Bún Phở//
-            //     { $push: { DanhSach_CH: "5eba0ad05f15d311d4d6b682" } },
+            //     { _id: "5eba0fb0d1dd3f376cee4b5d" },//Loại Bún Phở//
+            //     { $push: { DanhSach_CH: "5eba0ad05f15d311d4d6b683" } },
             //     function (err) {
             //         if (err)
             //             console.log("Thêm cửa hàng trong danh mục loại món ăn mới bị lỗi : " + err);
