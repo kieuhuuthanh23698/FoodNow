@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Login Admin - Camera Minh Long</title>
 	<link rel="icon" href="<?php echo base_url();?>images/logo-ver40x40.png">
-<link rel="stylesheet" href="<?php echo base_url()?>css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="<?php echo base_url()?>css/bootstrap.min.css">
 <script src="<?php echo base_url()?>js/jquery.js" ></script>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/mycss.css">
 </head>
@@ -24,26 +24,29 @@
 	
 <script type="text/javascript">
 	$("#dangnhap").click(function(event) {
-		localStorage.setItem("partnerID", $('#username').val());
-		// $.ajax({
-		// 	url: '<?php echo base_url()?>admin/checkAccount',
-		// 	type: 'POST',
-		// 	//dataType: 'html',
-		// 	data: { username: $('#username').val() , password: $("#password").val()},
-		// })
-		// .done(function(data) {
-		// 	if(data == 1)
-		// 	{
-				window.location = '<?php echo base_url()?>admin/homeAdmin';
+		$.ajax({
+			url: 'http://localhost:3000/Danhnhapcuahhang',
+			type: 'POST',
+			dataType: 'json',
+			data: { tenTaikhoan: $('#username').val() , matKhau: $("#password").val()},
+		})
+		.done(function(data) {
+			debugger;
+			if(data.return_code == "1")
+			{
 
-		// 		// this.windown.location.href = 'google.com.vn';
+			localStorage.setItem("partnerID", data.id);
+			// 		// this.windown.location.href = 'google.com.vn';
 		 		alert(localStorage.getItem('partnerID') + " đăng nhập thành công !");
-		// 	}
-		// 	else if(data == 0)
-		// 	{
-		// 		alert("Bạn đã đăng nhập thất bại !");
-		// 	}
-		// })
+		 		// alert(localStorage.getItem('partnerID') + " đăng nhập thành công !");
+				window.location = '<?php echo base_url()?>admin/homeAdmin';
+			}
+			else if(data.return_code == "0")
+			{
+				alert("Bạn đã đăng nhập thất bại !");
+				alert("Error : " + data.error_infor);
+			}
+		})
 	});
 </script>
 </body>
