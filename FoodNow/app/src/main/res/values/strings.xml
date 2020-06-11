@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">FoodNow</string>
+    <string name="app_name">Food Now</string>
     <string name="ipv4">192.168.43.67:3000</string>
+    <string name="public_ipv4">27.75.96.30:3000</string>
     <string name="title_activity_search">SearchActivity</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
@@ -12,4 +13,6 @@
     <string name="google_api_key">AIzaSyBpfe5LCma0AfpfNrbJlqxSCOLvOQGQDTg</string>
     <string name="non_plastic">Dụng cụ ăn uống nhựa sẽ không được cung cấp\nCảm ơn bạn đã tham gia giảm thiểu đồ nhựa cùng Now !</string>
     <string name="plastic">Dụng cụ ăn uống nhựa sẽ được cung cấp\nHãy cùng giảm dùng đồ nhựa cho đơn hàng lần sau !</string>
+    <string name="facebook_app_id">261685018603682</string>
+    <string name="fb_login_protocol_scheme">fb261685018603682</string>
 </resources>

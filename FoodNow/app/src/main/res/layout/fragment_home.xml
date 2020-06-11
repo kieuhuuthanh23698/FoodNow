@@ -9,10 +9,10 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:background="@android:color/white"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -20,44 +20,38 @@
 
             <TextView
                 android:id="@+id/fm_home_myAddress"
-                android:layout_marginLeft="15dp"
-                android:drawableLeft="@drawable/ic_location_on_black_24dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:paddingLeft="0dp"
-                android:ellipsize="end"
-                android:lines="1"
-                android:text="Số 6, Phan Đình Giót, Phường 2, Tân Bình..."
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <!--<Button-->
-                <!--android:layout_alignParentRight="true"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:background="@drawable/ic_dehaze_black_24dp"-->
-                <!--android:layout_marginRight="15dp"-->
-                <!--android:layout_width="35dp"-->
-                <!--android:layout_height="35dp" />-->
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="5dp"
+                android:drawableLeft="@drawable/ic_location_on_black_24dp"
+                android:drawableRight="@drawable/ic_navigate_next_black_24dp"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:text="Số 6, Phan Đình Giót, Phường 2, Tân Bình..." />
 
         </RelativeLayout>
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/fm_home_goToSearchAct"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_centerInParent="true"
+            android:layout_marginBottom="15dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:textSize="15dp"
-            android:hint="Tìm nhà hàng, món ăn"
             android:background="@drawable/border_button"
             android:backgroundTint="#F5F2F2"
             android:drawableLeft="@drawable/ic_search_black_24dp"
             android:ems="10"
             android:focusable="false"
-            android:layout_marginBottom="20dp"
+            android:hint="Tìm nhà hàng, món ăn"
             android:inputType="textPersonName"
-            android:paddingLeft="5dp"/>
+            android:paddingLeft="5dp"
+            android:textSize="15dp" />
 
     </LinearLayout>
 
@@ -287,225 +281,23 @@
 
             </LinearLayout>
 
-            <HorizontalScrollView
-                android:layout_marginBottom="10dp"
-                android:measureAllChildren="false"
-                android:scrollbars="none"
-                android:fillViewport="true"
+            <!--<HorizontalScrollView-->
+                <!--android:layout_marginBottom="10dp"-->
+                <!--android:measureAllChildren="false"-->
+                <!--android:scrollbars="none"-->
+                <!--android:fillViewport="true"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
+
+            <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                android:id="@+id/scrollViewVoucher"
+                android:background="@android:color/white"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent" />
 
-                <LinearLayout
-                    android:background="@android:color/white"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:id="@+id/scrollViewVoucher"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <RelativeLayout
-                        android:layout_margin="10dp"
-                        android:paddingTop="10dp"
-                        android:paddingRight="10dp"
-                        android:paddingBottom="10dp"
-                        android:background="@drawable/border_voucher"
-                        android:backgroundTint="@color/colorMain"
-                        android:layout_width="wrap_content"
-                        android:layout_height="70dp" >
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_voucher1" />
-
-                            <TextView
-                                android:text=" NHẬP ANTRUA 50% Off/ 13h - 15h"
-                                android:layout_width="150dp"
-                                android:layout_height="match_parent"
-                                android:textAlignment="center"
-                                android:textColor="@android:color/white"
-                                android:textStyle="bold"
-                                android:gravity="center_horizontal|center_vertical"
-                                android:layout_centerVertical="true"
-                                android:layout_centerHorizontal="true"
-                                android:layout_centerInParent="true"/>
-
-                            <ImageView
-                                android:layout_gravity="center_vertical|center_horizontal"
-                                android:src="@drawable/ic_dot"
-                                android:scaleType="fitXY"
-                                android:layout_width="10dp"
-                                android:layout_height="10dp" />
-                        </LinearLayout>
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_margin="10dp"
-                        android:paddingTop="10dp"
-                        android:paddingRight="10dp"
-                        android:paddingBottom="10dp"
-                        android:background="@drawable/border_voucher"
-                        android:backgroundTint="@color/colorMain"
-                        android:layout_width="wrap_content"
-                        android:layout_height="70dp" >
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_voucher1" />
-
-                            <TextView
-                                android:text=" NHẬP ANTRUA 50% Off/ 13h - 15h"
-                                android:layout_width="150dp"
-                                android:layout_height="match_parent"
-                                android:textAlignment="center"
-                                android:textColor="@android:color/white"
-                                android:textStyle="bold"
-                                android:gravity="center_horizontal|center_vertical"
-                                android:layout_centerVertical="true"
-                                android:layout_centerHorizontal="true"
-                                android:layout_centerInParent="true"/>
-
-                            <ImageView
-                                android:layout_gravity="center_vertical|center_horizontal"
-                                android:src="@drawable/ic_dot"
-                                android:scaleType="fitXY"
-                                android:layout_width="10dp"
-                                android:layout_height="10dp" />
-                        </LinearLayout>
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_margin="10dp"
-                        android:paddingTop="10dp"
-                        android:paddingRight="10dp"
-                        android:paddingBottom="10dp"
-                        android:background="@drawable/border_voucher"
-                        android:backgroundTint="@color/colorMain"
-                        android:layout_width="wrap_content"
-                        android:layout_height="70dp" >
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_voucher1" />
-
-                            <TextView
-                                android:text=" NHẬP ANTRUA 50% Off/ 13h - 15h"
-                                android:layout_width="150dp"
-                                android:layout_height="match_parent"
-                                android:textAlignment="center"
-                                android:textColor="@android:color/white"
-                                android:textStyle="bold"
-                                android:gravity="center_horizontal|center_vertical"
-                                android:layout_centerVertical="true"
-                                android:layout_centerHorizontal="true"
-                                android:layout_centerInParent="true"/>
-
-                            <ImageView
-                                android:layout_gravity="center_vertical|center_horizontal"
-                                android:src="@drawable/ic_dot"
-                                android:scaleType="fitXY"
-                                android:layout_width="10dp"
-                                android:layout_height="10dp" />
-                        </LinearLayout>
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_margin="10dp"
-                        android:paddingTop="10dp"
-                        android:paddingRight="10dp"
-                        android:paddingBottom="10dp"
-                        android:background="@drawable/border_voucher"
-                        android:backgroundTint="@color/colorMain"
-                        android:layout_width="wrap_content"
-                        android:layout_height="70dp" >
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_voucher1" />
-
-                            <TextView
-                                android:text=" NHẬP ANTRUA 50% Off/ 13h - 15h"
-                                android:layout_width="150dp"
-                                android:layout_height="match_parent"
-                                android:textAlignment="center"
-                                android:textColor="@android:color/white"
-                                android:textStyle="bold"
-                                android:gravity="center_horizontal|center_vertical"
-                                android:layout_centerVertical="true"
-                                android:layout_centerHorizontal="true"
-                                android:layout_centerInParent="true"/>
-
-                            <ImageView
-                                android:layout_gravity="center_vertical|center_horizontal"
-                                android:src="@drawable/ic_dot"
-                                android:scaleType="fitXY"
-                                android:layout_width="10dp"
-                                android:layout_height="10dp" />
-                        </LinearLayout>
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_margin="10dp"
-                        android:paddingTop="10dp"
-                        android:paddingRight="10dp"
-                        android:paddingBottom="10dp"
-                        android:background="@drawable/border_voucher"
-                        android:backgroundTint="@color/colorMain"
-                        android:layout_width="wrap_content"
-                        android:layout_height="70dp" >
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_voucher1" />
-
-                            <TextView
-                                android:text=" NHẬP ANTRUA 50% Off/ 13h - 15h"
-                                android:layout_width="150dp"
-                                android:layout_height="match_parent"
-                                android:textAlignment="center"
-                                android:textColor="@android:color/white"
-                                android:textStyle="bold"
-                                android:gravity="center_horizontal|center_vertical"
-                                android:layout_centerVertical="true"
-                                android:layout_centerHorizontal="true"
-                                android:layout_centerInParent="true"/>
-
-                            <ImageView
-                                android:layout_gravity="center_vertical|center_horizontal"
-                                android:src="@drawable/ic_dot"
-                                android:scaleType="fitXY"
-                                android:layout_width="10dp"
-                                android:layout_height="10dp" />
-                        </LinearLayout>
-                    </RelativeLayout>
-
-                </LinearLayout>
-
-            </HorizontalScrollView>
+            <!--</HorizontalScrollView>-->
 
             <TextView
                 android:layout_marginBottom="10dp"
@@ -515,167 +307,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <HorizontalScrollView
-            android:layout_marginBottom="10dp"
-            android:measureAllChildren="false"
-            android:scrollbars="none"
-            android:fillViewport="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            <!--<HorizontalScrollView-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:measureAllChildren="false"-->
+            <!--android:scrollbars="none"-->
+            <!--android:fillViewport="true"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
 
-            <LinearLayout
+            <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                android:id="@+id/scrollViewSystemVoucher"
                 android:background="@android:color/white"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <RelativeLayout
-                    android:layout_margin="10dp"
-                    android:paddingTop="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="10dp"
-                    android:background="@drawable/tip1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" >
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_alignParentBottom="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:textStyle="bold"
-                            android:textSize="15dp"
-                            android:textColor="@android:color/white"
-                            android:text="Lần đầu Order tại FoodNow bạn ăn gì ?"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                        <TextView
-                            android:textStyle="bold"
-                            android:textSize="12dp"
-                            android:textColor="@android:color/white"
-                            android:text="Khao bạn 45K menu này nha!"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                    </LinearLayout>
-
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_margin="10dp"
-                    android:paddingTop="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="10dp"
-                    android:background="@drawable/tip1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" >
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_alignParentBottom="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:textStyle="bold"
-                            android:textSize="15dp"
-                            android:textColor="@android:color/white"
-                            android:text="Lần đầu Order tại FoodNow bạn ăn gì ?"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                        <TextView
-                            android:textStyle="bold"
-                            android:textSize="12dp"
-                            android:textColor="@android:color/white"
-                            android:text="Khao bạn 45K menu này nha!"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                    </LinearLayout>
-
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_margin="10dp"
-                    android:paddingTop="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="10dp"
-                    android:background="@drawable/tip1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" >
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_alignParentBottom="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:textStyle="bold"
-                            android:textSize="15dp"
-                            android:textColor="@android:color/white"
-                            android:text="Lần đầu Order tại FoodNow bạn ăn gì ?"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                        <TextView
-                            android:textStyle="bold"
-                            android:textSize="12dp"
-                            android:textColor="@android:color/white"
-                            android:text="Khao bạn 45K menu này nha!"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                    </LinearLayout>
-
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_margin="10dp"
-                    android:paddingTop="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="10dp"
-                    android:background="@drawable/tip1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" >
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_alignParentBottom="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:textStyle="bold"
-                            android:textSize="15dp"
-                            android:textColor="@android:color/white"
-                            android:text="Lần đầu Order tại FoodNow bạn ăn gì ?"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                        <TextView
-                            android:textStyle="bold"
-                            android:textSize="12dp"
-                            android:textColor="@android:color/white"
-                            android:text="Khao bạn 45K menu này nha!"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                    </LinearLayout>
-
-
-                </RelativeLayout>
-
-            </LinearLayout>
-        </HorizontalScrollView>
+                android:layout_height="match_parent" />
+        <!--</HorizontalScrollView>-->
 
             <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
                 android:id="@+id/susggestList"
@@ -698,7 +345,6 @@
                 android:orientation="vertical"
                 app:msrv_ms_per_inch="120"
                 app:msrv_snap_count="2"
-
                 android:background="@android:color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>

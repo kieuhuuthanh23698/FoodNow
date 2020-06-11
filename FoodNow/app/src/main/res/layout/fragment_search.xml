@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".SearchActivity$PlaceholderFragment">
+    tools:context=".SearchActivity$SearchActPlaceholderFragment">
 
     <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
         android:id="@+id/storeSearchResult"
         android:orientation="vertical"
         app:msrv_ms_per_inch="120"
         app:msrv_snap_count="2"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-</LinearLayout>
+
+    <ImageView
+        android:id="@+id/search_activity_listCarts_empty"
+        android:visibility="visible"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_empty_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

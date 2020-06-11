@@ -63,8 +63,8 @@ public class StoreNearAdapter extends RecyclerView.Adapter<StoreNearAdapter.Stor
             this.imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(view.getContext(), InformationStoreActivity.class);
-                    view.getContext().startActivity(intent);
+//                    Intent intent = new Intent(view.getContext(), InformationStoreActivity.class);
+//                    view.getContext().startActivity(intent);
                     Toast.makeText(view.getContext(), "Get information store", Toast.LENGTH_SHORT).show();
                 }
             });

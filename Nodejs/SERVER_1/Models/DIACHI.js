@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 const diachiSchema = new mongoose.Schema({
-    Dia_Chi_Nha: String,
-    Vi_do: String,
-    Kinh_do: String,
+    Dia_Chi: String,
+    Vi_do: Number,
+    Kinh_do: Number,
 });
 
 module.exports = mongoose.model("DIACHI", diachiSchema);

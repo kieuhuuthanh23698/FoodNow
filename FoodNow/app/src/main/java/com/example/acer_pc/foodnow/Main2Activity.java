@@ -26,12 +26,12 @@ import android.telephony.gsm.GsmCellLocation;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
+//
+//import org.apache.http.HttpResponse;
+//import org.apache.http.client.HttpClient;
+//import org.apache.http.client.methods.HttpGet;
+//import org.apache.http.impl.client.DefaultHttpClient;
+//import org.apache.http.util.EntityUtils;
 
 public class Main2Activity extends AppCompatActivity {
 
@@ -91,10 +91,10 @@ public class Main2Activity extends AppCompatActivity {
 
         public void GetOpenCellID() throws Exception {
             groupURLSent();
-            HttpClient client = new DefaultHttpClient();
-            HttpGet request = new HttpGet(strURLSent);
-            HttpResponse response = client.execute(request);
-            GetOpenCellID_fullresult = EntityUtils.toString(response.getEntity());
+//            HttpClient client = new DefaultHttpClient();
+//            HttpGet request = new HttpGet(strURLSent);
+//            HttpResponse response = client.execute(request);
+//            GetOpenCellID_fullresult = EntityUtils.toString(response.getEntity());
             spliteResult();
         }
 

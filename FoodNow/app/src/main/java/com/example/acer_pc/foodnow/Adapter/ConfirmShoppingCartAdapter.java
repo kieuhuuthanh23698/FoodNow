@@ -8,11 +8,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.acer_pc.foodnow.Data.CartDetail;
+import com.example.acer_pc.foodnow.Data.Utils;
 import com.example.acer_pc.foodnow.InformationStoreActivity;
 import com.example.acer_pc.foodnow.Object.Food;
 import com.example.acer_pc.foodnow.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import static com.example.acer_pc.foodnow.InformationStoreActivity.shoppingCart;
 
 public class ConfirmShoppingCartAdapter extends RecyclerView.Adapter<ConfirmShoppingCartAdapter.ConfirmShoppingCartViewHolder>{
     Context context;
@@ -31,24 +36,26 @@ public class ConfirmShoppingCartAdapter extends RecyclerView.Adapter<ConfirmShop
 
     @Override
     public void onBindViewHolder(ConfirmShoppingCartViewHolder holder, int position) {
-        Food iFood = InformationStoreActivity.shoppingCart.get(position);
-        holder.imageView.setImageResource(iFood.getImg());
+        CartDetail iFood = (CartDetail) shoppingCart.values().toArray()[position];
+        Picasso.get().load(iFood.getImg()).into(holder.imageView);
         holder.txtDes.setText(iFood.getDes());
+        holder.txtNote.setText(iFood.getNote());
         holder.txtPriceFoods.setText(iFood.getTotal());
     }
 
     @Override
     public int getItemCount() {
-        return InformationStoreActivity.shoppingCart.size();
+        return shoppingCart.size();
     }
 
     public static class ConfirmShoppingCartViewHolder extends RecyclerView.ViewHolder {
         public ImageView imageView;
-        public TextView txtDes, txtPriceFoods;
+        public TextView txtDes, txtNote,txtPriceFoods;
         public ConfirmShoppingCartViewHolder(View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.confirm_shopping_cart_img_item);
             txtDes = itemView.findViewById(R.id.confirm_shopping_cart_des_item);
+            txtNote = itemView.findViewById(R.id.confirm_shopping_cart_note_item);
             txtPriceFoods = itemView.findViewById(R.id.confirm_shopping_cart_total_item);
         }
     }

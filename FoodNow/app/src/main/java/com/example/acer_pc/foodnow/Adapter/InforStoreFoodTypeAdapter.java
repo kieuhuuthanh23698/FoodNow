@@ -14,15 +14,19 @@ import android.widget.TextView;
 import com.example.acer_pc.foodnow.Object.FoodType;
 import com.example.acer_pc.foodnow.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class InforStoreFoodTypeAdapter extends RecyclerView.Adapter<InforStoreFoodTypeAdapter.InforStoreFoodTypeViewHolder>{
     public static InforStoreFoodsAdapter inforStoreFoodsAdapter;
-    ArrayList<FoodType> arrayListFoodType;
+    JSONArray jsonArrayFoods;
     Context context;
 
-    public InforStoreFoodTypeAdapter(ArrayList<FoodType> arrayListFoodType, Context context) {
-        this.arrayListFoodType = arrayListFoodType;
+    public InforStoreFoodTypeAdapter(JSONArray jsonArrayFoods, Context context) {
+        this.jsonArrayFoods = jsonArrayFoods;
         this.context = context;
     }
 
@@ -36,19 +40,26 @@ public class InforStoreFoodTypeAdapter extends RecyclerView.Adapter<InforStoreFo
 
     @Override
     public void onBindViewHolder(InforStoreFoodTypeViewHolder holder, int position) {
-        final FoodType item = arrayListFoodType.get(position);
-        holder.txtNameType.setText(item.getNameType());
-        inforStoreFoodsAdapter = new InforStoreFoodsAdapter(item.getArrayListFoods(), this.context);
-        holder.recyclerViewListFoods.setAdapter(inforStoreFoodsAdapter);
-        LinearLayoutManager friendsLayoutManager = new LinearLayoutManager(context.getApplicationContext(), android.support.v7.widget.LinearLayoutManager.VERTICAL, false);
-        holder.recyclerViewListFoods.setLayoutManager(friendsLayoutManager);
-        holder.recyclerViewListFoods.setNestedScrollingEnabled(false);
-        holder.recyclerViewListFoods.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
+        JSONObject item = null;
+        try {
+            item = jsonArrayFoods.getJSONObject(position);
+            holder.txtNameType.setText(item.getString("Ten_loai_mon_an"));
+            inforStoreFoodsAdapter = new InforStoreFoodsAdapter(item.getJSONArray("monans"), this.context);
+            holder.recyclerViewListFoods.setAdapter(inforStoreFoodsAdapter);
+            LinearLayoutManager friendsLayoutManager = new LinearLayoutManager(context.getApplicationContext(), android.support.v7.widget.LinearLayoutManager.VERTICAL, false);
+            holder.recyclerViewListFoods.setLayoutManager(friendsLayoutManager);
+            holder.recyclerViewListFoods.setNestedScrollingEnabled(false);
+            holder.recyclerViewListFoods.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public int getItemCount() {
-        return arrayListFoodType.size();
+//        return arrayListFoodType.size();
+        return jsonArrayFoods.length();
     }
 
     public static class InforStoreFoodTypeViewHolder extends RecyclerView.ViewHolder {

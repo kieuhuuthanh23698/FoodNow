@@ -27,6 +27,12 @@
         <item name = "android:windowBackground" >@color/colorGray</item>
     </style>
 
+    <style name="AppTheme.LoadingActivity">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name = "android:windowBackground" > @android:color/transparent</item>
+    </style>
+
     <style name="AppTheme.NoteItem">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowCloseOnTouchOutside">true</item>
@@ -35,13 +41,31 @@
 
     <style name="title">
         <item name="android:background">#F5F2F2</item>
-        <item name="android:fontFamily">serif</item>
-        <item name="android:textSize">20dp</item>
+        <item name="android:fontFamily">@font/nunito_extralight</item>
+        <item name="android:textSize">18dp</item>
         <item name="android:textStyle">bold</item>
     </style>
     
-    <style name="row_layout" parent="@android:style/Widget.Holo.TextView">
-        <item name="android:height">50dp</item>
+    <style name="devider">
+        <item name="android:background">@color/colorGrayLight</item>
+        <item name="android:layout_height">10dp</item>
+    </style>
+
+    <style name="devider_small">
+        <item name="android:background">@color/colorGray</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_height">0.7dp</item>
+    </style>
+    
+    <style name="user_fm_row">
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_height">50dp</item>
+    </style>
+
+    <style name="login_button">
+        <item name="android:layout_height">40dp</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

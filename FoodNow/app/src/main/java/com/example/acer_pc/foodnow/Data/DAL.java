@@ -67,14 +67,14 @@ public class DAL {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.e("TEST", "Load one chi nhánh respone : " + response);
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            HomeFragment.arrayList.add(new Store(null, null));
-                            HomeFragment.adapter.notifyDataSetChanged();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+//                        Log.e("TEST", "Load one chi nhánh respone : " + response);
+//                        try {
+//                            JSONObject jsonObject = new JSONObject(response);
+//                            HomeFragment.arrayList.add(new Store(null, null));
+//                            HomeFragment.adapter.notifyDataSetChanged();
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -136,8 +136,8 @@ public class DAL {
                                 else {
                                     store = new Store(storeObj.getString("Ten_cua_hang"), "Có " + storeObj.getJSONArray("Chi_Nhanh_id").length() + " chi nhánh !");
                                 }
-                                HomeFragment.arrayList.add(store);
-                                HomeFragment.adapter.notifyDataSetChanged();
+//                                HomeFragment.arrayList.add(store);
+//                                HomeFragment.adapter.notifyDataSetChanged();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -217,15 +217,15 @@ public class DAL {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            try {
-                if(jsonObject != null)
-                {
-                    LoginActivity.TOKEN = jsonObject.getString("token");
-                    LoginActivity.NAME = jsonObject.getString("name");
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+//            try {
+//                if(jsonObject != null)
+//                {
+////                    LoginActivity.TOKEN = jsonObject.getString("token");
+////                    LoginActivity.NAME = jsonObject.getString("name");
+//                }
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
             Toast.makeText(context,"Đăng nhập thành công !", Toast.LENGTH_SHORT).show();
             Intent intent=new Intent(context,MainActivity.class);
             context.startActivity(intent);

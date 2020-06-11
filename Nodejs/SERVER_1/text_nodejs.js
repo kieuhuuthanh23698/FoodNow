@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 var app = new express();
 const server = require('http').Server(app);
 server.listen(3000);
-const connectString = 'mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb';
-// const connectString = 'mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.net/FoodNow?retryWrites=true&w=majority';
+// const connectString = 'mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb';
+const connectString = 'mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.net/FoodNow?retryWrites=true&w=majority';
 mongoose.connect(connectString,
     { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false },
     function (err) {
@@ -533,15 +533,28 @@ mongoose.connect(connectString,
             /*Thêm món ăn  */
             // let listMA = [];
 
-            // listMA.push({ Ten_mon_an: "Cánh Gà Chiên Nước Mắm", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });//Cơm//
-            // listMA.push({ Ten_mon_an: "Cơm Chiên Hải Sản", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
-            // listMA.push({ Ten_mon_an: "Cơm Tấm Sườn Bì Chả", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
-            // listMA.push({ Ten_mon_an: "Cơm Đùi Gà Roti", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
-            // listMA.push({ Ten_mon_an: "Cơm Gà Xối Mỡ", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
-            // listMA.push({ Ten_mon_an: "Trà sữa đào", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });//Trà Sữa//
-            // listMA.push({ Ten_mon_an: "Sữa Tươi Trân Châu Đường Đen", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
-            // listMA.push({ Ten_mon_an: "Nước Ép Dứa Cà Rốt", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
-            // listMA.push({ Ten_mon_an: "Sinh Tố Cà Chua", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cánh Gà Chiên Nước Mắm", Mo_ta_mon_an: "", Don_gia_mon_an: "25000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });//Cơm//
+            // listMA.push({ Ten_mon_an: "Cơm Chiên Hải Sản", Mo_ta_mon_an: "", Don_gia_mon_an: "25000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm Tấm Sườn Bì Chả", Mo_ta_mon_an: "", Don_gia_mon_an: "25000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm Đùi Gà Roti", Mo_ta_mon_an: "", Don_gia_mon_an: "25000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm Gà Xối Mỡ", Mo_ta_mon_an: "", Don_gia_mon_an: "25000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Trà sữa đào", Mo_ta_mon_an: "", Don_gia_mon_an: "25000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });//Trà Sữa//
+            // listMA.push({ Ten_mon_an: "Sữa Tươi Trân Châu Đường Đen", Mo_ta_mon_an: "", Don_gia_mon_an: "25000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Nước Ép Dứa Cà Rốt", Mo_ta_mon_an: "", Don_gia_mon_an: "25000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            //listMA.push({ Ten_mon_an: "Sinh Tố Cà Chua", Mo_ta_mon_an: "", Don_gia_mon_an: "25000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+
+            // listMA.push({ Ten_mon_an: "Sinh Tố Dứa", Mo_ta_mon_an: "", Don_gia_mon_an: "22000", Hinh_anh_mon_an: "sinhtodua.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "34", So_luong_thich: "12" });
+            // listMA.push({ Ten_mon_an: "Sinh Tố Cà Bơ", Mo_ta_mon_an: "", Don_gia_mon_an: "25000", Hinh_anh_mon_an: "tinhtobo.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            
+            // listMA.push({ Ten_mon_an: "Nước Ép Táo", Mo_ta_mon_an: "", Don_gia_mon_an: "34000", Hinh_anh_mon_an: "nuoceptao.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "22", So_luong_thich: "10" });
+            // listMA.push({ Ten_mon_an: "Nước Ép Bí Đao", Mo_ta_mon_an: "", Don_gia_mon_an: "26000", Hinh_anh_mon_an: "nuocepbidao.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "45", So_luong_thich: "24" });
+            
+            // listMA.push({ Ten_mon_an: "Trà Sữa Hoa Đậu Biết", Mo_ta_mon_an: "", Don_gia_mon_an: "47000", Hinh_anh_mon_an: "trasuahoadaubiet.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "79", So_luong_thich: "38" });
+            // listMA.push({ Ten_mon_an: "Trà Sữa Phúc Bồn Tử", Mo_ta_mon_an: "", Don_gia_mon_an: "44000", Hinh_anh_mon_an: "trasuaphucbontu.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "40", So_luong_thich: "38" });
+            
+            // listMA.push({ Ten_mon_an: "Trà Chanh Mật Ong", Mo_ta_mon_an: "", Don_gia_mon_an: "49000", Hinh_anh_mon_an: "trachanhmatong.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "35", So_luong_thich: "29" });
+            // listMA.push({ Ten_mon_an: "Trà Gừng", Mo_ta_mon_an: "", Don_gia_mon_an: "45000", Hinh_anh_mon_an: "tragung.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "120", So_luong_thich: "100" });
+            // listMA.push({ Ten_mon_an: "Trà Xanh", Mo_ta_mon_an: "", Don_gia_mon_an: "39000", Hinh_anh_mon_an: "traxanh.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "84", So_luong_thich: "45" });
 
             // // MON_AN.db.dropCollection();
 
@@ -904,47 +917,66 @@ mongoose.connect(connectString,
             //     }
             // });
 
+            // //Login Đăng nhập//
+            // CUAHANG.aggregate(
+            //     [
+            //         { 
+            //             "$project" : { 
+            //                 "Ten_Tai_Khoan" : 1.0, 
+            //                 "Mat_Khau" : 1.0
+            //             }
+            //         }
+            //     ], 
+            //     function(err,res){
+            //         if(err)
+            //             console.log("Lấy tài khoản cửa hàng lỗi : " + err);
+            //         else{
+            //             console.log("Lấy tài khoản cửa hàng thành công : " + res);
+            //         }
+            //     }
+            // );
+
             //Thêm cửa hàng vào cửa hàng yêu thích trong khách hàng
-            KHACH_HANG.find(
-                {
-                    'Cua_hang_yeu_thich': { $in: [mongoose.Types.ObjectId("5eba0ad05f15d311d4d6b67f")] },
-                    '_id': mongoose.Types.ObjectId("5ebce3b56d098b0da418591d")
-                },
-                // {$match: {_id: mongoose.Types.ObjectId("5eba0ad05f15d311d4d6b682")}},
+            // KHACH_HANG.find(
+            //     {
+            //         'Cua_hang_yeu_thich': { $in: [mongoose.Types.ObjectId("5eba0ad05f15d311d4d6b67f")] },
+            //         '_id': mongoose.Types.ObjectId("5ebce3b56d098b0da418591d")
+            //     },
+            //     // {$match: {_id: mongoose.Types.ObjectId("5eba0ad05f15d311d4d6b682")}},
 
-                function (err, result) {
-                    if (err)
-                        console.log("Thêm cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + err);
-                    else
-                        if (result != null) {
-                            KHACH_HANG.findOneAndUpdate(
-                                { '_id': mongoose.Types.ObjectId("5ebce3b56d098b0da418591d") },
-                                { $pull: { 'Cua_hang_yeu_thich': mongoose.Types.ObjectId("5eba0ad05f15d311d4d6b67f") } },
-                                function (err,result) {
-                                    if (err)
-                                        console.log("Bỏ cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + err);
-                                    else
-                                        console.log("Bỏ cửa hàng vào cửa hàng yêu thích mới thành công !" + result);
-                                }
+            //     function (err, result) {
+            //         if (err)
+            //             console.log("Thêm cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + err);
+            //         else
+            //             if (result != null) {
+            //                 KHACH_HANG.findOneAndUpdate(
+            //                     { '_id': mongoose.Types.ObjectId("5ebce3b56d098b0da418591d") },
+            //                     { $pull: { 'Cua_hang_yeu_thich': mongoose.Types.ObjectId("5eba0ad05f15d311d4d6b67f") } },
+            //                     function (err,result) {
+            //                         if (err)
+            //                             console.log("Bỏ cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + err);
+            //                         else
+            //                             console.log("Bỏ cửa hàng vào cửa hàng yêu thích mới thành công !" + result);
+            //                     }
 
-                            );
-                        }
-                        else {
-                            KHACH_HANG.findOneAndUpdate(
-                                { '_id': mongoose.Types.ObjectId("5ebce3b56d098b0da418591d") },
-                                { $push: { 'Cua_hang_yeu_thich': mongoose.Types.ObjectId("5eba2fe316e456336430257f") } },
-                                function (err, result) {
-                                    if (err)
-                                        console.log("Thêm cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + err);
-                                    else
-                                        console.log("Thêm cửa hàng vào cửa hàng yêu thích mới thành công !" + result);
-                                }
+            //                 );
+            //             }
+            //             else {
+            //                 KHACH_HANG.findOneAndUpdate(
+            //                     { '_id': mongoose.Types.ObjectId("5ebce3b56d098b0da418591d") },
+            //                     { $push: { 'Cua_hang_yeu_thich': mongoose.Types.ObjectId("5eba2fe316e456336430257f") } },
+            //                     function (err, result) {
+            //                         if (err)
+            //                             console.log("Thêm cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + err);
+            //                         else
+            //                             console.log("Thêm cửa hàng vào cửa hàng yêu thích mới thành công !" + result);
+            //                     }
 
-                            );
-                        }
+            //                 );
+            //             }
 
-                }
-            );
+            //     }
+            // );
         }
 
     }

@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 const ctdonhangSchema = new mongoose.Schema({
-    Thuc_don: mongoose.Types.ObjectId,
-    Chi_nhanh: mongoose.Types.ObjectId,
-    So_luong: String,
-    Don_gia:String,
-    Thanh_tien:String,
+    IdMonAn : mongoose.Types.ObjectId,
+    SoLuong : Number,
+    GhiChu: String,
+    Don_gia: Number,
+    Thanh_tien: Number,
 });
 
 module.exports = mongoose.model("CT_DON_HANG", ctdonhangSchema);

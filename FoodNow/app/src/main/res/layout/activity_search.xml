@@ -90,6 +90,7 @@
                 android:id="@+id/tabs"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                app:tabIndicatorColor="@color/colorMain"
                 app:tabSelectedTextColor="@color/colorMain"
                 app:tabTextColor="@android:color/darker_gray"
                 android:layout_width="match_parent"
