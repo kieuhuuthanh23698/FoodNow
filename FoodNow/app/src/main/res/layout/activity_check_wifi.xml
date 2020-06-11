@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CheckWifiActivity">
+
+    <LinearLayout
+        android:layout_margin="20dp"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="215.5dp">
+
+        <TextView
+            android:background="@drawable/shopping_cart_border"
+            android:text="Không có kết nối"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+        <RelativeLayout
+            android:background="@android:color/white"
+            android:layout_width="match_parent"
+            android:padding="15dp"
+            android:layout_height="80dp">
+
+            <TextView
+                android:layout_centerInParent="true"
+                android:text="Vui lòng kết nối điện thoại của bạn với Wifi hoăc 3G để sữ dụng đầy đủ chức năng của ứng dụng"
+                android:textAlignment="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:background="@android:color/darker_gray"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp" />
+
+        <LinearLayout
+            android:background="@drawable/border_bottom"
+            android:backgroundTint="@android:color/white"
+            android:weightSum="2"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:background="@color/colorGrayLight"
+                android:id="@+id/checkGPS_close_btn"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="Hủy"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+            <FrameLayout
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@android:color/darker_gray"
+                android:layout_width="1dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:background="@color/colorGrayLight"
+                android:id="@+id/checkGPS_done_btn"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:textColor="@android:color/holo_red_light"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="Đồng ý"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

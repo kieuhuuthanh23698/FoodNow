@@ -648,6 +648,28 @@ mongoose.connect(connectString,
             /*Thêm món ăn  */
             // let listMA = [];
 
+            // listMA.push({ Ten_mon_an: "Cánh Gà Chiên Nước Mắm", Mo_ta_mon_an: "", Don_gia_mon_an: "25000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });//Cơm//
+            // listMA.push({ Ten_mon_an: "Cơm Chiên Hải Sản", Mo_ta_mon_an: "", Don_gia_mon_an: "25000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm Tấm Sườn Bì Chả", Mo_ta_mon_an: "", Don_gia_mon_an: "25000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm Đùi Gà Roti", Mo_ta_mon_an: "", Don_gia_mon_an: "25000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Cơm Gà Xối Mỡ", Mo_ta_mon_an: "", Don_gia_mon_an: "25000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Trà sữa đào", Mo_ta_mon_an: "", Don_gia_mon_an: "25000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });//Trà Sữa//
+            // listMA.push({ Ten_mon_an: "Sữa Tươi Trân Châu Đường Đen", Mo_ta_mon_an: "", Don_gia_mon_an: "25000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            // listMA.push({ Ten_mon_an: "Nước Ép Dứa Cà Rốt", Mo_ta_mon_an: "", Don_gia_mon_an: "25000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            //listMA.push({ Ten_mon_an: "Sinh Tố Cà Chua", Mo_ta_mon_an: "", Don_gia_mon_an: "25000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+
+            // listMA.push({ Ten_mon_an: "Sinh Tố Dứa", Mo_ta_mon_an: "", Don_gia_mon_an: "22000", Hinh_anh_mon_an: "sinhtodua.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "34", So_luong_thich: "12" });
+            // listMA.push({ Ten_mon_an: "Sinh Tố Cà Bơ", Mo_ta_mon_an: "", Don_gia_mon_an: "25000", Hinh_anh_mon_an: "tinhtobo.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
+            
+            // listMA.push({ Ten_mon_an: "Nước Ép Táo", Mo_ta_mon_an: "", Don_gia_mon_an: "34000", Hinh_anh_mon_an: "nuoceptao.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "22", So_luong_thich: "10" });
+            // listMA.push({ Ten_mon_an: "Nước Ép Bí Đao", Mo_ta_mon_an: "", Don_gia_mon_an: "26000", Hinh_anh_mon_an: "nuocepbidao.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "45", So_luong_thich: "24" });
+            
+            // listMA.push({ Ten_mon_an: "Trà Sữa Hoa Đậu Biết", Mo_ta_mon_an: "", Don_gia_mon_an: "47000", Hinh_anh_mon_an: "trasuahoadaubiet.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "79", So_luong_thich: "38" });
+            // listMA.push({ Ten_mon_an: "Trà Sữa Phúc Bồn Tử", Mo_ta_mon_an: "", Don_gia_mon_an: "44000", Hinh_anh_mon_an: "trasuaphucbontu.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "40", So_luong_thich: "38" });
+            
+            // listMA.push({ Ten_mon_an: "Trà Chanh Mật Ong", Mo_ta_mon_an: "", Don_gia_mon_an: "49000", Hinh_anh_mon_an: "trachanhmatong.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "35", So_luong_thich: "29" });
+            // listMA.push({ Ten_mon_an: "Trà Gừng", Mo_ta_mon_an: "", Don_gia_mon_an: "45000", Hinh_anh_mon_an: "tragung.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "120", So_luong_thich: "100" });
+            // listMA.push({ Ten_mon_an: "Trà Xanh", Mo_ta_mon_an: "", Don_gia_mon_an: "39000", Hinh_anh_mon_an: "traxanh.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "84", So_luong_thich: "45" });
             // listMA.push({ Ten_mon_an: "Cánh Gà Chiên Nước Mắm", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });//Cơm//
             // listMA.push({ Ten_mon_an: "Cơm Chiên Hải Sản", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });
             // listMA.push({ Ten_mon_an: "Cơm Tấm Sườn Bì Chả", Mo_ta_mon_an: "", Don_gia_mon_an: "25.000", Hinh_anh_mon_an: "CanhGaChienNuocMam.jpg", Trang_thai_mon_an: "Đang hoạt động", So_luong_mua: "125", So_luong_thich: "99" });

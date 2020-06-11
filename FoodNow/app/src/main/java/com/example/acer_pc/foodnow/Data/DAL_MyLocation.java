@@ -3,6 +3,7 @@ package com.example.acer_pc.foodnow.Data;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.v4.app.ActivityCompat;
@@ -15,6 +16,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.acer_pc.foodnow.FlashActivity;
+import com.example.acer_pc.foodnow.MainActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -54,7 +57,6 @@ public class DAL_MyLocation {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.i("response", Utils.getCurrentTime() + " : end request get current location\n" + response);
                         //xử lý kết quả khi request thành công
                         try {
                             JSONObject jsonObject = new JSONObject(response);
@@ -67,16 +69,34 @@ public class DAL_MyLocation {
                                 longtitude = Double.parseDouble(lng);
                                 address = Utils.getCompleteAddressString(context, latitude, longtitude);
                             }
+                            if(result.equals("400")){
+                                Log.i("response", "\nURL : " + url);
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        ((Activity)context).finish();
+                        try {
+                            Thread.sleep(1000);
+                            Intent intent = new Intent(context, MainActivity.class);
+                            ((Activity)context).finish();
+                            ((Activity)context).startActivity(intent);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        Log.i("response", Utils.getCurrentTime() + " : end request get current location\n" + response);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("response", Utils.getCurrentTime() + error.toString());
-                ((Activity)context).finish();
+                try {
+                    Thread.sleep(1000);
+                    Intent intent = new Intent(context, MainActivity.class);
+                    ((Activity)context).finish();
+                    ((Activity)context).startActivity(intent);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }) {
             @Override

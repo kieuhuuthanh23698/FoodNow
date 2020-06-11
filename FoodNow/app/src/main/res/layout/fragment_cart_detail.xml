@@ -1,0 +1,25 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/constraintLayout"
+    android:background="@android:color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+        android:id="@+id/frament_cart_detail_listCarts"
+        android:visibility="visible"
+        android:orientation="vertical"
+        app:msrv_ms_per_inch="120"
+        app:msrv_snap_count="2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ImageView
+        android:id="@+id/frament_cart_detail_listCarts_empty"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_cart_fragment_tab3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

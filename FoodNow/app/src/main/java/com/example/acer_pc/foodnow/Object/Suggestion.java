@@ -1,5 +1,9 @@
 package com.example.acer_pc.foodnow.Object;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class Suggestion {
@@ -33,6 +37,16 @@ public class Suggestion {
         arrStore.add(new Store("Bánh trà sữa Tí Đô","xxx"));
         arrStore.add(new Store("Cánh gà chiên giòn Cô Tư","xxx"));
         arrStore.add(new Store("Kem bơ Đà Lạt - Trường Chinh","xxx"));
+    }
+
+    public Suggestion(JSONObject jsonObjectSuggestion) throws JSONException {
+        this.title = jsonObjectSuggestion.getString("Chu_De_Chinh");
+        JSONArray lstCH = jsonObjectSuggestion.getJSONArray("lstCH");
+        this.arrStore = new ArrayList<>();
+        for (int i = 0; i < lstCH.length(); i++) {
+            Store store = new Store(lstCH.getJSONObject(i));
+            this.arrStore.add(store);
+        }
     }
 
     public String getTitle() {

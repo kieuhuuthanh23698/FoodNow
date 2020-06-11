@@ -1,40 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".CartFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <FrameLayout
-            android:layout_marginLeft="15dp"
-            android:layout_centerVertical="true"
-            android:background="#29e85c"
-            android:id="@+id/timer"
-            android:layout_width="65dp"
-            android:layout_height="36dp">
-        </FrameLayout>
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/appbar_padding_top"
+            android:background="@android:color/white"
+            android:theme="@style/AppTheme.PopupOverlay">
 
+            <android.support.design.widget.TabLayout
+                android:id="@+id/fragment_cart_tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                app:tabIndicatorColor="@color/colorMain"
+                app:tabSelectedTextColor="@color/colorMain"
+                app:tabTextColor="@android:color/darker_gray">
 
-        <ImageView
-            android:src="@drawable/ic_battery"
-            android:layout_width="100dp"
-            android:layout_height="80dp" />
+                <android.support.design.widget.TabItem
+                    android:id="@+id/fragment_cart_tabItem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="ĐANG ĐẾN" />
 
-        <TextView
-            android:textColor="@android:color/white"
-            android:layout_centerInParent="true"
-            android:layout_centerVertical="true"
-            android:text="10 %"
-            android:id="@+id/bat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+                <android.support.design.widget.TabItem
+                    android:id="@+id/fragment_cart_tabItem2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="LICH SỬ" />
 
-    </RelativeLayout>
+                <android.support.design.widget.TabItem
+                    android:id="@+id/fragment_cart_tabItem3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="ĐƠN NHÁP" />
 
-</RelativeLayout>
+            </android.support.design.widget.TabLayout>
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/fragment_cart_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    </LinearLayout>
+
+</FrameLayout>

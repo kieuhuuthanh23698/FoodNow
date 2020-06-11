@@ -53,8 +53,7 @@ public class MapAddressStoreActivity extends AppCompatActivity implements OnMapR
     MapFragment mapFragment;
     Intent intent;
     double lat, lng;
-    String storeName;
-    private SimpleLocation location;
+    String storeName, address;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,24 +62,16 @@ public class MapAddressStoreActivity extends AppCompatActivity implements OnMapR
         txtAddress = findViewById(R.id.map_address_store);
         mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         intent = getIntent();
-//        lat = intent.getDoubleExtra("lat", 10.800313);
-//        lng = intent.getDoubleExtra("lng", 106.626781);
-
-
-        location = new SimpleLocation(this, false, false, 100, true);
-//        if (!location.hasLocationEnabled()) {
-//            SimpleLocation.openSettings(this);
-//        }
-//        else{
-        lat = location.getLatitude();
-        lng = location.getLongitude();
-//        }
-
+        lat = intent.getDoubleExtra("lat", 10.800313);
+        lng = intent.getDoubleExtra("lng", 106.626781);
         storeName = intent.getStringExtra("name");
         if (storeName == null)
             storeName = "Store name";
+        address = intent.getStringExtra("dia_chi");
+        if (address == null)
+            address = "";
         mapFragment.getMapAsync(MapAddressStoreActivity.this);
-        txtAddress.setText(Utils.getCompleteAddressString(MapAddressStoreActivity.this, lat, lng));
+        txtAddress.setText(address);
         btnBack = findViewById(R.id.map_address_back);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,148 +79,6 @@ public class MapAddressStoreActivity extends AppCompatActivity implements OnMapR
                 finish();
             }
         });
-
-
-        location.setListener(new SimpleLocation.Listener() {
-
-            public void onPositionChanged() {
-                lat = location.getLatitude();
-                lng = location.getLongitude();
-                txtAddress.setText(Utils.getCompleteAddressString(MapAddressStoreActivity.this, lat, lng));
-                Toast.makeText(MapAddressStoreActivity.this, "Map updated !", Toast.LENGTH_SHORT).show();
-                mapFragment.getMapAsync(MapAddressStoreActivity.this);
-            }
-
-        });
-
-
-//        final LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-//
-//        // Define a listener that responds to location updates
-//        final LocationListener locationListener = new LocationListener() {
-//            public void onLocationChanged(Location location) {
-//                // Called when a new location is found by the network location provider.
-//                lat = location.getLatitude();
-//                lng = location.getLongitude();
-//                txtAddress.setText(getCompleteAddressString(lat, lng));
-//                Toast.makeText(MapAddressStoreActivity.this, "Map updated !", Toast.LENGTH_SHORT).show();
-//                mapFragment.getMapAsync(MapAddressStoreActivity.this);
-//            }
-//
-//            public void onStatusChanged(String provider, int status, Bundle extras) {
-//            }
-//
-//            public void onProviderEnabled(String provider) {
-//            }
-//
-//            public void onProviderDisabled(String provider) {
-//            }
-//        };
-        final TelephonyManager telephonyManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
-
-        // Register the listener with the Location Manager to receive location updates
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (ActivityCompat.checkSelfPermission(MapAddressStoreActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(MapAddressStoreActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                            // TODO: Consider calling
-                            //    ActivityCompat#requestPermissions
-                            // here to request the missing permissions, and then overriding
-                            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                            //                                          int[] grantResults)
-                            // to handle the case where the user grants the permission. See the documentation
-                            // for ActivityCompat#requestPermissions for more details.
-                            Toast.makeText(MapAddressStoreActivity.this, "ko co quyen ", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                        Toast.makeText(MapAddressStoreActivity.this, "tim location", Toast.LENGTH_SHORT).show();
-                        //locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
-                        //Location location2 =  locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-                        // Called when a new location is found by the network location provider.
-                        GsmCellLocation location2 = (GsmCellLocation) telephonyManager.getCellLocation();
-                        Log.i("location", telephonyManager.getNetworkOperator());
-                        if(RqsLocation(location2.getCid(), location2.getLac())){
-                            txtAddress.setText(Utils.getCompleteAddressString(MapAddressStoreActivity.this, lat, lng));
-                            Toast.makeText(MapAddressStoreActivity.this, "Map updated !", Toast.LENGTH_SHORT).show();
-                            mapFragment.getMapAsync(MapAddressStoreActivity.this);
-                        }else{
-                            Toast.makeText(MapAddressStoreActivity.this, "Can't find Location!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-            }
-        }, 0, 100);
-
-
-    }
-
-    private Boolean RqsLocation(int cid, int lac){
-
-        Boolean result = false;
-
-        String urlmmap = "http://www.google.com/glm/mmap";
-
-        try {
-            URL url = new URL(urlmmap);
-            URLConnection conn = url.openConnection();
-            HttpURLConnection httpConn = (HttpURLConnection) conn;
-            httpConn.setRequestMethod("POST");
-            httpConn.setDoOutput(true);
-            httpConn.setDoInput(true);
-            httpConn.connect();
-
-            OutputStream outputStream = httpConn.getOutputStream();
-            WriteData(outputStream, cid, lac);
-
-            InputStream inputStream = httpConn.getInputStream();
-            DataInputStream dataInputStream = new DataInputStream(inputStream);
-
-            dataInputStream.readShort();
-            dataInputStream.readByte();
-            int code = dataInputStream.readInt();
-            if (code == 0) {
-                lat = dataInputStream.readInt();
-                lng = dataInputStream.readInt();
-                result = true;
-
-            }
-            Log.i("location", "\nLocation :" + cid + " + " + lac);
-            Log.i("location", "\nCell location :" + lat + " + " + lng);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        return result;
-
-    }
-
-    private void WriteData(OutputStream out, int cid, int lac) throws IOException {
-        DataOutputStream dataOutputStream = new DataOutputStream(out);
-        dataOutputStream.writeShort(21);
-        dataOutputStream.writeLong(0);
-        dataOutputStream.writeUTF("en");
-        dataOutputStream.writeUTF("Android");
-        dataOutputStream.writeUTF("1.0");
-        dataOutputStream.writeUTF("Web");
-        dataOutputStream.writeByte(27);
-        dataOutputStream.writeInt(0);
-        dataOutputStream.writeInt(0);
-        dataOutputStream.writeInt(3);
-        dataOutputStream.writeUTF("");
-
-        dataOutputStream.writeInt(cid);
-        dataOutputStream.writeInt(lac);
-
-        dataOutputStream.writeInt(0);
-        dataOutputStream.writeInt(0);
-        dataOutputStream.writeInt(0);
-        dataOutputStream.writeInt(0);
-        dataOutputStream.flush();
     }
 
     @Override
@@ -256,17 +105,5 @@ public class MapAddressStoreActivity extends AppCompatActivity implements OnMapR
                 .bearing(30)
                 .tilt(45)
                 .build()));
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        location.beginUpdates();
-    }
-
-    @Override
-    protected void onPause() {
-        location.endUpdates();
-        super.onPause();
     }
 }

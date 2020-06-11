@@ -1,17 +1,45 @@
 package com.example.acer_pc.foodnow.Object;
 
+import com.example.acer_pc.foodnow.Data.Utils;
 import com.example.acer_pc.foodnow.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 public class Store {
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    private String id;
     private int imgStore;
+    private String urlImage;
     private String name = "", address = "";
     private double star = 0.0, distance = 0.0;
     private int time = 0;
     private ArrayList<FoodType> arrayListFood;
     private boolean isFavorite;
     private double lat, lng;
+
+    public Store(JSONObject jsonObjectStore) throws JSONException {
+        this.id = jsonObjectStore.getString("_id");
+        this.name = jsonObjectStore.getString("Ten_Cua_Hang");
+        this.urlImage = Utils.getUrlImageStore(jsonObjectStore.getString("Hinh_Anh_Cua_Hang"));
+    }
+
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
+    }
 
     public double getLat() {
         return lat;
@@ -48,7 +76,7 @@ public class Store {
     }
 
     public Store() {
-        this.imgStore = R.drawable.img_store2;
+        this.imgStore = R.drawable.img_store3;
         this.name = "Cơm Tấm Cali - Nguyễn Chí Thanh";
         this.address = "125 Nguyễn Chí Thanh, P.9, Quận 5, TP.HCM";
         this.star = 4.6;

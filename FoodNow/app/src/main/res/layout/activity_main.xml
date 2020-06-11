@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -15,17 +15,18 @@
         android:layout_weight="18"
         android:id="@+id/nav_host_fragment"
         android:layout_width="match_parent"
-        android:layout_height="0dp" />
+        android:layout_height="match_parent" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
         android:layout_weight="2"
-        android:layout_height="0dp"
-        android:background="@color/colorMain"
-        app:itemIconTint="@android:color/white"
-        app:itemTextColor="@android:color/white"
+        android:layout_height="wrap_content"
+        app:itemIconTint="@drawable/selector_stock_bottom_nav_view"
+        app:itemTextColor="@drawable/selector_stock_bottom_nav_view"
+        android:background="@android:color/white"
+        android:layout_gravity="bottom"
         app:menu="@menu/bottom_navigation_menu" />
 
 
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

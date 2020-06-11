@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
 
 const khachhangSchema = new mongoose.Schema({
+    id_user : String,
     Ten_khach_hang: String,
-    So_dien_thoai: Number,
+    So_dien_thoai: String,
     Email: String,
     Ngay_sinh: Date,
     Gioi_tinh: String,
@@ -10,8 +11,8 @@ const khachhangSchema = new mongoose.Schema({
     Dia_chi_nha: mongoose.Types.ObjectId,
     Dia_chi_cong_ty: mongoose.Types.ObjectId,
     Dia_chi_khac: [{ type: mongoose.Types.ObjectId }],
-    Tai_khoan: String,
-    Mat_khau: String,
+    // Tai_khoan: String,
+    // Mat_khau: String,
     Cua_hang_yeu_thich:[{ type: mongoose.Types.ObjectId }],
     Don_hang_id: [{ type: mongoose.Types.ObjectId }],
     Ct_Gio_Hang_id: [{ type: mongoose.Types.ObjectId }]

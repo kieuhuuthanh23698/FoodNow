@@ -27,8 +27,10 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.acer_pc.foodnow.Adapter.CartOfFragmentAdapter;
 import com.example.acer_pc.foodnow.Adapter.StoreSearchResultAdapter;
 import com.example.acer_pc.foodnow.Adapter.SuggestionSearchAdapter;
+import com.example.acer_pc.foodnow.Object.Cart;
 import com.example.acer_pc.foodnow.Object.Store;
 import com.google.android.flexbox.AlignItems;
 import com.google.android.flexbox.FlexDirection;
@@ -43,7 +45,7 @@ public class SearchActivity extends AppCompatActivity {
     ImageView navigate_before_search_acti;
     static SearchView searchView;
     LinearLayout resultSearch, searchSuggest;
-    private SectionsPagerAdapter mSectionsPagerAdapter;
+    private SearchActSectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
     private RecyclerView recyclerViewSuggestionSearch;
     ArrayList<String> arrayListSuggestionSearch;
@@ -88,7 +90,7 @@ public class SearchActivity extends AppCompatActivity {
 
 
 
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        mSectionsPagerAdapter = new SearchActSectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
@@ -140,13 +142,13 @@ public class SearchActivity extends AppCompatActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class SearchActPlaceholderFragment extends Fragment {
         private static final String ARG_SECTION_NUMBER = "section_number";
 
-        public PlaceholderFragment() {}
+        public SearchActPlaceholderFragment() {}
 
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
+        public static SearchActPlaceholderFragment newInstance(int sectionNumber) {
+            SearchActPlaceholderFragment fragment = new SearchActPlaceholderFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             fragment.setArguments(args);
@@ -157,35 +159,51 @@ public class SearchActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_search, container, false);
+            ImageView imageView = rootView.findViewById(R.id.search_activity_listCarts_empty);
             RecyclerView recyclerViewStoreResultSearch = rootView.findViewById(R.id.storeSearchResult);
-            ArrayList<Store> storeArrayList = new ArrayList<>();
-            storeArrayList.add(new Store());
-            storeArrayList.add(new Store());
-            storeArrayList.add(new Store());
-            storeArrayList.add(new Store());
-            storeArrayList.add(new Store());
-            storeArrayList.add(new Store());
-            storeArrayList.add(new Store());
-            storeArrayList.add(new Store());
-            storeArrayList.add(new Store());
-            storeArrayList.add(new Store());
-            StoreSearchResultAdapter storeSearchResultAdapter = new StoreSearchResultAdapter(storeArrayList, getContext());
-            recyclerViewStoreResultSearch.setAdapter(storeSearchResultAdapter);
-            recyclerViewStoreResultSearch.setNestedScrollingEnabled(true);LinearLayoutManager friendsLayoutManager = new LinearLayoutManager(getContext().getApplicationContext(), LinearLayoutManager.VERTICAL, false);
-            recyclerViewStoreResultSearch.setLayoutManager(friendsLayoutManager);
+            int page = getArguments().getInt(ARG_SECTION_NUMBER);
+            switch (page){
+                case 1:
+                    imageView.setVisibility(View.GONE);
+                    recyclerViewStoreResultSearch.setVisibility(View.VISIBLE);
+                    ArrayList<Store> storeArrayList = new ArrayList<>();
+                    storeArrayList.add(new Store());
+                    storeArrayList.add(new Store());
+                    storeArrayList.add(new Store());
+                    storeArrayList.add(new Store());
+                    storeArrayList.add(new Store());
+                    storeArrayList.add(new Store());
+                    storeArrayList.add(new Store());
+                    storeArrayList.add(new Store());
+                    storeArrayList.add(new Store());
+                    storeArrayList.add(new Store());
+                    StoreSearchResultAdapter storeSearchResultAdapter = new StoreSearchResultAdapter(storeArrayList, getContext());
+                    recyclerViewStoreResultSearch.setAdapter(storeSearchResultAdapter);
+                    recyclerViewStoreResultSearch.setNestedScrollingEnabled(true);LinearLayoutManager friendsLayoutManager = new LinearLayoutManager(getContext().getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+                    recyclerViewStoreResultSearch.setLayoutManager(friendsLayoutManager);
+                    break;
+                case 2:
+                    imageView.setVisibility(View.VISIBLE);
+                    recyclerViewStoreResultSearch.setVisibility(View.GONE);
+                    break;
+                case 3:
+                    imageView.setVisibility(View.VISIBLE);
+                    recyclerViewStoreResultSearch.setVisibility(View.VISIBLE);
+                    break;
+            }
             return rootView;
         }
     }
 
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+    public class SearchActSectionsPagerAdapter extends FragmentPagerAdapter {
 
-        public SectionsPagerAdapter(FragmentManager fm) {
+        public SearchActSectionsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
         @Override
         public Fragment getItem(int position) {
-            return PlaceholderFragment.newInstance(position + 1);
+            return SearchActPlaceholderFragment.newInstance(position + 1);
         }
 
         @Override
@@ -193,13 +211,5 @@ public class SearchActivity extends AppCompatActivity {
             return 3;
         }
     }
-
-
-
-//    @Override
-//    protected void onDestroy() {
-//        Intent intent = new Intent(SearchActivity.this, MainActivity.class);
-//        startActivity(intent);
-//        super.onDestroy();
-//    }
+    
 }

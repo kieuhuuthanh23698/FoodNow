@@ -5,12 +5,13 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> -->
+     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature
@@ -33,6 +34,19 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_api_key" />
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+        <activity android:name="com.facebook.FacebookActivity"
+            android:configChanges= "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity android:name="com.facebook.CustomTabActivity" android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="@string/fb_login_protocol_scheme" />
+        </intent-filter>
+        </activity>
+
 
         <activity android:name=".WelcomeActivity">
             <intent-filter>
@@ -53,9 +67,16 @@
             android:theme="@style/AppTheme.NoteItem" />
         <activity android:name=".InformationStoreActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".LoadingActivity" android:theme="@style/AppTheme.ShoppingCart" />
+        <activity android:name=".LoginActivity" />
+        <activity
+            android:name=".LoadingActivity"
+            android:theme="@style/AppTheme.LoadingActivity" />
         <activity android:name=".Main2Activity" />
         <activity android:name=".FlashActivity" />
+        <activity
+            android:name=".CheckGPSActivity"
+            android:theme="@style/AppTheme.NoteItem" />
+        <activity android:name=".CheckWifiActivity" android:theme="@style/AppTheme.NoteItem"/>
     </application>
 
 </manifest>

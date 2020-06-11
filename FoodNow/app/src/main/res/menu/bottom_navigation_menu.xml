@@ -7,11 +7,11 @@
     <item
         android:id="@+id/navigation_cart"
         android:icon="@drawable/ic_add_shopping_cart_black_24dp"
-        android:title="Giỏ hàng" />
+        android:title="Đơn hàng" />
     <item
         android:id="@+id/navigation_bill"
-        android:icon="@drawable/ic_description_black_24dp"
-        android:title="Hóa đơn" />
+        android:icon="@drawable/ic_favorite_black2_24dp"
+        android:title="Yêu thích" />
     <item
         android:id="@+id/navigation_account"
         android:icon="@drawable/ic_person_black_24dp"
