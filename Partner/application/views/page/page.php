@@ -6,6 +6,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>FoodNow | Dashboard</title>
+  <link rel="shortcut icon" href="<?php echo base_url()?>images/logo-ver40x40.png" type="image/x-icon">
+  <link rel="icon" href="<?php echo base_url()?>images/logo-ver40x40.png">
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
