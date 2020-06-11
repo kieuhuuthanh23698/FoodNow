@@ -32,7 +32,7 @@
 		})
 		.done(function(data) {
 			debugger;
-			if(data.return_code == "1")
+			if(data.return_code == "1" || data.return_code == "2" || data.return_code == "3" || data.return_code == "4")
 			{
 
 			localStorage.setItem("partnerID", data.id);
