@@ -476,6 +476,7 @@
 <script type="text/javascript">
       
     $(document).ready(function(){
+        alert(localStorage.getItem('partnerID'));
         $.ajax(
         {
             url: 'http://localhost:3000/KhuyenMaiCuaHang',

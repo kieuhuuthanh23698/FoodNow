@@ -135,8 +135,8 @@ const QL_NHOM_NGUOIDUNG = require('./Models/QL_NHOM_NGUOIDUNG');
 //     sseDemo(req, res);
 // });
 
-// const changeStream = CHINHANH.watch();
-// let list = [];
+const changeStream = CHINHANH.watch();
+let list = [];
 
 // function getSocketIdWithIdParner(partnerID){
 // 	var result = list.find(item => item.partner_id === partnerID);
@@ -145,38 +145,36 @@ const QL_NHOM_NGUOIDUNG = require('./Models/QL_NHOM_NGUOIDUNG');
 
 
 
-// io.on("connection",function(socket){
-// 	//list.push(socket.id);
-// 	// console.log("Some one connected with id : " + socket.id);
-// 	socket.on('partner-server', function(data){
-// 		console.log("client id " + socket.id + " just emit : " + data);
-// 		socket.join(data);
-// 		var item = {socket_id : socket.id, partner_id : data};
-// 		list.push(item);
-// 		//console.log('123 : ' + list[0].socket_id);
-// 		console.log('Connecting people are : ' + list.length);
-// 	});
+io.on("connection",function(socket){
+	//list.push(socket.id);
+	console.log("Some one connected with id : " + socket.id);
+	socket.on('partner-server', function(data){
+		console.log("client id " + socket.id + " just emit : " + data);
+		socket.join(data);
+		var item = {socket_id : socket.id, partner_id : data};
+		list.push(item);
+		//console.log('123 : ' + list[0].socket_id);
+		console.log('Connecting people are : ' + list.length);
+	});
+});
 
+changeStream.on('change', (change) => {
+	console.log(change);
+	//console.log('Data collection khu vuc have changed !')
+	//console.log('id khu vuc thay doi :' + change.documentKey._id);
+//	var socket_id = getSocketIdWithIdParner('5dc53b64fdf2d32c6006e057');
 
-// });
-
-// changeStream.on('change', (change) => {
-// 	console.log(change);
-// 	//console.log('Data collection khu vuc have changed !')
-// 	//console.log('id khu vuc thay doi :' + change.documentKey._id);
-// //	var socket_id = getSocketIdWithIdParner('5dc53b64fdf2d32c6006e057');
-
-// //	var socket_id = '5dc53b64fdf2d32c6006e057';
-// 	//var socket_id = change.documentKey._id;
-// 	//io.to(socket_id).emit('data of partner 1');
-// 	//io.sockets.in(socket_id).emit('partner-server', 'hello ');
-// 	//console.log('vua emit to ' + socket_id);
-// 	//io.to(getSocketIdWithIdParner('5dc53bc6fdf2d32c6006e058')).emit('data of partner 2');
-// 	//io.to(getSocketIdWithIdParner('5dc56d8c6b2d0520e0658441')).emit('data of partner 3');
-// 	//data_khu_vuc_change = '{' + change.documentKey._id + '}';
-// 	//data_khu_vuc_change = 'co su thay doi';
-// 	//io.emit('partner-server', 'hello');
-// }); 
+//	var socket_id = '5dc53b64fdf2d32c6006e057';
+	//var socket_id = change.documentKey._id;
+	//io.to(socket_id).emit('data of partner 1');
+	//io.sockets.in(socket_id).emit('partner-server', 'hello ');
+	//console.log('vua emit to ' + socket_id);
+	//io.to(getSocketIdWithIdParner('5dc53bc6fdf2d32c6006e058')).emit('data of partner 2');
+	//io.to(getSocketIdWithIdParner('5dc56d8c6b2d0520e0658441')).emit('data of partner 3');
+	//data_khu_vuc_change = '{' + change.documentKey._id + '}';
+	//data_khu_vuc_change = 'co su thay doi';
+	//io.emit('partner-server', 'hello');
+}); 
 
 //-------------------------------------------------------------------KHU VỰC----------------------------------------------------------------
 //route thêm khu vực
@@ -967,7 +965,7 @@ app.post("/Khuyenmaihethong", urlEncodeParser, function (req, res) {
 //method post(truyền vào ID)
 //Params: idCuahang
 app.post("/KhuyenMaiCuaHang", urlEncodeParser, function (req, res) {
-	CUAHANG.findById({ '_id': req.body.idCuahang }, function (err, KhuyenMaiCuaHang) {
+	CUAHANG.findById({ '_id': mongoose.Types.ObjectId(req.body.idCuahang ) }, function (err, KhuyenMaiCuaHang) {
 		if (err) {
 			res.send("Lấy danh sách khuyến mãi cửa hàng : " + err);
 		}
@@ -1648,7 +1646,8 @@ app.post("/Danhnhapcuahhang", urlEncodeParser, function (req, res) {
 											res.send("Lỗi:" + err);
 										else {
 											res.send({
-												return_code: "1"
+												return_code: "1",
+												id : kqchinhanh[0]._id
 											});
 											console.log("Thành công");
 											return;
@@ -1661,8 +1660,10 @@ app.post("/Danhnhapcuahhang", urlEncodeParser, function (req, res) {
 										if (err)
 											res.send("Lỗi:" + err);
 										else {
+											console.log(kqchinhanh);
 											res.send({
-												return_code: "2"
+												return_code: "2",
+												id :kqchinhanh[0]._id
 											});
 											console.log("Thành công");
 											return;
@@ -1672,14 +1673,16 @@ app.post("/Danhnhapcuahhang", urlEncodeParser, function (req, res) {
 	
 								if (reskq_id[0].Ten_nhom == "Admin") {
 									res.send({
-										return_code: "3"
+										return_code: "3",
+										id :kqchinhanh[0]._id
 									});
 									return;
 								}
 	
 								if (reskq_id[0].Ten_nhom == "SuperAdmin") {
 									res.send({
-										return_code: "4"
+										return_code: "4",
+										id : kqchinhanh[0]._id
 									});
 									return;
 								}
@@ -1850,56 +1853,6 @@ function capNhatDonHang(iCART, iDONHANG, error_query, res) {
 	}
 }
 
-app.post("/chonSanPham_test", urlEncodeParser, function (req, res) {
-	console.log("Thông tin cửa hàng :" + req.body.idCuaHang);
-	console.log("Thông tin khách hàng : " + req.body.idKhachHang);
-	if (req.body.cart != null && req.body.cart != '') {//cập nhật giỏ hàng
-		console.log("\nCập nhật giỏ hàng\nThông tin chi tiết giỏ hàng :");
-		var cart = JSON.parse(req.body.cart);
-		if (cart.length != null && cart.length > 0) {
-			// cart.forEach(element => {
-			// 	console.log("id :" + element.id + "| count :" + element.count + "| note:" + element.note);
-			// });
-
-			var mapped_monans = cart.map(function (idMONAN) {
-
-			});
-		}
-
-
-
-
-
-
-
-
-	} else {
-		console.log("\nXóa giỏ hàng");
-		// DON_HANG.findByIdAndDelete(
-		// 	{ "IdKhachHang": req.body.idKhachHang, "IdCuaHang": req.body.idCuaHang },
-		// 	function (err, resultDonHang) {
-		// 		//xử lý sau khi xóa đơn hàng
-		// 		if (errXoaDH) {
-		// 		} else {
-		// 			KHACH_HANG.findByIdAndUpdate(
-		// 				{ _id: mongoose.Types.ObjectId(req.body.idCuaHang) },
-		// 				{ $pull: { Don_hang_id: resultDonHang._id } },
-		// 				function (errPullDH, resultPullDH) {
-		// 					if (err) {
-		// 					} else {
-		// 						console.log("\nXóa đơn hàng thành công !");
-		// 					}
-		// 				}
-		// 			);
-		// 		}
-		// 	}
-		// )
-	}
-
-
-
-	res.send({ return_code: "1" });
-});
 
 //route cập nhật giỏ hàng
 //method post

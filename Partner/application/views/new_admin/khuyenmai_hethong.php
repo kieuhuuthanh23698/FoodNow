@@ -410,9 +410,24 @@
 
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
 <script type="text/javascript">
+
+    
+var socket;
       
     $(document).ready(function(){
+ socket = io("http://localhost:3000");
+    socket.emit("partner-server", localStorage.getItem('partnerID'));
+    socket.on('partner-server', function(data){
+        //debugger;
+        alert('Guest is ordering with data :');
+    });
+    $('#head').text($('#head').text() + ' - ' + localStorage.getItem('partnerID'));
+
+
+
+
         $.ajax(
         {
             url: 'http://localhost:3000/Danhsachkhuyenmaihethong',
@@ -556,4 +571,6 @@
 //     //xóa bảng CH
 //   }
 // );
+
+
 </script>
