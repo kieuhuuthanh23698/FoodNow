@@ -22,15 +22,18 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
+           <!-- Tổng quan -->
+           <!-- <li class="nav-item has-treeview menu-open">
             <a href="<?php echo base_url();?>tongquan/home" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Tổng quan
               </p>
             </a>
-          </li>
-          <li class="nav-item">
+          </li> -->
+          <!--  Tổng quan -->
+          <!-- Tin tức -->
+          <!-- <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
@@ -38,56 +41,15 @@
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Đơn hàng
-                <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">6</span>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?php echo base_url();?>Donhang/Danhsach_donhang" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Danh sách đơn hàng</p>
-                  <span class="badge badge-info right">6</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url();?>Donhang/Thongke_donhang" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Thống kê đơn hàng</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
-              <p>
-                Chi nhánh
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?php echo base_url();?>Chinhanh/homeChinhanh_cuahang" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Danh sách cửa hàng</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url();?>Chinhanh/homeChinhanh_monan" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Danh sách món ăn</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          
+          </li> -->
+          <!-- Tin tức -->
+          <!-- Đơn hàng -->
+          <?php echo isset($don_hang) ? $don_hang : '';?>
+          <!-- Đơn hàng -->
+          <!-- Chi nhánh -->
+          <?php echo isset($chi_nhanh) ? $chi_nhanh : '';?>
+          <!-- Chi nhánh -->
+          <!-- Khuyến mãi -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
@@ -97,21 +59,12 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?php echo base_url();?>Khuyenmai/homeKhuyenmai_cuahang" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Khuyến mãi cửa hàng</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url();?>Khuyenmai/homeKhuyenmai_hethong" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Khuyến mãi hệ thống</p>
-                </a>
-              </li>
+              <?php echo isset($km_cua_hang) ? $km_cua_hang : '';?>
+              <?php echo isset($km_he_thong) ? $km_he_thong : '';?>
             </ul>
           </li>
-
+          <!-- Khuyến mãi -->
+          <!-- Danh mục -->
            <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
@@ -121,28 +74,12 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-               <li class="nav-item">
-                <a href="<?php echo base_url();?>Danhmuccuahangtrangchu/homeDanhmuccuahang_loaimonan" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Loại món ăn</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url();?>Danhmuccuahangtrangchu/homeDanhmuccuahang_homnay" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Cửa hàng hôm nay</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url();?>Danhmuccuahangtrangchu/homeDanhmuccuahang_trangchu" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Cửa hàng trang chủ</p>
-                </a>
-              </li>
+              <?php echo isset($dm_chi_nhanh) ? $dm_chi_nhanh : '';?>
+              <?php echo isset($dm_he_thong) ? $dm_he_thong : '';?>
             </ul>
           </li>
-
-          <li class="nav-item has-treeview">
+          <!-- Danh mục -->
+<!--           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-envelope"></i>
               <p>
@@ -258,8 +195,7 @@
                 </a>
               </li>
             </ul>
-          </li>
-        
+          </li> -->
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
