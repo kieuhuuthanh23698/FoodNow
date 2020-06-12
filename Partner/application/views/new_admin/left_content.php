@@ -79,7 +79,7 @@
             </ul>
           </li>
           <!-- Danh mục -->
-<!--           <li class="nav-item has-treeview">
+          <!-- <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-envelope"></i>
               <p>
@@ -196,6 +196,16 @@
               </li>
             </ul>
           </li> -->
+
+          <li class="nav-item has-treeview">
+            <a href="<?php echo base_url();?>admin/logout" class="nav-link">
+              <i class="nav-icon far fa-plus-square"></i>
+              <p>
+                Logout
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

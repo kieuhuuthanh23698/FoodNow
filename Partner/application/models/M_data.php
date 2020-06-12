@@ -19,6 +19,10 @@ class M_data extends CI_Model {
     curl_setopt($ch, CURLOPT_POST, count($param));
     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($param)); 
     $response = curl_exec($ch);//RESPONE LÀ 1 string dạng JSON
+    if(curl_errno($ch) > 0)
+    {
+        return null;
+    }
     curl_close($ch);
     return json_decode($response, true);
   }
