@@ -2,13 +2,14 @@
 <html >
 <head>
 	<meta charset="UTF-8">
-	<title>Login Admin - Camera Minh Long</title>
+	<title>Login Admin FoodNow</title>
 	<link rel="icon" href="<?php echo base_url();?>images/logo-ver40x40.png">
 	<link rel="stylesheet" href="<?php echo base_url()?>css/bootstrap.min.css">
 	<script src="<?php echo base_url()?>js/jquery.js" ></script>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/mycss.css">
 </head>
 <body>
+	 <?php echo isset($notification) ? $notification : '';?>
 	<form action="<?php echo base_url()?>admin/login" method = "post">
 		<div class="outer ">
 			<div class="middle " style= "background-image: url(<?php echo base_url()?>images/bgLogin.jpg)" >

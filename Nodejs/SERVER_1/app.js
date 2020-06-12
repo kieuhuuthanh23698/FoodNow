@@ -2,13 +2,6 @@ var express = require("express");
 var bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const jwt = require("jsonwebtoken");
-// var io = socket_io('http://localhost:3000', {
-// 	extraHeaders: {
-// //		Authorization: "Bearer authorization_token_here"
-// // 		'Access-Control-Allow-Origin': '*'
-// 	}
-// });
-//var io = socket_io();
 
 var urlEncodeParser = bodyParser.urlencoded({ extended: false });
 var app = new express();
@@ -18,41 +11,18 @@ const io = require('socket.io')(server);
 app.set("view engine", "ejs");
 app.use("/Public", express.static('Public'));
 app.use(function (req, res, next) {
-
-	// Website you wish to allow to connect
 	res.setHeader('Access-Control-Allow-Origin', '*');
-
-	// Request methods you wish to allow
 	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-	// Request headers you wish to allow
 	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-	// Set to true if you need the website to include cookies in the requests sent
-	// to the API (e.g. in case you use sessions)
 	res.setHeader('Access-Control-Allow-Credentials', true);
-
-	// Pass to next layer of middleware
 	next();
 });
-// app.get("/", function(req, res){
-//   res.render("main");
-// });
-//app.use(express.static(__dirname + '/Public/'));
+app.use(express.static(__dirname + '/Public/'));
 server.listen(3000);
 
 
 
 //tVn8kGPaRDD1Hq4j
-// mongoose.connect('mongodb://localhost:27017/FoodNow',
-// 	{ useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false },
-// 	function (err) {
-// 		if (err)
-// 			console.log("MongoDb connect error : " + err);
-// 		else
-// 			console.log("MongoDb connect success !");
-// 	}
-// );
 // const connectString = 'mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb';
 const connectString = 'mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.net/FoodNow?retryWrites=true&w=majority';
 
@@ -135,31 +105,42 @@ const QL_NHOM_NGUOIDUNG = require('./Models/QL_NHOM_NGUOIDUNG');
 //     sseDemo(req, res);
 // });
 
-const changeStream = CHINHANH.watch();
+// const changeStream = CHINHANH.watch();
 let list = [];
 
-// function getSocketIdWithIdParner(partnerID){
-// 	var result = list.find(item => item.partner_id === partnerID);
-// 	return result.socket_id;
-// }
+function getSocketIdWithIdParner(partnerID){
+	var result = list.find(item => item.partner_id === partnerID);
+	if(result != null)
+		return result.partner_id;
+	return null;
+}
 
-
-
-io.on("connection", function (socket) {
-	//list.push(socket.id);
-	console.log("Some one connected with id : " + socket.id);
-	socket.on('partner-server', function (data) {
-		console.log("client id " + socket.id + " just emit : " + data);
-		socket.join(data);
-		var item = { socket_id: socket.id, partner_id: data };
-		list.push(item);
-		//console.log('123 : ' + list[0].socket_id);
-		console.log('Connecting people are : ' + list.length);
+io.on("connect", function (socket) {
+	socket.on('login', function (data) {
+		if(getSocketIdWithIdParner(data) == null){
+			socket.join(data);
+			console.log("client with socket id " + socket.id + " just emit id user " + data);
+			var item = { socket_id: socket.id, partner_id: data };
+			list.push(item);
+			socket.emit("hello");
+			console.log('Connecting people are : ' + list.length);
+		}
 	});
 });
 
-changeStream.on('change', (change) => {
-	console.log(change);
+
+//giả sử user đặt hàng với id cửa hàng là req.body.idCuaHang ==> thông báo cho cửa hàng có id == req.body.idCuaHang biết 
+app.post("/testDatHang", urlEncodeParser, function (req, res) {
+	// io.emit("hello");
+	var socket_id = getSocketIdWithIdParner(req.body.idCuaHang);
+	// io.to(socket_id).emit('Thông tin từ người dùng : ' + req.body.infor);
+	io.sockets.in(socket_id).emit('dat_hang', req.body.infor);
+	console.log("Thông báo tới user có id : " + socket_id + " thông tin sau " + req.body.infor);
+	res.send("Đã gửi thông tin thành công !");
+});
+
+// changeStream.on('change', (change) => {
+	// console.log(change);
 	//console.log('Data collection khu vuc have changed !')
 	//console.log('id khu vuc thay doi :' + change.documentKey._id);
 	//	var socket_id = getSocketIdWithIdParner('5dc53b64fdf2d32c6006e057');
@@ -174,7 +155,7 @@ changeStream.on('change', (change) => {
 	//data_khu_vuc_change = '{' + change.documentKey._id + '}';
 	//data_khu_vuc_change = 'co su thay doi';
 	//io.emit('partner-server', 'hello');
-});
+// });
 
 //-------------------------------------------------------------------KHU VỰC----------------------------------------------------------------
 //route thêm khu vực
@@ -1668,7 +1649,7 @@ app.post("/Dangnhapadmin", urlEncodeParser, function (req, res) {
 												});
 												return;
 											} else{
-												onsole.log("Xác định danh tính chi nhánh thất bại !");
+												console.log("Xác định danh tính chi nhánh thất bại !");
 												res.send({
 													return_code: "0",
 													error_infor: "Xác định danh tính chi nhánh thất bại"

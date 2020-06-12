@@ -31,7 +31,7 @@
 			</tr>
 			</thead>
 			<tbody>
-				<?php for($x = 0; $x <= 15; $x++){?>
+				<?php for($x = 0; $x <= 5; $x++){?>
 				<tr>
 					<td>Item <?php echo $x;?></td>
 					<td>Item <?php echo $x;?></td>
@@ -68,43 +68,15 @@
 <script type="text/javascript">
 
 $(document).ready( function () {	$('#tbBanner').DataTable();	} );
-//const sseSource = new EventSource('http://localhost:3000/event-stream-khuvuc');
-
-//demo event source
-// sseSource.addEventListener('message', (e) => {
-//     const messageData = e.data;
-//     console.log(messageData);
-// });
-
 //demo socket io
-//
 var socket;
-// socket.on("partner-server", function(data){
-// 	alert('Guest is ordering with data :' + data);
-// });
-// socket.on('partner-server', function(msg){
-// //      $('#messages').append($('<li>').text(msg));
-// });
-
 $(document).ready(function(){
+	//khởi tạo socket
 	socket = io("http://localhost:3000");
-	socket.emit("partner-server", localStorage.getItem('partnerID'));
-	socket.on('partner-server', function(data){
-		//debugger;
- 		alert('Guest is ordering with data :');
+	socket.emit("login", <?php echo "'".$id."'";?>);
+	socket.on('dat_hang', function(data){
+ 		alert(data);
 	});
-	$('#head').text($('#head').text() + ' - ' + localStorage.getItem('partnerID'));
-//	socket.emit("partner-id", $("#nav-search-input").val);
 });
 
-
-
-function sendData(){
-	//socket.emit("partner-id", $("#nav-search-input").val);
-	//alert('Emit to server :' + $("#nav-search-input").val());
-}
-
-function getData($data){
-	alert($data);
-}
 </script>
