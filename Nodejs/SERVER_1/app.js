@@ -818,14 +818,14 @@ app.get("/getDanhmucloaimonan", function (req, res) {
 		function (err, items) {
 			if (err)
 			{
-				res.send("Lấy danh mục loại món ăn lỗi" + err);
-				return_code : "0";
+				res.send({ err : "Lấy danh mục loại món ăn lỗi" , return_code : "0"});
+				
 			}
 				
 			else
 			{
-				res.send(items);
-				return_code : "1";
+				res.send({items , return_code : "1"});
+				
 			}
 				
 		}
@@ -1641,7 +1641,7 @@ app.post("/Danhnhapcuahhang", urlEncodeParser, function (req, res) {
 							else {
 								console.log(reskq_id);
 								if (reskq_id[0].Ten_nhom == "Chinhanh") {
-									CHINHANH.find({ Tai_khoan: result[0]._id }, function (err, kqchinhanh) {
+									CHINHANH.find({ Tai_Khoan: result[0]._id }, function (err, kqchinhanh) {
 										if (err)
 											res.send("Lỗi:" + err);
 										else {
@@ -1656,7 +1656,7 @@ app.post("/Danhnhapcuahhang", urlEncodeParser, function (req, res) {
 								}
 	
 								if (reskq_id[0].Ten_nhom == "Cuahang") {
-									CUAHANG.find({ Tai_khoan: result[0]._id }, function (err, kqchinhanh) {
+									CUAHANG.find({ Tai_Khoan: result[0]._id }, function (err, kqchinhanh) {
 										if (err)
 											res.send("Lỗi:" + err);
 										else {
