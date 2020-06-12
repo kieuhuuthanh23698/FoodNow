@@ -220,7 +220,6 @@
                                 <tr role="row">
                                     <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Icon danh mục loại món ăn</th>
                                      <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Tên loại món ăn</th>
-                                      <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Hình ảnh</th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Chi tiết</th>
                                     </tr>
    
@@ -256,83 +255,7 @@
               <!-- /.card-header -->
               <div class="card-body p-0">
                 <ul id="tableCuaHang" class="products-list product-list-in-card pl-2 pr-2">
-                 <!--  <li class="item">
-                    <div class="product-img">
-                      <img src="<?php echo base_url();?>dist/img/BunBoHue.jpg" alt="Product Image" class="img-size-50">
-                    </div>
-                    <div class="product-info">
-                      <a href="javascript:void(0)" class="product-title">Thành Đạt - Hủ Tiếu Nam Vang - Nguyễn Hữu Cầu
-                        <span class="badge badge-danger float-right">
-                        <i class="far fa-trash-alt" data-toggle="modal" data-target=".bd-example-modal-sm"></i>
-                      </span></a>
 
-                      <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-lg" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Bạn có chắc chắn muốn xóa?</h5>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                <button type="button" class="btn btn-primary toastrDefaultSuccess">OK</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                      <span class="product-description">
-                        22B Nguyễn Hữu Cầu, P.Tân Định, Quận 1, TP.HCM
-                      </span>
-                    </div>
-                  </li> -->
-
-                  <!-- <li class="item">
-                    <div class="product-img">
-                      <img src="<?php echo base_url();?>dist/img/BunBoHue.jpg" alt="Product Image" class="img-size-50">
-                    </div>
-                    <div class="product-info">
-                      <a href="javascript:void(0)" class="product-title">Thành Đạt - Hủ Tiếu Nam Vang - Nguyễn Hữu Cầu
-                        <span class="badge badge-danger float-right">
-                        <i class="far fa-trash-alt"></i>
-                      </span></a>
-                      <span class="product-description">
-                        22B Nguyễn Hữu Cầu, P.Tân Định, Quận 1, TP.HCM
-                      </span>
-                    </div>
-                  </li> -->
-                  <!-- /.item -->
-                  <!-- <li class="item">
-                    <div class="product-img">
-                      <img src="<?php echo base_url();?>dist/img/BunBoHue.jpg" alt="Product Image" class="img-size-50">
-                    </div>
-                    <div class="product-info">
-                      <a href="javascript:void(0)" class="product-title">Thành Đạt - Hủ Tiếu Nam Vang - Nguyễn Hữu Cầu
-                        <span class="badge badge-danger float-right">
-                        <i class="far fa-trash-alt"></i>
-                      </span></a>
-                      <span class="product-description">
-                        22B Nguyễn Hữu Cầu, P.Tân Định, Quận 1, TP.HCM
-                      </span>
-                    </div>
-                  </li> -->
-                  <!-- /.item -->
-                  <!-- <li class="item">
-                    <div class="product-img">
-                      <img src="<?php echo base_url();?>dist/img/BunBoHue.jpg" alt="Product Image" class="img-size-50">
-                    </div>
-                    <div class="product-info">
-                      <a href="javascript:void(0)" class="product-title">Thành Đạt - Hủ Tiếu Nam Vang - Nguyễn Hữu Cầu
-                        <span class="badge badge-danger float-right">
-                        <i class="far fa-trash-alt"></i>
-                      </span></a>
-                      <span class="product-description">
-                        22B Nguyễn Hữu Cầu, P.Tân Định, Quận 1, TP.HCM
-                      </span>
-                    </div>
-                  </li> -->
-                  <!-- /.item -->
                 </ul>
               </div>
               <!-- /.card-body -->
@@ -399,7 +322,7 @@
     $(document).ready(function(){
         $.ajax(
         {
-            url: 'http://localhost:3000/Danhsachcuahanghomnayhienthi',
+            url: 'http://localhost:3000/getDanhmucloaimonan',
             dataType: 'json',
             data: {
             },
@@ -410,21 +333,22 @@
 
                 var table = $('#example1').DataTable();
                 table.row.add( [
-                res[i].Thongtin_Chinh ,
-                res[i].Thongtin_Phu ,
+                  res[i].Ten_Loai_Mon_An ,
                 '<img src="http://localhost:3000/Public/Images/'+res[i].HinhAnh_CH+'" alt="Product Image" class="img_chinhanh">',
-                "<div class='sparkbar' data-color='#00a65a' data-height='20'>" 
+
+                "<div class='sparkbar' data-color='#00a65a' data-height='20'>"
+               
                 + '<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
                 + "</div>"
                 ] ).draw();
 
                 $('#example1 tbody tr').each(function(){
-                    if($(this).find('td:nth-child(1)').text() == res[i].Thongtin_Chinh)
+                    if($(this).find('td:nth-child(1)').text() == res[i].Ten_Loai_Mon_An)
                         $(this).attr('id', res[i]._id );
                 });
 
                 $('#example1 tbody tr').each(function(){
-                    if($(this).find('td:nth-child(1)').text() == res[i].Thongtin_Chinh)
+                    if($(this).find('td:nth-child(1)').text() == res[i].Ten_Loai_Mon_An)
                         $(this).attr('id', res[i]._id );
                     $(this).bind({
                         click : function(e) { 
