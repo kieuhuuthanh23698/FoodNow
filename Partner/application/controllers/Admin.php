@@ -23,23 +23,40 @@ class Admin extends CI_Controller {
 	  
 	public function HomeAdmin()
  	{
- 	// 	if(!$this->session->has_userdata('user') || getGroup() == '2')
-		// {
-		// 	// var_dump(getGroup());
-		// 	session_unset();
-		// 	redirect(base_url('admin/'));
-		// }
- 	// 	else
- 	// 	{
+ 		if(!$this->session->has_userdata('user'))
+		{
+			// var_dump(getGroup());
+			session_unset();
+			redirect(base_url('admin/'));
+		}
+ 		else
+ 		{
 			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
-			// $data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
-			// $id['id'] = null;
-			// if(getGroup() == '1')
-			// 	$id['id'] = $this->session->get_userdata('user')['user']['id'];
-			$data['content'] = $this->load->view('admin/content', $id,TRUE);
+			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
+			$id['id'] = null;
+			if(getGroup() == '1')
+				$id['id'] = $this->session->get_userdata('user')['user']['id'];
+
+			$data['content'] = $this->load->view('new_admin/dasboard_chinhanh', $id,TRUE);
+			// $data['content'] = "";
+
+
+
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
-		// }
+
+			if(getGroup() == '2')
+				$id['id'] = $this->session->get_userdata('user')['user']['id'];
+
+			$data['content'] = $this->load->view('new_admin/content', $id,TRUE);
+			// $data['content'] = "";
+
+
+
+			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
+			$this->load->view('page/page', $data);
+
+		}
  	}
 
  	public function login()

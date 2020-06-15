@@ -6,7 +6,7 @@ class Danhmuccuahangtrangchu extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->helper('url');
+		$this->load->helper(['url', 'ViewWithRule']);
 		$this->load->library('session');
 	}
 
@@ -54,7 +54,7 @@ class Danhmuccuahangtrangchu extends CI_Controller {
 
 	public function homeDanhmuccuahang_loaimonan()
 	{
-		if(!$this->session->has_userdata('user') || getGroup() != '2' || getGroup() != '4')
+		if(   !$this->session->has_userdata('user') || getGroup() == '3' || getGroup() == '4'   || getGroup() == '2'  )
 		{
 			session_unset();
 			redirect(base_url('admin/'));
