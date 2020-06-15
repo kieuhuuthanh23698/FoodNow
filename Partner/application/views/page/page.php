@@ -196,7 +196,9 @@ $(document).ready(function () {
 
   <!-- Main Sidebar Container -->
   <?php echo isset($left_content) ? $left_content : '';?>
-
+  <script type="text/javascript">
+    var url = <?php echo "'".api_url("")."'"?>;
+  </script>
   <!-- Content Wrapper. Contains page content -->
   <?php echo isset($content) ? $content : '';?>
 

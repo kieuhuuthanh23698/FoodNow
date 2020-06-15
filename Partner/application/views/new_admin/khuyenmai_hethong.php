@@ -430,7 +430,7 @@ var socket;
 
         $.ajax(
         {
-            url: 'http://localhost:3000/Danhsachkhuyenmaihethong',
+            url: url + 'Danhsachkhuyenmaihethong',
             dataType: 'json',
             data: {
             },
@@ -482,7 +482,7 @@ var socket;
                 hovering = true;
         $.ajax(
         {
-            url: 'http://localhost:3000/Hienthicuahangduocapdungkhuyenmai',
+            url: url + 'Hienthicuahangduocapdungkhuyenmai',
             dataType: 'json',
             data: {
                 idKhuyenmaihethong : idKhuyenmaihethong
@@ -505,7 +505,7 @@ var socket;
     function themSanPham(){
         $.ajax(
         {
-            url: 'http://localhost:3000/addKhuyenmaihethong',
+            url: url + 'addKhuyenmaihethong',
             dataType: 'json',
             data: {
                 maGiamgia : $("#makm").val(),
@@ -543,7 +543,7 @@ var socket;
         alert("xoa" + id_khuyenmai );
         $.ajax({
             type    : 'DELETE',
-            url     : 'http://localhost:3000/deleteKhuyenmaihethong',
+            url     : url + 'deleteKhuyenmaihethong',
             data    : {
                 idkhuyenMai : id_khuyenmai
             },

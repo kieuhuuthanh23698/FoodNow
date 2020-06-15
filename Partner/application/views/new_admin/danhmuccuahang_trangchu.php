@@ -381,7 +381,7 @@
     $(document).ready(function(){
         $.ajax(
         {
-            url: 'http://localhost:3000/Hienthitendanhmuccuahangtrangchu',
+            url: url + 'Hienthitendanhmuccuahangtrangchu',
             dataType: 'json',
             data: {
             },
@@ -430,7 +430,7 @@
                 hovering = true;
         $.ajax(
         {
-            url: 'http://localhost:3000/Hienthicuahangtrongdanhmuctrangchu',
+            url: url + 'Hienthicuahangtrongdanhmuctrangchu',
             dataType: 'json',
             data: {
                 idDanhmuccuahangtrangchu : idDanhmuccuahangtrangchu
@@ -454,7 +454,7 @@
     function themSanPham(){
         $.ajax(
         {
-            url: 'http://localhost:3000/addDanhmuccuahangtrangchu',
+            url: url + 'addDanhmuccuahangtrangchu',
             dataType: 'json',
             data: {
                 chuDechinh : $("#ten_danhmuc").val(),
@@ -482,7 +482,7 @@
         alert("xoa" + id_cuahangtrangchu );
         $.ajax({
             type    : 'delete',
-            url     : 'http://localhost:3000/deleteDanhmuccuahangtrangchu',
+            url     : url + 'deleteDanhmuccuahangtrangchu',
             data    : {
                 idDanhmuccuahangtrangchu : id_cuahangtrangchu
             },
@@ -503,7 +503,7 @@
         alert("xoa" + id_cuahang +idDanhmuccuahangtrangchu );
         $.ajax({
             type    : 'delete',
-            url     : 'http://localhost:3000/deleteCuahangtrongdanhmuctrangchu',
+            url     : url + 'deleteCuahangtrongdanhmuctrangchu',
             data    : {
                 idcuahang : id_cuahang,
                 idDanhmuccuahangtrangchu : idDanhmuccuahangtrangchu

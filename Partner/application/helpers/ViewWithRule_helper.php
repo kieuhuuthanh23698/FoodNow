@@ -41,4 +41,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       return isset($group) ? $group : '0';
     }
   }
+
+  if(!function_exists('api_url')){
+    function api_url($route){
+      return 'http://171.227.247.153:3000/'.$route;
+    }
+  }
 ?>

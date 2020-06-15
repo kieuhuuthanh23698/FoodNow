@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 //$config['base_url'] = 'http://27.75.96.30:8080/FoodNow/Partner/';
 //$config['base_url'] = 'http://localhost:8080/FoodNow/Partner/';
-$config['base_url'] = 'http://localhost:81/FoodNow/Partner/';
+$config['base_url'] = 'http://171.227.247.153:3001/FoodNow/Partner/';
 
 /*
 |--------------------------------------------------------------------------

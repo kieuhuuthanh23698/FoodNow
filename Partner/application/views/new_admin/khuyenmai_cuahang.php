@@ -474,15 +474,13 @@
 </style>
 
 <script type="text/javascript">
-      
     $(document).ready(function(){
-        alert(localStorage.getItem('partnerID'));
         $.ajax(
         {
-            url: 'http://localhost:3000/KhuyenMaiCuaHang',
+            url: url + "KhuyenMaiCuaHang",
             dataType: 'json',
             data: {
-                idCuahang: localStorage.getItem('partnerID'),
+                idCuahang: <?php echo "'".$id."'";?>,
             },
             type: 'post',
             success: function (res) {
@@ -538,7 +536,7 @@
 
         $.ajax(
         {
-            url: 'http://localhost:3000/addKhuyenmaicuahang',
+            url: url + 'addKhuyenmaicuahang',
             dataType: 'json',
             data: {
                 maGiamgia : $("#makm").val(),

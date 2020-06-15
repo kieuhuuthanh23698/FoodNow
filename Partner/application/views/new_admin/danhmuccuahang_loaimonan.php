@@ -322,7 +322,7 @@
     $(document).ready(function(){
         $.ajax(
         {
-            url: 'http://localhost:3000/getDanhmucloaimonan',
+            url: url + "getDanhmucloaimonan",
             dataType: 'json',
             data: {
             },
@@ -375,7 +375,7 @@
                 hovering = true;
         $.ajax(
         {
-            url: 'http://localhost:3000/Danhsachcuahanghomnay_hienthicuahang',
+            url: url + "Danhsachcuahanghomnay_hienthicuahang",
             dataType: 'json',
             data: {
                 idDanhsachcuahanghomnay : idDanhmuccuahanghomnay
@@ -399,7 +399,7 @@
     function themSanPham(){
         $.ajax(
         {
-            url: 'http://localhost:3000/addDanhsachcuahanghomnay',
+            url: url + "addDanhsachcuahanghomnay",
             dataType: 'json',
             data: {
                 Thongtin_Chinh : $("#ten_danhmuc").val(),

@@ -395,11 +395,10 @@
 
 
 <script type="text/javascript">
-      
     $(document).ready(function(){
         $.ajax(
         {
-            url: 'http://localhost:3000/Danhsachcuahanghomnayhienthi',
+            url:  url + "Danhsachcuahanghomnayhienthi",
             dataType: 'json',
             data: {
             },
@@ -412,7 +411,7 @@
                 table.row.add( [
                 res[i].Thongtin_Chinh ,
                 res[i].Thongtin_Phu ,
-                '<img src="http://localhost:3000/Public/Images/'+res[i].HinhAnh_CH+'" alt="Product Image" class="img_chinhanh">',
+                '<img src="' + <?php api_url("/Public/Images/")?> + res[i].HinhAnh_CH +'" alt="Product Image" class="img_chinhanh">',
                 "<div class='sparkbar' data-color='#00a65a' data-height='20'>" 
                 + '<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
                 + "</div>"
@@ -451,7 +450,7 @@
                 hovering = true;
         $.ajax(
         {
-            url: 'http://localhost:3000/Danhsachcuahanghomnay_hienthicuahang',
+            url: url + "Danhsachcuahanghomnay_hienthicuahang",
             dataType: 'json',
             data: {
                 idDanhsachcuahanghomnay : idDanhmuccuahanghomnay
@@ -475,7 +474,7 @@
     function themSanPham(){
         $.ajax(
         {
-            url: 'http://localhost:3000/addDanhsachcuahanghomnay',
+            url: url + "addDanhsachcuahanghomnay",
             dataType: 'json',
             data: {
                 Thongtin_Chinh : $("#ten_danhmuc").val(),
@@ -528,7 +527,7 @@
         alert("xoa" + id_cuahang + idDanhmuccuahanghomnay );
         $.ajax({
             type    : 'delete',
-            url     : 'http://localhost:3000/deleteCuahangtrongdanhmuchomnay',
+            url     :  url + "deleteCuahangtrongdanhmuchomnay",
             data    : {
                 idcuahang : id_cuahang,
                 idDanhmuccuahanghomnay : idDanhmuccuahanghomnay

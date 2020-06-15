@@ -23,23 +23,23 @@ class Admin extends CI_Controller {
 	  
 	public function HomeAdmin()
  	{
- 		if(!$this->session->has_userdata('user') || getGroup() == '2')
-		{
-			// var_dump(getGroup());
-			session_unset();
-			redirect(base_url('admin/'));
-		}
- 		else
- 		{
+ 	// 	if(!$this->session->has_userdata('user') || getGroup() == '2')
+		// {
+		// 	// var_dump(getGroup());
+		// 	session_unset();
+		// 	redirect(base_url('admin/'));
+		// }
+ 	// 	else
+ 	// 	{
 			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
-			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
-			$id['id'] = null;
-			if(getGroup() == '1')
-				$id['id'] = $this->session->get_userdata('user')['user']['id'];
+			// $data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
+			// $id['id'] = null;
+			// if(getGroup() == '1')
+			// 	$id['id'] = $this->session->get_userdata('user')['user']['id'];
 			$data['content'] = $this->load->view('admin/content', $id,TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
-		}
+		// }
  	}
 
  	public function login()
@@ -47,7 +47,7 @@ class Admin extends CI_Controller {
 		session_unset();
 		$username = $this->input->post('username');
  		$password = $this->input->post('password');
- 		$url = "http://localhost:3000/Dangnhapadmin";
+ 		$url = api_url("Dangnhapadmin");
 		$result = $this->M_data->getAPI($url, $username, $password);
 		// var_dump($result);
 		if($result != null && $result['return_code'] !=  null && $result['return_code'] != '0')
