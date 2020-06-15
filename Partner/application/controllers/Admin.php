@@ -23,7 +23,7 @@ class Admin extends CI_Controller {
 	  
 	public function HomeAdmin()
  	{
- 		if(!$this->session->has_userdata('user') || getGroup() == '2')
+ 		if(!$this->session->has_userdata('user'))
 		{
 			// var_dump(getGroup());
 			session_unset();
@@ -36,9 +36,26 @@ class Admin extends CI_Controller {
 			$id['id'] = null;
 			if(getGroup() == '1')
 				$id['id'] = $this->session->get_userdata('user')['user']['id'];
-			$data['content'] = $this->load->view('admin/content', $id,TRUE);
+
+			$data['content'] = $this->load->view('new_admin/dasboard_chinhanh', $id,TRUE);
+			// $data['content'] = "";
+
+
+
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
+
+			// if(getGroup() == '2')
+			// 	$id['id'] = $this->session->get_userdata('user')['user']['id'];
+
+			// $data['content'] = $this->load->view('new_admin/content', $id,TRUE);
+			// // $data['content'] = "";
+
+
+
+			// $data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
+			// $this->load->view('page/page', $data);
+
 		}
  	}
 

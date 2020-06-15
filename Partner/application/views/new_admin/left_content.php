@@ -78,12 +78,13 @@
               <?php echo isset($dm_he_thong) ? $dm_he_thong : '';?>
             </ul>
           </li>
+          
           <!-- Danh mục -->
-          <!-- <li class="nav-item has-treeview">
+         <!--  <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-envelope"></i>
               <p>
-                Tin nhắn
+                Danh mục
                 <i class="fas fa-angle-left right"></i>
                 <span class="badge badge-info right">6</span>
               </p>
@@ -108,7 +109,7 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
@@ -118,7 +119,7 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Hóa đơn</p>
@@ -129,6 +130,8 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>Chi phí dịch vụ</p>
                 </a>
+              </li> -->
+              <?php echo isset($bao_cao_chi_nhanh) ? $bao_cao_chi_nhanh : '';?>
             </ul>
           </li>
           <li class="nav-header">CÀI ĐẶT</li>
@@ -141,7 +144,8 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
+              <?php echo isset($tai_khoan_chi_nhanh) ? $tai_khoan_chi_nhanh : '';?>
+             <!--  <li class="nav-item">
                 <a href="<?php echo base_url();?>Taikhoan/homeTaikhoan_chinhanh" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Chi nhánh</p>
@@ -164,10 +168,10 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>Khách hàng</p>
                 </a>
-              </li>    
+              </li>     -->
             </ul>
           </li>
-          <li class="nav-item has-treeview">
+          <!-- <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-plus-square"></i>
               <p>
