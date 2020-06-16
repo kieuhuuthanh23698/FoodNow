@@ -8,9 +8,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $group = $CI->session->get_userdata('user')['user']['group'];
 
         if($group == '2'){//cửa hàng
-          $rule['dm_chi_nhanh'] = $CI->load->view('new_admin/left_content/danh_muc_mon_an', NULL,TRUE);
-          $rule['don_hang'] = $CI->load->view('new_admin/left_content/don_hang', NULL,TRUE);
+          $rule['cuahang_monan'] = $CI->load->view('new_admin/left_content/cuahang_danhsachmonan', NULL,TRUE);
+          $rule['don_hang_cua_hang'] = $CI->load->view('new_admin/left_content/don_hang_cua_hang', NULL,TRUE);
           $rule['km_cua_hang'] = $CI->load->view('new_admin/left_content/khuyen_mai_cua_hang', NULL,TRUE);
+          $rule['km_cua_hang_he_thong_hien_thi'] = $CI->load->view('new_admin/left_content/khuyen_mai_cua_hang_he_thong_hien_thi', NULL,TRUE);
+          $rule['bao_cao_cua_hang'] = $CI->load->view('new_admin/left_content/baocao_cuahang', NULL,TRUE);
+          $rule['tai_khoan_cua_hang'] = $CI->load->view('new_admin/left_content/taikhoan_cuahang', NULL,TRUE);
 
         } else if($group == '1'){//chi nhánh
           $rule = null;

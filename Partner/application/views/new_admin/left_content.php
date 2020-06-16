@@ -42,12 +42,15 @@
               </p>
             </a>
           </li> -->
+          <?php echo isset($don_hang_cua_hang) ? $don_hang_cua_hang : '';?>         
           <!-- Tin tức -->
           <!-- Đơn hàng -->
           <?php echo isset($don_hang) ? $don_hang : '';?>
           <!-- Đơn hàng -->
           <!-- Chi nhánh -->
           <?php echo isset($chi_nhanh) ? $chi_nhanh : '';?>
+
+          <?php echo isset($cuahang_monan) ? $cuahang_monan : '';?>
           <!-- Chi nhánh -->
           <!-- Khuyến mãi -->
           <li class="nav-item has-treeview">
@@ -60,12 +63,13 @@
             </a>
             <ul class="nav nav-treeview">
               <?php echo isset($km_cua_hang) ? $km_cua_hang : '';?>
+              <?php echo isset($km_cua_hang_he_thong_hien_thi) ? $km_cua_hang_he_thong_hien_thi : '';?>
               <?php echo isset($km_he_thong) ? $km_he_thong : '';?>
             </ul>
           </li>
           <!-- Khuyến mãi -->
           <!-- Danh mục -->
-           <li class="nav-item has-treeview">
+           <!-- <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
@@ -73,11 +77,11 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview"> -->
               <?php echo isset($dm_chi_nhanh) ? $dm_chi_nhanh : '';?>
               <?php echo isset($dm_he_thong) ? $dm_he_thong : '';?>
-            </ul>
-          </li>
+            <!-- </ul>
+          </li> -->
           
           <!-- Danh mục -->
          <!--  <li class="nav-item has-treeview">
@@ -119,6 +123,7 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              
               <!-- <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -131,11 +136,12 @@
                   <p>Chi phí dịch vụ</p>
                 </a>
               </li> -->
+              <?php echo isset($bao_cao_cua_hang) ? $bao_cao_cua_hang : '';?>
               <?php echo isset($bao_cao_chi_nhanh) ? $bao_cao_chi_nhanh : '';?>
             </ul>
           </li>
           <li class="nav-header">CÀI ĐẶT</li>
-          <li class="nav-item has-treeview">
+          <!-- <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
@@ -143,7 +149,8 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview"> -->
+              <?php echo isset($tai_khoan_cua_hang) ? $tai_khoan_cua_hang : '';?>
               <?php echo isset($tai_khoan_chi_nhanh) ? $tai_khoan_chi_nhanh : '';?>
              <!--  <li class="nav-item">
                 <a href="<?php echo base_url();?>Taikhoan/homeTaikhoan_chinhanh" class="nav-link">
@@ -169,7 +176,7 @@
                   <p>Khách hàng</p>
                 </a>
               </li>     -->
-            </ul>
+            <!-- </ul> -->
           </li>
           <!-- <li class="nav-item has-treeview">
             <a href="#" class="nav-link">

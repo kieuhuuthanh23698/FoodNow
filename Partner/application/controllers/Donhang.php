@@ -6,7 +6,7 @@ class Donhang extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->helper('url');
+		$this->load->helper(['url', 'ViewWithRule']);
 		$this->load->library('session');
 	}
 
@@ -32,6 +32,40 @@ class Donhang extends CI_Controller {
 			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
 			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
 			$data['content'] = $this->load->view('new_admin/danhsach_donhang', NULL,TRUE);
+			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
+			$this->load->view('page/page', $data);
+		}
+	}
+
+	public function Danhsach_donhang_cuahang()
+	{
+		if(!$this->session->has_userdata('user') || getGroup() != '2')
+		{
+			session_unset();
+			redirect(base_url('admin/'));
+		}
+		else
+		{
+			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
+			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
+			$data['content'] = $this->load->view('new_admin/donhang_cuahang', NULL,TRUE);
+			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
+			$this->load->view('page/page', $data);
+		}
+	}
+
+	public function Donhang_thongke_cuahang()
+	{
+		if(!$this->session->has_userdata('user') || getGroup() != '2')
+		{
+			session_unset();
+			redirect(base_url('admin/'));
+		}
+		else
+		{
+			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
+			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
+			$data['content'] = $this->load->view('new_admin/donhang_cuahang_thongke', NULL,TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
 		}
