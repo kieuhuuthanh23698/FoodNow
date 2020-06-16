@@ -17,7 +17,7 @@ app.use(function (req, res, next) {
 	res.setHeader('Access-Control-Allow-Credentials', true);
 	next();
 });
-app.use(express.static(__dirname + '/Public/'));
+// app.use(express.static(__dirname + '/Public/'));
 server.listen(3000);
 
 
@@ -35,6 +35,19 @@ mongoose.connect(connectString,
 			console.log("MongoDb connect success !");
 	}
 );
+
+//firebase
+var admin = require("firebase-admin");
+
+var serviceAccount = require("./foodnow-276107-firebase-adminsdk-obm8q-93b9e410b5.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://foodnow-276107.firebaseio.com"
+});
+
+const db = admin.firestore();
+
 
 const KHU_VUC = require("./Models/KHU_VUC");
 const CHINHANH = require("./Models/CHINHANH");
@@ -132,10 +145,17 @@ io.on("connect", function (socket) {
 //giả sử user đặt hàng với id cửa hàng là req.body.idCuaHang ==> thông báo cho cửa hàng có id == req.body.idCuaHang biết 
 app.post("/testDatHang", urlEncodeParser, function (req, res) {
 	// io.emit("hello");
-	var socket_id = getSocketIdWithIdParner(req.body.idCuaHang);
+	// var socket_id = getSocketIdWithIdParner(req.body.idCuaHang);
 	// io.to(socket_id).emit('Thông tin từ người dùng : ' + req.body.infor);
-	io.sockets.in(socket_id).emit('dat_hang', req.body.infor);
-	console.log("Thông báo tới user có id : " + socket_id + " thông tin sau " + req.body.infor);
+	// io.sockets.in(socket_id).emit('dat_hang', req.body.infor);
+	// console.log("Thông báo tới user có id : " + socket_id + " thông tin sau " + req.body.infor);
+	db.collection('oders').doc(req.body.idCuaHang).set(
+		{
+			idDonHang : req.body.idDonHang
+		}
+	).then(() => {
+		console.log("Notification đặt hàng thành công !");
+	});
 	res.send("Đã gửi thông tin thành công !");
 });
 
