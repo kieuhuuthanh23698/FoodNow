@@ -25,7 +25,6 @@ class Admin extends CI_Controller {
  	{
  		if(!$this->session->has_userdata('user'))
 		{
-			// var_dump(getGroup());
 			session_unset();
 			redirect(base_url('admin/'));
 		}
@@ -34,28 +33,31 @@ class Admin extends CI_Controller {
 			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
 			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
 			$id['id'] = null;
-			if(getGroup() == '1')
-				$id['id'] = $this->session->get_userdata('user')['user']['id'];
-
-			$data['content'] = $this->load->view('new_admin/dasboard_chinhanh', $id,TRUE);
-			// $data['content'] = "";
-
-
-
+			
+			switch (getGroup()) {
+				case '1'://chi nhanh
+					$id['id'] = $this->session->get_userdata('user')['user']['id'];
+					$data['content'] = $this->load->view('new_admin/dasboard_chinhanh', $id,TRUE);
+					break;
+				case '2'://cua hang
+					$id['id'] = $this->session->get_userdata('user')['user']['id'];
+					$data['content'] = $this->load->view('new_admin/dasboard_cuahang', $id,TRUE);
+					break;
+				case '3'://admin
+					$id['id'] = "";
+					$data['content'] = "";
+					break;
+				case '4'://supper admin
+					$id['id'] = "";
+					$data['content'] = "";
+					break;
+				default:
+					session_unset();
+					redirect(base_url('admin/'));
+					break;
+			}
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
-
-			if(getGroup() == '2')
-				$id['id'] = $this->session->get_userdata('user')['user']['id'];
-
-			$data['content'] = $this->load->view('new_admin/content', $id,TRUE);
-			// $data['content'] = "";
-
-
-
-			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
-			$this->load->view('page/page', $data);
-
 		}
  	}
 

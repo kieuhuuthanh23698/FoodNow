@@ -1678,7 +1678,7 @@ app.post("/Dangnhapadmin", urlEncodeParser, function (req, res) {
 											if(kqcuahang != null && kqcuahang.length > 0){
 												console.log("Xác định danh tính cửa hàng thành công !");
 												res.send({
-													return_code: "1",
+													return_code: "2",
 													id: kqcuahang[0]._id
 												});
 												return;
@@ -2299,4 +2299,61 @@ app.post("/chitietDonHang", urlEncodeParser, function (req, res) {
 		console.log("Lỗi truyền params");
 		res.send({ return_code: "0", error_infor: "Lỗi truyền params" });
 	}
+});
+
+//tìm thông tin của món ăn
+const timThongTinMonAnChoDonHang_extend = async (iDONHANG) => {
+	console.time(iDONHANG._id);
+	return new Promise(function (resolve, reject) {
+		MON_AN.findById({
+			_id: mongoose.Types.ObjectId(iMONAN.id)
+		}, function (err, resultSearchMA) {
+			if (err) {
+				console.log("Lấy thông tin của món ăn gặp lỗi :" + err);
+				reject(null);
+			}
+			else {
+				console.log("Lấy thông tin của món ăn thành công !");
+				console.timeEnd(iMONAN.id);
+				resolve({
+					IdMonAn: mongoose.Types.ObjectId(resultSearchMA._id),
+					SoLuong: iMONAN.count,
+					GhiChu: iMONAN.note,
+					Don_gia: resultSearchMA.Don_gia_mon_an,
+					Thanh_tien: resultSearchMA.Don_gia_mon_an * iMONAN.count
+				});
+			}
+		});
+	});
+}
+
+app.post("/danhSachDongHang", urlEncodeParser, async function (req, res) {
+	DON_HANG.aggregate(
+		[
+			{ 
+				"$match" : { 
+					"IdCuaHang" : ObjectId("5ec39da122336e32d01a2401")
+				}
+			}
+		],
+		function(err, result){//result là danh sách đơn hàng của cửa hàng A
+			if (error) {
+				console.log("Lấy danh sach đơn hàng của cửa hàng gặp lỗi : " + err);
+				res.send({ return_code: "0", error_infor: "Lỗi server khi query." });
+			} else {
+				if(result != null && result.length > 0){
+					Promise.all(
+						result.map(function (iDONHANG) {
+							return timThongTinMonAnChoDonHang_extend(iDONHANG);//tìm thông tin cho các món ăn trong đơn hàng
+					}))
+						.then(function (resolveThemMA) {
+							res.send(resolveThemMA);
+						});
+				} else{
+					console.log("Cửa hàng không có đơn hàng !");
+					res.send({ return_code: "0", error_infor: "Cửa hàng không có đơn hàng !" });
+				}
+			}
+		}
+	);
 });
