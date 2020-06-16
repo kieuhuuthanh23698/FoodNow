@@ -2321,27 +2321,64 @@ app.post("/chitietDonHang", urlEncodeParser, function (req, res) {
 	}
 });
 
-//tìm thông tin của món ăn
-const timThongTinMonAnChoDonHang_extend = async (iDONHANG) => {
-	console.time(iDONHANG._id);
+
+//tìm thông tin của món ăn => dùng cho chi tiết đơn hàng
+const timThongTinMonAnChoDonHang_extend = async (iMONAN) => {
+	console.time(iMONAN.IdMonAn);
+	console.log("hehasjkd")
+	console.log(iMONAN);
 	return new Promise(function (resolve, reject) {
 		MON_AN.findById({
-			_id: mongoose.Types.ObjectId(iMONAN.id)
+			_id: mongoose.Types.ObjectId(iMONAN.IdMonAn)
 		}, function (err, resultSearchMA) {
 			if (err) {
 				console.log("Lấy thông tin của món ăn gặp lỗi :" + err);
-				reject(null);
+				resolve(null);
 			}
 			else {
 				console.log("Lấy thông tin của món ăn thành công !");
-				console.timeEnd(iMONAN.id);
+				console.timeEnd(iMONAN.IdMonAn);
 				resolve({
 					IdMonAn: mongoose.Types.ObjectId(resultSearchMA._id),
-					SoLuong: iMONAN.count,
-					GhiChu: iMONAN.note,
+					SoLuong: iMONAN.SoLuong,
+					GhiChu: iMONAN.GhiChu,
 					Don_gia: resultSearchMA.Don_gia_mon_an,
-					Thanh_tien: resultSearchMA.Don_gia_mon_an * iMONAN.count
+					Thanh_tien: resultSearchMA.Don_gia_mon_an * iMONAN.SoLuong,
+					Ten_mon_an: resultSearchMA.Ten_mon_an,
+					Mo_ta_mon_an: resultSearchMA.Mo_ta_mon_an,
+					Don_gia_mon_an: resultSearchMA.Don_gia_mon_an,
+					Hinh_anh_mon_an: resultSearchMA.Hinh_anh_mon_an,
+					Trang_thai_mon_an: resultSearchMA.Trang_thai_mon_an,
+					So_luong_mua: resultSearchMA.So_luong_mua,
+					So_luong_thich: resultSearchMA.So_luong_thich
 				});
+			}
+		});
+	});
+}
+
+//sau khi tìm thông tin của tất cả các món món ăn, cập nhật đơn hàng
+const capNhatDonHang_extend = async (iDONHANG) => {
+	var error_query = { return_code: "0", error_infor: "Lỗi server khi query." };
+	return new Promise(function (resolve, reject) {
+		console.time(iDONHANG._id);
+		Promise.all(
+			iDONHANG.Chi_tiet_DH.map(function (iMONAN) {
+				return timThongTinMonAnChoDonHang_extend(iMONAN);
+			}))
+		.then(function (resolveLstMonans) {
+			if (resolveLstMonans.length != iDONHANG.Chi_tiet_DH.length) {
+				console.log("Tìm thông tin món ăn vào đơn hàng gặp lỗi !");
+				res.send(error_query);
+			} else {
+				console.log(resolveLstMonans);
+				iDONHANG.Chi_tiet_DH = [];
+				resolveLstMonans.forEach(element => {
+					iDONHANG.Chi_tiet_DH.push(element);
+				});
+				console.log("Cập nhật thông tin đôn hàng thành công !");
+				console.timeEnd(iDONHANG._id);
+				resolve(iDONHANG);
 			}
 		});
 	});
@@ -2352,22 +2389,23 @@ app.post("/danhSachDongHang", urlEncodeParser, async function (req, res) {
 		[
 			{ 
 				"$match" : { 
-					"IdCuaHang" : ObjectId("5ec39da122336e32d01a2401")
+					"IdCuaHang" : mongoose.Types.ObjectId(req.body.idCuaHang)//5ec39da122336e32d01a2401
 				}
 			}
 		],
 		function(err, result){//result là danh sách đơn hàng của cửa hàng A
-			if (error) {
+			if (err) {
 				console.log("Lấy danh sach đơn hàng của cửa hàng gặp lỗi : " + err);
 				res.send({ return_code: "0", error_infor: "Lỗi server khi query." });
 			} else {
 				if(result != null && result.length > 0){
 					Promise.all(
 						result.map(function (iDONHANG) {
-							return timThongTinMonAnChoDonHang_extend(iDONHANG);//tìm thông tin cho các món ăn trong đơn hàng
+							return capNhatDonHang_extend(iDONHANG);//tìm thông tin cho các món ăn trong đơn hàng
 					}))
-						.then(function (resolveThemMA) {
-							res.send(resolveThemMA);
+						.then(function (resolveDonHangs) {
+							console.log(resolveDonHangs);
+							res.send(resolveDonHangs);
 						});
 				} else{
 					console.log("Cửa hàng không có đơn hàng !");
