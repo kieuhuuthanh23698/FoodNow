@@ -2305,8 +2305,11 @@ app.post("/chitietDonHang", urlEncodeParser, function (req, res) {
 const timThongTinMonAnChoDonHang_extend = async (iDONHANG) => {
 	console.time(iDONHANG._id);
 	return new Promise(function (resolve, reject) {
+
+		// await Promise.all{}
+
 		MON_AN.findById({
-			_id: mongoose.Types.ObjectId(iMONAN.id)
+			_id: mongoose.Types.ObjectId(iDONHANG.id)
 		}, function (err, resultSearchMA) {
 			if (err) {
 				console.log("Lấy thông tin của món ăn gặp lỗi :" + err);
