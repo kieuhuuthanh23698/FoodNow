@@ -1,4 +1,4 @@
-var express = require("express");
+﻿var express = require("express");
 var bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const jwt = require("jsonwebtoken");
@@ -46,7 +46,7 @@ admin.initializeApp({
   databaseURL: "https://foodnow-276107.firebaseio.com"
 });
 
-const db = admin.firestore();
+const db = admin.database();
 
 
 const KHU_VUC = require("./Models/KHU_VUC");
@@ -142,6 +142,7 @@ io.on("connect", function (socket) {
 });
 
 
+
 //giả sử user đặt hàng với id cửa hàng là req.body.idCuaHang ==> thông báo cho cửa hàng có id == req.body.idCuaHang biết 
 app.post("/testDatHang", urlEncodeParser, function (req, res) {
 	// io.emit("hello");
@@ -149,14 +150,10 @@ app.post("/testDatHang", urlEncodeParser, function (req, res) {
 	// io.to(socket_id).emit('Thông tin từ người dùng : ' + req.body.infor);
 	// io.sockets.in(socket_id).emit('dat_hang', req.body.infor);
 	// console.log("Thông báo tới user có id : " + socket_id + " thông tin sau " + req.body.infor);
-	db.collection('oders').doc(req.body.idCuaHang).set(
-		{
-			idDonHang : req.body.idDonHang
-		}
-	).then(() => {
+	db.ref().child("oders/" + req.body.idCuaHang).push({key: req.body.idDonHang}).then(() => {
 		console.log("Notification đặt hàng thành công !");
-	});
-	res.send("Đã gửi thông tin thành công !");
+		res.send("Đã gửi thông tin thành công !");
+	});;
 });
 
 // changeStream.on('change', (change) => {
@@ -1993,8 +1990,11 @@ app.post("/datHang", urlEncodeParser, function (req, res) {
 										console.log(err);
 										res.send(error_query);
 									} else {
-										console.log("Xác nhận đơn hàng thành công !");
-										res.send({ return_code: "1" });
+										db.ref().child("oders/" + req.body.idCuaHang).push({key: resultDH[0]._id}).then(() => {
+											console.log("Notification đặt hàng thành công !");
+											console.log("Xác nhận đơn hàng thành công !");
+											res.send({ return_code: "1" });
+										});;
 									}
 								}
 							);
@@ -2325,8 +2325,6 @@ app.post("/chitietDonHang", urlEncodeParser, function (req, res) {
 //tìm thông tin của món ăn => dùng cho chi tiết đơn hàng
 const timThongTinMonAnChoDonHang_extend = async (iMONAN) => {
 	console.time(iMONAN.IdMonAn);
-	console.log("hehasjkd")
-	console.log(iMONAN);
 	return new Promise(function (resolve, reject) {
 		MON_AN.findById({
 			_id: mongoose.Types.ObjectId(iMONAN.IdMonAn)
@@ -2357,6 +2355,26 @@ const timThongTinMonAnChoDonHang_extend = async (iMONAN) => {
 	});
 }
 
+//tìm thông tin của món ăn => dùng cho chi tiết đơn hàng
+const timThongTinKhachHanghoDonHang_extend = async (iDONHANG) => {
+	console.time(iDONHANG._id);
+	return new Promise(function (resolve, reject) {
+		KHACH_HANG.findById({
+			_id: mongoose.Types.ObjectId(iDONHANG.IdKhachHang)
+		}, function (err, resultSearchKH) {
+			if (err) {
+				console.log("Lấy thông tin của khách hàng gặp lỗi :" + err);
+				resolve(null);
+			}
+			else {
+				console.log("Lấy thông tin khách hàng của đơn hàng thành công !");
+				console.timeEnd(iDONHANG._id);
+				resolve(resultSearchKH);
+			}
+		});
+	});
+}
+
 //sau khi tìm thông tin của tất cả các món món ăn, cập nhật đơn hàng
 const capNhatDonHang_extend = async (iDONHANG) => {
 	var error_query = { return_code: "0", error_infor: "Lỗi server khi query." };
@@ -2376,9 +2394,20 @@ const capNhatDonHang_extend = async (iDONHANG) => {
 				resolveLstMonans.forEach(element => {
 					iDONHANG.Chi_tiet_DH.push(element);
 				});
-				console.log("Cập nhật thông tin đôn hàng thành công !");
-				console.timeEnd(iDONHANG._id);
-				resolve(iDONHANG);
+				Promise.all([
+					timThongTinKhachHanghoDonHang_extend(iDONHANG)
+				])
+				.then(function (resolveThongTinKhachHang) {
+					if (resolveThongTinKhachHang.length != null && resolveThongTinKhachHang.length != 1) {
+						console.log("Tìm thông tin khách hàng của đơn hàng gặp lỗi !");
+						res.send(error_query);
+					} else {
+						iDONHANG.infor_kh = resolveThongTinKhachHang[0];
+						console.log("Cập nhật thông tin đôn hàng thành công !");
+						console.timeEnd(iDONHANG._id);
+						resolve(iDONHANG);
+					}
+				});
 			}
 		});
 	});
@@ -2415,3 +2444,37 @@ app.post("/danhSachDongHang", urlEncodeParser, async function (req, res) {
 		}
 	);
 });
+
+app.post("/donHangMoi", urlEncodeParser, async function (req, res) {
+	DON_HANG.aggregate(
+		[
+			{ 
+				"$match" : { 
+					"_id" : mongoose.Types.ObjectId(req.body.idDonHang)
+				}
+			}
+		],
+		function(err, result){//result là danh sách đơn hàng của cửa hàng A
+			if (err) {
+				console.log("Tìm đơn hàng gặp lỗi : " + err);
+				res.send({ return_code: "0", error_infor: "Lỗi server khi query." });
+			} else {
+				if(result != null && result.length > 0){
+					Promise.all(
+						result.map(function (iDONHANG) {
+							return capNhatDonHang_extend(iDONHANG);//tìm thông tin cho các món ăn trong đơn hàng
+					}))
+						.then(function (resolveDonHangs) {
+							console.log(resolveDonHangs);
+							res.send(resolveDonHangs);
+						});
+				} else{
+					console.log("Không có đơn hàng !");
+					res.send({ return_code: "0", error_infor: "Đơn hàng không tồn tại !" });
+				}
+			}
+		}
+	);
+});
+
+

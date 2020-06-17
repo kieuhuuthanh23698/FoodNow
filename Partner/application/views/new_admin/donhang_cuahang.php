@@ -4,7 +4,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Dashboard</h1>
+            <h1 id="title" class="m-0 text-dark">Dashboard</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -31,13 +31,6 @@
               <!-- /.card-header -->
               <div class="card-body">
                 <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                  <!-- <div class="row"><div class="col-sm-12 col-md-6">
-                    <div class="dataTables_length" id="example1_length">
-                      <label>Show <select name="example1_length" aria-controls="example1" class="custom-select custom-select-sm form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"><div id="example1_filter" class="dataTables_filter">
-                        <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example1"></label>
-                      </div>
-                    </div>
-                  </div> -->
                   <div class="row">
                     <div class="col-sm-12">
                       <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
@@ -47,256 +40,14 @@
                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Số lượng</th>
                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Tổng tiền(đ)</th>
                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Thông tin</th>
-                    <!-- <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">CSS grade</th> -->
                   </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR9853</a></td>
-                      <td>1</td>
-                      <td><span class="badge badge-success">900.000</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                          <button type="button" class="btn btn-outline-success">Chi tiết</button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                      <td>3</td>
-                      <td><span class="badge badge-success">900.000</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                          <button type="button" class="btn btn-outline-success">Chi tiết</button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                      <td>3</td>
-                      <td><span class="badge badge-success">900.000</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                          <button type="button" class="btn btn-outline-success">Chi tiết</button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                      <td>3</td>
-                      <td><span class="badge badge-success">900.000</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                          <button type="button" class="btn btn-outline-success">Chi tiết</button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                      <td>3</td>
-                      <td><span class="badge badge-success">900.000</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                          <button type="button" class="btn btn-outline-success">Chi tiết</button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                      <td>3</td>
-                      <td><span class="badge badge-success">900.000</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                          <button type="button" class="btn btn-outline-success">Chi tiết</button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                     <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                      <td>3</td>
-                      <td><span class="badge badge-success">900.000</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                          <button type="button" class="btn btn-outline-success">Chi tiết</button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                     <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                      <td>3</td>
-                      <td><span class="badge badge-success">900.000</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                          <button type="button" class="btn btn-outline-success">Chi tiết</button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                     <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                      <td>3</td>
-                      <td><span class="badge badge-success">900.000</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                          <button type="button" class="btn btn-outline-success">Chi tiết</button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                     <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                      <td>3</td>
-                      <td><span class="badge badge-success">900.000</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                          <button type="button" class="btn btn-outline-success">Chi tiết</button>
-                        </div>
-                      </td>
-                    </tr>
-                    </tbody>
-                 <!--  <tbody>
-
-                  </tr><tr role="row" class="odd">
-                    <td tabindex="0" class="sorting_1">Gecko</td>
-                    <td>Firefox 2.0</td>
-                    <td>Win 98+ / OSX.2+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-                  </tr><tr role="row" class="even">
-                    <td tabindex="0" class="sorting_1">Gecko</td>
-                    <td>Firefox 3.0</td>
-                    <td>Win 2k+ / OSX.3+</td>
-                    <td>1.9</td>
-                    <td>A</td>
-                  </tr><tr role="row" class="odd">
-                    <td class="sorting_1" tabindex="0">Gecko</td>
-                    <td>Camino 1.0</td>
-                    <td>OSX.2+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-                  </tr><tr role="row" class="even">
-                    <td class="sorting_1" tabindex="0">Gecko</td>
-                    <td>Camino 1.5</td>
-                    <td>OSX.3+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-                  </tr><tr role="row" class="odd">
-                    <td class="sorting_1" tabindex="0">Gecko</td>
-                    <td>Netscape 7.2</td>
-                    <td>Win 95+ / Mac OS 8.6-9.2</td>
-                    <td>1.7</td>
-                    <td>A</td>
-                  </tr><tr role="row" class="even">
-                    <td class="sorting_1" tabindex="0">Gecko</td>
-                    <td>Netscape Browser 8</td>
-                    <td>Win 98SE+</td>
-                    <td>1.7</td>
-                    <td>A</td>
-                  </tr><tr role="row" class="odd">
-                    <td class="sorting_1" tabindex="0">Gecko</td>
-                    <td>Netscape Navigator 9</td>
-                    <td>Win 98+ / OSX.2+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-                  </tr><tr role="row" class="even">
-                    <td class="sorting_1" tabindex="0">Gecko</td>
-                    <td>Mozilla 1.0</td>
-                    <td>Win 95+ / OSX.1+</td>
-                    <td>1</td>
-                    <td>A</td>
-                  </tr>
-                  <tr role="row" class="odd">
-                    <td tabindex="0" class="sorting_1">Gecko</td>
-                    <td>Firefox 1.0</td>
-                    <td>Win 98+ / OSX.2+</td>
-                    <td>1.7</td>
-                    <td>A</td>
-                  </tr><tr role="row" class="even">
-                    <td tabindex="0" class="sorting_1">Gecko</td>
-                    <td>Firefox 1.5</td>
-                    <td>Win 98+ / OSX.2+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-                  </tr><tr role="row" class="odd">
-                    <td tabindex="0" class="sorting_1">Gecko</td>
-                    <td>Firefox 2.0</td>
-                    <td>Win 98+ / OSX.2+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-                  </tr><tr role="row" class="even">
-                    <td tabindex="0" class="sorting_1">Gecko</td>
-                    <td>Firefox 3.0</td>
-                    <td>Win 2k+ / OSX.3+</td>
-                    <td>1.9</td>
-                    <td>A</td>
-                  </tr><tr role="row" class="odd">
-                    <td class="sorting_1" tabindex="0">Gecko</td>
-                    <td>Camino 1.0</td>
-                    <td>OSX.2+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-                  </tr><tr role="row" class="even">
-                    <td class="sorting_1" tabindex="0">Gecko</td>
-                    <td>Camino 1.5</td>
-                    <td>OSX.3+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-                  </tr><tr role="row" class="odd">
-                    <td class="sorting_1" tabindex="0">Gecko</td>
-                    <td>Netscape 7.2</td>
-                    <td>Win 95+ / Mac OS 8.6-9.2</td>
-                    <td>1.7</td>
-                    <td>A</td>
-                  </tr><tr role="row" class="even">
-                    <td class="sorting_1" tabindex="0">Gecko</td>
-                    <td>Netscape Browser 8</td>
-                    <td>Win 98SE+</td>
-                    <td>1.7</td>
-                    <td>A</td>
-                  </tr><tr role="row" class="odd">
-                    <td class="sorting_1" tabindex="0">Gecko</td>
-                    <td>Netscape Navigator 9</td>
-                    <td>Win 98+ / OSX.2+</td>
-                    <td>1.8</td>
-                    <td>A</td>
-                  </tr><tr role="row" class="even">
-                    <td class="sorting_1" tabindex="0">Gecko</td>
-                    <td>Mozilla 1.0</td>
-                    <td>Win 95+ / OSX.1+</td>
-                    <td>1</td>
-                    <td>A</td>
-                  </tr></tbody> -->
-                  <!-- <tfoot>
-                  <tr><th rowspan="1" colspan="1">Rendering engine</th><th rowspan="1" colspan="1">Browser</th><th rowspan="1" colspan="1">Platform(s)</th><th rowspan="1" colspan="1">Engine version</th><th rowspan="1" colspan="1">CSS grade</th></tr>
-                  </tfoot> -->
+                  <tbody></tbody>
                 </table>
               </div>
             </div>
-            <!-- <div class="row">
-              <div class="col-sm-12 col-md-5">
-                <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div></div>
-                <div class="col-sm-12 col-md-7">
-                  <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
-                    <ul class="pagination">
-                      <li class="paginate_button page-item previous disabled" id="example1_previous">
-                        <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-                        <li class="paginate_button page-item active">
-                          <a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                          <li class="paginate_button page-item ">
-                            <a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                            <li class="paginate_button page-item ">
-                              <a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
-                              <li class="paginate_button page-item ">
-                                <a href="#" aria-controls="example1" data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
-                                <li class="paginate_button page-item ">
-                                <a href="#" aria-controls="example1" data-dt-idx="5" tabindex="0" class="page-link">5</a></li>
-                                <li class="paginate_button page-item ">
-                                  <a href="#" aria-controls="example1" data-dt-idx="6" tabindex="0" class="page-link">6</a></li>
-                                  <li class="paginate_button page-item next" id="example1_next">
-                                    <a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div> -->
-                          </div>
+           
+              </div>
               </div>
               <!-- /.card-body -->
             </div>
@@ -305,13 +56,13 @@
           <!-- /.Left col -->
           <!-- right col (We are only adding the ID to make the widgets sortable)-->
           <section class="col-lg-5 connectedSortable">
-<div class="invoice p-3 mb-3">
+              <div class="invoice p-3 mb-3">
               <!-- title row -->
               <div class="row">
                 <div class="col-12">
                   <h4>
                     <i class="fas fa-globe"></i> FoodNow
-                    <small class="float-right">Date: 28/05/2020</small>
+                    <small class="float-right" id="oder_date"></small>
                   </h4>
                 </div>
                 <!-- /.col -->
@@ -319,21 +70,19 @@
               <!-- info row -->
               <div class="row invoice-info">
 
-                <div class="col-sm-8 invoice-col">
+                <div class="col-sm-6 invoice-col">
                   Khách hàng
                   <address>
-                    <strong>Lê Thị Ngọc Hiền</strong><br>
-                    140 Lê Trọng Tấn, P. Tây Thạnh, Q. Tân Phú, HCM<br>
-                    Phone: 0987665455<br>
-                    Email: lengochien@gmail.com
+                    <strong id="oder_name"></strong>
+                    <!-- <br><span id="oder_address"></span> -->
+                    <br>ĐT : <span id="oder_phone"></span>
                   </address>
 
                 </div>
 
                 <div class="col-sm-4 invoice-col">
-                  <b>Hóa đơn #007612</b><br>
-                  <b>Mã đơn hàng:</b> 4F3S8J<br>
-                  <b>Tổng số lượng:</b> 3
+                  <b>Mã đơn hàng : </b><br><span id="oder_id"></span>
+                  <br><b>Tổng số lượng: </b><span id="oder_count"></span>
                 </div>
               </div>
               <!-- /.row -->
@@ -341,7 +90,7 @@
               <!-- Table row -->
               <div class="row">
                 <div class="col-12 table-responsive">
-                  <table class="table table-striped">
+                  <table id="table_oder_detail" class="table table-striped">
                     <thead>
                     <tr>
                       <th>Tên món</th>
@@ -351,30 +100,6 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                      <td>Trà chanh dây</td>
-                      <td>2</td>
-                      <td>Ít đường</td>
-                      <td>20.000</td>
-                    </tr>
-                    <tr>
-                      <td>Trà chanh dây</td>
-                      <td>2</td>
-                      <td>Ít đường Ít đường</td>
-                      <td>20.000</td>
-                    </tr>
-                    <tr>
-                      <td>Trà chanh dây</td>
-                      <td>2</td>
-                      <td>Ít đường</td>
-                      <td>20.000</td>
-                    </tr>
-                    <tr>
-                      <td>Trà chanh dây</td>
-                      <td>2</td>
-                      <td>Ít đường</td>
-                      <td>20.000</td>
-                    </tr>
                     </tbody>
                   </table>
                 </div>
@@ -386,8 +111,8 @@
                 <!-- accepted payments column -->
                 <div class="col-6">
                   <p class="lead">Phương thức thanh toán:</p>
-                  <img src="dist/img/credit/visa.png" alt="momo">
-                  <img src="dist/img/credit/paypal2.png" alt="Paypal">
+                  <img src="<?php echo base_url();?>dist/img/credit/visa.png" alt="momo">
+                  <img src="<?php echo base_url();?>dist/img/credit/paypal2.png" alt="Paypal">
 
                   <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
                     Thanh toán qua ví điện tử dễ dàng.
@@ -395,27 +120,24 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-6">
-                  <p class="lead">Ngày đặt: 28/05/2020</p>
-
+                  <p class="lead"><span id="oder_date_2">Date: ngày đặt</span></p>
                   <div class="table-responsive">
                     <table class="table">
-                      <tbody><tr>
-                        <th style="width:50%">Tổng:</th>
-                        <td>60.000</td>
-                      </tr>
-<!--                       <tr>
-                        <th>Tax (9.3%)</th>
-                        <td>$10.34</td>
-                      </tr> -->
+                      <tbody>
                       <tr>
-                        <th>Phí dịch vụ:</th>
-                        <td>10.000</td>
+                        <th style="width:50%">Tổng:</th>
+                        <td id="oder_total">tổng tiền giỏ hàng</td>
+                      </tr>
+                      <tr>
+                        <th>Phí ship :</th>
+                        <td id="oder_ship">phí ship</td>
                       </tr>
                       <tr>
                         <th>Thành tiền:</th>
-                        <td>70.000</td>
+                        <td id="oder_total_cart">tổng tiền đơn hàng</td>
                       </tr>
-                    </tbody></table>
+                     </tbody>
+                    </table>
                   </div>
                 </div>
                 <!-- /.col -->
@@ -425,13 +147,13 @@
               <!-- this row will not appear when printing -->
               <div class="row no-print">
                 <div class="col-12">
-                  <a href="pages/examples/invoice-print.html" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Xác nhận</a>
-                  <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
+                  <a href="pages/examples/invoice-print.html" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Xuất hóa đơn</a>
+                  <!-- <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
                     Payment
                   </button>
                   <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
                     <i class="fas fa-download"></i> Generate PDF
-                  </button>
+                  </button> -->
                 </div>
               </div>
             </div>
@@ -450,3 +172,203 @@
 
 </div>
 <!-- ./wrapper -->
+<!-- load data -->
+<script type="text/javascript">
+  //quyền thông báo đơn hàng
+  if(Notification.permission != 'granted'){
+    Notification.requestPermission().then(function(result){
+      if(result == "denied"){
+        alert("Bạn đã tắt thông báo của page này !")
+      }
+      if(result == "granted"){
+        alert("Bạn đã cho phép page hiển thị thông báo !")
+      }
+    });
+  }
+
+  var listOders = [];
+  // xử lý sau khi load page
+  $(document).ready( function () {
+    document.getElementById("title").innerHTML = <?php echo "'  ".$id."'"?>;  
+    // request get danh sách đơn hàng 
+    // $.ajax({
+    //         url:  url + "danhSachDongHang",
+    //         dataType: 'json',
+    //         data: {
+    //           idCuaHang : <?php echo "'".$id."'"?>
+    //         },
+    //         type: 'POST',
+    //         success: function (res) {
+    //           res.forEach(function(item){
+    //             listOders.push(item);
+    //           });
+    //           if(listOders.length > 0){
+    //             console.log(listOders);
+    //               renderUI_OderList();
+    //           }
+    //         }
+    // });
+  } );
+
+
+  function renderUI_OderList_item(item){
+    var table = $('#example1').DataTable();
+    // insert data into table 
+    table.row.add( [
+      '<a href="#">' + item._id + '</a>',
+      item.Chi_tiet_DH.length,
+      '<span class="badge badge-success">' + (new Intl.NumberFormat().format(item.Total_cart)) + '</span>',
+      '<div class="sparkbar" data-color="#00a65a" data-height="20"><button type="button" class="btn btn-outline-success">Xác nhận</button> <button type="button" class="btn btn-outline-danger">Hủy</button></div>'
+    ] ).draw();
+  };
+
+
+  function renderUI_OderList_item_detail(id){
+    for (i=0; i< listOders.length; i++){
+      if(listOders[i]._id == id){
+        var detail = listOders[i];
+        $("#oder_name").text(detail.infor_kh.Ten_khach_hang);
+        $("#oder_address").text(detail.Dia_chi_giao_hang);
+        $("#oder_phone").text(detail.infor_kh.So_dien_thoai);
+        $("#oder_id").text(detail._id);
+        $("#oder_count").text(detail.Chi_tiet_DH.length);
+        $("#table_oder_detail tbody").text("");
+        for (var j = 0; j < detail.Chi_tiet_DH.length; j++) {
+          var item = detail.Chi_tiet_DH[j];
+          $("#table_oder_detail tbody").append(
+            '<tr><td>' + item.Ten_mon_an + '</td><td>2</td><td>' + item.GhiChu + '</td><td>' + (new Intl.NumberFormat().format(item.Thanh_tien)) + '</td></tr>'
+          );
+        }
+        $("#oder_date").text(detail.Ngay_nhan_don_hang);
+        $("#oder_date_2").text(detail.Ngay_nhan_don_hang);
+        $("#oder_total").text(" " + (new Intl.NumberFormat().format(detail.Total)));
+        $("#oder_ship").text(" " + (new Intl.NumberFormat().format(detail.Phi_ship)));
+        $("#oder_total_cart").text(" " + (new Intl.NumberFormat().format(detail.Total_cart)));
+        return;
+      }
+      $("#oder_name").text("");
+        $("#oder_address").text("");
+        $("#oder_phone").text("");
+        $("#oder_id").text("");
+        $("#oder_count").text("");
+        $("#oder_date").text("");
+        $("#oder_date_2").text("");
+        $("#oder_total").text("");
+        $("#oder_ship").text("");
+        $("#oder_total_cart").text("");
+    };
+  }
+
+  function renderUI_OderList(){
+    for (i=0; i< listOders.length; i++){
+      renderUI_OderList_item(listOders[i]);
+    };
+    // end for
+
+    //set id for each row and bind event for each row
+    $('#example1 tbody tr').each(function(){
+
+        $(this).attr('id', $(this).find('td:nth-child(1)').text());
+
+        $(this).bind({
+            click : function(e) {
+              renderUI_OderList_item_detail($(this).attr('id'));
+            }, 
+
+            mouseleave : function(e) {
+            }
+        });
+    });
+  }
+
+  function getNewOder(idOder){
+    $.ajax({
+            url:  url + "donHangMoi",
+            dataType: 'json',
+            data: {
+              idDonHang : idOder
+            },
+            type: 'POST',
+            success: function (res) {
+              console.log(res);
+              if(res.length > 1){
+                res.forEach(function(item){
+                  listOders.push(item);
+                  renderUI_OderList_item(item);
+                });
+              } else if(res.length == 1){
+                listOders.push(res[0]);
+                renderUI_OderList_item(res[0]);
+              }
+              $('#example1 tbody tr').each(function(){
+
+        $(this).attr('id', $(this).find('td:nth-child(1)').text());
+
+        $(this).bind({
+            click : function(e) {
+              renderUI_OderList_item_detail($(this).attr('id'));
+            }, 
+
+            mouseleave : function(e) {
+            }
+        });
+    });
+
+            }
+    });
+  }
+</script>
+
+<!-- handle push notification -->
+<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+<script>
+
+  function showNotification(title, body, icon, tag){
+    var notify = new Notification(
+        title,
+        { 
+          body : body,
+          icon : icon,
+          tag : tag
+        }
+      );
+    
+    notify.onclick = function(){
+      this.close();
+      renderUI_OderList_item_detail(this.tag);
+    }
+    notify.onshow = function(){
+      var item = this;
+      setTimeout( function(){ 
+        item.close(); 
+      }, 5000);
+    }
+  }
+
+
+  var firebaseConfig = {
+    apiKey: "AIzaSyBpfe5LCma0AfpfNrbJlqxSCOLvOQGQDTg",
+    authDomain: "foodnow-276107.firebaseapp.com",
+    databaseURL: "https://foodnow-276107.firebaseio.com/",
+    projectId: "foodnow-276107",
+    storageBucket: "",
+    messagingSenderId: "377367084193",
+    appId: "1:377367084193:web:d698436d221c25c57c44e0",
+    measurementId: "G-KQYRL7G3R3"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  var database = firebase.database().ref().child("/oders/<?php echo $id?>");
+  database.on("child_added", function(data){
+    console.log(data);
+    if(Notification.permission == 'granted'){
+      showNotification("Thông báo đơn hàng mới !", "ID đơn hàng : " + data.val().key, "<?php echo base_url()?>images/logo-ver40x40.png", data.val().key);
+      getNewOder(data.val().key);
+      firebase.database().ref().child("/oders/<?php echo $id?>/" + data.key).remove();
+    } else {
+      alert("Xin hãy cho phép trang hiển thị thông báo !")
+    }
+  });
+</script>
