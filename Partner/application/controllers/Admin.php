@@ -44,8 +44,7 @@ class Admin extends CI_Controller {
 					$data['content'] = $this->load->view('new_admin/dasboard_cuahang', $id,TRUE);
 					break;
 				case '3'://admin
-					$id['id'] = "";
-					$data['content'] = "";
+					$data['content'] = $this->load->view('new_admin/dasboard_admin', $id,TRUE);
 					break;
 				case '4'://supper admin
 					$id['id'] = "";

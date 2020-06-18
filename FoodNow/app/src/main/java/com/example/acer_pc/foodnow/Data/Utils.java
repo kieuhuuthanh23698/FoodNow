@@ -28,7 +28,8 @@ import java.util.List;
 import java.util.Locale;
 
 public class Utils {
-    static String ipserver = "192.168.137.1:3000";
+//    static String ipserver = "192.168.137.1:3000";
+    static String ipserver = "192.168.100.80:3000";
 
     public static String urlLogin = "http://" + ipserver + "/DangNhap" ;
     public static String urlFragment_Home = "http://" + ipserver + "/fragment_home" ;

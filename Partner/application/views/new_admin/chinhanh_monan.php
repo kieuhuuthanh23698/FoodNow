@@ -159,15 +159,13 @@
                                                             <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
                                                                 <thead>
                                                                     <tr role="row">
-                                                                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Mã loại món</th>
-                                                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Tên loại món</th>
+                                                                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Tên loại món</th>
                                                                         <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Chi tiết</th>
                                                                     </tr>
 
                                                                 </thead>
                                                                 <tbody>
-                                                                    <tr>
-                                                                        <td><a href="#">OR9853</a></td>
+                                                                    <!-- <tr>
                                                                         <td><span class="badge badge-success giatien">Hủ Tiếu Nam Vang Thành Đạt</span></td>
                                                                         <td>
                                                                             <div class="sparkbar" data-color="#00a65a" data-height="20">
@@ -199,7 +197,7 @@
 
 
                                                                         </td>
-                                                                    </tr>
+                                                                    </tr> -->
                                                                 </tbody>
 
                                                             </table>
@@ -238,7 +236,7 @@
                                                                     </thead>
                                                                     <tbody>
 
-                                                                        <tr role="row" class="odd">
+                                                                       <!--  <tr role="row" class="odd">
                                                                             <td>
                                                                                 <ul class="list-inline">
                                                                                     <li class="list-inline-item">
@@ -278,7 +276,7 @@
                                                                                     </div>
 
 
-                                                                                </td>
+                                                                                </td> -->
                                    </tbody>
 
                             </table></div></div>
@@ -331,3 +329,58 @@
 
         }
 </style>
+
+<script type="text/javascript">
+
+    
+var socket;
+$(document).ready(function(){
+ socket = io("http://localhost:3000");
+    socket.emit("partner-server", localStorage.getItem('partnerID'));
+    socket.on('partner-server', function(data){
+        //debugger;
+        alert('Guest is ordering with data :');
+    });
+    $('#head').text($('#head').text() + ' - ' + localStorage.getItem('partnerID'));
+
+        $.ajax(
+        {
+            url: url + 'thongTinCuaHang',
+            dataType: 'json',
+            data: {
+            },
+            type: 'post',
+            success: function (res) {
+
+             for (i=0; i< res.length; i++){ 
+
+                var table = $('#example1').DataTable();
+                table.row.add( [
+                res[i].Ten_loai_mon_an ,
+                '<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+                + "</div>"
+                ] ).draw();
+
+
+                $('#example1 tbody tr').each(function(){
+                    if($(this).find('td:nth-child(1)').text() == res[i].Ten_loai_mon_an)
+                        $(this).attr('id', res[i]._id );
+                    $(this).bind({
+                        click : function(e) { 
+                            if(hovering == false)
+                                loadCuaHang($(this).attr('id'));
+                             }, 
+                        mouseleave : function(e) {//khi ko hover nữa
+                                //xóa bảng CH
+                                hovering = false;
+                                // $('#tableCuaHang li').remove();
+                            }
+                        });
+                });
+
+            };
+        
+            // document.getElementById("tablelist").innerHTML=test;
+            }
+        });
+    });

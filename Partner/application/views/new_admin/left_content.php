@@ -31,6 +31,9 @@
               </p>
             </a>
           </li> -->
+          <!-- Quản lý danh mục -->
+          <?php echo isset($quan_ly_danh_muc) ? $quan_ly_danh_muc : '';?>
+          
           <!--  Tổng quan -->
           <!-- Tin tức -->
           <!-- <li class="nav-item">
@@ -48,6 +51,7 @@
           <?php echo isset($don_hang) ? $don_hang : '';?>
           <!-- Đơn hàng -->
           <!-- Chi nhánh -->
+          <?php echo isset($chi_nhanh_danh_sach_mon_an) ? $chi_nhanh_danh_sach_mon_an : '';?>
           <?php echo isset($chi_nhanh) ? $chi_nhanh : '';?>
 
           <?php echo isset($cuahang_monan) ? $cuahang_monan : '';?>
@@ -62,9 +66,11 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              <?php echo isset($quan_ly_khuyen_mai) ? $quan_ly_khuyen_mai : '';?>
               <?php echo isset($km_cua_hang) ? $km_cua_hang : '';?>
               <?php echo isset($km_cua_hang_he_thong_hien_thi) ? $km_cua_hang_he_thong_hien_thi : '';?>
               <?php echo isset($km_he_thong) ? $km_he_thong : '';?>
+              <?php echo isset($km_cua_hang_danh_sach_hien_thi) ? $km_cua_hang_danh_sach_hien_thi : '';?> 
             </ul>
           </li>
           <!-- Khuyến mãi -->

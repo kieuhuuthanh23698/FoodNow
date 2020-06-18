@@ -22,7 +22,7 @@ class Taikhoan extends CI_Controller {
 
 	public function homeTaikhoan_chinhanh()
 	{
-		if(!$this->session->has_userdata('user') || getGroup() == '1')
+		if(!$this->session->has_userdata('user') || getGroup() != '1')
 		{
 			session_unset();
 			redirect(base_url('admin/'));

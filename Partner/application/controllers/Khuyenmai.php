@@ -41,7 +41,7 @@ class Khuyenmai extends CI_Controller {
 
  	public function homeKhuyenmai_cuahang_hethonghienthi()
  	{
- 		if(!$this->session->has_userdata('user') || getGroup() != '2')
+ 		if(!$this->session->has_userdata('user') || getGroup() != '2' || getGroup() != '1')
 		{
 			session_unset();
 			redirect(base_url('admin/'));
@@ -50,9 +50,28 @@ class Khuyenmai extends CI_Controller {
  		{
 			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
 			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
-			if(getGroup() == '2')
-				$id['id'] = $this->session->get_userdata('user')['user']['id'];
+			// if(getGroup() == '2' || getGroup() == '1')
+			// 	$id['id'] = $this->session->get_userdata('user')['user']['id'];
 			$data['content'] = $this->load->view('new_admin/khuyenmai_cuahang_hethonghienthi', NULL,TRUE);
+			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
+			$this->load->view('page/page', $data);
+		}
+ 	}
+
+ 	public function homeKhuyenmai_cuahang_danhsachhienthi()
+ 	{
+ 		if(!$this->session->has_userdata('user') || getGroup() != '1')
+		{
+			session_unset();
+			redirect(base_url('admin/'));
+		}
+ 		else
+ 		{
+			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
+			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
+			// if(getGroup() == '2' || getGroup() == '1')
+			// 	$id['id'] = $this->session->get_userdata('user')['user']['id'];
+			$data['content'] = $this->load->view('new_admin/khuyenmai_cuahang_danhsachhienthi', NULL,TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
 		}
@@ -70,6 +89,23 @@ class Khuyenmai extends CI_Controller {
 			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
 			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
 			$data['content'] = $this->load->view('new_admin/khuyenmai_hethong', NULL,TRUE);
+			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
+			$this->load->view('page/page', $data);
+		}
+ 	}
+
+ 	public function homeQuanly_khuyenmai_cuahang()
+ 	{
+ 		if(!$this->session->has_userdata('user') || getGroup() != '3')
+		{
+			session_unset();
+			redirect(base_url('admin/'));
+		}
+ 		else
+ 		{
+			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
+			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
+			$data['content'] = $this->load->view('new_admin/quanly_khuyenmai_cuahang', NULL,TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
 		}
