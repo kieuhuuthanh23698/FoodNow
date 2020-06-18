@@ -124,3 +124,45 @@
       height: auto;
     }
   </style>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+        $.ajax(
+        {
+            url: url + "getTaikhoancuahang",
+            dataType: 'json',
+            data: {
+                idCuahang: <?php echo "'".$id."'";?>,
+            },
+            type: 'post',
+            success: function (res) {
+             // console.log(res);
+             // var test = "";
+             for (i=0; i< res.length; i++){ 
+                var table = $('#example1').DataTable();
+                table.row.add( [
+                res[i].MaGiamGia,
+                res[i].ThongTin_KMCH,
+                res[i].NgayBD,
+                res[i].NgayKT,
+                res[i].PhanTram_GiamGia + " %",
+                res[i].MoTa,
+                "<div class='sparkbar' data-color='#00a65a' data-height='20'>"
+                // + "<a href='#'><i class='nav-icon fas fa-edit'></i></a>"
+                + '<button class="btn btn-danger" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+                + "</div>"
+                ] ).draw();
+
+
+                $('#example1 tbody tr').each(function(){
+                    if($(this).find('td:nth-child(1)').text() == res[i].MaGiamGia)
+                        $(this).attr('id', res[i]._id );
+                });
+
+            };
+        
+            // document.getElementById("tablelist").innerHTML=test;
+            }
+        });
+    });
+</script>
