@@ -4,7 +4,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 id="title" class="m-0 text-dark">Dashboard</h1>
+            <h1 id="title" class="m-0 text-dark">Dashboard Đơn Hàng</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -55,7 +55,7 @@
           </section>
           <!-- /.Left col -->
           <!-- right col (We are only adding the ID to make the widgets sortable)-->
-          <section class="col-lg-5 connectedSortable">
+          <section id="oder" class="col-lg-5 connectedSortable">
               <div class="invoice p-3 mb-3">
               <!-- title row -->
               <div class="row">
@@ -111,30 +111,33 @@
                 <!-- accepted payments column -->
                 <div class="col-6">
                   <p class="lead">Phương thức thanh toán:</p>
-                  <img src="<?php echo base_url();?>dist/img/credit/visa.png" alt="momo">
-                  <img src="<?php echo base_url();?>dist/img/credit/paypal2.png" alt="Paypal">
+                  <!-- <!-- <img src="<?php echo base_url();?>dist/img/credit/visa.png" alt="momo"> -->
+                  <img src="<?php echo base_url();?>dist/img/credit/cash-pay.png" alt="Paypal">
 
-                  <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
+                 <!-- <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
                     Thanh toán qua ví điện tử dễ dàng.
+                  </p> -->
+                  <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
+                    Thanh toán bằng tiền mặt.
                   </p>
                 </div>
                 <!-- /.col -->
                 <div class="col-6">
-                  <p class="lead"><span id="oder_date_2">Date: ngày đặt</span></p>
+                  <!-- <p class="lead"><span id="oder_date_2">Date: ngày đặt</span></p> -->
                   <div class="table-responsive">
                     <table class="table">
                       <tbody>
                       <tr>
                         <th style="width:50%">Tổng:</th>
-                        <td id="oder_total">tổng tiền giỏ hàng</td>
+                        <td id="oder_total"></td>
                       </tr>
                       <tr>
                         <th>Phí ship :</th>
-                        <td id="oder_ship">phí ship</td>
+                        <td id="oder_ship"></td>
                       </tr>
                       <tr>
                         <th>Thành tiền:</th>
-                        <td id="oder_total_cart">tổng tiền đơn hàng</td>
+                        <td id="oder_total_cart"></td>
                       </tr>
                      </tbody>
                     </table>
@@ -147,13 +150,7 @@
               <!-- this row will not appear when printing -->
               <div class="row no-print">
                 <div class="col-12">
-                  <a href="pages/examples/invoice-print.html" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Xuất hóa đơn</a>
-                  <!-- <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
-                    Payment
-                  </button>
-                  <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                    <i class="fas fa-download"></i> Generate PDF
-                  </button> -->
+                  <a href="#" onclick="printOder()" class="btn btn-default"><i class="fas fa-print"></i> Xuất hóa đơn</a>
                 </div>
               </div>
             </div>
@@ -172,44 +169,60 @@
 
 </div>
 <!-- ./wrapper -->
+<!-- hỗ trợ print div -->
+<script type="text/javascript" src="<?php echo base_url()?>js/printThis.js"></script>
+<!-- hỗ trợ format date -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <!-- load data -->
 <script type="text/javascript">
-  //quyền thông báo đơn hàng
-  if(Notification.permission != 'granted'){
-    Notification.requestPermission().then(function(result){
-      if(result == "denied"){
-        alert("Bạn đã tắt thông báo của page này !")
-      }
-      if(result == "granted"){
-        alert("Bạn đã cho phép page hiển thị thông báo !")
-      }
-    });
-  }
-
+  
   var listOders = [];
   // xử lý sau khi load page
   $(document).ready( function () {
-    document.getElementById("title").innerHTML = <?php echo "'  ".$id."'"?>;  
-    // request get danh sách đơn hàng 
-    // $.ajax({
-    //         url:  url + "danhSachDongHang",
-    //         dataType: 'json',
-    //         data: {
-    //           idCuaHang : <?php echo "'".$id."'"?>
-    //         },
-    //         type: 'POST',
-    //         success: function (res) {
-    //           res.forEach(function(item){
-    //             listOders.push(item);
-    //           });
-    //           if(listOders.length > 0){
-    //             console.log(listOders);
-    //               renderUI_OderList();
-    //           }
-    //         }
-    // });
-  } );
+    requestPermissionNotification();
+    loadOdersList();
+  });
 
+  function printOder(){
+    var idOder = document.getElementById('oder_id');
+    if(idOder.innerText != "")
+      $("#oder").printThis();
+  }
+
+  function requestPermissionNotification(){
+    //quyền thông báo đơn hàng
+    if(Notification.permission != 'granted'){
+      Notification.requestPermission().then(function(result){
+        if(result == "denied"){
+          alert("Bạn đã tắt thông báo của page này !")
+        }
+        if(result == "granted"){
+          alert("Bạn đã cho phép page hiển thị thông báo !")
+        }
+      });
+    }
+  }
+
+  function loadOdersList(){
+    // request get danh sách đơn hàng 
+    $.ajax({
+        url:  url + "danhSachDongHang",
+        dataType: 'json',
+        data: {
+          idCuaHang : <?php echo "'".$id."'"?>
+        },
+        type: 'POST',
+        success: function (res) {
+          res.forEach(function(item){
+            listOders.push(item);
+          });
+          if(listOders.length > 0){
+            console.log(listOders);
+              renderUI_OderList();
+          }
+        }
+    });
+  }
 
   function renderUI_OderList_item(item){
     var table = $('#example1').DataTable();
@@ -221,7 +234,6 @@
       '<div class="sparkbar" data-color="#00a65a" data-height="20"><button type="button" class="btn btn-outline-success">Xác nhận</button> <button type="button" class="btn btn-outline-danger">Hủy</button></div>'
     ] ).draw();
   };
-
 
   function renderUI_OderList_item_detail(id){
     for (i=0; i< listOders.length; i++){
@@ -239,8 +251,8 @@
             '<tr><td>' + item.Ten_mon_an + '</td><td>2</td><td>' + item.GhiChu + '</td><td>' + (new Intl.NumberFormat().format(item.Thanh_tien)) + '</td></tr>'
           );
         }
-        $("#oder_date").text(detail.Ngay_nhan_don_hang);
-        $("#oder_date_2").text(detail.Ngay_nhan_don_hang);
+        $("#oder_date").text(moment(new Date(detail.Ngay_nhan_don_hang)).format('DD-MM_YYYY'));
+        // $("#oder_date_2").text(moment(new Date(detail.Ngay_nhan_don_hang)).format('DD-MM_YYYY'));
         $("#oder_total").text(" " + (new Intl.NumberFormat().format(detail.Total)));
         $("#oder_ship").text(" " + (new Intl.NumberFormat().format(detail.Phi_ship)));
         $("#oder_total_cart").text(" " + (new Intl.NumberFormat().format(detail.Total_cart)));
@@ -346,7 +358,6 @@
       }, 5000);
     }
   }
-
 
   var firebaseConfig = {
     apiKey: "AIzaSyBpfe5LCma0AfpfNrbJlqxSCOLvOQGQDTg",

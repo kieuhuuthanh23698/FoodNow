@@ -1070,59 +1070,51 @@ const getThongTinCuaHang = async (req, res, error_query) => {
 			});
 	});
 }
-
 const getDanhSachMonAnCuaHang = async (req, res, error_query) => {
 	console.time("getDanhSachMonAnCuaHang");
 	return new Promise(function (resolve, reject) {
-		CHINHANH.find(
-			{ 'DanhSach_CH': { $in: [req.body.idCuahang] } },
-			function (err, chiNhanh) {
+		CUAHANG.findById(
+			{ _id : mongoose.Types.ObjectId(req.body.idCuahang)},
+			function (err, cuaHang) {
 				if (err) {
 					console.log(err);
 					res.send(error_query);
 				}
 				else {
-					if (chiNhanh != null && chiNhanh.length > 0) {
-						CHINHANH.find({ _id: mongoose.Types.ObjectId(chiNhanh[0]._id) }, function (err, chiNhanh) {
-							if (err) {
-								console.log(err);
-								res.send(error_query);
-							}
-							else {
-								LOAI_MONAN.aggregate(
-									[
-										{ $match: { _id: { $in: chiNhanh[0].Loai_MonAn } } },
-										{
-											$lookup: {
-												from: 'mon_ans',
-												localField: 'Danh_sach_mon_an',
-												foreignField: '_id',
-												as: 'monans'
-											}
-										},
-										{ $project: { 'Ten_loai_mon_an': 1, 'monans': 1 } }
-									], function (err, monans) {
-										if (err) {
-											console.log(err);
-											res.send(error_query);
-										}
-										else {
-											if (monans != null && monans.length > 0) {
-												resolve(monans);
-												console.timeEnd("getDanhSachMonAnCuaHang");
-											} else {
-												res.send({ return_code: "0", error_infor: "Cửa hàng không có món ăn !" });
-											}
-										}
+					if (cuaHang != null && cuaHang.Loai_MonAn.length > 0) {
+						LOAI_MONAN.aggregate(
+							[
+								{ $match: { _id: { $in: cuaHang.Loai_MonAn } } },
+								{
+									$lookup: {
+										from: 'mon_ans',
+										localField: 'Danh_sach_mon_an',
+										foreignField: '_id',
+										as: 'monans'
 									}
-								);
+								},
+								{ $project: { 'Ten_loai_mon_an': 1, 'monans': 1 } }
+							], function (err, monans) {
+								if (err) {
+									console.log(err);
+									res.send(error_query);
+								}
+								else {
+									if (monans != null && monans.length > 0) {
+										resolve(monans);
+										console.timeEnd("getDanhSachMonAnCuaHang");
+									} else {
+										res.send({ return_code: "0", error_infor: "Cửa hàng không có món ăn !" });
+									}
+								}
 							}
-						});
-					} else {
+						);
+					} else{
 						res.send({ return_code: "0", error_infor: "Không tìm thấy cửa hàng !" });
 					}
 				}
-			});
+			}
+		);
 	});
 }
 
@@ -1359,7 +1351,7 @@ app.post("/Danhsachmonantimkiemhienthi", urlEncodeParser, function (req, res) {
 //Hiển thị kết quả tìm kiếm gồm danh sách cửa hàng và món ăn cửa hàng đó//
 app.post("/Hienthiketqua_timkiemmonan", urlEncodeParser, function (req, res) {
 	// var vlaaaaa =  req.body.valueSearch;
-	CHINHANH.aggregate(
+	CUAHANG.aggregate(
 		[
 			{
 				"$lookup": {
@@ -1379,15 +1371,14 @@ app.post("/Hienthiketqua_timkiemmonan", urlEncodeParser, function (req, res) {
 			},
 			{
 				"$project": {
-					"Ten_Chi_Nhanh": 1.0,
-					"Hinh_Anh_Chi_Nhanh": 1.0,
-					"DanhSach_CH": 1.0,
+					"Ten_Cua_Hang": 1.0,
+					"Hinh_Anh_Cua_Hang": 1.0,
 					"thongTinMonAns": 1.0
 				}
 			},
 			{
 				"$match": {
-					"Ten_Chi_Nhanh": { $regex: req.body.valueSearch, $options: 'i' }
+					"Ten_Cua_Hang": { $regex: req.body.valueSearch, $options: 'i' }
 				}
 			}
 		],
@@ -2476,5 +2467,3 @@ app.post("/donHangMoi", urlEncodeParser, async function (req, res) {
 		}
 	);
 });
-
-
