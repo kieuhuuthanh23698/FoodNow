@@ -1,3 +1,10 @@
+<style type="text/css">
+  .crop-center {
+    object-fit: none;
+    object-position: center;
+    border-radius: 25px;
+  }
+</style>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
@@ -10,10 +17,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="<?php echo base_url();?>dist/img/store.png" class="elevation-2" alt="User Image">
+          <img src="<?php echo base_url();?>dist/img/store.png" style="width: 50px; height: 50px;" class="crop-center" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Lê Thị Ngọc Hiền</a>
+          <a href="#" class="d-block">Tên cửa hàng hơi bị dài đấy, làm sao cho hiển thị vừa khung đây</a>
         </div>
       </div>
 

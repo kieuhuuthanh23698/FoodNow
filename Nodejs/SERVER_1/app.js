@@ -5,6 +5,18 @@ const jwt = require("jsonwebtoken");
 
 var urlEncodeParser = bodyParser.urlencoded({ extended: false });
 var app = new express();
+var multer = require('multer')
+var diskStorage = multer.diskStorage({
+	destination: function (req, file, callback) {
+		callback(null, './Public/Images/')
+	},
+	filename: function (req, file, callback) {
+		const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+		file.filename = uniqueSuffix + '_' + file.originalname;
+		callback(null, uniqueSuffix + '_' + file.originalname);
+	}
+})
+var uploadFile = multer({ storage: diskStorage }).single("upload_file");
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
@@ -927,28 +939,23 @@ app.post("/Danhsachcuahanghomnay_hienthicuahang", urlEncodeParser, function (req
 //Params: idKhuyenmaihethong
 
 app.post("/Khuyenmaihethong", urlEncodeParser, function (req, res) {
-	if (req.body.idKhuyenmaihethong != null) {
-		if (req.body.idKhuyenmaihethong != "") {
-			KHUYENMAI_HETHONG.findById({ '_id': req.body.idKhuyenmaihethong }, function (err, KhuyenMaiHeThong) {
-				if (err) {
-					res.send("Lấy danh sách cửa hàng trong khuyến mãi hệ thống : " + err);
-				}
-				else {
-					CUAHANG.find({ '_id': { $in: KhuyenMaiHeThong.DanhSach_CH } },
-						function (err, listCuaHang) {
-							if (err)
-								res.send("Lấy danh sách cửa hàng gặp lỗi : " + err);
-							else
-								res.send(listCuaHang);
-						}
-					);
-				}
-			});
-		}
-		else {
-			res.send('Params error 2!')
-		}
-	} else {
+	if (req.body.idKhuyenmaihethong != null || req.body.idKhuyenmaihethong != "") {
+		KHUYENMAI_HETHONG.findById({ '_id': req.body.idKhuyenmaihethong }, function (err, KhuyenMaiHeThong) {
+			if (err) {
+				res.send("Lấy danh sách cửa hàng trong khuyến mãi hệ thống : " + err);
+			}
+			else {
+				CUAHANG.find({ '_id': { $in: KhuyenMaiHeThong.DanhSach_CH } },
+					function (err, listCuaHang) {
+						if (err)
+							res.send("Lấy danh sách cửa hàng gặp lỗi : " + err);
+						else
+							res.send(listCuaHang);
+					}
+				);
+			}
+		});
+	} else{
 		res.send('Params error 1!');
 	}
 });
@@ -1072,7 +1079,7 @@ const getDanhSachMonAnCuaHang = async (req, res, error_query) => {
 	console.time("getDanhSachMonAnCuaHang");
 	return new Promise(function (resolve, reject) {
 		CUAHANG.findById(
-			{ _id : mongoose.Types.ObjectId(req.body.idCuahang)},
+			{ _id: mongoose.Types.ObjectId(req.body.idCuahang) },
 			function (err, cuaHang) {
 				if (err) {
 					console.log(err);
@@ -1107,7 +1114,7 @@ const getDanhSachMonAnCuaHang = async (req, res, error_query) => {
 								}
 							}
 						);
-					} else{
+					} else {
 						res.send({ return_code: "0", error_infor: "Không tìm thấy cửa hàng !" });
 					}
 				}
@@ -2086,38 +2093,36 @@ app.delete("/deleteKhuyenmaicuahang", urlEncodeParser, function (req, res) {
 //method POST
 //params  : maGiamgia, gioBatdau, gioKetthuc, phanTramgiamgia, Icon
 app.post("/addKhuyenmaihethong", urlEncodeParser, function (req, response) {
-
-	console.log(JSON.stringify(req.body));
-	if (req.body.maGiamgia != null && req.body.gioBatdau != null && req.body.gioKetthuc != null && req.body.phanTramgiamgia != null && req.body.Icon != null
-		&& req.body.maGiamgia != "" && req.body.gioBatdau != "" && req.body.gioKetthuc != "" && req.body.phanTramgiamgia != "" && req.body.Icon != "") {
-		var newKhuyenMai_HT = new KHUYENMAI_HETHONG({
-			MaGiamGia: req.body.maGiamgia,
-			GioBD: req.body.gioBatdau,
-			GioKT: req.body.gioKetthuc,
-			Icon: req.body.Icon,
-			PhanTram_GiamGia: req.body.phanTramgiamgia,
-			DanhSach_CH: []
-		});
-		var result = "";
-		newKhuyenMai_HT.save(function (err) {
-			if (err) {
-				console.log("\nThêm khuyến mãi hệ thống mới bị lỗi : " + err);
-				response.send({ return_code: "0" });
-			}
-			else {
-				result += "\nThêm khuyến mãi hệ thống mới thành công !";
-				console.log(result);
-				response.send({ return_code: "1" });
-			}
-		});
-
-	}
-	else {
-		// res.send(JSON.stringify(req.body));
-		console.log("Params error !" + err);
-		response.send({ return_code: "0" });
-	}
-
+	uploadFile(req, res, (error) => {
+		console.log(req.file, req.body);
+		if (req.body.makm != null && req.body.gio_bd != null && req.body.gio_kt != null && req.body.PhanTram_GiamGia != null
+		 && req.body.makm != "" && req.body.gio_bd != "" && req.body.gio_kt != "" && req.body.PhanTram_GiamGia != "") {
+			var newKhuyenMai_HT = new KHUYENMAI_HETHONG({
+				MaGiamGia: req.body.makm,
+				GioBD: req.body.gio_bd,
+				GioKT: req.body.gio_kt,
+				Icon: file.filename,
+				PhanTram_GiamGia: req.body.PhanTram_GiamGia,
+				DanhSach_CH: []
+			});
+			var result = "";
+			newKhuyenMai_HT.save(function (err, success) {
+				if (err) {
+					console.log("\nThêm khuyến mãi hệ thống mới bị lỗi : " + err);
+					response.send({ return_code: "0" });
+				}
+				else {
+					result += "\nThêm khuyến mãi hệ thống mới thành công !";
+					console.log(result);
+					response.send({ return_code: "1", infor: success});
+				}
+			});
+		}
+		else {
+			console.log("Params error !" + err);
+			response.send({ return_code: "0" });
+		}
+	});
 });
 
 
@@ -2491,7 +2496,7 @@ app.post("/getTaikhoancuahang", urlEncodeParser, async function (req, res) {
 			}
 			else {
 				console.log("\nLấy thông tin thành công : " + req.body.idcuahang);
-				res.send({ return_code: "1" , infor : result});
+				res.send({ return_code: "1", infor: result });
 			}
 		}
 
@@ -2503,9 +2508,9 @@ app.post("/getTaikhoancuahang", urlEncodeParser, async function (req, res) {
 app.post("/Xacnhandonhang", urlEncodeParser, async function (req, res) {
 	var result = "";
 	DON_HANG.findOneAndUpdate(
-		{_id: req.body.idDonHang},
-		{$set: { Trang_thai_don_hang: "2" }}
-		),
+		{ _id: req.body.idDonHang },
+		{ $set: { Trang_thai_don_hang: "2" } }
+	),
 		function (err) {
 			if (err) {
 				result += "\nCập nhật lỗi : " + err;

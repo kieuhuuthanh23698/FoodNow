@@ -148,15 +148,15 @@
                       </div>
                       <!-- /.modal -->
 
-
-                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <!-- modal thêm khuyến mãi -->
+                <div class="modal fade bd-example-modal-lg" id="modal-insert" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
 
                             <div class="card-body">
                                 <!-- <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4"> -->
-                                    <form>
+                                    <!-- <form> -->
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Mã khuyến mãi</label>
                                             <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="KM001" id="makm">
@@ -188,7 +188,7 @@
 								 
 								</form>
 
-                                                    <form>
+                                                    <!-- <form> -->
                                                         <div class="form-group">
                                                             <img id="img_upload">
                                                                 <div class="custom-file">
@@ -202,7 +202,7 @@
                                                                 <button class="btn btn-primary float-right toastrDefaultSuccess"  onclick="themSanPham()">Lưu</button>
                                                             </div>
                                                         </div>
-                                                    </form>
+                                                    <!-- </form> -->
 
                                                 </div>
                                             </div>
@@ -471,8 +471,6 @@ var socket;
                 });
 
             };
-        
-            // document.getElementById("tablelist").innerHTML=test;
             }
         });
     });
@@ -492,53 +490,63 @@ var socket;
             $('#tableCuaHang li').remove();
              for (i=0; i< res.length; i++){ 
 
-                $("#tableCuaHang").append('<li class="item"><div class="product-img"><img src="http://localhost:3000/Public/Images/'+ res[i].CuaHang_KMHT.Hinh_Anh_Cua_Hang +'" alt="Product Image" class="img-size-50"></div><div class="product-info"><a href="javascript:void(0)" class="product-title">'+ res[i].CuaHang_KMHT.Ten_Cua_Hang+'<span class="badge badge-danger float-right"><i class="far fa-trash-alt"></i></span></a><span class="product-description">'+res[i].DiaChi_CH[0].Dia_Chi_Nha+'</span></div></li>');
+                $("#tableCuaHang").append('<li class="item"><div class="product-img"><img src="<?php echo base_url()?>/Public/Images/'+ res[i].CuaHang_KMHT.Hinh_Anh_Cua_Hang +'" alt="Product Image" class="img-size-50"></div><div class="product-info"><a href="javascript:void(0)" class="product-title">'+ res[i].CuaHang_KMHT.Ten_Cua_Hang+'<span class="badge badge-danger float-right"><i class="far fa-trash-alt"></i></span></a><span class="product-description">'+res[i].DiaChi_CH[0].Dia_Chi_Nha+'</span></div></li>');
                 console.log("add");
             };
-        
-            // document.getElementById("tablelist").innerHTML=test;
             }
         });
 
+    }
+
+    function createFormData(){
+        debugger;
+        var form = new FormData();
+        var file_data = $("#inputGroupFile02").prop('files')[0];
+        if(file_data){
+            var type = file_data.type;
+            var match = ["image/png", "image/jpg", "image/jpeg"];
+            if (type == match[0] || type == match[1] || type == match[2]) {
+                form.append("upload_file", file_data);
+            }
+        }
+        form.append("makm", $("#makm").val());
+        form.append("gio_bd", $("#gio_bd").val());
+        form.append("gio_kt", $("#gio_kt").val());
+        form.append("PhanTram_GiamGia", $("#PhanTram_GiamGia").val());
+        return form;
+        
     }
 
     function themSanPham(){
-        $.ajax(
-        {
-            url: url + 'addKhuyenmaihethong',
+        var form = createFormData();
+        $.ajax({
+            url: url + 'Khuyenmaihethong',
             dataType: 'json',
-            data: {
-                maGiamgia : $("#makm").val(),
-                gioBatdau : $("#gio_bd").val(),
-                gioKetthuc : $("#gio_kt").val(),
-                phanTramgiamgia :$("#PhanTram_GiamGia").val() + " %",
-                Icon : $("#inputGroupFile02").val()
-            },
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form,
             type: 'post',
-            success: function (res) {
-             if(res.return_code == "1")
-             {
-             var table = $('#example1').DataTable();
-            table.row.add( [
-            $("#makm").val(),
-            $("#gio_bd").val(),
-            $("#gio_kt").val(),
-            $("#PhanTram_GiamGia").val(),
-            $("#inputGroupFile02").val(),
-            "<div class='sparkbar' data-color='#00a65a' data-height='20'>"
-                + '<button class="btn" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
-                + "</div>"
-            ] ).draw();
-        }
-        else if(res.return_code =="0"){
-                alert("Thêm thất bại!");
+            success: function (data) {
+                if(res.return_code == "1"){
+                    var table = $('#example1').DataTable();
+                    table.row.add( [
+                    res.MaGiamGia,
+                    res.GioBD,
+                    res.GioKT,
+                    res.PhanTram_GiamGia + " %",
+                    '<img src="<?php echo base_url()?>/Public/Images/'+ res.Icon + '" alt="Product Image" class="img-size-50">',
+                    "<div class='sparkbar' data-color='#00a65a' data-height='20'>" + '<button class="btn" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>' + "</div>"
+                    ] ).draw();
+                } else if(res.return_code =="0"){
+                    alert("Thêm thất bại !");
+                }
             }
-        }
         });
     }
 
 
-     function xoa(id_khuyenmai)
+    function xoa(id_khuyenmai)
     {
         alert("xoa" + id_khuyenmai );
         $.ajax({
@@ -571,6 +579,4 @@ var socket;
 //     //xóa bảng CH
 //   }
 // );
-
-
 </script>
