@@ -2482,7 +2482,7 @@ app.post("/getTaikhoancuahang", urlEncodeParser, async function (req, res) {
 	CUAHANG.aggregate(
 		[{
 			"$match": {
-				"_id": req.body.idcuahang
+				"_id": mongoose.Types.ObjectId(req.body.idcuahang)
 			}
 		},
 		{
@@ -2493,14 +2493,14 @@ app.post("/getTaikhoancuahang", urlEncodeParser, async function (req, res) {
 				"as": "DiaChiCH"
 			}
 		}],
-		function (err) {
+		function (err, result) {
 			if (err) {
-				result += "\nKhông lấy được thông tin : " + err;
+				console.log("\nKhông lấy được thông tin : " + err);
 				res.send({ return_code: "0" });
 			}
 			else {
-				result += "\nLấy thông tin thành công : " + req.body.idcuahang;
-				res.send({ return_code: "1" });
+				console.log("\nLấy thông tin thành công : " + req.body.idcuahang);
+				res.send({ return_code: "1" , infor : result});
 			}
 		}
 

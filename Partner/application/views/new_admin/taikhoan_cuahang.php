@@ -34,9 +34,7 @@
             <!-- <div class="card card-primary"> -->
                <div class="card-body box-profile">
                 <div class="card-header">
-                  <img class="profile-user-img img-fluid img-circle"
-                       src="<?php echo base_url();?>dist/img/BunBoHue.jpg"
-                       alt="User profile picture">
+                  <img id="img" class="profile-user-img img-fluid img-circle" style="width: 200px; height: 200px;" alt="User profile picture">
 
                   <h3 class="profile-username">Bún Bò</h3>
 
@@ -53,7 +51,7 @@
               <div class="card-body">
                 <strong><i class="fas fa-book mr-1"></i> Tên cửa hàng</strong>
 
-                <p class="text-muted">
+                <p class="text-muted" id="tencuahang">
                   Bún Bò
                 </p>
 
@@ -61,26 +59,22 @@
 
                 <strong><i class="fas fa-map-marker-alt mr-1"></i>Địa chỉ cửa hàng</strong>
 
-                <p class="text-muted">Số 6, Phan Đình Giót, P.2, Q.Tân Bình</p>
+                <p class="text-muted" id="diachi_cuahang">Số 6, Phan Đình Giót, P.2, Q.Tân Bình</p>
 
                 <hr>
 
                 <strong><i class="fas fa-pencil-alt mr-1"></i> Thời gian bắt đầu</strong>
 
-                <p class="text-muted">14h</p>
+                <p class="text-muted" id="thoigian_bd">14h</p>
 
                 <hr>
 
                 <strong><i class="far fa-file-alt mr-1"></i> Thời gian kết thúc</strong>
 
-                <p class="text-muted">16h</p>
-
+                <p class="text-muted" id="thoigian_kt">16h</p>
                 <hr>
 
-                <strong><i class="far fa-file-alt mr-1"></i> Số điện thoại</strong>
-
-                <p class="text-muted">0909557788</p>
-              </div>
+                </div>
               <!-- /.card-body -->
             <!-- </div> -->
             <!-- /.card -->
@@ -132,36 +126,18 @@
             url: url + "getTaikhoancuahang",
             dataType: 'json',
             data: {
-                idCuahang: <?php echo "'".$id."'";?>,
+                idcuahang: <?php echo "'".$id."'";?>,
             },
             type: 'post',
             success: function (res) {
-             // console.log(res);
-             // var test = "";
-             for (i=0; i< res.length; i++){ 
-                var table = $('#example1').DataTable();
-                table.row.add( [
-                res[i].MaGiamGia,
-                res[i].ThongTin_KMCH,
-                res[i].NgayBD,
-                res[i].NgayKT,
-                res[i].PhanTram_GiamGia + " %",
-                res[i].MoTa,
-                "<div class='sparkbar' data-color='#00a65a' data-height='20'>"
-                // + "<a href='#'><i class='nav-icon fas fa-edit'></i></a>"
-                + '<button class="btn btn-danger" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
-                + "</div>"
-                ] ).draw();
-
-
-                $('#example1 tbody tr').each(function(){
-                    if($(this).find('td:nth-child(1)').text() == res[i].MaGiamGia)
-                        $(this).attr('id', res[i]._id );
-                });
-
-            };
-        
-            // document.getElementById("tablelist").innerHTML=test;
+              if(res.return_code == "1"){
+                var infor = res.infor[0];
+                $("#tencuahang").text(infor.Ten_Cua_Hang);
+                $("#diachi_cuahang").text(infor.DiaChiCH[0].Dia_Chi);
+                $("#thoigian_bd").text(infor.Thoi_Gian_Bat_Dau);
+                $("#thoigian_kt").text(infor.Thoi_Gian_Ket_Thuc);
+                $("#img").attr("src","<?php echo base_url();?>dist/img/" + infor.Hinh_Anh_Cua_Hang) 
+              }
             }
         });
     });
