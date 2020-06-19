@@ -40,7 +40,8 @@ class Chinhanh extends CI_Controller {
  		{
 			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
 			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
-			$data['content'] = $this->load->view('new_admin/chinhanh_monan', NULL,TRUE);
+			$id['id'] = $this->session->get_userdata('user')['user']['id'];
+			$data['content'] = $this->load->view('new_admin/chinhanh_monan', $id,TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
 		}

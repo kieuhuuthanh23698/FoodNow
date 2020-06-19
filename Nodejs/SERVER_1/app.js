@@ -2499,7 +2499,7 @@ app.post("/getTaikhoancuahang", urlEncodeParser, async function (req, res) {
 });
 
 
-
+//Xác nhận đơn hàng
 app.post("/Xacnhandonhang", urlEncodeParser, async function (req, res) {
 	var result = "";
 	DON_HANG.findOneAndUpdate(
@@ -2519,4 +2519,52 @@ app.post("/Xacnhandonhang", urlEncodeParser, async function (req, res) {
 });
 
 
-
+//CỬA HÀNG
+//Hiển thị danh sách món ăn: Loại món ăn và món ăn
+app.post("/Danhsachmonan_cuahang", urlEncodeParser, async function (req, res) {
+	CUAHANG.aggregate(
+		[
+			{ 
+				"$match" : { 
+					"_id" : mongoose.Types.ObjectId(req.body.idcuahang)
+				}
+			}, 
+			{ 
+				"$lookup" : { 
+					"from" : "loai_monans", 
+					"localField" : "Loai_MonAn", 
+					"foreignField" : "_id", 
+					"as" : "DS_LoaiMA"
+				}
+			}, 
+			{ 
+				"$project" : { 
+					"DS_LoaiMA" : 1.0
+				}
+			}, 
+			{ 
+				"$unwind" : { 
+					"path" : "$DS_LoaiMA"
+				}
+			}, 
+			{ 
+				"$lookup" : { 
+					"from" : "mon_ans", 
+					"localField" : "DS_LoaiMA.Danh_sach_mon_an", 
+					"foreignField" : "_id", 
+					"as" : "DS_Monan"
+				}
+			}
+		], 
+		function (err, result) {
+			if (err) {
+				console.log("\nKhông lấy được danh sách món ăn : " + err);
+				res.send({ return_code: "0" });
+			}
+			else {
+				console.log("\nLấy danh sách món ăn thành công : " + req.body.idcuahang);
+				res.send({ return_code: "1" , infor : result});
+			}
+		}
+	);	
+});

@@ -148,7 +148,6 @@
 
                                                     <div class="card-tools">
                                                       <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                                                      <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                                                     </div>
                                                   </div>
 
@@ -160,6 +159,7 @@
                                                                 <thead>
                                                                     <tr role="row">
                                                                         <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Tên loại món</th>
+                                                                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Số lượng món</th>
                                                                         <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Chi tiết</th>
                                                                     </tr>
 
@@ -216,7 +216,6 @@
 
                                                     <div class="card-tools">
                                                       <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                                                      <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                                                     </div>
                                                   </div>
 
@@ -330,57 +329,36 @@
         }
 </style>
 
-<script type="text/javascript">
-
-    
-var socket;
-$(document).ready(function(){
- socket = io("http://localhost:3000");
-    socket.emit("partner-server", localStorage.getItem('partnerID'));
-    socket.on('partner-server', function(data){
-        //debugger;
-        alert('Guest is ordering with data :');
-    });
-    $('#head').text($('#head').text() + ' - ' + localStorage.getItem('partnerID'));
+ <script type="text/javascript">
+    var listMonAn = [];
+    $(document).ready(function(){
 
         $.ajax(
         {
-            url: url + 'thongTinCuaHang',
+
+            url: url + "Danhsachmonan_cuahang",
             dataType: 'json',
             data: {
+                idcuahang: <?php echo "'".$id."'";?>,
             },
             type: 'post',
             success: function (res) {
-
-             for (i=0; i< res.length; i++){ 
-
-                var table = $('#example1').DataTable();
-                table.row.add( [
-                res[i].Ten_loai_mon_an ,
-                '<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
-                + "</div>"
-                ] ).draw();
-
-
-                $('#example1 tbody tr').each(function(){
-                    if($(this).find('td:nth-child(1)').text() == res[i].Ten_loai_mon_an)
-                        $(this).attr('id', res[i]._id );
-                    $(this).bind({
-                        click : function(e) { 
-                            if(hovering == false)
-                                loadCuaHang($(this).attr('id'));
-                             }, 
-                        mouseleave : function(e) {//khi ko hover nữa
-                                //xóa bảng CH
-                                hovering = false;
-                                // $('#tableCuaHang li').remove();
-                            }
-                        });
-                });
-
-            };
-        
-            // document.getElementById("tablelist").innerHTML=test;
+            if(res.return_code == "1"){
+                listMonAn = res.infor;
+                 for (i=0; i< listMonAn.length; i++){ 
+                    var item = listMonAn[i];//1 loại món ăn
+                    var table = $('#example1').DataTable();
+                    table.row.add( [
+                    item.DS_LoaiMA.Ten_loai_mon_an ,
+                    item.DS_LoaiMA.Danh_sach_mon_an.length ,
+                    '<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + item._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+                    + "</div>"
+                    ] ).draw();
+                }
             }
+            }
+
         });
+
     });
+</script>
