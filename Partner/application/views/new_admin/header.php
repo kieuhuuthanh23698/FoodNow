@@ -113,11 +113,47 @@
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
           <i class="fas fa-th-large"></i>
         </a>
         <div class="user-area dropdown float-right">
+      </li> -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <!-- <div class="image"> -->
+          <i><img src="<?php echo base_url();?>dist/img/store.png" style="width: 25px; height: 20px;" class="crop-center" alt="User Image"></i>
+        <!-- </div> -->
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a href="<?php echo base_url();?>Taikhoan/homeTaikhoan_cuahang" class="dropdown-item">
+            <i class="fas fa fa-user"></i> Tài khoản
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="<?php echo base_url();?>admin/logout" class="dropdown-item">
+            <i class="fas fa-users mr-2"></i> Đăng xuất
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="<?php echo base_url();?>Taikhoan/homeTaikhoan_cuahang" class="dropdown-item">
+            <i class="fas fa-file mr-2"></i> Đổi mật khẩu
+          </a>
+        </div>
       </li>
+
+     <!--  <div class="user-area dropdown float-right show">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
+                        </a>
+
+                        <div class="user-menu dropdown-menu show" x-placement="bottom-start" style="position: absolute; transform: translate3d(-88px, 0px, 0px); top: 0px; left: 0px; will-change: transform;">
+                            <a class="nav-link" href="#"><i class="fa fa-user"></i> My Profile</a>
+
+                            <a class="nav-link" href="#"><i class="fa fa-user"></i> Notifications <span class="count">13</span></a>
+
+                            <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a>
+
+                            <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Logout</a>
+                        </div>
+      </div> -->
     </ul>
   </nav>

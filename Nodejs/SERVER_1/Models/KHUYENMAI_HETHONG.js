@@ -6,7 +6,7 @@ const khuyenmaihethongSchema = new mongoose.Schema({
     GioKT: String,
     Icon: String,
     PhanTram_GiamGia: String,
-    DanhSach_CH: [{ type: mongoose.Types.ObjectId }]
+    DanhSach_CN: [{ type: mongoose.Types.ObjectId }]
 });
 
 module.exports = mongoose.model("KHUYENMAI_HETHONG", khuyenmaihethongSchema);

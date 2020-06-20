@@ -354,11 +354,58 @@
                     '<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + item._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
                     + "</div>"
                     ] ).draw();
+
                 }
+                $('#example1 tbody tr').each(function(){
+                    if($(this).find('td:nth-child(1)').text() == item.DS_LoaiMA.Ten_loai_mon_an)
+                        $(this).attr('id', res[i]._id );
+                    $(this).bind({
+                        click : function(e) { 
+                            if(hovering == false)
+                                loadMonan_cuahang($(this).attr('id'));
+                             }, 
+                        mouseleave : function(e) {//khi ko hover nữa
+                                //xóa bảng CH
+                                hovering = false;
+                                // $('#tableCuaHang li').remove();
+                            }
+                        });
+                });
             }
             }
 
         });
 
     });
+
+    function loadMonan_cuahang(idcuahang){
+                hovering = true;
+        $.ajax(
+        {
+            url: url + 'Danhsachmonan_cuahang',
+            dataType: 'json',
+            data: {
+                idcuahang: <?php echo "'".$id."'";?>,
+            },
+            type: 'post',
+            success: function (res) {
+            if(res.return_code == "1"){
+                listMonAn = res.infor;
+                 for (i=0; i< listMonAn.length; i++){ 
+                    var item = listMonAn[i];//1 loại món ăn
+                    var table = $('#example2').DataTable();
+                    table.row.add( [
+                    '<img src="http://localhost:3000/Public/Images/'+item.DS_Monan[0].Hinh_anh_mon_an+'" alt="Product Image" class="img-size-50">',
+                    item.DS_Monan[0].Ten_mon_an ,
+                    item.DS_Monan[0].Don_gia_mon_an ,
+                    '<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + item._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+                    + "</div>"
+                    ] ).draw();
+
+                }
+            }
+            }
+        });
+
+    }
 </script>

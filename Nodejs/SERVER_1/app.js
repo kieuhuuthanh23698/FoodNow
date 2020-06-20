@@ -2508,7 +2508,7 @@ app.post("/getTaikhoancuahang", urlEncodeParser, async function (req, res) {
 app.post("/Xacnhandonhang", urlEncodeParser, async function (req, res) {
 	var result = "";
 	DON_HANG.findOneAndUpdate(
-		{ _id: req.body.idDonHang },
+		{ _id: req.body.idDonHang } ,
 		{ $set: { Trang_thai_don_hang: "2" } }
 	),
 		function (err) {
@@ -2573,3 +2573,48 @@ app.post("/Danhsachmonan_cuahang", urlEncodeParser, async function (req, res) {
 		}
 	);	
 });
+
+
+//Hiển thị danh sách món ăn khi click chọn loại món ăn
+app.post("/Hienthimonan_chonloaimonan", urlEncodeParser, async function (req, res) {
+	var result = "";
+	LOAI_MONAN.aggregate(
+		[
+			{ 
+				"$match" : { 
+					"_id" : mongoose.Types.ObjectId(req.body.idloaimonan)
+				}
+			}, 
+			{ 
+				"$lookup" : { 
+					"from" : "mon_ans", 
+					"localField" : "Danh_sach_mon_an", 
+					"foreignField" : "_id", 
+					"as" : "DS_Monan"
+				}
+			}, 
+			{ 
+				"$project" : { 
+					"DS_Monan" : 1.0
+				}
+			}, 
+			{ 
+				"$unwind" : { 
+					"path" : "$DS_Monan"
+				}
+			}
+		], 
+		function (err, result) {
+			if (err) {
+				console.log("\nKhông lấy được danh sách món ăn : " + err);
+				res.send({ return_code: "0" });
+			}
+			else {
+				console.log("\nLấy danh sách món ăn thành công : " + req.body.idloaimonan);
+				res.send({ return_code: "1" , infor : result});
+			}
+		}
+	);
+});
+
+
