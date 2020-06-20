@@ -1,3 +1,14 @@
+<style type="text/css">
+  .td-note{
+    overflow-wrap: break-word;
+    width: 100px;
+    margin-left: 10px;
+    float: right;
+  }
+  .table td{
+    vertical-align: inherit;
+  }
+</style>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -74,7 +85,7 @@
                   Khách hàng
                   <address>
                     <strong id="oder_name"></strong>
-                    <!-- <br><span id="oder_address"></span> -->
+                    <br><span id="oder_address"></span>
                     <br>ĐT : <span id="oder_phone"></span>
                   </address>
 
@@ -93,9 +104,9 @@
                   <table id="table_oder_detail" class="table table-striped">
                     <thead>
                     <tr>
-                      <th>Tên món</th>
+                      <th style="width: 200px">Tên món</th>
                       <th>SL</th>
-                      <th>Ghi chú</th>
+                      <th style="max-width: 300px;width: auto; margin-left: 10px;">Ghi chú</th>
                       <th>Tổng tiền(đ)</th>
                     </tr>
                     </thead>
@@ -123,12 +134,12 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-6">
-                  <!-- <p class="lead"><span id="oder_date_2">Date: ngày đặt</span></p> -->
+                  <!-- <p class="lead"><span id="oder_date_2"></span></p> -->
                   <div class="table-responsive">
                     <table class="table">
                       <tbody>
                       <tr>
-                        <th style="width:50%">Tổng:</th>
+                        <th style="width:50%">Tổng hóa đơn:</th>
                         <td id="oder_total"></td>
                       </tr>
                       <tr>
@@ -136,7 +147,7 @@
                         <td id="oder_ship"></td>
                       </tr>
                       <tr>
-                        <th>Thành tiền:</th>
+                        <th>Tổng tiền:</th>
                         <td id="oder_total_cart"></td>
                       </tr>
                      </tbody>
@@ -240,7 +251,7 @@
       if(listOders[i]._id == id){
         var detail = listOders[i];
         $("#oder_name").text(detail.infor_kh.Ten_khach_hang);
-        $("#oder_address").text(detail.Dia_chi_giao_hang);
+        $("#oder_address").text(detail.infor_cd.Dia_Chi);
         $("#oder_phone").text(detail.infor_kh.So_dien_thoai);
         $("#oder_id").text(detail._id);
         $("#oder_count").text(detail.Chi_tiet_DH.length);
@@ -248,11 +259,11 @@
         for (var j = 0; j < detail.Chi_tiet_DH.length; j++) {
           var item = detail.Chi_tiet_DH[j];
           $("#table_oder_detail tbody").append(
-            '<tr><td>' + item.Ten_mon_an + '</td><td>2</td><td>' + item.GhiChu + '</td><td>' + (new Intl.NumberFormat().format(item.Thanh_tien)) + '</td></tr>'
+            '<tr><td>' + item.Ten_mon_an + '</td><td>2</td><td style="overflow-wrap: break-word; max-width: 300px; width: auto;">' + item.GhiChu + '</td><td>' + (new Intl.NumberFormat().format(item.Thanh_tien)) + '</td></tr>'
           );
         }
-        $("#oder_date").text(moment(new Date(detail.Ngay_nhan_don_hang)).format('DD-MM_YYYY'));
-        // $("#oder_date_2").text(moment(new Date(detail.Ngay_nhan_don_hang)).format('DD-MM_YYYY'));
+        $("#oder_date").text("Ngày đặt :" + moment(new Date(detail.Ngay_nhan_don_hang)).format('DD-MM_YYYY'));
+        $("#oder_date_2").text(moment(new Date(detail.Ngay_nhan_don_hang)).format('DD-MM_YYYY'));
         $("#oder_total").text(" " + (new Intl.NumberFormat().format(detail.Total)));
         $("#oder_ship").text(" " + (new Intl.NumberFormat().format(detail.Phi_ship)));
         $("#oder_total_cart").text(" " + (new Intl.NumberFormat().format(detail.Total_cart)));
@@ -291,6 +302,11 @@
             }
         });
     });
+    var Chi_tiet_DH = localStorage.getItem("Chi_tiet_DH");
+    if(Chi_tiet_DH != ''){
+      $("#" + Chi_tiet_DH).trigger('click');
+      localStorage.setItem("Chi_tiet_DH", "");
+    }
   }
 
   function getNewOder(idOder){

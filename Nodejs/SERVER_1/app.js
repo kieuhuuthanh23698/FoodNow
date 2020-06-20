@@ -1692,7 +1692,8 @@ app.post("/Dangnhapadmin", urlEncodeParser, function (req, res) {
 												console.log("Xác định danh tính cửa hàng thành công !");
 												res.send({
 													return_code: "2",
-													id: kqcuahang[0]._id
+													id: kqcuahang[0]._id,
+													Ten_Cua_Hang: kqcuahang[0].Ten_Cua_Hang
 												});
 												return;
 											} else {
@@ -2369,6 +2370,25 @@ const timThongTinKhachHanghoDonHang_extend = async (iDONHANG) => {
 	});
 }
 
+//tìm thông tin địa chỉ cho đơn hàng => dùng cho địa chỉ giao hàng
+const timDiaChiDonHang_extend = async (iDONHANG) => {
+	console.time(iDONHANG._id);
+	return new Promise(function (resolve, reject) {
+		DIACHI.findById({
+			_id: mongoose.Types.ObjectId(iDONHANG.Dia_chi_giao_hang)
+		}, function (err, resultSearchDC) {
+			if (err) {
+				console.log("Lấy thông tin của địa chỉ gặp lỗi :" + err);
+				resolve(null);
+			}
+			else {
+				console.log("Lấy thông tin địa chỉ của đơn hàng thành công !");
+				console.timeEnd(iDONHANG._id);
+				resolve(resultSearchDC);
+			}
+		});
+	});
+}
 //sau khi tìm thông tin của tất cả các món món ăn, cập nhật đơn hàng
 const capNhatDonHang_extend = async (iDONHANG) => {
 	var error_query = { return_code: "0", error_infor: "Lỗi server khi query." };
@@ -2389,14 +2409,16 @@ const capNhatDonHang_extend = async (iDONHANG) => {
 						iDONHANG.Chi_tiet_DH.push(element);
 					});
 					Promise.all([
-						timThongTinKhachHanghoDonHang_extend(iDONHANG)
+						timThongTinKhachHanghoDonHang_extend(iDONHANG),
+						timDiaChiDonHang_extend(iDONHANG)
 					])
-						.then(function (resolveThongTinKhachHang) {
-							if (resolveThongTinKhachHang.length != null && resolveThongTinKhachHang.length != 1) {
+						.then(function (resolveThongTinDonHang) {
+							if (resolveThongTinDonHang != null && resolveThongTinDonHang.length != 2) {
 								console.log("Tìm thông tin khách hàng của đơn hàng gặp lỗi !");
 								res.send(error_query);
 							} else {
-								iDONHANG.infor_kh = resolveThongTinKhachHang[0];
+								iDONHANG.infor_kh = resolveThongTinDonHang[0];
+								iDONHANG.infor_cd = resolveThongTinDonHang[1];
 								console.log("Cập nhật thông tin đôn hàng thành công !");
 								console.timeEnd(iDONHANG._id);
 								resolve(iDONHANG);
