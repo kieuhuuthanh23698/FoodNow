@@ -15,12 +15,12 @@
     <!-- Sidebar -->
     <div class="sidebar os-host os-theme-light os-host-resize-disabled os-host-scrollbar-horizontal-hidden os-host-transition os-host-scrollbar-vertical-hidden"><div class="os-resize-observer-host observed"><div class="os-resize-observer" style="left: 0px; right: auto;"></div></div><div class="os-size-auto-observer observed" style="height: calc(100% + 1px); float: left;"><div class="os-resize-observer"></div></div><div class="os-content-glue" style="margin: 0px -8px; width: 249px; height: 756px;"></div><div class="os-padding"><div class="os-viewport os-viewport-native-scrollbars-invisible" style=""><div class="os-content" style="padding: 0px 8px; height: 100%; width: 100%;">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="mt-3 d-flex">
         <div class="image">
           <img src="<?php echo base_url();?>dist/img/store.png" style="width: 50px; height: 50px;" class="crop-center" alt="User Image">
         </div>
-        <div class="info">
-          <a href="#" class="d-block">Tên cửa hàng hơi bị dài đấy, làm sao cho hiển thị vừa khung đây</a>
+        <div class="info" style="height: auto;float: right;width: 100%;margin-left: 10px;">
+          <a href="<?php echo base_url();?>admin/HomeAdmin" class="d-block"><?php echo isset($Ten_Cua_Hang) ? $Ten_Cua_Hang : '';?></a>
         </div>
       </div>
 

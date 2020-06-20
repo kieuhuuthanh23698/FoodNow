@@ -1,3 +1,10 @@
+<style type="text/css">
+  .td-note{
+    overflow-wrap: break-word;
+    width: 100px;
+    margin-left: 10px;
+  }
+</style>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">

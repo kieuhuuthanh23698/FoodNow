@@ -72,6 +72,8 @@ class Admin extends CI_Controller {
 		{
 			if($result['return_code'] == '1' || $result['return_code'] == '2')//chỉ có chi nhánh vs cửa hàng mới có id
             	$arr_user["id"] = $result["id"];
+			if($result['return_code'] == '2')//chỉ có chi nhánh vs cửa hàng mới có id
+            	$arr_user["Ten_Cua_Hang"] = $result["Ten_Cua_Hang"];
             $arr_user['group'] = $result['return_code'];
 			$this->session->set_userdata("user", $arr_user);
  			redirect(base_url('admin/HomeAdmin'));

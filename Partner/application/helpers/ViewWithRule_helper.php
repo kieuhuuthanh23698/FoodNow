@@ -3,17 +3,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   if(!function_exists('getViewWithRule')){
       function getViewWithRule()
       {
-        $CI = &get_instance();
         //dựa vào nhóm của tài khoảng => phân quyền left content
-        $group = $CI->session->get_userdata('user')['user']['group'];
+        $CI = &get_instance();
+        $group = getGroup();
 
         if($group == '2'){//cửa hàng
-          $rule['cuahang_monan'] = $CI->load->view('new_admin/left_content/cuahang_danhsachmonan', NULL,TRUE);
-          $rule['don_hang_cua_hang'] = $CI->load->view('new_admin/left_content/don_hang_cua_hang', NULL,TRUE);
-          $rule['km_cua_hang'] = $CI->load->view('new_admin/left_content/khuyen_mai_cua_hang', NULL,TRUE);
-          $rule['km_cua_hang_he_thong_hien_thi'] = $CI->load->view('new_admin/left_content/khuyen_mai_cua_hang_he_thong_hien_thi', NULL,TRUE);
-          $rule['bao_cao_cua_hang'] = $CI->load->view('new_admin/left_content/baocao_cuahang', NULL,TRUE);
-          $rule['tai_khoan_cua_hang'] = $CI->load->view('new_admin/left_content/taikhoan_cuahang', NULL,TRUE);
+          $dataLeftContent['Ten_Cua_Hang'] = $CI->session->get_userdata('user')['user']['Ten_Cua_Hang'];
+          $rule['cuahang_monan'] = $CI->load->view('new_admin/left_content/cuahang_danhsachmonan', $dataLeftContent,TRUE);
+          $rule['don_hang_cua_hang'] = $CI->load->view('new_admin/left_content/don_hang_cua_hang', $dataLeftContent,TRUE);
+          $rule['km_cua_hang'] = $CI->load->view('new_admin/left_content/khuyen_mai_cua_hang', $dataLeftContent,TRUE);
+          $rule['km_cua_hang_he_thong_hien_thi'] = $CI->load->view('new_admin/left_content/khuyen_mai_cua_hang_he_thong_hien_thi', $dataLeftContent,TRUE);
+          $rule['bao_cao_cua_hang'] = $CI->load->view('new_admin/left_content/baocao_cuahang', $dataLeftContent,TRUE);
+          $rule['tai_khoan_cua_hang'] = $CI->load->view('new_admin/left_content/taikhoan_cuahang', $dataLeftContent,TRUE);
 
         } else if($group == '1'){//chi nhánh
           $rule = null;
