@@ -608,7 +608,7 @@
         $("#" + id_sanpham).remove();
         $.ajax({
             type    : 'DELETE',
-            url     : 'http://localhost:3000/deleteKhuyenmaicuahang',
+            url     : url + 'deleteKhuyenmaicuahang',
             data    : {
                 idkhuyenMai : id_khuyenmai,
                 idCuahang : localStorage.getItem('partnerID')
