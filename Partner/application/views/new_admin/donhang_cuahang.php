@@ -302,6 +302,11 @@
             }
         });
     });
+    var Chi_tiet_DH = localStorage.getItem("Chi_tiet_DH");
+    if(Chi_tiet_DH != ''){
+      $("#" + Chi_tiet_DH).trigger('click');
+      localStorage.setItem("Chi_tiet_DH", "");
+    }
   }
 
   function getNewOder(idOder){
