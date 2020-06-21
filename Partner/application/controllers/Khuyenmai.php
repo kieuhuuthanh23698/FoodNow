@@ -41,7 +41,7 @@ class Khuyenmai extends CI_Controller {
 
  	public function homeKhuyenmai_cuahang_hethonghienthi()
  	{
- 		if(!$this->session->has_userdata('user') || getGroup() != '2' || getGroup() != '1')
+ 		if(!$this->session->has_userdata('user') || getGroup() != '2')
 		{
 			session_unset();
 			redirect(base_url('admin/'));
@@ -50,8 +50,8 @@ class Khuyenmai extends CI_Controller {
  		{
 			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
 			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
-			// if(getGroup() == '2' || getGroup() == '1')
-			// 	$id['id'] = $this->session->get_userdata('user')['user']['id'];
+			if(getGroup() == '2' || getGroup() == '1')
+				$id['id'] = $this->session->get_userdata('user')['user']['id'];
 			$data['content'] = $this->load->view('new_admin/khuyenmai_cuahang_hethonghienthi', NULL,TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
