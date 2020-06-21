@@ -21,8 +21,8 @@
             <div class="card">
               <div class="card-header p-2">
                 <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Activity</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
+                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Thông tin cửa hàng</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Đặt lại mật khẩu</a></li>
                 </ul>
               </div><!-- /.card-header -->
               <div class="card-body">
@@ -35,18 +35,9 @@
                <div class="card-body box-profile">
                 <div class="card-header">
                   <img id="img" class="profile-user-img img-fluid img-circle" style="width: 200px; height: 200px;" alt="User profile picture">
-
-                  <h3 class="profile-username">Bún Bò</h3>
-
-                  <p class="text-muted">Số 6, Phan Đình Giót </p>
                 </div>
 
-               
-              </div>
-                <div class="text-center">
-
-
-              </div>
+               </div>
 
               <div class="card-body">
                 <strong><i class="fas fa-book mr-1"></i> Tên cửa hàng</strong>
@@ -87,17 +78,19 @@
                      <div class="card-body">
                     <strong><i class="fas fa-book mr-1"></i>Tên tài khoản</strong>
 
-                    <p class="text-muted">
+                    <p class="text-muted" id="tendangnhap">
                       B.S. in Computer Science from the University of Tennessee at Knoxville
                     </p>
 
                     <hr>
 
                     <strong><i class="fas fa-map-marker-alt mr-1"></i>Mật khẩu</strong>
+                    <p><input type="password" class="form-control" id="matkhau" placeholder=""></p>
 
-                    <p class="text-muted">Malibu, California</p>
-                </div>
+                    <button type="submit" class="btn btn-success">Lưu</button>
+                    </div>
 
+                    
                   </div>
                   <!-- /.tab-pane -->
                 </div>
@@ -136,6 +129,8 @@
                 $("#diachi_cuahang").text(infor.DiaChiCH[0].Dia_Chi);
                 $("#thoigian_bd").text(infor.Thoi_Gian_Bat_Dau);
                 $("#thoigian_kt").text(infor.Thoi_Gian_Ket_Thuc);
+                $("#tendangnhap").text(infor.TenTaiKhoan[0].Ten_dang_nhap);
+                $("#matkhau").text(infor.TenTaiKhoan[0].Mat_khau);
                 $("#img").attr("src","<?php echo base_url();?>dist/img/" + infor.Hinh_Anh_Cua_Hang) 
               }
             }

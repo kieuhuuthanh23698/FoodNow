@@ -2510,7 +2510,15 @@ app.post("/getTaikhoancuahang", urlEncodeParser, async function (req, res) {
 				"foreignField": "_id",
 				"as": "DiaChiCH"
 			}
-		}],
+		},
+		{ 
+            "$lookup" : { 
+                "from" : "quanly_nguoidungs", 
+                "localField" : "Tai_Khoan", 
+                "foreignField" : "_id", 
+                "as" : "TenTaiKhoan"
+            }
+        }],
 		function (err, result) {
 			if (err) {
 				console.log("\nKhông lấy được thông tin : " + err);
@@ -2525,6 +2533,27 @@ app.post("/getTaikhoancuahang", urlEncodeParser, async function (req, res) {
 	);
 });
 
+//Cập nhật mật khẩu cửa hàng
+//route post 
+//method post(truyền )
+//Param  
+app.post("/capnhatmatkhau_cuahang", urlEncodeParser, function (req, res) {
+	var result = "";
+	CUAHANG.findOneAndUpdate(
+		{ _id: req.body.IdCuaHang } ,
+		{ $set: { Mat_khau: req.body.Matkhaucuahang } }
+	),
+		function (err) {
+			if (err) {
+				result += "\nCập nhật lỗi : " + err;
+				res.send({ return_code: "0" });
+			}
+			else {
+				result += "\nCập nhật thành công : " + req.body.IdCuaHang;
+				res.send({ return_code: "1" });
+			}
+		}
+});
 
 //Xác nhận đơn hàng
 app.post("/Xacnhandonhang", urlEncodeParser, async function (req, res) {
@@ -2638,5 +2667,4 @@ app.post("/Hienthimonan_chonloaimonan", urlEncodeParser, async function (req, re
 		}
 	);
 });
-
 

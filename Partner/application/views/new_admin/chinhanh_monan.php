@@ -28,93 +28,104 @@
 
             <div class="card-header">
 
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg">Thêm loại món ăn</button>
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-default">
+                Thêm loại món ăn
+                </button>
 
-                <button type="button" class="btn btn-warning" data-toggle="modal" data-target=".bd-example-modal-lg">Thêm món ăn</button>
+                <button  type="button" class="btn  btn-warning" data-toggle="modal" data-target="#modal-lg">Thêm món ăn</button>
+
+                <!-- Thêm loại món ăn -->
+                <div class="modal fade" id="modal-default">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title">Loại món ăn</h4>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="form-group">
+                                            <label for="exampleInputEmail1">Tên loại món ăn</label>
+                                            <input type="email" class="form-control" id="makm" aria-describedby="emailHelp" placeholder="Món đặc biệt">
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                          <button type="button" class="btn btn-primary">Lưu</button>
+                        </div>
+                      </div>
+                  <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+              </div>
+              <!-- /.modal -->
 
 
-                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+              <div class="modal fade" id="modal-lg">
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 class="modal-title">Thêm món ăn</h4>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                <label>Tên loại món ăn</label>
+                                <select class="form-control">
+                                  <option>Món 1</option>
+                                  <option>Món 2</option>
+                                  <option>Món 3</option>
+                                  <option>Món 4</option>
+                                  <option>Món 5</option>
+                                </select>
+                              </div>
 
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-
-                            <div class="card-body">
-                                <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                                   
-                                    <form>
+<label>Chọn chi nhánh cần áp dụng</label>
+<div class="card">
+<div class="card-body">
+           <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                    <!-- <form> -->
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Mã khuyến mãi</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="KM001" disabled="true">
+                                            <label for="exampleInputEmail1">Tên món ăn</label>
+                                            <input type="email" class="form-control" id="makm" aria-describedby="emailHelp" placeholder="Cơm Đùi Gà Chiên">
                                   </div>
                                             <div class="form-group">
-                                                <label for="exampleInputPassword1">Thông tin khuyến mãi</label>
-                                                <input type="text" class="form-control" id="exampleInputPassword1">
+                                                <label for="exampleInputPassword1">Đơn giá</label>
+                                                <input type="number" class="form-control" id="ttkm">
                                   </div>
-
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                                            <label class="control-label" for="datepicker-start">Start Date</label>
-                                                            <input type="text" class="form-control" id="datepicker-start">
-                                        </div>
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                                                <label class="control-label" for="datepicker-end">End Date</label>
-                                                                <input type="text" class="form-control" id="datepicker-end">
-                                        </div>
-                                                            </div>
-                                                        </div>
                                                     </div>
 
                                                     <div class="row">
-                                                        <div class="form-group col-sm-6">
-                                                            <label for="inputEmail4">Mã giảm giá</label>
-                                                            <input type="email" class="form-control" id="inputEmail4">
-                                    </div>
-                                                            <div class="form-group col-sm-6">
-                                                                <label for="inputPassword4">Phần trăm giảm giá</label>
-                                                                <input type="password" class="form-control" id="inputPassword4">
-                                    </div>
-
                                                                 <section class="container-fluid">
                                                                     <div class="row">
                                                                         <div class="col-md-12">
                                                                             <div class="card card-outline card-info">
                                                                                 <div class="card-header">
                                                                                     <label for="inputEmail4">
-                                                                                        Ghi chú khuyến mãi
+                                                                                        Mô tả
                                                 </label>
                                                   </h3>
-                                                                                <div class="card-tools">
+                                                                              <!--   <div class="card-tools">
                                                                                     <button type="button" class="btn btn-tool btn-sm" data-card-widget="collapse" data-toggle="tooltip"
                                                                                         title="Collapse">
                                                                                         <i class="fas fa-minus"></i></button>
                                                                                     <button type="button" class="btn btn-tool btn-sm" data-card-widget="remove" data-toggle="tooltip"
                                                                                         title="Remove">
                                                                                         <i class="fas fa-times"></i></button>
-                                                                                </div>
+                                                                                </div> -->
 
-                                                                            </div>
+                                                                            <!-- </div> -->
 
                                                                             <div class="mb-3">
-                                                                                <textarea class="textarea" placeholder="Place some text here"
+                                                                                <textarea id="mota_km" placeholder="Place some text here"
                                                                                     style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                                                             </div>
                                                                         </div>
-
                                                                     </div>
 
-                                          </div>
-
-                                        </section>
-
-                                                        </div>
-                                 
-                                </form>
-
-                                                    <form>
-                                                        <div class="form-group">
+                                                                      <div class="form-group">
                                                             <img id="img_upload">
                                                                 <div class="custom-file">
 
@@ -123,20 +134,35 @@
                                                                 </div>
                                     
                                 </div>
-                                                            <div class="input-group-append">
-                                                                <button class="btn btn-primary float-right toastrDefaultSuccess">Lưu</button>
-                                                            </div>
+
+                                                                    </div>
+
+                                          </div>
+
+                                        </section>
+
                                                         </div>
-                                                    </form>
 
-                                                </div>
-                                            </div>
-                                        </div>
 
-                    </div>
-                                </div>
+            </div>
+        </div>
+                    
 
                             </div>
+                            <div class="modal-footer justify-content-between">
+                              <button type="button" class="btn btn-primary">Lưu</button>
+                            </div>
+                          </div>
+                          <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                      </div>
+                      <!-- /.modal -->
+
+
+        </div>
+
+        </div>
                             <!-- /.card-header -->
  <div class="row">
 
@@ -165,39 +191,7 @@
 
                                                                 </thead>
                                                                 <tbody>
-                                                                    <!-- <tr>
-                                                                        <td><span class="badge badge-success giatien">Hủ Tiếu Nam Vang Thành Đạt</span></td>
-                                                                        <td>
-                                                                            <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                                                <a href="#" ><i class="nav-icon fas fa-edit" data-toggle="modal" data-target=".bd-example-modal-lg"></i></a>
-                                                                                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                                                                    <div class="modal-dialog modal-lg" role="document">
-                                                                                        <div class="modal-content">
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <a href="#"><i class="far fa-trash-alt" data-toggle="modal" data-target=".bd-example-modal-sm"></i></a>
-                                                                                <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                                                                    <div class="modal-dialog modal-lg" role="document">
-                                                                                        <div class="modal-content">
-                                                                                            <div class="modal-header">
-                                                                                                <h5 class="modal-title" id="exampleModalLabel">Bạn có chắc chắn muốn xóa?</h5>
-                                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                                    <span aria-hidden="true">&times;</span>
-                                                                                                </button>
-                                                                                            </div>
-                                                                                            <div class="modal-footer">
-                                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                                                <button type="button" class="btn btn-primary toastrDefaultSuccess">OK</button>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-
-
-                                                                        </td>
-                                                                    </tr> -->
+                                                                    
                                                                 </tbody>
 
                                                             </table>
@@ -329,6 +323,20 @@
         }
 </style>
 
+ <script>
+    var hovering = false;
+            $('#inputGroupFile02').on('change',function(e){
+                //get the file name
+                var fileName = e.target.files[0].name;
+                //replace the "Choose a file" label
+                //$(this).next('.custom-file-label').html(fileName);
+                var img = document.getElementById('img_upload');
+                img.src = URL.createObjectURL( e.target.files[0]);
+                img.height = "100";
+                document.getElementById("Chonfile").innerHTML=fileName;
+            })
+</script>
+
  <script type="text/javascript">
     var listMonAn = [];
     $(document).ready(function(){
@@ -379,7 +387,7 @@
     });
 
     function loadMonan_cuahang(idcuahang){
-                hovering = true;
+        hovering = true;
         $.ajax(
         {
             url: url + 'Danhsachmonan_cuahang',
@@ -409,3 +417,4 @@
 
     }
 </script>
+
