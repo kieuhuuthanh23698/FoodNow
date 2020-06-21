@@ -165,39 +165,6 @@
 
                                                                 </thead>
                                                                 <tbody>
-                                                                    <!-- <tr>
-                                                                        <td><span class="badge badge-success giatien">Hủ Tiếu Nam Vang Thành Đạt</span></td>
-                                                                        <td>
-                                                                            <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                                                <a href="#" ><i class="nav-icon fas fa-edit" data-toggle="modal" data-target=".bd-example-modal-lg"></i></a>
-                                                                                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                                                                    <div class="modal-dialog modal-lg" role="document">
-                                                                                        <div class="modal-content">
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <a href="#"><i class="far fa-trash-alt" data-toggle="modal" data-target=".bd-example-modal-sm"></i></a>
-                                                                                <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                                                                    <div class="modal-dialog modal-lg" role="document">
-                                                                                        <div class="modal-content">
-                                                                                            <div class="modal-header">
-                                                                                                <h5 class="modal-title" id="exampleModalLabel">Bạn có chắc chắn muốn xóa?</h5>
-                                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                                    <span aria-hidden="true">&times;</span>
-                                                                                                </button>
-                                                                                            </div>
-                                                                                            <div class="modal-footer">
-                                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                                                <button type="button" class="btn btn-primary toastrDefaultSuccess">OK</button>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-
-
-                                                                        </td>
-                                                                    </tr> -->
                                                                 </tbody>
 
                                                             </table>
@@ -234,48 +201,6 @@
 
                                                                     </thead>
                                                                     <tbody>
-
-                                                                       <!--  <tr role="row" class="odd">
-                                                                            <td>
-                                                                                <ul class="list-inline">
-                                                                                    <li class="list-inline-item">
-                                                                                        <img alt="BunBoHue" class="img_chinhanh" src="<?php echo base_url();?>dist/img/comchien.png">
-                                              </li>
-                                          </ul>
-                                      </td>
-                                                                                <td tabindex="0" class="sorting_1"><a href="#">Cơm chiên dương châu</a></td>
-                                                                                <td><span class="badge badge-success giatien">20.000</span></td>
-
-                                                                                <td>
-                                                                                    <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                                                        <a href="#"><i class="nav-icon fas fa-edit" data-toggle="modal" data-target=".bd-example-modal-lg"></i></a>
-                                                                                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                                                                            <div class="modal-dialog modal-lg" role="document">
-                                                                                                <div class="modal-content">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <a href="#"><i class="far fa-trash-alt" data-toggle="modal" data-target=".bd-example-modal-sm"></i></a>
-                                                                                        <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                                                                            <div class="modal-dialog modal-lg" role="document">
-                                                                                                <div class="modal-content">
-                                                                                                    <div class="modal-header">
-                                                                                                        <h5 class="modal-title" id="exampleModalLabel">Bạn có chắc chắn muốn xóa?</h5>
-                                                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                                            <span aria-hidden="true">×</span>
-                                                                                                        </button>
-                                                                                                    </div>
-                                                                                                    <div class="modal-footer">
-                                                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                                                        <button type="button" class="btn btn-primary toastrDefaultSuccess">OK</button>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-
-
-                                                                                </td> -->
                                    </tbody>
 
                             </table></div></div>
@@ -331,6 +256,7 @@
 
  <script type="text/javascript">
     var listMonAn = [];
+    var click = false;
     $(document).ready(function(){
 
         $.ajax(
@@ -351,61 +277,48 @@
                     table.row.add( [
                     item.DS_LoaiMA.Ten_loai_mon_an ,
                     item.DS_LoaiMA.Danh_sach_mon_an.length ,
-                    '<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + item._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+                    '<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + item.DS_LoaiMA._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
                     + "</div>"
                     ] ).draw();
 
+                    $('#example1 tbody tr').each(function(){
+                        if($(this).find('td:nth-child(1)').text() == item.DS_LoaiMA.Ten_loai_mon_an)
+                            $(this).attr('id', item.DS_LoaiMA._id );
+                        $(this).bind({
+                            click : function(e) { 
+                                    if(!click)
+                                        loadMonan_LoaiMonAn($(this).attr('id'));
+                                 },
+                            mouseleave : function(e) {
+                                     click = false;
+                                }
+                            });
+                    });
                 }
-                $('#example1 tbody tr').each(function(){
-                    if($(this).find('td:nth-child(1)').text() == item.DS_LoaiMA.Ten_loai_mon_an)
-                        $(this).attr('id', res[i]._id );
-                    $(this).bind({
-                        click : function(e) { 
-                            if(hovering == false)
-                                loadMonan_cuahang($(this).attr('id'));
-                             }, 
-                        mouseleave : function(e) {//khi ko hover nữa
-                                //xóa bảng CH
-                                hovering = false;
-                                // $('#tableCuaHang li').remove();
-                            }
-                        });
-                });
             }
             }
-
         });
 
     });
 
-    function loadMonan_cuahang(idcuahang){
-                hovering = true;
-        $.ajax(
-        {
-            url: url + 'Danhsachmonan_cuahang',
-            dataType: 'json',
-            data: {
-                idcuahang: <?php echo "'".$id."'";?>,
-            },
-            type: 'post',
-            success: function (res) {
-            if(res.return_code == "1"){
-                listMonAn = res.infor;
-                 for (i=0; i< listMonAn.length; i++){ 
-                    var item = listMonAn[i];//1 loại món ăn
-                    var table = $('#example2').DataTable();
+    function loadMonan_LoaiMonAn(idLoaiMonAn){
+        click = true;
+         for (i=0; i< listMonAn.length; i++){
+            var item = listMonAn[i];//1 loại món ăn
+            if(item.DS_LoaiMA._id == idLoaiMonAn){
+                var table = $('#example2').DataTable();
+                table.clear().draw();
+                for (var j = 0; j < item.DS_Monan.length; j++) {
+                    var monan = item.DS_Monan[j];
                     table.row.add( [
-                    '<img src="http://localhost:3000/Public/Images/'+item.DS_Monan[0].Hinh_anh_mon_an+'" alt="Product Image" class="img-size-50">',
-                    item.DS_Monan[0].Ten_mon_an ,
-                    item.DS_Monan[0].Don_gia_mon_an ,
-                    '<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + item._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+                    '<img src="' + url + 'Public/Images/'+ monan.Hinh_anh_mon_an+'" alt="Product Image" class="img-size-50">',
+                    monan.Ten_mon_an ,
+                    "" + (new Intl.NumberFormat().format(monan.Don_gia_mon_an)),
+                    '<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + monan._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
                     + "</div>"
                     ] ).draw();
-
                 }
             }
-            }
-        });
-
+        }
     }
 </script>
