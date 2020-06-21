@@ -191,10 +191,7 @@
 
                                                                 </thead>
                                                                 <tbody>
-<<<<<<< HEAD
-                                                                    
-=======
->>>>>>> 05b628542a20c7c60eac86803dbc7428d9c2f860
+
                                                                 </tbody>
 
                                                             </table>
@@ -345,24 +342,6 @@
 
     });
 
-<<<<<<< HEAD
-    function loadMonan_cuahang(idcuahang){
-        hovering = true;
-        $.ajax(
-        {
-            url: url + 'Danhsachmonan_cuahang',
-            dataType: 'json',
-            data: {
-                idcuahang: <?php echo "'".$id."'";?>,
-            },
-            type: 'post',
-            success: function (res) {
-            if(res.return_code == "1"){
-                listMonAn = res.infor;
-                 for (i=0; i< listMonAn.length; i++){ 
-                    var item = listMonAn[i];//1 loại món ăn
-                    var table = $('#example2').DataTable();
-=======
     function loadMonan_LoaiMonAn(idLoaiMonAn){
         click = true;
          for (i=0; i< listMonAn.length; i++){
@@ -372,7 +351,6 @@
                 table.clear().draw();
                 for (var j = 0; j < item.DS_Monan.length; j++) {
                     var monan = item.DS_Monan[j];
->>>>>>> 05b628542a20c7c60eac86803dbc7428d9c2f860
                     table.row.add( [
                     '<img src="' + url + 'Public/Images/'+ monan.Hinh_anh_mon_an+'" alt="Product Image" class="img-size-50">',
                     monan.Ten_mon_an ,
