@@ -156,9 +156,9 @@
                                 
                     <div class="form-group">
                                             <label for="exampleInputEmail1">Tên đăng nhập</label>
-                                            <input type="email" class="form-control" id="tenDN" aria-describedby="emailHelp">
+                                            <input type="email" class="form-control" id="tenDN" aria-describedby="emailHelp" placeholder="Tên đăng nhập sẽ cho tự động mỗi lần click Thêm cửa hàng">
                                             <label for="exampleInputEmail1">Mật khẩu</label>
-                                            <input type="email" class="form-control" id="matkhau" aria-describedby="emailHelp">
+                                            <input type="email" class="form-control" id="matkhau" aria-describedby="emailHelp" placeholder="Mật khẩu cũng sẽ tự động theo Tên đăng nhập">
                     </div>
                     </div>
                  </div> 

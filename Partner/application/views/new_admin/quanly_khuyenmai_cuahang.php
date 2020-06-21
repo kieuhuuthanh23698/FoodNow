@@ -36,14 +36,14 @@
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h4 class="modal-title">Thêm cửa hàng</h4>
+                              <h4 class="modal-title">Thêm khuyến mãi</h4>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                               </button>
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
-                                <label>Tên chi nhánh sẽ hiển thị theo cái chi nhánh ở bên ngoài chọn, nếu vào đây thay đổi thì bên ngoài cũng thay đổi theo</label>
+                                <label>Chọn cửa hàng</label>
                                 <select class="form-control">
                                   <option>CN 1</option>
                                   <option>Món 2</option>
@@ -53,30 +53,34 @@
                                 </select>
                               </div>
 
-<label>Thêm cửa hàng</label>
+<label>Thêm khuyến mãi</label>
 <div class="card">
 <div class="card-body">
            <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                                     <!-- <form> -->
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Tên cửa hàng</label>
+                                            <label for="exampleInputEmail1">Mã khuyến mãi</label>
                                             <input type="email" class="form-control" id="tenCH" aria-describedby="emailHelp" placeholder="Cơm Đùi Gà Chiên">
                                   </div>
                                             <div class="form-group">
-                                                <label for="exampleInputPassword1">Địa chỉ</label>
+                                                <label for="exampleInputPassword1">Tên khuyến mãi</label>
                                                 <input type="text" class="form-control" id="diachiCH">
+                                  </div>
+                                  <div class="form-group">
+                                                <label for="exampleInputPassword1">Phần trăm giảm giá</label>
+                                                <input type="number" class="form-control" id="diachiCH">
                                   </div>
 
                                    <div class="row">
                                                     <div class="col-sm-6">
                                                         <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                                            <label class="control-label" for="datepicker-start">Thời gian mở cửa</label>
+                                                            <label class="control-label" for="datepicker-start">Thời gian BĐ</label>
                                                             <input type="text" class="form-control" id="ngay_bd">
                                         </div>
                                                         </div>
                                                         <div class="col-sm-6">
                                                             <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                                                <label class="control-label" for="datepicker-end">Thời gian đóng cửa</label>
+                                                                <label class="control-label" for="datepicker-end">Thời gian KT</label>
                                                                 <input type="text" class="form-control" id="ngay_kt">
                                         </div>
                                                             </div>
@@ -110,16 +114,6 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                <div class="form-group">
-                                                                <label for="exampleInputEmail1">Hình ảnh cửa hàng</label>
-                                                                <img id="img_upload">
-                                                                <div class="custom-file">
-
-                                                                    <input type="file" class="custom-file-input" id="inputGroupFile02" />
-                                                                    <label class="custom-file-label" for="inputGroupFile02" id="Chonfile">Chọn hình ảnh</label>
-                                                                </div>
-                                    
-                        </div>
 
                                                                     </div>
 
@@ -132,23 +126,6 @@
 
             </div>
         </div>
-
-
-
-            <label>Cấp tài khoản cửa hàng</label>
-            <div class="card">
-                 <div class="card-body">
-                    <div class="form-group">
-                                
-                    <div class="form-group">
-                                            <label for="exampleInputEmail1">Tên đăng nhập</label>
-                                            <input type="email" class="form-control" id="tenDN" aria-describedby="emailHelp">
-                                            <label for="exampleInputEmail1">Mật khẩu</label>
-                                            <input type="email" class="form-control" id="matkhau" aria-describedby="emailHelp">
-                    </div>
-                    </div>
-                 </div> 
-             </div>
 
 
                             </div>
