@@ -2023,7 +2023,7 @@ app.post("/addKhuyenmaicuahang", urlEncodeParser, function (req, response) {
 			MoTa: req.body.MoTa
 		});
 		var result = "";
-		newKhuyenMai_CH.save(function (err) {
+		newKhuyenMai_CH.save(function (err, newKM) {
 			if (err) {
 				console.log("\nThêm khuyến mãi cửa hàng mới bị lỗi : " + err);
 				response.send({ return_code: "0" });
@@ -2038,7 +2038,7 @@ app.post("/addKhuyenmaicuahang", urlEncodeParser, function (req, response) {
 							result += "\nThêm khuyến mãi cửa hàng mới gặp lỗi : " + err;
 						else {
 							result += "\nThêm khuyến mãi cửa hàng mới thành công !";
-							response.send({ return_code: "1" });
+							response.send({ return_code: "1", infor: newKM });
 						}
 					});
 				console.log(result);

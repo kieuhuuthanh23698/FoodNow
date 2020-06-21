@@ -157,272 +157,9 @@
                                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">% Giảm giá</th>
                                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Mô tả</th>
                                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Chi tiết</th>
-                                                                <!-- <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">CSS grade</th> -->
    
                                 </thead>
                                                             <tbody id="tablelist">
-                                                                <!-- <tr>
-                                                                    <td><a href="#">OR9853</a></td>
-                                                                    <td>Giảm 25% cho đơn hàng đầu tiên</td>
-                                                                    <td>26/05/2020</td>
-                                                                    <td>26/07/2020</td>
-                                                                    <td>14h</td>
-                                                                    <td>16h</td>
-                                                                    <td>20%</td>
-                                                                    <td><span class="badge badge-success giatien">Giảm các món từ 50K </span></td>
-                                                                    <td>
-                                                                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                                            <a href="#" ><i class="nav-icon fas fa-edit" data-toggle="modal" data-target=".bd-example-modal-lg"></i></a>
-                                                                            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                                                                <div class="modal-dialog modal-lg" role="document">
-                                                                                    <div class="modal-content">
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <a href="#"><i class="far fa-trash-alt" data-toggle="modal" data-target=".bd-example-modal-sm"></i></a>
-                                                                            <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                                                                <div class="modal-dialog modal-lg" role="document">
-                                                                                    <div class="modal-content">
-                                                                                        <div class="modal-header">
-                                                                                            <h5 class="modal-title" id="exampleModalLabel">Bạn có chắc chắn muốn xóa?</h5>
-                                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                                <span aria-hidden="true">&times;</span>
-                                                                                            </button>
-                                                                                        </div>
-                                                                                        <div class="modal-footer">
-                                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                                            <button type="button" class="btn btn-primary toastrDefaultSuccess">OK</button>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><a href="#">OR9853</a></td>
-                                                                    <td>Giảm 20% cho đơn hàng đầu tiên</td>
-                                                                    <td>26/05/2020</td>
-                                                                    <td>26/07/2020</td>
-                                                                    <td>14h</td>
-                                                                    <td>16h</td>
-                                                                    <td>20%</td>
-                                                                    <td><span class="badge badge-success giatien">Giảm các món từ 50K</span></td>
-                                                                    <td>
-                                                                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                                            <a href="#"><i class="nav-icon fas fa-edit"></i></a>
-                                                                            <a href="#"><i class="far fa-trash-alt"></i></a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><a href="#">OR9853</a></td>
-                                                                    <td>Giảm 20% cho đơn hàng đầu tiên</td>
-                                                                    <td>26/05/2020</td>
-                                                                    <td>26/07/2020</td>
-                                                                    <td>14h</td>
-                                                                    <td>16h</td>
-                                                                    <td>20%</td>
-                                                                    <td><span class="badge badge-success giatien">Giảm các món từ 50K</span></td>
-                                                                    <td>
-                                                                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                                            <a href="#"><i class="nav-icon fas fa-edit"></i></a>
-                                                                            <a href="#"><i class="far fa-trash-alt"></i></a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><a href="#">OR9853</a></td>
-                                                                    <td>Giảm 20% cho đơn hàng đầu tiên</td>
-                                                                    <td>26/05/2020</td>
-                                                                    <td>26/07/2020</td>
-                                                                    <td>14h</td>
-                                                                    <td>16h</td>
-                                                                    <td>20%</td>
-                                                                    <td><span class="badge badge-success giatien">Giảm các món từ 50K</span></td>
-                                                                    <td>
-                                                                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                                            <a href="#"><i class="nav-icon fas fa-edit"></i></a>
-                                                                            <a href="#"><i class="far fa-trash-alt"></i></a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><a href="#">OR9853</a></td>
-                                                                    <td>Giảm 20% cho đơn hàng đầu tiên</td>
-                                                                    <td>26/05/2020</td>
-                                                                    <td>26/07/2020</td>
-                                                                    <td>14h</td>
-                                                                    <td>16h</td>
-                                                                    <td>20%</td>
-                                                                    <td><span class="badge badge-success giatien">Giảm các món từ 50K</span></td>
-                                                                    <td>
-                                                                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                                            <a href="#"><i class="nav-icon fas fa-edit"></i></a>
-                                                                            <a href="#"><i class="far fa-trash-alt"></i></a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><a href="#">OR9853</a></td>
-                                                                    <td>Giảm 20% cho đơn hàng đầu tiên</td>
-                                                                    <td>26/05/2020</td>
-                                                                    <td>26/07/2020</td>
-                                                                    <td>14h</td>
-                                                                    <td>16h</td>
-                                                                    <td>20%</td>
-                                                                    <td><span class="badge badge-success giatien">Giảm các món từ 50K</span></td>
-                                                                    <td>
-                                                                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                                            <a href="#"><i class="nav-icon fas fa-edit"></i></a>
-                                                                            <a href="#"><i class="far fa-trash-alt"></i></a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><a href="#">OR9853</a></td>
-                                                                    <td>Giảm 20% cho đơn hàng đầu tiên</td>
-                                                                    <td>26/05/2020</td>
-                                                                    <td>26/07/2020</td>
-                                                                    <td>14h</td>
-                                                                    <td>16h</td>
-                                                                    <td>20%</td>
-                                                                    <td><span class="badge badge-success giatien">Giảm các món từ 50K</span></td>
-                                                                    <td>
-                                                                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                                            <a href="#"><i class="nav-icon fas fa-edit"></i></a>
-                                                                            <a href="#"><i class="far fa-trash-alt"></i></a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><a href="#">OR9853</a></td>
-                                                                    <td>Giảm 20% cho đơn hàng đầu tiên</td>
-                                                                    <td>26/05/2020</td>
-                                                                    <td>26/07/2020</td>
-                                                                    <td>14h</td>
-                                                                    <td>16h</td>
-                                                                    <td>20%</td>
-                                                                    <td><span class="badge badge-success giatien">Giảm các món từ 50K</span></td>
-                                                                    <td>
-                                                                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                                            <a href="#"><i class="nav-icon fas fa-edit"></i></a>
-                                                                            <a href="#"><i class="far fa-trash-alt"></i></a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><a href="#">OR9853</a></td>
-                                                                    <td>Giảm 20% cho đơn hàng đầu tiên</td>
-                                                                    <td>26/05/2020</td>
-                                                                    <td>26/07/2020</td>
-                                                                    <td>14h</td>
-                                                                    <td>16h</td>
-                                                                    <td>20%</td>
-                                                                    <td><span class="badge badge-success giatien">Giảm các món từ 50K</span></td>
-                                                                    <td>
-                                                                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                                            <a href="#"><i class="nav-icon fas fa-edit" ></i></a>
-                                                                            <a href="#"><i class="far fa-trash-alt"></i></a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><a href="#">OR9853</a></td>
-                                                                    <td>Giảm 20% cho đơn hàng đầu tiên</td>
-                                                                    <td>26/05/2020</td>
-                                                                    <td>26/07/2020</td>
-                                                                    <td>14h</td>
-                                                                    <td>16h</td>
-                                                                    <td>20%</td>
-                                                                    <td><span class="badge badge-success giatien">Giảm các món từ 50K</span></td>
-                                                                    <td>
-                                                                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                                            <a href="#"><i class="nav-icon fas fa-edit"></i></a>
-                                                                            <a href="#"><i class="far fa-trash-alt"></i></a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><a href="#">OR9853</a></td>
-                                                                    <td>Giảm 20% cho đơn hàng đầu tiên</td>
-                                                                    <td>26/05/2020</td>
-                                                                    <td>26/07/2020</td>
-                                                                    <td>14h</td>
-                                                                    <td>16h</td>
-                                                                    <td>20%</td>
-                                                                    <td><span class="badge badge-success giatien">Giảm các món từ 50K</span></td>
-                                                                    <td>
-                                                                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                                            <a href="#"><i class="nav-icon fas fa-edit"></i></a>
-                                                                            <a href="#"><i class="far fa-trash-alt"></i></a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><a href="#">OR9853</a></td>
-                                                                    <td>Giảm 20% cho đơn hàng đầu tiên</td>
-                                                                    <td>26/05/2020</td>
-                                                                    <td>26/07/2020</td>
-                                                                    <td>14h</td>
-                                                                    <td>16h</td>
-                                                                    <td>20%</td>
-                                                                    <td><span class="badge badge-success giatien">Giảm các món từ 50K</span></td>
-                                                                    <td>
-                                                                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                                            <a href="#"><i class="nav-icon fas fa-edit"></i></a>
-                                                                            <a href="#"><i class="far fa-trash-alt"></i></a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><a href="#">OR9853</a></td>
-                                                                    <td>Giảm 20% cho đơn hàng đầu tiên</td>
-                                                                    <td>26/05/2020</td>
-                                                                    <td>26/07/2020</td>
-                                                                    <td>14h</td>
-                                                                    <td>16h</td>
-                                                                    <td>20%</td>
-                                                                    <td><span class="badge badge-success giatien">Giảm các món từ 50K</span></td>
-                                                                    <td>
-                                                                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                                            <a href="#"><i class="nav-icon fas fa-edit"></i></a>
-                                                                            <a href="#"><i class="far fa-trash-alt"></i></a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><a href="#">OR9853</a></td>
-                                                                    <td>Giảm 20% cho đơn hàng đầu tiên</td>
-                                                                    <td>26/05/2020</td>
-                                                                    <td>26/07/2020</td>
-                                                                    <td>14h</td>
-                                                                    <td>16h</td>
-                                                                    <td>20%</td>
-                                                                    <td><span class="badge badge-success giatien">Giảm các món từ 50K</span></td>
-                                                                    <td>
-                                                                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                                            <a href="#"><i class="nav-icon fas fa-edit"></i></a>
-                                                                            <a href="#"><i class="far fa-trash-alt"></i></a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><a href="#">OR9853</a></td>
-                                                                    <td>Giảm 20% cho đơn hàng đầu tiên</td>
-                                                                    <td>26/05/2020</td>
-                                                                    <td>26/07/2020</td>
-                                                                    <td>14h</td>
-                                                                    <td>16h</td>
-                                                                    <td>20%</td>
-                                                                    <td><span class="badge badge-success giatien">Giảm các món từ 50K</span></td>
-                                                                    <td>
-                                                                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                                            <a href="#"><i class="nav-icon fas fa-edit"></i></a>
-                                                                            <a href="#"><i class="far fa-trash-alt"></i></a>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr> -->
                                                             </tbody>
 
                             </table>
@@ -484,23 +221,7 @@
             },
             type: 'post',
             success: function (res) {
-             // console.log(res);
-             // var test = "";
              for (i=0; i< res.length; i++){ 
-                // alert(res[i].ThongTin_KMCH);
-                // test=test+"<tr>"
-                //             + "<td scope=\"row\">" + res[i].MaGiamGia + "</td>"
-                //             + "<td>" + res[i].ThongTin_KMCH + "</td>"
-                //             + "<td>" + res[i].NgayBD + "</td>"
-                //             + "<td>" + res[i].NgayKT + "</td>"
-                //             + "<td>" + "" + "</td>"
-                //             + "<td>" + "" + "</td>"
-                //             + "<td>" + res[i].PhanTram_GiamGia + " %" + "</td>"
-                //             + "<td>" + res[i].MoTa  + "</td>"
-                //             + "<td> <div class='sparkbar' data-color='#00a65a' data-height='20'>"
-                // + "<a href='#'><i class='nav-icon fas fa-edit'></i></a>"
-                // + "<a href='#'><i class='far fa-trash-alt'></i></a>"
-                // + "</div> </td></tr>"
                 var table = $('#example1').DataTable();
                 table.row.add( [
                 res[i].MaGiamGia,
@@ -510,11 +231,9 @@
                 res[i].PhanTram_GiamGia + " %",
                 res[i].MoTa,
                 "<div class='sparkbar' data-color='#00a65a' data-height='20'>"
-                // + "<a href='#'><i class='nav-icon fas fa-edit'></i></a>"
                 + '<button class="btn btn-danger" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
                 + "</div>"
                 ] ).draw();
-
 
                 $('#example1 tbody tr').each(function(){
                     if($(this).find('td:nth-child(1)').text() == res[i].MaGiamGia)
@@ -522,8 +241,6 @@
                 });
 
             };
-        
-            // document.getElementById("tablelist").innerHTML=test;
             }
         });
     });
@@ -531,14 +248,12 @@
 
 
      function themSanPham(){
-
-
-
         $.ajax(
         {
             url: url + 'addKhuyenmaicuahang',
             dataType: 'json',
             data: {
+                idcuahang : <?php echo "'".$id."'";?>,
                 maGiamgia : $("#makm").val(),
                 thongtinKhuyenmai : $("#ttkm").val(),
                 ngayBatdau : $("#ngay_bd").val(),
@@ -550,23 +265,20 @@
             success: function (res) {
              if(res.return_code == "1")
              {
-             var table = $('#example1').DataTable();
-            table.row.add( [
-            $("#makm").val(),
-            $("#ttkm").val(),
-            $("#ngay_bd").val(),
-            $("#ngay_kt").val(),
-            $("#PhanTram_GiamGia").val(),
-            $("#mota_km").val(),
-            // "<div class='sparkbar' data-color='#00a65a' data-height='20'>"
-            // + "<a href='#'><i class='nav-icon fas fa-edit'></i></a>"
-            // + "<a href='#'><i class='far fa-trash-alt'></i></a>"
-            // + "</div>"
-            "<div class='sparkbar' data-color='#00a65a' data-height='20'>"
-                + "<a href='#'><i class='nav-icon fas fa-edit'></i></a>"
-                + '<button class="btn" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
-                + "</div>"
-            ] ).draw();
+                     var table = $('#example1').DataTable();
+                     var item = res.infor;
+                    table.row.add( [
+                    item.MaGiamGia,
+                    item.ThongTin_KMCH,
+                    item.NgayBD,
+                    item.NgayKT,
+                    item.PhanTram_GiamGia,
+                    item.MoTa,
+                    "<div class='sparkbar' data-color='#00a65a' data-height='20'>"
+                        + "<a href='#'><i class='nav-icon fas fa-edit'></i></a>"
+                        + '<button class="btn" onclick="xoa(' + "'" + item._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+                        + "</div>"
+                    ] ).draw();
         }
         else if(res.return_code =="0"){
                 alert("Thêm thất bại!");
@@ -605,19 +317,22 @@
     //    dialog.dialog( "open" );
         //debugger;
         alert("xoa" + id_khuyenmai );
-        $("#" + id_sanpham).remove();
         $.ajax({
             type    : 'DELETE',
             url     : url + 'deleteKhuyenmaicuahang',
             data    : {
                 idkhuyenMai : id_khuyenmai,
-                idCuahang : localStorage.getItem('partnerID')
+                idCuahang : <?php echo "'".$id."'";?>
             },
-            dataType: 'json'
-        });
+            dataType: 'json',
+            success: function (res) {
+                if(res.return_code == "1"){
         
         var table = $('#example1').DataTable();
         table.row($('#' + id_khuyenmai)).remove().draw();
+    }
+            }
+        });
     }
 
 </script>
