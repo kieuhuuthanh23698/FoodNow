@@ -149,6 +149,8 @@
                   <p>Chi phí dịch vụ</p>
                 </a>
               </li> -->
+              <?php echo isset($don_hang_admin_thong_ke) ? $don_hang_admin_thong_ke : '';?>
+              
               <?php echo isset($bao_cao_cua_hang) ? $bao_cao_cua_hang : '';?>
               <?php echo isset($bao_cao_chi_nhanh) ? $bao_cao_chi_nhanh : '';?>
             </ul>
@@ -163,6 +165,7 @@
               </p>
             </a>
             <ul class="nav nav-treeview"> -->
+              <?php echo isset($quan_ly_tai_khoan) ? $quan_ly_tai_khoan : '';?>
               <?php echo isset($tai_khoan_cua_hang) ? $tai_khoan_cua_hang : '';?>
               <?php echo isset($tai_khoan_chi_nhanh) ? $tai_khoan_chi_nhanh : '';?>
              <!--  <li class="nav-item">

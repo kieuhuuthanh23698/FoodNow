@@ -46,20 +46,6 @@ class Quanly_danhmuc extends CI_Controller {
 		}
  	}
 
- 	public function homeDanhmuc_loaimonan()
- 	{
- 		if(!$this->session->has_userdata('user'))
- 			redirect(base_url('admin/login'));
- 		else
- 		{
-			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
-			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
-			$data['content'] = $this->load->view('new_admin/quanly_danhmuc_loaimonan', NULL,TRUE);
-			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
-			$this->load->view('page/page', $data);
-		}
- 	}
-
  	public function homeDanhmuc_monan()
  	{
  		if(!$this->session->has_userdata('user'))

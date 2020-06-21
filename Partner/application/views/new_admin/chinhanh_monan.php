@@ -82,7 +82,7 @@
                                 </select>
                               </div>
 
-<label>Chọn chi nhánh cần áp dụng</label>
+<label>Thêm món ăn</label>
 <div class="card">
 <div class="card-body">
            <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">

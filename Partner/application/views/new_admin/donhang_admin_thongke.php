@@ -53,64 +53,15 @@
                       <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
                   <thead>
                   <tr role="row">
-                    <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Mã đơn hàng</th>
-                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Số lượng</th>
-                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Tổng tiền</th>
+                    <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Tên cửa hàng</th>
+                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Hình ảnh</th>
+                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Tổng số lượng ĐH</th>
                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Thông tin</th>
                     <!-- <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">CSS grade</th> -->
                   </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR9853</a></td>
-                      <td>1</td>
-                      <td><span class="badge badge-success">900.000</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                          <button type="button" class="btn btn-outline-success">Chi tiết</button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                      <td>3</td>
-                      <td><span class="badge badge-success">900.000</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                          <button type="button" class="btn btn-outline-success">Chi tiết</button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                      <td>3</td>
-                      <td><span class="badge badge-success">900.000</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                          <button type="button" class="btn btn-outline-success">Chi tiết</button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                      <td>3</td>
-                      <td><span class="badge badge-success">900.000</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                          <button type="button" class="btn btn-outline-success">Chi tiết</button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                      <td>3</td>
-                      <td><span class="badge badge-success">900.000</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20">
-                          <button type="button" class="btn btn-outline-success">Chi tiết</button>
-                        </div>
-                      </td>
-                    </tr>
+                    
                     <tr>
                      <td><a href="pages/examples/invoice.html">OR9842</a></td>
                       <td>3</td>

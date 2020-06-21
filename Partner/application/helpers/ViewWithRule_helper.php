@@ -30,6 +30,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           $rule['quan_ly_khuyen_mai'] = $CI->load->view('new_admin/left_content/quanly_khuyenmai', NULL,TRUE);
           // $rule['dm_he_thong'] = $CI->load->view('new_admin/left_content/danh_muc_he_thong', NULL,TRUE);
           $rule['quan_ly_danh_muc'] = $CI->load->view('new_admin/left_content/quanly_danhmuc', NULL,TRUE);
+          $rule['don_hang_admin_thong_ke'] = $CI->load->view('new_admin/left_content/don_hang_admin_thong_ke', NULL,TRUE);
+          $rule['quan_ly_tai_khoan'] = $CI->load->view('new_admin/left_content/quanly_taikhoan', NULL,TRUE);
 
         } else if($group == '4'){//super admin with all view
           $rule = null;

@@ -72,6 +72,23 @@ class Donhang extends CI_Controller {
 		}
 	}
 
+	public function Donhang_admin_thonke()
+	{
+		if(!$this->session->has_userdata('user') || getGroup() != '3')
+		{
+			session_unset();
+			redirect(base_url('admin/'));
+		}
+		else
+		{
+			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
+			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
+			$data['content'] = $this->load->view('new_admin/donhang_admin_thongke', NULL,TRUE);
+			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
+			$this->load->view('page/page', $data);
+		}
+	}
+
 	public function Thongke_donhang()
 	{
 		if(!$this->session->has_userdata('user') || getGroup() != '3')
@@ -83,7 +100,7 @@ class Donhang extends CI_Controller {
 		{
 			$giaodien['header'] = $this->load->view('new_admin/header', NULL, TRUE);
 			$giaodien['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
-			$giaodien['content'] = $this->load->view('new_admin/thongke_donhang', NULL,TRUE);
+			$giaodien['content'] = $this->load->view('new_admin/donhang_admin_thongke', NULL,TRUE);
 			$giaodien['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $giaodien);
 		}

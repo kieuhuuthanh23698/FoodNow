@@ -9,8 +9,8 @@
                 </div><!-- /.col -->
           <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Khuyến mãi hệ thống</li>
+                        <li class="breadcrumb-item"><a href="#">Khuyến mãi</a></li>
+                        <li class="breadcrumb-item active">Cửa hàng</li>
                     </ol>
                 </div><!-- /.col -->
         </div><!-- /.row -->
@@ -26,120 +26,134 @@
         <!-- Main row -->
             <div class="card">
 
-            <div class="card-header">
+            <div class="card-header" style="padding-bottom: 0px">
+                     <div class="form-group">
+                        <button  type="button" class="btn  btn-info" data-toggle="modal" data-target="#modal-lg">Thêm khuyến mãi</button>
+                      </div>
+              
 
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg">Thêm khuyến mãi</button>
-
-                <button type="button" class="btn  btn-warning" data-toggle="modal" data-target="#modal-lg">
-                  Áp dụng khuyến mãi
-                </button>
-
-                <div class="modal fade" id="modal-lg">
+              <div class="modal fade" id="modal-lg">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h4 class="modal-title">Áp dụng khuyến mãi hệ thống cho chi nhánh</h4>
+                              <h4 class="modal-title">Thêm cửa hàng</h4>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                               </button>
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
-                                <label>Tên khuyến mãi hệ thống</label>
+                                <label>Tên chi nhánh sẽ hiển thị theo cái chi nhánh ở bên ngoài chọn, nếu vào đây thay đổi thì bên ngoài cũng thay đổi theo</label>
                                 <select class="form-control">
-                                  <option>option 1</option>
-                                  <option>option 2</option>
-                                  <option>option 3</option>
-                                  <option>option 4</option>
-                                  <option>option 5</option>
+                                  <option>CN 1</option>
+                                  <option>Món 2</option>
+                                  <option>Món 3</option>
+                                  <option>Món 4</option>
+                                  <option>Món 5</option>
                                 </select>
                               </div>
 
-<label>Chọn chi nhánh cần áp dụng</label>
+<label>Thêm cửa hàng</label>
 <div class="card">
 <div class="card-body">
-            <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <table id="example2" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
-                            <thead>
-                                <tr role="row">
-                                    <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Danh sách chi nhánh</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Lựa chọn</th>
-                                    </tr>
-   
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <ul class="products-list product-list-in-card pl-2 pr-2">
-                                             <li class="item">
-                                <div class="product-img">
-                                    <img src="<?php echo base_url();?>dist/img/comchien.png" alt="Product Image"
-                                        class="img_chinhanh">
-                                </div>
-                                <div class="product-info">
-                                    <a href="javascript:void(0)" class="product-title">Thành Đạt - Hủ Tiếu Nam Vang -
-                                        Nguyễn Hữu Cầu</a>
-                                    <span class="product-description">
-                                        22B Nguyễn Hữu Cầu, P.Tân Định, Quận 1, TP.HCM
-                                    </span>
-                                </div>
-                            </li>
-                        </ul>
-                                    </td>
+           <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                    <!-- <form> -->
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Tên cửa hàng</label>
+                                            <input type="email" class="form-control" id="tenCH" aria-describedby="emailHelp" placeholder="Cơm Đùi Gà Chiên">
+                                  </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">Địa chỉ</label>
+                                                <input type="text" class="form-control" id="diachiCH">
+                                  </div>
 
-                                        <td>
-                                            <div class="icheck-primary d-inline">
-                                                <input type="checkbox" id="checkboxPrimary1" checked>
-                                                <label for="checkboxPrimary1">
+                                   <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                                                            <label class="control-label" for="datepicker-start">Thời gian mở cửa</label>
+                                                            <input type="text" class="form-control" id="ngay_bd">
+                                        </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                                                                <label class="control-label" for="datepicker-end">Thời gian đóng cửa</label>
+                                                                <input type="text" class="form-control" id="ngay_kt">
+                                        </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                                <section class="container-fluid">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="card card-outline card-info">
+                                                                                <div class="card-header">
+                                                                                    <label for="inputEmail4">
+                                                                                        Mô tả
                                                 </label>
-                                            </div>
-                                      </td>
-                                    </tr>
+                                                  </h3>
+                                                                              <!--   <div class="card-tools">
+                                                                                    <button type="button" class="btn btn-tool btn-sm" data-card-widget="collapse" data-toggle="tooltip"
+                                                                                        title="Collapse">
+                                                                                        <i class="fas fa-minus"></i></button>
+                                                                                    <button type="button" class="btn btn-tool btn-sm" data-card-widget="remove" data-toggle="tooltip"
+                                                                                        title="Remove">
+                                                                                        <i class="fas fa-times"></i></button>
+                                                                                </div> -->
 
-                                     <tr>
-                                        <td>
-                                            <ul class="products-list product-list-in-card pl-2 pr-2">
-                                             <li class="item">
-                                <div class="product-img">
-                                    <img src="<?php echo base_url();?>dist/img/comchien.png" alt="Product Image"
-                                        class="img_chinhanh">
-                                </div>
-                                <div class="product-info">
-                                    <a href="javascript:void(0)" class="product-title">Thành Đạt - Hủ Tiếu Nam Vang -
-                                        Nguyễn Hữu Cầu</a>
-                                    <span class="product-description">
-                                        22B Nguyễn Hữu Cầu, P.Tân Định, Quận 1, TP.HCM
-                                    </span>
-                                </div>
-                            </li>
-                        </ul>
-                                    </td>
+                                                                            <!-- </div> -->
 
-                                        <td>
-                                           <div class="icheck-primary d-inline">
-                                                <input type="checkbox" id="checkboxPrimary1" checked>
-                                                <label for="checkboxPrimary1">
-                                                </label>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                                                            <div class="mb-3">
+                                                                                <textarea id="mota_km" placeholder="Place some text here"
+                                                                                    style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                <div class="form-group">
+                                                                <label for="exampleInputEmail1">Hình ảnh cửa hàng</label>
+                                                                <img id="img_upload">
+                                                                <div class="custom-file">
 
-                                </tbody>
-
-                            </table>
+                                                                    <input type="file" class="custom-file-input" id="inputGroupFile02" />
+                                                                    <label class="custom-file-label" for="inputGroupFile02" id="Chonfile">Chọn hình ảnh</label>
+                                                                </div>
+                                    
                         </div>
-                    </div>
-                </div>
+
+                                                                    </div>
+
+                                          </div>
+
+                                        </section>
+
+                                                        </div>
+
+
             </div>
         </div>
-                    
+
+
+
+            <label>Cấp tài khoản cửa hàng</label>
+            <div class="card">
+                 <div class="card-body">
+                    <div class="form-group">
+                                
+                    <div class="form-group">
+                                            <label for="exampleInputEmail1">Tên đăng nhập</label>
+                                            <input type="email" class="form-control" id="tenDN" aria-describedby="emailHelp">
+                                            <label for="exampleInputEmail1">Mật khẩu</label>
+                                            <input type="email" class="form-control" id="matkhau" aria-describedby="emailHelp">
+                    </div>
+                    </div>
+                 </div> 
+             </div>
+
 
                             </div>
                             <div class="modal-footer justify-content-between">
-                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-primary">Save changes</button>
+                              <button type="button" class="btn btn-primary float-right">Lưu</button>
                             </div>
                           </div>
                           <!-- /.modal-content -->
@@ -149,249 +163,127 @@
                       <!-- /.modal -->
 
 
-                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        </div>
 
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-
-                            <div class="card-body">
-                                <!-- <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4"> -->
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Mã khuyến mãi</label>
-                                            <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="KM001" id="makm">
-								  </div>
-
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                                            <label class="control-label" for="datepicker-start">Giờ BĐ</label>
-                                                            <input type="text" class="form-control" id="gio_bd">
-										</div>
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                                                <label class="control-label" for="datepicker-end">Giờ KT</label>
-                                                                <input type="text" class="form-control" id="gio_kt">
-										</div>
-                                                            </div>
-                                                        </div>
-                                                    <!-- </div> -->
-
-                                                    <div class="row">
-                                                            <div class="form-group col-sm-6">
-                                                                <label for="inputPassword4">Phần trăm giảm giá</label>
-                                                                <input type="number" class="form-control" id="PhanTram_GiamGia">
-								    </div>
-
-                                                        </div>
-								 
-								</form>
-
-                                                    <form>
-                                                        <div class="form-group">
-                                                            <img id="img_upload">
-                                                                <div class="custom-file">
-
-                                                                    <input type="file" class="custom-file-input" id="inputGroupFile02" />
-                                                                    <label class="custom-file-label" for="inputGroupFile02" id="Chonfile">Chọn hình ảnh</label>
-                                                                </div>
-						            
-						        </div>
-                                                            <div class="input-group-append">
-                                                                <button class="btn btn-primary float-right toastrDefaultSuccess"  onclick="themSanPham()">Lưu</button>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                    </div>
-                                </div>
-
-                            </div>
+        </div>
                             <!-- /.card-header -->
  <div class="row">
 
-  <section class="col-lg-7 connectedSortable">
-  		<div class="container-fluid">
-    <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">Danh sách Khuyến mãi hệ thống</h3>
-            <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <!-- <button type="button" class="btn btn-tool" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button> -->
-                </div>
-        </div>
-    	<div class="card-body">
-            <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
-                            <thead>
-                                <tr role="row">
-                                    <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Mã giảm giá</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Giờ BĐ</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Giờ KT</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">% Giảm giá</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Hình ảnh</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Chi tiết</th>
-                                    </tr>
-   
-                                </thead>
-                                <tbody>
+        <section class="col-lg-6 connectedSortable">
+                                        <div class="card">
+                                             <div class="card-header">
+                                                    <h3 class="card-title">Danh sách các cửa hàng</h3>
 
-                                </tbody>
+                                                    <div class="card-tools">
+                                                      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                                    </div>
+                                                  </div>
 
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </section>
+                                            <div class="card-body">
+                                                <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
+                                                                <thead>
+                                                                    <tr role="row">
+                                                                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Tên cửa hàng</th>
+                                                                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Hình ảnh</th>
+                                                                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Tổng số lượng ĐH</th>
+                                                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Chi tiết</th>
+                                                                    </tr>
 
-<section class="col-lg-5 connectedSortable">
-	<div class="container-fluid">
-            <div class="card">
-              <div class="card-header ui-sortable-handle" style="cursor: move;">
-                <h3 class="card-title">Danh sách các cửa hàng được áp dụng</h3>
+                                                                </thead>
+                                                                <tbody>
 
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <!-- <button type="button" class="btn btn-tool" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button> -->
-                </div>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body p-0">
-                <ul id="tableCuaHang" class="products-list product-list-in-card pl-2 pr-2">
-                 <!--  <li class="item">
-                    <div class="product-img">
-                      <img src="<?php echo base_url();?>dist/img/BunBoHue.jpg" alt="Product Image" class="img-size-50">
-                    </div>
-                    <div class="product-info">
-                      <a href="javascript:void(0)" class="product-title">Thành Đạt - Hủ Tiếu Nam Vang - Nguyễn Hữu Cầu
-                        <span class="badge badge-danger float-right">
-                        <i class="far fa-trash-alt" data-toggle="modal" data-target=".bd-example-modal-sm"></i>
-                      </span></a>
+                                                                </tbody>
 
-                      <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-lg" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Bạn có chắc chắn muốn xóa?</h5>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                <button type="button" class="btn btn-primary toastrDefaultSuccess">OK</button>
-                                                            </div>
+                                                            </table>
                                                         </div>
                                                     </div>
                                                 </div>
-                      <span class="product-description">
-                        22B Nguyễn Hữu Cầu, P.Tân Định, Quận 1, TP.HCM
-                      </span>
-                    </div>
-                  </li> -->
+                                            </div>
+                                        </div>
+    </section>
 
-                  <!-- <li class="item">
-                    <div class="product-img">
-                      <img src="<?php echo base_url();?>dist/img/BunBoHue.jpg" alt="Product Image" class="img-size-50">
-                    </div>
-                    <div class="product-info">
-                      <a href="javascript:void(0)" class="product-title">Thành Đạt - Hủ Tiếu Nam Vang - Nguyễn Hữu Cầu
-                        <span class="badge badge-danger float-right">
-                        <i class="far fa-trash-alt"></i>
-                      </span></a>
-                      <span class="product-description">
-                        22B Nguyễn Hữu Cầu, P.Tân Định, Quận 1, TP.HCM
-                      </span>
-                    </div>
-                  </li> -->
-                  <!-- /.item -->
-                  <!-- <li class="item">
-                    <div class="product-img">
-                      <img src="<?php echo base_url();?>dist/img/BunBoHue.jpg" alt="Product Image" class="img-size-50">
-                    </div>
-                    <div class="product-info">
-                      <a href="javascript:void(0)" class="product-title">Thành Đạt - Hủ Tiếu Nam Vang - Nguyễn Hữu Cầu
-                        <span class="badge badge-danger float-right">
-                        <i class="far fa-trash-alt"></i>
-                      </span></a>
-                      <span class="product-description">
-                        22B Nguyễn Hữu Cầu, P.Tân Định, Quận 1, TP.HCM
-                      </span>
-                    </div>
-                  </li> -->
-                  <!-- /.item -->
-                  <!-- <li class="item">
-                    <div class="product-img">
-                      <img src="<?php echo base_url();?>dist/img/BunBoHue.jpg" alt="Product Image" class="img-size-50">
-                    </div>
-                    <div class="product-info">
-                      <a href="javascript:void(0)" class="product-title">Thành Đạt - Hủ Tiếu Nam Vang - Nguyễn Hữu Cầu
-                        <span class="badge badge-danger float-right">
-                        <i class="far fa-trash-alt"></i>
-                      </span></a>
-                      <span class="product-description">
-                        22B Nguyễn Hữu Cầu, P.Tân Định, Quận 1, TP.HCM
-                      </span>
-                    </div>
-                  </li> -->
-                  <!-- /.item -->
-                </ul>
-              </div>
-              <!-- /.card-body -->
-              <div class="card-footer text-center">
-                <a href="javascript:void(0)" class="uppercase">View All Products</a>
-              </div>
-              <!-- /.card-footer -->
-            </div>
-        </div>
-</section> 
+    <section class="col-lg-6 connectedSortable">
+                                            <div class="card">
+                                                 <div class="card-header">
+                                                    <h3 class="card-title">Danh sách khuyến mãi của cửa hàng</h3>
+
+                                                    <div class="card-tools">
+                                                      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                                    </div>
+                                                  </div>
+
+                                                <div class="card-body">
+                                                    <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <table id="example2" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
+                                                                    <thead>
+                                                                        <tr role="row">
+                                                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Mã chi nhánh: activate to sort column descending" aria-sort="ascending">Tên khuyến mãi</th>
+                                                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Tên chi nhánh: activate to sort column ascending">Thời gian BĐ</th>
+                                                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Hình ảnh: activate to sort column ascending">Thời gian KT</th>
+                                                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Hình ảnh: activate to sort column ascending">%Giảm giá</th>
+                                                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Chi tiết: activate to sort column ascending" >Chi tiết</th>
+                                                                        </tr>
+
+                                                                    </thead>
+                                                                    <tbody>
+                                   </tbody>
+
+                            </table></div></div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            </div>
+        </section>   
+                                   
 </div>
-   
-                    
-    <aside class="control-sidebar control-sidebar-dark">
-                        <!-- Control sidebar content goes here -->
+        
+</div>
+
+
+                                    <aside class="control-sidebar control-sidebar-dark">
+                                        <!-- Control sidebar content goes here -->
   </aside>
-                    <!-- /.control-sidebar -->
+                                    <!-- /.control-sidebar -->
 
 </div >
 
-                <style type="text/css">
+                                <style type="text/css">
 
-                    .btn_xoa{
-                       padding: 4px 8px 4px 8px;
-                    }
+                                    .giatien{
+                                        font - size: 100%;
+        vertical-align: center;
+        background-color: #A5DF00;
+    }
 
-	.chitiet{
-                        padding: 3px 12px 3px 12px;
-	}
+    .chitiet{
+                                        padding: 3px 12px 3px 12px;
+    }
 
-	#img_upload{
-                        width: 100px;
-	}
+    #img_upload{
+                                        width: 100px;
+    }
 
-    .img_chinhanh {
-        width: 5.5rem;
+    .img_chinhanh{
+                                        width: 5.5rem;
         border-radius: 20%;
     }
 
+    .card-primary-chinhanh{
+                                        background - color: #17a2b8;
+        color: #FFFFFF;
+    }
+
+     .card-primary-cuahang{
+                                        background - color: #e0a800;
+            color: #FFFFFF;
+
+        }
 </style>
 
  <script>
@@ -408,169 +300,72 @@
             })
 </script>
 
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-<script type="text/javascript">
-
-    
-var socket;
-      
+ <script type="text/javascript">
+    var listMonAn = [];
+    var click = false;
     $(document).ready(function(){
- socket = io("http://localhost:3000");
-    socket.emit("partner-server", localStorage.getItem('partnerID'));
-    socket.on('partner-server', function(data){
-        //debugger;
-        alert('Guest is ordering with data :');
-    });
-    $('#head').text($('#head').text() + ' - ' + localStorage.getItem('partnerID'));
-
-
-
 
         $.ajax(
         {
-            url: url + 'Danhsachkhuyenmaihethong',
+
+            url: url + "Danhsachmonan_cuahang",
             dataType: 'json',
             data: {
-            },
-            type: 'get',
-            success: function (res) {
-
-             for (i=0; i< res.length; i++){ 
-
-                var table = $('#example1').DataTable();
-                table.row.add( [
-                res[i].MaGiamGia ,
-                res[i].GioBD,
-                res[i].GioKT,
-                // res[i].Icon,
-                res[i].PhanTram_GiamGia + " %",
-                '<img src="http://localhost:3000/Public/Images/'+res[i].Icon+'" alt="Product Image" class="img-size-50">',
-                "<div class='sparkbar' data-color='#00a65a' data-height='20'>"
-                // + "<a href='#'><i class='nav-icon fas fa-edit'></i></a>"
-                + '<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
-                + "</div>"
-                ] ).draw();
-
-
-                $('#example1 tbody tr').each(function(){
-                    if($(this).find('td:nth-child(1)').text() == res[i].MaGiamGia)
-                        $(this).attr('id', res[i]._id );
-                    $(this).bind({
-                        click : function(e) { 
-                            if(hovering == false)
-                                loadCuaHang($(this).attr('id'));
-                             }, 
-                        mouseleave : function(e) {//khi ko hover nữa
-                                //xóa bảng CH
-                                hovering = false;
-                                // $('#tableCuaHang li').remove();
-                            }
-                        });
-                });
-
-            };
-        
-            // document.getElementById("tablelist").innerHTML=test;
-            }
-        });
-    });
-
-
-    function loadCuaHang(idKhuyenmaihethong){
-                hovering = true;
-        $.ajax(
-        {
-            url: url + 'Hienthicuahangduocapdungkhuyenmai',
-            dataType: 'json',
-            data: {
-                idKhuyenmaihethong : idKhuyenmaihethong
+                idcuahang: <?php echo "'".$id."'";?>,
             },
             type: 'post',
             success: function (res) {
-            $('#tableCuaHang li').remove();
-             for (i=0; i< res.length; i++){ 
+            if(res.return_code == "1"){
+                listMonAn = res.infor;
+                 for (i=0; i< listMonAn.length; i++){ 
+                    var item = listMonAn[i];//1 loại món ăn
+                    var table = $('#example1').DataTable();
+                    table.row.add( [
+                    item.DS_LoaiMA.Ten_loai_mon_an ,
+                    item.DS_LoaiMA.Danh_sach_mon_an.length ,
+                    '<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + item.DS_LoaiMA._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+                    + "</div>"
+                    ] ).draw();
 
-                $("#tableCuaHang").append('<li class="item"><div class="product-img"><img src="http://localhost:3000/Public/Images/'+ res[i].CuaHang_KMHT.Hinh_Anh_Cua_Hang +'" alt="Product Image" class="img-size-50"></div><div class="product-info"><a href="javascript:void(0)" class="product-title">'+ res[i].CuaHang_KMHT.Ten_Cua_Hang+'<span class="badge badge-danger float-right"><i class="far fa-trash-alt"></i></span></a><span class="product-description">'+res[i].DiaChi_CH[0].Dia_Chi_Nha+'</span></div></li>');
-                console.log("add");
-            };
-        
-            // document.getElementById("tablelist").innerHTML=test;
+                    $('#example1 tbody tr').each(function(){
+                        if($(this).find('td:nth-child(1)').text() == item.DS_LoaiMA.Ten_loai_mon_an)
+                            $(this).attr('id', item.DS_LoaiMA._id );
+                        $(this).bind({
+                            click : function(e) { 
+                                    if(!click)
+                                        loadMonan_LoaiMonAn($(this).attr('id'));
+                                 },
+                            mouseleave : function(e) {
+                                     click = false;
+                                }
+                            });
+                    });
+                }
+            }
             }
         });
 
-    }
+    });
 
-    function themSanPham(){
-        $.ajax(
-        {
-            url: url + 'addKhuyenmaihethong',
-            dataType: 'json',
-            data: {
-                maGiamgia : $("#makm").val(),
-                gioBatdau : $("#gio_bd").val(),
-                gioKetthuc : $("#gio_kt").val(),
-                phanTramgiamgia :$("#PhanTram_GiamGia").val() + " %",
-                Icon : $("#inputGroupFile02").val()
-            },
-            type: 'post',
-            success: function (res) {
-             if(res.return_code == "1")
-             {
-             var table = $('#example1').DataTable();
-            table.row.add( [
-            $("#makm").val(),
-            $("#gio_bd").val(),
-            $("#gio_kt").val(),
-            $("#PhanTram_GiamGia").val(),
-            $("#inputGroupFile02").val(),
-            "<div class='sparkbar' data-color='#00a65a' data-height='20'>"
-                + '<button class="btn" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
-                + "</div>"
-            ] ).draw();
+    function loadMonan_LoaiMonAn(idLoaiMonAn){
+        click = true;
+         for (i=0; i< listMonAn.length; i++){
+            var item = listMonAn[i];//1 loại món ăn
+            if(item.DS_LoaiMA._id == idLoaiMonAn){
+                var table = $('#example2').DataTable();
+                table.clear().draw();
+                for (var j = 0; j < item.DS_Monan.length; j++) {
+                    var monan = item.DS_Monan[j];
+                    table.row.add( [
+                    '<img src="' + url + 'Public/Images/'+ monan.Hinh_anh_mon_an+'" alt="Product Image" class="img-size-50">',
+                    monan.Ten_mon_an ,
+                    "" + (new Intl.NumberFormat().format(monan.Don_gia_mon_an)),
+                    '<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + monan._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+                    + "</div>"
+                    ] ).draw();
+                }
+            }
         }
-        else if(res.return_code =="0"){
-                alert("Thêm thất bại!");
-            }
-        }
-        });
-    }
-
-
-     function xoa(id_khuyenmai)
-    {
-        alert("xoa" + id_khuyenmai );
-        $.ajax({
-            type    : 'DELETE',
-            url     : url + 'deleteKhuyenmaihethong',
-            data    : {
-                idkhuyenMai : id_khuyenmai
-            },
-            dataType: 'json',
-            success: function (res) {
-            if(res.return_code == "1")
-             {
-                var table = $('#example1').DataTable();
-                table.row($('#' + id_khuyenmai)).remove().draw();
-            }
-            }
-        });
-        
     }
 </script>
-<script>
-// $( "#example1 tr" ).hover(
-//   function() {//khi hover vào
-//     //lấy id của tr đang hover
-//     // alert($(this).attr('id'));
-//     alert($(this).attr('id'));
-//     //từ id đó , lấy list CH, hiển thị vào table
-//   }, 
-//   function() {//khi ko hover nữa
-//     //xóa bảng CH
-//   }
-// );
 
-
-</script>

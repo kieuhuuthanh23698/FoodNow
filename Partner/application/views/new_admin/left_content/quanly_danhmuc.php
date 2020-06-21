@@ -20,12 +20,6 @@
                   <p>Cửa hàng</p>
                 </a>
               </li>
-               <li class="nav-item">
-                <a href="<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_loaimonan" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Loại món ăn</p>
-                </a>
-              </li>
               <li class="nav-item">
                 <a href="<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_monan" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
