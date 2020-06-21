@@ -28,11 +28,11 @@
 
             <div class="card-header">
 
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-default">
+                <button type="button" onclick="initModalLoaiMonAn()" class="btn btn-info" data-toggle="modal" data-target="#modal-default">
                 Thêm loại món ăn
                 </button>
 
-                <button  type="button" class="btn  btn-warning" data-toggle="modal" data-target="#modal-lg">Thêm món ăn</button>
+                <button  type="button" onclick="initModalMonAn()" class="btn btn-warning" data-toggle="modal" data-target="#modal-lg">Thêm món ăn</button>
 
                 <!-- Thêm loại món ăn -->
                 <div class="modal fade" id="modal-default">
@@ -47,11 +47,11 @@
                         <div class="modal-body">
                           <div class="form-group">
                                             <label for="exampleInputEmail1">Tên loại món ăn</label>
-                                            <input type="email" class="form-control" id="makm" aria-describedby="emailHelp" placeholder="Món đặc biệt">
+                                            <input type="email" class="form-control" id="loaiMonAn" aria-describedby="emailHelp" placeholder="Tên loại món mới...">
                             </div>
                         </div>
                         <div class="modal-footer justify-content-between">
-                          <button type="button" class="btn btn-primary">Lưu</button>
+                          <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="themLoaiMonAn()">Lưu</button>
                         </div>
                       </div>
                   <!-- /.modal-content -->
@@ -73,7 +73,7 @@
                             <div class="modal-body">
                                 <div class="form-group">
                                 <label>Tên loại món ăn</label>
-                                <select class="form-control">
+                                <select id="selectLoaiMonAn" class="form-control">
                                   <option>Món 1</option>
                                   <option>Món 2</option>
                                   <option>Món 3</option>
@@ -89,11 +89,11 @@
                                     <!-- <form> -->
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Tên món ăn</label>
-                                            <input type="email" class="form-control" id="makm" aria-describedby="emailHelp" placeholder="Cơm Đùi Gà Chiên">
+                                            <input type="email" class="form-control" id="Ten_mon_an" aria-describedby="emailHelp" placeholder="Tên món ăn...">
                                   </div>
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">Đơn giá</label>
-                                                <input type="number" class="form-control" id="ttkm">
+                                                <input type="number" class="form-control" id="Don_gia_mon_an">
                                   </div>
                                                     </div>
 
@@ -119,7 +119,7 @@
                                                                             <!-- </div> -->
 
                                                                             <div class="mb-3">
-                                                                                <textarea id="mota_km" placeholder="Place some text here"
+                                                                                <textarea id="Mo_ta_mon_an" placeholder="Place some text here"
                                                                                     style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                                                             </div>
                                                                         </div>
@@ -150,7 +150,7 @@
 
                             </div>
                             <div class="modal-footer justify-content-between">
-                              <button type="button" class="btn btn-primary">Lưu</button>
+                              <button type="button" onclick="themMonAn()" data-dismiss="modal" class="btn btn-primary">Lưu</button>
                             </div>
                           </div>
                           <!-- /.modal-content -->
@@ -299,10 +299,12 @@
     var listMonAn = [];
     var click = false;
     $(document).ready(function(){
+        loadListLoaiMonAn();
+    });
 
+    function loadListLoaiMonAn(){
         $.ajax(
         {
-
             url: url + "Danhsachmonan_cuahang",
             dataType: 'json',
             data: {
@@ -312,9 +314,10 @@
             success: function (res) {
             if(res.return_code == "1"){
                 listMonAn = res.infor;
+                var table = $('#example1').DataTable();
+                table.clear().draw();
                  for (i=0; i< listMonAn.length; i++){ 
                     var item = listMonAn[i];//1 loại món ăn
-                    var table = $('#example1').DataTable();
                     table.row.add( [
                     item.DS_LoaiMA.Ten_loai_mon_an ,
                     item.DS_LoaiMA.Danh_sach_mon_an.length ,
@@ -339,8 +342,7 @@
             }
             }
         });
-
-    });
+    }
 
     function loadMonan_LoaiMonAn(idLoaiMonAn){
         click = true;
@@ -361,6 +363,85 @@
                 }
             }
         }
+    }
+
+    function initModalLoaiMonAn(){
+        $('#loaiMonAn').val("");
+    }
+
+    function initModalMonAn(){
+        $("#selectLoaiMonAn").find('option').remove();
+        for (var i = 0; i < listMonAn.length; i++) {
+            var item = listMonAn[i];
+            $("#selectLoaiMonAn").append('<option value="' + item.DS_LoaiMA._id + '">' + item.DS_LoaiMA.Ten_loai_mon_an + '</option>')
+        }
+        $('#Ten_mon_an').val("");
+        $('#Don_gia_mon_an').val("");
+        $('#Mo_ta_mon_an').val("");
+        var e = document.getElementById('inputGroupFile02');
+        e.target = null;
+        var img = document.getElementById('img_upload');
+        img.height = "0";
+        document.getElementById("Chonfile").innerHTML= "";
+    }
+
+    function themLoaiMonAn(){
+        $.ajax(
+        {
+            url: url + "them_loaimonan",
+            dataType: 'json',
+            data: {
+                idCuaHang: <?php echo "'".$id."'";?>,
+                Ten_loai_mon_an : $('#loaiMonAn').val()
+            },
+            type: 'post',
+            success: function (res) {
+            if(res.return_code == "1"){
+                loadListLoaiMonAn();
+            } else if(res.return_code == "0"){
+                alert("Thêm loại món ăn thất bại !");
+            }
+            }
+        });
+    }
+
+    function createFormDataMonAn(){
+        debugger;
+        var form = new FormData();
+        var file_data = $("#inputGroupFile02").prop('files')[0];
+        if(file_data){
+            var type = file_data.type;
+            var match = ["image/png", "image/jpg", "image/jpeg"];
+            if (type == match[0] || type == match[1] || type == match[2]) {
+                form.append("upload_file", file_data);
+            }
+        }
+        form.append("idLoaiMonAn",$("#selectLoaiMonAn").val());
+        form.append("Ten_mon_an", $("#Ten_mon_an").val());
+        form.append("Mo_ta_mon_an", $("#Mo_ta_mon_an").val());
+        form.append("Don_gia_mon_an", $("#Don_gia_mon_an").val());
+        return form;
+    }
+
+    function themMonAn(){
+        var form = createFormDataMonAn();
+        $.ajax(
+        {
+            url: url + "them_monan",
+            dataType: 'json',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form,
+            type: 'post',
+            success: function (res) {
+            if(res.return_code == "1"){
+                loadListLoaiMonAn();
+            } else if(res.return_code == "0"){
+                alert("Thêm món ăn thất bại !");
+            }
+            }
+        });
     }
 </script>
 

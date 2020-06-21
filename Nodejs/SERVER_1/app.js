@@ -2023,7 +2023,7 @@ app.post("/addKhuyenmaicuahang", urlEncodeParser, function (req, response) {
 			MoTa: req.body.MoTa
 		});
 		var result = "";
-		newKhuyenMai_CH.save(function (err) {
+		newKhuyenMai_CH.save(function (err, newKM) {
 			if (err) {
 				console.log("\nThêm khuyến mãi cửa hàng mới bị lỗi : " + err);
 				response.send({ return_code: "0" });
@@ -2038,7 +2038,7 @@ app.post("/addKhuyenmaicuahang", urlEncodeParser, function (req, response) {
 							result += "\nThêm khuyến mãi cửa hàng mới gặp lỗi : " + err;
 						else {
 							result += "\nThêm khuyến mãi cửa hàng mới thành công !";
-							response.send({ return_code: "1" });
+							response.send({ return_code: "1", infor: newKM });
 						}
 					});
 				console.log(result);
@@ -2102,7 +2102,7 @@ app.post("/addKhuyenmaihethong", urlEncodeParser, function (req, response) {
 				MaGiamGia: req.body.makm,
 				GioBD: req.body.gio_bd,
 				GioKT: req.body.gio_kt,
-				Icon: file.filename,
+				Icon: req.file.filename,
 				PhanTram_GiamGia: req.body.PhanTram_GiamGia,
 				DanhSach_CH: []
 			});
@@ -2668,3 +2668,79 @@ app.post("/Hienthimonan_chonloaimonan", urlEncodeParser, async function (req, re
 	);
 });
 
+
+//Thêm loại món ăn cho cửa hàng
+//params: idCuaHang, Ten_loai_mon_an
+app.post("/them_loaimonan", urlEncodeParser, async function (req, res) {
+	if(req.body.Ten_loai_mon_an != null && req.body.Ten_loai_mon_an != ""){
+		var newLoaiMonAn = new LOAI_MONAN({
+			Ten_loai_mon_an : req.body.Ten_loai_mon_an,
+			Danh_sach_mon_an: []
+		});
+		newLoaiMonAn.save(function(err, result){
+			if(err){
+				console.log("Thêm loại món ăn thất bại, lỗi save !");
+				res.send({return_code: "0"});
+			} else {
+					CUAHANG.findByIdAndUpdate({_id: mongoose.Types.ObjectId(req.body.idCuaHang)},
+						{ $push: { Loai_MonAn: result._id } },
+						function(errThemMA, resThemMA){
+							if(err){
+								console.log("Thêm loại món ăn thất bại, lỗi push loại món ăn vào cửa hàng !");
+								res.send({return_code: "0"});
+							} else {
+				console.log("Thêm loại món ăn thành công !");
+				res.send({return_code: "1", infor : result});
+							}
+						}
+					);
+			}
+		});
+	} else{
+		console.log("Thêm loại món ăn thất bại, lỗi params !");
+		res.send({return_code: "0"});
+	}
+});
+
+//Thêm món ăn cho cửa hàng
+//params: idLoaiMonAn, Ten_mon_an, Mo_ta_mon_an, Don_gia_mon_an
+app.post("/them_monan", urlEncodeParser, async function (req, res) {
+	uploadFile(req, res, (error) => {
+		if(req.body.Ten_mon_an != null && req.body.Ten_mon_an != "" &&
+		req.body.Don_gia_mon_an != null && req.body.Don_gia_mon_an != "" &&
+		req.body.idLoaiMonAn != null && req.body.idLoaiMonAn != "" &&
+		req.file != null && req.file.filename != ""){
+			var newMonAn = new MON_AN({
+				Ten_mon_an: req.body.Ten_mon_an,
+				Mo_ta_mon_an: req.body.Mo_ta_mon_an,
+				Don_gia_mon_an: req.body.Don_gia_mon_an,
+				Hinh_anh_mon_an: req.file.filename,
+				Trang_thai_mon_an: "1",
+				So_luong_mua: 0,
+				So_luong_thich: 0
+			});
+			newMonAn.save(function(err, result){
+				if(err){
+					console.log("Thêm món ăn thất bại, lỗi save !");
+					res.send({return_code: "0"});
+				} else {
+					LOAI_MONAN.findByIdAndUpdate({_id: mongoose.Types.ObjectId(req.body.idLoaiMonAn)},
+						{ $push: { Danh_sach_mon_an: result._id } },
+						function(errThemMA, resThemMA){
+							if(err){
+								console.log("Thêm món ăn thất bại, lỗi push món ăn vào loại món ăn !");
+								res.send({return_code: "0"});
+							} else {
+								console.log("Thêm món ăn thành công !");
+								res.send({return_code: "1", infor : result});
+							}
+						}
+					);
+				}
+			});
+		} else{
+			console.log("Thêm món ăn thất bại, lỗi params !");
+			res.send({return_code: "0"});
+		}
+	});
+});
