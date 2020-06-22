@@ -10,7 +10,7 @@
           <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Cửa hàng trang chủ</li>
+                        <li class="breadcrumb-item active">Loại món ăn</li>
                     </ol>
                 </div><!-- /.col -->
         </div><!-- /.row -->
@@ -28,10 +28,10 @@
 
             <div class="card-header">
 
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg">Thêm danh mục trang chủ</button>
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg">Thêm danh mục loại món ăn trong trang chủ</button>
 
                 <button type="button" class="btn  btn-warning" data-toggle="modal" data-target="#modal-lg">
-                  Thêm cửa hàng vào trang chủ
+                  Thêm cửa hàng vào danh mục loại món ăn trang chủ
                 </button>
 
                 <div class="modal fade" id="modal-lg">
@@ -172,6 +172,7 @@
 
                                                     <form>
                                                        <div class="form-group">
+                                                        <label for="exampleInputEmail1">Hình ảnh</label>
                                                             <img id="img_upload">
                                                                 <div class="custom-file">
 
@@ -201,7 +202,7 @@
   		<div class="container-fluid">
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Danh sách tên trang chủ</h3>
+            <h3 class="card-title">Danh sách tên danh mục loại món ăn trong trang chủ</h3>
             <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
@@ -319,7 +320,13 @@
 
 <script type="text/javascript">
       
+    var listMonAn = [];
+    var click = false;
     $(document).ready(function(){
+        loadListLoaiMonAn();
+    });
+
+    function loadListLoaiMonAn(){
         $.ajax(
         {
             url: url + "getDanhmucloaimonan",
@@ -328,47 +335,91 @@
             },
             type: 'get',
             success: function (res) {
-
-             for (i=0; i< res.length; i++){ 
-
+            if(res.return_code == "1"){
+                listMonAn = res.items;
                 var table = $('#example1').DataTable();
-                table.row.add( [
-                  res[i].Ten_Loai_Mon_An ,
-                '<img src="http://localhost:3000/Public/Images/'+res[i].HinhAnh_CH+'" alt="Product Image" class="img_chinhanh">',
+                table.clear().draw();
+                 for (i=0; i< listMonAn.length; i++){ 
+                    var item = listMonAn[i];//1 loại món ăn
+                    table.row.add( [
+                    '<img src="http://localhost:3000/Public/Images/'+item.Icon_Loai_Mon_An+'" alt="Product Image" class="img_chinhanh">',
+                    item.Ten_Loai_Mon_An ,
+                    '<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + item._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+                    + "</div>"
+                    ] ).draw();
 
-                "<div class='sparkbar' data-color='#00a65a' data-height='20'>"
-               
-                + '<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
-                + "</div>"
-                ] ).draw();
-
-                $('#example1 tbody tr').each(function(){
-                    if($(this).find('td:nth-child(1)').text() == res[i].Ten_Loai_Mon_An)
-                        $(this).attr('id', res[i]._id );
-                });
-
-                $('#example1 tbody tr').each(function(){
-                    if($(this).find('td:nth-child(1)').text() == res[i].Ten_Loai_Mon_An)
-                        $(this).attr('id', res[i]._id );
-                    $(this).bind({
-                        click : function(e) { 
-                            if(hovering == false)
-                                loadCuaHang($(this).attr('id'));
-                             }, 
-                        mouseleave : function(e) {//khi ko hover nữa
-                                //xóa bảng CH
-                                hovering = false;
-                                // $('#tableCuaHang li').remove();
-                            }
-                        });
-                });
-
-            };
-        
-            // document.getElementById("tablelist").innerHTML=test;
+                    $('#example1 tbody tr').each(function(){
+                        if($(this).find('td:nth-child(1)').text() == item.Ten_Loai_Mon_An)
+                            $(this).attr('id', item._id );
+                        $(this).bind({
+                            click : function(e) { 
+                                    if(!click)
+                                        loadMonan_LoaiMonAn($(this).attr('id'));
+                                 },
+                            mouseleave : function(e) {
+                                     click = false;
+                                }
+                            });
+                    });
+                }
+            }
             }
         });
-    });
+    }
+
+    // $(document).ready(function(){
+    //     $.ajax(
+    //     {
+    //         url: url + "getDanhmucloaimonan",
+    //         dataType: 'json',
+    //         data: {
+    //         },
+    //         type: 'get',
+    //         success: function (res) {
+    //           if (return_code==1) {
+    //             for (i=0; i< res.length; i++){ 
+
+    //             var table = $('#example1').DataTable();
+    //             table.row.add( [
+    //               res[i].Ten_Loai_Mon_An ,
+    //             '<img src="http://localhost:3000/Public/Images/'+res[i].HinhAnh_CH+'" alt="Product Image" class="img_chinhanh">',
+
+    //             "<div class='sparkbar' data-color='#00a65a' data-height='20'>"
+               
+    //             + '<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+    //             + "</div>"
+    //             ] ).draw();
+
+    //             $('#example1 tbody tr').each(function(){
+    //                 if($(this).find('td:nth-child(1)').text() == res[i].Ten_Loai_Mon_An)
+    //                     $(this).attr('id', res[i]._id );
+    //             });
+
+    //             $('#example1 tbody tr').each(function(){
+    //                 if($(this).find('td:nth-child(1)').text() == res[i].Ten_Loai_Mon_An)
+    //                     $(this).attr('id', res[i]._id );
+    //                 $(this).bind({
+    //                     click : function(e) { 
+    //                         if(hovering == false)
+    //                             loadCuaHang($(this).attr('id'));
+    //                          }, 
+    //                     mouseleave : function(e) {//khi ko hover nữa
+    //                             //xóa bảng CH
+    //                             hovering = false;
+    //                             // $('#tableCuaHang li').remove();
+    //                         }
+    //                     });
+    //             });
+
+    //         };
+    //       }
+
+             
+        
+    //         // document.getElementById("tablelist").innerHTML=test;
+    //         }
+    //     });
+    // });
 
 
     function loadCuaHang(idDanhmuccuahanghomnay){

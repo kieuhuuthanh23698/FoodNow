@@ -10,7 +10,7 @@
           <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Cửa hàng trang chủ</li>
+                        <li class="breadcrumb-item active">Cửa hàng hôm nay</li>
                     </ol>
                 </div><!-- /.col -->
         </div><!-- /.row -->
@@ -28,10 +28,10 @@
 
             <div class="card-header">
 
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg">Thêm danh mục trang chủ</button>
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg">Thêm danh mục cửa hàng hôm nay</button>
 
                 <button type="button" class="btn  btn-warning" data-toggle="modal" data-target="#modal-lg">
-                  Thêm cửa hàng vào trang chủ
+                  Thêm cửa hàng hôm nay
                 </button>
 
                 <div class="modal fade" id="modal-lg">
@@ -201,7 +201,7 @@
   		<div class="container-fluid">
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Danh sách tên trang chủ</h3>
+            <h3 class="card-title">Danh sách tên cửa hàng hôm nay</h3>
             <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
