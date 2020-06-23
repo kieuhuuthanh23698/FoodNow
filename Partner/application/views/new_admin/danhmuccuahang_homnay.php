@@ -153,11 +153,14 @@
 
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">Default Modal</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+
                             <div class="card-body">
-                                <!-- <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4"> -->
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
                                     <form>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Thông tin chính</label>
@@ -171,7 +174,9 @@
 								</form>
 
                                                     <form>
+                                                      <label for="exampleInputEmail1">Hình ảnh</label>
                                                        <div class="form-group">
+
                                                             <img id="img_upload">
                                                                 <div class="custom-file">
 
@@ -180,11 +185,13 @@
                                                                 </div>
                         
                     </div>
-                                                            <div class="input-group-append">
-                                                                <button class="btn btn-primary float-right toastrDefaultSuccess"  onclick="themSanPham()">Lưu</button>
-                                                            </div>
-                                                        </div>
                                                     </form>
+                                                    
+                                              </div>
+                                              <div class="modal-footer justify-content-between">
+                      <button class="btn btn-primary float-right toastrDefaultSuccess" data-dismiss="modal" onclick="themSanPham()">Lưu</button>
+                    </div>
+                                                    
 
                                                 </div>
                                             </div>
@@ -197,7 +204,7 @@
                             <!-- /.card-header -->
  <div class="row">
 
-  <section class="col-lg-7 connectedSortable">
+  <section class="col-lg-6 connectedSortable">
   		<div class="container-fluid">
     <div class="card">
         <div class="card-header">
@@ -238,7 +245,7 @@
     </div>
     </section>
 
-<section class="col-lg-5 connectedSortable">
+<section class="col-lg-6 connectedSortable">
 	<div class="container-fluid">
             <div class="card">
               <div class="card-header ui-sortable-handle" style="cursor: move;">
@@ -501,26 +508,27 @@
     }
 
 
-    //  function xoa(id_cuahangtrangchu)
-    // {
-    //     alert("xoa" + id_cuahangtrangchu );
-    //     $.ajax({
-    //         type    : 'delete',
-    //         url     : 'http://localhost:3000/deleteDanhmuccuahangtrangchu',
-    //         data    : {
-    //             idDanhmuccuahangtrangchu : id_cuahangtrangchu
-    //         },
-    //         dataType: 'json',
-    //         success: function (res) {
-    //         if(res.return_code == "1")
-    //          {
-    //             var table = $('#example1').DataTable();
-    //             table.row($('#' + id_cuahangtrangchu)).remove().draw();
-    //         }
-    //         }
-    //     });
+     function xoa(id_cuahanghomnay)
+    {
+        $.ajax({
+            type    : 'delete',
+            url     : url +'deleteDanhmuccuahanghomnay',
+            data    : {
+                idDanhmuccuahanghomnay : id_cuahanghomnay
+            },
+            dataType: 'json',
+            success: function (res) {
+            if(res.return_code == "1")
+             {
+                var table = $('#example1').DataTable();
+                table.row($('#' + id_cuahanghomnay)).remove().draw();
+            } else{
+              alert("Xóa thât bại !");
+            }
+            }
+        });
         
-    // }
+    }
 
      function xoa_cuahangtrongdanhmuc(id_cuahang, idDanhmuccuahanghomnay)
     {

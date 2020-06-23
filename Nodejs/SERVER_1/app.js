@@ -832,7 +832,7 @@ app.get("/getDanhmucloaimonan", function (req, res) {
 			}
 
 			else {
-				res.send({ items, return_code: "1" });
+				res.send({items, return_code: "1" });
 
 			}
 
@@ -1242,17 +1242,19 @@ app.post("/addDanhsachcuahanghomnay", urlEncodeParser, function (req, response) 
 //route deleteDanhmuccuahanghomnay 
 //method delete
 //params  : idDanhmuccuahanghomnay
-app.delete("/deleteDanhmuccuahanghomnay ", urlEncodeParser, function (req, res) {
+app.delete("/deleteDanhmuccuahanghomnay", urlEncodeParser, function (req, res) {
 	var result = "";
 	DANHSACH_CUAHANG_HOMNAY.findByIdAndDelete(
-		{ _id: req.body.idDanhmuccuahanghomnay },
-		function (err) {
-			if (err) {
+		{ _id: mongoose.Types.ObjectId(req.body.idDanhmuccuahanghomnay) },
+		function (err, dm) {
+			if (err || dm == null) {
 				result += "\nXóa bị lỗi : " + err;
+				console.log(result);
 				res.send({ return_code: "0" });
 			}
 			else {
 				result += "\nĐã xóa : " + req.body.idDanhmuccuahanghomnay;
+				console.log(dm);
 				res.send({ return_code: "1" });
 			}
 		}
@@ -2252,8 +2254,8 @@ app.delete("/deleteDanhmuccuahangtrangchu", urlEncodeParser, function (req, res)
 	var result = "";
 	DANHMUC_CUAHANG_TRANGCHU.findByIdAndDelete(
 		{ _id: req.body.idDanhmuccuahangtrangchu },
-		function (err) {
-			if (err) {
+		function (err, dmtc) {
+			if (err || dmtc == null) {
 				result += "\nXóa bị lỗi : " + err;
 				res.send({ return_code: "0" });
 			}
