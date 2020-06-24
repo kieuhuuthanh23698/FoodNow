@@ -28,11 +28,44 @@
 
             <div class="card-header">
 
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg">Thêm danh mục cửa hàng hôm nay</button>
+                <button type="button" onclick="initModalDMCH()" class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg">Thêm danh mục cửa hàng hôm nay</button>
 
-                <button type="button" class="btn  btn-warning" data-toggle="modal" data-target="#modal-lg">
+                <!-- <button type="button" class="btn  btn-warning" data-toggle="modal" data-target="#modal-lg">
                   Thêm cửa hàng hôm nay
-                </button>
+                </button> -->
+
+               <!--  <div class="modal fade bd-example-modal-lg" tabindex="-1"
+                                                            role="dialog" aria-labelledby="myLargeModalLabel"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg" role="document">
+                                                                <div class="modal-content">
+                                                                </div>
+                                                            </div>
+                                                        </div> -->
+                                                        
+                                                        <div class="modal fade bd-example-modal-sm" tabindex="-1"
+                                                            role="dialog" aria-labelledby="myLargeModalLabel"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                                            Bạn có chắc chắn muốn xóa?</h5>
+                                                                        <button type="button" class="close"
+                                                                            data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-dismiss="modal">Cancel</button>
+                                                                        <button type="button" onclick="xoa()" 
+                                                                            class="btn btn-primary toastrDefaultSuccess">OK</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
 
                 <div class="modal fade" id="modal-lg">
                         <div class="modal-dialog modal-lg">
@@ -44,18 +77,7 @@
                               </button>
                             </div>
                             <div class="modal-body">
-                                <div class="form-group">
-                                <label>Tên danh mục trang chủ</label>
-                                <select class="form-control">
-                                  <option>option 1</option>
-                                  <option>option 2</option>
-                                  <option>option 3</option>
-                                  <option>option 4</option>
-                                  <option>option 5</option>
-                                </select>
-                              </div>
-
-<label>Chọn cửa hàng hiển thị</label>
+                                
 <div class="card">
 <div class="card-body">
             <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
@@ -138,8 +160,7 @@
 
                             </div>
                             <div class="modal-footer justify-content-between">
-                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-primary">Save changes</button>
+                              <button type="button" class="btn btn-primary float-right">Lưu</button>
                             </div>
                           </div>
                           <!-- /.modal-content -->
@@ -164,10 +185,10 @@
                                     <form>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Thông tin chính</label>
-                                            <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Món ngon mỗi ngày" id="ten_danhmuc">
+                                            <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Món ngon mỗi ngày" id="thongtin_chinh">
 
                                             <label for="exampleInputEmail1">Thông tin phụ</label>
-                                            <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Món ngon mỗi ngày" id="ten_danhmuc_phu">
+                                            <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Món ngon mỗi ngày" id="thongtin_phu">
 								  </div>
 
 								 
@@ -402,7 +423,13 @@
 
 
 <script type="text/javascript">
+    var listDMTC = [];
+    var click = false;
     $(document).ready(function(){
+      loadDMCHTC();
+    });
+
+     function loadDMCHTC(){
         $.ajax(
         {
             url:  url + "Danhsachcuahanghomnayhienthi",
@@ -411,7 +438,6 @@
             },
             type: 'get',
             success: function (res) {
-
              for (i=0; i< res.length; i++){ 
 
                 var table = $('#example1').DataTable();
@@ -420,10 +446,11 @@
                 res[i].Thongtin_Phu ,
                 '<img src="' + <?php api_url("/Public/Images/")?> + res[i].HinhAnh_CH +'" alt="Product Image" class="img_chinhanh">',
                 "<div class='sparkbar' data-color='#00a65a' data-height='20'>" 
-                + '<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+                + '<button class="btn btn-info btn_xoa" data-toggle="modal" data-target="#modal-lg" onclick="initModalCH()"><i class="fas fa-plus"></i></button>'
+                + '<button class="btn btn-danger btn_xoa" data-toggle="modal" data-target=".bd-example-modal-sm" ><i class="fas fa-trash-alt"></i></button>'
                 + "</div>"
                 ] ).draw();
-
+// onclick="xoa(' + "'" + res[i]._id + "'" + ')" 
                 $('#example1 tbody tr').each(function(){
                     if($(this).find('td:nth-child(1)').text() == res[i].Thongtin_Chinh)
                         $(this).attr('id', res[i]._id );
@@ -445,16 +472,14 @@
                         });
                 });
 
-            };
-        
-            // document.getElementById("tablelist").innerHTML=test;
+            };            // document.getElementById("tablelist").innerHTML=test;
             }
-        });
     });
+}
 
 
     function loadCuaHang(idDanhmuccuahanghomnay){
-                hovering = true;
+        hovering = true;
         $.ajax(
         {
             url: url + "Danhsachcuahanghomnay_hienthicuahang",
@@ -478,27 +503,38 @@
 
     }
 
+
+     function initModalDMCH(){
+        $('#thongtin_chinh').val("");
+        $('#thongtin_phu').val("");
+        $('#inputGroupFile02').val("");
+    }
+
+    
     function themSanPham(){
+        var form = createFormDataDMCHTC();
         $.ajax(
         {
             url: url + "addDanhsachcuahanghomnay",
             dataType: 'json',
             data: {
-                Thongtin_Chinh : $("#ten_danhmuc").val(),
-                Thongtin_Phu : $("#ten_danhmuc_phu").val(),
-                HinhAnh_CH :  $("#inputGroupFile02").val()
+              form
+                // Thongtin_Chinh : $("#thongtin_chinh").val(),
+                // Thongtin_Phu : $("#thongtin_phu").val(),
+                // HinhAnh_CH :  $("#inputGroupFile02").val()
             },
             type: 'post',
             success: function (res) {
              if(res.return_code == "1")
              {
-             var table = $('#example1').DataTable();
-            table.row.add( [
-            $("#ten_danhmuc").val(),
-            $("#ten_danhmuc_phu").val(),
-            $("#inputGroupFile02").val(),
-            '<button class="btn" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
-            ] ).draw();
+            //  var table = $('#example1').DataTable();
+            // table.row.add( [
+            // $("#thongtin_chinh").val(),
+            // $("#thongtin_chinh").val(),
+            // $("#inputGroupFile02").val(),
+            // '<button class="btn" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+            // ] ).draw();
+            loadDMCHTC();
         }
         else if(res.return_code =="0"){
                 alert("Thêm thất bại!");
@@ -507,7 +543,23 @@
         });
     }
 
+    function createFormDataDMCHTC(){
+        debugger;
+        var form = new FormData();
+        var file_data = $("#inputGroupFile02").prop('files')[0];
+        if(file_data){
+            var type = file_data.type;
+            var match = ["image/png", "image/jpg", "image/jpeg"];
+            if (type == match[0] || type == match[1] || type == match[2]) {
+                form.append("upload_file", file_data);
+            }
+        }
+        form.append("thongtin_chinh", $("#thongtin_chinh").val());
+        form.append("thongtin_phu", $("#thongtin_phu").val());
+        return form;
+    }
 
+    
      function xoa(id_cuahanghomnay)
     {
         $.ajax({
@@ -529,6 +581,32 @@
         });
         
     }
+
+
+
+    
+
+    // function themSanPham(){
+    //     var form = createFormDataDMCHTC();
+    //     $.ajax(
+    //     {
+    //         url: url + "addDanhsachcuahanghomnay",
+    //         dataType: 'json',
+    //         cache: false,
+    //         contentType: false,
+    //         processData: false,
+    //         data: form,
+    //         type: 'post',
+    //         success: function (res) {
+    //         if(res.return_code == "1"){
+    //             loadDMCHTC();
+    //         } else if(res.return_code == "0"){
+    //             alert("Thêm thất bại !");
+    //         }
+    //         }
+    //     });
+    // }
+
 
      function xoa_cuahangtrongdanhmuc(id_cuahang, idDanhmuccuahanghomnay)
     {

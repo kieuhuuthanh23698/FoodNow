@@ -198,7 +198,7 @@
                             <!-- /.card-header -->
  <div class="row">
 
-  <section class="col-lg-7 connectedSortable">
+  <section class="col-lg-6 connectedSortable">
   		<div class="container-fluid">
     <div class="card">
         <div class="card-header">
@@ -238,7 +238,7 @@
     </div>
     </section>
 
-<section class="col-lg-5 connectedSortable">
+<section class="col-lg-6 connectedSortable">
 	<div class="container-fluid">
             <div class="card">
               <div class="card-header ui-sortable-handle" style="cursor: move;">
@@ -354,7 +354,7 @@
                         $(this).bind({
                             click : function(e) { 
                                     if(!click)
-                                        loadMonan_LoaiMonAn($(this).attr('id'));
+                                        loadCuaHang($(this).attr('id'));
                                  },
                             mouseleave : function(e) {
                                      click = false;
@@ -422,21 +422,21 @@
     // });
 
 
-    function loadCuaHang(idDanhmuccuahanghomnay){
-                hovering = true;
+     function loadCuaHang(idDanhmucloai_monan){
+        hovering = true;
         $.ajax(
         {
-            url: url + "Danhsachcuahanghomnay_hienthicuahang",
+            url: url + "Hienthicuahangtrongdanhmucloaimonan",
             dataType: 'json',
             data: {
-                idDanhsachcuahanghomnay : idDanhmuccuahanghomnay
+                idDanhmucloaimonan : idDanhmucloai_monan
             },
             type: 'post',
             success: function (res) {
             $('#tableCuaHang li').remove();
              for (i=0; i< res.length; i++){ 
 
-                $("#tableCuaHang").append('<li id="'+ res[i].CuaHang_HomNay._id +'" class="item"><div class="product-img"><img src="http://localhost:3000/Public/Images/'+ res[i].CuaHang_HomNay.Hinh_Anh_Cua_Hang +'" alt="Product Image" class="img-size-50"></div><div class="product-info"><a href="javascript:void(0)" class="product-title">'+ res[i].CuaHang_HomNay.Ten_Cua_Hang+'<span class="badge badge-danger float-right"><button class="btn btn-danger btn_xoa_bangCH" onclick="xoa_cuahangtrongdanhmuc(' + "'" + res[i].CuaHang_HomNay._id + "'"  + ',' + "'"  + idDanhmuccuahanghomnay + "'" + ')" ><i class="fas fa-trash-alt"></i></button></span></a><span class="product-description">'+res[i].DiaChi_CH[0].Dia_Chi +'</span></div></li>');
+                $("#tableCuaHang").append('<li id="'+ res[i].CuaHang_LoaiMonAn._id +'" class="item"><div class="product-img"><img src="http://localhost:3000/Public/Images/'+ res[i].CuaHang_LoaiMonAn.Hinh_Anh_Cua_Hang +'" alt="Product Image" class="img-size-50"></div><div class="product-info"><a href="javascript:void(0)" class="product-title">'+ res[i].CuaHang_LoaiMonAn.Ten_Cua_Hang+'<span class="badge badge-danger float-right"><button class="btn btn-danger btn_xoa_bangCH" onclick="xoa_cuahangtrongdanhmuc(' + "'" + res[i].CuaHang_LoaiMonAn._id + "'"  + ',' + "'"  + idDanhmuccuahanghomnay + "'" + ')" ><i class="fas fa-trash-alt"></i></button></span></a><span class="product-description">'+res[i].DiaChi_CH[0].Dia_Chi+'</span></div></li>');
                 console.log("add");
 
             };
@@ -446,6 +446,7 @@
         });
 
     }
+
 
     function themSanPham(){
         $.ajax(

@@ -872,6 +872,120 @@ app.post("/Danhmucloaimonan", urlEncodeParser, function (req, res) {
 	}
 });
 
+//route Hienthicuahangtrongdanhmuctrangchu
+app.post("/Hienthicuahangtrongdanhmuctrangchu", urlEncodeParser, function (req, res) {
+	DANHMUC_CUAHANG_TRANGCHU.aggregate(
+		[
+			{ 
+				"$match" : { 
+					"_id" :  mongoose.Types.ObjectId(req.body.idDanhmuccuahangtrangchu)
+				}
+			}, 
+			{ 
+				"$project" : { 
+					"DanhSach_CH" : 1.0
+				}
+			}, 
+			{ 
+				"$lookup" : { 
+					"from" : "cuahangs", 
+					"localField" : "DanhSach_CH", 
+					"foreignField" : "_id", 
+					"as" : "CuaHang_TrangChu"
+				}
+			}, 
+			{ 
+				"$project" : { 
+					"CuaHang_TrangChu" : 1.0, 
+					"_id" : 0.0
+				}
+			}, 
+			{ 
+				"$unwind" : { 
+					"path" : "$CuaHang_TrangChu"
+				}
+			}, 
+			{ 
+				"$lookup" : { 
+					"from" : "diachis", 
+					"localField" : "CuaHang_TrangChu.Dia_Chi_Cua_Hang", 
+					"foreignField" : "_id", 
+					"as" : "DiaChi_CH"
+				}
+			}
+		], 
+		function (err, result) {
+			if (err) {
+				console.log("Load lỗi");
+				res.send({ return_code: "0" , infor:"Lỗi không load được cửa hàng"});
+			}
+
+			else {
+				console.log("Load thành công!");
+				res.send({ return_code: "1" , result});
+			}
+
+		}
+	);
+});
+
+
+//route Hienthicuahangtrongdanhmucloaimonan
+app.post("/Hienthicuahangtrongdanhmucloaimonan", urlEncodeParser, function (req, res) {
+	DANHMUC_LOAIMONAN.aggregate(
+		[
+			{ 
+				"$match" : { 
+					"_id" :  mongoose.Types.ObjectId(req.body.idDanhmucloaimonan)
+				}
+			}, 
+			{ 
+				"$project" : { 
+					"DanhSach_CH" : 1.0
+				}
+			}, 
+			{ 
+				"$lookup" : { 
+					"from" : "cuahangs", 
+					"localField" : "DanhSach_CH", 
+					"foreignField" : "_id", 
+					"as" : "CuaHang_LoaiMonAn"
+				}
+			}, 
+			{ 
+				"$project" : { 
+					"CuaHang_LoaiMonAn" : 1.0, 
+					"_id" : 0.0
+				}
+			}, 
+			{ 
+				"$unwind" : { 
+					"path" : "$CuaHang_LoaiMonAn"
+				}
+			}, 
+			{ 
+				"$lookup" : { 
+					"from" : "diachis", 
+					"localField" : "CuaHang_LoaiMonAn.Dia_Chi_Cua_Hang", 
+					"foreignField" : "_id", 
+					"as" : "DiaChi_CH"
+				}
+			}
+		], 
+		function (err, result) {
+			if (err) {
+				console.log("Load lỗi");
+				res.send({ return_code: "0" , infor:"Lỗi không load được cửa hàng"});
+			}
+
+			else {
+				console.log("Load thành công!");
+				res.send({ return_code: "1" , result});
+			}
+
+		}
+	);
+});
 
 
 //route get CUAHANG trong DANHSACH_CUAHANG_HOMNAY
@@ -2744,5 +2858,16 @@ app.post("/them_monan", urlEncodeParser, async function (req, res) {
 			console.log("Thêm món ăn thất bại, lỗi params !");
 			res.send({return_code: "0"});
 		}
+	});
+});
+
+
+//route Hientatdanhsachcaccuahang
+app.get("/Hientatdanhsachcaccuahang", function (req, res) {
+	CUAHANG.find(function (err, items) {
+		if (err)
+			res.send("Lấy danh sách cửa hàng gặp lỗi : " + err);
+		else
+			res.send(items);
 	});
 });

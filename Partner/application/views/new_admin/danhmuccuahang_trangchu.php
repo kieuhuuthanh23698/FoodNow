@@ -44,16 +44,6 @@
                               </button>
                             </div>
                             <div class="modal-body">
-                                <div class="form-group">
-                                <label>Tên danh mục trang chủ</label>
-                                <select class="form-control">
-                                  <option>option 1</option>
-                                  <option>option 2</option>
-                                  <option>option 3</option>
-                                  <option>option 4</option>
-                                  <option>option 5</option>
-                                </select>
-                              </div>
 
 <label>Chọn cửa hàng hiển thị</label>
 <div class="card">
@@ -188,7 +178,7 @@
                             <!-- /.card-header -->
  <div class="row">
 
-  <section class="col-lg-7 connectedSortable">
+  <section class="col-lg-6 connectedSortable">
   		<div class="container-fluid">
     <div class="card">
         <div class="card-header">
@@ -227,7 +217,7 @@
     </div>
     </section>
 
-<section class="col-lg-5 connectedSortable">
+<section class="col-lg-6 connectedSortable">
 	<div class="container-fluid">
             <div class="card">
               <div class="card-header ui-sortable-handle" style="cursor: move;">
@@ -382,6 +372,13 @@
 <script type="text/javascript">
       
     $(document).ready(function(){
+      var listDMTC = [];
+      var click = false;
+      $(document).ready(function(){
+        loadDMCHTC();
+      });
+
+      function loadDMCHTC(){
         $.ajax(
         {
             url: url + 'Hienthitendanhmuccuahangtrangchu',
@@ -396,7 +393,8 @@
                 var table = $('#example1').DataTable();
                 table.row.add( [
                 res[i].Chu_De_Chinh ,
-                '<button class="btn"><i class="nav-icon fas fa-edit"></i></button> <button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+                '<button class="btn btn-info btn_xoa" data-toggle="modal" data-target="#modal-lg" onclick="initModalCH()"><i class="fas fa-plus"></i></button>'
+                +'<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
                 + "</div>"
                 ] ).draw();
 
@@ -426,24 +424,81 @@
             // document.getElementById("tablelist").innerHTML=test;
             }
         });
+      }
+
     });
 
 
-    function loadCuaHang(idDanhmuccuahangtrangchu){
-                hovering = true;
+    // function loadDanhsachcaccuahang(){
+    //     $.ajax(
+    //     {
+    //         url: url + 'Hientatdanhsachcaccuahang',
+    //         dataType: 'json',
+    //         data: {
+    //         },
+    //         type: 'get',
+    //         success: function (res) {
+
+    //          for (i=0; i< res.length; i++){ 
+
+    //             var table = $('#example2').DataTable();
+    //              for (i=0; i< res.length; i++){ 
+
+    //             $("#tableCuaHang").append('<li id="'+ res[i]._id +'" class="item"><div class="product-img"><img src="http://localhost:3000/Public/Images/'+ res[i].Hinh_Anh_Cua_Hang +'" alt="Product Image" class="img-size-50"></div><div class="product-info"><a href="javascript:void(0)" class="product-title">'+ res[i].Ten_Cua_Hang+'<span class="badge badge-danger float-right"></span></a><span class="product-description">'+res[i].Dia_Chi+'</span></div></li>');
+    //             console.log("add");
+
+    //         };
+        
+    //         // document.getElementById("tablelist").innerHTML=test;
+
+
+    //             $('#example2 tbody tr').each(function(){
+    //                 if($(this).find('td:nth-child(1)').text() == res[i].Chu_De_Chinh)
+    //                     $(this).attr('id', res[i]._id );
+    //             });
+
+    //             $('#example2 tbody tr').each(function(){
+    //                 if($(this).find('td:nth-child(1)').text() == res[i].Chu_De_Chinh)
+    //                     $(this).attr('id', res[i]._id );
+    //                 $(this).bind({
+    //                     click : function(e) { 
+    //                         if(hovering == false)
+    //                             loadCuaHang($(this).attr('id'));
+    //                          }, 
+    //                     mouseleave : function(e) {//khi ko hover nữa
+    //                             //xóa bảng CH
+    //                             hovering = false;
+    //                             // $('#tableCuaHang li').remove();
+    //                         }
+    //                     });
+    //             });
+
+    //         };
+        
+    //         // document.getElementById("tablelist").innerHTML=test;
+    //       }
+
+
+    //     });
+
+    //   }
+
+
+   function loadCuaHang(idDanhmucCHTC){
+        hovering = true;
         $.ajax(
         {
-            url: url + 'Hienthicuahangtrongdanhmuctrangchu',
+            url: url + "Hienthicuahangtrongdanhmuctrangchu",
             dataType: 'json',
             data: {
-                idDanhmuccuahangtrangchu : idDanhmuccuahangtrangchu
+                idDanhmuccuahangtrangchu : idDanhmucCHTC
             },
             type: 'post',
             success: function (res) {
             $('#tableCuaHang li').remove();
              for (i=0; i< res.length; i++){ 
 
-                $("#tableCuaHang").append('<li id="'+ res[i].CuaHang_TrangChu._id +'" class="item"><div class="product-img"><img src="http://localhost:3000/Public/Images/'+ res[i].CuaHang_TrangChu.Hinh_Anh_Cua_Hang +'" alt="Product Image" class="img-size-50"></div><div class="product-info"><a href="javascript:void(0)" class="product-title">'+ res[i].CuaHang_TrangChu.Ten_Cua_Hang+'<span class="badge badge-danger float-right"> <button class="btn" onclick="xoa_cuahangtrongdanhmuc(' + "'" + res[i].CuaHang_TrangChu._id + "'"  + ',' + "'"  + idDanhmuccuahangtrangchu + "'" + ')" ><i class="fas fa-trash-alt"></i></button></span></a><span class="product-description">'+res[i].DiaChi_CH[0].Dia_Chi +'</span></div></li>');
+                $("#tableCuaHang").append('<li id="'+ res[i].CuaHang_TrangChu._id +'" class="item"><div class="product-img"><img src="http://localhost:3000/Public/Images/'+ res[i].CuaHang_TrangChu.Hinh_Anh_Cua_Hang +'" alt="Product Image" class="img-size-50"></div><div class="product-info"><a href="javascript:void(0)" class="product-title">'+ res[i].CuaHang_TrangChu.Ten_Cua_Hang+'<span class="badge badge-danger float-right"><button class="btn btn-danger btn_xoa_bangCH" onclick="xoa_cuahangtrongdanhmuc(' + "'" + res[i].CuaHang_TrangChu._id + "'"  + ',' + "'"  + idDanhmucCHTC + "'" + ')" ><i class="fas fa-trash-alt"></i></button></span></a><span class="product-description">'+res[i].DiaChi_CH[0].Dia_Chi+'</span></div></li>');
                 console.log("add");
 
             };
