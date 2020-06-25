@@ -52,7 +52,7 @@ class Khuyenmai extends CI_Controller {
 			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
 			if(getGroup() == '2' || getGroup() == '1')
 				$id['id'] = $this->session->get_userdata('user')['user']['id'];
-			$data['content'] = $this->load->view('new_admin/khuyenmai_cuahang_hethonghienthi', NULL,TRUE);
+			$data['content'] = $this->load->view('new_admin/khuyenmai_cuahang_hethonghienthi', $id,TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
 		}

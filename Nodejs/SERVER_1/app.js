@@ -2871,3 +2871,75 @@ app.get("/Hientatdanhsachcaccuahang", function (req, res) {
 			res.send(items);
 	});
 });
+
+//route get danh khuyến mãi mà hệ thống áp dụng cho cửa hàng
+//params : idCuaHang
+app.post("/getKMHeThongCuaCuaHang", urlEncodeParser, async function (req, res) {
+	if(req.body.idCuaHang != null && req.body.idCuaHang != ""){
+		KHUYENMAI_HETHONG.find(
+			{DanhSach_CN : {$in : [mongoose.Types.ObjectId(req.body.idCuaHang)]}},
+			function(err, successResutlt){
+				if(err){
+					console.log("Query lỗi : " + err);
+					res.send({return_code : "0"});
+				} else{
+					console.log("Lấy danh sách khuyến mãi hệ thống dành cho cửa hàng thành công !");
+					res.send({return_code : "1", infor : successResutlt});
+				}
+			}
+		)
+	} else{
+		console.log("Lỗi params !");
+		res.send({return_code : "0"});
+	}
+});
+
+
+//xác định xem cửa hàng này có nằm trong danh mục chưa
+const danhMucCuaHangChuaCuaHang = async (listIDCuaHang, iCUAHANG) => {
+	console.time(iCUAHANG._id);
+	return new Promise(function (resolve, reject) {
+		var idx = listIDCuaHang.DanhSach_CH.indexOf(iCUAHANG._id);
+		if(idx < 0){
+			console.timeEnd(iCUAHANG._id);
+			resolve({CH : iCUAHANG, isInclude : 0});
+		} else {
+			console.timeEnd(iCUAHANG._id);
+			resolve({CH : iCUAHANG, isInclude : 1});
+		}
+	});
+}
+
+//route get danh sách cửa hàng thuộc danh mục cửa hàng trang chủ
+//params : idDanhMuc
+app.post("/getDanhSachCuaDanhMuc", urlEncodeParser, async function (req, res) {
+	if(req.body.idDanhMuc != null && req.body.idDanhMuc != ""){
+		DANHMUC_CUAHANG_TRANGCHU.findById({_id : mongoose.Types.ObjectId(req.body.idDanhMuc)},
+		function(errDM, successResutltDM){
+			if(errDM || successResutltDM == null){
+				console.log("Query lỗi : " + errDM);
+				res.send({return_code : "0"});
+			} else {
+				CUAHANG.find({},
+					function(err, successResutlt){
+						if(err || successResutlt.length == 0){
+							console.log("Query lỗi : " + err);
+							res.send({return_code : "0"});
+						} else {
+							Promise.all(
+								successResutlt.map(function (iCUAHANG) {
+									return danhMucCuaHangChuaCuaHang(successResutltDM, iCUAHANG);
+								}))
+								.then(function (resolveCuaHangs) {
+									res.send({return_code : "1", infor : resolveCuaHangs});
+								});
+						}
+					}
+				);
+			}
+		})
+	} else {
+		console.log("Lỗi params !");
+		res.send({return_code : "0"});
+	}
+})
