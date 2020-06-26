@@ -94,71 +94,43 @@
 </style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-<script type="text/javascript">
-
-    
-var socket;
+<script type="text/javascript"> 
       
     $(document).ready(function(){
- socket = io("http://localhost:3000");
-    socket.emit("partner-server", localStorage.getItem('partnerID'));
-    socket.on('partner-server', function(data){
-        //debugger;
-        alert('Guest is ordering with data :');
+      loadDanhSachKhuyenMai();
     });
-    $('#head').text($('#head').text() + ' - ' + localStorage.getItem('partnerID'));
 
-
-
-
-        $.ajax(
-        {
-            url: url + 'Danhsachkhuyenmaihethong',
+    function loadDanhSachKhuyenMai(){
+            $.ajax({
+            url: url + 'getKMHeThongCuaCuaHang',
             dataType: 'json',
             data: {
+                idCuaHang : <?php echo "'".$id."'";?>
             },
-            type: 'get',
+            type: 'post',
             success: function (res) {
-
-             for (i=0; i< res.length; i++){ 
-
+                if(res.return_code == "1"){
+                var listKM = res.infor;
                 var table = $('#example1').DataTable();
-                table.row.add( [
-                res[i].MaGiamGia ,
-                res[i].GioBD,
-                res[i].GioKT,
-                // res[i].Icon,
-                res[i].PhanTram_GiamGia + " %",
-                '<img src="http://localhost:3000/Public/Images/'+res[i].Icon+'" alt="Product Image" class="img-size-50">',
-                "<div class='sparkbar' data-color='#00a65a' data-height='20'>"
-                ] ).draw();
-
-
-                $('#example1 tbody tr').each(function(){
-                    if($(this).find('td:nth-child(1)').text() == res[i].MaGiamGia)
-                        $(this).attr('id', res[i]._id );
-                    $(this).bind({
-                        click : function(e) { 
-                            if(hovering == false)
-                                loadCuaHang($(this).attr('id'));
-                             }, 
-                        mouseleave : function(e) {//khi ko hover nữa
-                                //xóa bảng CH
-                                hovering = false;
-                                // $('#tableCuaHang li').remove();
-                            }
-                        });
-                });
-
-            };
-        
-            // document.getElementById("tablelist").innerHTML=test;
+                for (i=0; i< listKM.length; i++){ 
+                    table.row.add( [
+                    listKM[i].MaGiamGia ,
+                    listKM[i].GioBD,
+                    listKM[i].GioKT,
+                    listKM[i].PhanTram_GiamGia + " %",
+                    '<img src="' + url + 'Public/Images/' + listKM[i].Icon + '" alt="Product Image" class="img-size-50">',
+                    ] ).draw();
+                    };
+                    toastr.success('Load khuyến mãi hệ thống dành cho cửa hàng thành công .');
+                }
             }
         });
-    });
-<script type="text/javascript">
-  $('.toastrDefaultSuccess').click(function() {
-      toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
-    });
+    }
+
+
+// <script type="text/javascript">
+  // $('.toastrDefaultSuccess').click(function() {
+      // toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+    // });
 </script>
 
