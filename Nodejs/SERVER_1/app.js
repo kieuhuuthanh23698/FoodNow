@@ -2338,7 +2338,7 @@ app.post("/addDanhmuccuahangtrangchu", urlEncodeParser, function (req, response)
 			DanhSach_CH: []
 		});
 		var result = "";
-		newDanhMuc_CHTC.save(function (err) {
+		newDanhMuc_CHTC.save(function (err, success) {
 			if (err) {
 				console.log("\nThêm danh mục cửa hàng trang chủ mới bị lỗi : " + err);
 				response.send({ return_code: "0" });
@@ -2346,7 +2346,7 @@ app.post("/addDanhmuccuahangtrangchu", urlEncodeParser, function (req, response)
 			else {
 				result += "Thêm danh mục cửa hàng trang chủ mới thành công !";
 				console.log(result);
-				response.send({ return_code: "1" });
+				response.send({ return_code: "1", infor :  success});
 			}
 		});
 
@@ -2897,16 +2897,20 @@ app.post("/getKMHeThongCuaCuaHang", urlEncodeParser, async function (req, res) {
 
 //xác định xem cửa hàng này có nằm trong danh mục chưa
 const danhMucCuaHangChuaCuaHang = async (listIDCuaHang, iCUAHANG) => {
-	console.time(iCUAHANG._id);
 	return new Promise(function (resolve, reject) {
-		var idx = listIDCuaHang.DanhSach_CH.indexOf(iCUAHANG._id);
-		if(idx < 0){
-			console.timeEnd(iCUAHANG._id);
-			resolve({CH : iCUAHANG, isInclude : 0});
-		} else {
-			console.timeEnd(iCUAHANG._id);
-			resolve({CH : iCUAHANG, isInclude : 1});
-		}
+		DIACHI.findById({_id : mongoose.Types.ObjectId(iCUAHANG.Dia_Chi_Cua_Hang)},function(err, success){
+			if(err|| success == null){
+				resolve(null);
+			} else{		
+				var idx = listIDCuaHang.DanhSach_CH.indexOf(iCUAHANG._id);
+				if(idx < 0){
+					console.timeEnd(iCUAHANG._id);
+					resolve({CH : iCUAHANG, isInclude : 0, DiaChi : success});
+				} else {
+					resolve({CH : iCUAHANG, isInclude : 1, DiaChi : success});
+				}
+			}
+		})
 	});
 }
 
@@ -2926,11 +2930,13 @@ app.post("/getDanhSachCuaDanhMuc", urlEncodeParser, async function (req, res) {
 							console.log("Query lỗi : " + err);
 							res.send({return_code : "0"});
 						} else {
+							console.time(Date.now() + "_" +req.body.idDanhMuc);
 							Promise.all(
 								successResutlt.map(function (iCUAHANG) {
 									return danhMucCuaHangChuaCuaHang(successResutltDM, iCUAHANG);
 								}))
 								.then(function (resolveCuaHangs) {
+									console.timeEnd(Date.now() + "_" +req.body.idDanhMuc);
 									res.send({return_code : "1", infor : resolveCuaHangs});
 								});
 						}
@@ -2943,3 +2949,40 @@ app.post("/getDanhSachCuaDanhMuc", urlEncodeParser, async function (req, res) {
 		res.send({return_code : "0"});
 	}
 })
+
+app.post("/themXoaCuaHang_DanhMuc", urlEncodeParser, async function (req, res) {
+	if(req.body.idDanhMuc != null && req.body.idDanhMuc != ""
+	&& req.body.idCuaHang != null && req.body.idCuaHang != ""
+	&& req.body.state != null && req.body.state != ""){
+		if(req.body.state == "1"){
+			DANHMUC_CUAHANG_TRANGCHU.findByIdAndUpdate(
+				{_id : mongoose.Types.ObjectId(req.body.idDanhMuc)},
+				{$push : {DanhSach_CH : req.body.idCuaHang}},
+				function(err, success){
+				if(err || success == null){
+					console.log("Lỗi query !");
+					res.send({return_code : "0"});
+				} else {
+					console.log("Thêm cửa hàng vào danh mục trang chủ thành công !");
+					res.send({return_code: "1"});
+				}
+			});
+		} else{
+			DANHMUC_CUAHANG_TRANGCHU.findByIdAndUpdate(
+				{_id : mongoose.Types.ObjectId(req.body.idDanhMuc)},
+				{$pull : {DanhSach_CH : req.body.idCuaHang}},
+				function(err, success){
+				if(err || success == null){
+					console.log("Lỗi query !");
+					res.send({return_code : "0"});
+				} else {
+					console.log("Xóa cửa hàng khỏi danh mục trang chủ thành công !");
+					res.send({return_code: "1"});
+				}
+			});
+		}
+	} else {
+		console.log("Lỗi params !");
+		res.send({return_code : "0"});
+	}
+});
