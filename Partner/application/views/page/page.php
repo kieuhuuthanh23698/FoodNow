@@ -33,6 +33,7 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="sidebar-mini layout-fixed" style="height: auto; font-size: 1rem !important; font-weight: 400 !important; line-height: 1.5 !important;">
+
 <!-- jQuery -->
 <script src="<?php echo base_url()?>plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->

@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Cửa hàng trang chủ</h1>
+                    <h1 class="m-0 text-dark">Cửa hàng hôm nay</h1>
                 </div><!-- /.col -->
           <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Danh mục</a></li>
-                        <li class="breadcrumb-item active">Cửa hàng trang chủ</li>
+                        <li class="breadcrumb-item active">Cửa hàng hôm nay</li>
                     </ol>
                 </div><!-- /.col -->
         </div><!-- /.row -->
@@ -26,42 +26,85 @@
         <!-- Main row -->
             <div class="card">
 
-<!-- Thêm danh mục trang chủ modal -->
+<!-- Thêm danh mục hôm nay modal -->
  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">Default Modal</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+
                             <div class="card-body">
-                                <!-- <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4"> -->
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
                                     <form>
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Tên danh mục</label>
-                                            <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Món ngon mỗi ngày" id="ten_danhmuc">
-                  </div>
+                                            <label for="exampleInputEmail1">Thông tin chính</label>
+                                            <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Món ngon mỗi ngày" id="thongtin_chinh">
 
-                 
-                </form>
+                                            <label for="exampleInputEmail1">Thông tin phụ</label>
+                                            <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Món ngon mỗi ngày" id="thongtin_phu">
+                                  </div>
+
+                                 
+                                </form>
 
                                                     <form>
-                                                            <div class="input-group-append">
-                                                                <button class="btn btn-primary float-right toastrDefaultSuccess"  onclick="themSanPham()">Lưu</button>
-                                                            </div>
-                                                        </div>
+                                                      <label for="exampleInputEmail1">Hình ảnh</label>
+                                                       <div class="form-group">
 
+                                                            <img id="img_upload">
+                                                                <div class="custom-file">
 
-
+                                                                    <input type="file" class="custom-file-input" id="inputGroupFile02" />
+                                                                    <label class="custom-file-label" for="inputGroupFile02" id="Chonfile">Chọn hình ảnh</label>
+                                                                </div>
+                        
+                    </div>
                                                     </form>
+                                                    
+                                              </div>
+                                              <div class="modal-footer justify-content-between">
+                      <button class="btn btn-primary float-right toastrDefaultSuccess" data-dismiss="modal" onclick="themSanPham()">Lưu</button>
+                    </div>
+                                                    
 
                                                 </div>
                                             </div>
                                         </div>
-                                      <!-- Thêm danh mục trang chủ modal -->
+                                      <!-- Thêm danh mục hôm nay modal -->
 
-                                      <!-- Thêm cửa hàng vào danh mục trang chủ -->
-                                      <div class="modal fade" id="modal-lg">
+                                      <!-- Có chắc muốn xóa -->
+                                      <div class="modal fade bd-example-modal-sm" tabindex="-1"
+                                                            role="dialog" aria-labelledby="myLargeModalLabel"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                                            Bạn có chắc chắn muốn xóa?</h5>
+                                                                        <button type="button" class="close"
+                                                                            data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <input type="text" style="display: none;" value="sdfsdfsdf" id="idDelete">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-dismiss="modal">Cancel</button>
+                                                                        <button type="button" onclick="xoa()" data-dismiss="modal"
+                                                                            class="btn btn-primary toastrDefaultSuccess">OK</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                      <!-- Có chắc chắn muốn xóa -->
+
+                                      <!-- Thêm cửa hàng vào danh mục hôm nay -->
+                                <div class="modal fade" id="modal-lg">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
                             <div class="modal-header">
@@ -71,8 +114,7 @@
                               </button>
                             </div>
                             <div class="modal-body">
-
-<label>Chọn cửa hàng hiển thị</label>
+                                
 <div class="card">
 <div class="card-body">
             <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
@@ -90,7 +132,7 @@
                                     <tr>
                                         <td>
                                             <ul class="products-list product-list-in-card pl-2 pr-2">
-                                             <li class="item" style="background-color: transparent;">
+                                             <li class="item">
                                 <div class="product-img">
                                     <img src="<?php echo base_url();?>dist/img/comchien.png" alt="Product Image"
                                         class="img_chinhanh">
@@ -107,11 +149,10 @@
                                     </td>
 
                                         <td>
-                                            <div class="icheck-success d-inline">
-                                              <input type="checkbox" id="checkboxSuccess3">
-                                              <label for="checkboxSuccess3">
-                                                Success checkbox
-                                              </label>
+                                            <div class="icheck-primary d-inline">
+                                                <input type="checkbox" id="checkboxPrimary1" checked>
+                                                <label for="checkboxPrimary1">
+                                                </label>
                                             </div>
                                       </td>
                                     </tr>
@@ -136,11 +177,10 @@
                                     </td>
 
                                         <td>
-                                           <div class="icheck-success d-inline">
-                                              <input type="checkbox" id="checkboxSuccess1">
-                                              <label for="checkboxSuccess1">
-                                                Success checkbox
-                                              </label>
+                                           <div class="icheck-primary d-inline">
+                                                <input type="checkbox" id="checkboxPrimary1" checked>
+                                                <label for="checkboxPrimary1">
+                                                </label>
                                             </div>
                                         </td>
                                     </tr>
@@ -157,8 +197,7 @@
 
                             </div>
                             <div class="modal-footer justify-content-between">
-                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-primary">Save changes</button>
+                              <button type="button" class="btn btn-primary float-right">Lưu</button>
                             </div>
                           </div>
                           <!-- /.modal-content -->
@@ -167,6 +206,7 @@
                       </div>
                       <!-- /.modal -->
 
+
 <!-- Thêm cửa hàng vào danh mục trang chủ -->
             
 
@@ -174,10 +214,13 @@
                             <!-- /.card-header -->
  <div class="row">
  <section class="col-lg-6 connectedSortable">
-      <div class="container-fluid">
+        <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title"><button type="button" class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg">Thêm danh mục trang chủ</button></h3>
+            <h3 class="card-title"> <button type="button" onclick="initModalDMCH()" class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg">Thêm danh mục cửa hàng hôm nay</button></h3>
+
+
+
             <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
@@ -187,14 +230,16 @@
                   </button> -->
                 </div>
         </div>
-      <div class="card-body">
+        <div class="card-body">
             <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                 <div class="row">
                     <div class="col-sm-12">
                         <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
                             <thead>
                                 <tr role="row">
-                                    <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Tên trang chủ</th>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Thông tin chính</th>
+                                     <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Thông tin phụ</th>
+                                      <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Hình ảnh</th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Chi tiết</th>
                                     </tr>
    
@@ -307,41 +352,46 @@
 </script>
 
 <script type="text/javascript">
-      
+    var listDMTC = [];
+    var click = false;
     $(document).ready(function(){
-      var listDMTC = [];
-      var click = false;
-      $(document).ready(function(){
-        loadDMCHTC();
-      });
+      loadDMCHTC();
+    });
 
-      function loadDMCHTC(){
+
+    function setIdDelete(idDelete) {
+        $('#idDelete').val(idDelete);
+    }
+
+     function loadDMCHTC(){
         $.ajax(
         {
-            url: url + 'Hienthitendanhmuccuahangtrangchu',
+            url:  url + "Danhsachcuahanghomnayhienthi",
             dataType: 'json',
             data: {
             },
             type: 'get',
             success: function (res) {
-
+                 var table = $('#example1').DataTable();
+                 table.clear().draw();
              for (i=0; i< res.length; i++){ 
-
-                var table = $('#example1').DataTable();
                 table.row.add( [
-                res[i].Chu_De_Chinh ,
-                '<button class="btn btn-info btn_xoa" data-toggle="modal" data-target="#modal-lg" onclick="initModalCH()"><i class="fas fa-plus"></i></button>'
-                +'<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+                res[i].Thongtin_Chinh ,
+                res[i].Thongtin_Phu ,
+                '<img src="' + url + 'Public/Images/'+ res[i].HinhAnh_CH+'" alt="Product Image" class="img_chinhanh">',
+                "<div class='sparkbar' data-color='#00a65a' data-height='20'>" 
+                + '<button class="btn btn-info btn_xoa" data-toggle="modal" data-target="#modal-lg" onclick="initModalCH()"><i class="fas fa-plus"></i></button>'
+                + '<button class="btn btn-danger btn_xoa"  onclick="setIdDelete(' + "'" + res[i]._id + "'" + ')" data-toggle="modal" data-target=".bd-example-modal-sm" ><i class="fas fa-trash-alt"></i></button>'
                 + "</div>"
                 ] ).draw();
-
+// onclick="xoa(' + "'" + res[i]._id + "'" + ')" 
                 $('#example1 tbody tr').each(function(){
-                    if($(this).find('td:nth-child(1)').text() == res[i].Chu_De_Chinh)
+                    if($(this).find('td:nth-child(1)').text() == res[i].Thongtin_Chinh)
                         $(this).attr('id', res[i]._id );
                 });
 
                 $('#example1 tbody tr').each(function(){
-                    if($(this).find('td:nth-child(1)').text() == res[i].Chu_De_Chinh)
+                    if($(this).find('td:nth-child(1)').text() == res[i].Thongtin_Chinh)
                         $(this).attr('id', res[i]._id );
                     $(this).bind({
                         click : function(e) { 
@@ -356,86 +406,27 @@
                         });
                 });
 
-            };
-        
-            // document.getElementById("tablelist").innerHTML=test;
+            };            // document.getElementById("tablelist").innerHTML=test;
             }
-        });
-      }
-
     });
+}
 
 
-    // function loadDanhsachcaccuahang(){
-    //     $.ajax(
-    //     {
-    //         url: url + 'Hientatdanhsachcaccuahang',
-    //         dataType: 'json',
-    //         data: {
-    //         },
-    //         type: 'get',
-    //         success: function (res) {
-
-    //          for (i=0; i< res.length; i++){ 
-
-    //             var table = $('#example2').DataTable();
-    //              for (i=0; i< res.length; i++){ 
-
-    //             $("#tableCuaHang").append('<li id="'+ res[i]._id +'" class="item"><div class="product-img"><img src="http://localhost:3000/Public/Images/'+ res[i].Hinh_Anh_Cua_Hang +'" alt="Product Image" class="img-size-50"></div><div class="product-info"><a href="javascript:void(0)" class="product-title">'+ res[i].Ten_Cua_Hang+'<span class="badge badge-danger float-right"></span></a><span class="product-description">'+res[i].Dia_Chi+'</span></div></li>');
-    //             console.log("add");
-
-    //         };
-        
-    //         // document.getElementById("tablelist").innerHTML=test;
-
-
-    //             $('#example2 tbody tr').each(function(){
-    //                 if($(this).find('td:nth-child(1)').text() == res[i].Chu_De_Chinh)
-    //                     $(this).attr('id', res[i]._id );
-    //             });
-
-    //             $('#example2 tbody tr').each(function(){
-    //                 if($(this).find('td:nth-child(1)').text() == res[i].Chu_De_Chinh)
-    //                     $(this).attr('id', res[i]._id );
-    //                 $(this).bind({
-    //                     click : function(e) { 
-    //                         if(hovering == false)
-    //                             loadCuaHang($(this).attr('id'));
-    //                          }, 
-    //                     mouseleave : function(e) {//khi ko hover nữa
-    //                             //xóa bảng CH
-    //                             hovering = false;
-    //                             // $('#tableCuaHang li').remove();
-    //                         }
-    //                     });
-    //             });
-
-    //         };
-        
-    //         // document.getElementById("tablelist").innerHTML=test;
-    //       }
-
-
-    //     });
-
-    //   }
-
-
-   function loadCuaHang(idDanhmucCHTC){
+    function loadCuaHang(idDanhmuccuahanghomnay){
         hovering = true;
         $.ajax(
         {
-            url: url + "Hienthicuahangtrongdanhmuctrangchu",
+            url: url + "Danhsachcuahanghomnay_hienthicuahang",
             dataType: 'json',
             data: {
-                idDanhmuccuahangtrangchu : idDanhmucCHTC
+                idDanhsachcuahanghomnay : idDanhmuccuahanghomnay
             },
             type: 'post',
             success: function (res) {
             $('#tableCuaHang li').remove();
              for (i=0; i< res.length; i++){ 
 
-                $("#tableCuaHang").append('<li id="'+ res[i].CuaHang_TrangChu._id +'" class="item"><div class="product-img"><img src="http://localhost:3000/Public/Images/'+ res[i].CuaHang_TrangChu.Hinh_Anh_Cua_Hang +'" alt="Product Image" class="img-size-50"></div><div class="product-info"><a href="javascript:void(0)" class="product-title">'+ res[i].CuaHang_TrangChu.Ten_Cua_Hang+'<span class="badge badge-danger float-right"><button class="btn btn-danger btn_xoa_bangCH" onclick="xoa_cuahangtrongdanhmuc(' + "'" + res[i].CuaHang_TrangChu._id + "'"  + ',' + "'"  + idDanhmucCHTC + "'" + ')" ><i class="fas fa-trash-alt"></i></button></span></a><span class="product-description">'+res[i].DiaChi_CH[0].Dia_Chi+'</span></div></li>');
+                $("#tableCuaHang").append('<li id="'+ res[i].CuaHang_HomNay._id +'" class="item"><div class="product-img"><img src="http://localhost:3000/Public/Images/'+ res[i].CuaHang_HomNay.Hinh_Anh_Cua_Hang +'" alt="Product Image" class="img-size-50"></div><div class="product-info"><a href="javascript:void(0)" class="product-title">'+ res[i].CuaHang_HomNay.Ten_Cua_Hang+'<span class="badge badge-danger float-right"><button class="btn btn-danger btn_xoa_bangCH" onclick="xoa_cuahangtrongdanhmuc(' + "'" + res[i].CuaHang_HomNay._id + "'"  + ',' + "'"  + idDanhmuccuahanghomnay + "'" + ')" ><i class="fas fa-trash-alt"></i></button></span></a><span class="product-description">'+res[i].DiaChi_CH[0].Dia_Chi+'</span></div></li>');
                 console.log("add");
 
             };
@@ -446,23 +437,45 @@
 
     }
 
+
+     function initModalDMCH(){
+        $('#thongtin_chinh').val("");
+        $('#thongtin_phu').val("");
+        var e = document.getElementById('inputGroupFile02');
+        e.target = null;
+        var img = document.getElementById('img_upload');
+        img.height = "0";
+        document.getElementById("Chonfile").innerHTML= "";
+    }
+
+    
     function themSanPham(){
+        var form = createFormDataDMCHTC();
         $.ajax(
         {
-            url: url + 'addDanhmuccuahangtrangchu',
+            url: url + "addDanhsachcuahanghomnay",
             dataType: 'json',
-            data: {
-                chuDechinh : $("#ten_danhmuc").val(),
-            },
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: 
+              form
+                // Thongtin_Chinh : $("#thongtin_chinh").val(),
+                // Thongtin_Phu : $("#thongtin_phu").val(),
+                // HinhAnh_CH :  $("#inputGroupFile02").val()
+            ,
             type: 'post',
             success: function (res) {
              if(res.return_code == "1")
              {
-             var table = $('#example1').DataTable();
-            table.row.add( [
-            $("#ten_danhmuc").val(),
-            '<button class="btn" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
-            ] ).draw();
+            //  var table = $('#example1').DataTable();
+            // table.row.add( [
+            // $("#thongtin_chinh").val(),
+            // $("#thongtin_chinh").val(),
+            // $("#inputGroupFile02").val(),
+            // '<button class="btn" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+            // ] ).draw();
+            loadDMCHTC();
         }
         else if(res.return_code =="0"){
                 alert("Thêm thất bại!");
@@ -471,37 +484,81 @@
         });
     }
 
+    function createFormDataDMCHTC(){
+        var form = new FormData();
+        var file_data = $("#inputGroupFile02").prop('files')[0];
+        if(file_data){
+            var type = file_data.type;
+            var match = ["image/png", "image/jpg", "image/jpeg"];
+            if (type == match[0] || type == match[1] || type == match[2]) {
+                form.append("upload_file", file_data);
+            }
+        }
+        form.append("Thongtin_Chinh", $("#thongtin_chinh").val());
+        form.append("Thongtin_Phu", $("#thongtin_phu").val());
+        return form;
+    }
 
-     function xoa(id_cuahangtrangchu)
+    
+     function xoa()
     {
-        alert("xoa" + id_cuahangtrangchu );
+        var id_cuahanghomnay = $('#idDelete').val();
         $.ajax({
             type    : 'delete',
-            url     : url + 'deleteDanhmuccuahangtrangchu',
+            url     : url +'deleteDanhmuccuahanghomnay',
             data    : {
-                idDanhmuccuahangtrangchu : id_cuahangtrangchu
+                idDanhmuccuahanghomnay : id_cuahanghomnay
             },
             dataType: 'json',
             success: function (res) {
             if(res.return_code == "1")
              {
                 var table = $('#example1').DataTable();
-                table.row($('#' + id_cuahangtrangchu)).remove().draw();
+                table.row($('#' + id_cuahanghomnay)).remove().draw();
+              alert("Xóa thành công !");
+            } else{
+              alert("Xóa thât bại !");
             }
             }
         });
         
     }
 
-     function xoa_cuahangtrongdanhmuc(id_cuahang, idDanhmuccuahangtrangchu)
+
+
+    
+
+    // function themSanPham(){
+    //     var form = createFormDataDMCHTC();
+    //     $.ajax(
+    //     {
+    //         url: url + "addDanhsachcuahanghomnay",
+    //         dataType: 'json',
+    //         cache: false,
+    //         contentType: false,
+    //         processData: false,
+    //         data: form,
+    //         type: 'post',
+    //         success: function (res) {
+    //         if(res.return_code == "1"){
+    //             loadDMCHTC();
+    //         } else if(res.return_code == "0"){
+    //             alert("Thêm thất bại !");
+    //         }
+    //         }
+    //     });
+    // }
+
+
+     function xoa_cuahangtrongdanhmuc(id_cuahang, idDanhmuccuahanghomnay)
     {
-        alert("xoa" + id_cuahang +idDanhmuccuahangtrangchu );
+        alert("xoa" + id_cuahang + idDanhmuccuahanghomnay );
         $.ajax({
             type    : 'delete',
-            url     : url + 'deleteCuahangtrongdanhmuctrangchu',
+            url     :  url + "deleteCuahangtrongdanhmuchomnay",
             data    : {
                 idcuahang : id_cuahang,
-                idDanhmuccuahangtrangchu : idDanhmuccuahangtrangchu
+                idDanhmuccuahanghomnay : idDanhmuccuahanghomnay
             },
             dataType: 'json',
             success: function (res) {
@@ -513,4 +570,17 @@
         });
         
     }
+</script>
+<script>
+// $( "#example1 tr" ).hover(
+//   function() {//khi hover vào
+//     //lấy id của tr đang hover
+//     // alert($(this).attr('id'));
+//     alert($(this).attr('id'));
+//     //từ id đó , lấy list CH, hiển thị vào table
+//   }, 
+//   function() {//khi ko hover nữa
+//     //xóa bảng CH
+//   }
+// );
 </script>

@@ -9,7 +9,7 @@
                 </div><!-- /.col -->
           <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Danh mục</a></li>
+                        <li class="breadcrumb-item"><a href="#">Quản lý</a></li>
                         <li class="breadcrumb-item active">Chi nhánh</li>
                     </ol>
                 </div><!-- /.col -->
@@ -26,13 +26,7 @@
         <!-- Main row -->
             <div class="card">
 
-            <div class="card-header">
-
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-default">
-                Thêm chi nhánh
-                </button>
-
-                <!-- Thêm loại món ăn -->
+<!-- Thêm chi nhánh modal -->
                 <div class="modal fade" id="modal-default">
                     <div class="modal-dialog">
                       <div class="modal-content">
@@ -67,61 +61,37 @@
                 <!-- /.modal-dialog -->
               </div>
               <!-- /.modal -->
+                                      <!-- Thêm chi nhánh modal -->
 
+                                      <!-- Có chắc muốn xóa -->
+                                      <div class="modal fade bd-example-modal-sm" tabindex="-1"
+                                                            role="dialog" aria-labelledby="myLargeModalLabel"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                                            Bạn có chắc chắn muốn xóa?</h5>
+                                                                        <button type="button" class="close"
+                                                                            data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <input type="text" style="display: none;" value="sdfsdfsdf" id="idDelete">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-dismiss="modal">Cancel</button>
+                                                                        <button type="button" onclick="xoa()" data-dismiss="modal"
+                                                                            class="btn btn-primary toastrDefaultSuccess">OK</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
 
-        </div>
+                                      <!-- Có chắc chắn muốn xóa -->
 
-        </div>
-                            <!-- /.card-header -->
- <div class="row">
-
-                                <section class="col-lg-6 connectedSortable">
-                                            <div class="card">
-                                                 <div class="card-header">
-                                                    <h3 class="card-title">Danh sách chi nhánh</h3>
-
-                                                    <div class="card-tools">
-                                                      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                                                    </div>
-                                                  </div>
-
-                                                <div class="card-body">
-                                                    <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                                                        <div class="row">
-                                                            <div class="col-sm-12">
-                                                                <table id="example2" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
-                                                                    <thead>
-                                                                        <tr role="row">
-                                                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Tên chi nhánh: activate to sort column descending" aria-sort="ascending">Tên chi nhánh</th>
-                                                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label=">Hình ảnh: activate to sort column ascending">Số lượng CH</th>
-                                                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label=">Hình ảnh: activate to sort column ascending">Hình ảnh</th>
-                                                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Chi tiết: activate to sort column ascending" >Chi tiết</th>
-                                                                        </tr>
-
-                                                                    </thead>
-                                                                    <tbody>
-
-                                                                       <tr>
-                                                <td><a href="#">OR9853</a></td>
-                                                <td>1</td>
-                                                <td>
-                                                    <ul class="list-inline">
-                                                        <li class="list-inline-item">
-                                                            <img alt="BunBoHue" class="img_chinhanh"
-                                                                src="<?php echo base_url();?>dist/img/mixaobo.jpg">
-                                                        </li>
-                                                    </ul>
-                                                </td>
-
-                                                <td>
-                                                    <div class="sparkbar" data-color="#00a65a" data-height="20">
-                                                         <button  type="button" class="btn  btn-info" data-toggle="modal" data-target="#modal-lg"><i class="fas fa-plus"></i></button>
-                                                         <button class="btn btn-danger btn_xoa"><i class="fas fa-trash-alt" data-toggle="modal"
-                                                                data-target=".bd-example-modal-sm"></i></button>
-                                                    </div>
-
-
- <div class="modal fade" id="modal-lg">
+                                      <!-- Thêm cửa hàng vào danh mục hôm nay -->
+                                 <div class="modal fade" id="modal-lg">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
                             <div class="modal-header">
@@ -216,22 +186,6 @@
 
 
 
-            <label>Cấp tài khoản cửa hàng</label>
-            <div class="card">
-                 <div class="card-body">
-                    <div class="form-group">
-                                
-                    <div class="form-group">
-                                            <label for="exampleInputEmail1">Tên đăng nhập</label>
-                                            <input type="email" class="form-control" id="tenDN" aria-describedby="emailHelp" placeholder="Tên đăng nhập sẽ cho tự động mỗi lần click Thêm cửa hàng">
-                                            <label for="exampleInputEmail1">Mật khẩu</label>
-                                            <input type="email" class="form-control" id="matkhau" aria-describedby="emailHelp" placeholder="Mật khẩu cũng sẽ tự động theo Tên đăng nhập">
-                    </div>
-                    </div>
-                 </div> 
-             </div>
-
-
                             </div>
                             <div class="modal-footer justify-content-between">
                               <button type="button" class="btn btn-primary float-right">Lưu</button>
@@ -244,60 +198,23 @@
                       <!-- /.modal -->
 
 
+<!-- Thêm cửa hàng vào danh mục trang chủ -->
+            
 
-                                                        <div class="modal fade bd-example-modal-lg" tabindex="-1"
-                                                            role="dialog" aria-labelledby="myLargeModalLabel"
-                                                            aria-hidden="true">
-                                                            <div class="modal-dialog modal-lg" role="document">
-                                                                <div class="modal-content">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <div class="modal fade bd-example-modal-sm" tabindex="-1"
-                                                            role="dialog" aria-labelledby="myLargeModalLabel"
-                                                            aria-hidden="true">
-                                                            <div class="modal-dialog modal-lg" role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title" id="exampleModalLabel">
-                                                                            Bạn có chắc chắn muốn xóa?</h5>
-                                                                        <button type="button" class="close"
-                                                                            data-dismiss="modal" aria-label="Close">
-                                                                            <span aria-hidden="true">&times;</span>
-                                                                        </button>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary"
-                                                                            data-dismiss="modal">Cancel</button>
-                                                                        <button type="button"
-                                                                            class="btn btn-primary toastrDefaultSuccess">OK</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+        </div>
+                            <!-- /.card-header -->
+ <div class="row">
+ <section class="col-lg-6 connectedSortable">
+        <div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-default">
+                Thêm chi nhánh
+                </button></h3>
 
 
-                                                </td>
-                                            </tr>
-                                                                      
-                                   </tbody>
 
-                            </table></div></div>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                        
-    </section>
-
-                                    <section class="col-lg-6 connectedSortable">
-            <div class="card">
-              <div class="card-header ui-sortable-handle" style="cursor: move;">
-                <h3 class="card-title">Danh sách các cửa hàng thuộc chi nhánh</h3>
-
-                <div class="card-tools">
+            <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
                   </button>
@@ -305,98 +222,91 @@
                     <i class="fas fa-times"></i>
                   </button> -->
                 </div>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body p-0">
-                <ul id="tableCuaHang" class="products-list product-list-in-card pl-2 pr-2">
-                  <li class="item">
-                    <div class="product-img">
-                      <img src="<?php echo base_url();?>dist/img/BunBoHue.jpg" alt="Product Image" class="img-size-50">
-                    </div>
-                    <div class="product-info">
-                      <a href="javascript:void(0)" class="product-title">Thành Đạt - Hủ Tiếu Nam Vang - Nguyễn Hữu Cầu
-                        <span class="badge badge-danger float-right"><i class="fas fa-edit"></i></span>
-                        <span class="badge badge-danger float-right">
-                        <i class="far fa-trash-alt" data-toggle="modal" data-target=".bd-example-modal-sm"></i>
-                      </span></a>
+        </div>
+        <div class="card-body">
+            <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
+                            <thead>
+                                <tr role="row">
+                                                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Tên chi nhánh: activate to sort column descending" aria-sort="ascending">Tên chi nhánh</th>
+                                                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label=">Hình ảnh: activate to sort column ascending">Số lượng CH</th>
+                                                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label=">Hình ảnh: activate to sort column ascending">Hình ảnh</th>
+                                                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Chi tiết: activate to sort column ascending" >Chi tiết</th>
+                                                                        </tr>
+                                </thead>
+                                <tbody>
 
-                      <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-lg" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Bạn có chắc chắn muốn xóa?</h5>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                <button type="button" class="btn btn-primary toastrDefaultSuccess">OK</button>
-                                                            </div>
+                                                                       <tr>
+                                                <td><a href="#">OR9853</a></td>
+                                                <td>1</td>
+                                                <td>
+                                                    <ul class="list-inline">
+                                                        <li class="list-inline-item">
+                                                            <img alt="BunBoHue" class="img_chinhanh"
+                                                                src="<?php echo base_url();?>dist/img/mixaobo.jpg">
+                                                        </li>
+                                                    </ul>
+                                                </td>
+
+                                                <td>
+                                                    <div class="sparkbar" data-color="#00a65a" data-height="20">
+                                                         <button  type="button" class="btn  btn-info" data-toggle="modal" data-target="#modal-lg"><i class="fas fa-plus"></i></button>
+                                                         <button class="btn btn-danger btn_xoa"><i class="fas fa-trash-alt" data-toggle="modal"
+                                                                data-target=".bd-example-modal-sm"></i></button>
+
+                                                    </div>
+</td></tr>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+<section class="col-lg-6 connectedSortable">
+                                        <div class="card">
+                                             <div class="card-header">
+                                                    <h3 class="card-title">Danh sách loại món ăn</h3>
+
+                                                    <div class="card-tools">
+                                                      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                                    </div>
+                                                  </div>
+
+                                            <div class="card-body">
+                                                <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <table id="example2" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
+                                                                <thead>
+                                                                    <tr role="row">
+                                                                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Tên loại món</th>
+                                                                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Số lượng món</th>
+                                                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Chi tiết</th>
+                                                                    </tr>
+
+                                                                </thead>
+                                                                <tbody>
+
+                                                                </tbody>
+
+                                                            </table>
                                                         </div>
                                                     </div>
                                                 </div>
-                      <span class="product-description">
-                        22B Nguyễn Hữu Cầu, P.Tân Định, Quận 1, TP.HCM
-                      </span>
-                    </div>
-                  </li>
-
-                  <!-- <li class="item">
-                    <div class="product-img">
-                      <img src="<?php echo base_url();?>dist/img/BunBoHue.jpg" alt="Product Image" class="img-size-50">
-                    </div>
-                    <div class="product-info">
-                      <a href="javascript:void(0)" class="product-title">Thành Đạt - Hủ Tiếu Nam Vang - Nguyễn Hữu Cầu
-                        <span class="badge badge-danger float-right">
-                        <i class="far fa-trash-alt"></i>
-                      </span></a>
-                      <span class="product-description">
-                        22B Nguyễn Hữu Cầu, P.Tân Định, Quận 1, TP.HCM
-                      </span>
-                    </div>
-                  </li> -->
-                  <!-- /.item -->
-                  <!-- <li class="item">
-                    <div class="product-img">
-                      <img src="<?php echo base_url();?>dist/img/BunBoHue.jpg" alt="Product Image" class="img-size-50">
-                    </div>
-                    <div class="product-info">
-                      <a href="javascript:void(0)" class="product-title">Thành Đạt - Hủ Tiếu Nam Vang - Nguyễn Hữu Cầu
-                        <span class="badge badge-danger float-right">
-                        <i class="far fa-trash-alt"></i>
-                      </span></a>
-                      <span class="product-description">
-                        22B Nguyễn Hữu Cầu, P.Tân Định, Quận 1, TP.HCM
-                      </span>
-                    </div>
-                  </li> -->
-                  <!-- /.item -->
-                  <!-- <li class="item">
-                    <div class="product-img">
-                      <img src="<?php echo base_url();?>dist/img/BunBoHue.jpg" alt="Product Image" class="img-size-50">
-                    </div>
-                    <div class="product-info">
-                      <a href="javascript:void(0)" class="product-title">Thành Đạt - Hủ Tiếu Nam Vang - Nguyễn Hữu Cầu
-                        <span class="badge badge-danger float-right">
-                        <i class="far fa-trash-alt"></i>
-                      </span></a>
-                      <span class="product-description">
-                        22B Nguyễn Hữu Cầu, P.Tân Định, Quận 1, TP.HCM
-                      </span>
-                    </div>
-                  </li> -->
-                  <!-- /.item -->
-                </ul>
-              </div>
-              <!-- /.card-body -->
-              <div class="card-footer text-center">
-                <a href="javascript:void(0)" class="uppercase">View All Products</a>
-              </div>
-              <!-- /.card-footer -->
-            </div>
                                             </div>
-        </section>
+                                        </div>
+    </section>
+                                   
+</div>
+        
 </div>
 
 
@@ -452,74 +362,5 @@
                 img.height = "100";
                 document.getElementById("Chonfile").innerHTML=fileName;
             })
-</script>
-
- <script type="text/javascript">
-    var listMonAn = [];
-    var click = false;
-    $(document).ready(function(){
-
-        $.ajax(
-        {
-
-            url: url + "Danhsachmonan_cuahang",
-            dataType: 'json',
-            data: {
-                idcuahang: <?php echo "'".$id."'";?>,
-            },
-            type: 'post',
-            success: function (res) {
-            if(res.return_code == "1"){
-                listMonAn = res.infor;
-                 for (i=0; i< listMonAn.length; i++){ 
-                    var item = listMonAn[i];//1 loại món ăn
-                    var table = $('#example1').DataTable();
-                    table.row.add( [
-                    item.DS_LoaiMA.Ten_loai_mon_an ,
-                    item.DS_LoaiMA.Danh_sach_mon_an.length ,
-                    '<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + item.DS_LoaiMA._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
-                    + "</div>"
-                    ] ).draw();
-
-                    $('#example1 tbody tr').each(function(){
-                        if($(this).find('td:nth-child(1)').text() == item.DS_LoaiMA.Ten_loai_mon_an)
-                            $(this).attr('id', item.DS_LoaiMA._id );
-                        $(this).bind({
-                            click : function(e) { 
-                                    if(!click)
-                                        loadMonan_LoaiMonAn($(this).attr('id'));
-                                 },
-                            mouseleave : function(e) {
-                                     click = false;
-                                }
-                            });
-                    });
-                }
-            }
-            }
-        });
-
-    });
-
-    function loadMonan_LoaiMonAn(idLoaiMonAn){
-        click = true;
-         for (i=0; i< listMonAn.length; i++){
-            var item = listMonAn[i];//1 loại món ăn
-            if(item.DS_LoaiMA._id == idLoaiMonAn){
-                var table = $('#example2').DataTable();
-                table.clear().draw();
-                for (var j = 0; j < item.DS_Monan.length; j++) {
-                    var monan = item.DS_Monan[j];
-                    table.row.add( [
-                    '<img src="' + url + 'Public/Images/'+ monan.Hinh_anh_mon_an+'" alt="Product Image" class="img-size-50">',
-                    monan.Ten_mon_an ,
-                    "" + (new Intl.NumberFormat().format(monan.Don_gia_mon_an)),
-                    '<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + monan._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
-                    + "</div>"
-                    ] ).draw();
-                }
-            }
-        }
-    }
 </script>
 
