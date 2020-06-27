@@ -313,7 +313,40 @@
       });
     }
 
-    // function loadDanhsachcaccuahang(){
+
+
+   function loadCuaHang(idDanhmucCHTC){
+        hovering = true;
+        $.ajax(
+        {
+            url: url + "Hienthicuahangtrongdanhmuctrangchu",
+            dataType: 'json',
+            data: {
+                idDanhmuccuahangtrangchu : idDanhmucCHTC
+            },
+            type: 'post',
+            success: function (res) {
+            if(res.return_code == "1"){
+              // $("#idDanhmucCHTC").text(idDanhmucCHTC);
+              listDMTC = res.infor;
+              var table = $('#example3').DataTable();
+              table.clear().draw();
+                for (i=0; i< listDMTC.length; i++){ 
+                    var item = listDMTC[i];//1 loại món ăn
+                    table.row.add( [
+                    item.CuaHang_TrangChu.Ten_Cua_Hang ,
+                    item.CuaHang_TrangChu.Dia_Chi_Cua_Hang,
+                    '<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + item.CuaHang_TrangChu._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+                    + "</div>"
+                    ] ).draw();
+            }
+            }
+        });
+    }
+  }
+
+
+     // function loadDanhsachcaccuahang(){
     //     $.ajax(
     //     {
     //         url: url + 'Hientatdanhsachcaccuahang',
@@ -368,28 +401,6 @@
     //   }
 
 
-   function loadCuaHang(idDanhmucCHTC){
-        hovering = true;
-        $.ajax(
-        {
-            url: url + "Hienthicuahangtrongdanhmuctrangchu",
-            dataType: 'json',
-            data: {
-                idDanhmuccuahangtrangchu : idDanhmucCHTC
-            },
-            type: 'post',
-            success: function (res) {
-            $('#tableCuaHang li').remove();
-             for (i=0; i< res.length; i++){ 
-                $("#tableCuaHang").append('<li id="'+ res[i].CuaHang_TrangChu._id +'" class="item"><div class="product-img"><img src="http://localhost:3000/Public/Images/'+ res[i].CuaHang_TrangChu.Hinh_Anh_Cua_Hang +'" alt="Product Image" class="img-size-50"></div><div class="product-info"><a href="javascript:void(0)" class="product-title">'+ res[i].CuaHang_TrangChu.Ten_Cua_Hang+'<span class="badge badge-danger float-right"><button class="btn btn-danger btn_xoa_bangCH" onclick="xoa_cuahangtrongdanhmuc(' + "'" + res[i].CuaHang_TrangChu._id + "'"  + ',' + "'"  + idDanhmucCHTC + "'" + ')" ><i class="fas fa-trash-alt"></i></button></span></a><span class="product-description">'+res[i].DiaChi_CH[0].Dia_Chi+'</span></div></li>');
-                console.log("add");
-
-            };
-        
-            // document.getElementById("tablelist").innerHTML=test;
-            }
-        });
-    }
 
     function themSanPham(){
       if($("#ten_danhmuc").val() == ""){
