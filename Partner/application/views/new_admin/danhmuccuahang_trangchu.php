@@ -5,11 +5,11 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Cửa hàng trang chủ</h1>
+                    <h1 class="m-0 text-dark">Danh mục</h1>
                 </div><!-- /.col -->
           <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Danh mục</a></li>
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item active">Cửa hàng trang chủ</li>
                     </ol>
                 </div><!-- /.col -->
@@ -22,67 +22,12 @@
     <!-- Main content -->
 
 
-<div class="container-fluid" id="quickForm">
-        <!-- Main row -->
-            <div class="card">
-<!-- Thêm danh mục trang chủ modal -->
- <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="card-body">
-                                <!-- <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4"> -->
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Tên danh mục</label>
-                                            <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Món ngon mỗi ngày" id="ten_danhmuc">
-                  </div>
-
-                 
-                </form>
-
-                                                    <form>
-                                                            <div class="input-group-append">
-                                                                <button class="btn btn-primary float-right toastrDefaultSuccess"  onclick="themSanPham()">Lưu</button>
-                                                            </div>
-                                                        </div>
-
-
-
-                                                    </form>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                      <!-- Thêm danh mục trang chủ modal -->
-
-                                      <!-- Thêm cửa hàng vào danh mục trang chủ -->
-                                      <div class="modal fade" id="modal-lg">
-                        <div class="modal-dialog modal-lg">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h4 class="modal-title">Danh sách cửa hàng cần hiển thị lên trang chủ</h4>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
     <div class="container-fluid" id="quickForm">
       <!-- Main row -->
       <div class="card">
 
-        <div class="card-header">
-
-          <button type="button" class="btn btn-info" onclick="initModal_ThemDanhMucCH_TrangChu()" data-toggle="modal" data-target=".bd-example-modal-lg">Thêm danh mục trang chủ</button>
-
-            <!-- <button type="button" class="btn  btn-warning" data-toggle="modal" data-target="#modal-lg">
-              Thêm cửa hàng vào trang chủ
-            </button> -->
-
-            <div class="modal fade" id="modal-lg">
+<!-- Thêm cửa hàng vào trang chủ modal -->
+ <div class="modal fade" id="modal-lg">
               <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -108,77 +53,12 @@
 
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <ul class="products-list product-list-in-card pl-2 pr-2">
-                                             <li class="item" style="background-color: transparent;">
-                                <div class="product-img">
-                                    <img src="<?php echo base_url();?>dist/img/comchien.png" alt="Product Image"
-                                        class="img_chinhanh">
-                                </div>
-                                <div class="product-info">
-                                    <a href="javascript:void(0)" class="product-title">Thành Đạt - Hủ Tiếu Nam Vang -
-                                        Nguyễn Hữu Cầu</a>
-                                    <span class="product-description">
-                                        22B Nguyễn Hữu Cầu, P.Tân Định, Quận 1, TP.HCM
-                                    </span>
-                                </div>
-                            </li>
-                        </ul>
-                                    </td>
-
-                                        <td>
-                                            <div class="icheck-success d-inline">
-                                              <input type="checkbox" id="checkboxSuccess3">
-                                              <label for="checkboxSuccess3">
-                                                Success checkbox
-                                              </label>
-                                            </div>
-                                      </td>
-                                    </tr>
-
-                                     <tr>
-                                        <td>
-                                            <ul class="products-list product-list-in-card pl-2 pr-2">
-                                             <li class="item">
-                                <div class="product-img">
-                                    <img src="<?php echo base_url();?>dist/img/comchien.png" alt="Product Image"
-                                        class="img_chinhanh">
-                                </div>
-                                <div class="product-info">
-                                    <a href="javascript:void(0)" class="product-title">Thành Đạt - Hủ Tiếu Nam Vang -
-                                        Nguyễn Hữu Cầu</a>
-                                    <span class="product-description">
-                                        22B Nguyễn Hữu Cầu, P.Tân Định, Quận 1, TP.HCM
-                                    </span>
-                                </div>
-                            </li>
-                        </ul>
-                                    </td>
-
-                                        <td>
-                                           <div class="icheck-success d-inline">
-                                              <input type="checkbox" id="checkboxSuccess1">
-                                              <label for="checkboxSuccess1">
-                                                Success checkbox
-                                              </label>
-                                            </div>
-                                        </td>
-                                    </tr>
-
                                 </tbody>
                               </table>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <!-- /.modal -->
-
-<!-- Thêm cửa hàng vào danh mục trang chủ -->
-            
-
-        </div>
-                            <!-- /.card-header -->
                     </div>
 
                   </div>
@@ -188,8 +68,37 @@
               <!-- /.modal-dialog -->
             </div>
             <!-- /.modal -->
+<!-- Thêm cửa hàng vào trang chủ modal -->
 
+                                      <!-- Có chắc muốn xóa -->
+                                      <div class="modal fade bd-example-modal-sm" tabindex="-1"
+                                                            role="dialog" aria-labelledby="myLargeModalLabel"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                                            Bạn có chắc chắn muốn xóa?</h5>
+                                                                        <button type="button" class="close"
+                                                                            data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <input type="text" style="display: none;" value="sdfsdfsdf" id="idDelete">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-dismiss="modal">Cancel</button>
+                                                                        <button type="button" onclick="xoa()" data-dismiss="modal"
+                                                                            class="btn btn-primary toastrDefaultSuccess">OK</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
 
+                                      <!-- Có chắc chắn muốn xóa -->
+
+<!-- Thêm danh mục trang chủ -->
+                                   
             <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 
               <div class="modal-dialog modal-lg" role="document">
@@ -209,17 +118,18 @@
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- /.card-header -->
+                </div>    
+                <!-- Thêm danh mục trang chủ -->       
+
+        </div>
+                            <!-- /.card-header -->
  <div class="row">
- <section class="col-lg-6 connectedSortable">
+  <section class="col-lg-6 connectedSortable">
       <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title"><button type="button" class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg">Thêm danh mục trang chủ</button></h3>
+            <h3 class="card-title"><button type="button" class="btn btn-info" onclick="initModal_ThemDanhMucCH_TrangChu()" data-toggle="modal" data-target=".bd-example-modal-lg">Thêm danh mục trang chủ</button>
+</h3>
             <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
@@ -268,7 +178,7 @@
                                                 <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                                                     <div class="row">
                                                         <div class="col-sm-12">
-                                                            <table id="example2" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
+                                                            <table id="example3" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
                                                                 <thead>
                                                                     <tr role="row">
                                                                         <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Tên loại món</th>
@@ -300,53 +210,45 @@
                                     <!-- /.control-sidebar -->
 
 </div >
+<style type="text/css">
 
-                                <style type="text/css">
+  .btn_xoa{
+   padding: 4px 8px 4px 8px;
+ }
 
-                                    .giatien{
-                                        font - size: 100%;
-        vertical-align: center;
-        background-color: #A5DF00;
-    }
+ .chitiet{
+  padding: 3px 12px 3px 12px;
+}
 
-    .chitiet{
-                                        padding: 3px 12px 3px 12px;
-    }
+#img_upload{
+  width: 100px;
+}
 
-    #img_upload{
-                                        width: 100px;
-    }
+.img_chinhanh {
+    object-fit: cover;
+    height: 80px !important;
+    width: 80px !important;
+    border-radius: 20%;
+    margin-right: 10px;
+}
 
-    .img_chinhanh{
-                                        width: 5.5rem;
-        border-radius: 20%;
-    }
-
-    .card-primary-chinhanh{
-                                        background - color: #17a2b8;
-        color: #FFFFFF;
-    }
-
-     .card-primary-cuahang{
-                                        background - color: #e0a800;
-            color: #FFFFFF;
-
-        }
 </style>
 
  <script>
-    var hovering = false;
-            $('#inputGroupFile02').on('change',function(e){
-                //get the file name
-                var fileName = e.target.files[0].name;
-                //replace the "Choose a file" label
-                //$(this).next('.custom-file-label').html(fileName);
-                var img = document.getElementById('img_upload');
-                img.src = URL.createObjectURL( e.target.files[0]);
-                img.height = "100";
-                document.getElementById("Chonfile").innerHTML=fileName;
-            })
+    // var hovering = false;
+    //         $('#inputGroupFile02').on('change',function(e){
+    //             //get the file name
+    //             var fileName = e.target.files[0].name;
+    //             //replace the "Choose a file" label
+    //             //$(this).next('.custom-file-label').html(fileName);
+    //             var img = document.getElementById('img_upload');
+    //             img.src = URL.createObjectURL( e.target.files[0]);
+    //             img.height = "100";
+    //             document.getElementById("Chonfile").innerHTML=fileName;
+    //         })
 </script>
+
+
 
 <script type="text/javascript">
       
@@ -358,6 +260,10 @@
 
     function initModal_ThemDanhMucCH_TrangChu(){
       $("#ten_danhmuc").val("");
+    }
+
+    function setIdDelete(idDelete) {
+        $('#idDelete').val(idDelete);
     }
 
     function loadDanhMucCuaHang_TrangChu(){
@@ -375,7 +281,7 @@
               table.row.add( [
               res[i].Chu_De_Chinh ,
               '<button class="btn btn-info btn_xoa" data-toggle="modal" data-target="#modal-lg" onclick="loadListCH_Thuoc_DM('+ "'" + res[i]._id + "'" + ')"><i class="fas fa-plus"></i></button>'
-              +'<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+              +'<button class="btn btn-danger btn_xoa" onclick="setIdDelete(' + "'" + res[i]._id + "'" + ')" data-toggle="modal" data-target=".bd-example-modal-sm"><i class="fas fa-trash-alt"></i></button>'
               + "</div>"
               ] ).draw();
 
@@ -510,8 +416,9 @@
     }
 
 
-     function xoa(id_cuahangtrangchu)
+     function xoa()
     {
+        var id_cuahangtrangchu = $('#idDelete').val();
         alert("xoa" + id_cuahangtrangchu );
         $.ajax({
             type    : 'delete',
@@ -536,6 +443,7 @@
 
      function xoa_cuahangtrongdanhmuc(id_cuahang, idDanhmuccuahangtrangchu)
     {
+
         alert("xoa" + id_cuahang +idDanhmuccuahangtrangchu );
         $.ajax({
             type    : 'delete',
@@ -555,8 +463,6 @@
         
     }
 </script>
-<<<<<<< HEAD
-=======
 <script>
 // $( "#example1 tr" ).hover(
 //   function() {//khi hover vào
@@ -652,4 +558,3 @@
     }
   }
 </script>
->>>>>>> 90af8340dfa5d80b529d72896306e9497c0ebba7

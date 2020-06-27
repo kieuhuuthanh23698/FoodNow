@@ -21,13 +21,20 @@
             <div class="card">
               <div class="card-header p-2">
                 <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Thông tin cửa hàng</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Đặt lại mật khẩu</a></li>
+                   <li class="nav-item"><a class="nav-link active" href="#ThongtinCH" data-toggle="tab" onclick="loadListCH_Thuoc_DM()">
+                  <i class="far fas fa-store"></i>Thông tin cửa hàng</a></li>
+                   <li class="nav-item"><a class="nav-link" href="#ThongtinTK" data-toggle="tab" onclick="loadListCH_Thuoc_DM()">
+                  <i class="far fas fa-user-tie"></i>Thông tin tài khoản</a></li>
+                   <li class="nav-item"><a class="nav-link" href="#DanhsachMA" data-toggle="tab" onclick="loadListCH_Thuoc_DM()">
+                   <i class="far fas fa-utensils"></i>Danh sách món ăn</a></li>
                 </ul>
               </div><!-- /.card-header -->
+
+              
               <div class="card-body">
                 <div class="tab-content">
-                  <div class="active tab-pane" id="activity">
+                  <!-- Tab Thông tin cửa hàng -->
+                  <div class="active tab-pane" id="ThongtinCH">
 
           <div class="col-md-12">
             <!-- About Me Box -->
@@ -72,9 +79,97 @@
           </div>
 
                   </div>
+<!-- Tab Thông tin cửa hàng -->
+
+<!-- Danh sách món ăn -->
+  <div class="active tab-pane" id="DanhsachMA">
+
+          <div class="col-md-12">
+            <!-- About Me Box -->
+            
+            <div class="row">
+
+                                <section class="col-lg-5 connectedSortable">
+                                    <div class="container-fluid">
+                                        <div class="card">
+                                             <div class="card-header">
+                                                    <h3 class="card-title">Danh sách loại món ăn</h3>
+
+                                                    <div class="card-tools">
+                                                      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                                    </div>
+                                                  </div>
+
+                                            <div class="card-body">
+                                                <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
+                                                                <thead>
+                                                                    <tr role="row">
+                                                                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Tên loại món</th>
+                                                                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Số lượng món</th>
+                                                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Chi tiết</th>
+                                                                    </tr>
+
+                                                                </thead>
+                                                                <tbody>
+
+                                                                </tbody>
+
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+    </section>
+
+                                    <section class="col-lg-7 connectedSortable">
+                                        <div class="container-fluid">
+                                            <div class="card">
+                                                 <div class="card-header">
+                                                    <h3 class="card-title">Danh sách món ăn</h3>
+
+                                                    <div class="card-tools">
+                                                      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                                    </div>
+                                                  </div>
+
+                                                <div class="card-body">
+                                                    <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <table id="example2" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
+                                                                    <thead>
+                                                                        <tr role="row">
+                                                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Mã chi nhánh: activate to sort column descending" aria-sort="ascending">Hình ảnh</th>
+                                                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Tên chi nhánh: activate to sort column ascending">Tên món</th>
+                                                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Hình ảnh: activate to sort column ascending">Giá</th>
+                                                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Chi tiết: activate to sort column ascending" >Chi tiết</th>
+                                                                        </tr>
+
+                                                                    </thead>
+                                                                    <tbody>
+                                   </tbody>
+
+                            </table></div></div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+            <!-- </div> -->
+            <!-- /.card -->
+          </div>
+
+                  </div>
+<!-- Tab Thông tin cửa hàng -->
 
 
-                  <div class="tab-pane" id="settings">
+<!-- Thông tin TK -->
+                  <div class="tab-pane" id="ThongtinTK">
                      <div class="card-body">
                     <strong><i class="fas fa-book mr-1"></i>Tên tài khoản</strong>
 
@@ -92,6 +187,7 @@
 
                     
                   </div>
+<!-- Thông tin TK -->
                   <!-- /.tab-pane -->
                 </div>
                 <!-- /.tab-content -->

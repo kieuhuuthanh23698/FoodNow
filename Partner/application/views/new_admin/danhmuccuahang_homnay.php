@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Chi nhánh</h1>
+                    <h1 class="m-0 text-dark">Cửa hàng hôm nay</h1>
                 </div><!-- /.col -->
           <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Quản lý</a></li>
-                        <li class="breadcrumb-item active">Chi nhánh</li>
+                        <li class="breadcrumb-item"><a href="#">Danh mục</a></li>
+                        <li class="breadcrumb-item active">Cửa hàng hôm nay</li>
                     </ol>
                 </div><!-- /.col -->
         </div><!-- /.row -->
@@ -108,20 +108,21 @@
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h4 class="modal-title">Danh sách cửa hàng cần hiển thị lên trang chủ</h4>
+                              <h4 class="modal-title">Danh sách cửa hàng cần hiển thị lên cửa hàng hôm nay</h4>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                               </button>
                             </div>
                             <div class="modal-body">
-                                
-<div class="card">
-<div class="card-body">
-            <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <table id="example2" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
-                            <thead>
+                                <label id="idDanhmucCHHN" style="display: none;"></label>
+                                <label>Chọn cửa hàng hiển thị</label>
+                            <div class="card">
+                            <div class="card-body">
+                                <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                <div class="row">
+                                     <div class="col-sm-12">
+                                <table id="example2" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
+                                <thead>
                                 <tr role="row">
                                     <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Danh sách cửa hàng</th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Lựa chọn</th>
@@ -129,10 +130,10 @@
    
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <!-- <tr>
                                         <td>
                                             <ul class="products-list product-list-in-card pl-2 pr-2">
-                                             <li class="item">
+                                             <li class="item" style="background-color: transparent;">
                                 <div class="product-img">
                                     <img src="<?php echo base_url();?>dist/img/comchien.png" alt="Product Image"
                                         class="img_chinhanh">
@@ -155,35 +156,7 @@
                                                 </label>
                                             </div>
                                       </td>
-                                    </tr>
-
-                                     <tr>
-                                        <td>
-                                            <ul class="products-list product-list-in-card pl-2 pr-2">
-                                             <li class="item">
-                                <div class="product-img">
-                                    <img src="<?php echo base_url();?>dist/img/comchien.png" alt="Product Image"
-                                        class="img_chinhanh">
-                                </div>
-                                <div class="product-info">
-                                    <a href="javascript:void(0)" class="product-title">Thành Đạt - Hủ Tiếu Nam Vang -
-                                        Nguyễn Hữu Cầu</a>
-                                    <span class="product-description">
-                                        22B Nguyễn Hữu Cầu, P.Tân Định, Quận 1, TP.HCM
-                                    </span>
-                                </div>
-                            </li>
-                        </ul>
-                                    </td>
-
-                                        <td>
-                                           <div class="icheck-primary d-inline">
-                                                <input type="checkbox" id="checkboxPrimary1" checked>
-                                                <label for="checkboxPrimary1">
-                                                </label>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    </tr> -->
 
                                 </tbody>
 
@@ -271,7 +244,7 @@
                                                 <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                                                     <div class="row">
                                                         <div class="col-sm-12">
-                                                            <table id="example2" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
+                                                            <table id="example3" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
                                                                 <thead>
                                                                     <tr role="row">
                                                                         <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Tên loại món</th>
@@ -337,6 +310,7 @@
         }
 </style>
 
+
  <script>
     var hovering = false;
             $('#inputGroupFile02').on('change',function(e){
@@ -380,7 +354,7 @@
                 res[i].Thongtin_Phu ,
                 '<img src="' + url + 'Public/Images/'+ res[i].HinhAnh_CH+'" alt="Product Image" class="img_chinhanh">',
                 "<div class='sparkbar' data-color='#00a65a' data-height='20'>" 
-                + '<button class="btn btn-info btn_xoa" data-toggle="modal" data-target="#modal-lg" onclick="initModalCH()"><i class="fas fa-plus"></i></button>'
+                + '<button class="btn btn-info btn_xoa" data-toggle="modal" data-target="#modal-lg" onclick="loadListCH_Thuoc_DM('+ "'" + res[i]._id + "'" + ')""><i class="fas fa-plus"></i></button>'
                 + '<button class="btn btn-danger btn_xoa"  onclick="setIdDelete(' + "'" + res[i]._id + "'" + ')" data-toggle="modal" data-target=".bd-example-modal-sm" ><i class="fas fa-trash-alt"></i></button>'
                 + "</div>"
                 ] ).draw();
@@ -583,4 +557,87 @@
 //     //xóa bảng CH
 //   }
 // );
+</script>
+
+<script type="text/javascript">
+
+  function loadListCH_Thuoc_DM(idDanhmucCHHN){
+    $.ajax({
+            url: url + "getDanhSachCuaDanhMucHomNay",
+            dataType: 'json',
+            data: {
+                idDanhMuc : idDanhmucCHHN
+            },
+            type: 'post',
+            success: function (res) {
+              if(res.return_code == "1"){
+              $("#idDanhmucCHHN").text(idDanhmucCHHN);
+              var list = res.infor;
+              var table = $('#example2').DataTable();
+              table.clear().draw();
+              console.log(res);
+              for (i=0; i< list.length; i++){
+                var item = list[i];
+                if(item == null)
+                  continue;
+                var infor_ch = item.CH;
+                var check = item.isInclude;
+                var address = item.DiaChi.Dia_Chi;
+                table.row.add([
+                  '<ul class="products-list product-list-in-card pl-2 pr-2"><li style="background-color: transparent;" class="item"><div class="product-img"><img src="<?php echo base_url();?>dist/img/' + infor_ch.Hinh_Anh_Cua_Hang + '" alt="Product Image" class="img_chinhanh"></div><div class="product-info"><a href="#" class="product-title">' + infor_ch.Ten_Cua_Hang + '</a><span class="product-description">' + address + '</span></div></li></ul>',
+                  '<div class="icheck-primary d-inline"><input onclick="check(' + "'" + infor_ch._id + "'" + ')" type="checkbox" id="cb' + infor_ch._id + '"' + (check == "1" ? "checked" : "") + '><label for="cb' + infor_ch._id + '" id="label' + infor_ch._id + '">' + (check == "1" ? "checked" : "") + '</label></div>'
+                ]).draw();
+              };
+            }
+            }
+    });
+  }
+</script>
+
+<!-- CHECK, UNCHECK CÁC CỬA HÀNG TRONG 1 DANH MỤC -->
+<script type="text/javascript">
+  $('input[type="checkbox"]').change(function() {
+    if ($(this).is(':checked')) {
+      toastr.success("Check " + $(this).attr('id'));
+    }
+  });
+
+  function themXoaCuaHang_DanhMuc(idCuaHang, state){
+    $.ajax({
+            url: url + "themXoaCuaHang_DanhMuc_Cuahanghomnay",
+            dataType: 'json',
+            data: {
+                idDanhMuc : $("#idDanhmucCHHN").text(),
+                idCuaHang : idCuaHang,
+                state : state
+            },
+            type: 'post',
+            success: function (res) {
+              if (res.return_code == "1"){
+                if (state == "1") {
+                  toastr.success("Thêm cửa hàng vào danh mục cửa hàng hôm nay thành công.");
+                  $("#label" + idCuaHang).text("checked");
+                } else if (state == "0") {
+                  toastr.success("Xóa cửa hàng khỏi danh mục cửa hàng hôm nay thành công.");
+                  $("#label" + idCuaHang).text("");
+                }
+              } else if (res.return_code == "0"){
+                toastr.error("Quá trình thực hiện thất bại !");
+                if (state == 1) {
+                  $("#cb" + idCuaHang).attr("checked", false);
+                } else if (state == "0") {
+                  $("#cb" + idCuaHang).attr("checked", true);
+                }
+              }
+            }
+    });
+  }
+
+  function check(idCuaHang){
+    if ($("#cb" + idCuaHang).is(':checked')) {
+      themXoaCuaHang_DanhMuc(idCuaHang, "1");
+    } else{
+      themXoaCuaHang_DanhMuc(idCuaHang, "0");
+    }
+  }
 </script>

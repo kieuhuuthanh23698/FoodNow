@@ -106,7 +106,18 @@
 <div class="card-body">
            <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                                     <!-- <form> -->
-                                        <div class="form-group">
+                              <label for="exampleInputEmail1">Khu vực</label>
+                               <div class="form-group">
+                                  <select class="form-control">
+                                    <option>TP.HCM</option>
+                                    <option>option 2</option>
+                                    <option>option 3</option>
+                                    <option>option 4</option>
+                                    <option>option 5</option>
+                                  </select>
+                                </div>
+
+                                <div class="form-group">
                                             <label for="exampleInputEmail1">Tên cửa hàng</label>
                                             <input type="email" class="form-control" id="tenCH" aria-describedby="emailHelp" placeholder="Cơm Đùi Gà Chiên">
                                   </div>
@@ -230,17 +241,16 @@
                         <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
                             <thead>
                                 <tr role="row">
-                                                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Tên chi nhánh: activate to sort column descending" aria-sort="ascending">Tên chi nhánh</th>
+                                                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Tên chi nhánh: activate to sort column descending" aria-sort="ascending">Hình ảnh</th>
+                                                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label=">Hình ảnh: activate to sort column ascending">Tên chi nhánh</th>
                                                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label=">Hình ảnh: activate to sort column ascending">Số lượng CH</th>
-                                                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label=">Hình ảnh: activate to sort column ascending">Hình ảnh</th>
                                                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Chi tiết: activate to sort column ascending" >Chi tiết</th>
                                                                         </tr>
                                 </thead>
                                 <tbody>
 
                                                                        <tr>
-                                                <td><a href="#">OR9853</a></td>
-                                                <td>1</td>
+                                                
                                                 <td>
                                                     <ul class="list-inline">
                                                         <li class="list-inline-item">
@@ -249,7 +259,8 @@
                                                         </li>
                                                     </ul>
                                                 </td>
-
+                                                <td><a href="#">OR9853</a></td>
+                                                <td>1</td>
                                                 <td>
                                                     <div class="sparkbar" data-color="#00a65a" data-height="20">
                                                          <button  type="button" class="btn  btn-info" data-toggle="modal" data-target="#modal-lg"><i class="fas fa-plus"></i></button>
@@ -273,7 +284,7 @@
 <section class="col-lg-6 connectedSortable">
                                         <div class="card">
                                              <div class="card-header">
-                                                    <h3 class="card-title">Danh sách loại món ăn</h3>
+                                                    <h3 class="card-title">Danh sách cửa hàng vừa được thêm vào từ chi nhánh</h3>
 
                                                     <div class="card-tools">
                                                       <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
@@ -287,14 +298,34 @@
                                                             <table id="example2" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
                                                                 <thead>
                                                                     <tr role="row">
-                                                                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Tên loại món</th>
-                                                                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Số lượng món</th>
+                                                                      <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Hình ảnh</th>
+                                                                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Tên cửa hàng</th>
+                                                                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Địa chỉ</th>
                                                                         <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Chi tiết</th>
                                                                     </tr>
 
                                                                 </thead>
                                                                 <tbody>
+                                                                     <tr>
+                                                
+                                                                  <td>
+                                                                      <ul class="list-inline">
+                                                                          <li class="list-inline-item">
+                                                                              <a href="<?php echo base_url();?>Taikhoan/homeQuanly_taikhoan_cuahang" class="nav-link"><img alt="BunBoHue" class="img_chinhanh"
+                                                                                  src="<?php echo base_url();?>dist/img/mixaobo.jpg"></a>
+                                                                          </li>
+                                                                      </ul>
+                                                                  </td>
+                                                                  <td><a href="#">OR9853</a></td>
+                                                                  <td>1</td>
+                                                                  <td>
+                                                                      <div class="sparkbar" data-color="#00a65a" data-height="20">
+                                                                           <button  type="button" class="btn  btn-info" data-toggle="modal" data-target="#modal-lg"><i class="fas fa-plus"></i></button>
+                                                                           <button class="btn btn-danger btn_xoa"><i class="fas fa-trash-alt" data-toggle="modal"
+                                                                                  data-target=".bd-example-modal-sm"></i></button>
 
+                                                                      </div>
+                                                          </td></tr>
                                                                 </tbody>
 
                                                             </table>
