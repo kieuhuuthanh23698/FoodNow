@@ -40,8 +40,8 @@
             <div class="card">
               <div class="card-header p-2">
                 <ul class="nav nav-pills" id="tableCuaHang">
-                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab" onclick="loadListCH_Thuoc_DM()">
-                  <img alt="BunBoHue" src="<?php echo base_url();?>dist/img/shopping-cart.png" class="img_chinhanh">Đi chợ</a></li>
+<!--                   <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab" onclick="loadListCH_Thuoc_DM()">
+                  <img alt="BunBoHue" src="<?php echo base_url();?>dist/img/shopping-cart.png" class="img_chinhanh">Đi chợ</a></li> -->
                  <!--  <li class="nav-item"><a class="nav-link" href="#activity" data-toggle="tab"><img alt="BunBoHue" src="<?php echo base_url();?>dist/img/sashimi.png" class="img_chinhanh">Món hàn</a></li>
                   <li class="nav-item"><a class="nav-link" href="#activity" data-toggle="tab"><img alt="BunBoHue" src="<?php echo base_url();?>dist/img/house.png" class="img_chinhanh">Chuỗi</a></li>
                   <li class="nav-item"><a class="nav-link" href="#activity" data-toggle="tab"><img alt="BunBoHue" src="<?php echo base_url();?>dist/img/iced-tea.png" class="img_chinhanh">Trà sữa</a></li>
@@ -185,7 +185,7 @@
     var listDMLMA = [];
     var click = false;
     $(document).ready(function(){
-      loadDMCHTC();
+      loadDMCHLMA();
     });
 
 
@@ -202,13 +202,14 @@
             },
             type: 'get',
             success: function (res) {
+              if(res.return_code == "1" && res.items.length > 0){
              $('#tableCuaHang li').remove();
-             for (i=0; i< res.length; i++){ 
-
-                $("#tableCuaHang").append('<li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab" onclick="loadListCH_Thuoc_DM('+ " ' " + res[i]._id+" ' "+')"><img src="http://localhost:3000/Public/Images/'+res[i].Icon_Loai_Mon_An+'" alt="Product Image" class="img_chinhanh">' + "'" + res[i].Ten_Loai_Mon_An + "'" +'</a></li>'
+             for (i=0; i< res.items.length; i++){ 
+                $("#tableCuaHang").append('<li class="nav-item"><a id="'+ res.items[i]._id+'" class="nav-link" href="#activity" data-toggle="tab" onclick="loadListCH_Thuoc_DM('+ "'" + res.items[i]._id+"'"+')"><img src="http://localhost:3000/Public/Images/'+res.items[i].Icon_Loai_Mon_An+'" alt="Product Image" class="img_chinhanh">' + res.items[i].Ten_Loai_Mon_An + '</a></li>'
                 );
-                console.log("add");
             };
+            $("#" + res.items[0]._id).trigger( "click" );
+            }
             }
         });
 }
@@ -228,7 +229,7 @@
               if(res.return_code == "1"){
               $("#idDanhmucCHLMA").text(idDanhmucCHLMA);
               var list = res.infor;
-              var table = $('#example2').DataTable();
+              var table = $('#example1').DataTable();
               table.clear().draw();
               console.log(res);
               for (i=0; i< list.length; i++){
@@ -240,11 +241,50 @@
                 var address = item.DiaChi.Dia_Chi;
                 table.row.add([
                   '<ul class="products-list product-list-in-card pl-2 pr-2"><li style="background-color: transparent;" class="item"><div class="product-img"><img src="<?php echo base_url();?>dist/img/' + infor_ch.Hinh_Anh_Cua_Hang + '" alt="Product Image" class="img_chinhanh"></div><div class="product-info"><a href="#" class="product-title">' + infor_ch.Ten_Cua_Hang + '</a><span class="product-description">' + address + '</span></div></li></ul>',
-                  '<div class="icheck-primary d-inline"><input onclick="check(' + "'" + infor_ch._id + "'" + ')" type="checkbox" id="cb' + infor_ch._id + '"' + (check == "1" ? "checked" : "") + '><label for="cb' + infor_ch._id + '" id="label' + infor_ch._id + '">' + (check == "1" ? "checked" : "") + '</label></div>'
+                  '<div class="icheck-primary d-inline"><input onclick="check(' + "'" + infor_ch._id + "','" + idDanhmucCHLMA + "'" + ')" type="checkbox" id="cb' + infor_ch._id + '"' + (check == "1" ? "checked" : "") + '><label for="cb' + infor_ch._id + '" id="label' + infor_ch._id + '">' + (check == "1" ? "checked" : "") + '</label></div>'
                 ]).draw();
               };
             }
             }
     });
+  }
+
+  function themXoaCuaHang_DanhMuc_LoaiMonAn(idCuaHang, idDanhmuc,state){
+    $.ajax({
+            url: url + "themXoaCuaHang_DanhMuc_LoaiMonAn",
+            dataType: 'json',
+            data: {
+                idDanhMuc : idDanhmuc,
+                idCuaHang : idCuaHang,
+                state : state
+            },
+            type: 'post',
+            success: function (res) {
+              if (res.return_code == "1"){
+                if (state == "1") {
+                  toastr.success("Thêm cửa hàng vào danh mục loại món ăn thành công.");
+                  $("#label" + idCuaHang).text("checked");
+                } else if (state == "0") {
+                  toastr.success("Xóa cửa hàng khỏi danh mục loại món ăn thành công.");
+                  $("#label" + idCuaHang).text("");
+                }
+              } else if (res.return_code == "0"){
+                toastr.error("Quá trình thực hiện thất bại !");
+                if (state == 1) {
+                  $("#cb" + idCuaHang).attr("checked", false);
+                } else if (state == "0") {
+                  $("#cb" + idCuaHang).attr("checked", true);
+                }
+              }
+            }
+    });
+  }
+
+  function check(idCuaHang, idDanhmuc){
+    if ($("#cb" + idCuaHang).is(':checked')) {
+      themXoaCuaHang_DanhMuc_LoaiMonAn(idCuaHang, idDanhmuc,"1");
+    } else{
+      themXoaCuaHang_DanhMuc_LoaiMonAn(idCuaHang, idDanhmuc,"0");
+    }
   }
 </script>

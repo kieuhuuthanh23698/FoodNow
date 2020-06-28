@@ -165,40 +165,32 @@
     </section>
 
 <section class="col-lg-6 connectedSortable">
-                                        <div class="card">
-                                             <div class="card-header">
-                                                    <h3 class="card-title">Danh sách loại món ăn</h3>
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Danh sách cửa hàng</h3>
 
-                                                    <div class="card-tools">
-                                                      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-                                                    </div>
-                                                  </div>
+      <div class="card-tools">
+        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+      </div>
+    </div>
 
-                                            <div class="card-body">
-                                                <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
-                                                            <table id="example3" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
-                                                                <thead>
-                                                                    <tr role="row">
-                                                                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Tên loại món</th>
-                                                                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Số lượng món</th>
-                                                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Chi tiết</th>
-                                                                    </tr>
+    <div class="card-body">
+      <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+        <div class="row">
+          <div class="col-sm-12">
+            <table id="example3" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
+              <thead>
+                  <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Thông tin cửa hàng</th>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-                                                                </thead>
-                                                                <tbody>
-
-                                                                </tbody>
-
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-    </section>
-                                   
 </div>
         
 </div>
@@ -235,7 +227,7 @@
 </style>
 
  <script>
-    // var hovering = false;
+    var hovering = false;
     //         $('#inputGroupFile02').on('change',function(e){
     //             //get the file name
     //             var fileName = e.target.files[0].name;
@@ -284,29 +276,28 @@
               +'<button class="btn btn-danger btn_xoa" onclick="setIdDelete(' + "'" + res[i]._id + "'" + ')" data-toggle="modal" data-target=".bd-example-modal-sm"><i class="fas fa-trash-alt"></i></button>'
               + "</div>"
               ] ).draw();
-
               $('#example1 tbody tr').each(function(){
-                  if($(this).find('td:nth-child(1)').text() == res[i].Chu_De_Chinh)
-                      $(this).attr('id', res[i]._id );
-              });
+                    if($(this).find('td:nth-child(1)').text() == res[i].Chu_De_Chinh)
+                        $(this).attr('id', res[i]._id );
+                });
 
-              $('#example1 tbody tr').each(function(){
-                  if($(this).find('td:nth-child(1)').text() == res[i].Chu_De_Chinh)
-                      $(this).attr('id', res[i]._id );
-                  $(this).find('td:nth-child(1)').bind({
-                      click : function(e) { 
-                          if(hovering == false)
-                              loadCuaHang($(this).attr('id'));
-                           }, 
-                      mouseleave : function(e) {//khi ko hover nữa
-                              //xóa bảng CH
-                              hovering = false;
-                              // $('#tableCuaHang li').remove();
-                          }
-                      });
-              });
+                $('#example1 tbody tr').each(function(){
+                    if($(this).find('td:nth-child(1)').text() == res[i].Chu_De_Chinh)
+                        $(this).attr('id', res[i]._id );
+                    $(this).bind({
+                        click : function(e) { 
+                            if(hovering == false)
+                                loadCuaHang($(this).attr('id'));
+                             }, 
+                        mouseleave : function(e) {//khi ko hover nữa
+                                //xóa bảng CH
+                                hovering = false;
+                                // $('#tableCuaHang li').remove();
+                            }
+                        });
+                });
 
-          };
+            };
       
           // document.getElementById("tablelist").innerHTML=test;
           }
@@ -317,8 +308,7 @@
 
    function loadCuaHang(idDanhmucCHTC){
         hovering = true;
-        $.ajax(
-        {
+        $.ajax({
             url: url + "Hienthicuahangtrongdanhmuctrangchu",
             dataType: 'json',
             data: {
@@ -328,77 +318,75 @@
             success: function (res) {
             if(res.return_code == "1"){
               // $("#idDanhmucCHTC").text(idDanhmucCHTC);
-              listDMTC = res.infor;
+              listDMTC = res.result;
               var table = $('#example3').DataTable();
               table.clear().draw();
                 for (i=0; i< listDMTC.length; i++){ 
-                    var item = listDMTC[i];//1 loại món ăn
+                    var item = listDMTC[i].CuaHang_TrangChu;//1 loại món ăn
+                    var address = item.DiaChi_CH;
                     table.row.add( [
-                    item.CuaHang_TrangChu.Ten_Cua_Hang ,
-                    item.CuaHang_TrangChu.Dia_Chi_Cua_Hang,
-                    '<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + item.CuaHang_TrangChu._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
-                    + "</div>"
+                    '<ul class="products-list product-list-in-card pl-2 pr-2"><li style="background-color: transparent;" class="item"><div class="product-img"><img src="<?php echo base_url();?>dist/img/' + item.Hinh_Anh_Cua_Hang + '" alt="Product Image" class="img_chinhanh"></div><div class="product-info"><a href="#" class="product-title">' + item.Ten_Cua_Hang + '</a><span class="product-description">' + address + '</span></div></li></ul>'
                     ] ).draw();
-            }
-            }
-        });
-    }
-  }
+                  }//for
+            }//if
+            }//succcess
+    });//ajax
+  }//func
 
 
      // function loadDanhsachcaccuahang(){
-    //     $.ajax(
-    //     {
-    //         url: url + 'Hientatdanhsachcaccuahang',
-    //         dataType: 'json',
-    //         data: {
-    //         },
-    //         type: 'get',
-    //         success: function (res) {
+     //    $.ajax(
+     //    {
+     //        url: url + 'Hientatdanhsachcaccuahang',
+     //        dataType: 'json',
+     //        data: {
+     //        },
+     //        type: 'get',
+     //        success: function (res) {
 
-    //          for (i=0; i< res.length; i++){ 
+     //         for (i=0; i< res.length; i++){ 
 
-    //             var table = $('#example2').DataTable();
-    //              for (i=0; i< res.length; i++){ 
+     //            var table = $('#example2').DataTable();
+     //             for (i=0; i< res.length; i++){ 
 
-    //             $("#tableCuaHang").append('<li id="'+ res[i]._id +'" class="item"><div class="product-img"><img src="http://localhost:3000/Public/Images/'+ res[i].Hinh_Anh_Cua_Hang +'" alt="Product Image" class="img-size-50"></div><div class="product-info"><a href="javascript:void(0)" class="product-title">'+ res[i].Ten_Cua_Hang+'<span class="badge badge-danger float-right"></span></a><span class="product-description">'+res[i].Dia_Chi+'</span></div></li>');
-    //             console.log("add");
+     //            $("#tableCuaHang").append('<li id="'+ res[i]._id +'" class="item"><div class="product-img"><img src="http://localhost:3000/Public/Images/'+ res[i].Hinh_Anh_Cua_Hang +'" alt="Product Image" class="img-size-50"></div><div class="product-info"><a href="javascript:void(0)" class="product-title">'+ res[i].Ten_Cua_Hang+'<span class="badge badge-danger float-right"></span></a><span class="product-description">'+res[i].Dia_Chi+'</span></div></li>');
+     //            console.log("add");
 
-    //         };
+     //        };
         
-    //         // document.getElementById("tablelist").innerHTML=test;
+     //        // document.getElementById("tablelist").innerHTML=test;
 
 
-    //             $('#example2 tbody tr').each(function(){
-    //                 if($(this).find('td:nth-child(1)').text() == res[i].Chu_De_Chinh)
-    //                     $(this).attr('id', res[i]._id );
-    //             });
+     //            $('#example2 tbody tr').each(function(){
+     //                if($(this).find('td:nth-child(1)').text() == res[i].Chu_De_Chinh)
+     //                    $(this).attr('id', res[i]._id );
+     //            });
 
-    //             $('#example2 tbody tr').each(function(){
-    //                 if($(this).find('td:nth-child(1)').text() == res[i].Chu_De_Chinh)
-    //                     $(this).attr('id', res[i]._id );
-    //                 $(this).bind({
-    //                     click : function(e) { 
-    //                         if(hovering == false)
-    //                             loadCuaHang($(this).attr('id'));
-    //                          }, 
-    //                     mouseleave : function(e) {//khi ko hover nữa
-    //                             //xóa bảng CH
-    //                             hovering = false;
-    //                             // $('#tableCuaHang li').remove();
-    //                         }
-    //                     });
-    //             });
+     //            $('#example2 tbody tr').each(function(){
+     //                if($(this).find('td:nth-child(1)').text() == res[i].Chu_De_Chinh)
+     //                    $(this).attr('id', res[i]._id );
+     //                $(this).bind({
+     //                    click : function(e) { 
+     //                        if(hovering == false)
+     //                            loadCuaHang($(this).attr('id'));
+     //                         }, 
+     //                    mouseleave : function(e) {//khi ko hover nữa
+     //                            //xóa bảng CH
+     //                            hovering = false;
+     //                            // $('#tableCuaHang li').remove();
+     //                        }
+     //                    });
+     //            });
 
-    //         };
+     //        };
         
-    //         // document.getElementById("tablelist").innerHTML=test;
-    //       }
+     //        // document.getElementById("tablelist").innerHTML=test;
+     //      }
 
 
-    //     });
+     //    });
 
-    //   }
+     //  }
 
 
 
