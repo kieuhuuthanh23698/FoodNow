@@ -247,9 +247,7 @@
                                                             <table id="example3" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
                                                                 <thead>
                                                                     <tr role="row">
-                                                                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Tên loại món</th>
-                                                                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Số lượng món</th>
-                                                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Chi tiết</th>
+                                                                        <th class="sorting_asc" tabindex="0" aria-controls="example3" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Thông tin cửa hàng</th>
                                                                     </tr>
 
                                                                 </thead>
@@ -387,9 +385,8 @@
 
 
     function loadCuaHang(idDanhmuccuahanghomnay){
-        hovering = true;
-        $.ajax(
-        {
+         hovering = true;
+        $.ajax({
             url: url + "Danhsachcuahanghomnay_hienthicuahang",
             dataType: 'json',
             data: {
@@ -397,18 +394,43 @@
             },
             type: 'post',
             success: function (res) {
-            $('#tableCuaHang li').remove();
-             for (i=0; i< res.length; i++){ 
-                $("#tableCuaHang").append('<li id="'+ res[i].CuaHang_HomNay._id +'" class="item"><div class="product-img"><img src="http://localhost:3000/Public/Images/'+ res[i].CuaHang_HomNay.Hinh_Anh_Cua_Hang +'" alt="Product Image" class="img-size-50"></div><div class="product-info"><a href="javascript:void(0)" class="product-title">'+ res[i].CuaHang_HomNay.Ten_Cua_Hang+'<span class="badge badge-danger float-right"><button class="btn btn-danger btn_xoa_bangCH" onclick="xoa_cuahangtrongdanhmuc(' + "'" + res[i].CuaHang_HomNay._id + "'"  + ',' + "'"  + idDanhmuccuahanghomnay + "'" + ')" ><i class="fas fa-trash-alt"></i></button></span></a><span class="product-description">'+res[i].DiaChi_CH[0].Dia_Chi+'</span></div></li>');
-                console.log("add");
+            if(res.return_code == "1"){
+              // $("#idDanhmucCHTC").text(idDanhmucCHTC);
+              listDMTC = res.infor;
+              var table = $('#example3').DataTable();
+              table.clear().draw();
+                for (i=0; i< listDMTC.length; i++){ 
+                    var item = listDMTC[i].CuaHang_HomNay;//1 loại món ăn
+                    var address = item.DiaChi_CH;
+                    table.row.add( [
+                    '<ul class="products-list product-list-in-card pl-2 pr-2"><li style="background-color: transparent;" class="item"><div class="product-img"><img src="<?php echo base_url();?>dist/img/' + item.Hinh_Anh_Cua_Hang + '" alt="Product Image" class="img_chinhanh"></div><div class="product-info"><a href="#" class="product-title">' + item.Ten_Cua_Hang + '</a><span class="product-description">' + address + '</span></div></li></ul>'
+                    ] ).draw();
+                  }//for
+            }//if
+            }//succcess
+    });//ajax
+}
+        // hovering = true;
+        // $.ajax(
+        // {
+        //     url: url + "Danhsachcuahanghomnay_hienthicuahang",
+        //     dataType: 'json',
+        //     data: {
+        //         idDanhsachcuahanghomnay : idDanhmuccuahanghomnay
+        //     },
+        //     type: 'post',
+        //     success: function (res) {
+        //     $('#tableCuaHang li').remove();
+        //      for (i=0; i< res.length; i++){ 
+        //         $("#tableCuaHang").append('<li id="'+ res[i].CuaHang_HomNay._id +'" class="item"><div class="product-img"><img src="http://localhost:3000/Public/Images/'+ res[i].CuaHang_HomNay.Hinh_Anh_Cua_Hang +'" alt="Product Image" class="img-size-50"></div><div class="product-info"><a href="javascript:void(0)" class="product-title">'+ res[i].CuaHang_HomNay.Ten_Cua_Hang+'<span class="badge badge-danger float-right"><button class="btn btn-danger btn_xoa_bangCH" onclick="xoa_cuahangtrongdanhmuc(' + "'" + res[i].CuaHang_HomNay._id + "'"  + ',' + "'"  + idDanhmuccuahanghomnay + "'" + ')" ><i class="fas fa-trash-alt"></i></button></span></a><span class="product-description">'+res[i].DiaChi_CH[0].Dia_Chi+'</span></div></li>');
+        //         console.log("add");
 
-            };
+        //     };
         
-            // document.getElementById("tablelist").innerHTML=test;
-            }
-        });
+        //     // document.getElementById("tablelist").innerHTML=test;
+        //     }
+        // });
 
-    }
 
 
      function initModalDMCH(){

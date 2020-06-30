@@ -235,14 +235,14 @@
     });
   }
 
-  function renderUI_OderList_item(item){
+  function renderUI_OderList_item(item, i){
     var table = $('#example1').DataTable();
     // insert data into table 
     table.row.add( [
       '<a href="#">' + item._id + '</a>',
       item.Chi_tiet_DH.length,
       '<span class="badge badge-success">' + (new Intl.NumberFormat().format(item.Total_cart)) + '</span>',
-      '<div class="sparkbar" data-color="#00a65a" data-height="20"><button type="button" class="btn btn-outline-success">Xác nhận</button> <button type="button" class="btn btn-outline-danger">Hủy</button></div>'
+      '<div class="sparkbar" data-color="#00a65a" data-height="20">' + (i%2 == 0 ? '<button type="button" class="btn btn-outline-success">Xác nhận</button>' : '<button type="button" class="btn btn-outline-danger">Hủy</button></div>')
     ] ).draw();
   };
 
@@ -284,7 +284,7 @@
 
   function renderUI_OderList(){
     for (i=0; i< listOders.length; i++){
-      renderUI_OderList_item(listOders[i]);
+      renderUI_OderList_item(listOders[i], i);
     };
     // end for
 
