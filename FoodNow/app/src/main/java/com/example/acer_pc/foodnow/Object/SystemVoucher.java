@@ -20,7 +20,7 @@ public class SystemVoucher {
         GioBD = jsonObjectSystemVoucher.getInt("GioBD");
         GioKT = jsonObjectSystemVoucher.getInt("GioKT");
         PhanTram_GiamGia = jsonObjectSystemVoucher.getInt("PhanTram_GiamGia");
-        JSONArray jsonArrayDanhSach_CH = jsonObjectSystemVoucher.getJSONArray("DanhSach_CH");
+        JSONArray jsonArrayDanhSach_CH = jsonObjectSystemVoucher.getJSONArray("DanhSach_CN");
 //        for (int i = 0; i < jsonArrayDanhSach_CH.length(); i++) {
 //            JSONObject jsonObjectItem_CH = jsonArrayDanhSach_CH.getJSONObject(i);
 //            DanhSach_CH.add(jsonObjectItem_CH.toString());

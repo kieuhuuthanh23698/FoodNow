@@ -139,16 +139,16 @@
                     <table class="table">
                       <tbody>
                       <tr>
-                        <th style="width:50%">Tổng hóa đơn:</th>
-                        <td id="oder_total"></td>
+                        <th>Tổng tiền:</th>
+                        <td id="oder_total_cart"></td>
                       </tr>
                       <tr>
                         <th>Phí ship :</th>
                         <td id="oder_ship"></td>
                       </tr>
                       <tr>
-                        <th>Tổng tiền:</th>
-                        <td id="oder_total_cart"></td>
+                        <th style="width:50%">Tổng hóa đơn:</th>
+                        <td id="oder_total"></td>
                       </tr>
                      </tbody>
                     </table>
