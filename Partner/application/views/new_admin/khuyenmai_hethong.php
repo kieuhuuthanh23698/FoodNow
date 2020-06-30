@@ -28,11 +28,6 @@
 
             <div class="card-header">
 
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg">Thêm khuyến mãi</button>
-
-                <button type="button" class="btn  btn-warning" data-toggle="modal" data-target="#modal-lg">
-                  Áp dụng khuyến mãi
-                </button>
 
                 <div class="modal fade" id="modal-lg">
                         <div class="modal-dialog modal-lg">
@@ -44,17 +39,7 @@
                               </button>
                             </div>
                             <div class="modal-body">
-                                <div class="form-group">
-                                <label>Tên khuyến mãi hệ thống</label>
-                                <select class="form-control">
-                                  <option>option 1</option>
-                                  <option>option 2</option>
-                                  <option>option 3</option>
-                                  <option>option 4</option>
-                                  <option>option 5</option>
-                                </select>
-                              </div>
-
+<label id="idKhuyenmaihethong" style="display: none;"></label>
 <label>Chọn chi nhánh cần áp dụng</label>
 <div class="card">
 <div class="card-body">
@@ -70,62 +55,7 @@
    
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <ul class="products-list product-list-in-card pl-2 pr-2">
-                                             <li class="item">
-                                <div class="product-img">
-                                    <img src="<?php echo base_url();?>dist/img/comchien.png" alt="Product Image"
-                                        class="img_chinhanh">
-                                </div>
-                                <div class="product-info">
-                                    <a href="javascript:void(0)" class="product-title">Thành Đạt - Hủ Tiếu Nam Vang -
-                                        Nguyễn Hữu Cầu</a>
-                                    <span class="product-description">
-                                        22B Nguyễn Hữu Cầu, P.Tân Định, Quận 1, TP.HCM
-                                    </span>
-                                </div>
-                            </li>
-                        </ul>
-                                    </td>
-
-                                        <td>
-                                            <div class="icheck-primary d-inline">
-                                                <input type="checkbox" id="checkboxPrimary1" checked>
-                                                <label for="checkboxPrimary1">
-                                                </label>
-                                            </div>
-                                      </td>
-                                    </tr>
-
-                                     <tr>
-                                        <td>
-                                            <ul class="products-list product-list-in-card pl-2 pr-2">
-                                             <li class="item">
-                                <div class="product-img">
-                                    <img src="<?php echo base_url();?>dist/img/comchien.png" alt="Product Image"
-                                        class="img_chinhanh">
-                                </div>
-                                <div class="product-info">
-                                    <a href="javascript:void(0)" class="product-title">Thành Đạt - Hủ Tiếu Nam Vang -
-                                        Nguyễn Hữu Cầu</a>
-                                    <span class="product-description">
-                                        22B Nguyễn Hữu Cầu, P.Tân Định, Quận 1, TP.HCM
-                                    </span>
-                                </div>
-                            </li>
-                        </ul>
-                                    </td>
-
-                                        <td>
-                                           <div class="icheck-primary d-inline">
-                                                <input type="checkbox" id="checkboxPrimary1" checked>
-                                                <label for="checkboxPrimary1">
-                                                </label>
-                                            </div>
-                                        </td>
-                                    </tr>
-
+                                   
                                 </tbody>
 
                             </table>
@@ -138,8 +68,7 @@
 
                             </div>
                             <div class="modal-footer justify-content-between">
-                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-primary">Save changes</button>
+                              <button type="button" class="btn btn-primary" data-dismiss="modal">Lưu</button>
                             </div>
                           </div>
                           <!-- /.modal-content -->
@@ -153,7 +82,12 @@
 
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
-
+                            <div class="modal-header">
+                              <h4 class="modal-title">Thêm khuyến mãi hệ thống</h4>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
                             <div class="card-body">
                                 <!-- <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4"> -->
                                     <!-- <form> -->
@@ -198,11 +132,16 @@
                                                                 </div>
 						            
 						        </div>
-                                                            <div class="input-group-append">
-                                                                <button class="btn btn-primary float-right toastrDefaultSuccess"  onclick="themSanPham()">Lưu</button>
-                                                            </div>
+
+                                 
                                                         </div>
                                                     <!-- </form> -->
+                                <div class="modal-footer justify-content-between">
+                                  
+                                                            <div class="input-group-append">
+                                                                <button class="btn btn-primary float-right toastrDefaultSuccess" data-dismiss="modal" onclick="themSanPham()">Lưu</button>
+                                                            </div>
+                                </div>
 
                                                 </div>
                                             </div>
@@ -219,7 +158,7 @@
   		<div class="container-fluid">
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Danh sách Khuyến mãi hệ thống</h3>
+            <h3 class="card-title"><button type="button" class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg">Thêm khuyến mãi</button></h3>
             <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
@@ -258,111 +197,39 @@
     </div>
     </section>
 
-<section class="col-lg-5 connectedSortable">
-	<div class="container-fluid">
-            <div class="card">
-              <div class="card-header ui-sortable-handle" style="cursor: move;">
-                <h3 class="card-title">Danh sách các cửa hàng được áp dụng</h3>
 
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <!-- <button type="button" class="btn btn-tool" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button> -->
-                </div>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body p-0">
-                <ul id="tableCuaHang" class="products-list product-list-in-card pl-2 pr-2">
-                 <!--  <li class="item">
-                    <div class="product-img">
-                      <img src="<?php echo base_url();?>dist/img/BunBoHue.jpg" alt="Product Image" class="img-size-50">
-                    </div>
-                    <div class="product-info">
-                      <a href="javascript:void(0)" class="product-title">Thành Đạt - Hủ Tiếu Nam Vang - Nguyễn Hữu Cầu
-                        <span class="badge badge-danger float-right">
-                        <i class="far fa-trash-alt" data-toggle="modal" data-target=".bd-example-modal-sm"></i>
-                      </span></a>
+             <section class="col-lg-5 connectedSortable">
+                                        <div class="card">
+                                             <div class="card-header">
+                                                    <h3 class="card-title">Danh sách chi nhánh</h3>
 
-                      <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-lg" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Bạn có chắc chắn muốn xóa?</h5>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                <button type="button" class="btn btn-primary toastrDefaultSuccess">OK</button>
-                                                            </div>
+                                                    <div class="card-tools">
+                                                      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                                    </div>
+                                                  </div>
+
+                                            <div class="card-body">
+                                                <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <table id="example3" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
+                                                                <thead>
+                                                                    <tr role="row">
+                                                                        <th class="sorting_asc" tabindex="0" aria-controls="example3" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Thông tin chi nhánh</th>
+                                                                    </tr>
+
+                                                                </thead>
+                                                                <tbody>
+
+                                                                </tbody>
+
+                                                            </table>
                                                         </div>
                                                     </div>
                                                 </div>
-                      <span class="product-description">
-                        22B Nguyễn Hữu Cầu, P.Tân Định, Quận 1, TP.HCM
-                      </span>
-                    </div>
-                  </li> -->
-
-                  <!-- <li class="item">
-                    <div class="product-img">
-                      <img src="<?php echo base_url();?>dist/img/BunBoHue.jpg" alt="Product Image" class="img-size-50">
-                    </div>
-                    <div class="product-info">
-                      <a href="javascript:void(0)" class="product-title">Thành Đạt - Hủ Tiếu Nam Vang - Nguyễn Hữu Cầu
-                        <span class="badge badge-danger float-right">
-                        <i class="far fa-trash-alt"></i>
-                      </span></a>
-                      <span class="product-description">
-                        22B Nguyễn Hữu Cầu, P.Tân Định, Quận 1, TP.HCM
-                      </span>
-                    </div>
-                  </li> -->
-                  <!-- /.item -->
-                  <!-- <li class="item">
-                    <div class="product-img">
-                      <img src="<?php echo base_url();?>dist/img/BunBoHue.jpg" alt="Product Image" class="img-size-50">
-                    </div>
-                    <div class="product-info">
-                      <a href="javascript:void(0)" class="product-title">Thành Đạt - Hủ Tiếu Nam Vang - Nguyễn Hữu Cầu
-                        <span class="badge badge-danger float-right">
-                        <i class="far fa-trash-alt"></i>
-                      </span></a>
-                      <span class="product-description">
-                        22B Nguyễn Hữu Cầu, P.Tân Định, Quận 1, TP.HCM
-                      </span>
-                    </div>
-                  </li> -->
-                  <!-- /.item -->
-                  <!-- <li class="item">
-                    <div class="product-img">
-                      <img src="<?php echo base_url();?>dist/img/BunBoHue.jpg" alt="Product Image" class="img-size-50">
-                    </div>
-                    <div class="product-info">
-                      <a href="javascript:void(0)" class="product-title">Thành Đạt - Hủ Tiếu Nam Vang - Nguyễn Hữu Cầu
-                        <span class="badge badge-danger float-right">
-                        <i class="far fa-trash-alt"></i>
-                      </span></a>
-                      <span class="product-description">
-                        22B Nguyễn Hữu Cầu, P.Tân Định, Quận 1, TP.HCM
-                      </span>
-                    </div>
-                  </li> -->
-                  <!-- /.item -->
-                </ul>
-              </div>
-              <!-- /.card-body -->
-              <div class="card-footer text-center">
-                <a href="javascript:void(0)" class="uppercase">View All Products</a>
-              </div>
-              <!-- /.card-footer -->
-            </div>
-        </div>
-</section> 
+                                            </div>
+                                        </div>
+    </section>
 </div>
    
                     
@@ -413,20 +280,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
 <script type="text/javascript">
 
-    
+var listKM = [];
+var click = false;
 var socket;
       
     $(document).ready(function(){
- socket = io("http://localhost:3000");
-    socket.emit("partner-server", localStorage.getItem('partnerID'));
-    socket.on('partner-server', function(data){
-        //debugger;
-        alert('Guest is ordering with data :');
-    });
-    $('#head').text($('#head').text() + ' - ' + localStorage.getItem('partnerID'));
+        loadKhuyenmaiHT();
+ // socket = io("http://localhost:3000");
+ //    socket.emit("partner-server", localStorage.getItem('partnerID'));
+ //    socket.on('partner-server', function(data){
+ //        //debugger;
+ //        alert('Guest is ordering with data :');
+ //    });
+ //    $('#head').text($('#head').text() + ' - ' + localStorage.getItem('partnerID'));
+});
 
-
-
+    function loadKhuyenmaiHT(){
 
         $.ajax(
         {
@@ -449,6 +318,7 @@ var socket;
                 '<img src="http://localhost:3000/Public/Images/'+res[i].Icon+'" alt="Product Image" class="img-size-50">',
                 "<div class='sparkbar' data-color='#00a65a' data-height='20'>"
                 // + "<a href='#'><i class='nav-icon fas fa-edit'></i></a>"
+                + '<button class="btn btn-info btn_xoa" data-toggle="modal" data-target="#modal-lg" onclick="loadListCN_Thuoc_KM('+ "'" + res[i]._id + "'" + ')""><i class="fas fa-plus"></i></button>'
                 + '<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
                 + "</div>"
                 ] ).draw();
@@ -473,30 +343,34 @@ var socket;
             };
             }
         });
-    });
+    }
 
 
-    function loadCuaHang(idKhuyenmaihethong){
-                hovering = true;
-        $.ajax(
-        {
-            url: url + 'Hienthicuahangduocapdungkhuyenmai',
+     function loadCuaHang(idKMHT){
+         hovering = true;
+        $.ajax({
+            url: url + "Hienthichinhanh_thuockhuyenmai",
             dataType: 'json',
             data: {
-                idKhuyenmaihethong : idKhuyenmaihethong
+                idKhuyenmaihethong : idKMHT
             },
             type: 'post',
             success: function (res) {
-            $('#tableCuaHang li').remove();
-             for (i=0; i< res.length; i++){ 
-
-                $("#tableCuaHang").append('<li class="item"><div class="product-img"><img src="<?php echo base_url()?>/Public/Images/'+ res[i].CuaHang_KMHT.Hinh_Anh_Cua_Hang +'" alt="Product Image" class="img-size-50"></div><div class="product-info"><a href="javascript:void(0)" class="product-title">'+ res[i].CuaHang_KMHT.Ten_Cua_Hang+'<span class="badge badge-danger float-right"><i class="far fa-trash-alt"></i></span></a><span class="product-description">'+res[i].DiaChi_CH[0].Dia_Chi_Nha+'</span></div></li>');
-                console.log("add");
-            };
-            }
-        });
-
-    }
+            if(res.return_code == "1"){
+              // $("#idDanhmucCHTC").text(idDanhmucCHTC);
+              listKM = res.infor;
+              var table = $('#example3').DataTable();
+              table.clear().draw();
+                for (i=0; i< listKM.length; i++){ 
+                    var item = listKM[i].Chinhanh_KMHT;//1 loại món ăn
+                    table.row.add( [
+                    '<ul class="products-list product-list-in-card pl-2 pr-2"><li style="background-color: transparent;" class="item"><div class="product-img"><img src="<?php echo base_url();?>dist/img/' + item.Hinh_Anh_Chi_Nhanh + '" alt="Product Image" class="img_chinhanh"></div><div class="product-info"><a href="#" class="product-title">' + item.Ten_Chi_Nhanh + '</a></div></li></ul>'
+                    ] ).draw();
+                  }//for
+            }//if
+            }//succcess
+    });//ajax
+}
 
     function createFormData(){
         debugger;
@@ -520,7 +394,7 @@ var socket;
     function themSanPham(){
         var form = createFormData();
         $.ajax({
-            url: url + 'Khuyenmaihethong',
+            url: url + 'addKhuyenmaihethong',
             dataType: 'json',
             cache: false,
             contentType: false,
@@ -529,15 +403,17 @@ var socket;
             type: 'post',
             success: function (data) {
                 if(res.return_code == "1"){
-                    var table = $('#example1').DataTable();
-                    table.row.add( [
-                    res.MaGiamGia,
-                    res.GioBD,
-                    res.GioKT,
-                    res.PhanTram_GiamGia + " %",
-                    '<img src="<?php echo base_url()?>/Public/Images/'+ res.Icon + '" alt="Product Image" class="img-size-50">',
-                    "<div class='sparkbar' data-color='#00a65a' data-height='20'>" + '<button class="btn" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>' + "</div>"
-                    ] ).draw();
+                    loadKhuyenmaiHT();
+                    // var table = $('#example1').DataTable();
+                    // table.row.add( [
+                    // res.MaGiamGia,
+                    // res.GioBD,
+                    // res.GioKT,
+                    // res.PhanTram_GiamGia + " %",
+                    // '<img src="<?php echo base_url()?>/Public/Images/'+ res.Icon + '" alt="Product Image" class="img-size-50">',
+                    // "<div class='sparkbar' data-color='#00a65a' data-height='20'>" + '<button class="btn" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>' + "</div>"
+                    // ] ).draw();
+
                 } else if(res.return_code =="0"){
                     alert("Thêm thất bại !");
                 }
@@ -579,4 +455,86 @@ var socket;
 //     //xóa bảng CH
 //   }
 // );
+</script>
+
+<script type="text/javascript">
+
+  function loadListCN_Thuoc_KM(idKhuyenmaihethong){
+    $.ajax({
+            url: url + "getDanhSachChiNhanhKMHT",
+            dataType: 'json',
+            data: {
+                idKhuyenmaihethong : idKhuyenmaihethong
+            },
+            type: 'post',
+            success: function (res) {
+              if(res.return_code == "1"){
+              $("#idKhuyenmaihethong").text(idKhuyenmaihethong);
+              var list = res.infor;
+              var table = $('#example2').DataTable();
+              table.clear().draw();
+              console.log(res);
+              for (i=0; i< list.length; i++){
+                var item = list[i];
+                if(item == null)
+                  continue;
+                var infor_ch = item.CN;
+                var check = item.isInclude;
+                table.row.add([
+                  '<ul class="products-list product-list-in-card pl-2 pr-2"><li style="background-color: transparent;" class="item"><div class="product-img"><img src="<?php echo base_url();?>dist/img/' + infor_ch.Hinh_Anh_Chi_Nhanh + '" alt="Product Image" class="img_chinhanh"></div><div class="product-info"><a href="#" class="product-title">' + infor_ch.Ten_Chi_Nhanh + '</a></div></li></ul>',
+                  '<div class="icheck-primary d-inline"><input onclick="check(' + "'" + infor_ch._id + "'" + ')" type="checkbox" id="cb' + infor_ch._id + '"' + (check == "1" ? "checked" : "") + '><label for="cb' + infor_ch._id + '" id="label' + infor_ch._id + '">' + (check == "1" ? "checked" : "") + '</label></div>'
+                ]).draw();
+              };
+            }
+            }
+    });
+  }
+</script>
+
+<!-- CHECK, UNCHECK CÁC CHI NHÁNH TRONG 1 DANH MỤC -->
+<script type="text/javascript">
+  $('input[type="checkbox"]').change(function() {
+    if ($(this).is(':checked')) {
+      toastr.success("Check " + $(this).attr('id'));
+    }
+  });
+
+  function themXoaCuaHang_DanhMuc(idCuaHang, state){
+    $.ajax({
+            url: url + "themXoaCuaHang_DanhMuc_Cuahanghomnay",
+            dataType: 'json',
+            data: {
+                idDanhMuc : $("#idDanhmucCHHN").text(),
+                idCuaHang : idCuaHang,
+                state : state
+            },
+            type: 'post',
+            success: function (res) {
+              if (res.return_code == "1"){
+                if (state == "1") {
+                  toastr.success("Thêm cửa hàng vào danh mục cửa hàng hôm nay thành công.");
+                  $("#label" + idCuaHang).text("checked");
+                } else if (state == "0") {
+                  toastr.success("Xóa cửa hàng khỏi danh mục cửa hàng hôm nay thành công.");
+                  $("#label" + idCuaHang).text("");
+                }
+              } else if (res.return_code == "0"){
+                toastr.error("Quá trình thực hiện thất bại !");
+                if (state == 1) {
+                  $("#cb" + idCuaHang).attr("checked", false);
+                } else if (state == "0") {
+                  $("#cb" + idCuaHang).attr("checked", true);
+                }
+              }
+            }
+    });
+  }
+
+  function check(idCuaHang){
+    if ($("#cb" + idCuaHang).is(':checked')) {
+      themXoaCuaHang_DanhMuc(idCuaHang, "1");
+    } else{
+      themXoaCuaHang_DanhMuc(idCuaHang, "0");
+    }
+  }
 </script>
