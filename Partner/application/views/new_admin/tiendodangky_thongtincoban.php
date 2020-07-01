@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Cửa hàng</h1>
+                    <h1 class="m-0 text-dark">Thông tin cơ bản cửa hàng</h1>
                 </div><!-- /.col -->
           <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -29,77 +29,53 @@
             <div class="card-header" style="padding-bottom: 0px">
 
             <div class="row">
-                      
-                        <div class="col-sm-4">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Điền tên cửa hàng">
-                        </div>
-                        <div class="form-group  col-sm-4">
-                                <select class="form-control">
-                                  <option>TP.HCM</option>
-                                  <option>Món 2</option>
-                                  <option>Món 3</option>
-                                  <option>Món 4</option>
-                                  <option>Món 5</option>
-                                </select>
-                        </div>
-
-                        <div class="form-group">
-                        <button  type="button" class="btn  btn-info" data-toggle="modal" data-target="#modal-lg">Tìm kiếm</button>
-                        </div>
-            </div>
+                  <div class="col-sm-3">
+                    <div class="position-relative p-3 " style="height: 100px; border-right: bold 1px gray">
+                      <span>Thông tin cơ bản cửa hàng</span>
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1"></label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="position-relative p-3 " style="height: 100px; border-right: bold 1px gray">
+                      <span>Thông tin người đại diện</span>
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1"></label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="position-relative p-3 " style="height: 100px; border-right: bold 1px gray">
+                      <span>Thông tin chi tiết</span>
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1"></label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="position-relative p-3 " style="height: 100px; border-right: bold 1px gray">
+                      <span>Đăng ký</span>
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1"></label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               
 
               <div class="modal fade" id="modal-lg">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
-                            <div class="modal-header">
-                              <h4 class="modal-title">Thêm cửa hàng</h4>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
                             <div class="modal-body">
-                                <div class="form-group">
-                                <label>Tên chi nhánh sẽ hiển thị theo cái chi nhánh ở bên ngoài chọn, nếu vào đây thay đổi thì bên ngoài cũng thay đổi theo</label>
-                                <select class="form-control">
-                                  <option>CN 1</option>
-                                  <option>Món 2</option>
-                                  <option>Món 3</option>
-                                  <option>Món 4</option>
-                                  <option>Món 5</option>
-                                </select>
-                              </div>
 
-<label>Thêm cửa hàng</label>
 <div class="card">
 <div class="card-body">
-           <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                                    <!-- <form> -->
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Tên cửa hàng</label>
-                                            <input type="email" class="form-control" id="tenCH" aria-describedby="emailHelp" placeholder="Cơm Đùi Gà Chiên">
-                                  </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword1">Địa chỉ</label>
-                                                <input type="text" class="form-control" id="diachiCH">
-                                  </div>
-
-                                   <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                                            <label class="control-label" for="datepicker-start">Thời gian mở cửa</label>
-                                                            <input type="text" class="form-control" id="ngay_bd">
-                                        </div>
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                                                <label class="control-label" for="datepicker-end">Thời gian đóng cửa</label>
-                                                                <input type="text" class="form-control" id="ngay_kt">
-                                        </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
+           
                                                     <div class="row">
                                                                 <section class="container-fluid">
                                                                     <div class="row">
@@ -190,7 +166,7 @@
 
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title"><a href="<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_dangkycuahang"> <button  type="button" class="btn  btn-info" >Tạo cửa hàng ngay</button></a></h3>
+            <h3 class="card-title"> Thông tin cơ bản</h3>
             <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
@@ -202,47 +178,41 @@
         </div>
         <div class="card-body">
             <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
-                            <thead>
-                                <tr role="row">
-                                    <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Thông tin cửa hàng</th>
-                                    <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Lựa chọn</th>
-                                    </tr>
-   
-                                </thead>
-                                <tbody>
-                                     <tr>
-                                        <td>
-                                            <ul class="products-list product-list-in-card pl-2 pr-2">
-                                             <li class="item" style="background-color: transparent;">
-                                <div class="product-img">
-                                    <img src="<?php echo base_url();?>dist/img/comchien.png" alt="Product Image"
-                                        class="img_chinhanh">
-                                </div>
-                                <div class="product-info">
-                                    <a href="javascript:void(0)" class="product-title">Thành Đạt - Hủ Tiếu Nam Vang -
-                                        Nguyễn Hữu Cầu</a>
-                                    <span class="product-description">
-                                        22B Nguyễn Hữu Cầu, P.Tân Định, Quận 1, TP.HCM
-                                    </span>
-                                </div>
-                            </li>
-                        </ul>
-                                    </td>
+                                    <!-- <form> -->
+                                      <div class="row">
+                                        <div class="form-group col-sm-6">
+                                            <label for="exampleInputEmail1">Tên cửa hàng</label>
+                                            <input type="email" class="form-control" id="tenCH" aria-describedby="emailHelp" placeholder="Cơm Đùi Gà Chiên">
+                                  </div>
+                                         <div class="form-group col-sm-6">
+                                                <label for="exampleInputPassword1">Số điện thoại</label>
+                                                <input type="text" class="form-control" id="diachiCH">
+                                  </div>
+                                  </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">Địa chỉ</label>
+                                                <input type="text" class="form-control" id="diachiCH">
+                                  </div>
 
-                                        <td>
-                                            <a href="<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_dangkycuahang"><button  type="button" class="btn  btn-info" onclick="">Tạo cửa hàng</button></a>
-                                      </td>
-                                    </tr>
-                                </tbody>
+                                   <div class="form-group">
+                                  <button  type="button" class="btn  btn-success"><i class="fas fa-search-location"></i>Tìm trên bản đồ</button>
+                                  </div>
+                                 
 
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                                    
+            </div>    
+
+        </div>
+
+        <div class="card-footer">
+             
+            <div class="justify-content-between">
+                    <a href="<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_dangkycuahang_TTNDD"><button type="button" class="btn btn-primary float-right">Lưu</button></a>
             </div>
+            <div class="justify-content-between">
+                    <a href="<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_cuahang"><button type="button" class="btn btn-default float-right" style="margin-right: 20px">Quay lại</button></a>
+            </div>
+        </div>
         </div>
       </section>     
                                    
@@ -305,4 +275,4 @@
             })
 </script>
 
-
+ 
