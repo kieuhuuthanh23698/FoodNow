@@ -14,12 +14,12 @@
                   <p>Chi nhánh</p>
                 </a>
               </li>
-              <!-- <li class="nav-item">
+              <li class="nav-item">
                 <a href="<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_cuahang" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Cửa hàng</p>
+                  <p>Đăng ký cửa hàng</p>
                 </a>
-              </li> -->
+              </li>
               <li class="nav-item">
                 <a href="<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_monan" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>

@@ -27,6 +27,10 @@
                   <i class="far fas fa-user-tie"></i>Thông tin tài khoản</a></li>
                    <li class="nav-item"><a class="nav-link" href="#DanhsachMA" data-toggle="tab" onclick="loadListCH_Thuoc_DM()">
                    <i class="far fas fa-utensils"></i>Danh sách món ăn</a></li>
+                   <li class="nav-item"><a class="nav-link" href="#DanhsachKM" data-toggle="tab" onclick="loadListCH_Thuoc_DM()">
+                   <i class="far fas fa-utensils"></i>Danh sách khuyến mãi</a></li>
+                   <li class="nav-item"><a class="nav-link" href="#DanhsachKMHT" data-toggle="tab" onclick="loadListCH_Thuoc_DM()">
+                   <i class="far fas fa-utensils"></i>Danh sách khuyến mãi hệ thống áp dụng</a></li>
                 </ul>
               </div><!-- /.card-header -->
 
@@ -167,6 +171,93 @@
                   </div>
 <!-- Tab Thông tin cửa hàng -->
 
+
+<!-- Thông tin danh sách khuyến mãi -->
+                  <div class="tab-pane" id="DanhsachKM">
+                     <div class="container-fluid">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Danh sách khuyến mãi cửa hàng</h3>
+                                    </div>
+                                    <!-- /.card-header -->
+        <div class="card-body">
+                                        <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <table id="example3" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
+                                                        <thead>
+                                                            <tr role="row">
+                                                                <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Mã giảm giá</th>
+                                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Thông tin khuyến mãi</th>
+                                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Ngày BĐ</th>
+                                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Ngày KT</th>
+                                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">% Giảm giá</th>
+                                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Mô tả</th>
+                                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Chi tiết</th>
+   
+                                </thead>
+                                                            <tbody id="tablelist">
+                                                            </tbody>
+
+                            </table>
+                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.card-body -->
+            </div>
+
+                                    <!-- DIRECT CHAT -->
+
+              <!-- /.card-footer-->
+            </div>
+                    
+                  </div>
+<!-- Thông tin danh sách khuyến mãi -->
+
+<!-- Thông tin danh sách khuyến mãi hệ thống -->
+                  <div class="tab-pane" id="DanhsachKMHT">
+                     <div class="container-fluid">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Danh sách khuyến mãi hệ thống áp dụng</h3>
+                                    </div>
+                                    <!-- /.card-header -->
+                <div class="card-body">
+                                        <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <table id="example4" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
+                                                        <thead>
+                                                            <tr role="row">
+                                                               <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Mã giảm giá</th>
+                                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Giờ BĐ</th>
+                                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Giờ KT</th>
+                                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">% Giảm giá</th>
+                                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Hình ảnh</th>
+                                                                </tr>
+   
+                                </thead>
+                                                            <tbody id="tablelist">
+
+                                                            </tbody>
+
+                            </table>
+                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.card-body -->
+            </div>
+
+                                    <!-- DIRECT CHAT -->
+
+              <!-- /.card-footer-->
+            </div>
+
+                    
+                  </div>
+<!-- Thông tin danh sách khuyến mãi -->
 
 <!-- Thông tin TK -->
                   <div class="tab-pane" id="ThongtinTK">

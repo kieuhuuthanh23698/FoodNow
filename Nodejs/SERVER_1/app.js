@@ -2227,7 +2227,7 @@ app.post("/addKhuyenmaihethong", urlEncodeParser, function (req, response) {
 				GioKT: req.body.gio_kt,
 				Icon: req.file.filename,
 				PhanTram_GiamGia: req.body.PhanTram_GiamGia,
-				DanhSach_CH: []
+				DanhSach_CN: []
 			});
 			var result = "";
 			newKhuyenMai_HT.save(function (err, success) {
@@ -3150,4 +3150,142 @@ app.post("/themXoaCuaHang_DanhMuc_LoaiMonAn", urlEncodeParser, async function (r
 		console.log("Lỗi params !");
 		res.send({return_code : "0"});
 	}
+});
+
+
+//xác định xem chi nhánh này có được áp dụng khuyến mãi chưa
+const chinhanh_thuoc_khuyenmai_hethong = async (successResutltKM, iCHINHANH) => {
+	return new Promise(function (resolve, reject) {
+		//kiểm tra xem id của chi nhánh có thuộc list id chi nhánh KM ko
+		var idx = successResutltKM.DanhSach_CN.indexOf(iCHINHANH._id);
+		if(idx < 0){
+			resolve({CN : iCHINHANH, isInclude : 0});
+		} else {
+			resolve({CN : iCHINHANH, isInclude : 1});
+		}
+	});
+}
+
+//route get danh sách chi nhánh thuộc Khuyến mãi hệ thống, kiểm tra xem chi nhánh này có dc áp dụng khuyến mãi này chưa
+//params : idKhuyenmaihethong
+app.post("/getDanhSachChiNhanhKMHT", urlEncodeParser, async function (req, res) {
+	if(req.body.idKhuyenmaihethong != null && req.body.idKhuyenmaihethong != ""){
+		KHUYENMAI_HETHONG.findById({_id : mongoose.Types.ObjectId(req.body.idKhuyenmaihethong)},
+		function(errDM, successResutltKM){
+			if(errDM || successResutltKM == null){
+				console.log("Query lỗi : " + errDM);
+				res.send({return_code : "0"});
+			} else {
+				CHINHANH.find({},
+					function(err, successResutltListCN){
+						if(err || successResutltListCN.length == 0){
+							console.log("Query lỗi : " + err);
+							res.send({return_code : "0"});
+						} else {
+							var time_label = Date.now();
+							console.time(time_label + "_" +req.body.idKhuyenmaihethong);
+							Promise.all(
+								successResutltListCN.map(function (iCHINHANH) {
+									return chinhanh_thuoc_khuyenmai_hethong(successResutltKM, iCHINHANH);
+								}))
+								.then(function (resolveChiNhanhs) {
+									console.timeEnd(time_label + "_" +req.body.idKhuyenmaihethong);
+									res.send({return_code : "1", infor : resolveChiNhanhs});
+								});
+						}
+					}
+				);
+			}
+		})
+	} else {
+		console.log("Lỗi params !");
+		res.send({return_code : "0"});
+	}
+})
+
+//route thêm xóa chi nhánh trong khuyến mãi hệ thống
+app.post("/themXoaChiNhanh_KMHT", urlEncodeParser, async function (req, res) {
+	if(req.body.idKhuyenmaihethong != null && req.body.idKhuyenmaihethong != ""
+	&& req.body.idChiNhanh != null && req.body.idChiNhanh != ""
+	&& req.body.state != null && req.body.state != ""){
+		if(req.body.state == "1"){
+			KHUYENMAI_HETHONG.findByIdAndUpdate(
+				{_id : mongoose.Types.ObjectId(req.body.idKhuyenmaihethong)},
+				{$push : {DanhSach_CN : req.body.idChiNhanh}},
+				function(err, success){
+					
+				// if(err || success == null){
+				// 	console.log("Lỗi query !");
+				// 	res.send({return_code : "0"});
+				// } else {
+				// 	console.log("Thêm chi nhánh vào KMHT thành công !");
+				// 	res.send({return_code: "1"});
+				// }
+			});
+		} else{
+			KHUYENMAI_HETHONG.findByIdAndUpdate(
+				{_id : mongoose.Types.ObjectId(req.body.idKhuyenmaihethong)},
+				{$pull : {DanhSach_CN: req.body.idChiNhanh}},
+				function(err, success){
+				if(err || success == null){
+					console.log("Lỗi query !");
+					res.send({return_code : "0"});
+				} else {
+					console.log("Xóa chi nhánh ra KMHT thành công !");
+					res.send({return_code: "1"});
+				}
+			});
+		}
+	} else {
+		console.log("Lỗi params !");
+		res.send({return_code : "0"});
+	}
+});
+
+
+//route hiển thị các chi nhánh thuộc khyến mãi
+app.post("/Hienthichinhanh_thuockhuyenmai", urlEncodeParser, function (req, res) {
+	KHUYENMAI_HETHONG.aggregate(
+		[
+			{
+				"$match": {
+					"_id": mongoose.Types.ObjectId(req.body.idKhuyenmaihethong)
+				}
+			},
+			{
+				"$project": {
+					"DanhSach_CN": 1.0
+				}
+			},
+			{
+				"$lookup": {
+					"from": "chinhanhs",
+					"localField": "DanhSach_CN",
+					"foreignField": "_id",
+					"as": "Chinhanh_KMHT"
+				}
+			},
+			{
+				"$project": {
+					"Chinhanh_KMHT": 1.0,
+					"_id": 0.0
+				}
+			},
+			{
+				"$unwind": {
+					"path": "$Chinhanh_KMHT"
+				}
+			}
+		],
+		function (err, result) {
+			if (err) {
+				res.send({return_code: "0"});
+			}
+
+			else {
+				res.send({return_code: "1", infor : result});
+			}
+
+		}
+	);
 });

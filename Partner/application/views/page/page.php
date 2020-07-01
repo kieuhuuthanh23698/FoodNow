@@ -104,6 +104,15 @@
         });
       });
 </script>
+
+<script type="text/javascript">
+  $(function () {
+        $("#example4").DataTable({
+          "responsive": true,
+          "autoWidth": false,
+        });
+      });
+</script>
 <!-- Check đúng khi save -->
 <link rel="stylesheet" href="<?php echo base_url()?>plugins/toastr/toastr.min.css">
 <script src="<?php echo base_url()?>plugins/toastr/toastr.min.js"></script>
