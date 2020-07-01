@@ -25,29 +25,43 @@
 <div class="container-fluid" id="quickForm">
         <!-- Main row -->
             <div class="card">
-
-            <div class="card-header" style="padding-bottom: 0px">
-
-            <div class="row">
-                      
-                        <div class="col-sm-4">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Điền tên cửa hàng">
+                
+              <!-- Thêm chi nhánh modal -->
+                <div class="modal fade" id="modal-default">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title">Chi nhánh</h4>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
                         </div>
-                        <div class="form-group  col-sm-4">
-                                <select class="form-control">
-                                  <option>TP.HCM</option>
-                                  <option>Món 2</option>
-                                  <option>Món 3</option>
-                                  <option>Món 4</option>
-                                  <option>Món 5</option>
-                                </select>
+                        <div class="modal-body">
+                          <div class="form-group">
+                                            <label for="exampleInputEmail1">Tên chi nhánh</label>
+                                            <input type="email" class="form-control" id="makm" aria-describedby="emailHelp" placeholder="Món đặc biệt">
                         </div>
-
                         <div class="form-group">
-                        <button  type="button" class="btn  btn-info" data-toggle="modal" data-target="#modal-lg">Tìm kiếm</button>
+                            <label for="exampleInputEmail1">Hình ảnh chi nhánh</label>
+<img id="img_upload">
+                                                                <div class="custom-file">
+
+                                                                    <input type="file" class="custom-file-input" id="inputGroupFile02" />
+                                                                    <label class="custom-file-label" for="inputGroupFile02" id="Chonfile">Chọn hình ảnh</label>
+                                                                </div>
+                                    
                         </div>
-            </div>
-              
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                          <button type="button" class="btn btn-primary float-right">Lưu</button>
+                        </div>
+                      </div>
+                  <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+              </div>
+              <!-- /.modal -->
+                                      <!-- Thêm chi nhánh modal -->
 
               <div class="modal fade" id="modal-lg">
                         <div class="modal-dialog modal-lg">
@@ -73,76 +87,10 @@
 <label>Thêm cửa hàng</label>
 <div class="card">
 <div class="card-body">
-           <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                                    <!-- <form> -->
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Tên cửa hàng</label>
-                                            <input type="email" class="form-control" id="tenCH" aria-describedby="emailHelp" placeholder="Cơm Đùi Gà Chiên">
-                                  </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword1">Địa chỉ</label>
-                                                <input type="text" class="form-control" id="diachiCH">
-                                  </div>
-
-                                   <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                                            <label class="control-label" for="datepicker-start">Thời gian mở cửa</label>
-                                                            <input type="text" class="form-control" id="ngay_bd">
-                                        </div>
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                                                <label class="control-label" for="datepicker-end">Thời gian đóng cửa</label>
-                                                                <input type="text" class="form-control" id="ngay_kt">
-                                        </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+           
 
                                                     <div class="row">
-                                                                <section class="container-fluid">
-                                                                    <div class="row">
-                                                                        <div class="col-md-12">
-                                                                            <div class="card card-outline card-info">
-                                                                                <div class="card-header">
-                                                                                    <label for="inputEmail4">
-                                                                                        Mô tả
-                                                </label>
-                                                  </h3>
-                                                                              <!--   <div class="card-tools">
-                                                                                    <button type="button" class="btn btn-tool btn-sm" data-card-widget="collapse" data-toggle="tooltip"
-                                                                                        title="Collapse">
-                                                                                        <i class="fas fa-minus"></i></button>
-                                                                                    <button type="button" class="btn btn-tool btn-sm" data-card-widget="remove" data-toggle="tooltip"
-                                                                                        title="Remove">
-                                                                                        <i class="fas fa-times"></i></button>
-                                                                                </div> -->
-
-                                                                            <!-- </div> -->
-
-                                                                            <div class="mb-3">
-                                                                                <textarea id="mota_km" placeholder="Place some text here"
-                                                                                    style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                <div class="form-group">
-                                                                <label for="exampleInputEmail1">Hình ảnh cửa hàng</label>
-                                                                <img id="img_upload">
-                                                                <div class="custom-file">
-
-                                                                    <input type="file" class="custom-file-input" id="inputGroupFile02" />
-                                                                    <label class="custom-file-label" for="inputGroupFile02" id="Chonfile">Chọn hình ảnh</label>
-                                                                </div>
-                                    
-                        </div>
-
-                                                                    </div>
-
-                                          </div>
-
-                                        </section>
+                                                               
 
                                                         </div>
 
@@ -181,8 +129,6 @@
 
 
         </div>
-
-        </div>
                             <!-- /.card-header -->
  <div class="row">
 
@@ -190,7 +136,9 @@
 
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title"><a href="<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_dangkycuahang"> <button  type="button" class="btn  btn-info" >Tạo cửa hàng ngay</button></a></h3>
+            <h3 class="card-title"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-default">
+                Thêm chi nhánh
+                </button></h3>
             <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>

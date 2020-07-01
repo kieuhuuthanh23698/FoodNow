@@ -179,6 +179,20 @@
         <div class="card-body">
             <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                                     <!-- <form> -->
+
+                                      <div class="row">
+                                        <div class="form-group  col-sm-6">
+                                          <label for="exampleInputPassword1">Khu vực</label>
+                                                <select class="form-control">
+                                                  <option>TP.HCM</option>
+                                                  <option>Món 2</option>
+                                                  <option>Món 3</option>
+                                                  <option>Món 4</option>
+                                                  <option>Món 5</option>
+                                                </select>
+                                        </div>
+                                        </div>
+
                                       <div class="row">
                                         <div class="form-group col-sm-6">
                                             <label for="exampleInputEmail1">Tên cửa hàng</label>
