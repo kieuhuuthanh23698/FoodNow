@@ -167,6 +167,85 @@
                 </div>
         </div>
         <div class="card-body">
+          <div class="col-sm-6">
+                <div id="TTNDD"><h3>Thông tin người đại diện</h3></div>
+                <strong><i class="fas fa-book mr-1"></i>Họ tên</strong>
+
+                <p class="text-muted" id="tencuahang">
+                  Lê Thị Ngọc Hiền
+                </p>
+
+                <hr>
+
+                <strong><i class="fas fa-map-marker-alt mr-1"></i>Số ĐT</strong>
+
+                <p class="text-muted" id="diachi_cuahang">0909778877</p>
+
+                <hr>
+
+                <strong><i class="fas fa-pencil-alt mr-1"></i>CMND</strong>
+
+                <p class="text-muted" id="thoigian_bd">272889678</p>
+
+                <hr>
+
+                <strong><i class="far fa-file-alt mr-1"></i>Email</strong>
+
+                <p class="text-muted" id="thoigian_kt">lehien@gmail.com</p>
+                <hr>
+          </div>
+          
+          <div class="col-sm-6">
+                <div id="TTNDD"><h3>Thông tin cơ bản cửa hàng</h3></div>
+                <strong><i class="fas fa-book mr-1"></i>Tên cửa hàng</strong>
+
+                <p class="text-muted" id="tencuahang">
+                  Bún Hà Nội
+                </p>
+
+                <hr>
+
+                <strong><i class="fas fa-map-marker-alt mr-1"></i>Số ĐT</strong>
+
+                <p class="text-muted" id="diachi_cuahang">0909778877</p>
+
+                <hr>
+
+                <strong><i class="fas fa-pencil-alt mr-1"></i>Địa chỉ</strong>
+
+                <p class="text-muted" id="thoigian_bd">Tân Phú</p>
+
+                <hr>
+          </div>
+
+           <div class="col-sm-6">
+                <div id="TTNDD"><h3>Thông tin chi tiết cửa hàng</h3></div>
+                <strong><i class="fas fa-book mr-1"></i>Thời gian mở cửa</strong>
+
+                <p class="text-muted" id="tencuahang">
+                  14h
+                </p>
+
+                <hr>
+
+                <strong><i class="fas fa-map-marker-alt mr-1"></i>Thời gian đóng cửa</strong>
+
+                <p class="text-muted" id="diachi_cuahang">20h</p>
+
+                <hr>
+
+                <strong><i class="fas fa-pencil-alt mr-1"></i>Hình ảnh cửa hàng</strong>
+
+                <p class="text-muted" id="thoigian_bd">Tân Phú</p>
+
+                <hr>
+
+                 <strong><i class="fas fa-pencil-alt mr-1"></i>Mô tả</strong>
+
+                <p class="text-muted" id="thoigian_bd">Tân Phú</p>
+
+                <hr>
+          </div>
 
         </div>
 
