@@ -284,6 +284,55 @@ app.get("/cuahang", function (req, res) {
 	});
 });
 
+//xác định xem cửa hàng này có nằm trong danh mục chưa
+const getDiaChiCuaHang = async (iCUAHANG) => {
+	console.log(iCUAHANG);
+	return new Promise(function (resolve, reject) {
+		DIACHI.findById({_id : mongoose.Types.ObjectId(iCUAHANG.Dia_Chi_Cua_Hang)},function(err, success){
+			console.log(err, success);
+			if(err || success == null){
+				resolve(null);
+			} else{
+					resolve({CH : iCUAHANG, DiaChi : success});
+			}
+		})
+	});
+}
+
+//route get danh sách cửa hàng của 1 chi nhánh
+app.post("/cuahangs_chinhanh", urlEncodeParser ,function (req, res) {
+	CHINHANH.aggregate(
+		[
+			{ 
+				"$match" : { 
+					"_id" : mongoose.Types.ObjectId(req.body.idChiNhanh)
+				}
+			}, 
+			{ 
+				"$lookup" : { 
+					"from" : "cuahangs", 
+					"localField" : "DanhSach_CH", 
+					"foreignField" : "_id", 
+					"as" : "listCH"
+				}
+			}
+		],function (err, result){
+			if(err || result.length == 0){
+				res.send({return_code: "0"});
+			} else{
+				console.log(result);
+				Promise.all(result[0].listCH.map(function (iCUAHANG) {
+					return getDiaChiCuaHang(iCUAHANG);
+				})).then(function (data) {
+					console.log(data);
+					res.send({return_code: "1", infor : data})
+				});
+			}
+		}
+	);
+	
+});
+
 //-------------------------------------------------------------------CHI NHÁNH----------------------------------------------------------------
 //route thêm chi nhanh
 //method POST
@@ -3065,6 +3114,45 @@ app.post("/themXoaCuaHang_DanhMuc_Cuahanghomnay", urlEncodeParser, async functio
 					res.send({return_code : "0"});
 				} else {
 					console.log("Xóa cửa hàng khỏi danh mục hôm nay thành công !");
+					res.send({return_code: "1"});
+				}
+			});
+		}
+	} else {
+		console.log("Lỗi params !");
+		res.send({return_code : "0"});
+	}
+});
+
+
+//route thêm xóa chi nhánh khỏi danh mục khuyến mãi hệ thống
+app.post("/themXoaChiNhanh_DanhMuc_KhuyenMaiHeThong", urlEncodeParser, async function (req, res) {
+	if(req.body.idDanhMuc != null && req.body.idDanhMuc != ""
+	&& req.body.idCuaHang != null && req.body.idCuaHang != ""
+	&& req.body.state != null && req.body.state != ""){
+		if(req.body.state == "1"){
+			KHUYENMAI_HETHONG.findByIdAndUpdate(
+				{_id : mongoose.Types.ObjectId(req.body.idDanhMuc)},
+				{$push : {DanhSach_CN : req.body.idCuaHang}},
+				function(err, success){
+				if(err || success == null){
+					console.log("Lỗi query !");
+					res.send({return_code : "0"});
+				} else {
+					console.log("Thêm chi nhánh vào danh mục khuyến mãi hệ thống thành công !");
+					res.send({return_code: "1"});
+				}
+			});
+		} else{
+			KHUYENMAI_HETHONG.findByIdAndUpdate(
+				{_id : mongoose.Types.ObjectId(req.body.idDanhMuc)},
+				{$pull : {DanhSach_CN : req.body.idCuaHang}},
+				function(err, success){
+				if(err || success == null){
+					console.log("Lỗi query !");
+					res.send({return_code : "0"});
+				} else {
+					console.log("Xóa chi nhánh khỏi danh mục khuyến mãi hệ thống thành công !");
 					res.send({return_code: "1"});
 				}
 			});
