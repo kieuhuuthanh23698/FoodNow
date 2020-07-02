@@ -21,15 +21,15 @@
             <div class="card">
               <div class="card-header p-2">
                 <ul class="nav nav-pills">
-                   <li class="nav-item"><a class="nav-link active" href="#ThongtinCH" data-toggle="tab" onclick="loadListCH_Thuoc_DM()">
+                   <li class="nav-item"><a class="nav-link active" href="#ThongtinCH" data-toggle="tab" >
                   <i class="far fas fa-store"></i>Thông tin cửa hàng</a></li>
-                   <li class="nav-item"><a class="nav-link" href="#ThongtinTK" data-toggle="tab" onclick="loadListCH_Thuoc_DM()">
+                   <li class="nav-item"><a class="nav-link" href="#ThongtinTK" data-toggle="tab">
                   <i class="far fas fa-user-tie"></i>Thông tin tài khoản</a></li>
-                   <li class="nav-item"><a class="nav-link" href="#DanhsachMA" data-toggle="tab" onclick="loadListCH_Thuoc_DM()">
+                   <li class="nav-item"><a class="nav-link" href="#DanhsachMA" data-toggle="tab" >
                    <i class="far fas fa-utensils"></i>Danh sách món ăn</a></li>
-                   <li class="nav-item"><a class="nav-link" href="#DanhsachKM" data-toggle="tab" onclick="loadListCH_Thuoc_DM()">
+                   <li class="nav-item"><a class="nav-link" href="#DanhsachKM" data-toggle="tab" >
                    <i class="far fas fa-utensils"></i>Danh sách khuyến mãi</a></li>
-                   <li class="nav-item"><a class="nav-link" href="#DanhsachKMHT" data-toggle="tab" onclick="loadListCH_Thuoc_DM()">
+                   <li class="nav-item"><a class="nav-link" href="#DanhsachKMHT" data-toggle="tab" >
                    <i class="far fas fa-utensils"></i>Danh sách khuyến mãi hệ thống áp dụng</a></li>
                 </ul>
               </div><!-- /.card-header -->
@@ -306,7 +306,7 @@
             url: url + "getTaikhoancuahang",
             dataType: 'json',
             data: {
-                idcuahang: <?php echo "'".$id."'";?>,
+                idcuahang: "5ec39da122336e32d01a2402",
             },
             type: 'post',
             success: function (res) {
@@ -318,9 +318,159 @@
                 $("#thoigian_kt").text(infor.Thoi_Gian_Ket_Thuc);
                 $("#tendangnhap").text(infor.TenTaiKhoan[0].Ten_dang_nhap);
                 $("#matkhau").text(infor.TenTaiKhoan[0].Mat_khau);
-                $("#img").attr("src","<?php echo base_url();?>dist/img/" + infor.Hinh_Anh_Cua_Hang) 
+                $("#img").attr("src","' + url + 'Public/Images/' " + infor.Hinh_Anh_Cua_Hang) 
               }
             }
         });
     });
+</script>
+
+<script type="text/javascript">
+    var listMonAn = [];
+    var click = false;
+    $(document).ready(function(){
+        loadListLoaiMonAn();
+    });
+
+    function loadListLoaiMonAn(){
+        $.ajax(
+        {
+            url: url + "Danhsachmonan_cuahang",
+            dataType: 'json',
+            data: {
+                idcuahang: "5ec39da122336e32d01a2402",
+            },
+            type: 'post',
+            success: function (res) {
+            if(res.return_code == "1"){
+                listMonAn = res.infor;
+                var table = $('#example1').DataTable();
+                table.clear().draw();
+                 for (i=0; i< listMonAn.length; i++){ 
+                    var item = listMonAn[i];//1 loại món ăn
+                    table.row.add( [
+                    item.DS_LoaiMA.Ten_loai_mon_an ,
+                    item.DS_LoaiMA.Danh_sach_mon_an.length ,
+                    '<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + item.DS_LoaiMA._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+                    + "</div>"
+                    ] ).draw();
+
+                    $('#example1 tbody tr').each(function(){
+                        if($(this).find('td:nth-child(1)').text() == item.DS_LoaiMA.Ten_loai_mon_an)
+                            $(this).attr('id', item.DS_LoaiMA._id );
+                        $(this).bind({
+                            click : function(e) { 
+                                    if(!click)
+                                        loadMonan_LoaiMonAn($(this).attr('id'));
+                                 },
+                            mouseleave : function(e) {
+                                     click = false;
+                                }
+                            });
+                    });
+                }
+            }
+            }
+        });
+    }
+
+
+    function loadMonan_LoaiMonAn(idLoaiMonAn){
+      debugger;
+        click = true;
+         for (i=0; i< listMonAn.length; i++){
+            var item = listMonAn[i];//1 loại món ăn
+            if(item.DS_LoaiMA._id == idLoaiMonAn){
+                var table = $('#example2').DataTable();
+                table.clear().draw();
+                for (var j = 0; j < item.DS_Monan.length; j++) {
+                    var monan = item.DS_Monan[j];
+                    table.row.add( [
+                    '<img src="' + url + 'Public/Images/'+ monan.Hinh_anh_mon_an+'" alt="Product Image" class="img-size-50">',
+                    monan.Ten_mon_an ,
+                    "" + (new Intl.NumberFormat().format(monan.Don_gia_mon_an)),
+                    '<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + monan._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+                    + "</div>"
+                    ] ).draw();
+                }
+            }
+        }
+    }
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $.ajax(
+        {
+            url: url + "KhuyenMaiCuaHang",
+            dataType: 'json',
+            data: {
+                idCuahang: "5ec39da122336e32d01a2402",
+            },
+            type: 'post',
+            success: function (res) {
+             for (i=0; i< res.length; i++){ 
+                var table = $('#example3').DataTable();
+                table.row.add( [
+                res[i].MaGiamGia,
+                res[i].ThongTin_KMCH,
+                res[i].NgayBD,
+                res[i].NgayKT,
+                res[i].PhanTram_GiamGia + " %",
+                res[i].MoTa,
+                "<div class='sparkbar' data-color='#00a65a' data-height='20'>"
+                + '<button class="btn btn-danger" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+                + "</div>"
+                ] ).draw();
+
+                $('#example1 tbody tr').each(function(){
+                    if($(this).find('td:nth-child(1)').text() == res[i].MaGiamGia)
+                        $(this).attr('id', res[i]._id );
+                });
+
+            };
+            }
+        });
+    });
+</script>
+
+<script type="text/javascript"> 
+      
+    $(document).ready(function(){
+      loadDanhSachKhuyenMai();
+    });
+
+    function loadDanhSachKhuyenMai(){
+            $.ajax({
+            url: url + 'getKMHeThongCuaCuaHang',
+            dataType: 'json',
+            data: {
+                idCuaHang : "5ec39da122336e32d01a2402"
+            },
+            type: 'post',
+            success: function (res) {
+                if(res.return_code == "1"){
+                var listKM = res.infor;
+                var table = $('#example4').DataTable();
+                for (i=0; i< listKM.length; i++){ 
+                    table.row.add( [
+                    listKM[i].MaGiamGia ,
+                    listKM[i].GioBD,
+                    listKM[i].GioKT,
+                    listKM[i].PhanTram_GiamGia + " %",
+                    '<img src="' + url + 'Public/Images/' + listKM[i].Icon + '" alt="Product Image" class="img-size-50">',
+                    ] ).draw();
+                    };
+                    toastr.success('Load khuyến mãi hệ thống dành cho cửa hàng thành công .');
+                }
+            }
+        });
+    }
+
+
+// <script type="text/javascript">
+  // $('.toastrDefaultSuccess').click(function() {
+      // toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+    // });
 </script>
