@@ -243,6 +243,7 @@ title="Remove">
               <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Tên chi nhánh: activate to sort column descending" aria-sort="ascending">Hình ảnh</th>
               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label=">Hình ảnh: activate to sort column ascending">Tên chi nhánh</th>
               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label=">Hình ảnh: activate to sort column ascending">Số lượng CH</th>
+              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label=">Hình ảnh: activate to sort column ascending">Chi tiết</th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -327,7 +328,7 @@ title="Remove">
     background - color: #17a2b8;
     color: #FFFFFF;
   }
-
+a
   .card-primary-cuahang{
     background - color: #e0a800;
     color: #FFFFFF;
@@ -355,47 +356,50 @@ $(document).ready(function(){
 });
 
 function loadListChiNhanh(){
-   $.ajax(
-        {
-            url: url + 'chinhanh',
-            dataType: 'json',
-            data: {
-            },
-            type: 'get',
-            success: function (res) {
-              if(res.length > 0){
-                var table = $('#example1').DataTable();
-             for (i=0; i< res.length; i++){ 
-              var item = res[i];
-                table.row.add( [
-                  item._id.substr(item._id.length - 5),
-                '<ul class="list-inline"><li class="list-inline-item"><img class="img_chinhanh" src="' + url + 'Public/Images/' + item.Hinh_Anh_Chi_Nhanh + '"></li></ul>',
-                '<a href="#">' + item.Ten_Chi_Nhanh + '</a>',
-                item.DanhSach_CH.length
-                ] ).draw();
-
-
-                $('#example1 tbody tr').each(function(){
-                    if($(this).find('td:nth-child(1)').text() == (item._id.substr(item._id.length - 5)))
-                        $(this).attr('id', item._id );
-                    $(this).bind({
-                        click : function(e) { 
-                            if(hovering == false)
-                                loadCuaHang($(this).attr('id'));
-                             }, 
-                        mouseleave : function(e) {//khi ko hover nữa
-                                //xóa bảng CH
-                                hovering = false;
-                            }
-                        });
-                });
-
-            };
-          } else{
-            toastr.error("Không có chi nhánh để hiển thị !");
-            }
-          }
-        });
+ $.ajax(
+ {
+  url: url + 'chinhanh',
+  dataType: 'json',
+  data: {
+  },
+  type: 'get',
+  success: function (res) {
+    if(res.length > 0){
+      var table = $('#example1').DataTable();
+      for (i=0; i< res.length; i++){ 
+        var item = res[i];
+        table.row.add( [
+          item._id.substr(item._id.length - 5),
+          '<ul class="list-inline"><li class="list-inline-item"><img class="img_chinhanh" src="' + url + 'Public/Images/' + item.Hinh_Anh_Chi_Nhanh + '"></li></ul>',
+          '<a href="#">' + item.Ten_Chi_Nhanh + '</a>',
+          item.DanhSach_CH.length,
+          '<button class="btn btn-danger btn_xoa" onclick="loadCuaHang(' + "'" + item._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+          ] ).draw();
+      }
+      // $('#example1 tbody tr').each(function(){
+      //   if($(this).find('td:nth-child(1)').text() == (item._id.substr(item._id.length - 5))){
+      //     $(this).attr('id', item._id );
+      //     console.log(item._id);
+      //   } else {
+      //     toastr.success($(this).find('td:nth-child(1)').text() + " - " + (item._id.substr(item._id.length - 5)))
+      //     console.log($(this).find('td:nth-child(1)').text() + " - " + (item._id.substr(item._id.length - 5)));
+      //   }
+      //   $(this).bind({
+      //     click : function(e) { 
+      //       if(hovering == false)
+      //         loadCuaHang($(this).attr('id'));
+      //     }, 
+      //     mouseleave : function(e) {//khi ko hover nữa
+      //             //xóa bảng CH
+      //             hovering = false;
+      //           }
+      //     });
+      // });
+    } else{
+      toastr.error("Không có chi nhánh để hiển thị !");
+    }
+  }
+});
 }
 
 function loadCuaHang(idChiNhanh){
@@ -410,7 +414,7 @@ function loadCuaHang(idChiNhanh){
             success: function (res) {
                 var table = $('#example2').DataTable();
                 table.clear().draw();
-              debugger;
+                debugger;
               if(res.return_code == "1" && res.infor.length > 0){
                 var list = res.infor;
              for (i=0; i< list.length; i++){ 
