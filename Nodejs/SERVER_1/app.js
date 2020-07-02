@@ -284,6 +284,55 @@ app.get("/cuahang", function (req, res) {
 	});
 });
 
+//xác định xem cửa hàng này có nằm trong danh mục chưa
+const getDiaChiCuaHang = async (iCUAHANG) => {
+	console.log(iCUAHANG);
+	return new Promise(function (resolve, reject) {
+		DIACHI.findById({_id : mongoose.Types.ObjectId(iCUAHANG.Dia_Chi_Cua_Hang)},function(err, success){
+			console.log(err, success);
+			if(err || success == null){
+				resolve(null);
+			} else{
+					resolve({CH : iCUAHANG, DiaChi : success});
+			}
+		})
+	});
+}
+
+//route get danh sách cửa hàng của 1 chi nhánh
+app.post("/cuahangs_chinhanh", urlEncodeParser ,function (req, res) {
+	CHINHANH.aggregate(
+		[
+			{ 
+				"$match" : { 
+					"_id" : mongoose.Types.ObjectId(req.body.idChiNhanh)
+				}
+			}, 
+			{ 
+				"$lookup" : { 
+					"from" : "cuahangs", 
+					"localField" : "DanhSach_CH", 
+					"foreignField" : "_id", 
+					"as" : "listCH"
+				}
+			}
+		],function (err, result){
+			if(err || result.length == 0){
+				res.send({return_code: "0"});
+			} else{
+				console.log(result);
+				Promise.all(result[0].listCH.map(function (iCUAHANG) {
+					return getDiaChiCuaHang(iCUAHANG);
+				})).then(function (data) {
+					console.log(data);
+					res.send({return_code: "1", infor : data})
+				});
+			}
+		}
+	);
+	
+});
+
 //-------------------------------------------------------------------CHI NHÁNH----------------------------------------------------------------
 //route thêm chi nhanh
 //method POST
@@ -1148,7 +1197,8 @@ app.get("/DanhMucCuaHang", function (req, res) {
 
 
 const getThongTinCuaHang = async (req, res, error_query) => {
-	console.time("getThongTinCuaHang");
+	const label = Date.now();
+	console.time("getThongTinCuaHang" + label);
 	return new Promise(function (resolve, reject) {
 		CUAHANG.aggregate(
 			[
@@ -1182,13 +1232,14 @@ const getThongTinCuaHang = async (req, res, error_query) => {
 						console.log("Không tìm thấy cửa hàng");
 						res.send(error_query);
 					}
-					console.timeEnd("getThongTinCuaHang");
+					console.timeEnd("getThongTinCuaHang" + label);
 				}
 			});
 	});
 }
 const getDanhSachMonAnCuaHang = async (req, res, error_query) => {
-	console.time("getDanhSachMonAnCuaHang");
+	const label = Date.now();
+	console.time("getDanhSachMonAnCuaHang" + label);
 	return new Promise(function (resolve, reject) {
 		CUAHANG.findById(
 			{ _id: mongoose.Types.ObjectId(req.body.idCuahang) },
@@ -1219,7 +1270,7 @@ const getDanhSachMonAnCuaHang = async (req, res, error_query) => {
 								else {
 									if (monans != null && monans.length > 0) {
 										resolve(monans);
-										console.timeEnd("getDanhSachMonAnCuaHang");
+										console.timeEnd("getDanhSachMonAnCuaHang" + label);
 									} else {
 										res.send({ return_code: "0", error_infor: "Cửa hàng không có món ăn !" });
 									}
@@ -1236,7 +1287,8 @@ const getDanhSachMonAnCuaHang = async (req, res, error_query) => {
 }
 
 const getDanhSachMonAnDonTam = async (req, res, error_query) => {
-	console.time("getDanhSachMonAnDonTam");
+	const label = Date.now();
+	console.time("getDanhSachMonAnDonTam" + label);
 	return new Promise(function (resolve, reject) {
 		if (req.body.idKhachHang != null && req.body.idKhachHang != "") {
 			DON_HANG.find(
@@ -1258,21 +1310,22 @@ const getDanhSachMonAnDonTam = async (req, res, error_query) => {
 		} else {
 			resolve({ return_code: "0", error_infor: "Bạn bạn không có đơn tạm tại cửa hàng !" });
 		}
-		console.timeEnd("getDanhSachMonAnDonTam");
+		console.timeEnd("getDanhSachMonAnDonTam" + label);
 	});
 }
 
 app.post("/thongTinCuaHang", urlEncodeParser, async function (req, res) {
 	var error_query = { return_code: "0", error_infor: "Lỗi server khi query." };
 	let response = {};
-	console.time("thongTinCuaHang");
+	const label = Date.now();
+	console.time("thongTinCuaHang" + label);
 	console.log("Tìm thông tin cửa hàng có id : " + req.body.idCuahang);
 	await Promise.all([
 		getThongTinCuaHang(req, res, error_query),
 		getDanhSachMonAnCuaHang(req, res, error_query),
 		getDanhSachMonAnDonTam(req, res, error_query)
 	]).then(function (data) {
-		console.timeEnd("thongTinCuaHang");
+		console.timeEnd("thongTinCuaHang" + label);
 		response.return_code = "1";
 		response.thongTinCuaHang = data[0];
 		response.lstMonAn = data[1];
@@ -1862,7 +1915,8 @@ app.post("/Dangnhapadmin", urlEncodeParser, function (req, res) {
 });
 
 const getDanhSachGoiY = async (req, res, error_query) => {
-	// console.time("getDanhSachGoiY");
+	const label = Date.now();
+	console.time("getDanhSachGoiY" + label);
 	return new Promise(function (resolve, reject) {
 		KHUYENMAI_HETHONG.find(
 			function (err, lst_khuyen_mai_ht) {
@@ -1873,7 +1927,7 @@ const getDanhSachGoiY = async (req, res, error_query) => {
 					resolve(lst_khuyen_mai_ht);
 					console.log("Lấy danh sách khuyến mãi hệ thống thành công 2!");
 				}
-				// console.timeEnd("getDanhSachGoiY");
+				console.timeEnd("getDanhSachGoiY" + label);
 			}
 		);
 	});
@@ -1928,7 +1982,7 @@ const getDanhSachDanhMucCuaHangHeThong = async (req, res, error_query) => {
 // + Danh mục - detail danh mục cửa hàng của hệ thống foodnow
 //method GET
 app.get("/fragment_home", function (req, res) {
-	var label = "fragment_home" + Date.now();
+	var label = Date.now();
 	console.time(label);
 	var error_query = { return_code: "0", error_infor: "Lỗi server khi query." };
 	var response = {};
@@ -1949,7 +2003,8 @@ app.get("/fragment_home", function (req, res) {
 
 //tìm thông tin của món ăn => thêm vào đơn hàng
 const timThongTinMonAnChoDonHang = async (iMONAN) => {
-	console.time(iMONAN.id);
+	const label = Date.now();
+	console.time(iMONAN.id + label);
 	return new Promise(function (resolve, reject) {
 		MON_AN.findById({
 			_id: mongoose.Types.ObjectId(iMONAN.id)
@@ -1960,7 +2015,7 @@ const timThongTinMonAnChoDonHang = async (iMONAN) => {
 			}
 			else {
 				console.log("Lấy thông tin của món ăn thành công !");
-				console.timeEnd(iMONAN.id);
+				console.timeEnd(iMONAN.id + label);
 				resolve({
 					IdMonAn: mongoose.Types.ObjectId(resultSearchMA._id),
 					SoLuong: iMONAN.count,
@@ -1974,7 +2029,8 @@ const timThongTinMonAnChoDonHang = async (iMONAN) => {
 }
 
 function capNhatDonHang(iCART, iDONHANG, error_query, res) {
-	console.time("capNhatDonHang");
+	const label = Date.now();
+	console.time("capNhatDonHang:" + label);
 	if (iCART.length != null && iCART.length > 0) {//giỏ hàng có item
 		Promise.all(
 			iCART.map(function (iMONAN) {
@@ -1982,7 +2038,7 @@ function capNhatDonHang(iCART, iDONHANG, error_query, res) {
 			}))
 			.then(function (resolveThemMA) {
 				console.log("Thông tin các món ăn trong đơn hàng :")
-				console.log(resolveThemMA);
+				// console.log(resolveThemMA);
 				if (resolveThemMA.length != iCART.length) {
 					console.log("Thêm món ăn vào đơn hàng gặp lỗi !");
 					res.send(error_query);
@@ -1997,8 +2053,8 @@ function capNhatDonHang(iCART, iDONHANG, error_query, res) {
 							res.send(error_query);
 						} else {
 							console.log("Kết quả thêm món ăn vào đơn hàng : ");
-							console.log(resultCapNhatDH);
-							console.timeEnd("capNhatDonHang");
+							// console.log(resultCapNhatDH);
+							console.timeEnd("capNhatDonHang:" + label);
 							console.log("Kết thúc cập nhật đơn hàng !");
 							res.send({ return_code: "1" });
 						}
@@ -2101,7 +2157,9 @@ app.post("/datHang", urlEncodeParser, function (req, res) {
 										console.log(err);
 										res.send(error_query);
 									} else {
-										db.ref().child("oders/" + req.body.idCuaHang).push({ key: resultDH[0]._id }).then(() => {
+										console.log(resultDH[0]._id);
+										console.log(String(result._id));
+										db.ref().child("oders/" + req.body.idCuaHang).push({ key: String(result._id + "") }).then(() => {
 											console.log("Notification đặt hàng thành công !");
 											console.log("Xác nhận đơn hàng thành công !");
 											res.send({ return_code: "1" });
@@ -2433,7 +2491,8 @@ app.post("/chitietDonHang", urlEncodeParser, function (req, res) {
 
 //tìm thông tin của món ăn => dùng cho chi tiết đơn hàng
 const timThongTinMonAnChoDonHang_extend = async (iMONAN) => {
-	console.time(iMONAN.IdMonAn);
+	const label = Date.now();
+	console.time(iMONAN.IdMonAn + label);
 	return new Promise(function (resolve, reject) {
 		MON_AN.findById({
 			_id: mongoose.Types.ObjectId(iMONAN.IdMonAn)
@@ -2444,7 +2503,7 @@ const timThongTinMonAnChoDonHang_extend = async (iMONAN) => {
 			}
 			else {
 				console.log("Lấy thông tin của món ăn thành công !");
-				console.timeEnd(iMONAN.IdMonAn);
+				console.timeEnd(iMONAN.IdMonAn + label);
 				resolve({
 					IdMonAn: mongoose.Types.ObjectId(resultSearchMA._id),
 					SoLuong: iMONAN.SoLuong,
@@ -2466,7 +2525,8 @@ const timThongTinMonAnChoDonHang_extend = async (iMONAN) => {
 
 //tìm thông tin của món ăn => dùng cho chi tiết đơn hàng
 const timThongTinKhachHanghoDonHang_extend = async (iDONHANG) => {
-	console.time(iDONHANG._id);
+	const label = Date.now();
+	console.time(iDONHANG._id + label);
 	return new Promise(function (resolve, reject) {
 		KHACH_HANG.findById({
 			_id: mongoose.Types.ObjectId(iDONHANG.IdKhachHang)
@@ -2477,7 +2537,7 @@ const timThongTinKhachHanghoDonHang_extend = async (iDONHANG) => {
 			}
 			else {
 				console.log("Lấy thông tin khách hàng của đơn hàng thành công !");
-				console.timeEnd(iDONHANG._id);
+				console.timeEnd(iDONHANG._id + label);
 				resolve(resultSearchKH);
 			}
 		});
@@ -2486,7 +2546,8 @@ const timThongTinKhachHanghoDonHang_extend = async (iDONHANG) => {
 
 //tìm thông tin địa chỉ cho đơn hàng => dùng cho địa chỉ giao hàng
 const timDiaChiDonHang_extend = async (iDONHANG) => {
-	console.time(iDONHANG._id);
+	const label = Date.now();
+	console.time(iDONHANG._id + label);
 	return new Promise(function (resolve, reject) {
 		DIACHI.findById({
 			_id: mongoose.Types.ObjectId(iDONHANG.Dia_chi_giao_hang)
@@ -2497,7 +2558,7 @@ const timDiaChiDonHang_extend = async (iDONHANG) => {
 			}
 			else {
 				console.log("Lấy thông tin địa chỉ của đơn hàng thành công !");
-				console.timeEnd(iDONHANG._id);
+				console.timeEnd(iDONHANG._id + label);
 				resolve(resultSearchDC);
 			}
 		});
@@ -2506,8 +2567,9 @@ const timDiaChiDonHang_extend = async (iDONHANG) => {
 //sau khi tìm thông tin của tất cả các món món ăn, cập nhật đơn hàng
 const capNhatDonHang_extend = async (iDONHANG) => {
 	var error_query = { return_code: "0", error_infor: "Lỗi server khi query." };
+	const label = Date.now();
 	return new Promise(function (resolve, reject) {
-		console.time(iDONHANG._id);
+		console.time(iDONHANG._id + label);
 		Promise.all(
 			iDONHANG.Chi_tiet_DH.map(function (iMONAN) {
 				return timThongTinMonAnChoDonHang_extend(iMONAN);
@@ -2534,7 +2596,7 @@ const capNhatDonHang_extend = async (iDONHANG) => {
 								iDONHANG.infor_kh = resolveThongTinDonHang[0];
 								iDONHANG.infor_cd = resolveThongTinDonHang[1];
 								console.log("Cập nhật thông tin đôn hàng thành công !");
-								console.timeEnd(iDONHANG._id);
+								console.timeEnd(iDONHANG._id + label);
 								resolve(iDONHANG);
 							}
 						});
@@ -2548,7 +2610,8 @@ app.post("/danhSachDongHang", urlEncodeParser, async function (req, res) {
 		[
 			{
 				"$match": {
-					"IdCuaHang": mongoose.Types.ObjectId(req.body.idCuaHang)//5ec39da122336e32d01a2401
+					"IdCuaHang": mongoose.Types.ObjectId(req.body.idCuaHang),//5ec39da122336e32d01a2401,
+					"Trang_thai_don_hang" : "1"
 				}
 			}
 		],
@@ -2989,7 +3052,9 @@ app.post("/themXoaCuaHang_DanhMuc", urlEncodeParser, async function (req, res) {
 //route get danh sách cửa hàng thuộc danh mục cửa hàng hôm nay
 //params : idDanhMuc
 app.post("/getDanhSachCuaDanhMucHomNay", urlEncodeParser, async function (req, res) {
+	const label = Date.now();
 	if(req.body.idDanhMuc != null && req.body.idDanhMuc != ""){
+		console.time(label + "_" +req.body.idDanhMuc);
 		DANHSACH_CUAHANG_HOMNAY.findById({_id : mongoose.Types.ObjectId(req.body.idDanhMuc)},
 		function(errDM, successResutltDM){
 			if(errDM || successResutltDM == null){
@@ -3002,13 +3067,12 @@ app.post("/getDanhSachCuaDanhMucHomNay", urlEncodeParser, async function (req, r
 							console.log("Query lỗi : " + err);
 							res.send({return_code : "0"});
 						} else {
-							console.time(Date.now() + "_" + req.body.idDanhMuc);
 							Promise.all(
 								successResutlt.map(function (iCUAHANG) {
 									return danhMucCuaHangChuaCuaHang(successResutltDM, iCUAHANG);
 								}))
 								.then(function (resolveCuaHangs) {
-									console.timeEnd(Date.now() + "_" +req.body.idDanhMuc);
+									console.timeEnd(label + "_" +req.body.idDanhMuc);
 									res.send({return_code : "1", infor : resolveCuaHangs});
 								});
 						}
@@ -3050,6 +3114,45 @@ app.post("/themXoaCuaHang_DanhMuc_Cuahanghomnay", urlEncodeParser, async functio
 					res.send({return_code : "0"});
 				} else {
 					console.log("Xóa cửa hàng khỏi danh mục hôm nay thành công !");
+					res.send({return_code: "1"});
+				}
+			});
+		}
+	} else {
+		console.log("Lỗi params !");
+		res.send({return_code : "0"});
+	}
+});
+
+
+//route thêm xóa chi nhánh khỏi danh mục khuyến mãi hệ thống
+app.post("/themXoaChiNhanh_DanhMuc_KhuyenMaiHeThong", urlEncodeParser, async function (req, res) {
+	if(req.body.idDanhMuc != null && req.body.idDanhMuc != ""
+	&& req.body.idCuaHang != null && req.body.idCuaHang != ""
+	&& req.body.state != null && req.body.state != ""){
+		if(req.body.state == "1"){
+			KHUYENMAI_HETHONG.findByIdAndUpdate(
+				{_id : mongoose.Types.ObjectId(req.body.idDanhMuc)},
+				{$push : {DanhSach_CN : req.body.idCuaHang}},
+				function(err, success){
+				if(err || success == null){
+					console.log("Lỗi query !");
+					res.send({return_code : "0"});
+				} else {
+					console.log("Thêm chi nhánh vào danh mục khuyến mãi hệ thống thành công !");
+					res.send({return_code: "1"});
+				}
+			});
+		} else{
+			KHUYENMAI_HETHONG.findByIdAndUpdate(
+				{_id : mongoose.Types.ObjectId(req.body.idDanhMuc)},
+				{$pull : {DanhSach_CN : req.body.idCuaHang}},
+				function(err, success){
+				if(err || success == null){
+					console.log("Lỗi query !");
+					res.send({return_code : "0"});
+				} else {
+					console.log("Xóa chi nhánh khỏi danh mục khuyến mãi hệ thống thành công !");
 					res.send({return_code: "1"});
 				}
 			});

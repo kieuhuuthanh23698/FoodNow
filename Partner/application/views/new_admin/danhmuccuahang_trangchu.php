@@ -323,9 +323,10 @@
               table.clear().draw();
                 for (i=0; i< listDMTC.length; i++){ 
                     var item = listDMTC[i].CuaHang_TrangChu;//1 loại món ăn
-                    var address = item.DiaChi_CH;
+                    debugger;
+                    var address = listDMTC[i].DiaChi_CH[0].Dia_Chi;
                     table.row.add( [
-                    '<ul class="products-list product-list-in-card pl-2 pr-2"><li style="background-color: transparent;" class="item"><div class="product-img"><img src="<?php echo base_url();?>dist/img/' + item.Hinh_Anh_Cua_Hang + '" alt="Product Image" class="img_chinhanh"></div><div class="product-info"><a href="#" class="product-title">' + item.Ten_Cua_Hang + '</a><span class="product-description">' + address + '</span></div></li></ul>'
+                    '<ul class="products-list product-list-in-card pl-2 pr-2"><li style="background-color: transparent;" class="item"><div class="product-img"><img src="' + url + 'Public/Images/' + item.Hinh_Anh_Cua_Hang + '" alt="Product Image" class="img_chinhanh"></div><div class="product-info"><a href="#" class="product-title">' + item.Ten_Cua_Hang + '</a><span class="product-description">' + address + '</span></div></li></ul>'
                     ] ).draw();
                   }//for
             }//if
@@ -501,7 +502,7 @@
                 var check = item.isInclude;
                 var address = item.DiaChi.Dia_Chi;
                 table.row.add([
-                  '<ul class="products-list product-list-in-card pl-2 pr-2"><li style="background-color: transparent;" class="item"><div class="product-img"><img src="<?php echo base_url();?>dist/img/' + infor_ch.Hinh_Anh_Cua_Hang + '" alt="Product Image" class="img_chinhanh"></div><div class="product-info"><a href="#" class="product-title">' + infor_ch.Ten_Cua_Hang + '</a><span class="product-description">' + address + '</span></div></li></ul>',
+                  '<ul class="products-list product-list-in-card pl-2 pr-2"><li style="background-color: transparent;" class="item"><div class="product-img"><img src="' + url + 'Public/Images/' + infor_ch.Hinh_Anh_Cua_Hang + '" alt="Product Image" class="img_chinhanh"></div><div class="product-info"><a href="#" class="product-title">' + infor_ch.Ten_Cua_Hang + '</a><span class="product-description">' + address + '</span></div></li></ul>',
                   '<div class="icheck-primary d-inline"><input onclick="check(' + "'" + infor_ch._id + "'" + ')" type="checkbox" id="cb' + infor_ch._id + '"' + (check == "1" ? "checked" : "") + '><label for="cb' + infor_ch._id + '" id="label' + infor_ch._id + '">' + (check == "1" ? "checked" : "") + '</label></div>'
                 ]).draw();
               };

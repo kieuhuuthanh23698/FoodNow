@@ -228,6 +228,7 @@ public class HomeFragment extends Fragment {
         if(requestCode == DefineVarible.getInforFragment){
             //convert data
             if(jsonArray_khuyen_mai_ht != null) {
+                arrayListSystemVoucher.clear();
                 for (int i = 0; i < jsonArray_khuyen_mai_ht.length(); i++) {
                     SystemVoucher systemVoucher = null;
                     try {
@@ -239,6 +240,7 @@ public class HomeFragment extends Fragment {
                 }
             }
             if(jsonArray_cua_hang_goi_y != null) {
+                arrayListSystemGroupStore.clear();
                 for (int i = 0; i < jsonArray_cua_hang_goi_y.length(); i++) {
                     SystemGroupStore systemGroupStore = null;
                     try {
@@ -246,10 +248,11 @@ public class HomeFragment extends Fragment {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    HomeFragment.arrayListSystemGroupStore.add(systemGroupStore);
+                    arrayListSystemGroupStore.add(systemGroupStore);
                 }
             }
             if(jsonArray_danh_muc != null) {
+                arrSuggestion.clear();
                 for (int i = 0; i < jsonArray_danh_muc.length(); i++) {
                     Suggestion suggestion = null;
                     try {
@@ -257,7 +260,7 @@ public class HomeFragment extends Fragment {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    HomeFragment.arrSuggestion.add(suggestion);
+                    arrSuggestion.add(suggestion);
                 }
             }
             //update adapter

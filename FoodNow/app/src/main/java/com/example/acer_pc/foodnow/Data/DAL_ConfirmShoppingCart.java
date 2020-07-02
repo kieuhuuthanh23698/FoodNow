@@ -78,7 +78,7 @@ public class DAL_ConfirmShoppingCart {
                     params.put("Do_dai_duong_di", String.valueOf(ConfirmCartActivity.doubleDistance));
                     params.put("Phi_ship", String.valueOf(ConfirmCartActivity.doubleDistanceCost));
                     params.put("Total_cart", String.valueOf(ConfirmCartActivity.doubleTotalCart));
-                    params.put("Total", String.valueOf(ConfirmCartActivity.doubleDistanceCost));
+                    params.put("Total", String.valueOf(ConfirmCartActivity.doubleToTalConfirm));
                     params.put("Hinh_thuc_thanh_toan", "0");
                     params.put("note", ConfirmCartActivity.shopping_cart_note_item.getText().toString().trim());
                     return params;

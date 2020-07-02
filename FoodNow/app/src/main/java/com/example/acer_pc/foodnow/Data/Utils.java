@@ -28,8 +28,8 @@ import java.util.List;
 import java.util.Locale;
 
 public class Utils {
-//    static String ipserver = "192.168.137.1:3000";
-    static String ipserver = "192.168.100.80:3000";
+    static String ipserver = "192.168.137.1:3000";
+//    static String ipserver = "192.168.100.80:3000";
 
     public static String urlLogin = "http://" + ipserver + "/DangNhap" ;
     public static String urlFragment_Home = "http://" + ipserver + "/fragment_home" ;
@@ -129,15 +129,15 @@ public class Utils {
     }
 
     public static String getUrlImageStore(String nameImage){
-        return "http://" + ipserver + "/Public/Images/stores/" + nameImage;
+        return "http://" + ipserver + "/Public/Images/" + nameImage;
     }
 
     public static String getUrlImageFood(String nameImage){
-        return "http://" + ipserver + "/Public/Images/foods/" + nameImage;
+        return "http://" + ipserver + "/Public/Images/" + nameImage;
     }
 
     public static String getUrlIconVoucher(String nameImage){
-        return "http://" + ipserver + "/Public/Images/icVoucher/" + nameImage;
+        return "http://" + ipserver + "/Public/Images/" + nameImage;
     }
 
     public static boolean isFavorite(String string) {

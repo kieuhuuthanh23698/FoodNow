@@ -342,6 +342,7 @@
 
             <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
                 android:id="@+id/storeNeartList"
+                android:visibility="gone"
                 android:orientation="vertical"
                 app:msrv_ms_per_inch="120"
                 app:msrv_snap_count="2"

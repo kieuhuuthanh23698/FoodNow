@@ -315,7 +315,7 @@ var socket;
                 res[i].GioKT,
                 // res[i].Icon,
                 res[i].PhanTram_GiamGia + " %",
-                '<img src="http://localhost:3000/Public/Images/'+res[i].Icon+'" alt="Product Image" class="img-size-50">',
+                '<img src="' + url + '/Public/Images/'+res[i].Icon+'" alt="Product Image" class="img-size-50">',
                 "<div class='sparkbar' data-color='#00a65a' data-height='20'>"
                 // + "<a href='#'><i class='nav-icon fas fa-edit'></i></a>"
                 + '<button class="btn btn-info btn_xoa" data-toggle="modal" data-target="#modal-lg" onclick="loadListCN_Thuoc_KM('+ "'" + res[i]._id + "'" + ')""><i class="fas fa-plus"></i></button>'
@@ -363,8 +363,10 @@ var socket;
               table.clear().draw();
                 for (i=0; i< listKM.length; i++){ 
                     var item = listKM[i].Chinhanh_KMHT;//1 loại món ăn
+                    if(item == null  || item.DanhSach_CH.length == 0)
+                        continue;
                     table.row.add( [
-                    '<ul class="products-list product-list-in-card pl-2 pr-2"><li style="background-color: transparent;" class="item"><div class="product-img"><img src="<?php echo base_url();?>dist/img/' + item.Hinh_Anh_Chi_Nhanh + '" alt="Product Image" class="img_chinhanh"></div><div class="product-info"><a href="#" class="product-title">' + item.Ten_Chi_Nhanh + '</a></div></li></ul>'
+                    '<ul class="products-list product-list-in-card pl-2 pr-2"><li style="background-color: transparent;" class="item"><div class="product-img"><img src="' + url + 'Public/Images/' + item.Hinh_Anh_Chi_Nhanh + '" alt="Product Image" class="img_chinhanh"></div><div class="product-info"><a href="#" class="product-title">' + item.Ten_Chi_Nhanh + '</a></div></li></ul>'
                     ] ).draw();
                   }//for
             }//if
@@ -476,12 +478,12 @@ var socket;
               console.log(res);
               for (i=0; i< list.length; i++){
                 var item = list[i];
-                if(item == null)
+                if(item == null || item.CN.DanhSach_CH.length == 0)
                   continue;
                 var infor_ch = item.CN;
                 var check = item.isInclude;
                 table.row.add([
-                  '<ul class="products-list product-list-in-card pl-2 pr-2"><li style="background-color: transparent;" class="item"><div class="product-img"><img src="<?php echo base_url();?>dist/img/' + infor_ch.Hinh_Anh_Chi_Nhanh + '" alt="Product Image" class="img_chinhanh"></div><div class="product-info"><a href="#" class="product-title">' + infor_ch.Ten_Chi_Nhanh + '</a></div></li></ul>',
+                  '<ul class="products-list product-list-in-card pl-2 pr-2"><li style="background-color: transparent;" class="item"><div class="product-img"><img src="' + url + 'Public/Images/' + infor_ch.Hinh_Anh_Chi_Nhanh + '" alt="Product Image" class="img_chinhanh"></div><div class="product-info"><a href="#" class="product-title">' + infor_ch.Ten_Chi_Nhanh + '</a></div></li></ul>',
                   '<div class="icheck-primary d-inline"><input onclick="check(' + "'" + infor_ch._id + "'" + ')" type="checkbox" id="cb' + infor_ch._id + '"' + (check == "1" ? "checked" : "") + '><label for="cb' + infor_ch._id + '" id="label' + infor_ch._id + '">' + (check == "1" ? "checked" : "") + '</label></div>'
                 ]).draw();
               };
@@ -501,10 +503,10 @@ var socket;
 
   function themXoaCuaHang_DanhMuc(idCuaHang, state){
     $.ajax({
-            url: url + "themXoaCuaHang_DanhMuc_Cuahanghomnay",
+            url: url + "themXoaChiNhanh_DanhMuc_KhuyenMaiHeThong",
             dataType: 'json',
             data: {
-                idDanhMuc : $("#idDanhmucCHHN").text(),
+                idDanhMuc : $("#idKhuyenmaihethong").text(),
                 idCuaHang : idCuaHang,
                 state : state
             },
@@ -512,10 +514,10 @@ var socket;
             success: function (res) {
               if (res.return_code == "1"){
                 if (state == "1") {
-                  toastr.success("Thêm cửa hàng vào danh mục cửa hàng hôm nay thành công.");
+                  toastr.success("Thêm chi nhánh vào danh mục khuyến mãi hệ thống thành công.");
                   $("#label" + idCuaHang).text("checked");
                 } else if (state == "0") {
-                  toastr.success("Xóa cửa hàng khỏi danh mục cửa hàng hôm nay thành công.");
+                  toastr.success("Xóa chi nhánh khỏi danh mục khuyến mãi hệ thống thành công.");
                   $("#label" + idCuaHang).text("");
                 }
               } else if (res.return_code == "0"){
