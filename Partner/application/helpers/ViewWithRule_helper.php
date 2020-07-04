@@ -9,6 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         if($group == '2'){//cửa hàng
           $dataLeftContent['Ten_Cua_Hang'] = $CI->session->get_userdata('user')['user']['Ten_Cua_Hang'];
+          $dataLeftContent['Hinh_Anh_Cua_Hang'] = $CI->session->get_userdata('user')['user']['Hinh_Anh_Cua_Hang'];
           $rule['cuahang_monan'] = $CI->load->view('new_admin/left_content/cuahang_danhsachmonan', $dataLeftContent,TRUE);
           $rule['don_hang_cua_hang'] = $CI->load->view('new_admin/left_content/don_hang_cua_hang', $dataLeftContent,TRUE);
           $rule['km_cua_hang'] = $CI->load->view('new_admin/left_content/khuyen_mai_cua_hang', $dataLeftContent,TRUE);

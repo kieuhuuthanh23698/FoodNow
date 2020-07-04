@@ -1860,7 +1860,8 @@ app.post("/Dangnhapadmin", urlEncodeParser, function (req, res) {
 												res.send({
 													return_code: "2",
 													id: kqcuahang[0]._id,
-													Ten_Cua_Hang: kqcuahang[0].Ten_Cua_Hang
+													Ten_Cua_Hang: kqcuahang[0].Ten_Cua_Hang,
+													Hinh_Anh_Cua_Hang: kqcuahang[0].Hinh_Anh_Cua_Hang
 												});
 												return;
 											} else {
