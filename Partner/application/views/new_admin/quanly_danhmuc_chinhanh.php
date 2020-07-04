@@ -304,7 +304,9 @@ title="Remove">
 </div >
 
 <style type="text/css">
-
+  .table td{
+      vertical-align: inherit;
+    }
   .giatien{
     font - size: 100%;
     vertical-align: center;
@@ -320,8 +322,10 @@ title="Remove">
   }
 
   .img_chinhanh{
-    width: 5.5rem;
+    width: 100px;
+    height: 100px;
     border-radius: 20%;
+    object-fit: cover;
   }
 
   .card-primary-chinhanh{
@@ -373,7 +377,7 @@ function loadListChiNhanh(){
           '<ul class="list-inline"><li class="list-inline-item"><img class="img_chinhanh" src="' + url + 'Public/Images/' + item.Hinh_Anh_Chi_Nhanh + '"></li></ul>',
           '<a href="#">' + item.Ten_Chi_Nhanh + '</a>',
           item.DanhSach_CH.length,
-          '<button class="btn btn-danger btn_xoa" onclick="loadCuaHang(' + "'" + item._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+          '<button class="btn btn-primary btn_xoa" onclick="loadCuaHang(' + "'" + item._id + "'" + ')" ><i class="fa fa-info-circle" aria-hidden="true"></i></button>'
           ] ).draw();
       }
       // $('#example1 tbody tr').each(function(){
@@ -414,7 +418,6 @@ function loadCuaHang(idChiNhanh){
             success: function (res) {
                 var table = $('#example2').DataTable();
                 table.clear().draw();
-                debugger;
               if(res.return_code == "1" && res.infor.length > 0){
                 var list = res.infor;
              for (i=0; i< list.length; i++){ 
@@ -424,9 +427,17 @@ function loadCuaHang(idChiNhanh){
                 '<a href="#">' + item.CH.Ten_Cua_Hang + '</a>',
                 item.DiaChi.Dia_Chi,
                 '<div class="icheck-primary d-inline"><input onclick="check(' + "'" + item.CH._id + "'" + ')" type="checkbox" id="cb' + item.CH._id + '"' + "checked" + '><label for="cb' + item.CH._id + '" id="label' + item.CH._id + '">Đang hoạt động</label></div>'
-                ] ).draw();
+                ] ).node().id  = item.CH._id;
+                table.draw();
 
             };
+            $('#example2 tbody tr').each(function(){
+              $(this).bind({
+                click : function(e) { 
+                      localStorage.setItem("detailCH", $(this).attr('id'));
+                      location.href = "<?php echo base_url();?>Taikhoan/homeQuanly_taikhoan_cuahang";
+                }});
+            });
           } else{
                 toastr.error("Chi nhánh không có cửa hàng để hiển thị !");
             }

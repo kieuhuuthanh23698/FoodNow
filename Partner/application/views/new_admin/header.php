@@ -122,7 +122,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <!-- <div class="image"> -->
-          <i><img src="<?php echo base_url();?>dist/img/store.png" style="width: 25px; height: 20px;" class="crop-center" alt="User Image"></i>
+          <img src="<?php echo isset($Hinh_Anh_Cua_Hang) ? api_url("public/images/").$Hinh_Anh_Cua_Hang : base_url()."dist/img/admintratorIcon.png";?>" style="width: 25px; height: 25px;" class="crop-center" alt="User Image">
         <!-- </div> -->
         </a>
         <div class="dropdown-menu dropdown-menu-right">

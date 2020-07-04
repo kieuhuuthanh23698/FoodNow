@@ -1,4 +1,17 @@
-
+<style type="text/css">
+  .step{
+    border-top-width: 5px;
+    border-top-style: inset;
+    border-top-color: aquamarine;
+  }
+  .step-content{
+     text-align: center;
+  }
+  .step-icon{
+    margin: 10px;
+    padding: 0px;
+  }
+</style>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -29,43 +42,33 @@
             <div class="card-header" style="padding-bottom: 0px">
 
             <div class="row">
-                  <div class="col-sm-3">
-                    <div class="position-relative p-3 " style="height: 100px; border-right: bold 1px gray">
-                      <span>Thông tin cơ bản cửa hàng</span>
-                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1"></label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="position-relative p-3 " style="height: 100px; border-right: bold 1px gray">
-                      <span>Thông tin người đại diện</span>
-                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1"></label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="position-relative p-3 " style="height: 100px; border-right: bold 1px gray">
-                      <span>Thông tin chi tiết</span>
-                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1"></label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="position-relative p-3 " style="height: 100px; border-right: bold 1px gray">
-                      <span>Đăng ký</span>
-                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1"></label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+          <div class="col-sm-3 step">
+            <div class="position-relative step-content">
+              <span>Thông tin cơ bản cửa hàng</span>
+              <div class="form-check step-icon">
+                <span style="font-size: 1em; color: blue;"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3 step">
+            <div class="position-relative step-content">
+              <span>Thông tin người đại diện</span>
+              <div class="form-check step-icon">
+                <span style="font-size: 1em; color: Tomato;"><i class="fa fa-minus-circle" aria-hidden="true"></i></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="position-relative step-content">
+              <span>Thông tin chi tiết</span>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="position-relative step-content">
+              <span>Đăng ký</span>
+            </div>
+          </div>
+        </div>
               
 
               <div class="modal fade" id="modal-lg">

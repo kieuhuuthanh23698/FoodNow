@@ -17,10 +17,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="mt-3 d-flex">
         <div class="image">
-          <img src="<?php echo isset($Hinh_Anh_Cua_Hang) ? api_url("public/images/").$Hinh_Anh_Cua_Hang : base_url()."dist/img/store.png";?>" style="width: 50px; height: 50px;" class="crop-center" alt="User Image">
+          <img src="<?php echo isset($Hinh_Anh_Cua_Hang) ? api_url("public/images/").$Hinh_Anh_Cua_Hang : base_url()."dist/img/admintratorIcon.png";?>" style="width: 50px; height: 50px;" class="crop-center" alt="User Image">
         </div>
         <div class="info" style="height: auto;float: right;width: 100%;margin-left: 10px;">
-          <a href="<?php echo base_url();?>admin/HomeAdmin" class="d-block"><?php echo isset($Ten_Cua_Hang) ? $Ten_Cua_Hang : '';?></a>
+          <a href="<?php echo base_url();?>admin/HomeAdmin" class="d-block"><?php echo isset($Ten_Cua_Hang) ? $Ten_Cua_Hang : 'ADMINTRATOR';?></a>
         </div>
       </div>
 
