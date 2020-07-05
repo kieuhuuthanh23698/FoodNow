@@ -315,7 +315,7 @@ var socket;
                 res[i].GioKT,
                 // res[i].Icon,
                 res[i].PhanTram_GiamGia + " %",
-                '<img src="' + url + '/Public/Images/'+res[i].Icon+'" alt="Product Image" class="img-size-50">',
+                '<img src="' + url + 'Public/Images/'+res[i].Icon+'" alt="Product Image" class="img-size-50">',
                 "<div class='sparkbar' data-color='#00a65a' data-height='20'>"
                 // + "<a href='#'><i class='nav-icon fas fa-edit'></i></a>"
                 + '<button class="btn btn-info btn_xoa" data-toggle="modal" data-target="#modal-lg" onclick="loadListCN_Thuoc_KM('+ "'" + res[i]._id + "'" + ')""><i class="fas fa-plus"></i></button>'

@@ -46,7 +46,7 @@
                 <input type="email" class="form-control" id="makm" aria-describedby="emailHelp" placeholder="Món đặc biệt">
               </div>
               <div class="form-group">
-                <label for="exampleInputEmail1">Hình ảnh chi nhánh</label>
+                <label style="display: block;">Hình ảnh chi nhánh</label>
                 <img id="img_upload">
                 <div class="custom-file">
 
@@ -249,25 +249,16 @@
   });
  }
 </script>
-
-<td>
-  <ul class="products-list product-list-in-card pl-2 pr-2">
-   <li class="item" style="background-color: transparent;">
-    <div class="product-img">
-      <img src="<?php echo base_url();?>dist/img/comchien.png" alt="Product Image"
-      class="img_chinhanh">
-    </div>
-    <div class="product-info">
-      <a href="javascript:void(0)" class="product-title">Thành Đạt - Hủ Tiếu Nam Vang -
-      Nguyễn Hữu Cầu</a>
-      <span class="product-description">
-        22B Nguyễn Hữu Cầu, P.Tân Định, Quận 1, TP.HCM
-      </span>
-    </div>
-  </li>
-</ul>
-</td>
-
-<td>
-  <a href="<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_dangkycuahang"><button  type="button" class="btn  btn-info" onclick="">Tạo cửa hàng</button></a>
-</td>
+<script>
+    var hovering = false;
+    $('#inputGroupFile02').on('change',function(e){
+        //get the file name
+        var fileName = e.target.files[0].name;
+        //replace the "Choose a file" label
+        //$(this).next('.custom-file-label').html(fileName);
+        var img = document.getElementById('img_upload');
+        img.src = URL.createObjectURL( e.target.files[0]);
+        img.height = "100";
+        document.getElementById("Chonfile").innerHTML=fileName;
+    })
+</script>

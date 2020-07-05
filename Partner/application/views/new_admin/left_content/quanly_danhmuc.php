@@ -20,11 +20,11 @@
                   <p>Đăng ký cửa hàng</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_monan" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Món ăn</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
 </li>

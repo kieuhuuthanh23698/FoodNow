@@ -2938,15 +2938,27 @@ app.get("/Hientatdanhsachcaccuahang", function (req, res) {
 //params : idCuaHang
 app.post("/getKMHeThongCuaCuaHang", urlEncodeParser, async function (req, res) {
 	if(req.body.idCuaHang != null && req.body.idCuaHang != ""){
-		KHUYENMAI_HETHONG.find(
-			{DanhSach_CN : {$in : [mongoose.Types.ObjectId(req.body.idCuaHang)]}},
-			function(err, successResutlt){
-				if(err){
+		CHINHANH.find(
+			{DanhSach_CH : {$in : [mongoose.Types.ObjectId(req.body.idCuaHang)]}},
+			function(err, successResutltCN){
+				if(err || successResutltCN == null || successResutltCN.length != 1){
 					console.log("Query lỗi : " + err);
 					res.send({return_code : "0"});
 				} else{
-					console.log("Lấy danh sách khuyến mãi hệ thống dành cho cửa hàng thành công !");
-					res.send({return_code : "1", infor : successResutlt});
+					console.log("Tìm thấy chi nhánh của cửa hàng !");
+					var idChiNhanh = successResutltCN[0]._id;						
+					KHUYENMAI_HETHONG.find(
+						{DanhSach_CN : {$in : [mongoose.Types.ObjectId(req.body.idChiNhanh)]}},
+						function(err, successResutlt){
+							if(err){
+								console.log("Query lỗi : " + err);
+								res.send({return_code : "0"});
+							} else{
+								console.log("Lấy danh sách khuyến mãi hệ thống dành cho cửa hàng thành công !");
+								res.send({return_code : "1", infor : successResutlt});
+							}
+						}
+					)
 				}
 			}
 		)

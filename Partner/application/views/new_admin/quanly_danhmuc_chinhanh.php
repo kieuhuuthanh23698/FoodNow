@@ -373,7 +373,7 @@ function loadListChiNhanh(){
       for (i=0; i< res.length; i++){ 
         var item = res[i];
         table.row.add( [
-          item._id.substr(item._id.length - 5),
+          item._id.substr(item._id.length - 5).toUpperCase(),
           '<ul class="list-inline"><li class="list-inline-item"><img class="img_chinhanh" src="' + url + 'Public/Images/' + item.Hinh_Anh_Chi_Nhanh + '"></li></ul>',
           '<a href="#">' + item.Ten_Chi_Nhanh + '</a>',
           item.DanhSach_CH.length,
