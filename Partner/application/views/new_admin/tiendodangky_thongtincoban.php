@@ -38,53 +38,67 @@
 <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpfe5LCma0AfpfNrbJlqxSCOLvOQGQDTg&callback=initMap" async defer></script> -->
 <script type="text/javascript">
   function initMap() {
+      var geocoder = new google.maps.Geocoder();
       var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -33.8688, lng: 151.2195},
-          zoom: 13
+          center: {lat: 10.908173, lng: 106.644301},
+          zoom: 17
         });
-        // var card = document.getElementById('pac-card');
         var input = document.getElementById('pac-input');
-        // var types = document.getElementById('type-selector');
-        // var strictBounds = document.getElementById('strict-bounds-selector');
-
-        // map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
-
         var autocomplete = new google.maps.places.Autocomplete(input);
-
-        // Bind the map's bounds (viewport) property to the autocomplete object,
-        // so that the autocomplete requests use the current map bounds for the
-        // bounds option in the request.
         autocomplete.bindTo('bounds', map);
-
-        // Set the data fields to return when the user selects a place.
-        autocomplete.setFields(
-            ['address_components', 'geometry', 'icon', 'name']);
-
+        autocomplete.setFields( ['address_components', 'geometry', 'icon', 'name']);
         var infowindow = new google.maps.InfoWindow();
         var infowindowContent = document.getElementById('infowindow-content');
         infowindow.setContent(infowindowContent);
         var marker = new google.maps.Marker({
           map: map,
-          anchorPoint: new google.maps.Point(0, -29)
+          position: {lat: 10.908173, lng: 106.644301},
+        });
+
+        map.addListener("center_changed", function() {
+          window.setTimeout(function() {
+            map.panTo(marker.getPosition());
+          }, 3000);
+        });
+        map.addListener('click', function(event) {
+          geocoder.geocode({
+              'latLng': event.latLng
+            }, function(results, status) {
+              debugger;
+              if (status == google.maps.GeocoderStatus.OK) {
+                if (results[0]) {
+                  alert(results[0].formatted_address);
+                }
+              }
+            });
+            if (marker == null)
+            {
+                  marker = new google.maps.Marker({
+                     position: event.latLng,
+                     map: map
+                  }); 
+            } 
+            else 
+            {
+                marker.setPosition(event.latLng); 
+            }
+            // map.setCenter(event.latLng);
+            // map.setZoom(17); 
         });
 
         autocomplete.addListener('place_changed', function() {
           infowindow.close();
           marker.setVisible(false);
           var place = autocomplete.getPlace();
-          if (!place.geometry) {
-            // User entered the name of a Place that was not suggested and
-            // pressed the Enter key, or the Place Details request failed.
-            window.alert("No details available for input: '" + place.name + "'");
+          if (!place.geometry) {s
+            window.alert("Địa chỉ không hợp lệ !");
             return;
           }
-
-          // If the place has a geometry, then present it on a map.
           if (place.geometry.viewport) {
             map.fitBounds(place.geometry.viewport);
           } else {
             map.setCenter(place.geometry.location);
-            map.setZoom(17);  // Why 17? Because it looks good.
+            map.setZoom(17);
           }
           marker.setPosition(place.geometry.location);
           marker.setVisible(true);
@@ -97,32 +111,11 @@
               (place.address_components[2] && place.address_components[2].short_name || '')
             ].join(' ');
           }
-
           infowindowContent.children['place-icon'].src = place.icon;
-          infowindowContent.children['place-name'].textContent = place.name;
           infowindowContent.children['place-address'].textContent = address;
           infowindow.open(map, marker);
         });
-
-        // Sets a listener on a radio button to change the filter type on Places
-        // Autocomplete.
-        // function setupClickListener(id, types) {
-        //   var radioButton = document.getElementById(id);
-        //   radioButton.addEventListener('click', function() {
-        //     autocomplete.setTypes(types);
-        //   });
-        // }
         autocomplete.setTypes([]);
-        // setupClickListener('changetype-all', []);
-        // setupClickListener('changetype-address', ['address']);
-        // setupClickListener('changetype-establishment', ['establishment']);
-        // setupClickListener('changetype-geocode', ['geocode']);
-
-        // document.getElementById('use-strict-bounds')
-        //     .addEventListener('click', function() {
-        //       console.log('Checkbox clicked! New state=' + this.checked);
-        //       autocomplete.setOptions({strictBounds: this.checked});
-        //     });
   } 
 </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuXN8L4pwflw9GZ1H5-vZhXSOAgHlJ25s&libraries=places&callback=initMap" async defer></script>
@@ -200,16 +193,6 @@
                                   Mô tả
                                 </label>
                               </h3>
-<!--   <div class="card-tools">
-<button type="button" class="btn btn-tool btn-sm" data-card-widget="collapse" data-toggle="tooltip"
-title="Collapse">
-<i class="fas fa-minus"></i></button>
-<button type="button" class="btn btn-tool btn-sm" data-card-widget="remove" data-toggle="tooltip"
-title="Remove">
-<i class="fas fa-times"></i></button>
-</div> -->
-
-<!-- </div> -->
 
 <div class="mb-3">
   <textarea id="mota_km" placeholder="Place some text here"
@@ -323,7 +306,6 @@ title="Remove">
       </div>
       <div id="infowindow-content">
       <img src="" width="16" height="16" id="place-icon">
-      <span id="place-name"  class="title"></span><br>
       <span id="place-address"></span>
     </div>
       <div id="map"></div>
