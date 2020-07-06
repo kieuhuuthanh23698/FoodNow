@@ -28,6 +28,8 @@
   }
 
   #infowindow-content {
+/*    height : 100px;
+    width : 200px;*/
     display: none;
   }
 
@@ -35,15 +37,31 @@
     display: inline;
   }
 </style>
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpfe5LCma0AfpfNrbJlqxSCOLvOQGQDTg&callback=initMap" async defer></script> -->
 <script type="text/javascript">
+  var lat = 0.0, lng = 0.0;
+  var map;
+  $(document).ready(function(){
+    $("#tenCH").val(localStorage.getItem("tenCH"));
+    $("#soDT").val(localStorage.getItem("soDT"));
+    $("#inputDiaChi").val(localStorage.getItem("address"));
+  });
+
   function initMap() {
       var geocoder = new google.maps.Geocoder();
-      var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 10.908173, lng: 106.644301},
+      debugger;
+      lat = localStorage.getItem("lat");
+      lat = (lat == null ? 10.908173 : lat);
+      lng = localStorage.getItem("lng");
+      lng = (lng == null ? 106.644207 : lng);
+      var ad = localStorage.getItem("address");
+      if(ad == null)
+        ad = "";
+      toastr.success("Khời tạo map tại location (" + lat + "," + lng + ")</br>" + ad);
+      map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: parseFloat(lat), lng: parseFloat(lng)},
           zoom: 17
         });
-        var input = document.getElementById('pac-input');
+        var input = document.getElementById('inputDiaChi');
         var autocomplete = new google.maps.places.Autocomplete(input);
         autocomplete.bindTo('bounds', map);
         autocomplete.setFields( ['address_components', 'geometry', 'icon', 'name']);
@@ -52,7 +70,7 @@
         infowindow.setContent(infowindowContent);
         var marker = new google.maps.Marker({
           map: map,
-          position: {lat: 10.908173, lng: 106.644301},
+          position: {lat: parseFloat(lat), lng: parseFloat(lng)},
         });
 
         map.addListener("center_changed", function() {
@@ -60,40 +78,17 @@
             map.panTo(marker.getPosition());
           }, 3000);
         });
-        map.addListener('click', function(event) {
-          geocoder.geocode({
-              'latLng': event.latLng
-            }, function(results, status) {
-              debugger;
-              if (status == google.maps.GeocoderStatus.OK) {
-                if (results[0]) {
-                  alert(results[0].formatted_address);
-                }
-              }
-            });
-            if (marker == null)
-            {
-                  marker = new google.maps.Marker({
-                     position: event.latLng,
-                     map: map
-                  }); 
-            } 
-            else 
-            {
-                marker.setPosition(event.latLng); 
-            }
-            // map.setCenter(event.latLng);
-            // map.setZoom(17); 
-        });
 
         autocomplete.addListener('place_changed', function() {
           infowindow.close();
           marker.setVisible(false);
           var place = autocomplete.getPlace();
           if (!place.geometry) {s
-            window.alert("Địa chỉ không hợp lệ !");
+            toastr.error("Địa chỉ không hợp lệ !");
             return;
           }
+          lat = place.geometry.location.lat();
+          lng = place.geometry.location.lng();
           if (place.geometry.viewport) {
             map.fitBounds(place.geometry.viewport);
           } else {
@@ -118,7 +113,7 @@
         autocomplete.setTypes([]);
   } 
 </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuXN8L4pwflw9GZ1H5-vZhXSOAgHlJ25s&libraries=places&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuXN8L4pwflw9GZ1H5-vZhXSOAgHlJ25s&libraries=places&callback=initMap" async defer></script>
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <div class="content-header">
@@ -277,41 +272,40 @@
   <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
     <!-- <form> -->
 
-      <div class="row">
+    <!--   <div class="row">
         <div class="form-group  col-sm-6">
           <label for="exampleInputPassword1">Khu vực</label>
-          <select class="form-control">
-            <option>TP.HCM</option>
-            <option>Món 2</option>
-            <option>Món 3</option>
-            <option>Món 4</option>
-            <option>Món 5</option>
+          <select class="form-control" id="selectListCity">
+            <option value="4">TP Hồ Chí Minh</option>
+            <option value="3">Hà Nội</option>
+            <option value="5">Cà Mau</option>
           </select>
         </div>
-      </div>
+      </div> -->
 
       <div class="row">
         <div class="form-group col-sm-6">
           <label for="exampleInputEmail1">Tên cửa hàng</label>
-          <input type="email" class="form-control" id="tenCH" aria-describedby="emailHelp" placeholder="Cơm Đùi Gà Chiên">
+          <input type="email" class="form-control" id="tenCH" aria-describedby="emailHelp" placeholder="Tên cửa hàng...">
         </div>
         <div class="form-group col-sm-6">
           <label for="exampleInputPassword1">Số điện thoại</label>
-          <input type="text" class="form-control" id="diachiCH">
+          <input type="text" class="form-control" id="soDT">
         </div>
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Địa chỉ</label>
-        <input type="text" class="form-control" id="pac-input">
+        <input type="text" class="form-control" id="inputDiaChi">
       </div>
       <div id="infowindow-content">
-      <img src="" width="16" height="16" id="place-icon">
-      <span id="place-address"></span>
+        <img src="" width="16" height="16" id="place-icon">
+        <span id="place-address"></span>
+        <div><button type="button" id="btnXacNhanDiaChi" class="btn btn-outline-primary btn-sm" style="font-size: 11px;height: 25px;width: 90%; margin: 5px;">Xác nhận địa chỉ</button></div>
     </div>
       <div id="map"></div>
-      <div class="form-group">
+      <!-- <div class="form-group">
         <button  type="button" class="btn  btn-success"><i class="fas fa-search-location"></i>Tìm trên bản đồ</button>
-      </div>
+      </div> -->
     </div>    
 
   </div>
@@ -319,7 +313,7 @@
   <div class="card-footer">
 
     <div class="justify-content-between">
-      <a href="<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_dangkycuahang_TTNDD"><button type="button" class="btn btn-primary float-right">Lưu</button></a>
+      <a href="#"><button type="button" class="btn btn-primary float-right" onclick="save()">Lưu</button></a>
     </div>
     <div class="justify-content-between">
       <a href="<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_cuahang"><button type="button" class="btn btn-default float-right" style="margin-right: 20px">Quay lại</button></a>
@@ -378,13 +372,72 @@
   $('#inputGroupFile02').on('change',function(e){
 //get the file name
 var fileName = e.target.files[0].name;
-//replace the "Choose a file" label
-//$(this).next('.custom-file-label').html(fileName);
 var img = document.getElementById('img_upload');
 img.src = URL.createObjectURL( e.target.files[0]);
 img.height = "100";
 document.getElementById("Chonfile").innerHTML=fileName;
 })
 </script>
+<script type="text/javascript">
+  function loadListCity(){
+    $.ajax({
+            url: "https://thongtindoanhnghiep.co/api/city",
+            dataType: 'json',
+            data: {},
+            type: 'get',
+            success: function (res) {
+              if(res != null){
+                var list = res.LtsItem;
+                for (var i = 0; i < list.length; i++) {
+                  var item = list[i];
+                  var o = new Option(item.Title, item.ID);
+                  $(o).html("option text");
+                  $("#selectListCity").append(o);
+                }
+              }
+            }
+    });
+  }
+
+  $("#btnXacNhanDiaChi").on('click',  function(){
+    $(this).css('display', 'none');
+    localStorage.setItem("lat", lat);
+    localStorage.setItem("lng", lng);
+    localStorage.setItem("address", $("#inputDiaChi").val());
+    toastr.success("Đã xác nhận địa chỉ tại location (" + lat + ", " + lng + ")" + $("#inputDiaChi").val());
+  })
+
+  function check(){
+    var result = true;
+    if($.trim($("#tenCH").val()) == ""){
+      result = false;
+      toastr.error("Bạn chưa điền tên cửa hàng !");
+    }
+    if($.trim($("#soDT").val()) == ""){
+      result =  false;
+      toastr.error("Bạn chưa điền số điện thoại !");
+    }
+    if($.trim($("#inputDiaChi").val()) == ""){
+      result =  false;
+      toastr.error("Bạn chưa điền địa chỉ !");
+    }
+    lat = localStorage.getItem("lat");
+    lng = localStorage.getItem("lng");
+    if(lat == null || lng == null){
+      result =  false;
+      toastr.error("Bạn chưa xác nhận địa chỉ !");
+    }
+    return result;
+  }
+
+  function save(){
+    if(check()){
+      localStorage.setItem("tenCH", $.trim($("#tenCH").val()));
+      localStorage.setItem("soDT", $.trim($("#soDT").val()));
+      location.href = "<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_dangkycuahang_TTNDD";
+    }
+  }
+</script>
+
 
 
