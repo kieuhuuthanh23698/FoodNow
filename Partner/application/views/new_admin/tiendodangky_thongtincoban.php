@@ -407,7 +407,7 @@ document.getElementById("Chonfile").innerHTML=fileName;
     toastr.success("Đã xác nhận địa chỉ tại location (" + lat + ", " + lng + ")" + $("#inputDiaChi").val());
   })
 
-  function check(){
+  function checkTT_CoBan(){
     var result = true;
     if($.trim($("#tenCH").val()) == ""){
       result = false;
@@ -431,7 +431,7 @@ document.getElementById("Chonfile").innerHTML=fileName;
   }
 
   function save(){
-    if(check()){
+    if(checkTT_CoBan()){
       localStorage.setItem("tenCH", $.trim($("#tenCH").val()));
       localStorage.setItem("soDT", $.trim($("#soDT").val()));
       location.href = "<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_dangkycuahang_TTNDD";
