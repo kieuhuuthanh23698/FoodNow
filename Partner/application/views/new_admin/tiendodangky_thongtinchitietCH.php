@@ -11,6 +11,36 @@
     margin: 10px;
     padding: 0px;
   }
+
+  .giatien{
+    font - size: 100%;
+    vertical-align: center;
+    background-color: #A5DF00;
+  }
+
+  .chitiet{
+    padding: 3px 12px 3px 12px;
+  }
+
+  #img_upload{
+    width: 100px;
+  }
+
+  .img_chinhanh{
+    width: 5.5rem;
+    border-radius: 20%;
+  }
+
+  .card-primary-chinhanh{
+    background - color: #17a2b8;
+    color: #FFFFFF;
+  }
+
+  .card-primary-cuahang{
+    background - color: #e0a800;
+    color: #FFFFFF;
+
+  }
 </style>
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -37,124 +67,44 @@
 
   <div class="container-fluid" id="quickForm">
     <!-- Main row -->
-    <div class="card">
+  <div class="card">
 
-      <div class="card-header" style="padding-bottom: 0px">
+    <div class="card-header" style="padding-bottom: 0px">
 
-        <div class="row">
-          <div class="col-sm-3 step">
-            <div class="position-relative step-content">
-              <span>Thông tin cơ bản cửa hàng</span>
-              <div class="form-check step-icon">
-                <span style="font-size: 1em; color: blue;"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-3 step">
-            <div class="position-relative step-content">
-              <span>Thông tin người đại diện</span>
-              <div class="form-check step-icon">
-                <span style="font-size: 1em; color: blue;"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-3 step">
-            <div class="position-relative step-content">
-              <span>Thông tin chi tiết</span>
-              <div class="form-check step-icon">
-                <span style="font-size: 1em; color: Tomato;"><i class="fa fa-minus-circle" aria-hidden="true"></i></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="position-relative step-content">
-              <span>Đăng ký</span>
+      <div class="row">
+        <div class="col-sm-3 step">
+          <div class="position-relative step-content">
+            <span>Thông tin cơ bản cửa hàng</span>
+            <div class="form-check step-icon">
+              <span style="font-size: 1em; color: blue;"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
             </div>
           </div>
         </div>
-        
-
-        <div class="modal fade" id="modal-lg">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <div class="modal-body">
-
-                <div class="card">
-                  <div class="card-body">
-                   
-                    <div class="row">
-                      <section class="container-fluid">
-                        <div class="row">
-                          <div class="col-md-12">
-                            <div class="card card-outline card-info">
-                              <div class="card-header">
-                                <label for="inputEmail4">
-                                  Mô tả
-                                </label>
-                              </h3>
-
-                              <div class="mb-3">
-                                <textarea id="mota_km" placeholder="Place some text here"
-                                style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label for="exampleInputEmail1">Hình ảnh cửa hàng</label>
-                            <img id="img_upload">
-                            <div class="custom-file">
-
-                              <input type="file" class="custom-file-input" id="inputGroupFile02" />
-                              <label class="custom-file-label" for="inputGroupFile02" id="Chonfile">Chọn hình ảnh</label>
-                            </div>
-                            
-                          </div>
-
-                        </div>
-
-                      </div>
-
-                    </section>
-
-                  </div>
-
-
-                </div>
-              </div>
-
-
-
-              <label>Cấp tài khoản cửa hàng</label>
-              <div class="card">
-               <div class="card-body">
-                <div class="form-group">
-                  
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Tên đăng nhập</label>
-                    <input type="email" class="form-control" id="tenDN" aria-describedby="emailHelp" placeholder="Tên đăng nhập sẽ cho tự động mỗi lần click Thêm cửa hàng">
-                    <label for="exampleInputEmail1">Mật khẩu</label>
-                    <input type="email" class="form-control" id="matkhau" aria-describedby="emailHelp" placeholder="Mật khẩu cũng sẽ tự động theo Tên đăng nhập">
-                  </div>
-                </div>
-              </div> 
+        <div class="col-sm-3 step">
+          <div class="position-relative step-content">
+            <span>Thông tin người đại diện</span>
+            <div class="form-check step-icon">
+              <span style="font-size: 1em; color: blue;"><i class="fa fa-check-circle" aria-hidden="true"></i></span>
             </div>
-
-
-          </div>
-          <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-primary float-right">Lưu</button>
           </div>
         </div>
-        <!-- /.modal-content -->
+        <div class="col-sm-3 step">
+          <div class="position-relative step-content">
+            <span>Thông tin chi tiết</span>
+            <div class="form-check step-icon">
+              <span style="font-size: 1em; color: Tomato;"><i class="fa fa-minus-circle" aria-hidden="true"></i></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="position-relative step-content">
+            <span>Đăng ký</span>
+          </div>
+        </div>
       </div>
-      <!-- /.modal-dialog -->
     </div>
-    <!-- /.modal -->
-
 
   </div>
-
-</div>
 <!-- /.card-header -->
 <div class="row">
 
@@ -178,24 +128,13 @@
                     <div class="row">
                       <div class="form-group col-sm-6">
                         <label for="exampleInputEmail1">Thời gian bắt đầu</label>
-                        <input type="email" class="form-control" id="tenCH" aria-describedby="emailHelp" placeholder="Cơm Đùi Gà Chiên">
+                        <input type="email" class="form-control" id="timeStart" placeholder="Nhập thời gian bắt đầu mở cửa">
                       </div>
                       <div class="form-group col-sm-6">
                         <label for="exampleInputPassword1">Thời gian kết thúc</label>
-                        <input type="text" class="form-control" id="diachiCH">
+                        <input type="text" class="form-control" id="timeEnd" placeholder="Nhập thời gian cửa hàng đóng cửa">
                       </div>
                     </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Hình ảnh cửa hàng</label>
-                      <img id="img_upload">
-                      <div class="custom-file">
-
-                        <input type="file" class="custom-file-input" id="inputGroupFile02" />
-                        <label class="custom-file-label" for="inputGroupFile02" id="Chonfile">Chọn hình ảnh</label>
-                      </div>
-                      
-                    </div>
-
                     <div class="card card-outline card-info">
                       <div class="card-header">
                         <label for="inputEmail4">
@@ -204,7 +143,7 @@
                       </h3>
 
                       <div class="mb-3">
-                        <textarea id="mota_km" placeholder="Place some text here"
+                        <textarea id="mota" placeholder="Place some text here"
                         style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                       </div>
                     </div>
@@ -219,7 +158,7 @@
               <div class="card-footer">
                
                 <div class="justify-content-between">
-                  <a href="<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_dangkycuahang_Dangky"><button type="button" class="btn btn-primary float-right">Lưu</button></a>
+                  <a href="#" onclick="saveTT_CuaHang()"><button type="button" class="btn btn-primary float-right">Lưu</button></a>
                 </div>
                 <div class="justify-content-between">
                  <a href="<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_dangkycuahang_TTNDD"><button type="button" class="btn btn-default float-right" style="margin-right: 20px">Quay lại</button></a>
@@ -240,51 +179,58 @@
 
   </div >
 
-  <style type="text/css">
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#timeStart").val(localStorage.getItem("timeStart"));
+    $("#timeEnd").val(localStorage.getItem("timeEnd"));
+    $("#mota").val(localStorage.getItem("mota"));
+  });
 
-    .giatien{
-      font - size: 100%;
-      vertical-align: center;
-      background-color: #A5DF00;
+  function checkTT_NguoiDaiDien(){
+    var result = true;
+    if(document.referrer == "<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_dangkycuahang_TTNDD" || document.referrer == "<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_dangkycuahang_Dangky"){
+      result =  true;
     }
-
-    .chitiet{
-      padding: 3px 12px 3px 12px;
+    if($.trim(localStorage.getItem("hoten")) == ""){
+      result = false;
     }
-
-    #img_upload{
-      width: 100px;
+    if($.trim(localStorage.getItem("cmnd")) == ""){
+      result =  false;
     }
-
-    .img_chinhanh{
-      width: 5.5rem;
-      border-radius: 20%;
+    if($.trim(localStorage.getItem("email")) == ""){
+      result =  false;
     }
+    return result;
+  }
 
-    .card-primary-chinhanh{
-      background - color: #17a2b8;
-      color: #FFFFFF;
+  function checkTT_CuaHang(){
+    var result = true;
+    if($.trim($("#timeStart").val()) == ""){
+      result = false;
+      toastr.error("Bạn chưa điền thời gian bắt đầu hoạt động !");
     }
-
-    .card-primary-cuahang{
-      background - color: #e0a800;
-      color: #FFFFFF;
-
+    if($.trim($("#timeEnd").val()) == ""){
+      result =  false;
+      toastr.error("Bạn chưa điền thời gian cửa hàng đóng cửa !");
     }
-  </style>
+    return result;
+  }
 
-  <script>
-    var hovering = false;
-    $('#inputGroupFile02').on('change',function(e){
-                //get the file name
-                var fileName = e.target.files[0].name;
-                //replace the "Choose a file" label
-                //$(this).next('.custom-file-label').html(fileName);
-                var img = document.getElementById('img_upload');
-                img.src = URL.createObjectURL( e.target.files[0]);
-                img.height = "100";
-                document.getElementById("Chonfile").innerHTML=fileName;
-              })
-            </script>
+  function saveTT_CuaHang(){
+    if(checkTT_CuaHang()){
+      localStorage.setItem("timeStart", $.trim($("#timeStart").val()));
+      localStorage.setItem("timeEnd", $.trim($("#timeEnd").val()));
+      localStorage.setItem("mota", $.trim($("#mota").val()));
+      location.href = "<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_dangkycuahang_Dangky";
+    }
+  }
+
+  $(window).on( "load", function(){
+    debugger;
+    if(!checkTT_NguoiDaiDien()){
+      location.href = "<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_dangkycuahang_TTNDD";
+    }
+  })
+</script>
 
             
