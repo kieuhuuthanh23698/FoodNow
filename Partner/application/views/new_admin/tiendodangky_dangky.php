@@ -369,14 +369,14 @@ $(document).ready(function(){
     }
 
   function saveTT_CuaHang(){
-        var form = createFormDataMonAn();
-        if(form){
+        var form = createFormDataThongTinCuaHang();
+        if(form == null){
           toastr.error("Error create form data !");
           return;
         }
         $.ajax(
         {
-            url: url + "",
+            url: url + "addCuaHang",
             dataType: 'json',
             cache: false,
             contentType: false,
@@ -384,8 +384,28 @@ $(document).ready(function(){
             data: form,
             type: 'post',
             success: function (res) {
-              if(res.return_code == "1"){
+              if(res != null && res.return_code == "1"){
+                debugger;
+                toastr.success("Tạo chi nhanh mới thành công !")
+                var infor = res.infor;
+                localStorage.removeItem('idChiNhanhDK');
+                localStorage.removeItem('tenCH');
+                localStorage.removeItem('soDT');
+                localStorage.removeItem('address');
+                localStorage.removeItem('lat');
+                localStorage.removeItem('lng');
+                localStorage.removeItem('hoten');
+                localStorage.removeItem('cmnd');
+                localStorage.removeItem('email');
+                localStorage.removeItem('timeStart');
+                localStorage.removeItem('timeEnd');
+                localStorage.removeItem('mota');
+                localStorage.setItem("detailCH", infor._id);
+                window.close();
+                window.open("<?php echo base_url();?>Taikhoan/homeQuanly_taikhoan_cuahang");
+                window.open("<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_chinhanh");
               } else if(res.return_code == "0"){
+                toastr.error("Tạo chi nhanh mới thất bại !")
               }
             }
         });

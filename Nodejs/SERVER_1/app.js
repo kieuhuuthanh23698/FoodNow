@@ -11,8 +11,8 @@ var diskStorage = multer.diskStorage({
 		callback(null, './Public/Images/')
 	},
 	filename: function (req, file, callback) {
-		const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-		file.filename = uniqueSuffix + '_' + file.originalname;
+		var uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+		file.filename = (uniqueSuffix + '_' + file.originalname).replace(/\s/g, '');
 		callback(null, uniqueSuffix + '_' + file.originalname);
 	}
 })
@@ -245,6 +245,52 @@ app.put("/updateMoTaKhuVuc", urlEncodeParser, function (req, res) {
 });
 
 //-------------------------------------------------------------------CỬA HÀNG----------------------------------------------------------------
+
+//tạo username auto
+const createAccountAuto = async (index) => {
+	console.time(index + "-");
+	var username = "FOODCH00000" + index;
+	return new Promise(function (resolve, reject) {
+		QUANLY_NGUOIDUNG.find(
+			{Ten_dang_nhap: username},
+			function (err, result) {
+				console.timeEnd(index + "-");
+				if(result.length == 0){
+					var newAcc = new QUANLY_NGUOIDUNG({
+						Ten_dang_nhap: username,
+						Mat_khau: username,
+						Trang_thai: "Đang hoạt động"
+					});
+					newAcc.save(function(err, resultAcc) {
+						QL_NHOM_NGUOIDUNG.findOneAndUpdate(
+							{Ten_nhom : "Cuahang"},
+							{$push : { DanhSach_NguoiDung: newAcc._id }}, 
+							function(err, result){
+								resolve(resultAcc);
+							});
+					})
+				} else {
+					resolve(createAccountAuto(index + 1));
+				}
+			}
+		);
+	});
+}
+
+//tạo địa chỉ cho cửa hàng
+const createAddressStore = async (address, lat, lng) => {
+	return new Promise(function (resolve, reject) {
+		var newDiaChi = new DIACHI({
+			Dia_Chi: address,
+			Vi_do: lat,
+			Kinh_do: lng,
+		});
+		newDiaChi.save(function(errDC, resDC){
+			resolve(resDC);
+		});
+	});
+}
+
 //route thêm cửa hàng
 //method POST
 //param : Ten_cua_hang, Dia_chi_cua_hang_chinh, So_dien_thoai_cua_hang, Mo_ta_cua_hang
@@ -263,43 +309,50 @@ app.post("/addCuaHang", urlEncodeParser, function (req, res) {
 		&& req.body.lat != "" && req.body.lng != "" && req.body.Ho_Ten_Nguoi_Dai_Dien != ""
 		&& req.body.CMND_Nguoi_Dai_Dien != "" && req.body.Email_Nguoi_Dai_Dien != ""
 		&& req.body.Thoi_Gian_Bat_Dau != "" && req.body.Thoi_Gian_Ket_Thuc != ""){
-			var newDiaChi = new DIACHI({
-				Dia_Chi: Dia_Chi_Cua_Hang,
-				Vi_do: req.body.lat,
-				Kinh_do: req.body.lng,
+			Promise.all([
+				createAccountAuto(1),
+				createAddressStore(req.body.Dia_Chi_Cua_Hang, req.body.lat, req.body.lng)
+			]).then(function (data) {
+				console.log("tao tai khoan, dia chi", data);
+				var newCuaHang = new CUAHANG({
+					Ten_Cua_Hang: req.body.Ten_cua_hang,
+					Dia_Chi_Cua_Hang: data[1]._id,
+					Mo_Ta_Cua_Hang: req.body.Mo_Ta_Cua_Hang,
+					Thoi_Gian_Bat_Dau: req.body.Thoi_Gian_Bat_Dau,
+					Thoi_Gian_Ket_Thuc: req.body.Thoi_Gian_Ket_Thuc,
+					Ho_Ten_Nguoi_Dai_Dien: req.body.Ho_Ten_Nguoi_Dai_Dien,
+					Email_Nguoi_Dai_Dien: req.body.Email_Nguoi_Dai_Dien,
+					CMND_Nguoi_Dai_Dien: req.body.CMND_Nguoi_Dai_Dien,
+					Danh_Gia: "0",
+					Hinh_Anh_Cua_Hang: req.file.filename,
+					Trang_Thai_Cua_Hang: "0",
+					Tai_Khoan: data[0]._id,
+					Khuyen_Mai_CH: [],
+					Thong_Tin_KH_Dat_Don: [],
+					Loai_MonAn: []
+				});
+				newCuaHang.save(function (err, resultCH) {
+					if (err){
+						console.log("Thêm cửa hàng mới bị lỗi : " + err);
+						res.send({return_code: "0"})
+					}
+					else{
+						CHINHANH.findByIdAndUpdate({
+							_id: mongoose.Types.ObjectId(req.body.idChiNhanhDK)
+						},
+						{$push: {DanhSach_CH : resultCH._id}},
+						function(errCN, resultCN){
+							if(errCN){
+								console.log("Thêm cửa hàng vào chi nhánh gặp lỗi !");
+								res.send({return_code: "0"});
+							} else {	
+								console.log("Thêm cửa hàng mới thành công !");
+								res.send({return_code: "1", infor: resultCH});
+							}
+						})
+					}
+				});
 			});
-			
-			newDiaChi.save(function(errDC, resDC){
-				if(errDC || resDC == null){					
-					console.log("Tạo địa chỉ gặp lỗi !");
-					res.send({return_code: "0"});
-					return;
-				} else {
-					var newCuaHang = new CUAHANG({
-						Ten_Cua_Hang: req.body,
-						Dia_Chi_Cua_Hang: resDC._id,
-						Mo_Ta_Cua_Hang: req.body.Mo_Ta_Cua_Hang,
-						Thoi_Gian_Bat_Dau: req.body.Thoi_Gian_Bat_Dau,
-						Thoi_Gian_Ket_Thuc: req.body.Thoi_Gian_Ket_Thuc,
-						Ho_Ten_Nguoi_Dai_Dien: req.body.Ho_Ten_Nguoi_Dai_Dien,
-						Email_Nguoi_Dai_Dien: req.body.Email_Nguoi_Dai_Dien,
-						CMND_Nguoi_Dai_Dien: req.body.CMND_Nguoi_Dai_Dien,
-						Danh_Gia: "0",
-						Hinh_Anh_Cua_Hang: req.file.filename,
-						Trang_Thai_Cua_Hang: "0",
-						Tai_Khoan: mongoose.Types.ObjectId ,
-						Khuyen_Mai_CH: [{ type: mongoose.Types.ObjectId }],
-						Thong_Tin_KH_Dat_Don: [{ type: mongoose.Types.ObjectId }],
-						Loai_MonAn: [{ type: mongoose.Types.ObjectId }]
-					});
-					newCuaHang.save(function (err) {
-						if (err)
-							res.send("Thêm cửa hàng mới bị lỗi : " + err);
-						else
-							res.send("Thêm cửa hàng mới thành công !");
-					});
-				}
-			})
 	}
 	else{
 		console.log("Params error 1");
@@ -307,6 +360,8 @@ app.post("/addCuaHang", urlEncodeParser, function (req, res) {
 	}
 	});
 });
+
+
 
 //route get danh sách cửa hàng
 app.get("/cuahang", function (req, res) {
