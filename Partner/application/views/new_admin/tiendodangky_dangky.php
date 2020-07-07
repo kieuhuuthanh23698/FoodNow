@@ -26,7 +26,6 @@
   
   function initMap() {
       var geocoder = new google.maps.Geocoder();
-      debugger;
       lat = localStorage.getItem("lat");
       lat = (lat == null ? 10.908173 : lat);
       lng = localStorage.getItem("lng");
@@ -47,6 +46,7 @@
       infowindow.setContent(infowindowContent);
       var marker = new google.maps.Marker({
         map: map,
+        label: localStorage.getItem("tenCH"),  
         position: {lat: parseFloat(lat), lng: parseFloat(lng)},
       });
   } 
@@ -138,6 +138,13 @@
               </div>
               <div class="card-body">
                 <div class="col-sm-12">
+                  <div id="TTNDD"><h3>THÔNG TIN CỬA HÀNG</h3></div>
+                  <strong><i class="fas fa-book mr-1"></i>CHI NHÁNH THUỘC CỬA HÀNG</strong>
+
+                  <p class="text-muted" id="tenChiNhanhDK"></p>
+                </div>
+
+                <div class="col-sm-12">
                   <div id="TTNDD"><h3>THÔNG TIN NGƯỜI ĐẠI DIỆN</h3></div>
                   <strong><i class="fas fa-book mr-1"></i>Họ tên</strong>
 
@@ -164,7 +171,7 @@
                 </div>
                 
                 <div class="col-sm-12">
-                  <div id="TTNDD"><h3>THÔNG TIN CƠ BẢN CỦA CỬA HÀNG</h3></div>
+                  <div id="TTNDD"><h3>THÔNG TIN CƠ BẢN CỦA CHI NHÁNH</h3></div>
                   <strong><i class="fas fa-book mr-1"></i>Tên cửa hàng</strong>
 
                   <p class="text-muted" id="tenCH"></p>
@@ -181,7 +188,7 @@
                 </div>
 
                 <div class="col-sm-12">
-                  <div id="TTNDD"><h3>THÔNG TIN CHI TIẾT CỦA CỬA HÀNG</h3></div>
+                  <div id="TTNDD"><h3>THÔNG TIN CHI TIẾT CỦA CHI NHÁNH</h3></div>
                   <strong><i class="fas fa-book mr-1"></i>Thời gian mở cửa</strong>
 
                   <p class="text-muted" id="timeStart"></p>
@@ -196,7 +203,7 @@
 
                   
                   <div class="form-group">
-                    <label for="exampleInputEmail1" style="display: block;">Hình ảnh cửa hàng</label>
+                    <label for="exampleInputEmail1" style="display: block;">Hình ảnh chi nhánh</label>
                     <img id="img_upload">
                     <div class="custom-file">
                       <input type="file" class="custom-file-input" id="inputGroupFile02" />
@@ -219,7 +226,7 @@
               <div class="card-footer">
                
                 <div class="justify-content-between">
-                  <a href="#"><button type="button" class="btn btn-primary float-right">Lưu</button></a>
+                  <a href="#"><button type="button" onclick="saveTT_CuaHang()" class="btn btn-primary float-right">Lưu</button></a>
                 </div>
                 <div class="justify-content-between">
                  <a href="<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_dangkycuahang_TTCTCH"><button type="button" class="btn btn-default float-right" style="margin-right: 20px">Quay lại</button></a>
@@ -284,6 +291,8 @@ $('#inputGroupFile02').on('change',function(e){
 })
 
 $(document).ready(function(){
+    //part 0
+    $("#tenChiNhanhDK").text(localStorage.getItem("tenChiNhanhDK"));
     //part 1
     $("#tenCH").text(localStorage.getItem("tenCH"));
     $("#soDT").text(localStorage.getItem("soDT"));
@@ -299,6 +308,94 @@ $(document).ready(function(){
     $("#timeEnd").text(localStorage.getItem("timeEnd"));
     $("#mota").text(localStorage.getItem("mota"));
   });
+
+  function checkTT_CuaHang(){
+    var result = true;
+    if(document.referrer == "<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_dangkycuahang_TTCTCH"){
+      result =  true;
+    } else {
+      result = false;
+    }
+    if($.trim(localStorage.getItem("timeStart")) == ""){
+      result = false;
+    }
+    if($.trim(localStorage.getItem("timeEnd")) == ""){
+      result =  false;
+    }
+    if($.trim(localStorage.getItem("idChiNhanhDK")) == ""){
+      result =  false;
+    }
+    if($.trim(localStorage.getItem("tenChiNhanhDK")) == ""){
+      result =  false;
+    }
+
+    return result;
+  }
+
+
+  function createFormDataThongTinCuaHang(){
+        debugger;
+        var form = new FormData();
+        var file_data = $("#inputGroupFile02").prop('files')[0];
+        if(file_data){
+            var type = file_data.type;
+            var match = ["image/png", "image/jpg", "image/jpeg"];
+            if (type == match[0] || type == match[1] || type == match[2]) {
+                form.append("upload_file", file_data);
+            }
+        } else {
+          toastr.error("Bạn chưa chọn hình ảnh đại diện cửa hàng !");
+          return null;
+        }
+        var lat = localStorage.getItem("lat");
+        lat = (lat == null ? 10.908173 : lat);
+        var lng = localStorage.getItem("lng");
+        lng = (lng == null ? 106.644207 : lng);
+        form.append("idChiNhanhDK",localStorage.getItem("idChiNhanhDK"));
+        form.append("Ten_cua_hang",localStorage.getItem("tenCH"));
+        form.append("So_dien_thoai_cua_hang", localStorage.getItem("soDT"));
+        form.append("Dia_Chi_Cua_Hang", localStorage.getItem("address"));
+        form.append("lat", lat);
+        form.append("lng", lng);
+
+        form.append("Ho_Ten_Nguoi_Dai_Dien", localStorage.getItem("hoten"));
+        form.append("CMND_Nguoi_Dai_Dien", localStorage.getItem("cmnd"));
+        form.append("Email_Nguoi_Dai_Dien", localStorage.getItem("email"));
+
+        form.append("Thoi_Gian_Bat_Dau", localStorage.getItem("timeStart"));
+        form.append("Thoi_Gian_Ket_Thuc", localStorage.getItem("timeEnd"));
+        form.append("Mo_ta_cua_hang", localStorage.getItem("mota"));
+        return form;
+    }
+
+  function saveTT_CuaHang(){
+        var form = createFormDataMonAn();
+        if(form){
+          toastr.error("Error create form data !");
+          return;
+        }
+        $.ajax(
+        {
+            url: url + "",
+            dataType: 'json',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form,
+            type: 'post',
+            success: function (res) {
+              if(res.return_code == "1"){
+              } else if(res.return_code == "0"){
+              }
+            }
+        });
+  }
+
+  $(window).on( "load", function(){
+    if(!checkTT_CuaHang()){
+      location.href = "<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_dangkycuahang_TTCTCH";
+    }
+  })
 </script>
 
             

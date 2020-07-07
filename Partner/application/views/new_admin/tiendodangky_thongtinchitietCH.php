@@ -190,6 +190,8 @@
     var result = true;
     if(document.referrer == "<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_dangkycuahang_TTNDD" || document.referrer == "<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_dangkycuahang_Dangky"){
       result =  true;
+    } else {
+      result = false;
     }
     if($.trim(localStorage.getItem("hoten")) == ""){
       result = false;
