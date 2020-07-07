@@ -435,7 +435,7 @@ function loadCuaHang(idChiNhanh){
               $(this).bind({
                 click : function(e) { 
                       localStorage.setItem("detailCH", $(this).attr('id'));
-                      location.href = "<?php echo base_url();?>Taikhoan/homeQuanly_taikhoan_cuahang";
+                      window.open("<?php echo base_url();?>Taikhoan/homeQuanly_taikhoan_cuahang");
                 }});
             });
           } else{

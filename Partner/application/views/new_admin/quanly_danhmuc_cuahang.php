@@ -239,7 +239,7 @@
           var item = res[i];
           table.row.add( [
             '<ul class="products-list product-list-in-card pl-2 pr-2"><li class="item" style="background-color: transparent;"><div class="product-img"><img src="' + url + 'Public/Images/' + item.Hinh_Anh_Chi_Nhanh + '" alt="Product Image" class="img_chinhanh"></div><div class="product-info"><a href="javascript:void(0)" class="product-title">' + item.Ten_Chi_Nhanh + '</div></li></ul>',
-            ' <a href="<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_dangkycuahang"><button  type="button" class="btn  btn-info" onclick="">Tạo cửa hàng</button></a>'
+            ' <a href="#"><button onclick="themCuaHang('+ "'" + item._id + "'," + "'" + item.Ten_Chi_Nhanh + "'" + ')"  type="button" class="btn  btn-info" onclick="">Tạo cửa hàng</button></a>'
             ] ).draw();
         }
       } else{
@@ -261,4 +261,11 @@
         img.height = "100";
         document.getElementById("Chonfile").innerHTML=fileName;
     })
+
+    function themCuaHang(idChiNhanh, tenChiNhanh){
+      debugger;
+      localStorage.setItem("idChiNhanhDK", idChiNhanh);
+      localStorage.setItem("tenChiNhanhDK", tenChiNhanh);
+      window.open("<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_dangkycuahang");
+    }
 </script>
