@@ -3037,7 +3037,7 @@ app.post("/getKMHeThongCuaCuaHang", urlEncodeParser, async function (req, res) {
 					console.log("Tìm thấy chi nhánh của cửa hàng !");
 					var idChiNhanh = successResutltCN[0]._id;						
 					KHUYENMAI_HETHONG.find(
-						{DanhSach_CN : {$in : [mongoose.Types.ObjectId(req.body.idChiNhanh)]}},
+						{DanhSach_CN : {$in : [mongoose.Types.ObjectId(idChiNhanh)]}},
 						function(err, successResutlt){
 							if(err){
 								console.log("Query lỗi : " + err);

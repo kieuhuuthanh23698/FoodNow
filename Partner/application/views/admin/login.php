@@ -17,7 +17,6 @@
 					<input type="text" name="username" id="username" class="form-control input-t" placeholder="Username">
 					<input type="password" name="password" id="password" class="form-control input-t martop" placeholder="Password">
 					<button type="submit" id="dangnhap" class="btn btn-sussces input-t form-control btngreen martop">LOGIN</button>
-					<label class="textstyle">Bạn không có tài khoản? <a class="spantext" href="registration.html">Tạo tài khoản</a></label>
 				</div>	
 			</div>
 		</div>

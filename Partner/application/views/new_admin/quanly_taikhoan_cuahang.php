@@ -342,6 +342,36 @@
       </style>
 
       <script type="text/javascript">
+
+
+        function loadDanhSachKhuyenMai_HeThong_CuaHang(){
+          $.ajax({
+            url: url + 'getKMHeThongCuaCuaHang',
+            dataType: 'json',
+            data: {
+              idCuaHang : localStorage.getItem("detailCH")
+            },
+            type: 'post',
+            success: function (res) {
+              if(res.return_code == "1"){
+                var listKM = res.infor;
+                var table = $('#dataTableKMHT').DataTable();
+                table.search('').draw();
+                for (i=0; i< listKM.length; i++){ 
+                  table.row.add( [
+                    listKM[i].MaGiamGia ,
+                    listKM[i].GioBD,
+                    listKM[i].GioKT,
+                    listKM[i].PhanTram_GiamGia + " %",
+                    '<img src="' + url + 'Public/Images/' + listKM[i].Icon + '" alt="Product Image" class="img-size-50">',
+                    ] ).draw();
+                };
+                // toastr.success('Load khuyến mãi hệ thống dành cho cửa hàng thành công .');
+              }
+            }
+          });
+        }
+
         $(document).ready(function(){
           $.ajax(
           {
@@ -371,6 +401,7 @@
         var listMonAn = [];
         var click = false;
         $(document).ready(function(){
+          loadDanhSachKhuyenMai_HeThong_CuaHang();
           loadListLoaiMonAn();
         });
 
@@ -475,36 +506,7 @@
           $('#dataTableLoaiMonAns_wrapper input[type="search"]').css(
              {'width':'150px'}
           );
-          loadDanhSachKhuyenMai();
         });
-
-        function loadDanhSachKhuyenMai()
-          $.ajax({
-            url: url + 'getKMHeThongCuaCuaHang',
-            dataType: 'json',
-            data: {
-              idCuaHang : localStorage.getItem("detailCH")
-            },
-            type: 'post',
-            success: function (res) {
-              if(res.return_code == "1"){
-                var listKM = res.infor;
-                var table = $('#dataTableKMHT').DataTable();
-                table.search('').draw();
-                for (i=0; i< listKM.length; i++){ 
-                  table.row.add( [
-                    listKM[i].MaGiamGia ,
-                    listKM[i].GioBD,
-                    listKM[i].GioKT,
-                    listKM[i].PhanTram_GiamGia + " %",
-                    '<img src="' + url + 'Public/Images/' + listKM[i].Icon + '" alt="Product Image" class="img-size-50">',
-                    ] ).draw();
-                };
-                // toastr.success('Load khuyến mãi hệ thống dành cho cửa hàng thành công .');
-              }
-            }
-          });
-        }
 
 
 // <script type="text/javascript">

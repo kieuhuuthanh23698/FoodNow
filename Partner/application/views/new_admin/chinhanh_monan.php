@@ -299,6 +299,9 @@
     var listMonAn = [];
     var click = false;
     $(document).ready(function(){
+      $('#example1_wrapper input[type="search"]').css(
+         {'width':'150px'}
+      );
         loadListLoaiMonAn();
     });
 
