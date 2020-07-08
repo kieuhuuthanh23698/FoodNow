@@ -34,7 +34,7 @@
                     <!-- <div class="card card-primary"> -->
                      <div class="card-body box-profile">
                       <div class="card-header">
-                        <img id="img" class="profile-user-img img-fluid img-circle" style="width: 200px; height: 200px;" alt="User profile picture">
+                        <img id="img" src="<?php echo base_url();?>dist/img/grocery_store.png" class="profile-user-img img-fluid img-circle" style="width: 200px; height: 200px;" alt="User profile picture">
                       </div>
 
                     </div>
@@ -81,7 +81,7 @@
                   <hr>
 
                   <strong><i class="fas fa-map-marker-alt mr-1"></i>Mật khẩu</strong>
-                  <p><input type="password" class="form-control" id="matkhau" placeholder=""></p>
+                  <p><input type="text" class="form-control" id="matkhau"></p>
 
                   <button type="submit" class="btn btn-success">Lưu</button>
                 </div>
@@ -126,8 +126,8 @@
           $("#thoigian_bd").text(infor.Thoi_Gian_Bat_Dau);
           $("#thoigian_kt").text(infor.Thoi_Gian_Ket_Thuc);
           $("#tendangnhap").text(infor.TenTaiKhoan[0].Ten_dang_nhap);
-          $("#matkhau").text(infor.TenTaiKhoan[0].Mat_khau);
-          $("#img").attr("src","<?php echo base_url();?>dist/img/" + infor.Hinh_Anh_Cua_Hang) 
+          $("#matkhau").val(infor.TenTaiKhoan[0].Mat_khau);
+          $("#img").attr("src", url + "Public/Images/" + infor.Hinh_Anh_Cua_Hang) 
         }
       }
     });
