@@ -1,4 +1,8 @@
-
+<style type="text/css">
+  .btn-sm{
+    font-size: .500rem !important;
+  }
+</style>
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <div class="content-header">
@@ -426,7 +430,7 @@ function loadCuaHang(idChiNhanh){
                 '<ul class="list-inline"><li class="list-inline-item"><img class="img_chinhanh" src="' + url + 'Public/Images/' + item.CH.Hinh_Anh_Cua_Hang + '"></li></ul>',
                 '<a href="#">' + item.CH.Ten_Cua_Hang + '</a>',
                 item.DiaChi.Dia_Chi,
-                '<div class="icheck-primary d-inline"><input onclick="check(' + "'" + item.CH._id + "'" + ')" type="checkbox" id="cb' + item.CH._id + '"' + "checked" + '><label for="cb' + item.CH._id + '" id="label' + item.CH._id + '">Đang hoạt động</label></div>'
+                '<div class="btn-group btn-group-toggle" data-toggle="buttons"><label class="btn btn-secondary btn-sm active"><input type="radio" name="options" id="option1" autocomplete="off" checked> Active</label><label class="btn btn-secondary btn-sm"><input type="radio" name="options" id="option3" autocomplete="off">Deactive</label></div>'
                 ] ).node().id  = item.CH._id;
                 table.draw();
 
@@ -434,8 +438,8 @@ function loadCuaHang(idChiNhanh){
             $('#example2 tbody tr').each(function(){
               $(this).bind({
                 click : function(e) { 
-                      localStorage.setItem("detailCH", $(this).attr('id'));
-                      window.open("<?php echo base_url();?>Taikhoan/homeQuanly_taikhoan_cuahang");
+                      // localStorage.setItem("detailCH", $(this).attr('id'));
+                      // window.open("<?php echo base_url();?>Taikhoan/homeQuanly_taikhoan_cuahang");
                 }});
             });
           } else{
@@ -447,3 +451,5 @@ function loadCuaHang(idChiNhanh){
 
 }
 </script>
+//<!-- 
+                '<div class="icheck-primary d-inline"><input onclick="check(' + "'" + item.CH._id + "'" + ')" type="checkbox" id="cb' + item.CH._id + '"' + "checked" + '><label for="cb' + item.CH._id + '" id="label' + item.CH._id + '">Đang hoạt động</label></br><button class="btn btn-primary btn_xoa" onclick="deactive(' + "'" + item.CH._id + "'" + ')" ><i class="fa fa-info-circle" aria-hidden="true"></i></button></div>' -->
