@@ -1919,7 +1919,7 @@ app.post("/Dangnhapadmin", urlEncodeParser, function (req, res) {
 
 								if (reskq_id[0].Ten_nhom == "Cuahang") {
 									console.log("Tài khoản " + result[0]._id + " thuộc nhóm cửa hàng !");
-									CUAHANG.find({ Tai_Khoan: result[0]._id }, function (err, kqcuahang) {
+									CUAHANG.find({ Tai_Khoan: result[0]._id, Trang_Thai_Cua_Hang : "1"}, function (err, kqcuahang) {
 										if (err) {
 											console.log("Xác định danh tính cửa hàng gặp lỗi : " + err);
 											res.send({
@@ -3389,15 +3389,14 @@ app.post("/themXoaChiNhanh_KMHT", urlEncodeParser, async function (req, res) {
 			KHUYENMAI_HETHONG.findByIdAndUpdate(
 				{_id : mongoose.Types.ObjectId(req.body.idKhuyenmaihethong)},
 				{$push : {DanhSach_CN : req.body.idChiNhanh}},
-				function(err, success){
-					
-				// if(err || success == null){
-				// 	console.log("Lỗi query !");
-				// 	res.send({return_code : "0"});
-				// } else {
-				// 	console.log("Thêm chi nhánh vào KMHT thành công !");
-				// 	res.send({return_code: "1"});
-				// }
+				function(err, success){	
+				if(err || success == null){
+					console.log("Lỗi query !");
+					res.send({return_code : "0"});
+				} else {
+					console.log("Thêm chi nhánh vào KMHT thành công !");
+					res.send({return_code: "1"});
+				}
 			});
 		} else{
 			KHUYENMAI_HETHONG.findByIdAndUpdate(
@@ -3418,6 +3417,29 @@ app.post("/themXoaChiNhanh_KMHT", urlEncodeParser, async function (req, res) {
 		res.send({return_code : "0"});
 	}
 });
+
+//route thêm xóa chi nhánh trong khuyến mãi hệ thống
+app.post("/kichHoatCuaHang", urlEncodeParser, async function (req, res) {
+	console.log(req.body);
+	if(req.body.idCuaHang != null && req.body.idCuaHang != ""
+	&& req.body.state != null && req.body.state != ""){
+		CUAHANG.findByIdAndUpdate(
+			{_id : mongoose.Types.ObjectId(req.body.idCuaHang)},
+			{Trang_Thai_Cua_Hang : req.body.state},
+			function(err, result){
+				if(err) {
+					console.log("Lỗi params !");
+					res.send({return_code : "0"});
+				} else {
+					console.log("Kích hoạt cửa hàng thành công !");
+					res.send({return_code : "1"});
+				}
+			});
+	} else {
+		console.log("Lỗi params !");
+		res.send({return_code : "0"});
+	}
+})
 
 
 //route hiển thị các chi nhánh thuộc khyến mãi
