@@ -173,7 +173,7 @@
     var table = $('#example1').DataTable();
     // insert data into table 
     table.row.add( [
-      '<a href="<?php echo base_url();?>Donhang/Danhsach_donhang_cuahang">' + item._id + '</a>',
+      '<a href="<?php echo base_url();?>Donhang/Danhsach_donhang_cuahang">' + item._id.substr(item._id.length - 5).toUpperCase() + '</a>',
       item.Chi_tiet_DH.length,
       '<span class="badge badge-success">' + (new Intl.NumberFormat().format(item.Total_cart)) + '</span>',
       '<div class="sparkbar" data-color="#00a65a" data-height="20"><button onclick="Chi_tiet_DH(' + item._id + ')" type="button" class="btn btn-outline-success">Chi tiết</button></div>'

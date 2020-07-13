@@ -98,27 +98,25 @@
                           <div class="card-body">
                             <strong><i class="fas fa-book mr-1"></i> Tên cửa hàng</strong>
 
-                            <p class="text-muted" id="tencuahang">
-                              Bún Bò
-                            </p>
+                            <p class="text-muted" id="tencuahang"></p>
 
                             <hr>
 
                             <strong><i class="fas fa-map-marker-alt mr-1"></i>Địa chỉ cửa hàng</strong>
 
-                            <p class="text-muted" id="diachi_cuahang">Số 6, Phan Đình Giót, P.2, Q.Tân Bình</p>
+                            <p class="text-muted" id="diachi_cuahang"></p>
 
                             <hr>
 
                             <strong><i class="fas fa-pencil-alt mr-1"></i> Thời gian bắt đầu</strong>
 
-                            <p class="text-muted" id="thoigian_bd">14h</p>
+                            <p class="text-muted" id="thoigian_bd"></p>
 
                             <hr>
 
                             <strong><i class="far fa-file-alt mr-1"></i> Thời gian kết thúc</strong>
 
-                            <p class="text-muted" id="thoigian_kt">16h</p>
+                            <p class="text-muted" id="thoigian_kt"></p>
                             <hr>
 
                           </div>
@@ -306,15 +304,12 @@
                          <div class="card-body">
                           <strong><i class="fas fa-book mr-1"></i>Tên tài khoản</strong>
 
-                          <p class="text-muted" id="tendangnhap">
-                            B.S. in Computer Science from the University of Tennessee at Knoxville
-                          </p>
+                          <p class="text-muted" id="tendangnhap"></p>
 
                           <hr>
 
                           <strong><i class="fas fa-map-marker-alt mr-1"></i>Mật khẩu</strong>
-                          <p><input type="password" class="form-control" id="matkhau" placeholder=""></p>
-
+                          <p><input type="text" class="form-control" id="matkhau"></p>
                           <button type="submit" class="btn btn-success">Lưu</button>
                         </div>
 
@@ -389,7 +384,7 @@
                 $("#thoigian_bd").text(infor.Thoi_Gian_Bat_Dau);
                 $("#thoigian_kt").text(infor.Thoi_Gian_Ket_Thuc);
                 $("#tendangnhap").text(infor.TenTaiKhoan[0].Ten_dang_nhap);
-                $("#matkhau").text(infor.TenTaiKhoan[0].Mat_khau);
+                $("#matkhau").val(infor.TenTaiKhoan[0].Mat_khau);
                 $("#img").attr("src",url + 'Public/Images/' + infor.Hinh_Anh_Cua_Hang) 
               }
             }
@@ -503,6 +498,9 @@
       <script type="text/javascript"> 
 
         $(document).ready(function(){
+          var idCuaHang = localStorage.getItem("detailCH");
+          if(idCuaHang == null || idCuaHang == "undifined")
+            window.close();
           $('#dataTableLoaiMonAns_wrapper input[type="search"]').css(
              {'width':'150px'}
           );

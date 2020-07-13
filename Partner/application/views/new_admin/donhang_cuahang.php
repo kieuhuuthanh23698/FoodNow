@@ -5,8 +5,14 @@
     margin-left: 10px;
     float: right;
   }
+  .table{
+    text-align: center;
+  }
   .table td{
     vertical-align: inherit;
+  }
+  .table button{
+    margin: 2px;
   }
 </style>
 <div class="content-wrapper">
@@ -239,11 +245,12 @@
     var table = $('#example1').DataTable();
     // insert data into table 
     table.row.add( [
-      '<a href="#">' + item._id + '</a>',
+      '<a href="#">' + item._id.substr(item._id.length - 5).toUpperCase() + '</a>',
       item.Chi_tiet_DH.length,
       '<span class="badge badge-success">' + (new Intl.NumberFormat().format(item.Total_cart)) + '</span>',
-      '<div class="sparkbar" data-color="#00a65a" data-height="20">' + (i%2 == 0 ? '<button type="button" class="btn btn-outline-success">Xác nhận</button>' : '<button type="button" class="btn btn-outline-danger">Hủy</button></div>')
-    ] ).draw();
+      '<div class="sparkbar" data-color="#00a65a" data-height="20">' + '<button type="button" class="btn btn-outline-success">Xác nhận</button><button type="button" class="btn btn-outline-danger">Hủy</button></div>'
+    ] ).node().id = item._id;
+    table.draw();
   };
 
   function renderUI_OderList_item_detail(id){
@@ -253,7 +260,7 @@
         $("#oder_name").text(detail.infor_kh.Ten_khach_hang);
         $("#oder_address").text(detail.infor_cd.Dia_Chi);
         $("#oder_phone").text(detail.infor_kh.So_dien_thoai);
-        $("#oder_id").text(detail._id);
+        $("#oder_id").text(detail._id.substr(detail._id.length - 5).toUpperCase());
         $("#oder_count").text(detail.Chi_tiet_DH.length);
         $("#table_oder_detail tbody").text("");
         for (var j = 0; j < detail.Chi_tiet_DH.length; j++) {
@@ -290,8 +297,6 @@
 
     //set id for each row and bind event for each row
     $('#example1 tbody tr').each(function(){
-
-        $(this).attr('id', $(this).find('td:nth-child(1)').text());
 
         $(this).bind({
             click : function(e) {

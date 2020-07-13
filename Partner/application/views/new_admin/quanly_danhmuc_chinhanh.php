@@ -1,4 +1,8 @@
-
+<style type="text/css">
+  .btn-sm{
+    font-size: .500rem !important;
+  }
+</style>
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <div class="content-header">
@@ -380,6 +384,8 @@ function loadListChiNhanh(){
           '<button class="btn btn-primary btn_xoa" onclick="loadCuaHang(' + "'" + item._id + "'" + ')" ><i class="fa fa-info-circle" aria-hidden="true"></i></button>'
           ] ).draw();
       }
+      if(res.length > 0)
+        loadCuaHang(res[0]._id);
       // $('#example1 tbody tr').each(function(){
       //   if($(this).find('td:nth-child(1)').text() == (item._id.substr(item._id.length - 5))){
       //     $(this).attr('id', item._id );
@@ -407,8 +413,7 @@ function loadListChiNhanh(){
 }
 
 function loadCuaHang(idChiNhanh){
-  $.ajax(
-        {
+  $.ajax({
             url: url + 'cuahangs_chinhanh',
             dataType: 'json',
             data: {
@@ -426,15 +431,17 @@ function loadCuaHang(idChiNhanh){
                 '<ul class="list-inline"><li class="list-inline-item"><img class="img_chinhanh" src="' + url + 'Public/Images/' + item.CH.Hinh_Anh_Cua_Hang + '"></li></ul>',
                 '<a href="#">' + item.CH.Ten_Cua_Hang + '</a>',
                 item.DiaChi.Dia_Chi,
-                '<div class="icheck-primary d-inline"><input onclick="check(' + "'" + item.CH._id + "'" + ')" type="checkbox" id="cb' + item.CH._id + '"' + "checked" + '><label for="cb' + item.CH._id + '" id="label' + item.CH._id + '">Đang hoạt động</label></div>'
+                '<div class="btn-group btn-group-toggle" data-toggle="buttons"><label id="' + "act" + item.CH._id +'" class="btn btn-secondary btn-sm" ><input onclick="activeCH(' + "'" + item.CH._id + "',1" +')" type="radio" name="options" id="option1" autocomplete="off" checked> Active</label><label id="' + "noAct" + item.CH._id +'" class="btn btn-secondary btn-sm"><input type="radio" onclick="activeCH('+ "'" + item.CH._id + "',0" +')" name="options" id="option3" autocomplete="off">NoAcive</label></div>'
                 ] ).node().id  = item.CH._id;
                 table.draw();
-
+                if(item.CH.Trang_Thai_Cua_Hang == "1")
+                  $("#act" + item.CH._id).addClass("active");
             };
             $('#example2 tbody tr').each(function(){
-              $(this).bind({
+              var tr = $(this);
+              $(this).find('td:nth-child(1)').bind({
                 click : function(e) { 
-                      localStorage.setItem("detailCH", $(this).attr('id'));
+                      localStorage.setItem("detailCH", tr.attr('id'));
                       window.open("<?php echo base_url();?>Taikhoan/homeQuanly_taikhoan_cuahang");
                 }});
             });
@@ -444,6 +451,33 @@ function loadCuaHang(idChiNhanh){
           }
         });
   hovering = true;
-
 }
+
+function activeCH(idCuaHang, state){
+    debugger;
+    $.ajax({
+            url: url + 'kichHoatCuaHang',
+            dataType: 'json',
+            data: {
+              idCuaHang : idCuaHang,
+              state : state
+            },
+            type: 'post',
+            success: function (res) {
+              if(res == null || res.return_code == "0"){
+                toastr.error("Gửi yêu cầu thất bại !");
+                return;
+              }
+              switch(true){
+                case (res.return_code == "1" && state == "1"):
+                  toastr.success("Bạn đã kích hoạt cửa hàng thành công !");
+                  break;
+                case (res.return_code == "1" && state == "0"):
+                  toastr.success("Bạn đã hủy kích hoạt cửa hàng thành công !");
+                  break;
+              }
+            }
+    });
+}
+
 </script>

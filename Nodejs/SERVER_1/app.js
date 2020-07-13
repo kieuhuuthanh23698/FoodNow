@@ -12,8 +12,9 @@ var diskStorage = multer.diskStorage({
 	},
 	filename: function (req, file, callback) {
 		var uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-		file.filename = (uniqueSuffix + '_' + file.originalname).replace(/\s/g, '');
-		callback(null, uniqueSuffix + '_' + file.originalname);
+		var oriname = file.originalname;
+		oriname = oriname.replace(/\s/g, '');
+		callback(null, uniqueSuffix + '_' + oriname);
 	}
 })
 var uploadFile = multer({ storage: diskStorage }).single("upload_file");
@@ -312,7 +313,7 @@ app.post("/addCuaHang", urlEncodeParser, function (req, res) {
 			Promise.all([
 				createAccountAuto(1),
 				createAddressStore(req.body.Dia_Chi_Cua_Hang, req.body.lat, req.body.lng)
-			]).then(function (data) {
+			]).then(function createAccountAuto(data) {
 				console.log("tao tai khoan, dia chi", data);
 				var newCuaHang = new CUAHANG({
 					Ten_Cua_Hang: req.body.Ten_cua_hang,
@@ -427,52 +428,30 @@ app.post("/cuahangs_chinhanh", urlEncodeParser ,function (req, res) {
 //method POST
 //params  : idkhuvuc, idcuahang, ten, diachi, sdt, mota
 app.post("/addChiNhanh", urlEncodeParser, function (req, res) {
-	if (req.body.idkhuvuc != null && req.body.idcuahang != null && req.body.ten != null
-		&& req.body.diachi != null && req.body.sdt != null && req.body.mota != null) {
-		if (req.body.idkhuvuc != "" && req.body.idcuahang != "" && req.body.ten != ""
-			&& req.body.diachi != "" && req.body.sdt != "" && req.body.mota != "") {
+	uploadFile(req, res, (error) => {
+	if (req.body.Ten_chi_nhanh != null && req.file.filename != null && req.body.Ten_chi_nhanh != "" && req.file.filename != "") {
 			var newChiNhanh = new CHINHANH({
-				Ten_chi_nhanh: req.body.ten,
-				Dia_chi_chi_nhanh: req.body.diachi,
-				So_dien_thoai_chi_nhanh: req.body.sdt,
-				Mo_ta_chi_nhanh: req.body.mota,
-				Mon_An_Tai_Chi_Nhanh_id: []
+				Ten_Chi_Nhanh: req.body.Ten_chi_nhanh,
+				Hinh_Anh_Chi_Nhanh: req.file.filename,
+				Tai_Khoan: null,
+				DanhSach_CH: [],
 			});
-			var result = "";
 			newChiNhanh.save(function (err) {
-				if (err)
-					res.send("Thêm chi nhánh mới bị lỗi : " + err);
+				if (err){
+					console.log("Thêm chi nhánh mới bị lỗi : " + err);
+					res.send({ return_code: "0" });
+				}
 				else {
-					result += "Thêm chi nhánh mới thành công !";
-					KHU_VUC.findOneAndUpdate(
-						{ _id: req.body.idkhuvuc },
-						{ $push: { Chi_Nhanh_id: newChiNhanh._id } },
-						function (err) {
-							if (err)
-								result += "\nThêm chi nhánh mới vào khu vực gặp lỗi : " + err;
-							else
-								result += "\nThêm chi nhánh mới vào khu vực thành công !";
-						}
-					);
-					CUAHANG.findOneAndUpdate(
-						{ _id: req.body.idcuahang },
-						{ $push: { Chi_Nhanh_id: newChiNhanh._id } },
-						function (err) {
-							if (err)
-								result += "\nThêm chi nhánh mới vào cửa hàng gặp lỗi : " + err;
-							else
-								result += "\nThêm chi nhánh mới vào cửa hàng thành công !";
-						}
-					);
-					res.send(result);
+					console.log("Thêm chi nhánh mới thành công !");
+					res.send({ return_code: "1" });
 				}
 			});
-		}
-		else
-			res.send("Params error 2 !");
 	}
-	else
-		res.send("Params error 1 !");
+	else{
+		console.log("Params error!");
+		res.send({return_code : "0"});
+	}
+	});
 });
 
 //route lấy tất cả các chi nhánh
@@ -522,43 +501,50 @@ app.post("/OneChiNhanh", urlEncodeParser, function (req, res) {
 	});
 });
 
-//route xóa 1 chi nhánh
+
+//deactive hoạt động của cửa hàng
+const xoaCuaHang = async (idCuaHang) => {
+	const label = Date.now();
+	return new Promise(function (resolve, reject) {
+		CUAHANG.findByIdAndUpdate({
+			_id: mongoose.Types.ObjectId(idCuaHang),
+			Trang_Thai_Cua_Hang : "0",
+		}, function (err, result) {
+			resolve(result);
+		});
+	});
+}
+
+
+//xóa tài khoản
+//pull tk khỏi nhóm
+
+//route deactive các cửa hàng của 1 chi nhánh
 //method POST
-//params idChiNhanh là chi nhánh cần xóa, xóa chi nhánh khỏi khu vực của chi nhánh đó
+//params idChiNhanh
 app.delete("/deleteChiNhanh", urlEncodeParser, function (req, res) {
-	var result = "";
-	CHINHANH.findByIdAndDelete(
-		{ _id: req.body.idChiNhanh },
-		function (err) {
-			if (err) {
-				result += "\nXóa bị lỗi : " + err;
-				console.log("\nXóa bị lỗi : " + err);
+	if(req.body.idChiNhanh == null && req.body.idChiNhanh == "")
+	{
+		console.log("Params error !");
+		res.send({ return_code : "0"});
+	}
+	CHINHANH.findById(
+		{ _id: mongoose.Types.ObjectId(req.body.idChiNhanh) },
+		function (err, resultCN) {
+			if (err || resultCN == null) {
+				console.log("Xóa bị lỗi !");
+				res.send({ return_code : "0"});
 			}
 			else {
-				result += "\nĐã xóa : " + req.body.idChiNhanh;
-				console.log("\nĐã xóa : " + req.body.idChiNhanh);
-				KHU_VUC.findOneAndUpdate(
-					{ Chi_Nhanh_id: { $in: [req.body.idChiNhanh] } },
-					{ $pull: { Chi_Nhanh_id: req.body.idChiNhanh } },
-					function (err) {
-						if (err)
-							result += "\nXóa chi nhánh trong khu vực gặp lỗi : " + err;
-						else
-							result += "\nXóa chi nhánh trong khu vực thành công !";
+				Promise.all(
+					resultCN.DanhSach_CH.map(function (idCuaHang) {
+						return xoaCuaHang(idCuaHang);
+					}))
+					.then(function (resolveXoaCH) {
+						console.log("\nĐã xóa chi nhánh : " + resultCN.Ten_Chi_Nhanh);
+						res.send({return_code: "1"});
 					}
 				);
-				CUAHANG.findOneAndUpdate(
-					{ Chi_Nhanh_id: { $in: [req.body.idChiNhanh] } },
-					{ $pull: { Chi_Nhanh_id: req.body.idChiNhanh } },
-					function (err) {
-						if (err)
-							result += "\nXóa chi nhánh trong cửa hàng gặp lỗi : " + err;
-						else
-							result += "\nXóa chi nhánh trong cửa hàng thành công !";
-					}
-				);
-				res.send(result);
-				console.log(result);
 			}
 		}
 	);
@@ -1933,7 +1919,7 @@ app.post("/Dangnhapadmin", urlEncodeParser, function (req, res) {
 
 								if (reskq_id[0].Ten_nhom == "Cuahang") {
 									console.log("Tài khoản " + result[0]._id + " thuộc nhóm cửa hàng !");
-									CUAHANG.find({ Tai_Khoan: result[0]._id }, function (err, kqcuahang) {
+									CUAHANG.find({ Tai_Khoan: result[0]._id, Trang_Thai_Cua_Hang : "1"}, function (err, kqcuahang) {
 										if (err) {
 											console.log("Xác định danh tính cửa hàng gặp lỗi : " + err);
 											res.send({
@@ -2356,7 +2342,7 @@ app.delete("/deleteKhuyenmaicuahang", urlEncodeParser, function (req, res) {
 //method POST
 //params  : maGiamgia, gioBatdau, gioKetthuc, phanTramgiamgia, Icon
 app.post("/addKhuyenmaihethong", urlEncodeParser, function (req, response) {
-	uploadFile(req, res, (error) => {
+	uploadFile(req, response, (error) => {
 		console.log(req.file, req.body);
 		if (req.body.makm != null && req.body.gio_bd != null && req.body.gio_kt != null && req.body.PhanTram_GiamGia != null
 		 && req.body.makm != "" && req.body.gio_bd != "" && req.body.gio_kt != "" && req.body.PhanTram_GiamGia != "") {
@@ -2654,6 +2640,7 @@ const timDiaChiDonHang_extend = async (iDONHANG) => {
 		});
 	});
 }
+
 //sau khi tìm thông tin của tất cả các món món ăn, cập nhật đơn hàng
 const capNhatDonHang_extend = async (iDONHANG) => {
 	var error_query = { return_code: "0", error_infor: "Lỗi server khi query." };
@@ -3402,15 +3389,14 @@ app.post("/themXoaChiNhanh_KMHT", urlEncodeParser, async function (req, res) {
 			KHUYENMAI_HETHONG.findByIdAndUpdate(
 				{_id : mongoose.Types.ObjectId(req.body.idKhuyenmaihethong)},
 				{$push : {DanhSach_CN : req.body.idChiNhanh}},
-				function(err, success){
-					
-				// if(err || success == null){
-				// 	console.log("Lỗi query !");
-				// 	res.send({return_code : "0"});
-				// } else {
-				// 	console.log("Thêm chi nhánh vào KMHT thành công !");
-				// 	res.send({return_code: "1"});
-				// }
+				function(err, success){	
+				if(err || success == null){
+					console.log("Lỗi query !");
+					res.send({return_code : "0"});
+				} else {
+					console.log("Thêm chi nhánh vào KMHT thành công !");
+					res.send({return_code: "1"});
+				}
 			});
 		} else{
 			KHUYENMAI_HETHONG.findByIdAndUpdate(
@@ -3431,6 +3417,29 @@ app.post("/themXoaChiNhanh_KMHT", urlEncodeParser, async function (req, res) {
 		res.send({return_code : "0"});
 	}
 });
+
+//route thêm xóa chi nhánh trong khuyến mãi hệ thống
+app.post("/kichHoatCuaHang", urlEncodeParser, async function (req, res) {
+	console.log(req.body);
+	if(req.body.idCuaHang != null && req.body.idCuaHang != ""
+	&& req.body.state != null && req.body.state != ""){
+		CUAHANG.findByIdAndUpdate(
+			{_id : mongoose.Types.ObjectId(req.body.idCuaHang)},
+			{Trang_Thai_Cua_Hang : req.body.state},
+			function(err, result){
+				if(err) {
+					console.log("Lỗi params !");
+					res.send({return_code : "0"});
+				} else {
+					console.log("Kích hoạt cửa hàng thành công !");
+					res.send({return_code : "1"});
+				}
+			});
+	} else {
+		console.log("Lỗi params !");
+		res.send({return_code : "0"});
+	}
+})
 
 
 //route hiển thị các chi nhánh thuộc khyến mãi

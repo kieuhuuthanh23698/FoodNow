@@ -305,10 +305,9 @@ var socket;
             },
             type: 'get',
             success: function (res) {
-
+             var table = $('#example1').DataTable();
+             table.clear().draw();
              for (i=0; i< res.length; i++){ 
-
-                var table = $('#example1').DataTable();
                 table.row.add( [
                 res[i].MaGiamGia ,
                 res[i].GioBD,
@@ -375,7 +374,6 @@ var socket;
 }
 
     function createFormData(){
-        debugger;
         var form = new FormData();
         var file_data = $("#inputGroupFile02").prop('files')[0];
         if(file_data){
@@ -403,19 +401,9 @@ var socket;
             processData: false,
             data: form,
             type: 'post',
-            success: function (data) {
+            success: function (res) {
                 if(res.return_code == "1"){
-                    loadKhuyenmaiHT();
-                    // var table = $('#example1').DataTable();
-                    // table.row.add( [
-                    // res.MaGiamGia,
-                    // res.GioBD,
-                    // res.GioKT,
-                    // res.PhanTram_GiamGia + " %",
-                    // '<img src="<?php echo base_url()?>/Public/Images/'+ res.Icon + '" alt="Product Image" class="img-size-50">',
-                    // "<div class='sparkbar' data-color='#00a65a' data-height='20'>" + '<button class="btn" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>' + "</div>"
-                    // ] ).draw();
-
+                    loadKhuyenmaiHT();      
                 } else if(res.return_code =="0"){
                     alert("Thêm thất bại !");
                 }
