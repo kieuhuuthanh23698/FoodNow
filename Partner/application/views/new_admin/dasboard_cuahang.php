@@ -177,7 +177,8 @@
       item.Chi_tiet_DH.length,
       '<span class="badge badge-success">' + (new Intl.NumberFormat().format(item.Total_cart)) + '</span>',
       '<div class="sparkbar" data-color="#00a65a" data-height="20"><button onclick="Chi_tiet_DH(' + item._id + ')" type="button" class="btn btn-outline-success">Chi tiết</button></div>'
-    ] ).draw();
+    ] ).node().id = item._id;
+    table.draw();
   };
 
   function Chi_tiet_DH(id){
@@ -192,7 +193,7 @@
     //set id for each row and bind event for each row
     $('#example1 tbody tr').each(function(){
 
-        $(this).attr('id', $(this).find('td:nth-child(1)').text());
+        // $(this).attr('id', $(this).find('td:nth-child(1)').text());
 
         $(this).bind({
             click : function(e) {

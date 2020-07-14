@@ -47,16 +47,18 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                <div id="oderTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
                   <div class="row">
                     <div class="col-sm-12">
-                      <table id="example1" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
+                      <table id="oderTable" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="oderTable_info">
                   <thead>
                   <tr role="row">
-                    <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Mã đơn hàng</th>
-                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Số lượng</th>
-                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Tổng tiền(đ)</th>
-                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Thông tin</th>
+                    <th class="sorting_asc" tabindex="0" aria-controls="oderTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Mã đơn hàng</th>
+                    <th class="sorting" tabindex="0" aria-controls="oderTable" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Số lượng</th>
+                    <th class="sorting" tabindex="0" aria-controls="oderTable" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Tổng tiền(đ)</th>
+                    <th class="sorting" tabindex="0" aria-controls="oderTable" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Thông tin</th>
+                    <th class="sorting" tabindex="0" aria-controls="oderTable" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Ngày tạo</th>
+                    <th class="sorting" tabindex="0" aria-controls="oderTable" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Ngày đặt</th>
                   </tr>
                   </thead>
                   <tbody></tbody>
@@ -198,6 +200,7 @@
   $(document).ready( function () {
     requestPermissionNotification();
     loadOdersList();
+    $('#oderTable').DataTable({"order": []});
   });
 
   function printOder(){
@@ -242,13 +245,15 @@
   }
 
   function renderUI_OderList_item(item, i){
-    var table = $('#example1').DataTable();
+    var table = $('#oderTable').DataTable();
     // insert data into table 
     table.row.add( [
       '<a href="#">' + item._id.substr(item._id.length - 5).toUpperCase() + '</a>',
       item.Chi_tiet_DH.length,
       '<span class="badge badge-success">' + (new Intl.NumberFormat().format(item.Total_cart)) + '</span>',
-      '<div class="sparkbar" data-color="#00a65a" data-height="20">' + '<button type="button" class="btn btn-outline-success">Xác nhận</button><button type="button" class="btn btn-outline-danger">Hủy</button></div>'
+      '<div class="sparkbar" data-color="#00a65a" data-height="20">' + '<button type="button" class="btn btn-outline-success btn-sm">Xác nhận</button><button type="button" class="btn btn-outline-danger btn-sm">Hủy</button></div>',
+      moment(new Date(item.createdAt)).format('DD-MM_YYYY hh:mm'),
+      moment(new Date(item.Ngay_nhan_don_hang)).format('DD-MM_YYYY hh:mm')
     ] ).node().id = item._id;
     table.draw();
   };
@@ -296,7 +301,7 @@
     // end for
 
     //set id for each row and bind event for each row
-    $('#example1 tbody tr').each(function(){
+    $('#oderTable tbody tr').each(function(){
 
         $(this).bind({
             click : function(e) {
@@ -323,7 +328,6 @@
             },
             type: 'POST',
             success: function (res) {
-              console.log(res);
               if(res.length > 1){
                 res.forEach(function(item){
                   listOders.push(item);
@@ -333,9 +337,9 @@
                 listOders.push(res[0]);
                 renderUI_OderList_item(res[0]);
               }
-              $('#example1 tbody tr').each(function(){
+              $('#oderTable tbody tr').each(function(){
 
-        $(this).attr('id', $(this).find('td:nth-child(1)').text());
+        // $(this).attr('id', $(this).find('td:nth-child(1)').text());
 
         $(this).bind({
             click : function(e) {
@@ -350,6 +354,31 @@
             }
     });
   }
+
+  function xacNhanDonHang(idDonHang, state) {
+    $.ajax({
+            url:  url + "xacnhandonhang",
+            dataType: 'json',
+            data: {
+              idDonHang : idDonHang,
+              state : state
+            },
+            type: 'POST',
+            success: function (res) {
+              if(res == null){
+                toastr.error("Xác nhận đơn hàng gặp lỗi !");
+                return;
+              }
+              if(res.return_code == "0")
+              {
+                toastr.success("Xác nhận đơn hàng thành công !");
+              } else{
+
+              }
+            }
+    });
+  }
+
 </script>
 
 <!-- handle push notification -->

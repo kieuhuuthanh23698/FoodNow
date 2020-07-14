@@ -1373,7 +1373,7 @@ const getDanhSachMonAnDonTam = async (req, res, error_query) => {
 						console.log("Tìm đơn hàng gặp lỗi :\n" + err);
 						res.send(error_query);
 					} else {
-						if (resultDH != null && resultDH.length == 1) {
+						if (resultDH != null && resultDH.length >= 1) {
 							console.log("Tìm thấy đơn hàng");
 							resolve({ return_code: "1", infor: resultDH[0].Chi_tiet_DH });
 						} else {
@@ -2206,10 +2206,10 @@ app.post("/datHang", urlEncodeParser, function (req, res) {
 		{ "IdKhachHang": mongoose.Types.ObjectId(req.body.idKhachHang), "IdCuaHang": mongoose.Types.ObjectId(req.body.idCuaHang), "Trang_thai_don_hang": "0" },
 		function (err, resultDH) {
 			if (err) {
-				console.log("Tìm đơn hàng gặp lỗi :\n" + err);
+				console.log("Tìm đơn hàng gặp lỗi :\n",err);
 				res.send(error_query);
 			} else {
-				if (resultDH != null && resultDH.length == 1) {
+				if (resultDH != null && resultDH.length >= 1) {
 					console.log("Tìm thấy đơn hàng\nBắt đầu cập nhật!");
 					resultDH[0].Ngay_nhan_don_hang = Date.now();
 					resultDH[0].Dia_chi_giao_hang = mongoose.Types.ObjectId(req.body.idDiaChi);//ok,
@@ -2246,6 +2246,7 @@ app.post("/datHang", urlEncodeParser, function (req, res) {
 						}
 					});
 				} else {
+					console.log("Không tìm thấy đơn hàng !", resultDH);
 					res.send(error_query);
 				}
 			}
@@ -2691,6 +2692,13 @@ app.post("/danhSachDongHang", urlEncodeParser, async function (req, res) {
 					"Trang_thai_don_hang" : "1"
 				}
 			}
+			// { "$addFields" : {"date" : { "$sum": {
+            //     "$divide": [
+            //         { "$subtract": [ "$Ngay_nhan_don_hang", "$createdAt" ] },
+            //         1000 * 60 * 60 * 24
+            //     ]
+            // }}}},
+			// { "$sort" : {  "Ngay_nhan_don_hang" : 1, "createdAt" : -1} }
 		],
 		function (err, result) {//result là danh sách đơn hàng của cửa hàng A
 			if (err) {
@@ -2704,6 +2712,7 @@ app.post("/danhSachDongHang", urlEncodeParser, async function (req, res) {
 						}))
 						.then(function (resolveDonHangs) {
 							console.log(resolveDonHangs);
+							resolveDonHangs.sort((a, b) => (a.Ngay_nhan_don_hang > b.Ngay_nhan_don_hang) ? 1 : ((a.createdAt > b.createdAt) ? 1 : -1));
 							res.send(resolveDonHangs);
 						});
 				} else {
@@ -2810,19 +2819,22 @@ app.post("/capnhatmatkhau_cuahang", urlEncodeParser, function (req, res) {
 });
 
 //Xác nhận đơn hàng
-app.post("/Xacnhandonhang", urlEncodeParser, async function (req, res) {
-	var result = "";
+app.post("/xacnhandonhang", urlEncodeParser, async function (req, res) {
+	if(req.body.idDonHang == null || req.body.state == null || req.body.idDonHang == "" || req.body.state == ""){
+		console.log("\nCập nhật trạng thái đơn hàng thành công !");
+		res.send({ return_code: "0" });
+	}
 	DON_HANG.findOneAndUpdate(
 		{ _id: req.body.idDonHang } ,
-		{ $set: { Trang_thai_don_hang: "2" } }
+		{ $set: { Trang_thai_don_hang: req.body.state } }
 	),
-		function (err) {
-			if (err) {
-				result += "\nCập nhật lỗi : " + err;
+		function (err, result) {
+			if (err || result == null) {
+				console.log("\nCập nhật trạng thái đơn hàng gặp lỗi : " + err);
 				res.send({ return_code: "0" });
 			}
 			else {
-				result += "\nCập nhật thành công : " + req.body.idDonHang;
+				console.log("\nCập nhật trạng thái đơn hàng thành công !");
 				res.send({ return_code: "1" });
 			}
 		}
@@ -3485,6 +3497,43 @@ app.post("/Hienthichinhanh_thuockhuyenmai", urlEncodeParser, function (req, res)
 				res.send({return_code: "1", infor : result});
 			}
 
+		}
+	);
+});
+
+
+//route lấy danh sách đơn hàng của khách hàng
+//đơn hàng tạm - khách hàng chưa đặt : state = 0
+//đơn hàng khách hàng đã đặt đang chờ cửa hàng xác nhận - state = 1
+//đơn hàng cửa hàng đã xác nhận(state = 2)/hủy(state = 3) 
+app.post("/danhSachDonHang_KhachHang", urlEncodeParser, function (req, res) {
+	DON_HANG.aggregate(
+		[
+			{
+				"$match": {
+					"IdKhachHang": mongoose.Types.ObjectId(req.body.idKhachHang),
+					"Trang_thai_don_hang" : req.body.state
+				}
+			}
+		],
+		function (err, result) {//result là danh sách đơn hàng của khách hàng A
+			if (err) {
+				console.log("Lấy danh sach đơn hàng của khách hàng gặp lỗi : " + err);
+				res.send({ return_code: "0", error_infor: "Lỗi server khi query." });
+			} else {
+				if (result != null && result.length > 0) {
+					Promise.all(
+						result.map(function (iDONHANG) {
+							return capNhatDonHang_extend(iDONHANG);//tìm thông tin cho đơn hàng
+						}))
+						.then(function (resolveDonHangs) {
+							res.send({return_code: "1", infor : resolveDonHangs});
+						});
+				} else {
+					console.log("Khách hàng không có đơn !");
+					res.send({ return_code: "0", error_infor: "Khách hàng không có đơn !" });
+				}
+			}
 		}
 	);
 });
