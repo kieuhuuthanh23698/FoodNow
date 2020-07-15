@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        tools:context=".AddressUserActivity"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:background="@color/colorGrayLight"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:background="@android:color/white"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/address_user_act_btnBack"
+            android:layout_margin="10dp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/ic_navigate_before_black_24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="Địa chỉ"
+            style="@style/title"
+            android:background="@android:color/white"
+            android:textColor="@android:color/black"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/address_user_act_add_new_address"
+                android:background="@android:color/white"
+                style="@style/user_fm_row"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:paddingLeft="5dp"
+                android:layout_width="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/ic_add_black_24dp"
+                    style="@style/title"
+                    android:backgroundTint="@android:color/white"
+                    android:gravity="center"
+                    android:text="Thêm địa chỉ mới"
+                    android:drawablePadding="5dp"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_alignParentRight="true"
+                    android:drawableLeft="@drawable/ic_navigate_next_black_24dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/address_user_act_add_home_address_row"
+                android:orientation="vertical"
+                android:background="@android:color/white"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    style="@style/user_fm_row"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="0dp"
+                    android:paddingLeft="5dp"
+                    android:layout_width="match_parent">
+
+                    <TextView
+                        android:id="@+id/address_user_act_home_address_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:drawableLeft="@drawable/ic_home_24px"
+                        style="@style/title"
+                        android:backgroundTint="@android:color/white"
+                        android:gravity="center"
+                        android:text="Thêm địa chỉ Nhà"
+                        android:drawablePadding="5dp"
+                        android:textColor="#000000"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_alignParentRight="true"
+                        android:drawableLeft="@drawable/ic_navigate_next_black_24dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/address_user_act_home_address"
+                    android:visibility="gone"
+                    android:layout_alignParentBottom="true"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="5dp"
+                    android:text=""
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/address_user_act_add_company_address_row"
+                android:orientation="vertical"
+                android:background="@android:color/white"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <RelativeLayout
+                    style="@style/user_fm_row"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="0dp"
+                    android:paddingLeft="5dp"
+                    android:layout_width="match_parent">
+
+                    <TextView
+                        android:id="@+id/address_user_act_company_address_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:drawableLeft="@drawable/ic_business_center_24px"
+                        style="@style/title"
+                        android:backgroundTint="@android:color/white"
+                        android:gravity="center"
+                        android:text="Thêm địa chỉ Công ty"
+                        android:drawablePadding="5dp"
+                        android:textColor="#000000"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_alignParentRight="true"
+                        android:drawableLeft="@drawable/ic_navigate_next_black_24dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/address_user_act_company_address"
+                    android:visibility="gone"
+                    android:layout_alignParentBottom="true"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="5dp"
+                    android:text=""
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                android:background="@android:color/white"
+                android:id="@+id/address_user_act_list_other_address"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

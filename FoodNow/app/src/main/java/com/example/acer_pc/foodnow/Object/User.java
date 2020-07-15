@@ -1,6 +1,9 @@
 package com.example.acer_pc.foodnow.Object;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class User {
     private String id, name, img, email, phone, birth_day, gender,token;
@@ -51,7 +54,7 @@ public class User {
     }
 
     public String getPhone() {
-        return phone;
+        return (phone == null || phone.isEmpty() || phone.equals("null")) ? "" : phone;
     }
 
     public void setPhone(String phone) {
@@ -59,7 +62,9 @@ public class User {
     }
 
     public String getBirth_day() {
-        return birth_day;
+        if (birth_day == null || birth_day.isEmpty() || birth_day.equals("null"))
+            return "";
+        return birth_day.substring(0, 10);
     }
 
     public void setBirth_day(String birth_day) {
@@ -67,7 +72,7 @@ public class User {
     }
 
     public String getGender() {
-        return gender;
+        return gender.isEmpty() ? "" : gender;
     }
 
     public void setGender(String gender) {

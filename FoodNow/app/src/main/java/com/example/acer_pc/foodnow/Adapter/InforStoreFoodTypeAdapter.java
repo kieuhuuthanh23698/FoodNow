@@ -62,7 +62,7 @@ public class InforStoreFoodTypeAdapter extends RecyclerView.Adapter<InforStoreFo
         return jsonArrayFoods.length();
     }
 
-    public static class InforStoreFoodTypeViewHolder extends RecyclerView.ViewHolder {
+    public class InforStoreFoodTypeViewHolder extends RecyclerView.ViewHolder {
         public TextView txtNameType;
         public RecyclerView recyclerViewListFoods;
         public InforStoreFoodTypeViewHolder(View itemView) {

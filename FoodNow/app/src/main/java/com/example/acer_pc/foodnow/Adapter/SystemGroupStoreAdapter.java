@@ -1,14 +1,21 @@
 package com.example.acer_pc.foodnow.Adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.acer_pc.foodnow.Object.SystemGroupStore;
 import com.example.acer_pc.foodnow.R;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import java.util.ArrayList;
 
@@ -31,10 +38,26 @@ public class SystemGroupStoreAdapter extends RecyclerView.Adapter<SystemGroupSto
     }
 
     @Override
-    public void onBindViewHolder(SystemGroupStoreAdapterViewHolder holder, int position) {
+    public void onBindViewHolder(final SystemGroupStoreAdapterViewHolder holder, int position) {
         SystemGroupStore systemGroupStore = arrayList.get(position);
         holder.main_text.setText(systemGroupStore.getMain_text());
         holder.sub_text.setText(systemGroupStore.getSub_text());
+        Picasso.get().load(systemGroupStore.getBackground()).into(new Target() {
+            @Override
+            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                holder.background.setBackground(new BitmapDrawable(context.getResources(), bitmap));
+            }
+
+            @Override
+            public void onBitmapFailed(Exception e, Drawable errorDrawable) {
+                holder.background.setBackgroundColor(Color.parseColor("#ffff"));
+            }
+
+            @Override
+            public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+            }
+        });
     }
 
     @Override
@@ -42,12 +65,14 @@ public class SystemGroupStoreAdapter extends RecyclerView.Adapter<SystemGroupSto
         return arrayList.size();
     }
 
-    public static class SystemGroupStoreAdapterViewHolder extends RecyclerView.ViewHolder{
+    public class SystemGroupStoreAdapterViewHolder extends RecyclerView.ViewHolder{
         public TextView main_text, sub_text;
+        public RelativeLayout background;
         public SystemGroupStoreAdapterViewHolder(View itemView){
             super(itemView);
             main_text = itemView.findViewById(R.id.item_system_group_store_main_text);
             sub_text = itemView.findViewById(R.id.item_system_group_store_sub_text);
+            background = itemView.findViewById(R.id.item_system_group_store_background);
         }
     }
 }

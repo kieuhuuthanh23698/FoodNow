@@ -1,5 +1,7 @@
 package com.example.acer_pc.foodnow.Object;
 
+import com.example.acer_pc.foodnow.Data.Utils;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -46,7 +48,7 @@ public class SystemGroupStore {
     }
 
     public String getBackground() {
-        return background;
+        return Utils.getUrlIconVoucher(background);
     }
 
     public void setBackground(String background) {

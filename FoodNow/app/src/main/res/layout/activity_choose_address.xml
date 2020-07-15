@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context=".ChooseAddressActivity"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/colorGrayLight"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/choose_address_act_btnBack"
+            android:layout_margin="10dp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/ic_navigate_before_black_24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="Chọn địa chỉ"
+            style="@style/title"
+            android:background="@android:color/white"
+            android:textColor="@android:color/black"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:visibility="gone"
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/border_button"
+            android:backgroundTint="#F5F2F2"
+            android:drawableLeft="@drawable/ic_search_black_24dp"
+            android:ems="10"
+            android:focusable="false"
+            android:hint="Nhập địa chỉ"
+            android:drawablePadding="5dp"
+            android:textSize="15dp" />
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <fragment
+            android:id="@+id/choose_address_act_map"
+            android:name="com.google.android.gms.maps.MapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="ChooseAddressActivity" />
+
+        <ImageView
+            android:visibility="visible"
+            android:id="@+id/choose_address_act_marker"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_location_on_black_24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:visibility="visible"
+            android:id="@+id/choose_address_gps"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="20dp"
+            android:src="@drawable/ic_my_location_black_24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/choose_address_act_btnConfirm"
+            android:visibility="visible"
+            android:layout_margin="5dp"
+            android:text="Chọn địa chỉ"
+            android:textStyle="bold"
+            android:textColor="@android:color/holo_red_light"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/logout_button"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+    </RelativeLayout>
+
+</LinearLayout>
