@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,8 +23,11 @@ import static com.example.acer_pc.foodnow.LoginActivity.mGoogleSignInClient;
 import static com.example.acer_pc.foodnow.LoginActivity.user;
 
 public class UserFragment extends Fragment {
+    //infor user
     ImageView imageView;
     TextView txtName, btnLogin, btnLogout;
+    //row
+    RelativeLayout infor_user_row, address_user_row;
 
     @Nullable
     @Override
@@ -35,6 +39,24 @@ public class UserFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), LoginActivity.class);
                 startActivity(intent);
+            }
+        });
+        infor_user_row.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(user != null){
+                    Intent intent = new Intent(getContext(), InforUserActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+        address_user_row.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(user != null){
+                    Intent intent = new Intent(getContext(), AddressUserActivity.class);
+                    startActivity(intent);
+                }
             }
         });
         btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -62,16 +84,21 @@ public class UserFragment extends Fragment {
                         }
                     });
                 }
+                user = null;
             }
         });
         return view;
     }
 
     private void init(View view){
+        //infor user
         imageView = view.findViewById(R.id.fragment_user_image);
         txtName = view.findViewById(R.id.fragment_user_name);
         btnLogin = view.findViewById(R.id.fragment_user_login_button);
         btnLogout = view.findViewById(R.id.fragment_user_logout_button);
+        //rows
+        infor_user_row = view.findViewById(R.id.fragment_user_infor_user_row);
+        address_user_row = view.findViewById(R.id.fragment_user_address_user_row);
     }
 
     @Override

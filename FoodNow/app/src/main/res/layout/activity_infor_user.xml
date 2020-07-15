@@ -1,9 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".InforUserActivity"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/colorGrayLight"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".InforUserActivity">
+    android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/infor_user_act_btnBack"
+            android:layout_margin="10dp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/ic_navigate_before_black_24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="Thông tin người dùng"
+            style="@style/title"
+            android:background="@android:color/white"
+            android:textColor="@android:color/black"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:background="@android:color/white"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.CardView
+            android:layout_margin="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="50dp">
+
+            <ImageView
+                android:id="@+id/infor_user_act_img"
+                android:background="@drawable/border_all"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/user"/>
+
+        </android.support.v7.widget.CardView>
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:background="@android:color/white"
+        style="@style/user_fm_row"
+        android:layout_marginBottom="1dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:paddingLeft="5dp"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            style="@style/title"
+            android:backgroundTint="@android:color/white"
+            android:gravity="center"
+            android:text="Tên của bạn"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/infor_user_act_name"
+            android:layout_alignParentRight="true"
+            android:drawableRight="@drawable/ic_navigate_next_black_24dp"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:background="@android:color/white"
+        style="@style/user_fm_row"
+        android:layout_marginBottom="1dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:paddingLeft="5dp"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            style="@style/title"
+            android:backgroundTint="@android:color/white"
+            android:gravity="center"
+            android:text="Số điện thoại"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/infor_user_act_phone_number"
+            android:layout_alignParentRight="true"
+            android:drawableRight="@drawable/ic_navigate_next_black_24dp"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:background="@android:color/white"
+        style="@style/user_fm_row"
+        android:layout_marginBottom="1dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:paddingLeft="5dp"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            style="@style/title"
+            android:backgroundTint="@android:color/white"
+            android:gravity="center"
+            android:text="Email"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/infor_user_act_email"
+            android:layout_alignParentRight="true"
+            android:drawableRight="@drawable/ic_navigate_next_black_24dp"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:background="@android:color/white"
+        style="@style/user_fm_row"
+        android:layout_marginBottom="1dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:paddingLeft="5dp"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            style="@style/title"
+            android:backgroundTint="@android:color/white"
+            android:gravity="center"
+            android:text="Giới tính"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/infor_user_act_gender"
+            android:layout_alignParentRight="true"
+            android:drawableRight="@drawable/ic_navigate_next_black_24dp"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:background="@android:color/white"
+        style="@style/user_fm_row"
+        android:layout_marginBottom="1dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:paddingLeft="5dp"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            style="@style/title"
+            android:backgroundTint="@android:color/white"
+            android:gravity="center"
+            android:text="Ngày sinh"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/infor_user_act_birthday"
+            android:layout_alignParentRight="true"
+            android:drawableRight="@drawable/ic_navigate_next_black_24dp"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+</LinearLayout>

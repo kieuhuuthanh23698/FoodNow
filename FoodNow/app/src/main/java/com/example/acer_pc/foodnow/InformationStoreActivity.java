@@ -330,7 +330,7 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
                 finish();
                 break;
             case R.id.imgFavoriteStore://đổi trạng thái yêu thích cửa hàng
-                if(!store.isFavorite())
+                if(store != null && !store.isFavorite())
                 {
                     store.setFavorite(true);
                     btnFavoriteStore.setImageResource(R.drawable.ic_favorite_black_24dp);

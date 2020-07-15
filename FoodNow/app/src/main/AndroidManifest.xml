@@ -85,7 +85,9 @@
         <activity
             android:name=".CheckWifiActivity"
             android:theme="@style/AppTheme.NoteItem" />
-        <activity android:name=".InforUserActivity"></activity>
+        <activity android:name=".InforUserActivity" />
+        <activity android:name=".AddressUserActivity" />
+        <activity android:name=".ChooseAddressActivity"></activity>
     </application>
 
 </manifest>

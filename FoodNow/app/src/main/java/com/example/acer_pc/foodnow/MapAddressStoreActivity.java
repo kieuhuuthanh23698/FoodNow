@@ -79,6 +79,8 @@ public class MapAddressStoreActivity extends AppCompatActivity implements OnMapR
                 finish();
             }
         });
+        Geocoder geocoder = new Geocoder(this);
+//        geocoder.
     }
 
     @Override
