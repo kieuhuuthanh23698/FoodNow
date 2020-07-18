@@ -87,7 +87,8 @@
             android:theme="@style/AppTheme.NoteItem" />
         <activity android:name=".InforUserActivity" />
         <activity android:name=".AddressUserActivity" />
-        <activity android:name=".ChooseAddressActivity"></activity>
+        <activity android:name=".ChooseAddressActivity" />
+        <activity android:name=".ListDetailActivity"></activity>
     </application>
 
 </manifest>

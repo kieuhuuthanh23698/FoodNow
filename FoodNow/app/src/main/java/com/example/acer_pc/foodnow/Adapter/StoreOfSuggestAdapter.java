@@ -52,10 +52,8 @@ public class StoreOfSuggestAdapter extends RecyclerView.Adapter<StoreOfSuggestAd
                 Intent intent = new Intent(view.getContext(), InformationStoreActivity.class);
                 intent.setAction(Intent.ACTION_SEND);
                 intent.putExtra("idStore", store.getId());
-//                intent.putExtra("idStore", "5eba0ad05f15d311d4d6b689");
                 Toast.makeText(view.getContext(), "Get information store", Toast.LENGTH_SHORT).show();
                 view.getContext().startActivity(intent);
-//                ((Activity)view.getContext()).finish();
             }
         });
     }

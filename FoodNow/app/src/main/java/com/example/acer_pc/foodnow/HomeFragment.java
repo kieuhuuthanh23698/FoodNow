@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,7 +44,7 @@ import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements View.OnClickListener{
     //địa chỉ hiện tại
     TextView txtMyAddress;
     //chuyển sang activity search
@@ -55,8 +56,8 @@ public class HomeFragment extends Fragment {
     Slider slider;
     Timer timer;
     TimerTask timerTask;
-    //support
-    DAL_GetInforFragment_Home dal_getInforFragment_home;
+    //menu
+    RelativeLayout menu_1, menu_2,menu_3,menu_4,menu_5,menu_6,menu_7,menu_8;
     //khuyến mãi hệ thống
     public static JSONArray jsonArray_khuyen_mai_ht;
     public static ArrayList<SystemVoucher> arrayListSystemVoucher = new ArrayList<>();
@@ -91,7 +92,31 @@ public class HomeFragment extends Fragment {
         viewPagerAdapter = new ViewPagerAdapter(getContext(), slider);
         viewPager = (ViewPager) view.findViewById(R.id.viewPager);
         timer = new Timer();
-//        dal_getInforFragment_home = new DAL_GetInforFragment_Home(getContext());
+        //menu
+        menu_1 = view.findViewById(R.id.fragment_home_menu_item_1);
+        menu_2 = view.findViewById(R.id.fragment_home_menu_item_2);
+        menu_3 = view.findViewById(R.id.fragment_home_menu_item_3);
+        menu_4 = view.findViewById(R.id.fragment_home_menu_item_4);
+        menu_5 = view.findViewById(R.id.fragment_home_menu_item_5);
+        menu_6 = view.findViewById(R.id.fragment_home_menu_item_6);
+        menu_7 = view.findViewById(R.id.fragment_home_menu_item_7);
+        menu_8 = view.findViewById(R.id.fragment_home_menu_item_8);
+        menu_1.setOnClickListener(this);
+        menu_2.setOnClickListener(this);
+        menu_3.setOnClickListener(this);
+        menu_4.setOnClickListener(this);
+        menu_5.setOnClickListener(this);
+        menu_6.setOnClickListener(this);
+        menu_7.setOnClickListener(this);
+        menu_8.setOnClickListener(this);
+        menu_1.setTag("5eba0fb0d1dd3f376cee4b5d");
+        menu_2.setTag("5eba0fb0d1dd3f376cee4b5e");
+        menu_3.setTag("5eba0fb0d1dd3f376cee4b5f");
+        menu_4.setTag("5eba0fb0d1dd3f376cee4b60");
+        menu_5.setTag("5eba0fb0d1dd3f376cee4b61");
+        menu_6.setTag("5eba0fb0d1dd3f376cee4b62");
+        menu_7.setTag("5eba0fb0d1dd3f376cee4b63");
+        menu_8.setTag("5eba0fb0d1dd3f376cee4b64");
         //khuyến mãi hệ thống
         recyclerViewSystemVoucher = view.findViewById(R.id.scrollViewVoucher);
         systemVoucherAdapter = new SystemVoucherAdapter(arrayListSystemVoucher, getContext());
@@ -174,8 +199,6 @@ public class HomeFragment extends Fragment {
         recyclerViewStoreNear.setAdapter(storeNearAdapter);
         recyclerViewStoreNear.setNestedScrollingEnabled(false);
         recyclerViewStoreNear.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
-
-
         Intent intentGetInforFrament = new Intent(getContext(), LoadingActivity.class);
         intentGetInforFrament.setAction(Intent.ACTION_SEND);
         intentGetInforFrament.putExtra("action", DefineVarible.getInforFragment);
@@ -212,8 +235,6 @@ public class HomeFragment extends Fragment {
         } else {
             txtMyAddress.setText("Tìm vị trí hiện tại....");
         }
-//        if(dal_getInforFragment_home != null)
-//            dal_getInforFragment_home.getInforFragmentHome();
     }
 
     @Override
@@ -277,5 +298,15 @@ public class HomeFragment extends Fragment {
                     systemGroupStoreAdapter.notifyDataSetChanged();
             }
         }
+    }
+
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(getContext(), ListDetailActivity.class);
+        intent.setAction(Intent.ACTION_SEND);
+        intent.putExtra("type", 1);
+        String idDanhMuc = view.getTag().toString();
+        intent.putExtra("idDanhMuc", idDanhMuc);
+        startActivity(intent);
     }
 }

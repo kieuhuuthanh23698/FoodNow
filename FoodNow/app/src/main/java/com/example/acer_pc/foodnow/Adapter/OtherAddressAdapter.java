@@ -1,11 +1,14 @@
 package com.example.acer_pc.foodnow.Adapter;
 
+import android.app.Activity;
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.acer_pc.foodnow.ConfirmCartActivity;
 import com.example.acer_pc.foodnow.Object.Address;
 import com.example.acer_pc.foodnow.R;
 
@@ -13,9 +16,13 @@ import java.util.ArrayList;
 
 public class OtherAddressAdapter extends RecyclerView.Adapter<OtherAddressAdapter.OtherAddressViewHolder> {
     ArrayList<Address> addresses;
+    int type;
+    Context context;
 
-    public OtherAddressAdapter(ArrayList<Address> addresses) {
+    public OtherAddressAdapter(ArrayList<Address> addresses, int type, Context context) {
         this.addresses = addresses;
+        this.type = type;
+        this.context = context;
     }
 
     @Override
@@ -28,8 +35,19 @@ public class OtherAddressAdapter extends RecyclerView.Adapter<OtherAddressAdapte
 
     @Override
     public void onBindViewHolder(OtherAddressViewHolder holder, int position) {
-        Address address = addresses.get(position);
+        final Address address = addresses.get(position);
+        if(address == null)
+            return;
         holder.txtAddress.setText(address.getAddress());
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ConfirmCartActivity.address = address;
+                if(type == 0){
+                    ((Activity)context).finish();
+                }
+            }
+        });
     }
 
     @Override
@@ -41,8 +59,10 @@ public class OtherAddressAdapter extends RecyclerView.Adapter<OtherAddressAdapte
 
     public class OtherAddressViewHolder extends RecyclerView.ViewHolder{
         public TextView txtAddress;
+        public View view;
         public OtherAddressViewHolder(View itemView){
             super(itemView);
+            view = itemView;
             txtAddress = itemView.findViewById(R.id.item_address_value);
         }
     }

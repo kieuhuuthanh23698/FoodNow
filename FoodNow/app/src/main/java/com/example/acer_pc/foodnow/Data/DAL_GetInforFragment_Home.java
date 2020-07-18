@@ -56,7 +56,7 @@ public class DAL_GetInforFragment_Home {
                             Intent intentResult = new Intent();
                             ((Activity)context).setResult(Activity.RESULT_OK, intentResult);
                             ((Activity)context).finish();
-                            Log.i("response", "\n" + Utils.getCurrentTime() + ": end process");
+                            Log.i("response", "\n" + Utils.getCurrentTime() + ": end process request get information fragment home");
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

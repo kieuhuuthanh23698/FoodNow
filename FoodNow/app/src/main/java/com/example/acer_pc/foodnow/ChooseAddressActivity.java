@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.acer_pc.foodnow.Data.Utils;
+import com.example.acer_pc.foodnow.Object.ConfirmAddressDialog;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
@@ -40,14 +41,16 @@ public class ChooseAddressActivity extends AppCompatActivity implements OnMapRea
     ImageView marker;
     GoogleApiClient googleApiClient;
     Location mLastLocation;
-    TextView btnConfirm;
+//    TextView btnConfirm;
+    ConfirmAddressDialog confirmAddressDialog;
+    int type;
 
     void init(){
         gps  = findViewById(R.id.choose_address_gps);
         map = (MapFragment) getFragmentManager().findFragmentById(R.id.choose_address_act_map);
         btnBack = findViewById(R.id.choose_address_act_btnBack);
         marker = findViewById(R.id.choose_address_act_marker);
-        btnConfirm = findViewById(R.id.choose_address_act_btnConfirm);
+//        btnConfirm = findViewById(R.id.choose_address_act_btnConfirm);
     }
 
     @Override
@@ -63,6 +66,9 @@ public class ChooseAddressActivity extends AppCompatActivity implements OnMapRea
                     .build();
         }
         map.getMapAsync(ChooseAddressActivity.this);
+        confirmAddressDialog = new ConfirmAddressDialog();
+        Intent intent = getIntent();
+        type = intent.getIntExtra("type", -1);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,12 +103,12 @@ public class ChooseAddressActivity extends AppCompatActivity implements OnMapRea
                 }
             }
         });
-        btnConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(ChooseAddressActivity.this, "Xác nhận địa chỉ",Toast.LENGTH_SHORT).show();
-            }
-        });
+//        btnConfirm.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(ChooseAddressActivity.this, "Xác nhận địa chỉ",Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     @Override
@@ -118,8 +124,14 @@ public class ChooseAddressActivity extends AppCompatActivity implements OnMapRea
             @Override
             public void onCameraIdle() {
                 marker.setVisibility(View.GONE);
-                btnConfirm.setVisibility(View.VISIBLE);
+//                btnConfirm.setVisibility(View.VISIBLE);
                 LatLng center = mMap.getCameraPosition().target;
+                Bundle bundle = new Bundle();
+                bundle.putDouble("lat", center.latitude);
+                bundle.putDouble("lng", center.longitude);
+                bundle.putInt("type", type);
+                confirmAddressDialog.setArguments(bundle);
+                confirmAddressDialog.show(getSupportFragmentManager(), "ConfirmAddressDialog");
                 if(curMarker != null)
                     curMarker.remove();
                 curMarker = mMap.addMarker(new MarkerOptions().position(center)
@@ -132,7 +144,8 @@ public class ChooseAddressActivity extends AppCompatActivity implements OnMapRea
             @Override
             public void onCameraMove() {
                 marker.setVisibility(View.VISIBLE);
-                btnConfirm.setVisibility(View.GONE);
+//                btnConfirm.setVisibility(View.GONE);
+                confirmAddressDialog.dismiss();
                 if(curMarker != null)
                     curMarker.remove();
             }
@@ -158,7 +171,7 @@ public class ChooseAddressActivity extends AppCompatActivity implements OnMapRea
                     .title(Utils.getCompleteAddressString(ChooseAddressActivity.this,mLastLocation.getLatitude(), mLastLocation.getLongitude()))
                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_store_map)));
         }else{
-            btnConfirm.setVisibility(View.GONE);
+//            btnConfirm.setVisibility(View.GONE);
 //            Toast.makeText(ChooseAddressActivity.this, "mLastLocation == null", Toast.LENGTH_LONG).show();
         }
     }

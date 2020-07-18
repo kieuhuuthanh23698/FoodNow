@@ -154,7 +154,8 @@
         url:  url + "danhSachDongHang",
         dataType: 'json',
         data: {
-          idCuaHang : <?php echo "'".$id."'"?>
+          idCuaHang : <?php echo "'".$id."'"?>,
+          type : "1"
         },
         type: 'POST',
         success: function (res) {
@@ -162,7 +163,7 @@
             listOders.push(item);
           });
           if(listOders.length > 0){
-            console.log(listOders);
+            $("#numberOders").text(listOders.length);
             renderUI_OderList();
           }
         }
@@ -192,10 +193,7 @@
     };
     //set id for each row and bind event for each row
     $('#example1 tbody tr').each(function(){
-
-        // $(this).attr('id', $(this).find('td:nth-child(1)').text());
-
-        $(this).bind({
+            $(this).bind({
             click : function(e) {
               localStorage.setItem("Chi_tiet_DH", $(this).attr('id'));
               window.location="<?php echo base_url();?>Donhang/Danhsach_donhang_cuahang";
@@ -217,17 +215,16 @@
               if(res.length > 1){
                 res.forEach(function(item){
                   listOders.push(item);
+                  $("#numberOders").text(listOders.length);
                   renderUI_OderList_item(item);
                 });
               } else if(res.length == 1){
                 listOders.push(res[0]);
+                $("#numberOders").text(listOders.length);
                 renderUI_OderList_item(res[0]);
               }
               $('#example1 tbody tr').each(function(){
-
-        $(this).attr('id', $(this).find('td:nth-child(1)').text());
-
-        $(this).bind({
+            $(this).bind({
             click : function(e) {
               renderUI_OderList_item_detail($(this).attr('id'));
             }, 

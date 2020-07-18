@@ -383,7 +383,7 @@ const getDiaChiCuaHang = async (iCUAHANG) => {
 			if(err || success == null){
 				resolve(null);
 			} else{
-					resolve({CH : iCUAHANG, DiaChi : success});
+				resolve({CH : iCUAHANG, DiaChi : success});
 			}
 		})
 	});
@@ -676,13 +676,13 @@ app.post("/addKhachHang", urlEncodeParser, function (req, res) {
 app.post("/DangNhap", urlEncodeParser, function (req, res) {
 	if (req.body.id != null && req.body.name != null) {
 		if (req.body.id != "" && req.body.name != "") {
-			console.log("\nThông tin khách hàng ");
-			console.log("\nkhách hàng đăng nhập : " + req.body.id);
-			console.log("\nkhách hàng đăng nhập : " + req.body.name);
-			console.log("\nkhách hàng đăng nhập : " + req.body.picture);
-			console.log("\nkhách hàng đăng nhập : " + req.body.gender);
-			console.log("\nkhách hàng đăng nhập : " + req.body.birthday);
-			console.log("\nkhách hàng đăng nhập : " + req.body.email);
+			// console.log("\nThông tin khách hàng ");
+			// console.log("\nkhách hàng đăng nhập : " + req.body.id);
+			// console.log("\nkhách hàng đăng nhập : " + req.body.name);
+			// console.log("\nkhách hàng đăng nhập : " + req.body.picture);
+			// console.log("\nkhách hàng đăng nhập : " + req.body.gender);
+			// console.log("\nkhách hàng đăng nhập : " + req.body.birthday);
+			// console.log("\nkhách hàng đăng nhập : " + req.body.email);
 			KHACH_HANG.findOne({ id_user: req.body.id }, function (error, khachHang) {
 				if (error) {
 					console.log("Xảy lỗi tìm kiếm khách hàng : " + error);
@@ -760,6 +760,13 @@ app.post("/DangNhap", urlEncodeParser, function (req, res) {
 							], function (err, result) {
 								if (result != null && result.length > 0) {
 									console.log("Đăng nhập thành công !");
+									console.log({
+									token: jwt.sign({ Tai_khoan: khachHang.id_user }, "secretkey", { expiresIn: '20m' }),
+									infor: khachHang,
+									Dia_chi_nha_ex: result[0].Dia_chi_nha_ex[0] == null ? { flag: "0" } : { flag: "1", data: result[0].Dia_chi_nha_ex[0] },
+									Dia_chi_cong_ty_ex: result[0].Dia_chi_cong_ty_ex[0] == null ? { flag: "0" } : { flag: "1", data: result[0].Dia_chi_cong_ty_ex[0] },
+									Dia_chi_khac_ex: result[0].Dia_chi_khac_ex.length == 0 ? { flag: "0" } : { flag: "1", data: result[0].Dia_chi_khac_ex }
+									});
 									// khachHang.Dia_chi_nha_ex = result[0].Dia_chi_nha_ex[0];
 									// khachHang.Dia_chi_cong_ty_ex = result[0].Dia_chi_cong_ty_ex[0];
 									// khachHang.Dia_chi_khac_ex = result[0].Dia_chi_khac_ex;
@@ -1174,27 +1181,27 @@ app.post("/Danhsachcuahanghomnay_hienthicuahang", urlEncodeParser, function (req
 //method post(truyền vào ID)
 //Params: idKhuyenmaihethong
 
-app.post("/Khuyenmaihethong", urlEncodeParser, function (req, res) {
-	if (req.body.idKhuyenmaihethong != null || req.body.idKhuyenmaihethong != "") {
-		KHUYENMAI_HETHONG.findById({ '_id': req.body.idKhuyenmaihethong }, function (err, KhuyenMaiHeThong) {
-			if (err) {
-				res.send("Lấy danh sách cửa hàng trong khuyến mãi hệ thống : " + err);
-			}
-			else {
-				CUAHANG.find({ '_id': { $in: KhuyenMaiHeThong.DanhSach_CH } },
-					function (err, listCuaHang) {
-						if (err)
-							res.send("Lấy danh sách cửa hàng gặp lỗi : " + err);
-						else
-							res.send(listCuaHang);
-					}
-				);
-			}
-		});
-	} else{
-		res.send('Params error 1!');
-	}
-});
+// app.post("/Khuyenmaihethong", urlEncodeParser, function (req, res) {
+// 	if (req.body.idKhuyenmaihethong != null || req.body.idKhuyenmaihethong != "") {
+// 		KHUYENMAI_HETHONG.findById({ '_id': req.body.idKhuyenmaihethong }, function (err, KhuyenMaiHeThong) {
+// 			if (err) {
+// 				res.send("Lấy danh sách cửa hàng trong khuyến mãi hệ thống : " + err);
+// 			}
+// 			else {
+// 				CUAHANG.find({ '_id': { $in: KhuyenMaiHeThong.DanhSach_CH } },
+// 					function (err, listCuaHang) {
+// 						if (err)
+// 							res.send("Lấy danh sách cửa hàng gặp lỗi : " + err);
+// 						else
+// 							res.send(listCuaHang);
+// 					}
+// 				);
+// 			}
+// 		});
+// 	} else{
+// 		res.send('Params error 1!');
+// 	}
+// });
 
 
 
@@ -1390,6 +1397,7 @@ const getDanhSachMonAnDonTam = async (req, res, error_query) => {
 }
 
 app.post("/thongTinCuaHang", urlEncodeParser, async function (req, res) {
+	console.log(req.body);
 	var error_query = { return_code: "0", error_infor: "Lỗi server khi query." };
 	let response = {};
 	const label = Date.now();
@@ -1690,6 +1698,7 @@ app.post("/HienThiCuaHang_KhachHangYeuThich", urlEncodeParser, function (req, re
 
 			{
 				$project: {
+					"ThongTinCuaHang._id": 1.0,
 					"ThongTinCuaHang.Ten_Cua_Hang": 1.0,
 					"ThongTinCuaHang.Hinh_Anh_Cua_Hang": 1.0,
 					"ThongTinCuaHang.Danh_Gia": 1.0,
@@ -1699,10 +1708,14 @@ app.post("/HienThiCuaHang_KhachHangYeuThich", urlEncodeParser, function (req, re
 
 		],
 		function (err, result) {
-			if (err)
-				res.send(err);
-			else
-				res.send(result);
+			if (err || result.length == 0) {
+				console.log(err);
+				res.send({return_code: "0"});
+			}
+			else{
+				console.log(result);
+				res.send({return_code: "1", infor : result});
+			}
 		}
 
 	);
@@ -1761,82 +1774,51 @@ app.post("/Capnhatthongtin_taikhoancanhan", urlEncodeParser, function (req, res)
 
 //route post Themcuahangyeuthich_khachhang
 //method post(truyền idKhachHang)
-//Param  idKhachHang
-// app.post("/Themcuahangyeuthich_khachhang", urlEncodeParser, function (req, res) {
-// 	KHACH_HANG.find(
-// 		{
-// 			'_id': mongoose.Types.ObjectId(req.body.idKhachHang)
-// 		},
-// 		function (err, result) {
-// 			if (err)
-// 				console.log("Thêm cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + err);
-// 			else
-// 			{
-// 				if (result != null) {
-// 					if(req.body.favorite == "0"){
-// 						KHACH_HANG.findOneAndUpdate(
-// 							{ '_id': req.body.idKhachHang },
-// 							{ $pull: { 'Cua_hang_yeu_thich': req.body.idCuahang } },
-// 							function (err, result) {
-// 								if (err)
-// 									res.send("Bỏ cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + err);
-// 								else
-// 									res.send("Bỏ cửa hàng vào cửa hàng yêu thích mới thành công !" + result);
-// 							}
-// 						);
-// 					} else if(req.body.favorite == "1"){
-// 						KHACH_HANG.findOneAndUpdate(
-// 							{ '_id':req.body.idKhachHang },
-// 							{ $push: { 'Cua_hang_yeu_thich': req.body.idCuahang } },
-// 							function (err, result) {
-// 								if (err)
-// 									res.send("Thêm cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + err);
-// 								else
-// 									res.send("Thêm cửa hàng vào cửa hàng yêu thích mới thành công !" + result);
-// 							}
-
-// 						);
-// 					}
-// 				}
-// 			}
-// 		}
-// 	);
-// });
-
+//Param  idKhachHang, idCuaHang
 app.post("/Themcuahangyeuthich_khachhang", urlEncodeParser, function (req, res) {
-	KHACH_HANG.find(
+	KHACH_HANG.findById(
 		{
-			'_id': mongoose.Types.ObjectId(req.body.idKhachHang)
+			_id : mongoose.Types.ObjectId(req.body.idKhachHang)
 		},
-		function (err, result) {
-			if (err)
-				console.log("Thêm cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + err);
-			else {
-				if (result != null) {
-					if (req.body.favorite == "0") {
-						KHACH_HANG.findOneAndUpdate(
-							{ '_id': req.body.idKhachHang },
-							{ $pull: { 'Cua_hang_yeu_thich': req.body.idCuahang } },
-							function (err, result) {
-								if (err)
-									res.send("Bỏ cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + err);
-								else
-									res.send("Bỏ cửa hàng vào cửa hàng yêu thích mới thành công !" + result);
+		function (errKH, resultKH) {
+			if (errKH || resultKH == null){
+				console.log("Tìm khách hàng gặp lỗi : " + errKH);
+				res.send({return_code: "0"});
+			}
+			else
+			{
+				console.log(resultKH);
+				if(req.body.favorite == "0"){
+					KHACH_HANG.findOneAndUpdate(
+						{ _id : mongoose.Types.ObjectId(req.body.idKhachHang) },
+						{ $pull: { 'Cua_hang_yeu_thich': req.body.idCuaHang } },
+						function (errAddStore) {
+							if (errAddStore){
+								console.log("Bỏ cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + errAddStore);
+								res.send({return_code: "0"});
 							}
-						);
-					} else if (req.body.favorite == "1") {
-						KHACH_HANG.findOneAndUpdate(
-							{ '_id': req.body.idKhachHang },
-							{ $push: { 'Cua_hang_yeu_thich': req.body.idCuahang } },
-							function (err, result) {
-								if (err)
-									res.send("Thêm cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + err);
-								else
-									res.send("Thêm cửa hàng vào cửa hàng yêu thích mới thành công !" + result);
+							else{
+								console.log("Bỏ cửa hàng vào cửa hàng yêu thích mới thành công !");
+								res.send({return_code: "1", type : "0"});
 							}
+						}
+					);
+				} else if(req.body.favorite == "1"){
+					KHACH_HANG.findOneAndUpdate(
+						{ _id : mongoose.Types.ObjectId(req.body.idKhachHang) },
+						{ $push: { 'Cua_hang_yeu_thich': req.body.idCuaHang } },
+						function (errPullStore) {
+							if (errPullStore){
+								console.log("Thêm cửa hàng vào cửa hàng yêu thích mới bị lỗi : " + errPullStore);
+								res.send({return_code: "0"});
+							}
+							else{
+								console.log("Thêm cửa hàng vào cửa hàng yêu thích mới thành công !");
+								res.send({return_code: "1", type : "1"});
+							}
+						}
 
-						);
-					}
+					);
 				}
 			}
 		}
@@ -2038,7 +2020,7 @@ const getDanhSachDanhMucCuaHangHeThong = async (req, res, error_query) => {
 				foreignField: '_id',
 				as: 'lstCH'
 			}
-		}], function (err, lst_danh_muc) {
+		},{ $limit : 5 }], function (err, lst_danh_muc) {
 			if (err) {
 				console.log("Lấy danh mục cửa hàng của hệ thống food now gặp lỗi :" + err);
 				res.send(error_query)
@@ -2683,13 +2665,14 @@ const capNhatDonHang_extend = async (iDONHANG) => {
 	});
 }
 
+//route lấy danh sách đơn hàng đươc khách hang đặt
 app.post("/danhSachDongHang", urlEncodeParser, async function (req, res) {
 	DON_HANG.aggregate(
 		[
 			{
 				"$match": {
 					"IdCuaHang": mongoose.Types.ObjectId(req.body.idCuaHang),//5ec39da122336e32d01a2401,
-					"Trang_thai_don_hang" : "1"
+					"Trang_thai_don_hang" : req.body.type
 				}
 			}
 			// { "$addFields" : {"date" : { "$sum": {
@@ -3085,7 +3068,7 @@ app.post("/getDanhSachCuaDanhMuc", urlEncodeParser, async function (req, res) {
 				console.log("Query lỗi : " + errDM);
 				res.send({return_code : "0"});
 			} else {
-				CUAHANG.find({},
+				CUAHANG.find({ '_id': { $in: successResutltDM.DanhSach_CH }},
 					function(err, successResutlt){
 						if(err || successResutlt.length == 0){
 							console.log("Query lỗi : " + err);
@@ -3102,8 +3085,7 @@ app.post("/getDanhSachCuaDanhMuc", urlEncodeParser, async function (req, res) {
 									res.send({return_code : "1", infor : resolveCuaHangs});
 								});
 						}
-					}
-				);
+					});
 			}
 		})
 	} else {
@@ -3162,7 +3144,7 @@ app.post("/getDanhSachCuaDanhMucHomNay", urlEncodeParser, async function (req, r
 				console.log("Query lỗi : " + errDM);
 				res.send({return_code : "0"});
 			} else {
-				CUAHANG.find({},
+				CUAHANG.find({ '_id': { $in: successResutltDM.DanhSach_CH } },
 					function(err, successResutlt){
 						if(err || successResutlt.length == 0){
 							console.log("Query lỗi : " + err);
@@ -3275,7 +3257,7 @@ app.post("/getDanhSachCuaHang_LoaiMonAn", urlEncodeParser, async function (req, 
 				console.log("Query lỗi : " + errDM);
 				res.send({return_code : "0"});
 			} else {
-				CUAHANG.find({},
+				CUAHANG.find({ '_id': { $in: successResutltDM.DanhSach_CH }},
 					function(err, successResutlt){
 						if(err || successResutlt.length == 0){
 							console.log("Query lỗi : " + err);
@@ -3292,8 +3274,7 @@ app.post("/getDanhSachCuaHang_LoaiMonAn", urlEncodeParser, async function (req, 
 									res.send({return_code : "1", infor : resolveCuaHangs});
 								});
 						}
-					}
-				);
+					});
 			}
 		})
 	} else {
@@ -3536,4 +3517,143 @@ app.post("/danhSachDonHang_KhachHang", urlEncodeParser, function (req, res) {
 			}
 		}
 	);
+});
+
+//route thêm địa chỉ cho khách hàng
+app.post("/themDiaChi", urlEncodeParser, function (req, res) {
+	var newAddress = new DIACHI({
+		Dia_Chi: req.body.address,
+		Vi_do: req.body.lat,
+		Kinh_do: req.body.lng,
+	});
+	newAddress.save(function(err,result) {
+		if(err){
+			console.log(err);
+			res.send({return_code: "0"});
+			return;
+		}
+		console.log(result);
+		KHACH_HANG.findById(
+			{_id : mongoose.Types.ObjectId(req.body.idKhachHang)}
+			,function(errKH, resultKH){
+				if(errKH){
+					console.log(errKH);
+					res.send({return_code: "0"});
+					return;
+				}
+				switch (req.body.type) {
+					case "0"://địa chĩ khác
+						resultKH.Dia_chi_khac.push(result._id);
+						break;
+					case "1"://địa chỉ nhà
+						resultKH.Dia_chi_nha = result._id;
+						break;
+					case "2"://địa chỉ công ty
+						resultKH.Dia_chi_cong_ty = result._id;
+						break;
+					default:
+						console.log("Thêm địa chỉ cho khách hàng thất bại !");
+						res.send({return_code: "0"});
+						return;
+						break;
+				}
+				resultKH.save(function(errSave, resultSave){
+					if(errSave){
+						console.log(errSave);
+						res.send({return_code: "0"});
+						return;
+					} else{
+						console.log("Thêm địa chỉ thành công !");
+						res.send({return_code: "1", type : req.body.type, infor : result});
+					}
+				})
+			}
+		)
+	})
+});
+
+//lấy danh sách id cửa hàng thuộc 1 chi nhánh
+const getListCH_Id = async (idChiNhanh) => {
+	var label = Date.now();
+	console.time(idChiNhanh + "- getListCH_id - " + label);
+	return new Promise(function (resolve, reject) {
+		CHINHANH.aggregate(
+			[
+				{ 
+					"$match" : { 
+						"_id" : mongoose.Types.ObjectId(idChiNhanh)
+					}
+				},
+				{ 
+					"$project" : { 
+						"DanhSach_CH" : 1.0
+					}
+				}, 
+				// { 
+				// 	"$lookup" : { 
+				// 		"from" : "cuahangs", 
+				// 		"localField" : "DanhSach_CH", 
+				// 		"foreignField" : "_id", 
+				// 		"as" : "listCH"
+				// 	}
+				// }
+			],function (err, result){
+				console.timeEnd(idChiNhanh + "- getListCH_id - " + label);
+				if(result.length > 0)
+					resolve(result[0].DanhSach_CH);
+				else
+					resolve([]);
+			});
+	});
+}
+
+//route lấy danh sách tất cả cửa hàng được khuyến mãi hệ thống áp dụng
+app.post("/getDanhSachCuaHangKMHT", urlEncodeParser, function (req, res) {
+	if(req.body.idDanhMuc == null || req.body.idDanhMuc == ""){
+		console.log("Error paramms !");
+		res.send({return_code : "0"});
+		return;
+	}
+	const label = Date.now();
+	console.time(label + "_getDanhSachCuaHangKMHT_" + req.body.idDanhMuc);
+	KHUYENMAI_HETHONG.findById({_id: mongoose.Types.ObjectId(req.body.idDanhMuc)},
+		function(errKMHT,resultKMHT){
+			if(errKMHT){
+				console.log("Lỗi tìm kiếm khyến mãi hệ thống !");
+				res.send({return_code : "0"});
+				return;
+			}
+			Promise.all(
+				resultKMHT.DanhSach_CN.map(function (idChiNhanh) {
+					return getListCH_Id(idChiNhanh);
+			})).then(function (resolveIdCuaHnags) {
+					var arrIdCuaHang = [];
+					resolveIdCuaHnags.map(function (itemI) {
+						itemI.map(function (itemJ) {
+							arrIdCuaHang.push(itemJ);
+						});
+					});
+					if(arrIdCuaHang.length == 0){
+						console.log("Khuyến mãi không có cửa hàng được áp dụng !");
+						res.send({return_code : "0"});
+						return;
+					}
+					CUAHANG.find({ '_id': { $in: arrIdCuaHang }},
+					function(errCH, successResutlt){
+						if(errCH || successResutlt.length == 0){
+							console.log("Lỗi tìm kiếm cửa hàng !");
+							res.send({return_code : "0"});
+						} else {
+							Promise.all(
+								successResutlt.map(function (iCUAHANG) {
+									return danhMucCuaHangChuaCuaHang({DanhSach_CH : arrIdCuaHang}, iCUAHANG);
+								}))
+								.then(function (resolveCuaHangs) {
+									console.timeEnd(label + "_getDanhSachCuaHangKMHT_" + req.body.idDanhMuc);
+									res.send({return_code : "1", infor : resolveCuaHangs});
+								});
+						}
+					});
+				});
+	});
 });

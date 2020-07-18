@@ -38,7 +38,7 @@ public class Store {
     }
 
     public void setUrlImage(String urlImage) {
-        this.urlImage = urlImage;
+        this.urlImage = Utils.getUrlImageStore(urlImage);
     }
 
     public double getLat() {

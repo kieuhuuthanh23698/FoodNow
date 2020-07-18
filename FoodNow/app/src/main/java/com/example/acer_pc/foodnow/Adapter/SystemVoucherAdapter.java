@@ -1,6 +1,7 @@
 package com.example.acer_pc.foodnow.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.acer_pc.foodnow.Data.Utils;
+import com.example.acer_pc.foodnow.ListDetailActivity;
 import com.example.acer_pc.foodnow.Object.SystemVoucher;
 import com.example.acer_pc.foodnow.R;
 import com.squareup.picasso.Picasso;
@@ -38,11 +40,22 @@ public class SystemVoucherAdapter extends RecyclerView.Adapter<SystemVoucherAdap
 
     @Override
     public void onBindViewHolder(SystemVoucherAdapterViewHolder holder, int position) {
-        SystemVoucher systemVoucher = arrayList.get(position);
+        final SystemVoucher systemVoucher = arrayList.get(position);
         if(systemVoucher.getIcon().trim().isEmpty())
             Picasso.get().load(systemVoucher.getIcon()).into(holder.icon);
         holder.content.setText(systemVoucher.getContent());
         holder.view.getBackground().setTint(Color.parseColor(Utils.getColor(position)));
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), ListDetailActivity.class);
+                intent.setAction(Intent.ACTION_SEND);
+                intent.putExtra("type", 2);
+                String idDanhMuc = systemVoucher.getId();
+                intent.putExtra("idDanhMuc", idDanhMuc);
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

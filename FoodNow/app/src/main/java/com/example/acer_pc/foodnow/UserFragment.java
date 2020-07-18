@@ -55,6 +55,7 @@ public class UserFragment extends Fragment {
             public void onClick(View view) {
                 if(user != null){
                     Intent intent = new Intent(getContext(), AddressUserActivity.class);
+                    intent.putExtra("type", 1);
                     startActivity(intent);
                 }
             }

@@ -45,7 +45,7 @@ import static com.example.acer_pc.foodnow.LoginActivity.user;
 
 public class ConfirmCartActivity extends AppCompatActivity implements View.OnClickListener, OnMapReadyCallback, CustomDateTimePicker.CustomDateTimePickerListener {
     //button back
-    TextView btnBack;
+    TextView btnBack, btnChangeAddress;
     //map địa chỉ giao hàng
     public static Address address;
     private GoogleMap mMap;
@@ -99,6 +99,9 @@ public class ConfirmCartActivity extends AppCompatActivity implements View.OnCli
         //button close activity
         btnBack = findViewById(R.id.confirm_shopping_cart_backBtn);
         btnBack.setOnClickListener(this);
+        //button sửa địa chỉ nhận đơn hàng
+        btnChangeAddress =  findViewById(R.id.confirm_shopping_cart_btnChangeAddress);
+        btnChangeAddress.setOnClickListener(this);
         //thông tin người đặt
         txtInforUser = findViewById(R.id.confirm_shopping_cart_infor_user);
         //địa chỉ giao hàng
@@ -146,14 +149,15 @@ public class ConfirmCartActivity extends AppCompatActivity implements View.OnCli
             //set infor user
             txtInforUser.setText(user.getName() + (user.getPhone().isEmpty() ? "" : (" - " + user.getPhone())));
             //set address user
-            address = user.getAddress();
             if(address == null)
-            {
+                address = user.getAddress();
+            if(address == null) {
                 address = new Address();
                 address.setLat(0);
                 address.setLng(0);
-                address.setAddress("");
-            } else{
+                address.setAddress("Hãy chọn địa chỉ để giao hàng...");
+                distance = 0;
+            } else {
                 //khoảng cách giữa cửa hàng và địa chỉ giao
                 LatLng latLngFrom = new LatLng(address.getLat(), address.getLng());
                 LatLng latLngTo = new LatLng(InformationStoreActivity.addressStore.getLat(), InformationStoreActivity.addressStore.getLng());
@@ -168,7 +172,7 @@ public class ConfirmCartActivity extends AppCompatActivity implements View.OnCli
         txtCount.setText("Tổng (" + String.valueOf(intCount) + " phần)");
         doubleTotalCart = Double.parseDouble(Utils.calculateCost());
         txtTotalCart.setText( String.valueOf(doubleTotalCart) + " đ");
-        txtDistanceEx.setText("Phí vận chuyển (" + String.valueOf(doubleDistance) + ")km");
+        txtDistanceEx.setText("Phí vận chuyển (" + String.valueOf(doubleDistance) + " km)");
         doubleDistanceCost = doubleDistance*5000;
         txtDistanceCost.setText(String.valueOf(doubleDistanceCost) + " đ");
         doubleToTalConfirm = doubleTotalCart + doubleDistanceCost;
@@ -219,6 +223,11 @@ public class ConfirmCartActivity extends AppCompatActivity implements View.OnCli
         switch (view.getId()){
             case R.id.confirm_shopping_cart_backBtn:
                 finish();
+                break;
+            case R.id.confirm_shopping_cart_btnChangeAddress:
+                Intent intentChooseAddress = new Intent(ConfirmCartActivity.this, AddressUserActivity.class);
+                intentChooseAddress.putExtra("type", 0);
+                startActivity(intentChooseAddress);
                 break;
             case R.id.confirm_shopping_cart_time:
                 CustomDateTimePicker customDateTimePicker = new CustomDateTimePicker();
@@ -290,5 +299,20 @@ public class ConfirmCartActivity extends AppCompatActivity implements View.OnCli
     public void onDateTimeChange(String date) {
         if(txtDateTime != null)
             txtDateTime.setText(date);
+    }
+
+    void resetData(){
+        distance = 0.1;
+        doubleTotalCart = 0;
+        doubleDistance = 0;
+        doubleDistanceCost = 0;
+        doubleToTalConfirm = 0;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        resetData();
+        setData();
     }
 }
