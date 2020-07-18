@@ -26,7 +26,7 @@ class Quanly_danhmuc extends CI_Controller {
  		{
 			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
 			$data['left_content'] = $this->load->view('new_admin/left_content',getViewWithRule(), TRUE);
-			$data['content'] = $this->load->view('new_admin/quanly_danhmuc_chinhanh', NULL,TRUE);
+			$data['content'] = $this->load->view('new_admin/Quanly_danhmuc/quanly_danhmuc_chinhanh', NULL,TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
 		}
@@ -40,7 +40,7 @@ class Quanly_danhmuc extends CI_Controller {
  		{
 			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
 			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
-			$data['content'] = $this->load->view('new_admin/quanly_danhmuc_cuahang', NULL,TRUE);
+			$data['content'] = $this->load->view('new_admin/Quanly_danhmuc/quanly_danhmuc_cuahang', NULL,TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
 		}
@@ -54,7 +54,7 @@ class Quanly_danhmuc extends CI_Controller {
  		{
 			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
 			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
-			$data['content'] = $this->load->view('new_admin/quanly_danhmuc_monan', NULL,TRUE);
+			$data['content'] = $this->load->view('new_admin/Quanly_danhmuc/quanly_danhmuc_monan', NULL,TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
 		}
@@ -68,7 +68,7 @@ class Quanly_danhmuc extends CI_Controller {
  		{
 			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
 			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
-			$data['content'] = $this->load->view('new_admin/tiendodangky_thongtincoban', NULL,TRUE);
+			$data['content'] = $this->load->view('new_admin/Quanly_danhmuc/tiendodangky_thongtincoban', NULL,TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
 		}
@@ -82,7 +82,7 @@ class Quanly_danhmuc extends CI_Controller {
  		{
 			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
 			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
-			$data['content'] = $this->load->view('new_admin/tiendodangky_thongtinnguoidaidien', NULL,TRUE);
+			$data['content'] = $this->load->view('new_admin/Quanly_danhmuc/tiendodangky_thongtinnguoidaidien', NULL,TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
 		}
@@ -96,7 +96,7 @@ class Quanly_danhmuc extends CI_Controller {
  		{
 			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
 			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
-			$data['content'] = $this->load->view('new_admin/tiendodangky_thongtinchitietCH', NULL,TRUE);
+			$data['content'] = $this->load->view('new_admin/Quanly_danhmuc/tiendodangky_thongtinchitietCH', NULL,TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
 		}
@@ -110,7 +110,7 @@ class Quanly_danhmuc extends CI_Controller {
  		{
 			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
 			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
-			$data['content'] = $this->load->view('new_admin/tiendodangky_dangky', NULL,TRUE);
+			$data['content'] = $this->load->view('new_admin/Quanly_danhmuc/tiendodangky_dangky', NULL,TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
 		}

@@ -1,4 +1,4 @@
-<div class="content-wrapper">
+<div class="content-wrapper" style= "background-image: url(<?php echo base_url()?>images/section_bg03.png )" >
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -171,7 +171,6 @@
           </div>
           <!-- ./col -->
         </div>
-
         </div>
            
 

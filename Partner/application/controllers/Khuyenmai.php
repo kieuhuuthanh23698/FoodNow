@@ -33,7 +33,7 @@ class Khuyenmai extends CI_Controller {
 			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
 			if(getGroup() == '2')
 				$id['id'] = $this->session->get_userdata('user')['user']['id'];
-			$data['content'] = $this->load->view('new_admin/khuyenmai_cuahang', $id,TRUE);
+			$data['content'] = $this->load->view('new_admin/Khuyenmai/khuyenmai_cuahang', $id,TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
 		}
@@ -52,7 +52,7 @@ class Khuyenmai extends CI_Controller {
 			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
 			if(getGroup() == '2' || getGroup() == '1')
 				$id['id'] = $this->session->get_userdata('user')['user']['id'];
-			$data['content'] = $this->load->view('new_admin/khuyenmai_cuahang_hethonghienthi', $id,TRUE);
+			$data['content'] = $this->load->view('new_admin/Khuyenmai/khuyenmai_cuahang_hethonghienthi', $id,TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
 		}
@@ -71,7 +71,7 @@ class Khuyenmai extends CI_Controller {
 			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
 			// if(getGroup() == '2' || getGroup() == '1')
 			// 	$id['id'] = $this->session->get_userdata('user')['user']['id'];
-			$data['content'] = $this->load->view('new_admin/khuyenmai_cuahang_danhsachhienthi', NULL,TRUE);
+			$data['content'] = $this->load->view('new_admin/Khuyenmai/khuyenmai_cuahang_danhsachhienthi', NULL,TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
 		}
@@ -88,7 +88,7 @@ class Khuyenmai extends CI_Controller {
  		{
 			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
 			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
-			$data['content'] = $this->load->view('new_admin/khuyenmai_hethong', NULL,TRUE);
+			$data['content'] = $this->load->view('new_admin/Khuyenmai/khuyenmai_hethong', NULL,TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
 		}
@@ -105,7 +105,7 @@ class Khuyenmai extends CI_Controller {
  		{
 			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
 			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
-			$data['content'] = $this->load->view('new_admin/quanly_khuyenmai_cuahang', NULL,TRUE);
+			$data['content'] = $this->load->view('new_admin/Khuyenmai/quanly_khuyenmai_cuahang', NULL,TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
 		}

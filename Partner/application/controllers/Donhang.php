@@ -31,7 +31,7 @@ class Donhang extends CI_Controller {
 		{
 			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
 			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
-			$data['content'] = $this->load->view('new_admin/danhsach_donhang', NULL,TRUE);
+			$data['content'] = $this->load->view('new_admin/Donhang/danhsach_donhang', NULL,TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
 		}
@@ -49,7 +49,7 @@ class Donhang extends CI_Controller {
 			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
 			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
 			$id['id'] = $this->session->get_userdata('user')['user']['id'];
-			$data['content'] = $this->load->view('new_admin/donhang_cuahang', $id,TRUE);
+			$data['content'] = $this->load->view('new_admin/Donhang/donhang_cuahang', $id,TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
 		}
@@ -66,7 +66,7 @@ class Donhang extends CI_Controller {
 		{
 			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
 			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
-			$data['content'] = $this->load->view('new_admin/donhang_cuahang_thongke', NULL,TRUE);
+			$data['content'] = $this->load->view('new_admin/Donhang/donhang_cuahang_thongke', NULL,TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
 		}
@@ -83,7 +83,7 @@ class Donhang extends CI_Controller {
 		{
 			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
 			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
-			$data['content'] = $this->load->view('new_admin/donhang_admin_thongke', NULL,TRUE);
+			$data['content'] = $this->load->view('new_admin/Donhang/donhang_admin_thongke', NULL,TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
 		}
@@ -100,7 +100,7 @@ class Donhang extends CI_Controller {
 		{
 			$giaodien['header'] = $this->load->view('new_admin/header', NULL, TRUE);
 			$giaodien['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
-			$giaodien['content'] = $this->load->view('new_admin/donhang_admin_thongke', NULL,TRUE);
+			$giaodien['content'] = $this->load->view('new_admin/Donhang/donhang_admin_thongke', NULL,TRUE);
 			$giaodien['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $giaodien);
 		}

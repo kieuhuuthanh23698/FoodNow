@@ -31,7 +31,7 @@ class Taikhoan extends CI_Controller {
 		{
 			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
 			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
-			$data['content'] = $this->load->view('new_admin/taikhoan_chinhanh_newadmin', NULL,TRUE);
+			$data['content'] = $this->load->view('new_admin/Taikhoan/taikhoan_chinhanh_newadmin', NULL,TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
 		}
@@ -49,7 +49,7 @@ class Taikhoan extends CI_Controller {
 			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
 			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
 			$id['id'] = $this->session->get_userdata('user')['user']['id'];
-			$data['content'] = $this->load->view('new_admin/taikhoan_cuahang', $id,TRUE);
+			$data['content'] = $this->load->view('new_admin/Taikhoan/taikhoan_cuahang', $id,TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
 		}
@@ -66,7 +66,7 @@ class Taikhoan extends CI_Controller {
 		{
 			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
 			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
-			$data['content'] = $this->load->view('new_admin/quanly_taikhoan_cuahang', NULL, TRUE);
+			$data['content'] = $this->load->view('new_admin/Taikhoan/quanly_taikhoan_cuahang', NULL, TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
 		}
