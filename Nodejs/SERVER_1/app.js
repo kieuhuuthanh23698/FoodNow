@@ -2672,7 +2672,7 @@ app.post("/danhSachDongHang", urlEncodeParser, async function (req, res) {
 			{
 				"$match": {
 					"IdCuaHang": mongoose.Types.ObjectId(req.body.idCuaHang),//5ec39da122336e32d01a2401,
-					"Trang_thai_don_hang" : "1"
+					"Trang_thai_don_hang" : req.body.type
 				}
 			}
 			// { "$addFields" : {"date" : { "$sum": {

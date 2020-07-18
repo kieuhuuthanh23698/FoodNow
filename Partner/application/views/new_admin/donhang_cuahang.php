@@ -201,6 +201,11 @@
     requestPermissionNotification();
     loadOdersList();
     $('#oderTable').DataTable({"order": []});
+    $('#oderTable tbody').on('click', 'tr', function () {
+      debugger;
+        var id =$(this).attr('id');
+        renderUI_OderList_item_detail(id);
+    } );
   });
 
   function printOder(){
@@ -229,7 +234,8 @@
         url:  url + "danhSachDongHang",
         dataType: 'json',
         data: {
-          idCuaHang : <?php echo "'".$id."'"?>
+          idCuaHang : <?php echo "'".$id."'"?>,
+          type : "1"
         },
         type: 'POST',
         success: function (res) {
@@ -237,8 +243,8 @@
             listOders.push(item);
           });
           if(listOders.length > 0){
-            console.log(listOders);
-              renderUI_OderList();
+            $("#numberOders").text(listOders.length);
+            renderUI_OderList();
           }
         }
     });
@@ -254,8 +260,9 @@
       '<div class="sparkbar" data-color="#00a65a" data-height="20">' + '<button type="button" class="btn btn-outline-success btn-sm">Xác nhận</button><button type="button" class="btn btn-outline-danger btn-sm">Hủy</button></div>',
       moment(new Date(item.createdAt)).format('DD-MM_YYYY hh:mm'),
       moment(new Date(item.Ngay_nhan_don_hang)).format('DD-MM_YYYY hh:mm')
-    ] ).node().id = item._id;
-    table.draw();
+      ] ).node().id = item._id;
+      table.draw();
+      table.draw(false);
   };
 
   function renderUI_OderList_item_detail(id){
@@ -274,8 +281,8 @@
             '<tr><td>' + item.Ten_mon_an + '</td><td>2</td><td style="overflow-wrap: break-word; max-width: 300px; width: auto;">' + item.GhiChu + '</td><td>' + (new Intl.NumberFormat().format(item.Thanh_tien)) + '</td></tr>'
           );
         }
-        $("#oder_date").text("Ngày đặt :" + moment(new Date(detail.Ngay_nhan_don_hang)).format('DD-MM_YYYY'));
-        $("#oder_date_2").text(moment(new Date(detail.Ngay_nhan_don_hang)).format('DD-MM_YYYY'));
+        $("#oder_date").text("Ngày đặt :" + moment(new Date(detail.Ngay_nhan_don_hang)).format('DD-MM_YYYY hh:mm'));
+        $("#oder_date_2").text(" " + moment(new Date(detail.Ngay_nhan_don_hang)).format('DD-MM_YYYY hh:mm'));
         $("#oder_total").text(" " + (new Intl.NumberFormat().format(detail.Total)));
         $("#oder_ship").text(" " + (new Intl.NumberFormat().format(detail.Phi_ship)));
         $("#oder_total_cart").text(" " + (new Intl.NumberFormat().format(detail.Total_cart)));
@@ -299,19 +306,6 @@
       renderUI_OderList_item(listOders[i], i);
     };
     // end for
-
-    //set id for each row and bind event for each row
-    $('#oderTable tbody tr').each(function(){
-
-        $(this).bind({
-            click : function(e) {
-              renderUI_OderList_item_detail($(this).attr('id'));
-            }, 
-
-            mouseleave : function(e) {
-            }
-        });
-    });
     var Chi_tiet_DH = localStorage.getItem("Chi_tiet_DH");
     if(Chi_tiet_DH != ''){
       $("#" + Chi_tiet_DH).trigger('click');
@@ -337,9 +331,8 @@
                 listOders.push(res[0]);
                 renderUI_OderList_item(res[0]);
               }
+              $("#numberOders").text(listOders.length);
               $('#oderTable tbody tr').each(function(){
-
-        // $(this).attr('id', $(this).find('td:nth-child(1)').text());
 
         $(this).bind({
             click : function(e) {
