@@ -7,6 +7,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class Suggestion {
+    private String id;
     private String title;
     ArrayList<Store> arrStore;
 
@@ -40,6 +41,7 @@ public class Suggestion {
     }
 
     public Suggestion(JSONObject jsonObjectSuggestion) throws JSONException {
+        this.id = jsonObjectSuggestion.getString("_id");
         this.title = jsonObjectSuggestion.getString("Chu_De_Chinh");
         JSONArray lstCH = jsonObjectSuggestion.getJSONArray("lstCH");
         this.arrStore = new ArrayList<>();
@@ -63,5 +65,9 @@ public class Suggestion {
 
     public void setArrStore(ArrayList<Store> arrStore) {
         this.arrStore = arrStore;
+    }
+
+    public String getId() {
+        return id == null ? "" : id;
     }
 }

@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.acer_pc.foodnow.InformationStoreActivity;
 import com.example.acer_pc.foodnow.Object.Store;
 import com.example.acer_pc.foodnow.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -36,12 +37,23 @@ public class StoreNearAdapter extends RecyclerView.Adapter<StoreNearAdapter.Stor
     @Override
     public void onBindViewHolder(StoreNearViewHolder holder, int position) {
         final  Store store = arrStore.get(position);
-        holder.imageView.setImageResource(store.getImgStore());
+        if(!store.getUrlImage().trim().isEmpty())
+            Picasso.get().load(store.getUrlImage()).into(holder.imageView);
         holder.txtNameStore.setText(store.getName().trim());
         holder.txtAddress.setText(store.getAddress());
         holder.txtStar.setText(store.getStar());
         holder.txtTime.setText(store.getTime());
         holder.txtDistance.setText(store.getDistance());
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), InformationStoreActivity.class);
+                intent.setAction(Intent.ACTION_SEND);
+                intent.putExtra("idStore", store.getId());
+                Toast.makeText(view.getContext(), "Get information store", Toast.LENGTH_SHORT).show();
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -49,7 +61,8 @@ public class StoreNearAdapter extends RecyclerView.Adapter<StoreNearAdapter.Stor
         return arrStore.size();
     }
 
-    public static class StoreNearViewHolder extends RecyclerView.ViewHolder {
+    public class StoreNearViewHolder extends RecyclerView.ViewHolder {
+        public View view;
         public ImageView imageView;
         public TextView txtNameStore, txtAddress, txtStar, txtTime, txtDistance;
         public StoreNearViewHolder(View itemView) {
@@ -60,14 +73,15 @@ public class StoreNearAdapter extends RecyclerView.Adapter<StoreNearAdapter.Stor
             this.txtStar = itemView.findViewById(R.id.txtStar);
             this.txtTime = itemView.findViewById(R.id.store_near_time);
             this.txtDistance = itemView.findViewById(R.id.store_near_distance);
-            this.imageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+            this.view = itemView;
+//            this.imageView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
 //                    Intent intent = new Intent(view.getContext(), InformationStoreActivity.class);
 //                    view.getContext().startActivity(intent);
-                    Toast.makeText(view.getContext(), "Get information store", Toast.LENGTH_SHORT).show();
-                }
-            });
+//                    Toast.makeText(view.getContext(), "Get information store", Toast.LENGTH_SHORT).show();
+//                }
+//            });
         }
     }
 }

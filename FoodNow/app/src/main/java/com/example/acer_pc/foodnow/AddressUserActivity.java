@@ -21,9 +21,10 @@ import static com.example.acer_pc.foodnow.LoginActivity.user;
 
 public class AddressUserActivity extends AppCompatActivity {
 
+    int type;
     ImageView btnBack;
     RelativeLayout add_new_address;
-    LinearLayout add_home_address_row, add_company_address_row;
+    TextView add_home_address_row, add_company_address_row;
     TextView txt_home_address_title, txt_home_address, txt_company_address_title, txt_company_address;
     OtherAddressAdapter otherAddressAdapter;
     MultiSnapRecyclerView list_other_address;
@@ -45,6 +46,8 @@ public class AddressUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address_user);
         init();
+        Intent intent = getIntent();
+        type = intent.getIntExtra("type", -1);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,7 +58,56 @@ public class AddressUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(AddressUserActivity.this, ChooseAddressActivity.class);
+                intent.putExtra("type", 0);
                 startActivity(intent);
+            }
+        });
+        add_home_address_row.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AddressUserActivity.this, ChooseAddressActivity.class);
+                intent.putExtra("type", 1);
+                startActivity(intent);
+            }
+        });
+        add_company_address_row.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AddressUserActivity.this, ChooseAddressActivity.class);
+                intent.putExtra("type", 2);
+                startActivity(intent);
+            }
+        });
+        txt_home_address.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Address address = user.getDia_chi_nha();
+                if(address == null){
+                    Intent intent = new Intent(AddressUserActivity.this, ChooseAddressActivity.class);
+                    intent.putExtra("type", 1);
+                    startActivity(intent);
+                } else{
+                    ConfirmCartActivity.address = address;
+                    if(type == 0){
+                        finish();
+                    }
+                }
+            }
+        });
+        txt_company_address.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Address address = user.getDia_chi_cty();
+                if(address == null){
+                    Intent intent = new Intent(AddressUserActivity.this, ChooseAddressActivity.class);
+                    intent.putExtra("type", 2);
+                    startActivity(intent);
+                } else{
+                    ConfirmCartActivity.address = address;
+                    if(type == 0){
+                        finish();
+                    }
+                }
             }
         });
     }
@@ -87,7 +139,7 @@ public class AddressUserActivity extends AppCompatActivity {
                 txt_company_address.setVisibility(View.GONE);
             }
             //other address
-            otherAddressAdapter = new OtherAddressAdapter(user.getDia_chi_khac());
+            otherAddressAdapter = new OtherAddressAdapter(user.getDia_chi_khac(), type, AddressUserActivity.this);
             list_other_address.setAdapter(otherAddressAdapter);
             LinearLayoutManager friendsLayoutManager = new LinearLayoutManager(AddressUserActivity.this, android.support.v7.widget.LinearLayoutManager.VERTICAL, false);
             list_other_address.setLayoutManager(friendsLayoutManager);

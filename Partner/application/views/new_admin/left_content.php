@@ -239,3 +239,6 @@
     </div></div></div><div class="os-scrollbar os-scrollbar-horizontal os-scrollbar-unusable os-scrollbar-auto-hidden"><div class="os-scrollbar-track"><div class="os-scrollbar-handle" style="width: 100%; transform: translate(0px, 0px);"></div></div></div><div class="os-scrollbar os-scrollbar-vertical os-scrollbar-auto-hidden os-scrollbar-unusable"><div class="os-scrollbar-track"><div class="os-scrollbar-handle" style="height: 100%; transform: translate(0px, 0px);"></div></div></div><div class="os-scrollbar-corner"></div></div>
     <!-- /.sidebar -->
   </aside>
+<script type="text/javascript">
+  $("#imageUser").attr("src","<?php echo isset($Hinh_Anh_Cua_Hang) ? api_url("public/images/").$Hinh_Anh_Cua_Hang : base_url()."dist/img/admintratorIcon.png";?>");
+</script>

@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.example.acer_pc.foodnow.Adapter.InforStoreFoodTypeAdapter;
 import com.example.acer_pc.foodnow.Common.DefineVarible;
 import com.example.acer_pc.foodnow.Data.CartDetail;
+import com.example.acer_pc.foodnow.Data.DAL_FavoriteStore;
 import com.example.acer_pc.foodnow.Data.Utils;
 import com.example.acer_pc.foodnow.Object.Address;
 import com.example.acer_pc.foodnow.Object.Food;
@@ -40,18 +41,22 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class InformationStoreActivity extends AppCompatActivity implements View.OnClickListener {
+import static com.example.acer_pc.foodnow.LoginActivity.user;
+
+public class InformationStoreActivity extends AppCompatActivity implements View.OnClickListener, DAL_FavoriteStore.FavoriteStoreListener {
     //data
     public static String idStore;
     public static boolean refresh = false;
     public static JSONObject jsonObjectInforStore;
-    private Store store;
+//    static   Store store;
     public static Address addressStore;
 //    public static ArrayList<Food> shoppingCart;
     public static HashMap<String, CartDetail> shoppingCart;
 
     //button back, button yêu thích, ảnh cửa hàng
     ImageView btnBackAct, btnFavoriteStore,imgInforStore;
+    DAL_FavoriteStore dal_favoriteStore;
+    public boolean isFavorite;
     //tên cửa hàng
     public static TextView txtNameStore;
     //địa chỉ cửa hàng
@@ -88,6 +93,7 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
         btnBackAct.setOnClickListener(this);
         btnFavoriteStore = findViewById(R.id.imgFavoriteStore);
         btnFavoriteStore.setOnClickListener(this);
+        dal_favoriteStore = new DAL_FavoriteStore(InformationStoreActivity.this);
         imgInforStore = findViewById(R.id.img_infor_store);
         //tên cửa hàng
         txtNameStore = findViewById(R.id.txt_storename_inforAct);
@@ -117,10 +123,12 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
     private void setData() throws JSONException {
         //thêm vào cửa hàng yêu thích
         idStore = jsonObjectInforStore.getJSONObject("thongTinCuaHang").getString("_id");
-        if(Utils.isFavorite(jsonObjectInforStore.getJSONObject("thongTinCuaHang").getString("_id"))) {
+        if(Utils.isFavorite(idStore)) {
             btnFavoriteStore.setImageResource(R.drawable.ic_favorite_black_24dp);
+            isFavorite = true;
         } else{
             btnFavoriteStore.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+            isFavorite = false;
         }
         //hình ảnh cửa hàng
         Picasso.get().load(Utils.getUrlImageStore(jsonObjectInforStore.getJSONObject("thongTinCuaHang").getString("Hinh_Anh_Cua_Hang"))).into(imgInforStore);
@@ -327,17 +335,20 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btnBackActInforStore://quay lại màn hình chính
+
                 finish();
                 break;
             case R.id.imgFavoriteStore://đổi trạng thái yêu thích cửa hàng
-                if(store != null && !store.isFavorite())
+                if(user == null)
+                    break;
+                if(isFavorite)
                 {
-                    store.setFavorite(true);
-                    btnFavoriteStore.setImageResource(R.drawable.ic_favorite_black_24dp);
+                    dal_favoriteStore.favoriteStore("0");
+                    btnFavoriteStore.setImageResource(R.drawable.ic_favorite_border_black_24dp);
                 }
                 else{
-                    store.setFavorite(false);
-                    btnFavoriteStore.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+                    dal_favoriteStore.favoriteStore("1");
+                    btnFavoriteStore.setImageResource(R.drawable.ic_favorite_black_24dp);
                 }
                 break;
             case R.id.txt_storeAddress_inforAct://chuyển sang màn hình map địa chỉ cửa hàng
@@ -348,8 +359,7 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
                         intent.putExtra("lat", addressStore.getLat());
                         intent.putExtra("lng", addressStore.getLng());
                         intent.putExtra("dia_chi", addressStore.getAddress());
-                        intent.putExtra("name", jsonObjectInforStore.getJSONObject("thongTinCuaHang")
-                                .getString("Ten_Cua_Hang"));
+                        intent.putExtra("name", jsonObjectInforStore.getJSONObject("thongTinCuaHang").getString("Ten_Cua_Hang"));
                         startActivity(intent);
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -366,6 +376,18 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
                     startActivity(intentConfirmCartActivity);
                 }
                 break;
+        }
+    }
+
+    @Override
+    public void onRequestFavoriteStoreDone(String type) {
+        if(type.equals("1")) {
+            btnFavoriteStore.setImageResource(R.drawable.ic_favorite_black_24dp);
+            isFavorite = true;
+        }
+        else if(type.equals("0")){
+            btnFavoriteStore.setImageResource(R.drawable.ic_favorite_border_black_24dp);
+            isFavorite = false;
         }
     }
 }

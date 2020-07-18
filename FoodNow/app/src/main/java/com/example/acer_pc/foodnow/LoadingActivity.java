@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import com.example.acer_pc.foodnow.Common.DefineVarible;
 import com.example.acer_pc.foodnow.Data.DAL_AddProductToCart;
+import com.example.acer_pc.foodnow.Data.DAL_AddUserAddress;
 import com.example.acer_pc.foodnow.Data.DAL_GetInforFragment_Home;
 import com.example.acer_pc.foodnow.Data.DAL_GetInforStore;
 import com.example.acer_pc.foodnow.Data.DAL_ConfirmShoppingCart;
@@ -75,6 +76,14 @@ public class LoadingActivity extends AppCompatActivity {
             case DefineVarible.confirmCart:
                 dal_confirmShoppingCart = new DAL_ConfirmShoppingCart(LoadingActivity.this);
                 dal_confirmShoppingCart.confirmShoppingCart();
+                break;
+            case DefineVarible.addUserAddress:
+                int type = intent.getIntExtra("type", -1);
+                double lat = intent.getDoubleExtra("lat", 0);
+                double lng = intent.getDoubleExtra("lng", 0);
+                String address = intent.getStringExtra("address");
+                dal_addUserAddress = new DAL_AddUserAddress(LoadingActivity.this, type, lat, lng, address);
+                dal_addUserAddress.addUserAddress();
                 break;
         }
     }

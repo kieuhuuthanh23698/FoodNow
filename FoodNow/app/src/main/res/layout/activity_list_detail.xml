@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    tools:context=".ListDetailActivity">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/list_storedetail_act_btn_back"
+                    android:drawableRight="@drawable/ic_navigate_before_black_24dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    style="@style/title"
+                    android:background="@android:color/white"
+                    android:text="Danh sách cửa hàng"
+                    android:padding="10dp"
+                    android:textColor="@android:color/black"
+                    android:layout_centerHorizontal="true"
+                    android:textAlignment="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </RelativeLayout>
+
+            <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                android:id="@+id/list_storedetail_act_store_list"
+                android:visibility="visible"
+                android:orientation="vertical"
+                app:msrv_ms_per_inch="120"
+                app:msrv_snap_count="2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+    <ImageView
+        android:id="@+id/list_storedetail_act_img_empty_store"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_cart_fragment_tab3"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp" />
+
+</RelativeLayout>

@@ -19,6 +19,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -60,6 +61,11 @@ public class DAL_Login {
                                     String Ngay_sinh = khachHangObject.getString("Ngay_sinh");
                                     String Gioi_tinh = khachHangObject.getString("Gioi_tinh");
                                     String Hinh_anh_khach_hang = khachHangObject.getString("Hinh_anh_khach_hang");
+                                    JSONArray jsonArrayFacvoriteStore = khachHangObject.getJSONArray("Cua_hang_yeu_thich");
+                                    for (int i = 0; i < jsonArrayFacvoriteStore.length(); i++) {
+                                        String jsonIdStore = jsonArrayFacvoriteStore.getString(i);
+                                        user.addFavoriteStore(jsonIdStore);
+                                    }
                                     JSONObject Dia_chi_nha_ex = jsonObject.getJSONObject("Dia_chi_nha_ex");
                                     if(Dia_chi_nha_ex.getString("flag").equals("1")){
                                         JSONObject jsonObjectDia_chi_nha_ex = Dia_chi_nha_ex.getJSONObject("data");
@@ -110,6 +116,7 @@ public class DAL_Login {
                             e.printStackTrace();
                             Log.i("response", Utils.getCurrentTime() + response);
                         }
+                        Log.i("response", Utils.getCurrentTime() + "end process login to server");
                         ((Activity)context).finish();
                     }
                 }, new Response.ErrorListener() {

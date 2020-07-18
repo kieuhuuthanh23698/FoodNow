@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.acer_pc.foodnow.InformationStoreActivity;
 import com.example.acer_pc.foodnow.MainActivity;
 import com.example.acer_pc.foodnow.Object.Food;
+import com.example.acer_pc.foodnow.Object.User;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 
@@ -27,19 +28,29 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import static com.example.acer_pc.foodnow.LoginActivity.user;
+
 public class Utils {
-    static String ipserver = "192.168.137.1:3000";
+    static String uri = "http://192.168.137.1:3000";
+
 //    static String ipserver = "10.21.151.197:3000";
 
-    public static String urlLogin = "http://" + ipserver + "/DangNhap" ;
-    public static String urlFragment_Home = "http://" + ipserver + "/fragment_home" ;
-    public static String urlInforStore = "http://" + ipserver + "/thongTinCuaHang" ;
-    public static String urlAddProductToCart = "http://" + ipserver + "/chonSanPham" ;
-    public static String urlConfirmShoppingCart = "http://" + ipserver + "/datHang" ;
+    public static String urlLogin = uri + "/DangNhap" ;
+    public static String urlFragment_Home = uri + "/fragment_home" ;
+    public static String urlInforStore = uri + "/thongTinCuaHang" ;
+    public static String urlAddProductToCart = uri + "/chonSanPham" ;
+    public static String urlConfirmShoppingCart = uri + "/datHang" ;
+    public static String urlAddUserAddress = uri + "/themDiaChi" ;
+    public static String urlFavoriteStore = uri + "/Themcuahangyeuthich_khachhang" ;
+    public static String urlGetFavoriteStores = uri + "/HienThiCuaHang_KhachHangYeuThich" ;
+    public static String urlGetStoresOfMenu = uri + "/getDanhSachCuaHang_LoaiMonAn" ;
+    public static String urlGetStoresOfSuggest = uri + "/getDanhSachCuaDanhMucHomNay" ;
+    public static String urlGetStoresOfGroup = uri + "/getDanhSachCuaDanhMuc" ;
+    public static String urlGetStoresOfKMHT = uri + "/getDanhSachCuaHangKMHT" ;
 
-    public static String urlRegister = "http://" + ipserver + "/addKhachHang" ;
-    public static String urlCuaHang = "http://" + ipserver + "/cuahang" ;
-    public static String urlOneChiNhanh = "http://" + ipserver + "/OneChiNhanh" ;
+    public static String urlRegister = uri + "/addKhachHang" ;
+    public static String urlCuaHang = uri + "/cuahang" ;
+    public static String urlOneChiNhanh = uri + "/OneChiNhanh" ;
 
     public static String[] arrColor = {"#5574ff", "#2ECD9D", "#FF4081", "#FFA02ECD", "#FFFF8940", "#2cd020"};
 
@@ -129,19 +140,21 @@ public class Utils {
     }
 
     public static String getUrlImageStore(String nameImage){
-        return "http://" + ipserver + "/Public/Images/" + nameImage;
+        return uri + "/Public/Images/" + nameImage;
     }
 
     public static String getUrlImageFood(String nameImage){
-        return "http://" + ipserver + "/Public/Images/" + nameImage;
+        return uri + "/Public/Images/" + nameImage;
     }
 
     public static String getUrlIconVoucher(String nameImage){
-        return "http://" + ipserver + "/Public/Images/" + nameImage;
+        return uri + "/Public/Images/" + nameImage;
     }
 
     public static boolean isFavorite(String string) {
-        return true;
+        if(user != null)
+            return user.isFavorite(string);
+        return false;
     }
 
     public static BitmapDescriptor generateBitmapDescriptorFromRes(Context context, int resId) {

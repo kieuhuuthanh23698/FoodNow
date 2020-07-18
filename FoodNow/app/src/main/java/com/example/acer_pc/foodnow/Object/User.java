@@ -8,6 +8,7 @@ import java.util.Date;
 public class User {
     private String id, name, img, email, phone, birth_day, gender,token;
     private int type_login;
+    private ArrayList<String> arrStoreFavorite;
     private Address dia_chi_nha, dia_chi_cty;
     private ArrayList<Address> dia_chi_khac;
 
@@ -19,6 +20,17 @@ public class User {
         if(dia_chi_khac != null && dia_chi_khac.size() > 0)
             return dia_chi_khac.get(0);
         return null;
+    }
+
+    public void setArrStoreFavorite(ArrayList<String> arrStoreFavorite) {
+        this.arrStoreFavorite = new ArrayList<>();
+        this.arrStoreFavorite.addAll(arrStoreFavorite);
+    }
+
+    public void addFavoriteStore(String idStore){
+        if(this.arrStoreFavorite == null)
+            this.arrStoreFavorite = new ArrayList<>();
+        arrStoreFavorite.add(idStore);
     }
 
     public Address getDia_chi_nha() {
@@ -139,11 +151,23 @@ public class User {
                 '}';
     }
 
+    public boolean isFavorite(String idCuaHang){
+        if(this.arrStoreFavorite == null)
+            return false;
+        return arrStoreFavorite.contains(idCuaHang);
+    }
+
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void removeFavoriteStore(String idStore) {
+        if(this.arrStoreFavorite == null)
+            this.arrStoreFavorite = new ArrayList<>();
+        arrStoreFavorite.remove(idStore);
     }
 }

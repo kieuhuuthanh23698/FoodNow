@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.acer_pc.foodnow.InformationStoreActivity;
+import com.example.acer_pc.foodnow.ListDetailActivity;
 import com.example.acer_pc.foodnow.Object.Suggestion;
 import com.example.acer_pc.foodnow.R;
 
@@ -49,6 +50,17 @@ public class SuggestionAdapter extends RecyclerView.Adapter<SuggestionAdapter.Su
         holder.suggestion_list_store.setLayoutManager(friendsLayoutManager);
         holder.suggestion_list_store.setAdapter(storeOfSuggestAdapter);
         holder.suggestion_list_store.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL));
+        holder.showAllSuggest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), ListDetailActivity.class);
+                intent.setAction(Intent.ACTION_SEND);
+                intent.putExtra("type", 4);
+                String idDanhMuc = suggestion.getId();
+                intent.putExtra("idDanhMuc", idDanhMuc);
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -57,12 +69,13 @@ public class SuggestionAdapter extends RecyclerView.Adapter<SuggestionAdapter.Su
     }
 
     public static class SuggestViewHolder extends RecyclerView.ViewHolder {
-        public TextView title;
+        public TextView title, showAllSuggest;
         public RecyclerView suggestion_list_store;
         public SuggestViewHolder(View itemView) {
             super(itemView);
             this.title = itemView.findViewById(R.id.titleSuggest);
             this.suggestion_list_store = itemView.findViewById(R.id.suggestion_list_store);
+            this.showAllSuggest = itemView.findViewById(R.id.showAllSuggest);
         }
     }
 }
