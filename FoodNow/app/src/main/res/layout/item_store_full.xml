@@ -47,12 +47,14 @@
             android:id="@+id/txtStar"
             android:drawableLeft="@drawable/ic_star"
             android:text="4.6"
+            android:layout_marginTop="5dp"
             android:textColor="#6F6D6D"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <LinearLayout
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

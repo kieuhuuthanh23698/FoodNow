@@ -48,6 +48,7 @@ public class SuggestionAdapter extends RecyclerView.Adapter<SuggestionAdapter.Su
         LinearLayoutManager friendsLayoutManager = new LinearLayoutManager(context.getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
         holder.suggestion_list_store.setHasFixedSize(true);
         holder.suggestion_list_store.setLayoutManager(friendsLayoutManager);
+        holder.suggestion_list_store.setNestedScrollingEnabled(false);
         holder.suggestion_list_store.setAdapter(storeOfSuggestAdapter);
         holder.suggestion_list_store.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL));
         holder.showAllSuggest.setOnClickListener(new View.OnClickListener() {

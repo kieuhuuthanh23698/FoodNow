@@ -56,6 +56,7 @@ public class DAL_GetStores {
                                 JSONObject jsonObject = new JSONObject(response);
                                 if(jsonObject.getString("return_code").equals("0")){
                                     Toast.makeText(context, "Quá trình request thất bại !", Toast.LENGTH_SHORT).show();
+                                    listener.onRequestGetStoresDone(null);
                                 } else if(jsonObject.getString("return_code").equals("1")){
                                     listener.onRequestGetStoresDone(jsonObject.getJSONArray("infor"));
                                 }
