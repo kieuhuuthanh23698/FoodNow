@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.acer_pc.foodnow.Adapter.StoreNearAdapter;
 import com.example.acer_pc.foodnow.Data.DAL_GetStores;
 import com.example.acer_pc.foodnow.Object.Store;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,6 +27,7 @@ public class ListDetailActivity extends AppCompatActivity implements DAL_GetStor
 
     TextView btnBack;
     ImageView imageViewEmptyStore;
+    ShimmerFrameLayout shimmer;
     RecyclerView recyclerView;
     StoreNearAdapter storeNearAdapter;
     DAL_GetStores dal_getStores;
@@ -35,6 +37,7 @@ public class ListDetailActivity extends AppCompatActivity implements DAL_GetStor
 
     void init(){
         btnBack = findViewById(R.id.list_storedetail_act_btn_back);
+        shimmer = findViewById(R.id.list_storedetail_act_shimmer_view_container);
         recyclerView = findViewById(R.id.list_storedetail_act_store_list);
         imageViewEmptyStore = findViewById(R.id.list_storedetail_act_img_empty_store);
     }
@@ -58,41 +61,59 @@ public class ListDetailActivity extends AppCompatActivity implements DAL_GetStor
     @Override
     public void onResume() {
         super.onResume();
+        shimmer.setVisibility(View.VISIBLE);
+        shimmer.startShimmerAnimation();
         if(type != -1 && idDanhMuc != null) {
             dal_getStores = new DAL_GetStores(this, ListDetailActivity.this, type, idDanhMuc);
             dal_getStores.getStores();
             arrStoreNear = new ArrayList<>();
+        } else {
+            shimmer.stopShimmerAnimation();
+            shimmer.setVisibility(View.GONE);
+            imageViewEmptyStore.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.GONE);
         }
     }
 
     @Override
     public void onRequestGetStoresDone(JSONArray stores) {
-        for (int i = 0; i < stores.length(); i++) {
-            try {
-                JSONObject jsonObjectStore = stores.getJSONObject(i);
-                Store store = new Store();
-                JSONObject jsonObjectThongTinCuaHang = jsonObjectStore.getJSONObject("CH");
-                store.setId(jsonObjectThongTinCuaHang.getString("_id"));
-                store.setName(jsonObjectThongTinCuaHang.getString("Ten_Cua_Hang"));
-                store.setStar(Double.parseDouble(jsonObjectThongTinCuaHang.getString("Danh_Gia")));
-                store.setUrlImage(jsonObjectThongTinCuaHang.getString("Hinh_Anh_Cua_Hang"));
-                JSONObject jsonObjectDiaChiCuaHang = jsonObjectStore.getJSONObject("DiaChi");
-                store.setAddress(jsonObjectDiaChiCuaHang.getString("Dia_Chi"));
-                store.setLat(Double.parseDouble(jsonObjectDiaChiCuaHang.getString("Vi_do")));
-                store.setLng(Double.parseDouble(jsonObjectDiaChiCuaHang.getString("Kinh_do")));
-                arrStoreNear.add(store);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        if(arrStoreNear.size() > 0)
+        shimmer.stopShimmerAnimation();
+        shimmer.setVisibility(View.GONE);
+        if(stores != null && stores.length() > 0) {
             imageViewEmptyStore.setVisibility(View.GONE);
-        storeNearAdapter = new StoreNearAdapter(arrStoreNear, ListDetailActivity.this);
-        recyclerView.setHasFixedSize(true);
-        LinearLayoutManager friendsLayoutManager = new LinearLayoutManager(ListDetailActivity.this.getApplicationContext(), android.support.v7.widget.LinearLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(friendsLayoutManager);
-        recyclerView.setAdapter(storeNearAdapter);
-        recyclerView.setNestedScrollingEnabled(false);
-        recyclerView.addItemDecoration(new DividerItemDecoration(ListDetailActivity.this, DividerItemDecoration.VERTICAL));
+            recyclerView.setVisibility(View.VISIBLE);
+            for (int i = 0; i < stores.length(); i++) {
+                try {
+                    JSONObject jsonObjectStore = stores.getJSONObject(i);
+                    Store store = new Store();
+                    JSONObject jsonObjectThongTinCuaHang = jsonObjectStore.getJSONObject("CH");
+                    store.setId(jsonObjectThongTinCuaHang.getString("_id"));
+                    store.setName(jsonObjectThongTinCuaHang.getString("Ten_Cua_Hang"));
+                    store.setStar(Double.parseDouble(jsonObjectThongTinCuaHang.getString("Danh_Gia")));
+                    store.setUrlImage(jsonObjectThongTinCuaHang.getString("Hinh_Anh_Cua_Hang"));
+                    JSONObject jsonObjectDiaChiCuaHang = jsonObjectStore.getJSONObject("DiaChi");
+                    store.setAddress(jsonObjectDiaChiCuaHang.getString("Dia_Chi"));
+                    store.setLat(Double.parseDouble(jsonObjectDiaChiCuaHang.getString("Vi_do")));
+                    store.setLng(Double.parseDouble(jsonObjectDiaChiCuaHang.getString("Kinh_do")));
+                    arrStoreNear.add(store);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (arrStoreNear.size() == 0)
+                imageViewEmptyStore.setVisibility(View.VISIBLE);
+            else
+                recyclerView.setVisibility(View.VISIBLE);
+            storeNearAdapter = new StoreNearAdapter(arrStoreNear, ListDetailActivity.this);
+            recyclerView.setHasFixedSize(true);
+            LinearLayoutManager friendsLayoutManager = new LinearLayoutManager(ListDetailActivity.this.getApplicationContext(), android.support.v7.widget.LinearLayoutManager.VERTICAL, false);
+            recyclerView.setLayoutManager(friendsLayoutManager);
+            recyclerView.setAdapter(storeNearAdapter);
+            recyclerView.setNestedScrollingEnabled(false);
+            recyclerView.addItemDecoration(new DividerItemDecoration(ListDetailActivity.this, DividerItemDecoration.VERTICAL));
+        } else {
+            imageViewEmptyStore.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.GONE);
+        }
     }
 }

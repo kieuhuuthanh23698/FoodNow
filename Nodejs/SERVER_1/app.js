@@ -22,6 +22,7 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
 app.set("view engine", "ejs");
+const geolib = require('geolib');
 app.use("/Public", express.static('Public'));
 app.use(function (req, res, next) {
 	res.setHeader('Access-Control-Allow-Origin', '*');
@@ -1599,53 +1600,6 @@ app.post("/Danhsachmonantimkiemhienthi", urlEncodeParser, function (req, res) {
 	});
 });
 
-
-//route post Hienthiketqua_timkiemmonan
-//method post(truyền valueSearch)
-//Param  valueSearch
-//Hiển thị kết quả tìm kiếm gồm danh sách cửa hàng và món ăn cửa hàng đó//
-app.post("/Hienthiketqua_timkiemmonan", urlEncodeParser, function (req, res) {
-	// var vlaaaaa =  req.body.valueSearch;
-	CUAHANG.aggregate(
-		[
-			{
-				"$lookup": {
-					"from": "loai_monans",
-					"localField": "Loai_MonAn",
-					"foreignField": "_id",
-					"as": "menus"
-				}
-			},
-			{
-				"$lookup": {
-					"from": "mon_ans",
-					"localField": "menus.Danh_sach_mon_an",
-					"foreignField": "_id",
-					"as": "thongTinMonAns"
-				}
-			},
-			{
-				"$project": {
-					"Ten_Cua_Hang": 1.0,
-					"Hinh_Anh_Cua_Hang": 1.0,
-					"thongTinMonAns": 1.0
-				}
-			},
-			{
-				"$match": {
-					"Ten_Cua_Hang": { $regex: req.body.valueSearch, $options: 'i' }
-				}
-			}
-		],
-		function (err, result) {
-			if (err)
-				res.send(err);
-			else
-				res.send(result);
-		}
-	);
-
-});
 
 //route post HienThiCuaHang_KhachHangYeuThich
 //method post(truyền idKhachHang)
@@ -3656,4 +3610,174 @@ app.post("/getDanhSachCuaHangKMHT", urlEncodeParser, function (req, res) {
 					});
 				});
 	});
+});
+
+
+
+//lấy thông tin cửa hàng cho đơn hàng
+const addThongTinCuaHang_DonHang = async (iDONHANG) => {
+	var label = Date.now();
+	console.time(iDONHANG._id + "- addThongTinCuaHang_DonHang - " + label);
+	return new Promise(function (resolve, reject) {
+		CUAHANG.aggregate(
+			[
+				{ $match: { _id: mongoose.Types.ObjectId(iDONHANG.IdCuaHang) } },
+				{
+					$lookup: {
+						from: 'diachis',
+						localField: 'Dia_Chi_Cua_Hang',
+						foreignField: '_id',
+						as: 'diachiCH'
+					}
+				}
+			]
+			, function (err, result) {
+				console.timeEnd(iDONHANG._id + "- addThongTinCuaHang_DonHang - " + label);
+				resolve({DonHang : iDONHANG, CuaHang : result});
+			});
+	});
+}
+
+
+app.post("/getDanhSachDonHangKH", urlEncodeParser, function (req, res) {
+	if(req.body.idKhachHang == null || req.body.idDanhMuc == null || req.body.idKhachHang == "" || req.body.idDanhMuc == ""){
+		console.log("Error params !")
+		res.send({return_code: "0"});
+		return;
+	}
+	DON_HANG.aggregate(
+		[
+			{
+				"$match": {
+					"IdKhachHang": mongoose.Types.ObjectId(req.body.idKhachHang),
+					"Trang_thai_don_hang" : req.body.idDanhMuc
+				}
+			}
+		],
+		function (err, result) {
+			if (err || result.length == 0) {
+				console.log("Lấy danh sach đơn hàng của khách hàng gặp lỗi : " + err);
+				res.send({ return_code: "0", error_infor: "Lỗi server khi query." });
+			} else {
+				if (result != null && result.length > 0) {
+					Promise.all(
+						result.map(function (iDONHANG) {
+							return addThongTinCuaHang_DonHang(iDONHANG);
+						}))
+						.then(function (resolveDonHangs) {
+							console.log(resolveDonHangs);
+							res.send({return_code: "1", infor : resolveDonHangs});
+						});
+				} else {
+					console.log("Khách hàng không có đơn hàng !");
+					res.send({ return_code: "0", error_infor: "Cửa hàng không có đơn hàng !" });
+				}
+			}
+		}
+	);
+});
+
+const addDistance_CountOrder = async (iCUAHANG, lat, lng) => {
+	return new Promise(function (resolve, reject) {
+		if(lat == 0.0 || lng == 0.0){
+			lat = iCUAHANG.diachiCH[0].Vi_do;
+			lng = iCUAHANG.diachiCH[0].Kinh_do;
+		}
+		resolve({
+			inforCH : iCUAHANG, 
+			distance : geolib.getDistance(
+				{latitude: iCUAHANG.diachiCH[0].Vi_do, longitude: iCUAHANG.diachiCH[0].Kinh_do}, 
+				{latitude: lat, longitude: lng}, 0.0001),
+			countOrder : iCUAHANG.Thong_Tin_KH_Dat_Don.length
+		});
+	});
+}
+
+//route post Hienthiketqua_timkiemmonan
+//method post(truyền valueSearch)
+//Param  valueSearch
+//Hiển thị kết quả tìm kiếm gồm danh sách cửa hàng và món ăn cửa hàng đó//
+app.post("/Hienthiketqua_timkiemmonan", urlEncodeParser, function (req, res) {
+	if(req.body.valueSearch == null || req.body.valueSearch == "") {
+		console.log("Error params !");
+		res.send({return_code : "0"});
+		return;
+	}
+	var lat = 0.0, lng = 0.0;//10.881654 106.648632
+	if(req.body.lat != null || req.body.lat != "") {
+		lat = req.body.lat;
+	}
+	if(req.body.lng != null || req.body.lng != "") {
+		lng = req.body.lng;
+	}
+	CUAHANG.aggregate(
+		[
+			{
+				"$lookup": {
+					"from": "loai_monans",
+					"localField": "Loai_MonAn",
+					"foreignField": "_id",
+					"as": "menus"
+				}
+			},
+			{
+				"$lookup": {
+					"from": "mon_ans",
+					"localField": "menus.Danh_sach_mon_an",
+					"foreignField": "_id",
+					"as": "thongTinMonAns"
+				}
+			},
+			{
+				"$lookup": {
+					from: 'diachis',
+					localField: 'Dia_Chi_Cua_Hang',
+					foreignField: '_id',
+					as: 'diachiCH'
+				}
+			},
+			{
+				"$project": {
+					"Ten_Cua_Hang": 1.0,
+					"Thong_Tin_KH_Dat_Don": 1.0,
+					"Hinh_Anh_Cua_Hang": 1.0,
+					"thongTinMonAns": 1.0,
+					"diachiCH": 1.0
+				}
+			},
+			{
+				"$match": {
+					"Ten_Cua_Hang": { $regex: req.body.valueSearch, $options: 'i' }
+				}
+			}
+		],
+		function (err, result) {
+			if (err || result.length == 0){
+				console.log("Không tìm thấy cửa hàng !");
+				res.send({return_code: "0"});
+			}
+			else{
+				Promise.all(
+					result.map(function (iCH) {
+						return addDistance_CountOrder(iCH, lat, lng);
+					}))
+					.then(function (resolveCH) {
+						var distanceRestul = [];
+						var orderResult = [];
+						if(lat != 0.0 && lng != 0.0){
+							distanceRestul = resolveCH.sort((a, b) => (a.distance >= b.distance) ? 1 : -1).slice(0, 10);
+							orderResult =  resolveCH.sort((a, b) => (a.countOrder <= b.countOrder) ? 1 : -1).slice(0, 10);
+						} else {
+							distanceRestul = resolveCH;
+							orderResult = resolveCH;
+						}
+						res.send({
+							nearestResult : resolveCH.slice(0, 10),
+							distanceRestul : distanceRestul,
+							orderResult : orderResult
+						});
+					});
+			}
+		}
+	);
 });

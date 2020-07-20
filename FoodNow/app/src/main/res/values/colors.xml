@@ -8,4 +8,5 @@
     <color name="colorGray">#879f9f9f</color>
     <color name="colorGrayLight">#32c2c2c2</color>
     <color name="colorBlueLink">#5574ff</color>
+    <color name="colorBackgroundPlaceHolder">#dddddd</color>
 </resources>
