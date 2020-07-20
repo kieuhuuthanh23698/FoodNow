@@ -68,10 +68,12 @@
                 <!-- /.row -->
                 
                 <div class="row">
+                	<div class="col-4"> </div>
 
           <div class="col-4">
             <button type="submit" id="dangnhap" class="btn btn-primary btn-block">Sign In</button>
           </div>
+          <div class="col-4"> </div>
           <!-- /.col -->
         </div>
               </div>

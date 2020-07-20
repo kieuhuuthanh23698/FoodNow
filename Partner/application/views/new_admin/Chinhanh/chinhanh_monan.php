@@ -167,7 +167,6 @@
  <div class="row">
 
                                 <section class="col-lg-5 connectedSortable">
-                                    <div class="container-fluid">
                                         <div class="card">
                                              <div class="card-header">
                                                     <h3 class="card-title">Danh sách loại món ăn</h3>
@@ -199,11 +198,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
     </section>
 
                                     <section class="col-lg-7 connectedSortable">
-                                        <div class="container-fluid">
                                             <div class="card">
                                                  <div class="card-header">
                                                     <h3 class="card-title">Danh sách món ăn</h3>
@@ -236,7 +233,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
         </section>
 </div>
 

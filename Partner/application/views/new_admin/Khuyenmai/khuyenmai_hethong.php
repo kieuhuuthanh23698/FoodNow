@@ -9,7 +9,7 @@
                 </div><!-- /.col -->
           <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
                         <li class="breadcrumb-item active">Khuyến mãi hệ thống</li>
                     </ol>
                 </div><!-- /.col -->
@@ -22,14 +22,13 @@
     <!-- Main content -->
 
 
-<div class="container-fluid" id="quickForm">
-        <!-- Main row -->
-            <div class="card">
 
-            <div class="card-header">
+    <div class="container-fluid" id="quickForm">
+      <!-- Main row -->
+<div class="card">
 
-
-                <div class="modal fade" id="modal-lg">
+<!-- Thêm cửa hàng vào trang chủ modal -->
+<div class="modal fade" id="modal-lg">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
                             <div class="modal-header">
@@ -76,9 +75,39 @@
                         <!-- /.modal-dialog -->
                       </div>
                       <!-- /.modal -->
+               
+<!-- Thêm cửa hàng vào trang chủ modal -->
 
-                <!-- modal thêm khuyến mãi -->
-                <div class="modal fade bd-example-modal-lg" id="modal-insert" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                      <!-- Có chắc muốn xóa -->
+                                      <div class="modal fade bd-example-modal-sm" tabindex="-1"
+                                                            role="dialog" aria-labelledby="myLargeModalLabel"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                                            Bạn có chắc chắn muốn xóa?</h5>
+                                                                        <button type="button" class="close"
+                                                                            data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <input type="text" style="display: none;" value="sdfsdfsdf" id="idDelete">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-dismiss="modal">Cancel</button>
+                                                                        <button type="button" onclick="xoa()" data-dismiss="modal"
+                                                                            class="btn btn-primary toastrDefaultSuccess">OK</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                      <!-- Có chắc chắn muốn xóa -->
+
+<!-- Thêm danh mục trang chủ -->
+                                   
+           <div class="modal fade bd-example-modal-lg" id="modal-insert" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
@@ -94,20 +123,20 @@
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Mã khuyến mãi</label>
                                             <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="KM001" id="makm">
-								  </div>
+                                        </div>
 
                                                 <div class="row">
                                                     <div class="col-sm-6">
                                                         <div class="form-group pmd-textfield pmd-textfield-floating-label">
                                                             <label class="control-label" for="datepicker-start">Giờ BĐ</label>
                                                             <input type="text" class="form-control" id="gio_bd">
-										</div>
+                                                        </div>
                                                         </div>
                                                         <div class="col-sm-6">
                                                             <div class="form-group pmd-textfield pmd-textfield-floating-label">
                                                                 <label class="control-label" for="datepicker-end">Giờ KT</label>
                                                                 <input type="text" class="form-control" id="gio_kt">
-										</div>
+                                                            </div>
                                                             </div>
                                                         </div>
                                                     <!-- </div> -->
@@ -116,11 +145,9 @@
                                                             <div class="form-group col-sm-6">
                                                                 <label for="inputPassword4">Phần trăm giảm giá</label>
                                                                 <input type="number" class="form-control" id="PhanTram_GiamGia">
-								    </div>
+                                                            </div>
 
                                                         </div>
-								 
-								</form>
 
                                                     <!-- <form> -->
                                                         <div class="form-group">
@@ -130,8 +157,8 @@
                                                                     <input type="file" class="custom-file-input" id="inputGroupFile02" />
                                                                     <label class="custom-file-label" for="inputGroupFile02" id="Chonfile">Chọn hình ảnh</label>
                                                                 </div>
-						            
-						        </div>
+                        
+                                                        </div>
 
                                  
                                                         </div>
@@ -147,15 +174,12 @@
                                             </div>
                                         </div>
 
-                    </div>
-                                </div>
-
-                            </div>
+                <!-- Thêm danh mục trang chủ -->       
+</div>
                             <!-- /.card-header -->
  <div class="row">
-
   <section class="col-lg-7 connectedSortable">
-  		<div class="container-fluid">
+      <div class="container-fluid">
     <div class="card">
         <div class="card-header">
             <h3 class="card-title"><button type="button" class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg">Thêm khuyến mãi</button></h3>
@@ -168,7 +192,7 @@
                   </button> -->
                 </div>
         </div>
-    	<div class="card-body">
+      <div class="card-body">
             <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                 <div class="row">
                     <div class="col-sm-12">
@@ -231,7 +255,8 @@
                                         </div>
     </section>
 </div>
-   
+        
+</div>
                     
     <aside class="control-sidebar control-sidebar-dark">
                         <!-- Control sidebar content goes here -->
@@ -246,13 +271,13 @@
                        padding: 4px 8px 4px 8px;
                     }
 
-	.chitiet{
+  .chitiet{
                         padding: 3px 12px 3px 12px;
-	}
+  }
 
-	#img_upload{
+  #img_upload{
                         width: 100px;
-	}
+  }
 
     .img_chinhanh {
         width: 5.5rem;

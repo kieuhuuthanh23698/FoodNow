@@ -296,9 +296,9 @@
       <div class="form-group">
         <label for="exampleInputPassword1">Địa chỉ</label>
         <input type="text" class="form-control" id="inputDiaChi">
-        <input type="number" id="sessionNo" name="sessionNum" onKeyDown="limitText(this,10);" 
+       <!--  <input type="number" id="sessionNo" name="sessionNum" onKeyDown="limitText(this,10);" 
 onKeyUp="limitText(this,10);" >
-      </div>
+      </div> -->
       <div id="infowindow-content">
         <img src="" width="16" height="16" id="place-icon">
         <span id="place-address"></span>
