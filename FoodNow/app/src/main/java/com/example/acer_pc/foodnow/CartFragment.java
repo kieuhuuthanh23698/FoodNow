@@ -12,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -59,7 +60,7 @@ public class CartFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mSectionsPagerAdapter = new CartFragmentSectionsPagerAdapter(getChildFragmentManager());
         mSectionsPagerAdapter.addFragment(0, "ĐANG ĐẾN");
-        mSectionsPagerAdapter.addFragment(1, "LICH SỬ");
+        mSectionsPagerAdapter.addFragment(1, "LỊCH SỬ");
         mSectionsPagerAdapter.addFragment(2, "ĐƠN NHÁP");
         mViewPager.setAdapter(mSectionsPagerAdapter);
 //        tabLayout.setupWithViewPager(mViewPager);
@@ -67,7 +68,7 @@ public class CartFragment extends Fragment {
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
     }
 
-    public class CartFragmentSectionsPagerAdapter extends FragmentPagerAdapter {
+    public class CartFragmentSectionsPagerAdapter extends FragmentStatePagerAdapter {
         private ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
         private ArrayList<String> titleArrayList = new ArrayList<>();
 

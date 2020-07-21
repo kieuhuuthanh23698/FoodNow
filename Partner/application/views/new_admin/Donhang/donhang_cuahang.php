@@ -425,4 +425,8 @@
       alert("Xin hãy cho phép trang hiển thị thông báo !")
     }
   });
+  const messaging = firebase.messaging();
+  messaging.onMessage((payload) => {
+    alert('Message received. ', payload);
+});
 </script>

@@ -51,6 +51,7 @@ public class CartFragmentPlaceholderFragment extends Fragment implements DAL_Get
     @Override
     public void onResume() {
         super.onResume();
+        Log.i("response", "Page : " + page);
         if(user == null) {
             imageView.setVisibility(View.VISIBLE);
             recyclerViewCart.setVisibility(View.GONE);

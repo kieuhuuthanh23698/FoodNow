@@ -145,7 +145,8 @@ public class Store {
     }
 
     public void setDistance(double distance) {
-        this.distance = distance;
+        this.distance = distance/1000;
+
     }
 
     public String getTime() {

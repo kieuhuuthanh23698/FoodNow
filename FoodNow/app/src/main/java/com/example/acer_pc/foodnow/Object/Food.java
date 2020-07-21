@@ -1,5 +1,6 @@
 package com.example.acer_pc.foodnow.Object;
 
+import com.example.acer_pc.foodnow.Data.Utils;
 import com.example.acer_pc.foodnow.R;
 
 import java.util.Date;
@@ -7,7 +8,18 @@ import java.util.Random;
 
 public class Food {
     private int img, cost, like;
-    private String name, detail;
+    private String name;
+    private String detail;
+
+    public String getUrlImg() {
+        return urlImg;
+    }
+
+    public void setUrlImg(String urlImg) {
+        this.urlImg = Utils.getUrlImageStore(urlImg);
+    }
+
+    private String urlImg;
     private Double price;
 
     private String id;

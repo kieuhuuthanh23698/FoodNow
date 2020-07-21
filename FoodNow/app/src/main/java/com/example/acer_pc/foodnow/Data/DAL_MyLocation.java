@@ -27,8 +27,8 @@ import java.util.Map;
 
 public class DAL_MyLocation {
     private Context context;
-    public static double latitude = 0;
-    public static double longtitude = 0;
+    public static double latitude = 10.881654;
+    public static double longtitude = 106.648632;
     public static String address = "";
     private String mcc = "", mnc = "", lac = "", cellid = "", url;
 

@@ -1,6 +1,7 @@
 package com.example.acer_pc.foodnow.Adapter;
 
 import android.content.Context;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,8 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.acer_pc.foodnow.Data.Utils;
 import com.example.acer_pc.foodnow.Object.Store;
 import com.example.acer_pc.foodnow.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -34,16 +37,19 @@ public class StoreSearchResultAdapter extends RecyclerView.Adapter<StoreSearchRe
     @Override
     public void onBindViewHolder(StoreSearchResultViewHolder holder, int position) {
         final  Store store = arrStore.get(position);
-        holder.imageView.setImageResource(store.getImgStore());
+        if(!store.getUrlImage().trim().isEmpty())
+            Picasso.get().load(store.getUrlImage().trim()).into(holder.imageView);
         holder.txtNameStore.setText(store.getName().trim());
         holder.txtAddress.setText(store.getAddress());
         holder.txtStar.setText(store.getStar());
-        holder.txtTime.setText(store.getTime());
+//        holder.txtTime.setText(store.getTime());
+        holder.txtTime.setVisibility(View.GONE);
         holder.txtDistance.setText(store.getDistance());
         FoodsOfStoreAdapter foodsOfStoreAdapter = new FoodsOfStoreAdapter(store.getArrFoods());
         LinearLayoutManager friendsLayoutManager = new LinearLayoutManager(context.getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
         holder.recyclerView_Search_Result.setAdapter(foodsOfStoreAdapter);
         holder.recyclerView_Search_Result.setNestedScrollingEnabled(true);
+        holder.recyclerView_Search_Result.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL));
         holder.recyclerView_Search_Result.setLayoutManager(friendsLayoutManager);
     }
 

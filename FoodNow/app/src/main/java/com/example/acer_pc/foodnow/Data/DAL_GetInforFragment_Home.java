@@ -35,7 +35,7 @@ public class DAL_GetInforFragment_Home {
         Log.i("response", "\n" + Utils.getCurrentTime() + " : start request get information fragment home");
         VolleySingleton.getInstance(this.context).getRequestQueue().cancelAll("getInforFragment_Home");
         StringRequest insertRequest = new StringRequest(
-                Request.Method.GET,//method
+                Request.Method.POST,//method
                 Utils.urlFragment_Home,//url
                 new Response.Listener<String>() {
                     @Override
@@ -48,10 +48,12 @@ public class DAL_GetInforFragment_Home {
                                 HomeFragment.jsonArray_khuyen_mai_ht = jsonObjectResult.getJSONArray("lst_khuyen_mai_ht");
                                 HomeFragment.jsonArray_cua_hang_goi_y = jsonObjectResult.getJSONArray("lst_cua_hang_goi_y");
                                 HomeFragment.jsonArray_danh_muc = jsonObjectResult.getJSONArray("lst_danh_muc");
+                                HomeFragment.jsonArray_cua_hang_gan_day = jsonObjectResult.getJSONArray("lst_cua_hang_gan_day");
                             } else {
                                 HomeFragment.arrayListSystemVoucher.clear();
                                 HomeFragment.arrSuggestion.clear();
                                 HomeFragment.arrayListSystemGroupStore.clear();
+                                HomeFragment.arrStoreNear.clear();
                             }
                             Intent intentResult = new Intent();
                             ((Activity)context).setResult(Activity.RESULT_OK, intentResult);
@@ -74,6 +76,8 @@ public class DAL_GetInforFragment_Home {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
+                params.put("lat", String.valueOf(DAL_MyLocation.latitude));
+                params.put("lng", String.valueOf(DAL_MyLocation.longtitude));
                 return params;
             }
         };

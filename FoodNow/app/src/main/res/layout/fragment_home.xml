@@ -308,10 +308,10 @@
             <!--</HorizontalScrollView>-->
 
             <TextView
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
+                android:layout_margin="5dp"
                 style="@style/title"
                 android:text="Hôm nay ăn gì ?"
+                android:gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -341,8 +341,10 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
+                android:id="@+id/storeNeartList_title"
+                android:layout_margin="5dp"
+                android:visibility="gone"
+                android:layout_gravity="center_vertical"
                 style="@style/title"
                 android:text="Quanh đây có gì ngon ?"
                 android:layout_width="match_parent"
