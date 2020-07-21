@@ -7,6 +7,7 @@ const cuahangSchema = new mongoose.Schema({
     Thoi_Gian_Bat_Dau: String,
     Thoi_Gian_Ket_Thuc: String,
     Ho_Ten_Nguoi_Dai_Dien: String,
+    So_Dien_Thoai: String,
     Email_Nguoi_Dai_Dien: String,
     CMND_Nguoi_Dai_Dien: String,
     Danh_Gia: String,

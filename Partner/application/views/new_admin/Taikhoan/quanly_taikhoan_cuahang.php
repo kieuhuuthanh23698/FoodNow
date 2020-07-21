@@ -96,9 +96,15 @@
                           </div>
 
                           <div class="card-body">
-                            <strong><i class="fas fa-book mr-1"></i> Tên cửa hàng</strong>
+                            <strong><i class="fas fa-book mr-1"></i> Tên người đại diện</strong>
 
-                            <p class="text-muted" id="tencuahang"></p>
+                            <p class="text-muted" id="tennguoidaidien"></p>
+
+                            <hr>
+
+                            <strong><i class="fas fa-book mr-1"></i> Số điện thoại</strong>
+
+                            <p class="text-muted" id="sodienthoai"></p>
 
                             <hr>
 
@@ -379,6 +385,8 @@
             success: function (res) {
               if(res.return_code == "1"){
                 var infor = res.infor[0];
+                $("#tennguoidaidien").text(infor.Ho_Ten_Nguoi_Dai_Dien);
+                $("#sodienthoai").text(infor.Ten_Cua_Hang);
                 $("#tencuahang").text(infor.Ten_Cua_Hang);
                 $("#diachi_cuahang").text(infor.DiaChiCH[0].Dia_Chi);
                 $("#thoigian_bd").text(infor.Thoi_Gian_Bat_Dau);

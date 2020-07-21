@@ -319,6 +319,7 @@ app.post("/addCuaHang", urlEncodeParser, function (req, res) {
 				var newCuaHang = new CUAHANG({
 					Ten_Cua_Hang: req.body.Ten_cua_hang,
 					Dia_Chi_Cua_Hang: data[1]._id,
+					So_Dien_Thoai:req.body.So_dien_thoai_cua_hang,
 					Mo_Ta_Cua_Hang: req.body.Mo_Ta_Cua_Hang,
 					Thoi_Gian_Bat_Dau: req.body.Thoi_Gian_Bat_Dau,
 					Thoi_Gian_Ket_Thuc: req.body.Thoi_Gian_Ket_Thuc,
