@@ -30,6 +30,8 @@ import com.example.acer_pc.foodnow.Common.DefineVarible;
 import com.example.acer_pc.foodnow.Data.DAL;
 import com.example.acer_pc.foodnow.Data.DAL_GetInforFragment_Home;
 import com.example.acer_pc.foodnow.Data.DAL_MyLocation;
+import com.example.acer_pc.foodnow.Object.Food;
+import com.example.acer_pc.foodnow.Object.FoodType;
 import com.example.acer_pc.foodnow.Object.Slider;
 import com.example.acer_pc.foodnow.Object.Store;
 import com.example.acer_pc.foodnow.Object.Suggestion;
@@ -38,6 +40,7 @@ import com.example.acer_pc.foodnow.Object.SystemVoucher;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -74,6 +77,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public static SuggestionAdapter suggestionAdapter;
     public RecyclerView recyclerViewSuggestion;
     //danh sách các cửa hàng gần đây
+    public TextView storeNeartList_title;
+    public static JSONArray jsonArray_cua_hang_gan_day;
     public static ArrayList<Store> arrStoreNear = new ArrayList<>();
     StoreNearAdapter storeNearAdapter;
     public RecyclerView recyclerViewStoreNear;
@@ -127,18 +132,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         recyclerViewSuggestion = view.findViewById(R.id.susggestList);
         suggestionAdapter = new SuggestionAdapter(arrSuggestion, getContext(), getActivity());
         //danh sách cửa hàng gần đây
+        storeNeartList_title = view.findViewById(R.id.storeNeartList_title);
         recyclerViewStoreNear = view.findViewById(R.id.storeNeartList);
-        arrStoreNear.add(new Store());
-        arrStoreNear.add(new Store());
-        arrStoreNear.add(new Store());
-        arrStoreNear.add(new Store());
-        arrStoreNear.add(new Store());
-        arrStoreNear.add(new Store());
-        arrStoreNear.add(new Store());
-        arrStoreNear.add(new Store());
-        arrStoreNear.add(new Store());
-        arrStoreNear.add(new Store());
-        arrStoreNear.add(new Store());
         storeNearAdapter = new StoreNearAdapter(arrStoreNear, getContext());
     }
 
@@ -147,10 +142,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         init(view);
-
-//        Intent  intent = new Intent(getActivity(), CheckGPSActivity.class);
-//        startActivity(intent);
-
         //view chuyển activity
         goToSearchAct.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -284,6 +275,27 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                     arrSuggestion.add(suggestion);
                 }
             }
+            if(jsonArray_cua_hang_gan_day != null) {
+                arrStoreNear.clear();
+                for (int i = 0; i < jsonArray_cua_hang_gan_day.length(); i++){
+                    try {
+                        JSONObject jsonObjectStore = jsonArray_cua_hang_gan_day.getJSONObject(i);
+                        JSONObject jsonObjectInforStore = jsonObjectStore.getJSONObject("inforCH");
+                        Store store = new Store();
+                        store.setId(jsonObjectInforStore.getString("_id"));
+                        store.setName(jsonObjectInforStore.getString("Ten_Cua_Hang"));
+                        store.setUrlImage(jsonObjectInforStore.getString("Hinh_Anh_Cua_Hang"));
+                        JSONObject jsonObjectAdddress = jsonObjectInforStore.getJSONArray("diachiCH").getJSONObject(0);
+                        store.setAddress(jsonObjectAdddress.getString("Dia_Chi"));
+                        store.setLat(jsonObjectAdddress.getDouble("Vi_do"));
+                        store.setLng(jsonObjectAdddress.getDouble("Kinh_do"));
+                        store.setDistance(jsonObjectStore.getDouble("distance"));
+                        arrStoreNear.add(store);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
             //update adapter
             if(arrSuggestion != null && arrSuggestion.size() > 0){
                 if(suggestionAdapter != null)
@@ -296,6 +308,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             if(arrayListSystemGroupStore != null && arrayListSystemGroupStore.size() > 0){
                 if(systemGroupStoreAdapter != null)
                     systemGroupStoreAdapter.notifyDataSetChanged();
+            }
+            if(arrStoreNear != null && arrStoreNear.size() > 0){
+                storeNeartList_title.setVisibility(View.VISIBLE);
+                recyclerViewStoreNear.setVisibility(View.VISIBLE);
+                if(storeNearAdapter != null)
+                    storeNearAdapter.notifyDataSetChanged();
+            }else {
+                storeNeartList_title.setVisibility(View.GONE);
+                recyclerViewStoreNear.setVisibility(View.GONE);
             }
         }
     }

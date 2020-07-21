@@ -2,9 +2,12 @@ package com.example.acer_pc.foodnow;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -28,8 +31,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.acer_pc.foodnow.Adapter.CartOfFragmentAdapter;
+import com.example.acer_pc.foodnow.Adapter.SearchActPlaceholderFragment;
 import com.example.acer_pc.foodnow.Adapter.StoreSearchResultAdapter;
 import com.example.acer_pc.foodnow.Adapter.SuggestionSearchAdapter;
+import com.example.acer_pc.foodnow.Data.DAL_SearchStore;
 import com.example.acer_pc.foodnow.Object.Cart;
 import com.example.acer_pc.foodnow.Object.Store;
 import com.google.android.flexbox.AlignItems;
@@ -38,35 +43,40 @@ import com.google.android.flexbox.FlexWrap;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
 
-import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class SearchActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class SearchActivity extends AppCompatActivity implements DAL_SearchStore.SearchStoreListener, SuggestionSearchAdapter.SuggestionSearchItemListener{
     int i = 0;
-    ImageView navigate_before_search_acti;
-    static SearchView searchView;
-    LinearLayout resultSearch, searchSuggest;
+    private ImageView navigate_before_search_acti;
+    private SearchView searchView;
+    private DAL_SearchStore dal_searchStore;
+    private LinearLayout resultSearch, searchSuggest;
+    private SuggestionSearchAdapter suggestionSearchAdapter;
+    private TabLayout tabLayout;
     private SearchActSectionsPagerAdapter mSectionsPagerAdapter;
+    private ArrayList<Fragment> fragmentResultArrayList;
     private ViewPager mViewPager;
     private RecyclerView recyclerViewSuggestionSearch;
-    ArrayList<String> arrayListSuggestionSearch;
+    private ArrayList<String> arrayListSuggestionSearch;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
+    void init(){
         navigate_before_search_acti = findViewById(R.id.navigate_before_search_acti);
-        navigate_before_search_acti.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-                Intent intent = new Intent(SearchActivity.this, MainActivity.class);
-                startActivity(intent);
+        recyclerViewSuggestionSearch = findViewById(R.id.suggestion_list);
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        mViewPager = (ViewPager) findViewById(R.id.container);
+        searchView = findViewById(R.id.searchText);
+        resultSearch = findViewById(R.id.resultSearchView);
+        searchSuggest = findViewById(R.id.searchSuggestView);
+    }
 
-            }
-        });
-
+    void setUpDataSuggestionSearch(){
         arrayListSuggestionSearch = new ArrayList<>();
-        arrayListSuggestionSearch.add("Cơm gà");
+        arrayListSuggestionSearch.add("Cơm");
+        arrayListSuggestionSearch.add("Cơm Văn Phòng Libbi");
         arrayListSuggestionSearch.add("Bún đậu");
         arrayListSuggestionSearch.add("Hủ tiếu");
         arrayListSuggestionSearch.add("Bún bò");
@@ -78,30 +88,37 @@ public class SearchActivity extends AppCompatActivity {
         arrayListSuggestionSearch.add("Chè");
         arrayListSuggestionSearch.add("Trà sữa");
         arrayListSuggestionSearch.add("Xôi");
-        recyclerViewSuggestionSearch = findViewById(R.id.suggestion_list);
-        SuggestionSearchAdapter suggestionSearchAdapter = new SuggestionSearchAdapter(arrayListSuggestionSearch, this);
-        FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(this);
+        suggestionSearchAdapter = new SuggestionSearchAdapter(arrayListSuggestionSearch, this);
+        FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(SearchActivity.this);
         layoutManager.setFlexWrap(FlexWrap.WRAP);
         layoutManager.setFlexDirection(FlexDirection.ROW);
         layoutManager.setJustifyContent(JustifyContent.FLEX_START);
         layoutManager.setAlignItems(AlignItems.FLEX_START);
         recyclerViewSuggestionSearch.setAdapter(suggestionSearchAdapter);
         recyclerViewSuggestionSearch.setLayoutManager(layoutManager);
+    }
 
 
 
-        mSectionsPagerAdapter = new SearchActSectionsPagerAdapter(getSupportFragmentManager());
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_search);
+        init();
+        setUpDataSuggestionSearch();
+        dal_searchStore = new DAL_SearchStore(SearchActivity.this);
+        fragmentResultArrayList = new ArrayList<>();
+        navigate_before_search_acti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
-        searchView = findViewById(R.id.searchText);
-        resultSearch = findViewById(R.id.resultSearchView);
-        searchSuggest = findViewById(R.id.searchSuggestView);
         searchView.setOnCloseListener(new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
@@ -115,7 +132,9 @@ public class SearchActivity extends AppCompatActivity {
             public boolean onQueryTextSubmit(String s) {
                 resultSearch.setVisibility(View.VISIBLE);
                 searchSuggest.setVisibility(View.GONE);
+                searchView.clearFocus();
                 Toast.makeText(SearchActivity.this, s, Toast.LENGTH_SHORT).show();
+                dal_searchStore.searchStore(s.trim());
                 return true;
             }
 
@@ -132,84 +151,100 @@ public class SearchActivity extends AppCompatActivity {
 
     }
 
-    public static void searchWithSuggestion(String valueSearch){
+    @Override
+    public void onRequestSearchStoreDone(JSONObject result) {
+        if(mSectionsPagerAdapter != null) {
+            mSectionsPagerAdapter.clearData();
+//            mSectionsPagerAdapter.notifyDataSetChanged();
+        }
+        try {
+            SearchActPlaceholderFragment frament_nearestResult = new SearchActPlaceholderFragment();
+            if(result != null)
+                frament_nearestResult.setData(result.getJSONArray("nearestResult"), "nearestResult");
+            else
+                frament_nearestResult.setData(null, "nearestResult");
+            fragmentResultArrayList.add(frament_nearestResult);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        try {
+            SearchActPlaceholderFragment frament_distanceRestul = new SearchActPlaceholderFragment();
+            if(result != null)
+                frament_distanceRestul.setData(result.getJSONArray("distanceRestul"), "distanceRestul");
+            else
+                frament_distanceRestul.setData(null, "distanceRestul");
+            fragmentResultArrayList.add(frament_distanceRestul);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        try {
+            SearchActPlaceholderFragment frament_orderResult = new SearchActPlaceholderFragment();
+            if(result != null)
+                frament_orderResult.setData(result.getJSONArray("orderResult"), "orderResult");
+            else
+                frament_orderResult.setData(null, "orderResult");
+            fragmentResultArrayList.add(frament_orderResult);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        mSectionsPagerAdapter = new SearchActSectionsPagerAdapter(SearchActivity.this.getSupportFragmentManager() , fragmentResultArrayList);
+        mViewPager.setAdapter(mSectionsPagerAdapter);
+        tabLayout.setupWithViewPager(mViewPager);
+//        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+//        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+//        mSectionsPagerAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onSuggestionSearchItemClick(String valueSearch) {
         searchView.setQuery(valueSearch,true);
         searchView.setFocusable(true);
         searchView.setIconified(false);
+        searchView.clearFocus();
         searchView.requestFocusFromTouch();
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class SearchActPlaceholderFragment extends Fragment {
-        private static final String ARG_SECTION_NUMBER = "section_number";
+    public class SearchActSectionsPagerAdapter extends FragmentStatePagerAdapter {
+        ArrayList<Fragment> fragmentArrayList;
+        private ArrayList<String> titleArrayList = new ArrayList<String>(Arrays.asList(new String[]{"GẦN ĐÚNG", "GẦN ĐÂY", "ĐẶT NHIỀU"}));
 
-        public SearchActPlaceholderFragment() {}
-
-        public static SearchActPlaceholderFragment newInstance(int sectionNumber) {
-            SearchActPlaceholderFragment fragment = new SearchActPlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
+        public SearchActSectionsPagerAdapter(FragmentManager fm, ArrayList<Fragment> fragmentArrayList) {
+            super(fm);
+            this.fragmentArrayList = fragmentArrayList;
         }
 
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_search, container, false);
-            ImageView imageView = rootView.findViewById(R.id.search_activity_listCarts_empty);
-            RecyclerView recyclerViewStoreResultSearch = rootView.findViewById(R.id.storeSearchResult);
-            int page = getArguments().getInt(ARG_SECTION_NUMBER);
-            switch (page){
-                case 1:
-                    imageView.setVisibility(View.GONE);
-                    recyclerViewStoreResultSearch.setVisibility(View.VISIBLE);
-                    ArrayList<Store> storeArrayList = new ArrayList<>();
-                    storeArrayList.add(new Store());
-                    storeArrayList.add(new Store());
-                    storeArrayList.add(new Store());
-                    storeArrayList.add(new Store());
-                    storeArrayList.add(new Store());
-                    storeArrayList.add(new Store());
-                    storeArrayList.add(new Store());
-                    storeArrayList.add(new Store());
-                    storeArrayList.add(new Store());
-                    storeArrayList.add(new Store());
-                    StoreSearchResultAdapter storeSearchResultAdapter = new StoreSearchResultAdapter(storeArrayList, getContext());
-                    recyclerViewStoreResultSearch.setAdapter(storeSearchResultAdapter);
-                    recyclerViewStoreResultSearch.setNestedScrollingEnabled(true);LinearLayoutManager friendsLayoutManager = new LinearLayoutManager(getContext().getApplicationContext(), LinearLayoutManager.VERTICAL, false);
-                    recyclerViewStoreResultSearch.setLayoutManager(friendsLayoutManager);
-                    break;
-                case 2:
-                    imageView.setVisibility(View.VISIBLE);
-                    recyclerViewStoreResultSearch.setVisibility(View.GONE);
-                    break;
-                case 3:
-                    imageView.setVisibility(View.VISIBLE);
-                    recyclerViewStoreResultSearch.setVisibility(View.VISIBLE);
-                    break;
-            }
-            return rootView;
-        }
-    }
-
-    public class SearchActSectionsPagerAdapter extends FragmentPagerAdapter {
-
-        public SearchActSectionsPagerAdapter(FragmentManager fm) {
-            super(fm);
+        public int getItemPosition(Object object) {
+            return POSITION_NONE;
         }
 
         @Override
         public Fragment getItem(int position) {
-            return SearchActPlaceholderFragment.newInstance(position + 1);
+            return fragmentArrayList.get(position);
+        }
+
+        public void clearData(){
+            fragmentArrayList.clear();
+        }
+
+//        @Override
+//        public void destroyItem(ViewGroup container, int position, Object object) {
+//            FragmentManager manager = ((Fragment) object).getFragmentManager();
+//            FragmentTransaction trans = manager.beginTransaction();
+//            trans.remove((Fragment) object);
+//            trans.commit();
+//        }
+
+        @Nullable
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return titleArrayList.get(position);
         }
 
         @Override
         public int getCount() {
-            return 3;
+            return fragmentArrayList.size();
         }
     }
-    
+
 }

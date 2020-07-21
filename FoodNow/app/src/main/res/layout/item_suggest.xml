@@ -15,9 +15,9 @@
         <TextView
             android:id="@+id/titleSuggest"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
-            android:layout_centerInParent="true"
+            android:gravity="center_vertical"
             android:layout_marginLeft="10dp"
             android:text="FoodNow đi chợ"
             android:textColor="@android:color/black"
@@ -31,7 +31,6 @@
             app:fontFamily="@font/nunito_extralight"
             android:textColor="#34BEB6"
             android:layout_alignParentRight="true"
-            android:layout_centerInParent="true"
             android:id="@+id/showAllSuggest"
             android:text="Xem tất cả"
             android:textStyle="bold"
@@ -40,7 +39,6 @@
             android:layout_height="match_parent" />
 
     </RelativeLayout>
-
 
     <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
         android:id="@+id/suggestion_list_store"

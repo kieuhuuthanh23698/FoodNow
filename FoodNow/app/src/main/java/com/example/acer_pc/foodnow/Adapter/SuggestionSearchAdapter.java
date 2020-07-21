@@ -14,15 +14,19 @@ import com.example.acer_pc.foodnow.SearchActivity;
 import com.google.android.flexbox.AlignSelf;
 import com.google.android.flexbox.FlexboxLayoutManager;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class SuggestionSearchAdapter extends RecyclerView.Adapter<SuggestionSearchAdapter.SuggestionSearchViewHolder>{
     ArrayList<String> arrayList;
     Context context;
+    SuggestionSearchItemListener listener;
 
     public SuggestionSearchAdapter(ArrayList<String> arrayList, Context context) {
         this.arrayList = arrayList;
         this.context = context;
+        listener = (SuggestionSearchItemListener) context;
     }
 
     @Override
@@ -40,7 +44,7 @@ public class SuggestionSearchAdapter extends RecyclerView.Adapter<SuggestionSear
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SearchActivity.searchWithSuggestion(holder.textView.getText().toString());
+                listener.onSuggestionSearchItemClick(holder.textView.getText().toString());
             }
         });
     }
@@ -56,5 +60,9 @@ public class SuggestionSearchAdapter extends RecyclerView.Adapter<SuggestionSear
             super(itemView);
             this.textView = itemView.findViewById(R.id.txtSuggestion_search);
         }
+    }
+
+    public interface SuggestionSearchItemListener{
+        void onSuggestionSearchItemClick(String valueSearch);
     }
 }

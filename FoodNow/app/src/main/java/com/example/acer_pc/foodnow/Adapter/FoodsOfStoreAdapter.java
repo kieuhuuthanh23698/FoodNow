@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.acer_pc.foodnow.Object.Food;
 import com.example.acer_pc.foodnow.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -30,10 +31,10 @@ public class FoodsOfStoreAdapter extends RecyclerView.Adapter<FoodsOfStoreAdapte
     @Override
     public void onBindViewHolder(FoodsOfStoreViewHolder holder, int position) {
         Food itemFood = foodArrayList.get(position);
-        holder.imageView.setImageResource(itemFood.getImg());
+        if(!itemFood.getUrlImg().trim().isEmpty())
+            Picasso.get().load(itemFood.getUrlImg().trim()).into(holder.imageView);
         holder.txtNameFood.setText(itemFood.getName());
-        holder.txtPriceFoods.setText(itemFood.getDes());
-        holder.txtPriceFoods.setText(itemFood.getTotal());
+        holder.txtPriceFoods.setText(itemFood.getPrice());
     }
 
     @Override

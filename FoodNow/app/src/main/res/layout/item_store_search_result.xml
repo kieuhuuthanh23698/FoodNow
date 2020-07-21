@@ -12,6 +12,7 @@
         android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <ImageView
             android:id="@+id/imgStore_Search_Result"
             android:layout_width="100dp"
@@ -52,11 +53,13 @@
                 android:id="@+id/txtStar_Search_Result"
                 android:drawableLeft="@drawable/ic_star"
                 android:text="4.6"
+                android:layout_marginTop="5dp"
                 android:textColor="#6F6D6D"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <LinearLayout
+                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 

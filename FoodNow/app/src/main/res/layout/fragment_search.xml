@@ -5,8 +5,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SearchActivity$SearchActPlaceholderFragment">
+    android:layout_height="match_parent">
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/search_activity_store_shimmer_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/item_search_result_placeholder" />
+            <include layout="@layout/item_search_result_placeholder" />
+            <include layout="@layout/item_search_result_placeholder" />
+            <include layout="@layout/item_search_result_placeholder" />
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
     <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
         android:id="@+id/storeSearchResult"
@@ -17,10 +38,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-
     <ImageView
         android:id="@+id/search_activity_listCarts_empty"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_centerInParent="true"
         android:src="@drawable/ic_empty_search"
         android:layout_width="wrap_content"

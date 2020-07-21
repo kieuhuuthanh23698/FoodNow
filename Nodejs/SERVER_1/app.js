@@ -1988,26 +1988,77 @@ const getDanhSachDanhMucCuaHangHeThong = async (req, res, error_query) => {
 	});
 }
 
+const getDanhSachCuaHangGanDay = async (latitude, longitude, error_query) => {
+	var label = Date.now();
+	console.time(label + "getDanhSachCuaHangGanDay");
+	return new Promise(function (resolve, reject) {
+		CUAHANG.aggregate(
+			[
+				{
+					"$lookup": {
+						from: 'diachis',
+						localField: 'Dia_Chi_Cua_Hang',
+						foreignField: '_id',
+						as: 'diachiCH'
+					}
+				}
+			],
+			function (err, result) {
+				if (err || result.length == 0){
+					console.log("Không tìm thấy cửa hàng !");
+					resolve([]);
+				}
+				else{
+					Promise.all(
+						result.map(function (iCH) {
+							return addDistance_CountOrder(iCH, latitude, longitude);
+						}))
+						.then(function (resolveCH) {
+							var distanceRestul = [];
+							if(latitude != 0.0 && longitude != 0.0){
+								distanceRestul = resolveCH.sort((a, b) => (a.distance >= b.distance) ? 1 : -1).slice(0, 5);
+							}	
+							console.timeEnd(label + "getDanhSachCuaHangGanDay");
+							resolve(distanceRestul);
+						});
+				}
+			});
+	});
+}
+
 //lấy data cho fragment home gồm các khối thông tin sau
 // + thông tin về khuyến mãi của hệ thống
 // + Gợi ý các cửa hàng - title "Hôm nay ăn gì ?"
 // + Danh mục - detail danh mục cửa hàng của hệ thống foodnow
 //method GET
-app.get("/fragment_home", function (req, res) {
+app.post("/fragment_home", urlEncodeParser, function (req, res) {
 	var label = Date.now();
 	console.time(label);
 	var error_query = { return_code: "0", error_infor: "Lỗi server khi query." };
 	var response = {};
+	var lat = 10.881654, lng = 106.648632;//10.881654 106.648632
+	if(req.body.lat != null || req.body.lat != "") {
+		lat = req.body.lat;
+	} else {
+		lat = 10.881654;
+	}
+	if(req.body.lng != null || req.body.lng != "") {
+		lng =  req.body.lng;
+	} else{
+		lng = 106.648632;
+	}
 	Promise.all([
 		getDanhSachKhuyenMaiHeThong(req, res, error_query),
 		getDanhSachGoiY(req, res, error_query),
-		getDanhSachDanhMucCuaHangHeThong(req, res, error_query)
+		getDanhSachDanhMucCuaHangHeThong(req, res, error_query),
+		getDanhSachCuaHangGanDay(lat, lng, error_query)
 	]).then(function (data) {
 		console.timeEnd(label);
 		response.return_code = "1";
 		response.lst_cua_hang_goi_y = data[0];
 		response.lst_khuyen_mai_ht = data[1];
 		response.lst_danh_muc = data[2];
+		response.lst_cua_hang_gan_day = data[3];
 		res.send(response);
 	});
 });
@@ -3710,6 +3761,8 @@ app.post("/Hienthiketqua_timkiemmonan", urlEncodeParser, function (req, res) {
 	if(req.body.lng != null || req.body.lng != "") {
 		lng = req.body.lng;
 	}
+	var time_label = Date.now();
+	console.time(time_label + "search : " + req.body.valueSearch);
 	CUAHANG.aggregate(
 		[
 			{
@@ -3766,13 +3819,17 @@ app.post("/Hienthiketqua_timkiemmonan", urlEncodeParser, function (req, res) {
 						var orderResult = [];
 						if(lat != 0.0 && lng != 0.0){
 							distanceRestul = resolveCH.sort((a, b) => (a.distance >= b.distance) ? 1 : -1).slice(0, 10);
-							orderResult =  resolveCH.sort((a, b) => (a.countOrder <= b.countOrder) ? 1 : -1).slice(0, 10);
-						} else {
-							distanceRestul = resolveCH;
-							orderResult = resolveCH;
 						}
+						orderResult =  resolveCH.sort((a, b) => (a.countOrder <= b.countOrder) ? 1 : -1).slice(0, 10);
+						// } else {
+						// 	distanceRestul = resolveCH;
+						// 	orderResult = resolveCH;
+						// }
+						console.log("Kết thúc tìm kiếm !");
+						console.timeEnd(time_label + "search : " + req.body.valueSearch);
 						res.send({
-							nearestResult : resolveCH.slice(0, 10),
+							return_code : "1",
+							nearestResult : resolveCH.slice(0, 3),
 							distanceRestul : distanceRestul,
 							orderResult : orderResult
 						});

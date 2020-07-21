@@ -7,18 +7,8 @@ public class FoodType {
     ArrayList<Food> arrayListFoods;
 
     public FoodType() {
-        this.nameType = "Bún mì";
+        this.nameType = "";
         this.arrayListFoods = new ArrayList<>();
-        this.arrayListFoods.add(new Food());
-        this.arrayListFoods.add(new Food());
-        this.arrayListFoods.add(new Food());
-        this.arrayListFoods.add(new Food());
-        this.arrayListFoods.add(new Food());
-        this.arrayListFoods.add(new Food());
-        this.arrayListFoods.add(new Food());
-        this.arrayListFoods.add(new Food());
-        this.arrayListFoods.add(new Food());
-        this.arrayListFoods.add(new Food());
     }
 
     public String getNameType() {
