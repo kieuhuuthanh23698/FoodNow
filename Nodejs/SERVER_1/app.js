@@ -2791,20 +2791,36 @@ app.post("/getTaikhoancuahang", urlEncodeParser, async function (req, res) {
 //Param  
 app.post("/capnhatmatkhau_cuahang", urlEncodeParser, function (req, res) {
 	var result = "";
-	CUAHANG.findOneAndUpdate(
-		{ _id: req.body.IdCuaHang } ,
-		{ $set: { Mat_khau: req.body.Matkhaucuahang } }
-	),
-		function (err) {
+	if(req.body.IdCuaHang!=null && req.body.IdCuaHang=="" && req.body.Matkhaucuahang!=null && req.body.Matkhaucuahang=="")
+	{
+		res.send({ return_code: "0" });
+		return;
+	}
+	CUAHANG.findById(
+		{ _id: mongoose.Types.ObjectId(req.body.IdCuaHang)},
+		function (err, resultCH) {
 			if (err) {
-				result += "\nCập nhật lỗi : " + err;
+				result += "\nKhông có id cửa hàng này : " + err;
+				console.log(result);
 				res.send({ return_code: "0" });
+			} else {
+				QUANLY_NGUOIDUNG.findByIdAndUpdate(
+					{_id: resultCH.Tai_Khoan},
+					{$set: { Mat_khau: req.body.Matkhaucuahang }},
+					function(err){
+					if(err){
+						result += "\nCập nhật lỗi : " + err;
+						console.log(result);
+						res.send({ return_code: "0" });
+					}
+					else{
+						result += "\nCập nhật thành công : " + req.body.IdCuaHang;
+						console.log(result);
+						res.send({ return_code: "1" });
+					}
+				});
 			}
-			else {
-				result += "\nCập nhật thành công : " + req.body.IdCuaHang;
-				res.send({ return_code: "1" });
-			}
-		}
+	});
 });
 
 //Xác nhận đơn hàng

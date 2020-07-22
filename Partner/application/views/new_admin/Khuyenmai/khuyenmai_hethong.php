@@ -129,13 +129,13 @@
                                                     <div class="col-sm-6">
                                                         <div class="form-group pmd-textfield pmd-textfield-floating-label">
                                                             <label class="control-label" for="datepicker-start">Giờ BĐ</label>
-                                                            <input type="text" class="form-control" id="gio_bd">
+                                                            <input type="time" class="form-control" id="gio_bd">
                                                         </div>
                                                         </div>
                                                         <div class="col-sm-6">
                                                             <div class="form-group pmd-textfield pmd-textfield-floating-label">
                                                                 <label class="control-label" for="datepicker-end">Giờ KT</label>
-                                                                <input type="text" class="form-control" id="gio_kt">
+                                                                <input type="time" class="form-control" id="gio_kt">
                                                             </div>
                                                             </div>
                                                         </div>
