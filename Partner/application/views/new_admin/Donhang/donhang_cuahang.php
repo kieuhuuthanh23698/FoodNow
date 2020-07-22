@@ -419,14 +419,25 @@
     console.log(data);
     if(Notification.permission == 'granted'){
       showNotification("Thông báo đơn hàng mới !", "ID đơn hàng : " + data.val().key, "<?php echo base_url()?>images/logo-ver40x40.png", data.val().key);
+      toastr.success("Thông báo đơn hàng mới !");
       getNewOder(data.val().key);
       firebase.database().ref().child("/oders/<?php echo $id?>/" + data.key).remove();
     } else {
+      toastr.success("Thông báo đơn hàng mới !");
       alert("Xin hãy cho phép trang hiển thị thông báo !")
     }
   });
-  const messaging = firebase.messaging();
-  messaging.onMessage((payload) => {
-    alert('Message received. ', payload);
-});
+  var database2 = firebase.database().ref().child("/remove_order/<?php echo $id?>");
+  database2.on("child_added", function(data){
+    console.log(data);
+    $('#oderTable').DataTable().row('#' + data.val().key).remove().draw(false);
+    if(Notification.permission == 'granted'){
+      showNotification("Thông báo đơn hàng vừa hủy !", "ID đơn hàng : " + data.val().key, "<?php echo base_url()?>images/logo-ver40x40.png", data.val().key);
+      toastr.warning("Vừa có đơn hàng bị hủy");
+      firebase.database().ref().child("/remove_order/<?php echo $id?>" + data.key).remove();
+    } else {
+      toastr.warning("Vừa có đơn hàng bị hủy");
+      alert("Xin hãy cho phép trang hiển thị thông báo !")
+    }
+  });
 </script>

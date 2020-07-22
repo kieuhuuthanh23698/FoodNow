@@ -2808,15 +2808,14 @@ app.post("/capnhatmatkhau_cuahang", urlEncodeParser, function (req, res) {
 });
 
 //Xác nhận đơn hàng
-app.post("/xacnhandonhang", urlEncodeParser, async function (req, res) {
+app.post("/capNhatTrangThaiDonHang", urlEncodeParser, async function (req, res) {
 	if(req.body.idDonHang == null || req.body.state == null || req.body.idDonHang == "" || req.body.state == ""){
-		console.log("\nCập nhật trạng thái đơn hàng thành công !");
+		console.log("\nError parmas : " , req.body);
 		res.send({ return_code: "0" });
 	}
 	DON_HANG.findOneAndUpdate(
 		{ _id: req.body.idDonHang } ,
-		{ $set: { Trang_thai_don_hang: req.body.state } }
-	),
+		{ $set: { Trang_thai_don_hang: req.body.state } },
 		function (err, result) {
 			if (err || result == null) {
 				console.log("\nCập nhật trạng thái đơn hàng gặp lỗi : " + err);
@@ -2824,9 +2823,14 @@ app.post("/xacnhandonhang", urlEncodeParser, async function (req, res) {
 			}
 			else {
 				console.log("\nCập nhật trạng thái đơn hàng thành công !");
-				res.send({ return_code: "1" });
+				if(req.body.state == "3"){
+					db.ref().child("remove_order/" + String(result.IdCuaHang + "")).push({ key: String(result._id + "") }).then(() => {
+						console.log("Notification hủy đơn hàng thành công !");
+						res.send({ return_code: "1"});
+					});
+				}
 			}
-		}
+	});
 });
 
 
@@ -3697,13 +3701,33 @@ app.post("/getDanhSachDonHangKH", urlEncodeParser, function (req, res) {
 		res.send({return_code: "0"});
 		return;
 	}
+	var condition_state;
+	if(req.body.idDanhMuc == "0"){
+		condition_state = {
+			"IdKhachHang": mongoose.Types.ObjectId(req.body.idKhachHang),
+			"Trang_thai_don_hang" : "0"
+		};
+	} else if(req.body.idDanhMuc == "1") {
+		condition_state = {
+			"IdKhachHang": mongoose.Types.ObjectId(req.body.idKhachHang),
+			$or: [
+				{ 'Trang_thai_don_hang': "1" },
+				{ 'Trang_thai_don_hang': "2" }
+			  ]
+		};
+	} else if(req.body.idDanhMuc == "2"){
+		condition_state = {
+			"IdKhachHang": mongoose.Types.ObjectId(req.body.idKhachHang),
+			$or: [
+				{ 'Trang_thai_don_hang': "3" },
+				{ 'Trang_thai_don_hang': "4" }
+			  ]
+		};
+	}
 	DON_HANG.aggregate(
 		[
 			{
-				"$match": {
-					"IdKhachHang": mongoose.Types.ObjectId(req.body.idKhachHang),
-					"Trang_thai_don_hang" : req.body.idDanhMuc
-				}
+				"$match": condition_state
 			}
 		],
 		function (err, result) {

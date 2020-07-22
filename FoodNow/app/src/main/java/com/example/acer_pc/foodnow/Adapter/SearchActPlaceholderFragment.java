@@ -34,6 +34,7 @@ public class SearchActPlaceholderFragment extends Fragment {
     ShimmerFrameLayout shimmerFrameLayout;
     RecyclerView recyclerViewStoreResultSearch;
     String type;
+    boolean load = false;
 
     public SearchActPlaceholderFragment() {}
 
@@ -48,12 +49,15 @@ public class SearchActPlaceholderFragment extends Fragment {
         imageView = rootView.findViewById(R.id.search_activity_listCarts_empty);
         recyclerViewStoreResultSearch = rootView.findViewById(R.id.storeSearchResult);
         shimmerFrameLayout = rootView.findViewById(R.id.search_activity_store_shimmer_view_container);
+        load = true;
         return rootView;
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        if(!load)
+            return;
         Log.i("response", type);
         recyclerViewStoreResultSearch.setVisibility(View.GONE);
         imageView.setVisibility(View.GONE);
@@ -119,6 +123,6 @@ public class SearchActPlaceholderFragment extends Fragment {
                 }
             }
         };
-        handler.postDelayed(r, 1000);
+        handler.postDelayed(r, 500);
     }
 }

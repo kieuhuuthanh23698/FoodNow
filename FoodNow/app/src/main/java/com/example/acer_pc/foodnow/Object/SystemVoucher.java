@@ -10,15 +10,17 @@ import java.util.ArrayList;
 
 public class SystemVoucher {
     private String id, MaGiamGia, Icon;
-    private int GioBD, GioKT, PhanTram_GiamGia;
+    private String GioBD;
+    private String GioKT;
+    private int PhanTram_GiamGia;
     private ArrayList<String> DanhSach_CH;
 
     public SystemVoucher(JSONObject jsonObjectSystemVoucher) throws JSONException {
         id = jsonObjectSystemVoucher.getString("_id");
         MaGiamGia = jsonObjectSystemVoucher.getString("MaGiamGia");
         Icon = jsonObjectSystemVoucher.getString("Icon");
-        GioBD = jsonObjectSystemVoucher.getInt("GioBD");
-        GioKT = jsonObjectSystemVoucher.getInt("GioKT");
+        GioBD = jsonObjectSystemVoucher.getString("GioBD");
+        GioKT = jsonObjectSystemVoucher.getString("GioKT");
         PhanTram_GiamGia = jsonObjectSystemVoucher.getInt("PhanTram_GiamGia");
         JSONArray jsonArrayDanhSach_CH = jsonObjectSystemVoucher.getJSONArray("DanhSach_CN");
 //        for (int i = 0; i < jsonArrayDanhSach_CH.length(); i++) {
@@ -58,19 +60,19 @@ public class SystemVoucher {
         Icon = icon;
     }
 
-    public int getGioBD() {
+    public String getGioBD() {
         return GioBD;
     }
 
-    public void setGioBD(int gioBD) {
+    public void setGioBD(String gioBD) {
         GioBD = gioBD;
     }
 
-    public int getGioKT() {
+    public String getGioKT() {
         return GioKT;
     }
 
-    public void setGioKT(int gioKT) {
+    public void setGioKT(String gioKT) {
         GioKT = gioKT;
     }
 

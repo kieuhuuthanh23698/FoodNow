@@ -1,5 +1,6 @@
 package com.example.acer_pc.foodnow.Adapter;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -29,9 +30,14 @@ import static com.example.acer_pc.foodnow.LoginActivity.user;
 public class CartFragmentPlaceholderFragment extends Fragment implements DAL_GetOrderListCustomer.GetOrderListListener {
     DAL_GetOrderListCustomer dal_getOrderListCustomer;
     RecyclerView recyclerViewCart;
+    LinearLayoutManager friendsLayoutManager;
+    CartOfFragmentAdapter storeSearchResultAdapter;
+    ArrayList<Cart> carts;
     ImageView imageView;
     ShimmerFrameLayout shimmerFrameLayout;
+    Context context;
     int page;
+    boolean load = false;
 
     public CartFragmentPlaceholderFragment() {}
 
@@ -45,12 +51,18 @@ public class CartFragmentPlaceholderFragment extends Fragment implements DAL_Get
         recyclerViewCart = rootView.findViewById(R.id.frament_cart_detail_listCarts);
         imageView = rootView.findViewById(R.id.frament_cart_detail_listCarts_empty);
         shimmerFrameLayout = rootView.findViewById(R.id.frament_cart_detail_shimmer_view_container);
+        context = getContext();
+        load =true;
         return rootView;
     }
+
+
 
     @Override
     public void onResume() {
         super.onResume();
+        if(!load)
+            return;
         Log.i("response", "Page : " + page);
         if(user == null) {
             imageView.setVisibility(View.VISIBLE);
@@ -108,7 +120,7 @@ public class CartFragmentPlaceholderFragment extends Fragment implements DAL_Get
             recyclerViewCart.setVisibility(View.GONE);
             return;
         }
-        ArrayList<Cart> carts = new ArrayList<>();
+        carts = new ArrayList<>();
         for (int i = 0; i < stores.length(); i++) {
             try {
                 JSONObject jsonObjectOrder = stores.getJSONObject(i);
@@ -133,11 +145,11 @@ public class CartFragmentPlaceholderFragment extends Fragment implements DAL_Get
                 e.printStackTrace();
             }
         }
-        CartOfFragmentAdapter storeSearchResultAdapter = new CartOfFragmentAdapter(carts, getContext(), type);
+        storeSearchResultAdapter = new CartOfFragmentAdapter(carts, context, type);
         recyclerViewCart.setAdapter(storeSearchResultAdapter);
         recyclerViewCart.setNestedScrollingEnabled(true);
         recyclerViewCart.setHasFixedSize(true);
-        LinearLayoutManager friendsLayoutManager = new LinearLayoutManager(getContext().getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+        friendsLayoutManager = new LinearLayoutManager(context.getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         recyclerViewCart.setLayoutManager(friendsLayoutManager);
 
     }
