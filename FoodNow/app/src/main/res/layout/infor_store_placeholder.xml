@@ -2,22 +2,17 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
-    tools:context=".InformationStoreActivity">
+    android:background="@android:color/white">
 
     <RelativeLayout
-        android:id="@+id/infor_store_view_hide"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/img_infor_store"
-            android:src="@drawable/img_store3"
+            android:background="@color/colorBackgroundPlaceHolder"
             android:scaleType="centerCrop"
             android:layout_width="match_parent"
             android:layout_height="200dp" />
@@ -30,10 +25,8 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <!--android:layout_height="40dp"-->
 
                 <RelativeLayout
-                    android:id="@+id/view1"
                     android:layout_width="match_parent"
                     android:layout_height="40dp">
 
@@ -41,7 +34,6 @@
                         android:layout_marginLeft="10dp"
                         android:layout_gravity="center"
                         android:layout_alignParentLeft="true"
-                        android:id="@+id/btnBackActInforStore"
                         android:src="@drawable/ic_navigate_before_white_24dp"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent" />
@@ -50,12 +42,6 @@
                         android:layout_alignParentRight="true"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent">
-
-                        <!--<ImageView-->
-                        <!--android:layout_gravity="center_vertical"-->
-                        <!--android:src="@drawable/ic_search_white_24dp"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="match_parent" />-->
 
                         <ImageView
                             android:id="@+id/imgFavoriteStore"
@@ -73,9 +59,6 @@
                             android:layout_height="match_parent" />
 
                     </LinearLayout>
-
-
-
 
                 </RelativeLayout>
 
@@ -102,7 +85,6 @@
             </LinearLayout>
 
             <android.support.v4.widget.NestedScrollView
-                android:id="@+id/scrollViewFoodsScroll"
                 android:background="#00ff"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -129,7 +111,6 @@
                             android:layout_height="120dp"/>
 
                         <android.support.v7.widget.CardView
-                            android:id="@+id/view3"
                             android:layout_marginBottom="10dp"
                             android:layout_marginLeft="15dp"
                             android:layout_marginRight="15dp"
@@ -153,55 +134,34 @@
                                     android:layout_height="wrap_content" />
 
                                 <TextView
-                                    android:text="ĐỐI TÁC CỦA FOODNOW"
                                     android:layout_gravity="center"
                                     android:textSize="15dp"
-                                    android:textColor="@color/colorMain"
+                                    android:background="@color/colorBackgroundPlaceHolder"
                                     android:fontFamily="@font/nunito_extralight"
                                     android:textStyle="bold"
-                                    android:layout_width="wrap_content"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_width="180dp"
                                     android:layout_height="wrap_content" />
 
                                 <TextView
-                                    android:id="@+id/txt_storename_inforAct"
-                                    android:text="CƠM GÀ DÌ HỒNG"
                                     android:textAlignment="center"
                                     android:gravity="center"
+                                    android:background="@color/colorBackgroundPlaceHolder"
                                     android:layout_gravity="center"
-                                    android:textSize="25dp"
-                                    android:textColor="@android:color/black"
-                                    android:fontFamily="@font/nunito_extralight"
-                                    android:layout_width="wrap_content"
+                                    android:textSize="20dp"
+                                    android:layout_width="250dp"
                                     android:layout_height="wrap_content" />
 
 
                                 <TextView
-                                    android:id="@+id/txt_storeAddress_inforAct"
                                     android:linksClickable="true"
-                                    android:textColorLink="@color/colorMain"
-                                    android:clickable="true"
-                                    android:text="50 Hoa Cúc, P7, Phú Nhuận, TP.HCM"
                                     android:layout_gravity="center"
                                     android:textSize="15dp"
+                                    android:layout_marginTop="5dp"
+                                    android:background="@color/colorBackgroundPlaceHolder"
                                     android:layout_marginBottom="5dp"
-                                    android:textColor="@android:color/darker_gray"
-                                    android:fontFamily="@font/nunito_extralight"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="200dp"
                                     android:layout_height="wrap_content" />
-
-                                <RatingBar
-                                    android:layout_gravity="center"
-                                    android:numStars="5"
-                                    android:rating="4.6"
-                                    android:scaleX=".5"
-                                    android:scaleY=".5"
-                                    android:id="@+id/ratingStore"
-                                    android:isIndicator="false"
-                                    android:layout_marginTop="-10dp"
-                                    android:progressTint="#fff000"
-                                    android:stepSize="0.1"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="40dp" />
 
                             </LinearLayout>
 
@@ -210,9 +170,9 @@
                     </RelativeLayout>
 
                     <LinearLayout
+                        android:layout_marginBottom="5dp"
                         android:orientation="horizontal"
-                        android:background="@android:color/white"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
                         <TextView
@@ -224,114 +184,30 @@
                             android:layout_height="wrap_content" />
 
                         <TextView
-                            android:id="@+id/infor_store_time"
-                            android:text="10:00 - 21:00"
-                            android:layout_width="wrap_content"
+                            android:background="@color/colorBackgroundPlaceHolder"
+                            android:layout_width="100dp"
                             android:layout_height="wrap_content" />
 
                     </LinearLayout>
 
-                    <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
-                        android:background="@android:color/white"
-                        android:id="@+id/store_list_foods_type"
-                        android:orientation="vertical"
-                        app:msrv_ms_per_inch="120"
-                        app:msrv_snap_count="2"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                    <FrameLayout
-                        android:id="@+id/viewTemp"
-                        android:visibility="gone"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp" />
-                    
+                        <include layout="@layout/item_food_placeholder" />
+                        <include layout="@layout/item_food_placeholder" />
+                        <include layout="@layout/item_food_placeholder" />
+                        <include layout="@layout/item_food_placeholder" />
+
+                    </LinearLayout>
+
+
                 </LinearLayout>
 
             </android.support.v4.widget.NestedScrollView>
 
         </LinearLayout>
-
-    </RelativeLayout>
-
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/infor_store_act_shimmer_view_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        android:layout_gravity="center"
-        android:orientation="vertical">
-
-        <include layout="@layout/infor_store_placeholder" />
-
-    </com.facebook.shimmer.ShimmerFrameLayout>
-
-    <RelativeLayout
-        android:background="@android:color/white"
-        android:layout_weight="1"
-        android:id="@+id/infor_store_group_shopping_cart"
-        android:visibility="gone"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
-            <RelativeLayout
-                android:layout_gravity="center_vertical"
-                android:layout_width="40dp"
-                android:layout_height="40dp">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="3dp"
-                    android:background="@drawable/ic_app_1" />
-
-                <TextView
-                    android:id="@+id/infor_store_number_shopping_cart"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_alignParentRight="true"
-                    android:background="@drawable/circle"
-                    android:gravity="center"
-                    android:text="99"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/white"
-                    android:textSize="12dp"
-                    app:fontFamily="sans-serif" />
-
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/infor_store_total_cost"
-                android:text="999.999 đ"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"
-                android:fontFamily="@font/nunito_extralight"
-                android:layout_marginLeft="10dp"
-                android:textAlignment="center"
-                android:gravity="center_vertical"
-                android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/infor_store_confirm_cart_btn"
-            android:backgroundTint="@android:color/holo_red_light"
-            android:background="@drawable/border_button"
-            android:text="Giao hàng"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:layout_alignParentRight="true"
-            android:layout_margin="5dp"
-            android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp" />
 
     </RelativeLayout>
 

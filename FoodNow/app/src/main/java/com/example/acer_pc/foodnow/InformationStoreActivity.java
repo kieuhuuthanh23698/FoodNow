@@ -33,6 +33,7 @@ import com.example.acer_pc.foodnow.Object.Address;
 import com.example.acer_pc.foodnow.Object.Food;
 import com.example.acer_pc.foodnow.Object.FoodType;
 import com.example.acer_pc.foodnow.Object.Store;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -44,6 +45,8 @@ import java.util.HashMap;
 import static com.example.acer_pc.foodnow.LoginActivity.user;
 
 public class InformationStoreActivity extends AppCompatActivity implements View.OnClickListener, DAL_FavoriteStore.FavoriteStoreListener {
+    RelativeLayout relativeLayoutViewHide;
+    ShimmerFrameLayout shimmerFrameLayout;
     //data
     public static String idStore;
     public static boolean refresh = false;
@@ -87,6 +90,8 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
 //            e.printStackTrace();
 //        }
 //        shoppingCart = new ArrayList<>();
+        relativeLayoutViewHide = findViewById(R.id.infor_store_view_hide);
+        shimmerFrameLayout = findViewById(R.id.infor_store_act_shimmer_view_container);
         shoppingCart = new HashMap<>();
         //button back, button yêu thích, ảnh cửa hàng
         btnBackAct = findViewById(R.id.btnBackActInforStore);
@@ -286,6 +291,9 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
         intentGetInforStore.putExtra("action", DefineVarible.getInforStore);
         intentGetInforStore.putExtra("idStore", getIntent().getStringExtra("idStore"));
         startActivityForResult(intentGetInforStore, DefineVarible.getInforStore);
+        shimmerFrameLayout.setVisibility(View.VISIBLE);
+        relativeLayoutViewHide.setVisibility(View.GONE);
+        shimmerFrameLayout.startShimmerAnimation();
     }
 
     @Override
@@ -322,6 +330,9 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
             {
                 try {
                     setData();
+                    shimmerFrameLayout.stopShimmerAnimation();
+                    shimmerFrameLayout.setVisibility(View.GONE);
+                    relativeLayoutViewHide.setVisibility(View.VISIBLE);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
