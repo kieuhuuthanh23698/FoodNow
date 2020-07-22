@@ -118,7 +118,7 @@
 
     <TextView
         android:id="@+id/frament_cart_detail_btnCancel"
-        android:visibility="visible"
+        android:visibility="gone"
         android:text="Hủy đơn"
         android:textStyle="bold"
         android:textColor="@android:color/holo_red_light"

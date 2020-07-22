@@ -53,7 +53,7 @@ public class Cart {
         this.idOrder = idOrder;
     }
 
-    public String getState() {
+    public String getStateString() {
         String result = "";
         switch (state){
             case "1":
@@ -70,6 +70,10 @@ public class Cart {
                 break;
         }
         return result;
+    }
+
+    public String getState(){
+        return this.state;
     }
 
     public void setState(String state) {

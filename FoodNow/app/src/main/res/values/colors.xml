@@ -9,4 +9,8 @@
     <color name="colorGrayLight">#32c2c2c2</color>
     <color name="colorBlueLink">#5574ff</color>
     <color name="colorBackgroundPlaceHolder">#dddddd</color>
+    <color name="order_wating">#e5720d</color>
+    <color name="order_comming">#2ea0cd</color>
+    <color name="order_canceled">#cd2e2e</color>
+    <color name="order_done">#FF2ECD9D</color>
 </resources>

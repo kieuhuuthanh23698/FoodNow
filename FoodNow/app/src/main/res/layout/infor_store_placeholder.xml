@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:background="@color/colorBackgroundPlaceHolder"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp">
+
+                    <ImageView
+                        android:layout_marginLeft="10dp"
+                        android:layout_gravity="center"
+                        android:layout_alignParentLeft="true"
+                        android:src="@drawable/ic_navigate_before_white_24dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+
+                    <LinearLayout
+                        android:layout_alignParentRight="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/imgFavoriteStore"
+                            android:layout_marginLeft="30dp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/ic_favorite_border_black_24dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:layout_marginLeft="30dp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/ic_more_horiz_black_24dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+
+            </FrameLayout>
+
+
+            <LinearLayout
+                android:id="@+id/view2"
+                android:orientation="vertical"
+                android:alpha="0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/tabsTypeFood"
+                    android:background="@android:color/white"
+                    app:tabSelectedTextColor="@color/colorMain"
+                    app:tabIndicatorColor="@color/colorMain"
+                    app:tabTextColor="@android:color/darker_gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <android.support.v4.widget.NestedScrollView
+                android:background="#00ff"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:descendantFocusability="blocksDescendants"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <FrameLayout
+                            android:layout_marginTop="10dp"
+                            android:background="@android:color/white"
+                            android:layout_alignParentBottom="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"/>
+
+                        <android.support.v7.widget.CardView
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            app:cardCornerRadius="5dp"
+                            app:cardElevation="5dp"
+                            app:cardBackgroundColor="#F5F2F2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:background="@android:color/white"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:src="@drawable/ic_turned_in_green_24dp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="-5dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+
+                                <TextView
+                                    android:layout_gravity="center"
+                                    android:textSize="15dp"
+                                    android:background="@color/colorBackgroundPlaceHolder"
+                                    android:fontFamily="@font/nunito_extralight"
+                                    android:textStyle="bold"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_width="180dp"
+                                    android:layout_height="wrap_content" />
+
+                                <TextView
+                                    android:textAlignment="center"
+                                    android:gravity="center"
+                                    android:background="@color/colorBackgroundPlaceHolder"
+                                    android:layout_gravity="center"
+                                    android:textSize="20dp"
+                                    android:layout_width="250dp"
+                                    android:layout_height="wrap_content" />
+
+
+                                <TextView
+                                    android:linksClickable="true"
+                                    android:layout_gravity="center"
+                                    android:textSize="15dp"
+                                    android:layout_marginTop="5dp"
+                                    android:background="@color/colorBackgroundPlaceHolder"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_width="200dp"
+                                    android:layout_height="wrap_content" />
+
+                            </LinearLayout>
+
+                        </android.support.v7.widget.CardView>
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="MỞ CỬA"
+                            android:textColor="@android:color/black"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:background="@color/colorBackgroundPlaceHolder"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <include layout="@layout/item_food_placeholder" />
+                        <include layout="@layout/item_food_placeholder" />
+                        <include layout="@layout/item_food_placeholder" />
+                        <include layout="@layout/item_food_placeholder" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </android.support.v4.widget.NestedScrollView>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

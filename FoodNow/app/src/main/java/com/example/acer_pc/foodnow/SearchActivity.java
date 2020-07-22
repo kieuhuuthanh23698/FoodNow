@@ -155,8 +155,9 @@ public class SearchActivity extends AppCompatActivity implements DAL_SearchStore
     public void onRequestSearchStoreDone(JSONObject result) {
         if(mSectionsPagerAdapter != null) {
             mSectionsPagerAdapter.clearData();
-//            mSectionsPagerAdapter.notifyDataSetChanged();
+            mSectionsPagerAdapter = null;
         }
+        mSectionsPagerAdapter = new SearchActSectionsPagerAdapter(getSupportFragmentManager(), fragmentResultArrayList);
         try {
             SearchActPlaceholderFragment frament_nearestResult = new SearchActPlaceholderFragment();
             if(result != null)
@@ -187,12 +188,34 @@ public class SearchActivity extends AppCompatActivity implements DAL_SearchStore
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        mSectionsPagerAdapter = new SearchActSectionsPagerAdapter(SearchActivity.this.getSupportFragmentManager() , fragmentResultArrayList);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-        tabLayout.setupWithViewPager(mViewPager);
-//        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-//        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
-//        mSectionsPagerAdapter.notifyDataSetChanged();
+//        tabLayout.setupWithViewPager(mViewPager);
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+
+            @Override
+            public void onPageSelected(int position) {
+                mSectionsPagerAdapter.refresh(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {}
+        });
+        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {}
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {}
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                mSectionsPagerAdapter.refresh(tab.getPosition());
+            }
+        });
     }
 
     @Override
@@ -227,13 +250,9 @@ public class SearchActivity extends AppCompatActivity implements DAL_SearchStore
             fragmentArrayList.clear();
         }
 
-//        @Override
-//        public void destroyItem(ViewGroup container, int position, Object object) {
-//            FragmentManager manager = ((Fragment) object).getFragmentManager();
-//            FragmentTransaction trans = manager.beginTransaction();
-//            trans.remove((Fragment) object);
-//            trans.commit();
-//        }
+        public void refresh(int position){
+            fragmentArrayList.get(position).onResume();
+        }
 
         @Nullable
         @Override

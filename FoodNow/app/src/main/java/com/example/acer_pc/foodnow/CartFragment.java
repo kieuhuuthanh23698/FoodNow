@@ -58,14 +58,40 @@ public class CartFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mSectionsPagerAdapter = new CartFragmentSectionsPagerAdapter(getChildFragmentManager());
-        mSectionsPagerAdapter.addFragment(0, "ĐANG ĐẾN");
-        mSectionsPagerAdapter.addFragment(1, "LỊCH SỬ");
-        mSectionsPagerAdapter.addFragment(2, "ĐƠN NHÁP");
+        if(mSectionsPagerAdapter == null) {
+            mSectionsPagerAdapter = new CartFragmentSectionsPagerAdapter(getChildFragmentManager());
+            mSectionsPagerAdapter.addFragment(0, "ĐANG ĐẾN");
+            mSectionsPagerAdapter.addFragment(1, "LỊCH SỬ");
+            mSectionsPagerAdapter.addFragment(2, "ĐƠN NHÁP");
+        }
+        mViewPager.setOffscreenPageLimit(mSectionsPagerAdapter.getCount());
         mViewPager.setAdapter(mSectionsPagerAdapter);
-//        tabLayout.setupWithViewPager(mViewPager);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) { }
+
+            @Override
+            public void onPageSelected(int position) {
+                mSectionsPagerAdapter.refresh(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {}
+        });
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {}
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {}
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                mSectionsPagerAdapter.refresh(tab.getPosition());
+            }
+        });
     }
 
     public class CartFragmentSectionsPagerAdapter extends FragmentStatePagerAdapter {
@@ -74,6 +100,10 @@ public class CartFragment extends Fragment {
 
         public CartFragmentSectionsPagerAdapter(FragmentManager fm) {
             super(fm);
+        }
+
+        public void refresh(int position){
+            fragmentArrayList.get(position).onResume();
         }
 
         @Override
@@ -87,17 +117,18 @@ public class CartFragment extends Fragment {
         }
 
         @Nullable
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return titleArrayList.get(position);
-        }
-
-        public void addFragment(int position, String title){
-            CartFragmentPlaceholderFragment fragment = new CartFragmentPlaceholderFragment();
-            fragment.setPage(position);
-            fragmentArrayList.add(fragment);
-            titleArrayList.add(title);
-        }
-
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return titleArrayList.get(position);
     }
+
+    public Fragment addFragment(int position, String title){
+        CartFragmentPlaceholderFragment fragment = new CartFragmentPlaceholderFragment();
+        fragment.setPage(position);
+        fragmentArrayList.add(fragment);
+        titleArrayList.add(title);
+        return fragment;
+    }
+
+}
 }
