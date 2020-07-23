@@ -19,7 +19,7 @@ public class SystemVoucher {
         id = jsonObjectSystemVoucher.getString("_id");
         MaGiamGia = jsonObjectSystemVoucher.getString("MaGiamGia");
         Icon = jsonObjectSystemVoucher.getString("Icon");
-//        GioBD = jsonObjectSystemVoucher.getString("GioBD");
+        GioBD = jsonObjectSystemVoucher.getString("HanSuDung");
 //        GioKT = jsonObjectSystemVoucher.getString("GioKT");
         PhanTram_GiamGia = jsonObjectSystemVoucher.getInt("PhanTram_GiamGia");
         JSONArray jsonArrayDanhSach_CH = jsonObjectSystemVoucher.getJSONArray("DanhSach_CN");
@@ -32,8 +32,7 @@ public class SystemVoucher {
     public String getContent(){
         if(id.isEmpty())
             return "";
-        return "NHẬP " + MaGiamGia + " " + String.valueOf(PhanTram_GiamGia) + "% " +
-                "Off/ " + String.valueOf(GioBD) + "h - " + String.valueOf(GioKT) + "h";
+        return "NHẬP " + MaGiamGia + " " + String.valueOf(PhanTram_GiamGia) + "% " +  String.valueOf(GioBD);
     }
 
     public String getId() {

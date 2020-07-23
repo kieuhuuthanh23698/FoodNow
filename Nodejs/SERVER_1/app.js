@@ -2364,6 +2364,78 @@ app.post("/datHang", urlEncodeParser, function (req, res) {
 });
 
 
+const pushNotificationToUser = async (token, title, message) => {
+	return new Promise((resolve, reject) => {
+		if(token == null || token == "" || title == null || message == null || title == "" || message == ""){
+			resolve(null);
+		} else {
+			var payload = {
+				notification: {
+				title: title,
+				body: message
+				}
+			};
+			var options = {
+				priority: "high",
+				timeToLive: 60 * 60 *24
+			};
+			admin.messaging().sendToDevice(token, payload, options)
+			.then((response) => {
+				console.log('Successfully sent message:', response);
+			})
+			.catch((error) => {
+				console.log('Error sending message:', error);
+			});
+		}
+	});
+}
+
+
+const getTokenFromUser = async (idUser) => {
+	return new Promise((resolve, reject) => {
+		db.ref().child("token_list/" + idUser).on("value", function (snapshot) {
+			if(snapshot.val().token_divice == null){
+				console.log('Không tìm thấy token của user có id : ' + idUser);
+				resolve(null);
+			} else{
+				resolve(snapshot.val().token_divice);
+			}
+		}, function(errGetData){
+			if(errGetData){
+				resolve(null);
+			}
+		});
+	})
+}
+
+const storePushNotificationKMCH = async (idCuaHang, title, message) => {
+	return new Promise((resolve, reject) => {
+		KHACH_HANG.find(
+			{Cua_hang_yeu_thich : {$in : [mongoose.Types.ObjectId(idCuaHang)]}},
+			async function(err,result){
+				if(err || result.length == 0){
+					console.log(err, result);
+				} else {
+					console.log("List user : ", result);
+					Promise.all(
+						result.map(function (iUSER) {
+							return getTokenFromUser(iUSER._id);
+						}))
+						.then(function (resolveListToken) {
+							console.log("List token", resolveListToken);
+							Promise.all(
+								resolveListToken.map(function (token) {
+									return pushNotificationToUser(token, title, message);
+							}));
+						})
+				}
+			}
+		);
+	};
+}
+
+
+
 //route addKhuyenmaicuahang
 //method POST
 //params  : idcuahang
