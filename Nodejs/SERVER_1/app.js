@@ -2338,13 +2338,13 @@ app.post("/datHang", urlEncodeParser, function (req, res) {
 app.post("/addKhuyenmaicuahang", urlEncodeParser, function (req, response) {
 
 	console.log(JSON.stringify(req.body));
-	if (req.body.maGiamgia != null && req.body.thongtinKhuyenmai != null && req.body.ngayBatdau != null && req.body.ngayKetthuc != null && req.body.phanTramgiamgia != null && req.body.MoTa != null
-		&& req.body.maGiamgia != "" && req.body.thongtinKhuyenmai != "" && req.body.ngayBatdau != "" && req.body.ngayKetthuc != "" && req.body.phanTramgiamgia != "" && req.body.MoTa != "") {
+	if (req.body.maGiamgia != null && req.body.thongtinKhuyenmai != null && req.body.hanSD != null && req.body.thoiGianGH != null && req.body.phanTramgiamgia != null && req.body.MoTa != null
+		&& req.body.maGiamgia != "" && req.body.thongtinKhuyenmai != "" && req.body.hanSD != "" && req.body.thoiGianGH != "" && req.body.phanTramgiamgia != "" && req.body.MoTa != "") {
 		var newKhuyenMai_CH = new KHUYENMAI_CUAHANG({
 			MaGiamGia: req.body.maGiamgia,
 			ThongTin_KMCH: req.body.thongtinKhuyenmai,
-			NgayBD: req.body.ngayKetthuc,
-			NgayKT: req.body.phanTramgiamgia,
+			HanSuDung: req.body.hanSD,
+			ThoiGianGiaoHang: req.body.thoiGianGH,
 			PhanTram_GiamGia: req.body.phanTramgiamgia,
 			MoTa: req.body.MoTa
 		});
@@ -2422,14 +2422,15 @@ app.delete("/deleteKhuyenmaicuahang", urlEncodeParser, function (req, res) {
 app.post("/addKhuyenmaihethong", urlEncodeParser, function (req, response) {
 	uploadFile(req, response, (error) => {
 		console.log(req.file, req.body);
-		if (req.body.makm != null && req.body.gio_bd != null && req.body.gio_kt != null && req.body.PhanTram_GiamGia != null
-		 && req.body.makm != "" && req.body.gio_bd != "" && req.body.gio_kt != "" && req.body.PhanTram_GiamGia != "") {
+		if (req.body.makm != null && req.body.hanSD != null && req.body.thoiGianGH != null && req.body.PhanTram_GiamGia != null
+		 && req.body.makm != "" && req.body.hanSD != "" && req.body.thoiGianGH != "" && req.body.PhanTram_GiamGia != "") {
 			var newKhuyenMai_HT = new KHUYENMAI_HETHONG({
 				MaGiamGia: req.body.makm,
-				GioBD: req.body.gio_bd,
-				GioKT: req.body.gio_kt,
+				HanSuDung: req.body.hanSD,
+				ThoiGianGiaoHang: req.body.thoiGianGH,
 				Icon: req.file.filename,
 				PhanTram_GiamGia: req.body.PhanTram_GiamGia,
+				MoTa:req.body.mota,
 				DanhSach_CN: []
 			});
 			var result = "";

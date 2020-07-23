@@ -2,10 +2,11 @@ const mongoose = require("mongoose");
 
 const khuyenmaihethongSchema = new mongoose.Schema({
     MaGiamGia: String,
-    GioBD: String,
-    GioKT: String,
+    HanSuDung: String,
+    ThoiGianGiaoHang: String,
     Icon: String,
     PhanTram_GiamGia: String,
+    MoTa: String,
     DanhSach_CN: [{ type: mongoose.Types.ObjectId }]
 });
 
