@@ -316,7 +316,7 @@
 
                           <strong><i class="fas fa-map-marker-alt mr-1"></i>Mật khẩu</strong>
                           <p><input type="text" class="form-control" id="matkhau"></p>
-                          <button type="submit" class="btn btn-success">Lưu</button>
+                          <button type="submit" class="btn btn-success" onclick="save()">Lưu</button>
                         </div>
 
 
@@ -386,7 +386,7 @@
               if(res.return_code == "1"){
                 var infor = res.infor[0];
                 $("#tennguoidaidien").text(infor.Ho_Ten_Nguoi_Dai_Dien);
-                $("#sodienthoai").text(infor.Ten_Cua_Hang);
+                $("#sodienthoai").text(infor.So_Dien_Thoai);
                 $("#tencuahang").text(infor.Ten_Cua_Hang);
                 $("#diachi_cuahang").text(infor.DiaChiCH[0].Dia_Chi);
                 $("#thoigian_bd").text(infor.Thoi_Gian_Bat_Dau);
@@ -398,6 +398,41 @@
             }
           });
         });
+
+        function Capnhatmatkhau(){
+          $.ajax(
+          {
+            url: url + "capnhatmatkhau_cuahang",
+            dataType: 'json',
+            data: {
+              IdCuaHang: localStorage.getItem("detailCH"),
+              Matkhaucuahang :$("#matkhau").val()
+            },
+            type: 'post',
+            success: function (res) {
+              if(res.return_code == "1"){
+                toastr.success("Cập nhật thành công")
+              }
+            }
+          });
+        }
+
+
+        function checkTT_CoBan(){
+          var result = true;
+          if($.trim($("#matkhau").val()) == ""){
+            result = false;
+            toastr.error("Bạn chưa cập nhật mật khẩu !");
+          }
+          return result;
+        }
+
+        function save(){
+          if(checkTT_CoBan()){
+            Capnhatmatkhau();
+          }
+      }
+
       </script>
 
       <script type="text/javascript">

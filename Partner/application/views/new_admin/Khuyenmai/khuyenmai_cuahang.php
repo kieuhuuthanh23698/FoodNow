@@ -52,18 +52,28 @@
 								  </div>
 
                                                 <div class="row">
-                                                    <div class="col-sm-6">
+                                                        <div class="col-sm-6">
                                                         <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                                            <label class="control-label" for="datepicker-start">Start Date</label>
-                                                            <input type="text" class="form-control" id="ngay_bd">
-										</div>
+                                                            <label class="control-label" for="datepicker-start">Hạn sử dụng khuyến mãi</label>
+                                                            <input type="date" class="form-control" id="ngay_bd">
+										                </div>
                                                         </div>
                                                         <div class="col-sm-6">
-                                                            <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                                                <label class="control-label" for="datepicker-end">End Date</label>
-                                                                <input type="text" class="form-control" id="ngay_kt">
-										</div>
+                                                            <div class="form-group">
+                                                              <label>Thời gian áp dụng giao hàng</label>
+
+                                                              <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                  <span class="input-group-text">
+                                                                    <i class="far fa-calendar-alt"></i>
+                                                                  </span>
+                                                                </div>
+                                                                <input type="text" class="form-control float-right" id="reservation">
+                                                              </div>
+                                                              <!-- /.input group -->
                                                             </div>
+                                                            <!-- /.form group -->
+                                                        </div>
                                                         </div>
                                                     </div>
 
@@ -83,16 +93,6 @@
                                                                                         Mô tả
 									            </label>
 									              </h3>
-                                                                              <!--   <div class="card-tools">
-                                                                                    <button type="button" class="btn btn-tool btn-sm" data-card-widget="collapse" data-toggle="tooltip"
-                                                                                        title="Collapse">
-                                                                                        <i class="fas fa-minus"></i></button>
-                                                                                    <button type="button" class="btn btn-tool btn-sm" data-card-widget="remove" data-toggle="tooltip"
-                                                                                        title="Remove">
-                                                                                        <i class="fas fa-times"></i></button>
-                                                                                </div> -->
-
-                                                                            <!-- </div> -->
 
                                                                             <div class="mb-3">
                                                                                 <textarea id="mota_km" placeholder="Place some text here"
@@ -108,19 +108,7 @@
 									    </section>
 
                                                         </div>
-								 
-								<!-- </form> -->
 
-                                                    <!-- <form> -->
-                                                       <!--  <div class="form-group">
-                                                            <img id="img_upload">
-                                                                <div class="custom-file">
-
-                                                                    <input type="file" class="custom-file-input" id="inputGroupFile02" />
-                                                                    <label class="custom-file-label" for="inputGroupFile02" id="Chonfile">Chọn hình ảnh</label>
-                                                                </div>
-						            
-						        </div> -->
                                                             <div class="input-group-append">
                                                                 <button data-dismiss="modal" onclick="save()" class="btn btn-primary float-right toastrDefaultSuccess">Lưu</button>
                                                             </div>
@@ -132,9 +120,37 @@
                                         </div>
 
                     </div>
+
+
                                 </div>
 
                             </div>
+                             <!-- Có chắc muốn xóa -->
+                                      <div class="modal fade bd-example-modal-sm" tabindex="-1"
+                                                            role="dialog" aria-labelledby="myLargeModalLabel"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                                            Bạn có chắc chắn muốn xóa?</h5>
+                                                                        <button type="button" class="close"
+                                                                            data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <input type="text" style="display: none;" value="sdfsdfsdf" id="idDelete">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-dismiss="modal">Cancel</button>
+                                                                        <button type="button" onclick="xoa()" data-dismiss="modal"
+                                                                            class="btn btn-primary toastrDefaultSuccess">OK</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                      <!-- Có chắc chắn muốn xóa -->
                             <!-- /.card-header -->
 
 			<div class="container-fluid">
@@ -152,8 +168,8 @@
                                                             <tr role="row">
                                                                 <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Mã giảm giá</th>
                                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Thông tin khuyến mãi</th>
-                                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Ngày BĐ</th>
-                                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Ngày KT</th>
+                                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Hạn sử dụng</th>
+                                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Thời gian giao hàng</th>
                                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">% Giảm giá</th>
                                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Mô tả</th>
                                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Chi tiết</th>
@@ -226,8 +242,8 @@
                 table.row.add( [
                 res[i].MaGiamGia,
                 res[i].ThongTin_KMCH,
-                res[i].NgayBD,
-                res[i].NgayKT,
+                res[i].HanSuDung,
+                res[i].ThoiGianGiaoHang,
                 res[i].PhanTram_GiamGia + " %",
                 res[i].MoTa,
                 "<div class='sparkbar' data-color='#00a65a' data-height='20'>"
@@ -256,8 +272,8 @@
                 idcuahang : <?php echo "'".$id."'";?>,
                 maGiamgia : $("#makm").val(),
                 thongtinKhuyenmai : $("#ttkm").val(),
-                ngayBatdau : $("#ngay_bd").val(),
-                ngayKetthuc : $("#ngay_kt").val(),
+                hanSD : $("#ngay_bd").val(),
+                thoiGianGH : $("#reservation").val(),
                 phanTramgiamgia :$("#PhanTram_GiamGia").val(),
                 MoTa : $("#mota_km").val()
             },
@@ -270,13 +286,12 @@
                     table.row.add( [
                     item.MaGiamGia,
                     item.ThongTin_KMCH,
-                    item.NgayBD,
-                    item.NgayKT,
+                    item.HanSuDung,
+                    item.ThoiGianGiaoHang,
                     item.PhanTram_GiamGia,
                     item.MoTa,
                     "<div class='sparkbar' data-color='#00a65a' data-height='20'>"
-                        + "<a href='#'><i class='nav-icon fas fa-edit'></i></a>"
-                        + '<button class="btn" onclick="xoa(' + "'" + item._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+                        + '<button class="btn  btn-danger" onclick="xoa(' + "'" + item._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
                         + "</div>"
                     ] ).draw();
         }
@@ -350,7 +365,7 @@
       result =  false;
       toastr.error("Bạn chưa điền ngày bắt đầu !");
     }
-    if($.trim($("#ngay_kt").val()) == ""){
+    if($.trim($("#reservation").val()) == ""){
       result =  false;
       toastr.error("Bạn chưa điền ngày kết thúc !");
     }
@@ -379,3 +394,6 @@
     });
 </script>
 
+<script type="text/javascript">
+    $('#reservation').daterangepicker();
+</script>

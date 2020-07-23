@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 
 const khuyenmaicuahangSchema = new mongoose.Schema({
     ThongTin_KMCH: String,
-    NgayBD: Date,
-    NgayKT: Date,
+    HanSuDung: String,
+    ThoiGianGiaoHang: String,
     MaGiamGia: String,
     PhanTram_GiamGia: String,
     MoTa: String

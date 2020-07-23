@@ -83,7 +83,7 @@
                   <strong><i class="fas fa-map-marker-alt mr-1"></i>Mật khẩu</strong>
                   <p><input type="text" class="form-control" id="matkhau"></p>
 
-                  <button type="submit" class="btn btn-success">Lưu</button>
+                  <button type="submit" class="btn btn-success" onclick="save()">Lưu</button>
                 </div>
 
 
@@ -132,4 +132,38 @@
       }
     });
   });
+
+  function Capnhatmatkhau(){
+          $.ajax(
+          {
+            url: url + "capnhatmatkhau_cuahang",
+            dataType: 'json',
+            data: {
+              IdCuaHang: <?php echo "'".$id."'";?>,
+              Matkhaucuahang :$("#matkhau").val()
+            },
+            type: 'post',
+            success: function (res) {
+              if(res.return_code == "1"){
+                toastr.success("Cập nhật thành công")
+              }
+            }
+          });
+        }
+
+
+        function checkTT_CoBan(){
+          var result = true;
+          if($.trim($("#matkhau").val()) == ""){
+            result = false;
+            toastr.error("Bạn chưa cập nhật mật khẩu !");
+          }
+          return result;
+        }
+
+        function save(){
+          if(checkTT_CoBan()){
+            Capnhatmatkhau();
+          }
+      }
 </script>

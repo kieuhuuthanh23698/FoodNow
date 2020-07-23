@@ -128,11 +128,11 @@
                     <div class="row">
                       <div class="form-group col-sm-6">
                         <label for="exampleInputEmail1">Thời gian bắt đầu</label>
-                        <input type="email" class="form-control" id="timeStart" placeholder="Nhập thời gian bắt đầu mở cửa">
+                        <input type="time" class="form-control" id="timeStart" placeholder="Nhập thời gian bắt đầu mở cửa">
                       </div>
                       <div class="form-group col-sm-6">
                         <label for="exampleInputPassword1">Thời gian kết thúc</label>
-                        <input type="text" class="form-control" id="timeEnd" placeholder="Nhập thời gian cửa hàng đóng cửa">
+                        <input type="time" class="form-control" id="timeEnd" placeholder="Nhập thời gian cửa hàng đóng cửa">
                       </div>
                     </div>
                     <div class="card card-outline card-info">

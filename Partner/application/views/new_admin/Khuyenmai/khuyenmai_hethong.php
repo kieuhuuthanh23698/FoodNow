@@ -128,15 +128,25 @@
                                                 <div class="row">
                                                     <div class="col-sm-6">
                                                         <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                                            <label class="control-label" for="datepicker-start">Giờ BĐ</label>
-                                                            <input type="text" class="form-control" id="gio_bd">
+                                                            <label class="control-label" for="datepicker-start">Hạn sử dụng khuyến mãi</label>
+                                                            <input type="Date" class="form-control" id="gio_bd">
                                                         </div>
                                                         </div>
                                                         <div class="col-sm-6">
-                                                            <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                                                <label class="control-label" for="datepicker-end">Giờ KT</label>
-                                                                <input type="text" class="form-control" id="gio_kt">
+                                                            <div class="form-group">
+                                                              <label>Thời gian áp dụng giao hàng</label>
+
+                                                              <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                  <span class="input-group-text">
+                                                                    <i class="far fa-calendar-alt"></i>
+                                                                  </span>
+                                                                </div>
+                                                                <input type="text" class="form-control float-right" id="reservation">
+                                                              </div>
+                                                              <!-- /.input group -->
                                                             </div>
+                                                            <!-- /.form group -->
                                                             </div>
                                                         </div>
                                                     <!-- </div> -->
@@ -147,10 +157,33 @@
                                                                 <input type="number" class="form-control" id="PhanTram_GiamGia">
                                                             </div>
 
+                                                                  <section class="container-fluid">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="card card-outline card-info">
+                                                                                <div class="card-header">
+                                                                                    <label for="inputEmail4">
+                                                                                        Mô tả
+                                                </label>
+                                                  </h3>
+
+                                                                            <div class="mb-3">
+                                                                                <textarea id="mota_km" placeholder="Place some text here"
+                                                                                    style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    </div>
+
+                                          </div>
+
+                                        </section>
                                                         </div>
 
                                                     <!-- <form> -->
                                                         <div class="form-group">
+                                                            <label>Icon khuyến mãi</label>
                                                             <img id="img_upload">
                                                                 <div class="custom-file">
 
@@ -200,8 +233,8 @@
                             <thead>
                                 <tr role="row">
                                     <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Mã giảm giá</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Giờ BĐ</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Giờ KT</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Hạn SD</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Áp dụng TG Giao Hàng</th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">% Giảm giá</th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Hình ảnh</th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Chi tiết</th>
@@ -335,8 +368,8 @@ var socket;
              for (i=0; i< res.length; i++){ 
                 table.row.add( [
                 res[i].MaGiamGia ,
-                res[i].GioBD,
-                res[i].GioKT,
+                res[i].HanSuDung,
+                res[i].ThoiGianGiaoHang,
                 // res[i].Icon,
                 res[i].PhanTram_GiamGia + " %",
                 '<img src="' + url + 'Public/Images/'+res[i].Icon+'" alt="Product Image" class="img-size-50">',
@@ -409,8 +442,9 @@ var socket;
             }
         }
         form.append("makm", $("#makm").val());
-        form.append("gio_bd", $("#gio_bd").val());
-        form.append("gio_kt", $("#gio_kt").val());
+        form.append("hanSD", $("#gio_bd").val());
+        form.append("thoiGianGH", $("#reservation").val());
+        form.append("mota", $("#mota_km").val());
         form.append("PhanTram_GiamGia", $("#PhanTram_GiamGia").val());
         return form;
         
@@ -418,6 +452,7 @@ var socket;
 
     function themSanPham(){
         var form = createFormData();
+        debugger;
         $.ajax({
             url: url + 'addKhuyenmaihethong',
             dataType: 'json',
@@ -562,11 +597,11 @@ var socket;
     }
     if($.trim($("#gio_bd").val()) == ""){
       result =  false;
-      toastr.error("Bạn chưa điền giờ bắt đầu !");
+      toastr.error("Bạn chưa điền hạn sử dụng !");
     }
-    if($.trim($("#gio_kt").val()) == ""){
+    if($.trim($("#reservation").val()) == ""){
       result =  false;
-      toastr.error("Bạn chưa điền giờ kết thúc !");
+      toastr.error("Bạn chưa điền thời gian áp dụng giao hàng !");
     }
     if($.trim($("#PhanTram_GiamGia").val()) == ""){
       result =  false;
@@ -583,3 +618,6 @@ var socket;
   }
 </script>
 
+<script type="text/javascript">
+    $('#reservation').daterangepicker();
+</script>
