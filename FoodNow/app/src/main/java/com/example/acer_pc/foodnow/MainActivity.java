@@ -1,9 +1,16 @@
 package com.example.acer_pc.foodnow;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.net.wifi.WifiManager;
+import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
@@ -17,11 +24,26 @@ import android.widget.Toast;
 import com.example.acer_pc.foodnow.Common.BottomNavigationBehavior;
 import com.example.acer_pc.foodnow.Common.BottomNavigationViewHelper;
 import com.example.acer_pc.foodnow.Data.Utils;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import okhttp3.internal.Util;
+
+import static android.app.NotificationManager.IMPORTANCE_DEFAULT;
+import static com.example.acer_pc.foodnow.LoginActivity.user;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,10 +51,6 @@ public class MainActivity extends AppCompatActivity {
     Fragment fragmentHome, fragmentCart, fragmentBill, fragmentAccount;
 //    boolean mShiftingMode;
 
-    TimerTask timerTaskCheckWifi;
-    Timer timer;
-    WifiManager wifiManager;
-    int count = 0;
     public static boolean loaded;
 
     @Override
@@ -95,37 +113,32 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         loaded = false;
-        Toast.makeText(getApplicationContext(), "Resume !" + Utils.getCurrentTime(), Toast.LENGTH_SHORT).show();
-//        if(timerTaskCheckWifi == null) {
-//            timerTaskCheckWifi = new TimerTask() {
-//                @Override
-//                public void run() {
-//                    runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-//                            if (!loaded) {
-//                                if (wifiManager.getWifiState() != WifiManager.WIFI_STATE_ENABLED || !Utils.getConnectivityStatus(getApplicationContext())) {
-//                                    loaded = true;
-//                                    Log.i("wifi", "Wifi is not connected ! " + count);
-//                                    Intent intent = new Intent(getApplicationContext(), CheckWifiActivity.class);
-//                                    startActivity(intent);
-//                                } else {
-//                                    Log.i("wifi", "Wifi is connected ! " + count);
-//                                }
-//                            } else {
-//                                    Log.i("wifi", "Not check wifi ! " + count);
-//                            }
-//                            count++;
-//                        }
-//                    });
-//                }
-//            };
-//            timer = new Timer();
-//            timer.scheduleAtFixedRate(timerTaskCheckWifi, 0, 100);
-//        } else {
-//            timerTaskCheckWifi.run();
-//        }
+//        Toast.makeText(getApplicationContext(), "Resume !" + Utils.getCurrentTime(), Toast.LENGTH_SHORT).show();
+        FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+            @Override
+            public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                if (!task.isSuccessful()) {
+                    Log.i("response", "getInstanceId failed", task.getException());
+                    return;
+                }
+                // Get new Instance ID token
+                String token = task.getResult().getToken();
+                // Log and toast
+                Log.i("response", token);
+                FirebaseDatabase database;
+                DatabaseReference myRef;
+                FirebaseApp.initializeApp(getApplicationContext());
+                database = FirebaseDatabase.getInstance();
+                if(user != null) {
+                    myRef = database.getReference("token_list/" + user.getId());
+                    Map<String, String> token_user = new HashMap<>();
+                    token_user.put("idUser", user.getId());
+                    token_user.put("token_divice", token);
+                    myRef.setValue(token_user);
+                }
+            }
+        });
+
         super.onResume();
     }
 

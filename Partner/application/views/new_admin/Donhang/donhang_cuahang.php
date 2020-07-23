@@ -202,7 +202,7 @@
     loadOdersList();
     $('#oderTable').DataTable({"order": []});
     $('#oderTable tbody').on('click', 'tr', function () {
-      debugger;
+      // debugger;
         var id =$(this).attr('id');
         renderUI_OderList_item_detail(id);
     } );
@@ -257,7 +257,7 @@
       '<a href="#">' + item._id.substr(item._id.length - 5).toUpperCase() + '</a>',
       item.Chi_tiet_DH.length,
       '<span class="badge badge-success">' + (new Intl.NumberFormat().format(item.Total_cart)) + '</span>',
-      '<div class="sparkbar" data-color="#00a65a" data-height="20">' + '<button type="button" class="btn btn-outline-success btn-sm">Xác nhận</button><button type="button" class="btn btn-outline-danger btn-sm">Hủy</button></div>',
+      '<div class="sparkbar" data-color="#00a65a" data-height="20">' + '<button type="button" class="btn btn-outline-success btn-sm" onclick="xacNhanDonHang(' + "'" + item._id + "'"  + ',' + "'" + item.IdKhachHang + "'"  + ','+ "'2" + "' "  +')">Xác nhận</button><button type="button" class="btn btn-outline-danger btn-sm" onclick="xacNhanDonHang(' + "'" + item._id + "'"  + ',' + "'" + item.IdKhachHang + "'"  + ','+ "'3" + "' "  +')">Hủy</button></div>',
       moment(new Date(item.createdAt)).format('DD-MM_YYYY hh:mm'),
       moment(new Date(item.Ngay_nhan_don_hang)).format('DD-MM_YYYY hh:mm')
       ] ).node().id = item._id;
@@ -348,25 +348,32 @@
     });
   }
 
-  function xacNhanDonHang(idDonHang, state) {
+  function xacNhanDonHang(idDonHang, idUser, state) {
+    // debugger;
     $.ajax({
-            url:  url + "xacnhandonhang",
+            url:  url + "cuaHangCapNhatTrangThaiDonHang",
             dataType: 'json',
             data: {
               idDonHang : idDonHang,
+              idUser : idUser,
               state : state
             },
             type: 'POST',
             success: function (res) {
-              if(res == null){
-                toastr.error("Xác nhận đơn hàng gặp lỗi !");
+              if(res == null) {
+                toastr.error("Request gặp lỗi !");
                 return;
               }
-              if(res.return_code == "0")
-              {
+              if(res.return_code == "1") {
+                if(state == "2"){
+                  $("#" + idDonHang).find('td:eq(3)').html("Đã xác nhận");
                 toastr.success("Xác nhận đơn hàng thành công !");
-              } else{
-
+                } else if(state == "3"){
+                toastr.success("Hủy đơn hàng thành công !");
+                  $("#" + idDonHang).remove().draw();
+                }
+              } else if(res.return_code == "0"){
+                toastr.error("Request gặp lỗi !");
               }
             }
     });
@@ -386,7 +393,7 @@
         { 
           body : body,
           icon : icon,
-          tag : tag
+          tag : tag.substr(tag.length - 5).toUpperCase()
         }
       );
     

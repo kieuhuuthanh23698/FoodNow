@@ -119,6 +119,7 @@ public class CartOfFragmentAdapter extends RecyclerView.Adapter<CartOfFragmentAd
                 case "2":
                     holder.txtState.setText("Đang giao");
                     holder.txtState.setTextColor( context.getResources().getColor(R.color.order_comming));
+                    holder.btnCacel.setVisibility(View.GONE);
                     break;
                 case "3":
                     holder.txtState.setText("Đã hủy");

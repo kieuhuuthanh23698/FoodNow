@@ -158,16 +158,48 @@ io.on("connect", function (socket) {
 
 
 //giả sử user đặt hàng với id cửa hàng là req.body.idCuaHang ==> thông báo cho cửa hàng có id == req.body.idCuaHang biết 
-app.post("/testDatHang", urlEncodeParser, function (req, res) {
+app.post("/testHuyDonHang", urlEncodeParser,function (req, res) {
+	// // This registration token comes from the client FCM SDKs.
+	// db.ref().child("oders/" + req.body.idCuaHang).push({ key: String(result._id + "") }).then(() => {
+	// 	console.log("Notification đặt hàng thành công !");
+	// 	console.log("Xác nhận đơn hàng thành công !");
+	// 	res.send({ return_code: "1" });
+	// });;
+	db.ref().child("token_list/" + req.body.idUser).on("value", function (snapshot) {
+		// var registrationToken = snapshot.val().token_divice;
+		console.log(snapshot.val());
+	// 	var payload = {
+	// 		notification: {
+	// 		  title: req.body.title,
+	// 		  body: req.body.body
+	// 		}
+	// 	  };
+	// 	var options = {
+	// 		priority: "high",
+	// 		timeToLive: 60 * 60 *24
+	// 	};
+	// 	admin.messaging().sendToDevice(registrationToken, payload, options)
+	// 	.then((response) => {
+	// 		console.log('Successfully sent message:', response);
+	// 	})
+	// 	.catch((error) => {
+	// 		console.log('Error sending message:', error);
+	// 	});
+	// 	res.send("Notification done");
+	// }, function(errGetData){
+	// 	if(errGetData){
+
+	// 	}
+	});
 	// io.emit("hello");
 	// var socket_id = getSocketIdWithIdParner(req.body.idCuaHang);
 	// io.to(socket_id).emit('Thông tin từ người dùng : ' + req.body.infor);
 	// io.sockets.in(socket_id).emit('dat_hang', req.body.infor);
 	// console.log("Thông báo tới user có id : " + socket_id + " thông tin sau " + req.body.infor);
-	db.ref().child("oders/" + req.body.idCuaHang).push({ key: req.body.idDonHang }).then(() => {
-		console.log("Notification đặt hàng thành công !");
-		res.send("Đã gửi thông tin thành công !");
-	});;
+	// db.ref().child("remove_order_user/").push({ key: "helllo" }).then(() => {
+	// 	console.log("Notification đặt hàng thành công !");
+	// 	res.send("Đã gửi thông tin thành công !");
+	// });;
 });
 
 // changeStream.on('change', (change) => {
@@ -2922,6 +2954,91 @@ app.post("/capNhatTrangThaiDonHang", urlEncodeParser, async function (req, res) 
 	});
 });
 
+//cửa hàng xác nhận hoặc hủy đơn
+app.post("/cuaHangCapNhatTrangThaiDonHang", urlEncodeParser, async function (req, res) {
+	if(req.body.idDonHang == null || req.body.state == null || req.body.idDonHang == "" || req.body.state == "" || req.body.idUser == null || req.body.idUser == ""){
+		console.log("\nError parmas : " , req.body);
+		res.send({ return_code: "0" });
+	}
+	DON_HANG.findOneAndUpdate(
+		{ _id: req.body.idDonHang } ,
+		{ $set: { Trang_thai_don_hang: req.body.state } },
+		function (err, result) {
+			if (err || result == null) {
+				console.log("\nCập nhật trạng thái đơn hàng gặp lỗi : " + err);
+				res.send({ return_code: "0" });
+			}
+			else {
+				console.log("\nCập nhật trạng thái đơn hàng thành công !");
+				if(req.body.state == "3"){			
+					db.ref().child("token_list/" + req.body.idUser).on("value", function (snapshot) {
+						var registrationToken = snapshot.val().token_divice;
+						if(registrationToken == null){
+							console.log('Không tìm thấy token 1');
+							res.send({ return_code: "1" });
+						}
+						var payload = {
+							notification: {
+							title: "Cửa hàng thông báo",
+							body: "Đơn hàng #" + req.body.idDonHang.substring(req.body.idDonHang.length - 5) + " của bạn đã bị hủy !"
+							}
+						};
+						var options = {
+							priority: "high",
+							timeToLive: 60 * 60 *24
+						};
+						admin.messaging().sendToDevice(registrationToken, payload, options)
+						.then((response) => {
+							console.log('Successfully sent message:', response);
+							res.send({ return_code: "1" });
+						})
+						.catch((error) => {
+							console.log('Error sending message:', error);
+							res.send({ return_code: "0" });
+						});
+					}, function(errGetData){
+						if(errGetData){
+							console.log('Error get token :', errGetData);
+							res.send({ return_code: "0" });
+						}
+					});
+				}
+				if(req.body.state == "2"){
+					db.ref().child("token_list/" + req.body.idUser).on("value", function (snapshot) {
+						var registrationToken = snapshot.val().token_divice;
+						if(registrationToken == null){
+							console.log('Không tìm thấy token 1');
+							res.send({ return_code: "1" });
+						}
+						var payload = {
+							notification: {
+							title: "Cửa hàng thông báo",
+							body: "Cửa hàng đã xác nhận đơn #" + req.body.idDonHang.substring(req.body.idDonHang.length - 5) + " của bạn !"
+							}
+						};
+						var options = {
+							priority: "high",
+							timeToLive: 60 * 60 *24
+						};
+						admin.messaging().sendToDevice(registrationToken, payload, options)
+						.then((response) => {
+							console.log('Successfully sent message:', response);
+							res.send({ return_code: "1" });
+						})
+						.catch((error) => {
+							console.log('Error sending message:', error);
+							res.send({ return_code: "0" });
+						});
+					}, function(errGetData){
+						if(errGetData){
+							console.log('Error get token :', errGetData);
+							res.send({ return_code: "0" });
+						}
+					});
+				}
+			}
+	});
+});
 
 //CỬA HÀNG
 //Hiển thị danh sách món ăn: Loại món ăn và món ăn
