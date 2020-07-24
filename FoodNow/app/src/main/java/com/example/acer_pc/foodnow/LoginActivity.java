@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,9 +14,12 @@ import android.text.method.LinkMovementMethod;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -68,6 +72,10 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private FrameLayout loginFBview, loginGGview;
     private SignInButton signInButton;
     private LoginButton loginButton;
+    FrameLayout main_view;
+    LinearLayout group_login_default, group_login_extend;
+    EditText input_username, input_password;
+    Button loginDefaultButton;
 
     private CallbackManager callbackManager;
     GoogleSignInOptions gso;
@@ -191,6 +199,57 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         });
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        main_view = findViewById(R.id.login_act_main_view);
+        group_login_default= findViewById(R.id.login_act_group_login_defalt);
+        group_login_extend = findViewById(R.id.login_act_group_login_extend);
+        main_view.getViewTreeObserver().addOnGlobalLayoutListener(new
+         ViewTreeObserver.OnGlobalLayoutListener() {
+             @Override
+             public void onGlobalLayout() {
+                 Rect r = new Rect();
+                 main_view.getWindowVisibleDisplayFrame(r);
+                 int screenHeight = main_view.getRootView().getHeight();
+                 int keypadHeight = screenHeight - r.bottom;
+                 if (keypadHeight > screenHeight * 0.15) {
+                     group_login_default.setVisibility(View.GONE);
+                 } else {
+                     group_login_default.setVisibility(View.VISIBLE);
+                 }
+                 input_username.setText(input_username.getText().toString().trim());
+             }
+         });
+        input_username = findViewById(R.id.login_act_input_username);
+        input_password = findViewById(R.id.login_act_input_password);
+        input_password.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(b){
+                    input_username.setText(input_username.getText().toString().trim());
+                }
+            }
+        });
+        loginDefaultButton = findViewById(R.id.login_act_loginBtn);
+        loginDefaultButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loginDefault();
+            }
+        });
+
+    }
+
+    private void loginDefault() {
+        if(!input_username.getText().toString().trim().isEmpty() && !input_password.getText().toString().trim().isEmpty()){
+            user = new User();
+            user.setUsername(input_username.getText().toString().trim());
+            user.setPassword(input_password.getText().toString().trim());
+            user.setType_login(2);
+            Log.i("login", "\nuser default:" + user.toString());
+            finish();
+            loginToServer();
+        } else{
+            Toast.makeText(LoginActivity.this, "Bạn phải nhập đầy đủ thông tin !", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

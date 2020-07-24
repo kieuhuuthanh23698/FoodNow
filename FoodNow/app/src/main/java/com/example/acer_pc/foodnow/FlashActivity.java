@@ -33,37 +33,39 @@ public class FlashActivity extends AppCompatActivity {
         LoginManager loginManager = LoginManager.getInstance();
         if(loginManager != null)
             loginManager.logOut();
-        if(timerTaskCheckWifi == null) {
-            timerTaskCheckWifi = new TimerTask() {
-                @Override
-                public void run() {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-                            if (!loaded) {
-                                if (wifiManager.getWifiState() != WifiManager.WIFI_STATE_ENABLED || !Utils.getConnectivityStatus(getApplicationContext())) {
-                                    loaded = true;
-                                    Log.i("wifi", "Wifi is not connected ! " + count);
-                                    Intent intent = new Intent(getApplicationContext(), CheckWifiActivity.class);
-                                    startActivity(intent);
-                                } else {
-                                    Log.i("wifi", "Wifi is connected ! " + count);
-                                }
-                            } else {
-                                    Log.i("wifi", "Not check wifi ! " + count);
-                            }
-                            count++;
-                        }
-                    });
-                }
-            };
-            timer = new Timer();
-            timer.scheduleAtFixedRate(timerTaskCheckWifi, 0, 100);
-        } else {
-            timerTaskCheckWifi.run();
-        }
-        DAL_MyLocation dal_myLocation = new DAL_MyLocation(FlashActivity.this);
-        dal_myLocation.getMyLocation();
+//        if(timerTaskCheckWifi == null) {
+//            timerTaskCheckWifi = new TimerTask() {
+//                @Override
+//                public void run() {
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+//                            if (!loaded) {
+//                                if (wifiManager.getWifiState() != WifiManager.WIFI_STATE_ENABLED || !Utils.getConnectivityStatus(getApplicationContext())) {
+//                                    loaded = true;
+//                                    Log.i("wifi", "Wifi is not connected ! " + count);
+//                                    Intent intent = new Intent(getApplicationContext(), CheckWifiActivity.class);
+//                                    startActivity(intent);
+//                                } else {
+//                                    Log.i("wifi", "Wifi is connected ! " + count);
+//                                }
+//                            } else {
+//                                    Log.i("wifi", "Not check wifi ! " + count);
+//                            }
+//                            count++;
+//                        }
+//                    });
+//                }
+//            };
+//            timer = new Timer();
+//            timer.scheduleAtFixedRate(timerTaskCheckWifi, 0, 100);
+//        } else {
+//            timerTaskCheckWifi.run();
+//        }
+//        DAL_MyLocation dal_myLocation = new DAL_MyLocation(FlashActivity.this);
+//        dal_myLocation.getMyLocation();
+        Intent intent = new Intent(FlashActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 }

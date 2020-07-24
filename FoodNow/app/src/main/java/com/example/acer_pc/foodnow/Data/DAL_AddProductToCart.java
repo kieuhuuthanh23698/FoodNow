@@ -48,7 +48,9 @@ public class DAL_AddProductToCart {
                                 JSONObject jsonObject = new JSONObject(response);
                                 if(jsonObject.getString("return_code").equals("0")){
                                     InformationStoreActivity.shoppingCart.clear();
-                                } else{
+                                    user = null;
+                                } else if(jsonObject.getString("return_code").equals("1")){
+                                    user.setToken(jsonObject.getString("token"));
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -60,6 +62,8 @@ public class DAL_AddProductToCart {
                 public void onErrorResponse(VolleyError error) {
                     Log.e("response", Utils.getCurrentTime() + error.toString());
                     //xử lý kết quả khi request lỗi
+                    InformationStoreActivity.shoppingCart.clear();
+                    user = null;
                     InforStoreFoodsAdapter.requesting = false;
                 }
             }) {
@@ -84,7 +88,7 @@ public class DAL_AddProductToCart {
                     }
 //                    params.put("idCuaHang", "5eba0ad05f15d311d4d6b689");
                     params.put("idCuaHang", InformationStoreActivity.idStore);
-                    params.put("idKhachHang", user.getId());
+                    params.put("token", user.getToken());
                     return params;
                 }
             };

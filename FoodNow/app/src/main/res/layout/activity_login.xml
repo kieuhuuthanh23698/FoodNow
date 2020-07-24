@@ -5,6 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/login_act_main_view"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:background="@drawable/gradient_background"
     tools:context=".LoginActivity">
 
@@ -35,52 +38,111 @@
 
         <LinearLayout
             android:id="@+id/login_act_frame_login"
-            android:layout_centerInParent="true"
             android:layout_marginRight="30dp"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp"
+            android:layout_centerInParent="true"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <FrameLayout
-                android:id="@+id/login_facebook_view"
-                style="@style/login_button"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="10dp"
-                android:layout_width="match_parent">
+            <LinearLayout
+                android:id="@+id/login_act_group_login_defalt"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-                <ImageView
-                    android:src="@drawable/ic_login_facebook"
-                    android:scaleType="centerCrop"
-                    android:alpha="1"
+                <FrameLayout
+                    android:id="@+id/login_facebook_view"
+                    style="@style/login_button"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent">
+
+                    <ImageView
+                        android:src="@drawable/ic_login_facebook"
+                        android:scaleType="centerCrop"
+                        android:alpha="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <com.facebook.login.widget.LoginButton
+                        android:id="@+id/login_button"
+                        android:alpha="0"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/login_google_view"
+                    style="@style/login_button"
+                    android:layout_width="match_parent">
+
+                    <ImageView
+                        android:src="@drawable/ic_google_login"
+                        android:scaleType="centerCrop"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <com.google.android.gms.common.SignInButton
+                        android:id="@+id/sign_in_button"
+                        android:alpha="0"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"/>
+                </FrameLayout>
+
+                <TextView
+                    android:text="Hoặc đăng nhập bằng tài khoản của bạn"
+                    android:textAlignment="center"
+                    android:alpha="0.6"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="30dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="wrap_content" />
 
-                <com.facebook.login.widget.LoginButton
-                    android:id="@+id/login_button"
-                    android:alpha="0"
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/login_act_group_login_extend"
+                android:layout_marginBottom="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/login_act_input_username"
+                    android:hint="Tên đăng nhập"
+                    android:background="@color/colorBackgroundPlaceHolder"
+                    android:alpha="0.6"
+                    android:paddingLeft="10dp"
+                    android:drawablePadding="10dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </FrameLayout>
+                    android:layout_height="50dp" />
 
-            <FrameLayout
-                android:id="@+id/login_google_view"
-                style="@style/login_button"
-                android:layout_width="match_parent">
-
-                <ImageView
-                    android:src="@drawable/ic_google_login"
-                    android:scaleType="centerCrop"
+                <EditText
+                    android:id="@+id/login_act_input_password"
+                    android:hint="Mật khẩu của bạn"
+                    android:background="@color/colorBackgroundPlaceHolder"
+                    android:alpha="0.6"
+                    android:inputType="textPassword"
+                    android:paddingLeft="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="50dp" />
 
-                <com.google.android.gms.common.SignInButton
-                    android:id="@+id/sign_in_button"
-                    android:alpha="0"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"/>
-            </FrameLayout>
+                <Button
+                    android:id="@+id/login_act_loginBtn"
+                    android:background="@drawable/border_button"
+                    android:text="Đăng nhập"
+                    android:backgroundTint="#ffff"
+                    android:textColor="#347599"
+                    android:textSize="30px"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

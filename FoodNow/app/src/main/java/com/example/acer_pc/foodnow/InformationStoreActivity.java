@@ -326,19 +326,29 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == DefineVarible.getInforStore){
-            if(jsonObjectInforStore != null)
-            {
-                try {
-                    setData();
-                    shimmerFrameLayout.stopShimmerAnimation();
-                    shimmerFrameLayout.setVisibility(View.GONE);
-                    relativeLayoutViewHide.setVisibility(View.VISIBLE);
-                } catch (JSONException e) {
-                    e.printStackTrace();
+            new Thread() {
+                public void run() {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (jsonObjectInforStore != null) {
+                                    try {
+                                        setData();
+                                        shimmerFrameLayout.stopShimmerAnimation();
+                                        shimmerFrameLayout.setVisibility(View.GONE);
+                                        relativeLayoutViewHide.setVisibility(View.VISIBLE);
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                } else {
+                                    finish();
+                                }
+
+                            }
+                        });
                 }
-            } else {
-                finish();
-            }
+            }.start();
+
         }
     }
 
