@@ -2,6 +2,8 @@
 var bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const jwt = require("jsonwebtoken");
+const secret_key = "2001160343"
+const expireTime = "3s"
 
 var urlEncodeParser = bodyParser.urlencoded({ extended: false });
 var app = new express();
@@ -49,6 +51,18 @@ mongoose.connect(connectString,
 			console.log("MongoDb connect success !");
 	}
 );
+
+function makeUsername(length) {
+	var result           = '';
+	var characters       = 'ABCDEF0123456789GHIJK0123456789LMN0123456789OPQRS0123456789TUV0123456789WXYZa0123456789bcde0123456789fghijklmn0123456789opqrs0123456789tuvwxyz0123456789';
+	var charactersLength = characters.length;
+	for ( var i = 0; i < length; i++ ) {
+	   result += characters.charAt(Math.floor(Math.random() * charactersLength)).toLowerCase();
+	}
+	return "foodnow_" + result;
+ }
+
+console.log(makeUsername(5));
 
 //firebase
 var admin = require("firebase-admin");
@@ -155,6 +169,47 @@ io.on("connect", function (socket) {
 	});
 });
 
+app.get("/userLogin",function (req, res) {
+	const token = jwt.sign({ "value" : "Thanh" }, secret_key, {
+		algorithm: "HS256",
+		expiresIn: "60s",
+	})
+	res.send(token);
+})
+
+
+function verifyUser(req, res){
+	try {
+		var payload = jwt.verify(req.body.token, secret_key);
+	} catch (e) {
+		res.send({ return_code: "0", infor : e});
+		return false;
+	}
+	//lấy thông tin khách hàng từ token để thực hiện request
+	req.body.idKhachHang = payload.value;
+	//tính thời gian hiệu lực của token
+	const nowUnixSeconds = Math.round(Number(new Date()) / 1000);
+	var time = payload.exp - nowUnixSeconds;
+	if (payload.exp - nowUnixSeconds > 30) {
+		req.body.state_token = `Still old token, left ${time} seconds !`;
+		return true;
+	}
+	//cấp mới token cho user trong lần request này
+	const newToken = jwt.sign({ username: payload.value }, secret_key, {
+		algorithm: "HS256",
+		expiresIn: "50s",
+	})
+	req.body.state_token = "New token is generated !";
+	req.body.token = newToken;
+	return true;
+}
+
+app.post("/userRequest", urlEncodeParser, function (req, res){
+	if(!verifyUser(req, res))
+		return;
+	//token hợp lệ, thực hiện xử lý
+	res.send({token : req.body.token, state_token : req.body.state_token, result : "Thực hiện request thành công"});
+})
 
 
 //giả sử user đặt hàng với id cửa hàng là req.body.idCuaHang ==> thông báo cho cửa hàng có id == req.body.idCuaHang biết 
@@ -281,7 +336,7 @@ app.put("/updateMoTaKhuVuc", urlEncodeParser, function (req, res) {
 //-------------------------------------------------------------------CỬA HÀNG----------------------------------------------------------------
 
 //tạo username auto
-const createAccountAuto = async (index) => {
+const createAccountStoreAuto = async (index) => {
 	console.time(index + "-");
 	var username = "FOODCH00000" + index;
 	return new Promise(function (resolve, reject) {
@@ -344,7 +399,7 @@ app.post("/addCuaHang", urlEncodeParser, function (req, res) {
 		&& req.body.CMND_Nguoi_Dai_Dien != "" && req.body.Email_Nguoi_Dai_Dien != ""
 		&& req.body.Thoi_Gian_Bat_Dau != "" && req.body.Thoi_Gian_Ket_Thuc != ""){
 			Promise.all([
-				createAccountAuto(1),
+				createAccountStoreAuto(1),
 				createAddressStore(req.body.Dia_Chi_Cua_Hang, req.body.lat, req.body.lng)
 			]).then(function createAccountAuto(data) {
 				console.log("tao tai khoan, dia chi", data);
@@ -704,152 +759,184 @@ app.post("/addKhachHang", urlEncodeParser, function (req, res) {
 	}
 });
 
+
+function getUserInfor(khachHang, res){
+	KHACH_HANG.aggregate(
+		[
+			{
+				"$match": {
+					"_id": khachHang._id
+				}
+			},
+			{
+				"$lookup": {
+					"from": "diachis",
+					"localField": "Dia_chi_nha",
+					"foreignField": "_id",
+					"as": "Dia_chi_nha_ex"
+				}
+			},
+			{
+				"$lookup": {
+					"from": "diachis",
+					"localField": "Dia_chi_cong_ty",
+					"foreignField": "_id",
+					"as": "Dia_chi_cong_ty_ex"
+				}
+			},
+			{
+				"$lookup": {
+					"from": "diachis",
+					"localField": "Dia_chi_khac",
+					"foreignField": "_id",
+					"as": "Dia_chi_khac_ex"
+				}
+			}
+		], function (err, result) {
+			if (result != null && result.length > 0) {
+				console.log("Đăng nhập thành công !");
+				// console.log({
+				// token: jwt.sign({ Tai_khoan: khachHang.id_user }, "secretkey", { expiresIn: '20m' }),
+				// infor: khachHang,
+				// Dia_chi_nha_ex: result[0].Dia_chi_nha_ex[0] == null ? { flag: "0" } : { flag: "1", data: result[0].Dia_chi_nha_ex[0] },
+				// Dia_chi_cong_ty_ex: result[0].Dia_chi_cong_ty_ex[0] == null ? { flag: "0" } : { flag: "1", data: result[0].Dia_chi_cong_ty_ex[0] },
+				// Dia_chi_khac_ex: result[0].Dia_chi_khac_ex.length == 0 ? { flag: "0" } : { flag: "1", data: result[0].Dia_chi_khac_ex }
+				// });
+				var tk = jwt.sign({ idKhachHang: khachHang._id }, secret_key, { expiresIn: expireTime });
+				console.log(tk);
+				res.send(
+					{
+						return_code: "1",
+						// token: jwt.sign({ idKhachHang: khachHang._id }, secret_key, { expiresIn: expireTime }),
+						token: tk,
+						infor: khachHang,
+						Dia_chi_nha_ex: result[0].Dia_chi_nha_ex[0] == null ? { flag: "0" } : { flag: "1", data: result[0].Dia_chi_nha_ex[0] },
+						Dia_chi_cong_ty_ex: result[0].Dia_chi_cong_ty_ex[0] == null ? { flag: "0" } : { flag: "1", data: result[0].Dia_chi_cong_ty_ex[0] },
+						Dia_chi_khac_ex: result[0].Dia_chi_khac_ex.length == 0 ? { flag: "0" } : { flag: "1", data: result[0].Dia_chi_khac_ex }
+					}
+				);
+			}
+		}
+	);
+}
+
+const createUsernameAuto = async (username) => {
+	return new Promise(function (resolve, reject) {
+		KHACH_HANG.find(
+			{Ten_dang_nhap: username},
+			function (err, result) {
+				if(result.length == 0){
+					resolve(username);
+				} else {
+					resolve(makeUsername(5));
+				}
+			}
+		);
+	});
+}
+
+const updateUsernameAuto = async (user) => {
+	return new Promise((resolve, reject) => {
+		Promise.all([
+			createUsernameAuto(makeUsername(5)),
+		]).then(function createAccountAuto(data) {
+			user.Ten_dang_nhap = data[0];
+			// var mk = String(user._id);
+			// user.Mat_khau = "01010101";
+			user.save(function(err, res){
+				if(err){
+					resolve(null);
+				} else{
+					resolve(user.Ten_khach_hang);
+				}
+			});
+		});
+	})	
+}
+
+// KHACH_HANG.find({}, async function(err, result){
+// 	Promise.all(
+// 		result.map(function (user) {
+// 			return updateUsernameAuto(user);
+// 		}))
+// 		.then(function (resolveCH) {
+// 			console.log(resolveCH);
+// 		});
+// }
+// );
+
+
 //route đăng nhập
 //method POST
 //params : id, name, email, img
 app.post("/DangNhap", urlEncodeParser, function (req, res) {
-	if (req.body.id != null && req.body.name != null) {
-		if (req.body.id != "" && req.body.name != "") {
-			// console.log("\nThông tin khách hàng ");
-			// console.log("\nkhách hàng đăng nhập : " + req.body.id);
-			// console.log("\nkhách hàng đăng nhập : " + req.body.name);
-			// console.log("\nkhách hàng đăng nhập : " + req.body.picture);
-			// console.log("\nkhách hàng đăng nhập : " + req.body.gender);
-			// console.log("\nkhách hàng đăng nhập : " + req.body.birthday);
-			// console.log("\nkhách hàng đăng nhập : " + req.body.email);
-			KHACH_HANG.findOne({ id_user: req.body.id }, function (error, khachHang) {
-				if (error) {
-					console.log("Xảy lỗi tìm kiếm khách hàng : " + error);
-					var response = { return_code: "0", error_infor: "Lỗi server khi query." };
-					res.send(response);
-				}
-				else {
-					if (khachHang == null) {
-						console.log("Đăng ký khách hàng mới !");
-						var newKhachHang = new KHACH_HANG({
-							id_user: req.body.id,
-							Ten_khach_hang: req.body.name,
-							So_dien_thoai: "0566731898",
-							Email: req.body.email,
-							Ngay_sinh: req.body.birthday,
-							Gioi_tinh: req.body.gender,
-							Hinh_anh_khach_hang: req.body.picture,
-							Dia_chi_nha: null,
-							Dia_chi_cong_ty: null,
-							Dia_chi_khac: [],
-							Cua_hang_yeu_thich: [],
-							Don_hang_id: [],
-							Ct_Gio_Hang_id: []
-						});
-						newKhachHang.save(function (err, khachHang) {
-							if (err) {
-								console.log("Đăng ký khách hàng mới bị lỗi :" + err);
-								var response = { return_code: "0", error_infor: "Lỗi server khi đăng ký khách hàng." };
-								res.send(response);
-							}
-							else {
-								console.log("Đăng ký tài khoảng thành công :" + khachHang);
-								res.send(
-									{
-										return_code: "1",
-										token: jwt.sign({ Tai_khoan: khachHang.id_user }, "secretkey", { expiresIn: '20m' }),
-										infor: khachHang
-									}
-								);
-							}
-						});
-					}
-					else {
-						KHACH_HANG.aggregate(
-							[
-								{
-									"$match": {
-										"_id": khachHang._id
-									}
-								},
-								{
-									"$lookup": {
-										"from": "diachis",
-										"localField": "Dia_chi_nha",
-										"foreignField": "_id",
-										"as": "Dia_chi_nha_ex"
-									}
-								},
-								{
-									"$lookup": {
-										"from": "diachis",
-										"localField": "Dia_chi_cong_ty",
-										"foreignField": "_id",
-										"as": "Dia_chi_cong_ty_ex"
-									}
-								},
-								{
-									"$lookup": {
-										"from": "diachis",
-										"localField": "Dia_chi_khac",
-										"foreignField": "_id",
-										"as": "Dia_chi_khac_ex"
-									}
-								}
-							], function (err, result) {
-								if (result != null && result.length > 0) {
-									console.log("Đăng nhập thành công !");
-									console.log({
-									token: jwt.sign({ Tai_khoan: khachHang.id_user }, "secretkey", { expiresIn: '20m' }),
-									infor: khachHang,
-									Dia_chi_nha_ex: result[0].Dia_chi_nha_ex[0] == null ? { flag: "0" } : { flag: "1", data: result[0].Dia_chi_nha_ex[0] },
-									Dia_chi_cong_ty_ex: result[0].Dia_chi_cong_ty_ex[0] == null ? { flag: "0" } : { flag: "1", data: result[0].Dia_chi_cong_ty_ex[0] },
-									Dia_chi_khac_ex: result[0].Dia_chi_khac_ex.length == 0 ? { flag: "0" } : { flag: "1", data: result[0].Dia_chi_khac_ex }
-									});
-									// khachHang.Dia_chi_nha_ex = result[0].Dia_chi_nha_ex[0];
-									// khachHang.Dia_chi_cong_ty_ex = result[0].Dia_chi_cong_ty_ex[0];
-									// khachHang.Dia_chi_khac_ex = result[0].Dia_chi_khac_ex;
-									res.send(
-										{
-											return_code: "1",
-											token: jwt.sign({ Tai_khoan: khachHang.id_user }, "secretkey", { expiresIn: '20m' }),
-											infor: khachHang,
-											Dia_chi_nha_ex: result[0].Dia_chi_nha_ex[0] == null ? { flag: "0" } : { flag: "1", data: result[0].Dia_chi_nha_ex[0] },
-											Dia_chi_cong_ty_ex: result[0].Dia_chi_cong_ty_ex[0] == null ? { flag: "0" } : { flag: "1", data: result[0].Dia_chi_cong_ty_ex[0] },
-											Dia_chi_khac_ex: result[0].Dia_chi_khac_ex.length == 0 ? { flag: "0" } : { flag: "1", data: result[0].Dia_chi_khac_ex }
-										}
-									);
-								}
-							}
-						);
-					}
-				}
-			});
-
-			// KHACH_HANG.findOne({ Tai_khoan: req.body.TaiKhoan }, function (error, result) {
-			// 	if (error) {
-			// 		console.log("Lỗi tìm kiếm!");
-			// 		res.send("-1");
-			// 	}
-			// 	else {
-			// 		if (result == null) {
-			// 			console.log("Tên đăng nhập không chính xác.");
-			// 			res.send("-1");
-			// 		}
-			// 		else if (result.Tai_khoan == req.body.TaiKhoan && result.Mat_khau == req.body.MatKhau) {
-			// 			console.log("Đăng nhập thành công !");
-			// 			res.send(
-			// 				[
-			// 					{
-			// 						"token": jwt.sign({ Tai_khoan: result.Tai_khoan, Mat_khau: result.Mat_khau }, "secretkey", { expiresIn: '20m' }),
-			// 						"name": result.Ten_khach_hang
-			// 					}
-			// 				]
-			// 			);
-			// 		}
-			// 		else {
-			// 			console.log("Mật khẩu không chính xác !");
-			// 			res.send("-1");
-			// 		}
-			// 	}
-			// })
+	var response = { return_code: "0", error_infor: "Miss params." };
+	if(req.body.type == null || req.body.type == ""){
+		return res.send(response);
+	}
+	var condition = {};
+	if(req.body.type == "0" || req.body.type == "1"){
+		if (req.body.id != null && req.body.name != null && req.body.id != "" && req.body.name != "") {
+			condition = { id_user: req.body.id };
+		} else {
+			return res.send(response);
+		}
+	} else if(req.body.type == "2"){
+		if (req.body.Ten_dang_nhap != null && req.body.Mat_khau != null && req.body.Ten_dang_nhap != "" && req.body.Mat_khau != "") {
+			condition = { Ten_dang_nhap: req.body.Ten_dang_nhap, Mat_khau :  req.body.Mat_khau};
+		} else {
+			return res.send(response);
 		}
 	}
+	KHACH_HANG.findOne(condition, function (error, khachHang) {
+		if (error) {
+			console.log("Xảy lỗi tìm kiếm khách hàng : " + error);
+			response = { return_code: "0", error_infor: "Lỗi server khi query." };
+			res.send(response);
+		}
+		else {
+			if (khachHang == null && (req.body.type == "0" || req.body.type == "1")) {
+				console.log("Đăng ký khách hàng mới !");
+				Promise.all([
+					createUsernameAuto(makeUsername(5)),
+				]).then(function createAccountAuto(data) {
+					var newKhachHang = new KHACH_HANG({
+						id_user: req.body.id,
+						Ten_khach_hang: req.body.name,
+						So_dien_thoai: "",
+						Email: req.body.email,
+						Ngay_sinh: req.body.birthday,
+						Gioi_tinh: req.body.gender,
+						Hinh_anh_khach_hang: req.body.picture,
+						Dia_chi_nha: null,
+						Dia_chi_cong_ty: null,
+						Dia_chi_khac: [],
+						Ten_dang_nhap : data[0],
+						Mat_khau : "01010101",
+						Cua_hang_yeu_thich: [],
+						Don_hang_id: [],
+						Ct_Gio_Hang_id: []
+					});
+					newKhachHang.save(function (err, khachHang) {
+						if (err) {
+							console.log("Đăng ký khách hàng mới bị lỗi :" + err);
+							response = { return_code: "0", error_infor: "Lỗi server khi đăng ký khách hàng." };
+							res.send(response);
+						}
+						else {
+							console.log("Đăng ký tài khoảng thành công :" + khachHang);
+							getUserInfor(khachHang, res);	
+						}
+					});
+				});
+			} else if(khachHang == null && req.body.type == "2"){
+				return res.send(response);
+			}else if(khachHang != null){
+				console.log("Đăng nhập tài khoảng thành công !");
+				getUserInfor(khachHang, res);
+			}
+		}
+	});
 });
 
 
@@ -2213,7 +2300,7 @@ const timThongTinMonAnChoDonHang = async (iMONAN) => {
 	});
 }
 
-function capNhatDonHang(iCART, iDONHANG, error_query, res) {
+function capNhatDonHang(iCART, iDONHANG, error_query, req, res) {
 	const label = Date.now();
 	console.time("capNhatDonHang:" + label);
 	if (iCART.length != null && iCART.length > 0) {//giỏ hàng có item
@@ -2241,7 +2328,7 @@ function capNhatDonHang(iCART, iDONHANG, error_query, res) {
 							// console.log(resultCapNhatDH);
 							console.timeEnd("capNhatDonHang:" + label);
 							console.log("Kết thúc cập nhật đơn hàng !");
-							res.send({ return_code: "1" });
+							res.send({ return_code: "1", token : req.body.token, state_token : req.body.state_token});
 						}
 					});
 				}
@@ -2260,7 +2347,9 @@ app.post("/chonSanPham", urlEncodeParser, function (req, res) {
 	var error_query = { return_code: "0", error_infor: "Lỗi server khi query." };
 	console.log("--------------------------------------------------------------------------------------------");
 	console.log("Thông tin cửa hàng :" + req.body.idCuaHang);
-	console.log("Thông tin khách hàng : " + req.body.idKhachHang);
+	console.log("Thông tin khách hàng : " + req.body.token);
+	if(!verifyUser(req, res))
+		return;
 	if (req.body.cart != null && req.body.cart != '') {
 		console.log("Cập nhật đơn hàng !\nBắt đầu tìm đơn hàng để cập nhật !");
 		var cart = JSON.parse(req.body.cart);
@@ -2269,12 +2358,11 @@ app.post("/chonSanPham", urlEncodeParser, function (req, res) {
 			function (err, resultDH) {
 				if (err) {
 					console.log("Tìm đơn hàng gặp lỗi :\n" + err);
-					res.send(error_query);
+					return res.send(error_query);
 				} else {
 					if (resultDH != null && resultDH.length == 1) {
 						console.log("Tìm thấy đơn hàng\nBắt đầu cập nhật!");
-						// console.log(resultDH);
-						capNhatDonHang(cart, resultDH[0], error_query, res);
+						capNhatDonHang(cart, resultDH[0], error_query, req, res);
 					} else {
 						console.log("Không tìm thấy đơn hàng\nTạo đơn hàng mới");
 						var newDonHang = new DON_HANG({
@@ -2287,7 +2375,7 @@ app.post("/chonSanPham", urlEncodeParser, function (req, res) {
 							Trang_thai_don_hang: "0",//đơn nháp : 0, 
 							Chi_tiet_DH: []
 						});
-						capNhatDonHang(cart, newDonHang, error_query, res);
+						capNhatDonHang(cart, newDonHang, error_query, req, res);
 					}
 				}
 			}
@@ -2299,10 +2387,10 @@ app.post("/chonSanPham", urlEncodeParser, function (req, res) {
 			function (err, resultDH) {
 				if (err) {
 					console.log("Tìm đơn hàng gặp lỗi :\n" + err);
-					res.send(error_query);
+					return res.send(error_query);
 				} else {
 					console.log("Xóa đơn hàng thành công !");
-					res.send({ return_code: "1" });
+					return res.send({ return_code: "1", token : req.body.token, state_token : req.body.state_token});
 				}
 			}
 		);
@@ -2426,7 +2514,9 @@ const storePushNotificationKMCH = async (idCuaHang, title, message) => {
 							Promise.all(
 								resolveListToken.map(function (token) {
 									return pushNotificationToUser(token, title, message);
-							}));
+							})).then(function(resultPushNotifications) {
+								resolve(resultPushNotifications);
+							});
 						})
 				}
 			}
@@ -2436,12 +2526,10 @@ const storePushNotificationKMCH = async (idCuaHang, title, message) => {
 
 
 
-//route addKhuyenmaicuahang
+//route addKhuyenmaicuahang, thông báo khuyến mãi của cửa hàng đến những khách hàng đã yêu thích cửa hnag2
 //method POST
 //params  : idcuahang
 app.post("/addKhuyenmaicuahang", urlEncodeParser, function (req, response) {
-
-	console.log(JSON.stringify(req.body));
 	if (req.body.maGiamgia != null && req.body.thongtinKhuyenmai != null && req.body.hanSD != null && req.body.thoiGianGH != null && req.body.phanTramgiamgia != null && req.body.MoTa != null
 		&& req.body.maGiamgia != "" && req.body.thongtinKhuyenmai != "" && req.body.hanSD != "" && req.body.thoiGianGH != "" && req.body.phanTramgiamgia != "" && req.body.MoTa != "") {
 		var newKhuyenMai_CH = new KHUYENMAI_CUAHANG({
@@ -2455,33 +2543,36 @@ app.post("/addKhuyenmaicuahang", urlEncodeParser, function (req, response) {
 		var result = "";
 		newKhuyenMai_CH.save(function (err, newKM) {
 			if (err) {
-				console.log("\nThêm khuyến mãi cửa hàng mới bị lỗi : " + err);
+				console.log("Tạo khuyến mãi cửa hàng mới bị lỗi : " + err);
 				response.send({ return_code: "0" });
 			}
 			else {
-				result += "Thêm khuyến mãi cửa hàng mới thành công !";
+				console.log("Tạo khuyến mãi cửa hàng mới thành công !");
 				CUAHANG.findOneAndUpdate(
 					{ _id: req.body.idcuahang },
 					{ $push: { Khuyen_Mai_CH: newKhuyenMai_CH._id } },
-					function (err) {
-						if (err)
-							result += "\nThêm khuyến mãi cửa hàng mới gặp lỗi : " + err;
+					function (err, result) {
+						if (err){
+							console.log("Thêm khuyến mãi cửa hàng mới gặp lỗi : ");
+							response.send({ return_code: "0" });
+						}
 						else {
-							result += "\nThêm khuyến mãi cửa hàng mới thành công !";
-							response.send({ return_code: "1", infor: newKM });
+							console.log("Thêm khuyến mãi cửa hàng mới thành công !");
+							Promise.all(
+								storePushNotificationKMCH(req.body.idcuahang)
+							).then(function(data){
+								console.log("Cửa hàng thông báo tới khách hàng yêu thích thành công !");
+								response.send({ return_code: "1", infor: newKM });
+							});
 						}
 					});
-				console.log(result);
 			}
 		});
-
 	}
 	else {
-		//res.send(JSON.stringify(req.body));
 		console.log("Params error !");
 		response.send({ return_code: "0" });
 	}
-
 });
 
 

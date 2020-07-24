@@ -6,11 +6,28 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class User {
-    private String id, name, img, email, phone, birth_day, gender,token;
+    private String id, name, img, email, phone, birth_day, gender, token;
     private int type_login;
+    private String username, password;
     private ArrayList<String> arrStoreFavorite;
     private Address dia_chi_nha, dia_chi_cty;
     private ArrayList<Address> dia_chi_khac;
+
+    public String getUsername() {
+        return username == null ? "" : username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password == null ? "" : password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public Address getAddress(){
         if(dia_chi_nha != null)
@@ -138,16 +155,15 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                //bắt buộc
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                //không bắt buộc
                 ", img='" + img + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", birth_day='" + birth_day + '\'' +
                 ", gender='" + gender + '\'' +
-                ", token='" + token + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 

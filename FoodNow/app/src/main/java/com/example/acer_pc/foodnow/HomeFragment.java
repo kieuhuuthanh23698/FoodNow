@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -238,86 +240,100 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == DefineVarible.getInforFragment){
-            //convert data
-            if(jsonArray_khuyen_mai_ht != null) {
-                arrayListSystemVoucher.clear();
-                for (int i = 0; i < jsonArray_khuyen_mai_ht.length(); i++) {
-                    SystemVoucher systemVoucher = null;
-                    try {
-                        systemVoucher = new SystemVoucher(jsonArray_khuyen_mai_ht.getJSONObject(i));
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    arrayListSystemVoucher.add(systemVoucher);
+            new Thread() {
+                public void run() {
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+                            //convert data
+                            if(jsonArray_khuyen_mai_ht != null) {
+                                arrayListSystemVoucher.clear();
+                                for (int i = 0; i < jsonArray_khuyen_mai_ht.length(); i++) {
+                                    SystemVoucher systemVoucher = null;
+                                    try {
+                                        systemVoucher = new SystemVoucher(jsonArray_khuyen_mai_ht.getJSONObject(i));
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                    arrayListSystemVoucher.add(systemVoucher);
+                                }
+                            }
+                            if(jsonArray_cua_hang_goi_y != null) {
+                                arrayListSystemGroupStore.clear();
+                                for (int i = 0; i < jsonArray_cua_hang_goi_y.length(); i++) {
+                                    SystemGroupStore systemGroupStore = null;
+                                    try {
+                                        systemGroupStore = new SystemGroupStore(jsonArray_cua_hang_goi_y.getJSONObject(i));
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                    arrayListSystemGroupStore.add(systemGroupStore);
+                                }
+                            }
+                            if(jsonArray_danh_muc != null) {
+                                arrSuggestion.clear();
+                                for (int i = 0; i < jsonArray_danh_muc.length(); i++) {
+                                    Suggestion suggestion = null;
+                                    try {
+                                        suggestion = new Suggestion(jsonArray_danh_muc.getJSONObject(i));
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                    arrSuggestion.add(suggestion);
+                                }
+                            }
+                            if(jsonArray_cua_hang_gan_day != null) {
+                                arrStoreNear.clear();
+                                for (int i = 0; i < jsonArray_cua_hang_gan_day.length(); i++){
+                                    try {
+                                        JSONObject jsonObjectStore = jsonArray_cua_hang_gan_day.getJSONObject(i);
+                                        JSONObject jsonObjectInforStore = jsonObjectStore.getJSONObject("inforCH");
+                                        Store store = new Store();
+                                        store.setId(jsonObjectInforStore.getString("_id"));
+                                        store.setName(jsonObjectInforStore.getString("Ten_Cua_Hang"));
+                                        store.setUrlImage(jsonObjectInforStore.getString("Hinh_Anh_Cua_Hang"));
+                                        JSONObject jsonObjectAdddress = jsonObjectInforStore.getJSONArray("diachiCH").getJSONObject(0);
+                                        store.setAddress(jsonObjectAdddress.getString("Dia_Chi"));
+                                        store.setLat(jsonObjectAdddress.getDouble("Vi_do"));
+                                        store.setLng(jsonObjectAdddress.getDouble("Kinh_do"));
+                                        store.setDistance(jsonObjectStore.getDouble("distance"));
+                                        arrStoreNear.add(store);
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }
+                            //update adapter
+                            Handler handler = new Handler(Looper.getMainLooper());
+                            handler.post(new Runnable() {
+                                public void run() {
+                                    if(arrSuggestion != null && arrSuggestion.size() > 0){
+                                        if(suggestionAdapter != null)
+                                            suggestionAdapter.notifyDataSetChanged();
+                                    }
+                                    if(arrayListSystemVoucher != null && arrayListSystemVoucher.size() > 0){
+                                        if(systemVoucherAdapter != null)
+                                            systemVoucherAdapter.notifyDataSetChanged();
+                                    }
+                                    if(arrayListSystemGroupStore != null && arrayListSystemGroupStore.size() > 0){
+                                        if(systemGroupStoreAdapter != null)
+                                            systemGroupStoreAdapter.notifyDataSetChanged();
+                                    }
+                                    if(arrStoreNear != null && arrStoreNear.size() > 0){
+                                        storeNeartList_title.setVisibility(View.VISIBLE);
+                                        recyclerViewStoreNear.setVisibility(View.VISIBLE);
+                                        if(storeNearAdapter != null)
+                                            storeNearAdapter.notifyDataSetChanged();
+                                    }else {
+                                        storeNeartList_title.setVisibility(View.GONE);
+                                        recyclerViewStoreNear.setVisibility(View.GONE);
+                                    }
+                                }
+                            });
+//                        }
+//                    });
                 }
-            }
-            if(jsonArray_cua_hang_goi_y != null) {
-                arrayListSystemGroupStore.clear();
-                for (int i = 0; i < jsonArray_cua_hang_goi_y.length(); i++) {
-                    SystemGroupStore systemGroupStore = null;
-                    try {
-                        systemGroupStore = new SystemGroupStore(jsonArray_cua_hang_goi_y.getJSONObject(i));
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    arrayListSystemGroupStore.add(systemGroupStore);
-                }
-            }
-            if(jsonArray_danh_muc != null) {
-                arrSuggestion.clear();
-                for (int i = 0; i < jsonArray_danh_muc.length(); i++) {
-                    Suggestion suggestion = null;
-                    try {
-                        suggestion = new Suggestion(jsonArray_danh_muc.getJSONObject(i));
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    arrSuggestion.add(suggestion);
-                }
-            }
-            if(jsonArray_cua_hang_gan_day != null) {
-                arrStoreNear.clear();
-                for (int i = 0; i < jsonArray_cua_hang_gan_day.length(); i++){
-                    try {
-                        JSONObject jsonObjectStore = jsonArray_cua_hang_gan_day.getJSONObject(i);
-                        JSONObject jsonObjectInforStore = jsonObjectStore.getJSONObject("inforCH");
-                        Store store = new Store();
-                        store.setId(jsonObjectInforStore.getString("_id"));
-                        store.setName(jsonObjectInforStore.getString("Ten_Cua_Hang"));
-                        store.setUrlImage(jsonObjectInforStore.getString("Hinh_Anh_Cua_Hang"));
-                        JSONObject jsonObjectAdddress = jsonObjectInforStore.getJSONArray("diachiCH").getJSONObject(0);
-                        store.setAddress(jsonObjectAdddress.getString("Dia_Chi"));
-                        store.setLat(jsonObjectAdddress.getDouble("Vi_do"));
-                        store.setLng(jsonObjectAdddress.getDouble("Kinh_do"));
-                        store.setDistance(jsonObjectStore.getDouble("distance"));
-                        arrStoreNear.add(store);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-            //update adapter
-            if(arrSuggestion != null && arrSuggestion.size() > 0){
-                if(suggestionAdapter != null)
-                    suggestionAdapter.notifyDataSetChanged();
-            }
-            if(arrayListSystemVoucher != null && arrayListSystemVoucher.size() > 0){
-                if(systemVoucherAdapter != null)
-                    systemVoucherAdapter.notifyDataSetChanged();
-            }
-            if(arrayListSystemGroupStore != null && arrayListSystemGroupStore.size() > 0){
-                if(systemGroupStoreAdapter != null)
-                    systemGroupStoreAdapter.notifyDataSetChanged();
-            }
-            if(arrStoreNear != null && arrStoreNear.size() > 0){
-                storeNeartList_title.setVisibility(View.VISIBLE);
-                recyclerViewStoreNear.setVisibility(View.VISIBLE);
-                if(storeNearAdapter != null)
-                    storeNearAdapter.notifyDataSetChanged();
-            }else {
-                storeNeartList_title.setVisibility(View.GONE);
-                recyclerViewStoreNear.setVisibility(View.GONE);
-            }
+            }.start();
         }
     }
 

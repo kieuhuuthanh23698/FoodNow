@@ -61,6 +61,8 @@ public class DAL_Login {
                                     String Ngay_sinh = khachHangObject.getString("Ngay_sinh");
                                     String Gioi_tinh = khachHangObject.getString("Gioi_tinh");
                                     String Hinh_anh_khach_hang = khachHangObject.getString("Hinh_anh_khach_hang");
+                                    String Ten_dang_nhap = khachHangObject.getString("Ten_dang_nhap");
+                                    String Mat_khau = khachHangObject.getString("Mat_khau");
                                     JSONArray jsonArrayFacvoriteStore = khachHangObject.getJSONArray("Cua_hang_yeu_thich");
                                     for (int i = 0; i < jsonArrayFacvoriteStore.length(); i++) {
                                         String jsonIdStore = jsonArrayFacvoriteStore.getString(i);
@@ -99,7 +101,6 @@ public class DAL_Login {
                                             user.setDia_chi_khac(address);
                                         }
                                     }
-//                                    String Cua_hang_yeu_thich = khachHangObject.getString("Cua_hang_yeu_thich");
                                     user.setToken(token);
                                     user.setId(id_user);
                                     user.setName(Ten_khach_hang);
@@ -108,6 +109,8 @@ public class DAL_Login {
                                     user.setBirth_day(Ngay_sinh);
                                     user.setGender(Gioi_tinh);
                                     user.setImg(Hinh_anh_khach_hang);
+                                    user.setUsername(Ten_dang_nhap);
+                                    user.setPassword(Mat_khau);
                                     InformationStoreActivity.refresh = true;
                                     break;
                             }
@@ -134,7 +137,10 @@ public class DAL_Login {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
+                params.put("type", String.valueOf(user.getType_login()));
                 params.put("id", user.getId());
+                params.put("Ten_dang_nhap", user.getUsername());
+                params.put("Mat_khau", user.getPassword());
                 params.put("name", user.getName());
                 params.put("picture", user.getImg());
                 params.put("gender", user.getGender());

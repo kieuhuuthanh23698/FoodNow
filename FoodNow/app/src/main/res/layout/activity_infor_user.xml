@@ -35,7 +35,7 @@
     <FrameLayout
         android:background="@android:color/white"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -59,6 +59,64 @@
         </android.support.v7.widget.CardView>
 
     </FrameLayout>
+
+    <RelativeLayout
+        android:background="@android:color/white"
+        style="@style/user_fm_row"
+        android:layout_marginBottom="1dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:paddingLeft="5dp"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            style="@style/title"
+            android:backgroundTint="@android:color/white"
+            android:gravity="center"
+            android:text="Tên đăng nhập"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/infor_user_act_username"
+            android:layout_alignParentRight="true"
+            android:drawableRight="@drawable/ic_navigate_next_black_24dp"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:background="@android:color/white"
+        style="@style/user_fm_row"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:paddingLeft="5dp"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            style="@style/title"
+            android:backgroundTint="@android:color/white"
+            android:gravity="center"
+            android:text="Mật khẩu"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/infor_user_act_password"
+            android:layout_alignParentRight="true"
+            android:drawableRight="@drawable/ic_navigate_next_black_24dp"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:background="@android:color/white"

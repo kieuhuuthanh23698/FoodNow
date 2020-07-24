@@ -70,32 +70,32 @@ public class MainActivity extends AppCompatActivity {
             Fragment fragment;
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    if(fragmentHome == null)
+//                    if(fragmentHome == null)
                         fragmentHome = new HomeFragment();
                     navView.getMenu().getItem(0).setChecked(true);
                     loadFragment(fragmentHome);
-                    Toast.makeText(getApplicationContext(), "fragmentHome", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), "fragmentHome", Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.navigation_cart:
-                    if(fragmentCart == null)
+//                    if(fragmentCart == null)
                         fragmentCart = new CartFragment();
                     navView.getMenu().getItem(1).setChecked(true);
                     loadFragment(fragmentCart);
-                    Toast.makeText(getApplicationContext(), "fragmentCart", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), "fragmentCart", Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.navigation_bill:
-                    if(fragmentBill == null)
+//                    if(fragmentBill == null)
                         fragmentBill = new BillFragment();
                     navView.getMenu().getItem(2).setChecked(true);
                     loadFragment(fragmentBill);
-                    Toast.makeText(getApplicationContext(), "fragmentBill", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), "fragmentBill", Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.navigation_account:
-                    if(fragmentAccount == null)
+//                    if(fragmentAccount == null)
                         fragmentAccount = new UserFragment();
                     navView.getMenu().getItem(3).setChecked(true);
                     loadFragment(fragmentAccount);
-                    Toast.makeText(getApplicationContext(), "fragmentAcount", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), "fragmentAcount", Toast.LENGTH_SHORT).show();
                     return true;
             }
             return false;

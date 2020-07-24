@@ -11,12 +11,11 @@ const khachhangSchema = new mongoose.Schema({
     Dia_chi_nha: mongoose.Types.ObjectId,
     Dia_chi_cong_ty: mongoose.Types.ObjectId,
     Dia_chi_khac: [{ type: mongoose.Types.ObjectId }],
-    // Tai_khoan: String,
-    // Mat_khau: String,
+    Ten_dang_nhap: String,
+    Mat_khau: String,
     Cua_hang_yeu_thich:[{ type: mongoose.Types.ObjectId }],
     Don_hang_id: [{ type: mongoose.Types.ObjectId }],
     Ct_Gio_Hang_id: [{ type: mongoose.Types.ObjectId }]
-
 });
 
 module.exports = mongoose.model("KHACH_HANG", khachhangSchema);
