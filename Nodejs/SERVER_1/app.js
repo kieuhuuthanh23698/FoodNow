@@ -2431,7 +2431,7 @@ const storePushNotificationKMCH = async (idCuaHang, title, message) => {
 				}
 			}
 		);
-	};
+	});
 }
 
 

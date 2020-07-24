@@ -361,8 +361,8 @@
                 for (i=0; i< listKM.length; i++){ 
                   table.row.add( [
                     listKM[i].MaGiamGia ,
-                    listKM[i].GioBD,
-                    listKM[i].GioKT,
+                    listKM[i].HanSuDung,
+                    listKM[i].ThoiGianGiaoHang,
                     listKM[i].PhanTram_GiamGia + " %",
                     '<img src="' + url + 'Public/Images/' + listKM[i].Icon + '" alt="Product Image" class="img-size-50">',
                     ] ).draw();
@@ -521,8 +521,8 @@
               table.row.add( [
                 res[i].MaGiamGia,
                 res[i].ThongTin_KMCH,
-                res[i].NgayBD,
-                res[i].NgayKT,
+                res[i].HanSuDung,
+                res[i].ThoiGianGiaoHang,
                 res[i].PhanTram_GiamGia + " %",
                 res[i].MoTa
                 ] ).draw();
