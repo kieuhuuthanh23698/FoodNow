@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.acer_pc.foodnow.Adapter.InforStoreFoodTypeAdapter;
+import com.example.acer_pc.foodnow.Adapter.StoreVoucherAdapter;
 import com.example.acer_pc.foodnow.Common.DefineVarible;
 import com.example.acer_pc.foodnow.Data.CartDetail;
 import com.example.acer_pc.foodnow.Data.DAL_FavoriteStore;
@@ -33,9 +34,11 @@ import com.example.acer_pc.foodnow.Object.Address;
 import com.example.acer_pc.foodnow.Object.Food;
 import com.example.acer_pc.foodnow.Object.FoodType;
 import com.example.acer_pc.foodnow.Object.Store;
+import com.example.acer_pc.foodnow.Object.StoreVoucher;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -55,7 +58,6 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
     public static Address addressStore;
 //    public static ArrayList<Food> shoppingCart;
     public static HashMap<String, CartDetail> shoppingCart;
-
     //button back, button yêu thích, ảnh cửa hàng
     ImageView btnBackAct, btnFavoriteStore,imgInforStore;
     DAL_FavoriteStore dal_favoriteStore;
@@ -67,6 +69,13 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
     TextView txtAddressStore;
     //đánh giá
     RatingBar ratingBarStore;
+    //thời gian hoạt động cửa hàng
+    TextView time_active;
+    //danh sách khuyến mãi : gồm khuyến mãi cửa hàng và khuyến mãi hệ thống
+    RecyclerView recyclerViewListVoucher;
+    ArrayList<StoreVoucher> arrayListStoreVouchers;
+    StoreVoucherAdapter storeVoucherAdapter;
+    LinearLayoutManager friendsLayoutManagerStoreVoucher;
     //danh sách món ăn
     NestedScrollView nestedScrollViewFoods;
     TabLayout tabsTypeFood;
@@ -80,6 +89,7 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
     RelativeLayout groupShoppingCart;
     TextView infor_store_number_shopping_cart, infor_store_total_cost;
     Button infor_store_confirm_cart_btn;
+    boolean scrolling = false;
 
     private void init(){
         //data
@@ -107,11 +117,21 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
         txtAddressStore.setOnClickListener(this);
         //đánh giá
         ratingBarStore = findViewById(R.id.ratingStore);
+        //thời gian hoạt động của cửa hàng
+        time_active = findViewById(R.id.infor_store_time);
+        //danh sách khuyến mãi
+        recyclerViewListVoucher = findViewById(R.id.store_list_voucher);
+        recyclerViewListVoucher.setNestedScrollingEnabled(true);
+        arrayListStoreVouchers = new ArrayList<>();
+        friendsLayoutManagerStoreVoucher = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+        friendsLayoutManagerStoreVoucher.setAutoMeasureEnabled(true);
         //danh sách món ăn
         nestedScrollViewFoods = findViewById(R.id.scrollViewFoodsScroll);
         tabsTypeFood = findViewById(R.id.tabsTypeFood);
         friendsLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+        friendsLayoutManager.setAutoMeasureEnabled(true);
         recyclerViewListFoods = findViewById(R.id.store_list_foods_type);
+        recyclerViewListFoods.setNestedScrollingEnabled(true);
         //
         view2 = findViewById(R.id.view2);
         //group shopping cart
@@ -124,6 +144,19 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
         infor_store_confirm_cart_btn.setOnClickListener(this);
     }
 
+    private void initArrKhuyenMai(JSONArray jsonArray, int type) throws JSONException {
+        for (int i = 0; i < jsonArray.length(); i++){
+            StoreVoucher storeVoucher = new StoreVoucher();
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            storeVoucher.setHanSuDung(jsonObject.getString("HanSuDung"));
+            storeVoucher.setThoiGianGiaoHang(jsonObject.getString("ThoiGianGiaoHang"));
+            storeVoucher.setMaGiamGia(jsonObject.getString("MaGiamGia"));
+            storeVoucher.setPhanTram_GiamGia(jsonObject.getString("PhanTram_GiamGia"));
+            storeVoucher.setMoTa(jsonObject.getString("MoTa"));
+            arrayListStoreVouchers.add(storeVoucher);
+            arrayListStoreVouchers.add(storeVoucher);
+        }
+    }
 
     private void setData() throws JSONException {
         //thêm vào cửa hàng yêu thích
@@ -159,6 +192,19 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
             ratingBarStore.setRating(rating);
         else
             ratingBarStore.setVisibility(View.GONE);
+        //set thời gian hoạt động của cửa hàng
+        String timeStart = jsonObjectInforStore.getJSONObject("thongTinCuaHang").getString("Thoi_Gian_Bat_Dau");
+        String timeEnd = jsonObjectInforStore.getJSONObject("thongTinCuaHang").getString("Thoi_Gian_Ket_Thuc");
+        time_active.setText(timeStart + " - " + timeEnd);
+        JSONArray jsonArrayKhuyenMaiCuaHang = jsonObjectInforStore.getJSONObject("thongTinCuaHang")
+                .getJSONArray("thongTinKM");
+        initArrKhuyenMai(jsonArrayKhuyenMaiCuaHang, 0);
+        JSONArray jsonArrayKhuyenMaiHeThong = jsonObjectInforStore.getJSONArray("listKMHT");
+        initArrKhuyenMai(jsonArrayKhuyenMaiHeThong, 1);
+        storeVoucherAdapter = new StoreVoucherAdapter(arrayListStoreVouchers, getSupportFragmentManager(), this);
+        recyclerViewListVoucher.setAdapter(storeVoucherAdapter);
+        recyclerViewListVoucher.setLayoutManager(friendsLayoutManagerStoreVoucher);
+        storeVoucherAdapter.notifyDataSetChanged();
         //tab tab type foods
         tabsTypeFood.setTabGravity(TabLayout.GRAVITY_CENTER);
         tabsTypeFood.setTabMode(TabLayout.MODE_SCROLLABLE);
@@ -169,9 +215,7 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
         try {
             inforStoreFoodTypeAdapter = new InforStoreFoodTypeAdapter(jsonObjectInforStore.getJSONArray("lstMonAn"), this);
             recyclerViewListFoods.setAdapter(inforStoreFoodTypeAdapter);
-            friendsLayoutManager.setAutoMeasureEnabled(true);
             recyclerViewListFoods.setLayoutManager(friendsLayoutManager);
-            recyclerViewListFoods.setNestedScrollingEnabled(true);
             inforStoreFoodTypeAdapter.notifyDataSetChanged();
             //set data hash map
             initHashMapGioHang(jsonObjectInforStore.getJSONObject("DonHang"));
@@ -222,8 +266,11 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
                     {
                         Log.i("tab_index", "Scroll to item : " + i);
                         TabLayout.Tab tab = tabsTypeFood.getTabAt(i);
-                        if(tab != null)
+                        if(tab != null) {
                             tab.select();
+                            scrolling = true;
+//                            break;
+                        }
                     }
                 }
                 if((scrollY - oldScrollY) > 0){
@@ -248,6 +295,10 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
         tabsTypeFood.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+                if(scrolling == true){
+                    scrolling = false;
+                    return;
+                }
                 final int position = tab.getPosition();
                 View view = recyclerViewListFoods.getChildAt(position);
                 final View view2 = friendsLayoutManager.getChildAt(position);

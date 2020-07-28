@@ -11,7 +11,7 @@
 
     <RelativeLayout
         android:id="@+id/infor_store_view_hide"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -230,6 +230,15 @@
                             android:layout_height="wrap_content" />
 
                     </LinearLayout>
+
+                    <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                        android:background="@android:color/white"
+                        android:id="@+id/store_list_voucher"
+                        android:orientation="vertical"
+                        app:msrv_ms_per_inch="120"
+                        app:msrv_snap_count="2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
                     <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
                         android:background="@android:color/white"
