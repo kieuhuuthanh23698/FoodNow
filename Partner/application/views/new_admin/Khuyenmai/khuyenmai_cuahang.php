@@ -228,7 +228,11 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $.ajax(
+       loadKhuyenMaiCuaHang();
+    });
+
+    function loadKhuyenMaiCuaHang(){
+         $.ajax(
         {
             url: url + "KhuyenMaiCuaHang",
             dataType: 'json',
@@ -237,29 +241,37 @@
             },
             type: 'post',
             success: function (res) {
-             for (i=0; i< res.length; i++){ 
-                var table = $('#example1').DataTable();
-                table.row.add( [
-                res[i].MaGiamGia,
-                res[i].ThongTin_KMCH,
-                res[i].HanSuDung,
-                res[i].ThoiGianGiaoHang,
-                res[i].PhanTram_GiamGia + " %",
-                res[i].MoTa,
-                "<div class='sparkbar' data-color='#00a65a' data-height='20'>"
-                + '<button class="btn btn-danger" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
-                + "</div>"
-                ] ).draw();
+                if(res == null) {
+                    toastr.error("Lấy danh sách khuyến mãi cửa hàng thất bại !");
+                    return;
+                }
+                if(res.return_code == '1'){
+                    toastr.success("Lấy danh sách khuyến mãi cửa hàng thành công !");
+                    var table = $('#example1').DataTable();
+                    table.clear().draw();
+                    debugger;
+                    for (i=0; i< res.infor.length; i++){ 
+                        var item = res.infor[i];
+                        table.row.add( [
+                        item.MaGiamGia,
+                        item.ThongTin_KMCH,
+                        item.HanSuDung,
+                        item.ThoiGianGiaoHang,
+                        item.PhanTram_GiamGia + " %",
+                        item.MoTa,
+                        "<div class='sparkbar' data-color='#00a65a' data-height='20'>"
+                        + '<button class="btn btn-danger" onclick="xoa(' + "'" + item._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+                        + "</div>"
+                        ] ).node().id = item._id;
+                        table.draw(false);
 
-                $('#example1 tbody tr').each(function(){
-                    if($(this).find('td:nth-child(1)').text() == res[i].MaGiamGia)
-                        $(this).attr('id', res[i]._id );
-                });
-
-            };
+                    };
+                } else if(res.return_code == '0'){
+                    toastr.error("Lấy danh sách khuyến mãi cửa hàng thất bại !");
+                }
             }
         });
-    });
+    }
 
 
 
@@ -293,7 +305,9 @@
                     "<div class='sparkbar' data-color='#00a65a' data-height='20'>"
                         + '<button class="btn  btn-danger" onclick="xoa(' + "'" + item._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
                         + "</div>"
-                    ] ).draw();
+                    ] ).node().id = item._id;
+                        table.draw(false);
+                        toastr.success("Khuyến mãi đã thêm thành công!");
         }
         else if(res.return_code =="0"){
                 alert("Thêm thất bại!");
@@ -305,32 +319,6 @@
 
     function xoa(id_khuyenmai)
     {
-//         jQuery.alerts.okButton = 'Yes';
-// jQuery.alerts.cancelButton = 'No';                  
-// jConfirm('Are you sure??',  '', function(r) {
-//     if (r == true) {                    
-//         //Ok button pressed...
-//           alert("xoa" + id_khuyenmai );
-//     }  
-// });
-    //   dialog = $( "#dialog-form" ).dialog({
-    //   autoOpen: false,
-    //   height: 400,
-    //   width: 350,
-    //   modal: true,
-    //   buttons: {
-    //     "Create an account": addUser,
-    //     Cancel: function() {
-    //       dialog.dialog( "close" );
-    //     }
-    //   },
-    //   close: function() {
-    //     form[ 0 ].reset();
-    //     allFields.removeClass( "ui-state-error" );
-    //   }
-    // });
-    //    dialog.dialog( "open" );
-        //debugger;
         alert("xoa" + id_khuyenmai );
         $.ajax({
             type    : 'DELETE',
@@ -389,9 +377,6 @@
 
 </script>
 <script type="text/javascript">
-  $('.toastrDefaultSuccess').click(function() {
-      toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
-    });
 </script>
 
 <script type="text/javascript">

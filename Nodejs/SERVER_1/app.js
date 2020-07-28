@@ -363,7 +363,7 @@ const createAccountStoreAuto = async (index) => {
 							});
 					})
 				} else {
-					resolve(createAccountAuto(index + 1));
+					resolve(createAccountStoreAuto(index + 1));
 				}
 			}
 		);
@@ -1351,15 +1351,24 @@ app.post("/KhuyenMaiCuaHang", urlEncodeParser, function (req, res) {
 			if (KhuyenMaiCuaHang != null && KhuyenMaiCuaHang.Khuyen_Mai_CH != null) {
 				KHUYENMAI_CUAHANG.find({ '_id': { $in: KhuyenMaiCuaHang.Khuyen_Mai_CH } },
 					function (err, listKhuyenMai) {
-						if (err)
-							res.send("Lấy danh sách khuyến mãi  gặp lỗi : " + err);
-						else
-							res.send(listKhuyenMai);
+						if (err || listKhuyenMai.length == 0){
+							console.log("Lấy danh sách khuyến mãi  gặp lỗi : " + err);
+							res.send({
+								return_code: "0",
+								error_infor: "Cửa hàng không có khuyến mãi !"
+							});
+						}
+						else {
+							res.send({
+								return_code: "1",
+								infor: listKhuyenMai
+							});
+						}
 					}
 				);
 			} else {
 				res.send({
-					return_code: "-1",
+					return_code: "0",
 					error_infor: "Cửa hàng không có khuyến mãi !"
 				});
 			}
@@ -1848,27 +1857,6 @@ app.post("/Hienthithongtin_taikhoankhachhang", urlEncodeParser, function (req, r
 				res.send(err);
 			else
 				res.send(result);
-		}
-	);
-});
-
-
-
-//route post Capnhatthongtin_taikhoancanhan
-//method post(truyền idKhachHang)
-//Param  idKhachHang
-app.post("/Capnhatthongtin_taikhoancanhan", urlEncodeParser, function (req, res) {
-	// var tenKH, soDT, email, ngaySinh, gioiTinh;
-	KHACH_HANG.findOneAndUpdate(
-		{ _id: mongoose.Types.ObjectId(req.body.idKhachHang) },
-		{
-			$set: { Ten_khach_hang: "Ngọc Hiền", So_dien_thoai: "09098877665", Email: "lengochien@gmail.com", Ngay_sinh: "05/20/1998", Gioi_tinh: "Nữ", Hinh_anh_khach_hang: "pick.png" }
-		},
-		function (err) {
-			if (err)
-				res.send("\nCập nhật thông tin cá nhân lỗi : " + err);
-			else
-				res.send("\nCập nhật  thông tin cá nhân thành công !");
 		}
 	);
 });
@@ -2412,9 +2400,11 @@ const pushNotificationToUser = async (token, title, message) => {
 			admin.messaging().sendToDevice(token, payload, options)
 			.then((response) => {
 				console.log('Successfully sent message:', response);
+				resolve("");
 			})
 			.catch((error) => {
 				console.log('Error sending message:', error);
+				resolve("");
 			});
 		}
 	});
@@ -2445,6 +2435,7 @@ const storePushNotificationKMCH = async (idCuaHang, title, message) => {
 			async function(err,result){
 				if(err || result.length == 0){
 					console.log(err, result);
+					resolve(null);
 				} else {
 					console.log("List user : ", result);
 					Promise.all(
@@ -2457,6 +2448,7 @@ const storePushNotificationKMCH = async (idCuaHang, title, message) => {
 								resolveListToken.map(function (token) {
 									return pushNotificationToUser(token, title, message);
 							})).then(function(resultPushNotifications) {
+								console.log("Hoàn tất thông báo tới khách hàng !");
 								resolve(resultPushNotifications);
 							});
 						})
@@ -2501,10 +2493,16 @@ app.post("/addKhuyenmaicuahang", urlEncodeParser, function (req, response) {
 						else {
 							console.log("Thêm khuyến mãi cửa hàng mới thành công !");
 							Promise.all([
-								storePushNotificationKMCH(req.body.idcuahang, result.Ten_Cua_Hang, newKM.MaGiamGia)
+								storePushNotificationKMCH(req.body.idcuahang, result.Ten_Cua_Hang,"Nhập mã " +  " ' " + newKM.MaGiamGia + "'" + " Giảm Giá " +  + " ' " + newKM.PhanTram_GiamGia + " ' ")
 							]).then(function(data){
-								console.log("Cửa hàng thông báo tới khách hàng yêu thích thành công !");
-								response.send({ return_code: "1", infor: newKM });
+								console.log("Kết quả thông báo đến khách hàng ", data);
+								if(data[0] == null){
+									console.log("Thêm khuyến mãi cửa hàng mới gặp lỗi : ");
+									response.send({ return_code: "0" });
+								} else {
+									console.log("Cửa hàng thông báo tới khách hàng yêu thích thành công !");
+									response.send({ return_code: "1", infor: newKM });
+								}
 							});
 						}
 					});
@@ -4357,3 +4355,15 @@ app.post("/cuaHangThongKeDonHang", urlEncodeParser, function (req, res) {
 			 }
 	});
 });
+
+CUAHANG.findOne({}, function(err, cuahang){
+	//correctly sets the key to null... but it's still present in the document
+	cuahang.Danh_Gia = null;
+  
+	// doesn't seem to have any effect
+	delete cuahang.Danh_Gia;
+  
+	cuahang.save();
+  });
+
+  CUAHANG.update( { $unset: {"Danh_Gia": ""}});

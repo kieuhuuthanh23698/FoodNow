@@ -452,7 +452,6 @@ var socket;
 
     function themSanPham(){
         var form = createFormData();
-        debugger;
         $.ajax({
             url: url + 'addKhuyenmaihethong',
             dataType: 'json',

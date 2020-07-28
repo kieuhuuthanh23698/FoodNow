@@ -31,7 +31,7 @@ class Taikhoan extends CI_Controller {
 		{
 			$data['header'] = $this->load->view('new_admin/header', NULL, TRUE);
 			$data['left_content'] = $this->load->view('new_admin/left_content', getViewWithRule(), TRUE);
-			$data['content'] = $this->load->view('new_admin/Taikhoan/taikhoan_chinhanh_newadmin', NULL,TRUE);
+			$data['content'] = $this->load->view('new_admin/Taikhoan/taikhoan_admin', NULL,TRUE);
 			$data['footer'] = $this->load->view('new_admin/footer', NULL, TRUE);
 			$this->load->view('page/page', $data);
 		}
