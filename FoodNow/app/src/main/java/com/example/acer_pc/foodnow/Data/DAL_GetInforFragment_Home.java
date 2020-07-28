@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.util.Log;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -82,6 +83,7 @@ public class DAL_GetInforFragment_Home {
             }
         };
         insertRequest.addMarker("getInforFragment_Home");
+        insertRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         VolleySingleton.getInstance(this.context).getRequestQueue().add(insertRequest);
     }
 }

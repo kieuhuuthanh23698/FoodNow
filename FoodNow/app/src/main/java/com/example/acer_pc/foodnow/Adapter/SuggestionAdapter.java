@@ -69,7 +69,7 @@ public class SuggestionAdapter extends RecyclerView.Adapter<SuggestionAdapter.Su
         return this.arrSuggestion.size();
     }
 
-    public static class SuggestViewHolder extends RecyclerView.ViewHolder {
+    public class SuggestViewHolder extends RecyclerView.ViewHolder {
         public TextView title, showAllSuggest;
         public RecyclerView suggestion_list_store;
         public SuggestViewHolder(View itemView) {
