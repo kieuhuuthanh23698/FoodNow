@@ -223,14 +223,12 @@
                 $("#numberOders").text(listOders.length);
                 renderUI_OderList_item(res[0]);
               }
-              $('#example1 tbody tr').each(function(){
+             $('#example1 tbody tr').each(function(){
             $(this).bind({
             click : function(e) {
-              renderUI_OderList_item_detail($(this).attr('id'));
-            }, 
-
-            mouseleave : function(e) {
-            }
+              localStorage.setItem("Chi_tiet_DH", $(this).attr('id'));
+              window.location="<?php echo base_url();?>Donhang/Danhsach_donhang_cuahang";
+            },
         });
     });
 

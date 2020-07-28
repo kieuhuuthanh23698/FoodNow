@@ -2493,7 +2493,7 @@ app.post("/addKhuyenmaicuahang", urlEncodeParser, function (req, response) {
 						else {
 							console.log("Thêm khuyến mãi cửa hàng mới thành công !");
 							Promise.all([
-								storePushNotificationKMCH(req.body.idcuahang, result.Ten_Cua_Hang,"Nhập mã " +  " ' " + newKM.MaGiamGia + "'" + " Giảm Giá " +  + " ' " + newKM.PhanTram_GiamGia + " ' ")
+								storePushNotificationKMCH(req.body.idcuahang, result.Ten_Cua_Hang,"Nhập mã " +  " ' " + newKM.MaGiamGia + "'" + " Giảm Giá " +  " ' " + newKM.PhanTram_GiamGia + " ' ")
 							]).then(function(data){
 								console.log("Kết quả thông báo đến khách hàng ", data);
 								if(data[0] == null){
@@ -3015,45 +3015,6 @@ app.post("/getTaikhoancuahang", urlEncodeParser, async function (req, res) {
 //method post(truyền )
 //Param  
 app.post("/capnhatmatkhau_cuahang", urlEncodeParser, function (req, res) {
-	var result = "";
-	if(req.body.IdCuaHang!=null && req.body.IdCuaHang=="" && req.body.Matkhaucuahang!=null && req.body.Matkhaucuahang=="")
-	{
-		res.send({ return_code: "0" });
-		return;
-	}
-	CUAHANG.findById(
-		{ _id: mongoose.Types.ObjectId(req.body.IdCuaHang)},
-		function (err, resultCH) {
-			if (err) {
-				result += "\nKhông có id cửa hàng này : " + err;
-				console.log(result);
-				res.send({ return_code: "0" });
-			} else {
-				QUANLY_NGUOIDUNG.findByIdAndUpdate(
-					{_id: resultCH.Tai_Khoan},
-					{$set: { Mat_khau: req.body.Matkhaucuahang }},
-					function(err){
-					if(err){
-						result += "\nCập nhật lỗi : " + err;
-						console.log(result);
-						res.send({ return_code: "0" });
-					}
-					else{
-						result += "\nCập nhật thành công : " + req.body.IdCuaHang;
-						console.log(result);
-						res.send({ return_code: "1" });
-					}
-				});
-			}
-	});
-});
-
-
-//Cập nhật mật khẩu admin
-//route post 
-//method post(truyền )
-//Param  
-app.post("/capnhatmatkhau_admin", urlEncodeParser, function (req, res) {
 	var result = "";
 	if(req.body.IdCuaHang!=null && req.body.IdCuaHang=="" && req.body.Matkhaucuahang!=null && req.body.Matkhaucuahang=="")
 	{
@@ -4394,15 +4355,3 @@ app.post("/cuaHangThongKeDonHang", urlEncodeParser, function (req, res) {
 			 }
 	});
 });
-
-CUAHANG.findOne({}, function(err, cuahang){
-	//correctly sets the key to null... but it's still present in the document
-	cuahang.Danh_Gia = null;
-  
-	// doesn't seem to have any effect
-	delete cuahang.Danh_Gia;
-  
-	cuahang.save();
-  });
-
-  CUAHANG.update( { $unset: {"Danh_Gia": ""}});
