@@ -14,7 +14,7 @@
 
     <!-- Main content -->
     <section class="content">
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-sm-4" >
             <div class="info-box mb-3">
               <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
@@ -23,11 +23,8 @@
                 <span class="info-box-text">Tổng số chi nhánh</span>
                 <span class="info-box-number">41,410</span>
               </div>
-              <!-- /.info-box-content -->
             </div>
-            <!-- /.info-box -->
           </div>
-          <!-- /.col -->
 
           <div class="col-sm-4">
             <div class="info-box mb-3">
@@ -37,11 +34,9 @@
                 <span class="info-box-text">Tổng số cửa hàng</span>
                 <span class="info-box-number">41,410</span>
               </div>
-              <!-- /.info-box-content -->
             </div>
-            <!-- /.info-box -->
+            
           </div>
-          <!-- /.col -->
 
           <div class="col-sm-4">
             <div class="info-box mb-3">
@@ -51,11 +46,9 @@
                 <span class="info-box-text">Tổng số cửa hàng đăng nhập hệ thống</span>
                 <span class="info-box-number">41,410</span>
               </div>
-              <!-- /.info-box-content -->
             </div>
-            <!-- /.info-box -->
           </div>
-        </div>
+        </div> -->
 
         <!-- /.row -->
         <!-- Main row -->
