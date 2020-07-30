@@ -129,7 +129,7 @@
                <!-- Table row -->
               <div class="row">
                 <div class="col-12 table-responsive">
-                  <p class="lead">Ghi chú đơn hàng: <span id="#">Giao tới khóa luận thành công</span> </p>
+                  <p class="lead">Ghi chú đơn hàng: <span id="note_order"></span> </p>
                 </div>
                 <!-- /.col -->
               </div>
@@ -292,6 +292,7 @@
           );
         }
         $("#cashPay").text(detail.Hinh_thuc_thanh_toan == "0" ? "Thanh toán trực tuyến ví MoMo" : "Thanh toán bằng tiền mặt");
+        $("#note_order").text(detail.Ghi_chu_NVGH);
         $("#oder_date").text("Ngày đặt :" + moment(new Date(detail.Ngay_nhan_don_hang)).format('DD-MM_YYYY hh:mm'));
         $("#oder_date_2").text(" " + moment(new Date(detail.Ngay_nhan_don_hang)).format('DD-MM_YYYY hh:mm'));
         $("#oder_total").text(" " + (new Intl.NumberFormat().format(detail.Total)));
@@ -304,6 +305,8 @@
         $("#oder_phone").text("");
         $("#oder_id").text("");
         $("#oder_count").text("");
+        $("#cashPay").text("");
+        $("#note_order").text("");
         $("#oder_date").text("");
         $("#oder_date_2").text("");
         $("#oder_total").text("");
