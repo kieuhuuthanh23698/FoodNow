@@ -44,10 +44,10 @@ import im.delight.android.location.SimpleLocation;
 
 import static com.example.acer_pc.foodnow.MainActivity.loaded;
 
-public class FlashActivity extends AppCompatActivity {
+public class FlashActivity extends AppCompatActivity implements LocationListener{
     private Dialog dialogConfirmOpenGPS;
     private SimpleLocation location;
-    private boolean dialogShow;
+//    private boolean dialogShow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,12 +75,16 @@ public class FlashActivity extends AppCompatActivity {
             }
         });
         dialogConfirmOpenGPS.setCanceledOnTouchOutside(false);
-        dialogConfirmOpenGPS.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialogInterface) {
-                dialogShow = false;
-            }
-        });
+//        dialogConfirmOpenGPS.setOnDismissListener(new DialogInterface.OnDismissListener() {
+//            @Override
+//            public void onDismiss(DialogInterface dialogInterface) {
+//                dialogShow = false;
+//            }
+//        });
+        DAL_MyLocation.address = Utils.getCompleteAddressString(FlashActivity.this, DAL_MyLocation.latitude, DAL_MyLocation.longtitude);
+        Intent intent = new Intent(FlashActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
 
         location.setListener(new SimpleLocation.Listener() {
             public void onPositionChanged() {
@@ -105,10 +109,9 @@ public class FlashActivity extends AppCompatActivity {
     }
 
     private void requestOpenGPS(){
-        if(!dialogShow) {
+//        if(!dialogShow) {
             dialogConfirmOpenGPS.show();
-            dialogShow = true;
-        }
+//        }
     }
 
     @Override
@@ -123,6 +126,11 @@ public class FlashActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        location.endUpdates();
+//        location.endUpdates();
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        Log.i("response", location.toString());
     }
 }

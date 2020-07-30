@@ -85,6 +85,9 @@ public class ListDetailActivity extends AppCompatActivity implements DAL_GetStor
             for (int i = 0; i < stores.length(); i++) {
                 try {
                     JSONObject jsonObjectStore = stores.getJSONObject(i);
+                    int isInclude = jsonObjectStore.getInt("isInclude");
+                    if(isInclude == 0)
+                        continue;
                     Store store = new Store();
                     JSONObject jsonObjectThongTinCuaHang = jsonObjectStore.getJSONObject("CH");
                     store.setId(jsonObjectThongTinCuaHang.getString("_id"));

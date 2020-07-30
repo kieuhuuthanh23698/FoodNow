@@ -1576,7 +1576,7 @@ app.post("/thongTinCuaHang", urlEncodeParser, async function (req, res) {
 		response.thongTinCuaHang = data[0];
 		response.lstMonAn = data[1];
 		response.DonHang = data[2];
-		response.listKMHT = data[3];
+		response.listKMHT = (data[3] == null ? [] : data[3]);
 		res.send(response);
 	});
 });
