@@ -49,7 +49,7 @@ public class WelcomeActivity extends AppCompatActivity {
         arrImg = new ArrayList<Integer>();
         arrImg.add(R.drawable.slider1);
         arrImg.add(R.drawable.ic_app);
-        arrImg.add(R.drawable.slider1);
+        arrImg.add(R.drawable.slider3);
         Slider slider = new Slider(arrImg);
         viewPagerAdapter = new ViewPagerAdapter(this, slider);
         viewPager.setAdapter(viewPagerAdapter);

@@ -1,5 +1,6 @@
 package com.example.acer_pc.foodnow;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,11 +15,13 @@ import com.example.acer_pc.foodnow.Data.DAL_GetInforStore;
 import com.example.acer_pc.foodnow.Data.DAL_ConfirmShoppingCart;
 import com.example.acer_pc.foodnow.Data.DAL_Login;
 import com.example.acer_pc.foodnow.Data.DAL_MyLocation;
+import com.example.acer_pc.foodnow.Data.Dal_RequestMoMo;
 import com.example.acer_pc.foodnow.Data.Utils;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static com.example.acer_pc.foodnow.Common.Const.partner_code;
 import static com.example.acer_pc.foodnow.Common.DefineVarible.*;
 
 public class LoadingActivity extends AppCompatActivity {
@@ -74,8 +77,45 @@ public class LoadingActivity extends AppCompatActivity {
                 dal_addProductToCart.addProductToCart();
                 break;
             case DefineVarible.confirmCart:
-                dal_confirmShoppingCart = new DAL_ConfirmShoppingCart(LoadingActivity.this);
-                dal_confirmShoppingCart.confirmShoppingCart();
+                String typeCast = intent.getStringExtra("typeCast");
+                if(typeCast.isEmpty()){
+                    Intent intentResult = new Intent();
+                    this.setResult(Activity.RESULT_OK);
+                    intentResult.putExtra("status", "0");
+                    intentResult.putExtra("message", "Missing typeCast");
+                    finish();
+                    return;
+                }
+                if(typeCast.equals("0")) {
+//                    dal_requestMoMo = new Dal_RequestMoMo(LoadingActivity.this);
+//                    String request_id = intent.getStringExtra("request_id");
+//                    String phonenumber = intent.getStringExtra("phonenumber");
+//                    String merchantCode = intent.getStringExtra("merchantCode");
+//                    String token = intent.getStringExtra("token");
+//                    String rsa = intent.getStringExtra("rsa");
+//                    String description = intent.getStringExtra("description");
+//                    dal_requestMoMo.requestPayment(
+//                            request_id,
+//                            partner_code,
+//                            phonenumber,
+//                            merchantCode,
+//                            token,
+//                            rsa,
+//                            description);
+                    Intent intentResult = new Intent();
+                    this.setResult(Activity.RESULT_OK);
+                    intentResult.putExtra("status", "1");
+                    intentResult.putExtra("message", "Check pay money oke");
+                    finish();
+                } else if(typeCast.equals("1")){
+//                    dal_confirmShoppingCart = new DAL_ConfirmShoppingCart(LoadingActivity.this);
+//                    dal_confirmShoppingCart.confirmShoppingCart(typeCast);
+                    Intent intentResult = new Intent();
+                    this.setResult(Activity.RESULT_OK);
+                    intentResult.putExtra("status", "1");
+                    intentResult.putExtra("message", "Check pay money oke");
+                    finish();
+                }
                 break;
             case DefineVarible.addUserAddress:
                 int type = intent.getIntExtra("type", -1);

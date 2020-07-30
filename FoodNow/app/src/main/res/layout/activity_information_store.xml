@@ -61,16 +61,18 @@
                             android:id="@+id/imgFavoriteStore"
                             android:layout_marginLeft="30dp"
                             android:layout_gravity="center_vertical"
+                            android:layout_marginRight="30dp"
                             android:src="@drawable/ic_favorite_border_black_24dp"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent" />
 
                         <ImageView
-                            android:layout_marginLeft="30dp"
-                            android:layout_gravity="center_vertical"
-                            android:src="@drawable/ic_more_horiz_black_24dp"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent" />
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="30dp"
+                            android:src="@drawable/ic_more_horiz_black_24dp"
+                            android:visibility="gone" />
 
                     </LinearLayout>
 
@@ -183,13 +185,14 @@
                                     android:text="50 Hoa Cúc, P7, Phú Nhuận, TP.HCM"
                                     android:layout_gravity="center"
                                     android:textSize="15dp"
-                                    android:layout_marginBottom="5dp"
+                                    android:layout_marginBottom="10dp"
                                     android:textColor="@android:color/darker_gray"
                                     android:fontFamily="@font/nunito_extralight"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content" />
 
                                 <RatingBar
+                                    android:visibility="gone"
                                     android:layout_gravity="center"
                                     android:numStars="5"
                                     android:rating="4.6"

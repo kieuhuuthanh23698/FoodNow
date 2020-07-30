@@ -26,11 +26,11 @@
 
                 <TextView
                     style="@style/title"
-                    android:text="Đã lưu"
+                    android:text="ĐÃ LƯU"
                     android:gravity="center"
-                    android:background="@color/colorMain"
+                    android:background="@android:color/white"
                     android:padding="10dp"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorMain"
                     android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
