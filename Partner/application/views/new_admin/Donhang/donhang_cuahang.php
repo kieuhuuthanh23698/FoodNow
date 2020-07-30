@@ -126,6 +126,16 @@
               </div>
               <!-- /.row -->
 
+               <!-- Table row -->
+              <div class="row">
+                <div class="col-12 table-responsive">
+                  <p class="lead">Ghi chú đơn hàng: <span id="#">Giao tới khóa luận thành công</span> </p>
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+
+
               <div class="row">
                 <!-- accepted payments column -->
                 <div class="col-6">
