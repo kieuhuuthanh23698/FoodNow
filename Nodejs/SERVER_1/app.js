@@ -2499,7 +2499,7 @@ app.post("/addKhuyenmaicuahang", urlEncodeParser, function (req, response) {
 						else {
 							console.log("Thêm khuyến mãi cửa hàng mới thành công !");
 							Promise.all([
-								storePushNotificationKMCH(req.body.idcuahang, result.Ten_Cua_Hang,"Nhập mã " +  " ' " + newKM.MaGiamGia + "'" + " Giảm Giá " +  + " ' " + newKM.PhanTram_GiamGia + " ' ")
+								storePushNotificationKMCH(req.body.idcuahang, result.Ten_Cua_Hang,"Nhập mã " +  " ' " + newKM.MaGiamGia + "'" + " Giảm Giá " +  " ' " + newKM.PhanTram_GiamGia + " ' ")
 							]).then(function(data){
 								console.log("Kết quả thông báo đến khách hàng ", data);
 								if(data[0] == null){
@@ -4361,15 +4361,3 @@ app.post("/cuaHangThongKeDonHang", urlEncodeParser, function (req, res) {
 			 }
 	});
 });
-
-CUAHANG.findOne({}, function(err, cuahang){
-	//correctly sets the key to null... but it's still present in the document
-	cuahang.Danh_Gia = null;
-  
-	// doesn't seem to have any effect
-	delete cuahang.Danh_Gia;
-  
-	cuahang.save();
-  });
-
-  CUAHANG.update( { $unset: {"Danh_Gia": ""}});

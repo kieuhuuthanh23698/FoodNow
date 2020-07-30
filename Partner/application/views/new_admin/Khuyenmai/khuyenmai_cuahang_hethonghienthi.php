@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Khuyến mãi</h1>
+                    <h1 class="m-0 text-dark">Khuyến mãi hệ thống</h1>
                 </div><!-- /.col -->
           <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?php echo base_url();?>new_admin/dasboard_cuahang">Trang chủ</a></li>
-                        <li class="breadcrumb-item active">Hệ thống áp dụng</li>
+                        <li class="breadcrumb-item"><a href="<?php echo base_url();?>new_admin/dasboard_cuahang">Home</a></li>
+                        <li class="breadcrumb-item active">Khuyến mãi hệ thống</li>
                     </ol>
                 </div><!-- /.col -->
         </div><!-- /.row -->

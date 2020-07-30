@@ -3,12 +3,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Profile</h1>
+          <h1>Thông tin tài khoản</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">User Profile</li>
+            <li class="breadcrumb-item active">Thông tin tài khoản</li>
           </ol>
         </div>
       </div>
@@ -39,6 +39,16 @@
 
                     </div>
                     <div class="card-body">
+                       <strong><i class="fas fa-book mr-1"></i> Tên người đại diện</strong>
+
+                        <p class="text-muted" id="tennguoidaidien"></p>
+
+                        <hr>
+
+                        <strong><i class="fas fa-book mr-1"></i> Số điện thoại</strong>
+
+                        <p class="text-muted" id="sodienthoai"></p>
+                        
                       <strong><i class="fas fa-book mr-1"></i> Tên cửa hàng</strong>
 
                       <p class="text-muted" id="tencuahang">Bún Bò</p>
@@ -121,6 +131,8 @@
       success: function (res) {
         if(res.return_code == "1"){
           var infor = res.infor[0];
+          $("#tennguoidaidien").text(infor.Ho_Ten_Nguoi_Dai_Dien);
+          $("#sodienthoai").text(infor.So_Dien_Thoai);
           $("#tencuahang").text(infor.Ten_Cua_Hang);
           $("#diachi_cuahang").text(infor.DiaChiCH[0].Dia_Chi);
           $("#thoigian_bd").text(infor.Thoi_Gian_Bat_Dau);
