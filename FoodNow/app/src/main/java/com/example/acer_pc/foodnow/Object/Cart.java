@@ -1,5 +1,7 @@
 package com.example.acer_pc.foodnow.Object;
 
+import android.util.Log;
+
 import com.example.acer_pc.foodnow.Data.Utils;
 import com.example.acer_pc.foodnow.R;
 
@@ -21,11 +23,16 @@ public class Cart {
     private JSONArray jsonArrayDetailCart;
     private int countItem;
 
+    public String getTypePayString(){
+        if (state.equals("0"))
+            return "";
+        return typePay;
+    }
 
     public String getTypePay() {
         if (state.equals("0"))
             return "";
-        if(typePay.equals("0"))
+        if(typePay.equals("1"))
             return " - Tiền mặt";
         return " - Paypal";
     }
@@ -81,12 +88,15 @@ public class Cart {
     }
 
     public String getDate() {
+        Log.i("response", "date " + date);
+        Log.i("response", "date " + date.substring(0, 10) + " | " + date.substring(11, 16));
         return date.substring(0, 10) + " | " + date.substring(11, 16);
     }
 
     public void setDate(String date) {
         this.date = date;
     }
+
     public String getUrlImg() {
         return Utils.getUrlImageStore(this.urlImg);
     }

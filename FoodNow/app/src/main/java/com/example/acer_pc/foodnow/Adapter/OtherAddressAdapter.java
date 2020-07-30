@@ -7,7 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.acer_pc.foodnow.AddressUserActivity;
 import com.example.acer_pc.foodnow.ConfirmCartActivity;
 import com.example.acer_pc.foodnow.Object.Address;
 import com.example.acer_pc.foodnow.R;
@@ -43,6 +45,7 @@ public class OtherAddressAdapter extends RecyclerView.Adapter<OtherAddressAdapte
             @Override
             public void onClick(View view) {
                 ConfirmCartActivity.address = address;
+                Toast.makeText(context, address.getAddress(), Toast.LENGTH_SHORT).show();
                 if(type == 0){
                     ((Activity)context).finish();
                 }

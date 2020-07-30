@@ -78,7 +78,6 @@ public class NoteItemActivity extends AppCompatActivity {
                 finish();
             }
         });
-
         dal_addProductToCart = new DAL_AddProductToCart(NoteItemActivity.this);
         doneBtn.setOnClickListener(new View.OnClickListener() {
             @Override

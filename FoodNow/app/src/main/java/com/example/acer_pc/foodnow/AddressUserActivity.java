@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.acer_pc.foodnow.Adapter.OtherAddressAdapter;
 import com.example.acer_pc.foodnow.Object.Address;
@@ -88,6 +89,7 @@ public class AddressUserActivity extends AppCompatActivity {
                     startActivity(intent);
                 } else{
                     ConfirmCartActivity.address = address;
+                    Toast.makeText(AddressUserActivity.this, address.getAddress(), Toast.LENGTH_SHORT).show();
                     if(type == 0){
                         finish();
                     }
@@ -104,6 +106,7 @@ public class AddressUserActivity extends AppCompatActivity {
                     startActivity(intent);
                 } else{
                     ConfirmCartActivity.address = address;
+                    Toast.makeText(AddressUserActivity.this, address.getAddress(), Toast.LENGTH_SHORT).show();
                     if(type == 0){
                         finish();
                     }

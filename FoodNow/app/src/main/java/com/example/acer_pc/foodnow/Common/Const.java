@@ -1,0 +1,14 @@
+package com.example.acer_pc.foodnow.Common;
+
+public interface Const {
+    String merchantName = "Food Now";
+    String merchantNameLabel = "Food Now";
+    String partner_code = "MOMOLKE720200728";
+    String accessKey = "DobasEVyHtVWizWcVmsc2DSaVfQGYKRH";
+    String publicKey = "MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAt3WARf/2UeUGXzQP6IXJzGJEvASGnVAO9NQiggA54YHiYrZsY3QJhMvG5grQPiPykP9oKfBiqwuGjfxvEDhTSKhFmEpwIQx9y5pfaeEWnfuafRuCLLuDT2BQZXlHvG/FEdbT2gB101DDnf1utcK0d+4L4eJz69exIudIJVnFSofR6uIw7L0YpsnSQtsOY0lSJ1LnrQKtGpUb25wbPm8MJSo5a65N6ov1gpeSpgRg6iEkn3Ma+WjEexEFJ+CkGJIeGn1qbtFYNhGF6obYSJeI5sFKKOoOsFagYAEnQy9UwhJWRVxPnSsc4CGuLmbhvQCutUo85/5bol0ZzVcwWh5DvAwJrnGBXG3bQOCZr8apreghdflsYVZ0RNqIWOvjvy0wDyEFfURgbPreZUzPoYMAAmwIqmtt7svf58hWTn2YI8nSCL1HMipi9efx4Gn2zikvCKydR+tVeUMgS/X5ui/a3rlVMvujG0qin436lBihWAVoUdHy6QasntyKLh5fl6vz9rePFCERR88M05PNPssNzgCGAyA58SD/8EYM2Ykv3JqDOW6h8fVG9iNWGzk0nvs+iKKNdcbBkRbvOdugXm1H96g/sBa0yraRP5zv5X+PxLYn3B53Fg1v1p6HBRXhNDz7h2FKaR6eTDd8sacMCFNyEW+lQZxa5SD2tm3IHpRxstsCAwEAAQ==";
+
+//    String partner_code = "MOMOZQ6020190118";
+//    String accessKey = "aeOpV10vSuXzX9XjjkEtXYrcY6WwwyJY";
+//    String publicKey = "MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAnM2MJAtjuGVb2xGv1smzS6AHAKlrchej0Foe/MM6djNoPU0swRUx5dZYVl8atSThsZ7hxRIHT0BBtoFHfke866dUdjhILOrjBd75BFYzCyp6PjCUUGopBiyFqaIB9VRG1ldU+sFw3xcjA9Wo+5Y6UzBmzbuTk65Vx2J2RXvbJwJ8J/g6lFEa18/ggh/9OggiUJXh0dMMik/Yj8GA92c0ykTTyXDh+2C1EEK796gMcJmrWUbNCEREOo+0ynsOhBK5baoudzqCoUA1TXxBHIY49esvHJb7SV35JrDf3fD2o6l+yEbY/M2bknVulYTRIsiDjbH+qENTFkUkckpDh5foFE3It9j/M+NVFGsQk8Bvki0t/vsGEK/CSRA7ajTL8zthDqR/xVq7829UPTlC4Xtdx0f5mw3OA9CACAnonnNZ3qDA7rWmrhRypZAkK1B/6ATLQ5d1NCNrZVpydB8SvPEf9pWXigcBgNvm4yG60d0P0K0L2/QjKvNzDNTF7QY2P+z82vWJbL1WeYg5FHSP0g55oB+ISI5dVPfBWrjAl/B3tBgHpfwnGO582xUarE0AM1WPnP+IAVYkhsOks4Wa8TtYT+dAbixx9+YIRtEL7BTn1UcmJ/wCt+ZibTwaUjkiX522/dg1khkAY09O93FB21/NVnht5anf7QZZPZP2BpEFSeUCAwEAAQ==";
+
+}

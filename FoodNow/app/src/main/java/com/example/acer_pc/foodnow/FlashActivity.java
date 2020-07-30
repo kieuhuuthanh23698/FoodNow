@@ -1,30 +1,53 @@
 package com.example.acer_pc.foodnow;
 
+import android.Manifest;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.drawable.ColorDrawable;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.wifi.WifiManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.acer_pc.foodnow.Common.DefineVarible;
 import com.example.acer_pc.foodnow.Data.DAL_MyLocation;
 import com.example.acer_pc.foodnow.Data.Utils;
 import com.facebook.login.LoginManager;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
+import im.delight.android.location.SimpleLocation;
+
 import static com.example.acer_pc.foodnow.MainActivity.loaded;
 
 public class FlashActivity extends AppCompatActivity {
-
-    TimerTask timerTaskCheckWifi;
-    Timer timer;
-    WifiManager wifiManager;
-    int count = 0;
+    private Dialog dialogConfirmOpenGPS;
+    private SimpleLocation location;
+    private boolean dialogShow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,39 +56,73 @@ public class FlashActivity extends AppCompatActivity {
         LoginManager loginManager = LoginManager.getInstance();
         if(loginManager != null)
             loginManager.logOut();
-//        if(timerTaskCheckWifi == null) {
-//            timerTaskCheckWifi = new TimerTask() {
-//                @Override
-//                public void run() {
-//                    runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-//                            if (!loaded) {
-//                                if (wifiManager.getWifiState() != WifiManager.WIFI_STATE_ENABLED || !Utils.getConnectivityStatus(getApplicationContext())) {
-//                                    loaded = true;
-//                                    Log.i("wifi", "Wifi is not connected ! " + count);
-//                                    Intent intent = new Intent(getApplicationContext(), CheckWifiActivity.class);
-//                                    startActivity(intent);
-//                                } else {
-//                                    Log.i("wifi", "Wifi is connected ! " + count);
-//                                }
-//                            } else {
-//                                    Log.i("wifi", "Not check wifi ! " + count);
-//                            }
-//                            count++;
-//                        }
-//                    });
-//                }
-//            };
-//            timer = new Timer();
-//            timer.scheduleAtFixedRate(timerTaskCheckWifi, 0, 100);
-//        } else {
-//            timerTaskCheckWifi.run();
-//        }
-//        DAL_MyLocation dal_myLocation = new DAL_MyLocation(FlashActivity.this);
-//        dal_myLocation.getMyLocation();
-        Intent intent = new Intent(FlashActivity.this, MainActivity.class);
-        startActivity(intent);
+
+        location = new SimpleLocation(this, false, false, 100, true);
+
+        dialogConfirmOpenGPS = new Dialog(FlashActivity.this);
+        dialogConfirmOpenGPS.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialogConfirmOpenGPS.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialogConfirmOpenGPS.setContentView(R.layout.notification_dialog);
+        TextView content, btnConfirm;
+        content = dialogConfirmOpenGPS.findViewById(R.id.notication_content);
+        content.setText("Bạn nên bật dịch vụ GPS để có được trải nghiệm tốt hơn");
+        btnConfirm = dialogConfirmOpenGPS.findViewById(R.id.notication_btn_confirm);
+        btnConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogConfirmOpenGPS.dismiss();
+                SimpleLocation.openSettings(FlashActivity.this);
+            }
+        });
+        dialogConfirmOpenGPS.setCanceledOnTouchOutside(false);
+        dialogConfirmOpenGPS.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                dialogShow = false;
+            }
+        });
+
+        location.setListener(new SimpleLocation.Listener() {
+            public void onPositionChanged() {
+                if(location != null) {
+                    DAL_MyLocation.latitude = location.getLatitude();
+                    DAL_MyLocation.longtitude = location.getLongitude();
+                    DAL_MyLocation.address = Utils.getCompleteAddressString(FlashActivity.this, location.getLatitude(), location.getLongitude());
+                    Intent intent = new Intent(FlashActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    checkGSP();
+                }
+            }
+        });
+    }
+
+    private void checkGSP(){
+        if (!location.hasLocationEnabled()) {
+            requestOpenGPS();
+        }
+    }
+
+    private void requestOpenGPS(){
+        if(!dialogShow) {
+            dialogConfirmOpenGPS.show();
+            dialogShow = true;
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!location.hasLocationEnabled()) {
+            requestOpenGPS();
+        }
+        location.beginUpdates();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        location.endUpdates();
     }
 }

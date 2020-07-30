@@ -244,6 +244,19 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
                     cartDetail.setPrice(jsonObjectCartDetail.getDouble("Don_gia"));
                 }
             }
+            if(shoppingCart.size() > 0){
+                if (shoppingCart.size() == 0) {
+                    groupShoppingCart.setVisibility(View.GONE);
+                    viewTemp.setVisibility(View.GONE);
+                } else {
+                    if (groupShoppingCart != null) {
+                        groupShoppingCart.setVisibility(View.VISIBLE);
+                        viewTemp.setVisibility(View.VISIBLE);
+                    }
+                    infor_store_number_shopping_cart.setText(String.format("%d", shoppingCart.size()));
+                    infor_store_total_cost.setText(Utils.calculateCost() + " đ");
+                }
+            }
         } else {
             shoppingCart.clear();
         }

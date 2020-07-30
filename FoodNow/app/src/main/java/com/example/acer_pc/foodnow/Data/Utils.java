@@ -11,6 +11,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
+import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.widget.Toast;
@@ -22,11 +23,24 @@ import com.example.acer_pc.foodnow.Object.User;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 
+import java.nio.charset.Charset;
+import java.security.InvalidKeyException;
+import java.security.KeyFactory;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.X509EncodedKeySpec;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.Mac;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.SecretKeySpec;
 
 import static com.example.acer_pc.foodnow.LoginActivity.user;
 
@@ -175,6 +189,47 @@ public class Utils {
         Canvas canvas = new Canvas(bitmap);
         drawable.draw(canvas);
         return BitmapDescriptorFactory.fromBitmap(bitmap);
+    }
+
+    public static String encryptRSA(String source, String publicKey) {
+        byte[] publicKeyByte = Base64.decode(publicKey, 2);
+        X509EncodedKeySpec keySpec = new X509EncodedKeySpec(publicKeyByte);
+        String encrypted = "";
+
+        try {
+            KeyFactory e = KeyFactory.getInstance("RSA");
+            Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
+            cipher.init(1, e.generatePublic(keySpec));
+            encrypted = Base64.encodeToString(cipher.doFinal(source.getBytes()), 2);
+        } catch (NoSuchAlgorithmException var7) {
+            var7.printStackTrace();
+        } catch (NoSuchPaddingException var8) {
+            var8.printStackTrace();
+        } catch (InvalidKeySpecException var9) {
+            var9.printStackTrace();
+        } catch (InvalidKeyException var10) {
+            var10.printStackTrace();
+        } catch (BadPaddingException var11) {
+            var11.printStackTrace();
+        } catch (IllegalBlockSizeException var12) {
+            var12.printStackTrace();
+        }
+
+        return encrypted;
+    }
+
+    public static String hash_hmac_sha256(String str, String secret) throws Exception{
+        final Charset asciiCs = Charset.forName("US-ASCII");
+        final Mac sha256_HMAC = Mac.getInstance("HmacSHA256");
+        final SecretKeySpec secret_key = new javax.crypto.spec.SecretKeySpec(asciiCs.encode(str).array(), "HmacSHA256");
+        sha256_HMAC.init(secret_key);
+        final byte[] mac_data = sha256_HMAC.doFinal(asciiCs.encode(secret).array());
+        String result = "";
+        for (final byte element : mac_data)
+        {
+            result += Integer.toString((element & 0xff) + 0x100, 16).substring(1);
+        }
+        return result;
     }
 
 }

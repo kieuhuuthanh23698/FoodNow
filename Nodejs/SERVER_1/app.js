@@ -2,8 +2,14 @@
 var bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const jwt = require("jsonwebtoken");
+const publicIp = require('public-ip');
 const secret_key = "2001160343"
-const expireTime = "7d"
+const expireTime = "7d";
+
+(async () => {
+    console.log(await publicIp.v4());
+    // console.log(await publicIp.v6());
+})();
 
 var urlEncodeParser = bodyParser.urlencoded({ extended: false });
 var app = new express();

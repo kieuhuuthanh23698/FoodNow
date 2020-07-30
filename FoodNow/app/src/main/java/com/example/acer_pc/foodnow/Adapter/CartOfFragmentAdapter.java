@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.acer_pc.foodnow.Data.DAL_CancelOrder;
+import com.example.acer_pc.foodnow.Data.DAL_GetInforStore;
 import com.example.acer_pc.foodnow.InformationStoreActivity;
 import com.example.acer_pc.foodnow.Object.Cart;
 import com.example.acer_pc.foodnow.R;
@@ -90,11 +91,15 @@ public class CartOfFragmentAdapter extends RecyclerView.Adapter<CartOfFragmentAd
             @Override
             public void onClick(View view) {
                 if(type.equals("0")) {//order incharge
-                    Intent intent = new Intent(view.getContext(), InformationStoreActivity.class);
-                    intent.setAction(Intent.ACTION_SEND);
-                    intent.putExtra("idStore", cartItem.getIdStore());
-                    Toast.makeText(view.getContext(), "Get information store", Toast.LENGTH_SHORT).show();
-                    view.getContext().startActivity(intent);
+                    if(!DAL_GetInforStore.requesting) {
+                        Intent intent = new Intent(view.getContext(), InformationStoreActivity.class);
+                        intent.setAction(Intent.ACTION_SEND);
+                        intent.putExtra("idStore", cartItem.getIdStore());
+                        Toast.makeText(view.getContext(), "Get information store", Toast.LENGTH_SHORT).show();
+                        view.getContext().startActivity(intent);
+                    } else {
+                        //đang xử lý
+                    }
                 } else {
                     //act infor order
                 }
@@ -131,6 +136,8 @@ public class CartOfFragmentAdapter extends RecyclerView.Adapter<CartOfFragmentAd
                     break;
             }
         }
+        if(cartItem.getTypePayString().equals("0"))
+            holder.btnCacel.setVisibility(View.GONE);
         holder.txtDate.setText(cartItem.getDate());
     }
 
