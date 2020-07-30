@@ -3418,7 +3418,8 @@ app.post("/getDanhSachCuaDanhMuc", urlEncodeParser, async function (req, res) {
 				console.log("Query lỗi : " + errDM);
 				res.send({return_code : "0"});
 			} else {
-				CUAHANG.find({ '_id': { $in: successResutltDM.DanhSach_CH }},
+				// CUAHANG.find({ '_id': { $in: successResutltDM.DanhSach_CH }},
+				CUAHANG.find({},
 					function(err, successResutlt){
 						if(err || successResutlt.length == 0){
 							console.log("Query lỗi : " + err);
@@ -3432,7 +3433,7 @@ app.post("/getDanhSachCuaDanhMuc", urlEncodeParser, async function (req, res) {
 								}))
 								.then(function (resolveCuaHangs) {
 									console.timeEnd(time_label + "_" +req.body.idDanhMuc);
-									res.sendPromise.a({return_code : "1", infor : resolveCuaHangs});
+									res.send({return_code : "1", infor : resolveCuaHangs});
 								});
 						}
 					});
