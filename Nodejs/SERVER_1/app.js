@@ -3438,7 +3438,7 @@ app.post("/getDanhSachCuaDanhMuc", urlEncodeParser, async function (req, res) {
 								}))
 								.then(function (resolveCuaHangs) {
 									console.timeEnd(time_label + "_" +req.body.idDanhMuc);
-									res.sendPromise.a({return_code : "1", infor : resolveCuaHangs});
+									res.send({return_code : "1", infor : resolveCuaHangs});
 								});
 						}
 					});

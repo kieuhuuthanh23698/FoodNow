@@ -136,8 +136,8 @@
                  <!-- <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
                     Thanh toán qua ví điện tử dễ dàng.
                   </p> -->
-                  <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
-                    Thanh toán bằng tiền mặt.
+                  <p id="cashPay" class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
+                    <!-- <span id="oder_id">Thanh toán bằng tiền mặt.</span> -->
                   </p>
                 </div>
                 <!-- /.col -->
@@ -281,6 +281,7 @@
             '<tr><td>' + item.Ten_mon_an + '</td><td>2</td><td style="overflow-wrap: break-word; max-width: 300px; width: auto;">' + item.GhiChu + '</td><td>' + (new Intl.NumberFormat().format(item.Thanh_tien)) + '</td></tr>'
           );
         }
+        $("#cashPay").text(detail.Hinh_thuc_thanh_toan == "0" ? "Thanh toán trực tuyến ví MoMo" : "Thanh toán bằng tiền mặt");
         $("#oder_date").text("Ngày đặt :" + moment(new Date(detail.Ngay_nhan_don_hang)).format('DD-MM_YYYY hh:mm'));
         $("#oder_date_2").text(" " + moment(new Date(detail.Ngay_nhan_don_hang)).format('DD-MM_YYYY hh:mm'));
         $("#oder_total").text(" " + (new Intl.NumberFormat().format(detail.Total)));
