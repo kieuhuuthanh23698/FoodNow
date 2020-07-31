@@ -62,6 +62,7 @@ public class VerifyPhoneNumberActivity extends AppCompatActivity {
                             startActivityForResult(intent, DefineVarible.updatePhonenumber);
                         }
                     });
+                    dialogConfirmOpenGPS.show();
                 } else {
                     Toast.makeText(VerifyPhoneNumberActivity.this, "Bạn chưa nhập số điện thoại !", Toast.LENGTH_SHORT).show();
                 }

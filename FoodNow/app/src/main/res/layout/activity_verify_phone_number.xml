@@ -51,10 +51,10 @@
         android:background="@drawable/border_button"
         android:backgroundTint="#F5F2F2"
         android:ems="10"
-        android:focusable="false"
+        android:maxLength="10"
         android:hint="Vui lòng nhập số điện thoại"
         android:padding="10dp"
-        android:inputType="textPersonName"
+        android:inputType="phone"
         android:paddingLeft="5dp"
         android:textSize="15dp" />
 
