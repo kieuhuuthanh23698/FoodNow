@@ -1,0 +1,353 @@
+[{
+  "_id": {
+    "$oid": "5eba197716ec7530ecb08d29"
+  },
+  "DanhSach_CH": [
+    {
+      "$oid": "5f0696ab718e5f06dca9dbde"
+    },
+    {
+      "$oid": "5ed5dc8a925f5d5444e7e651"
+    }
+  ],
+  "Ten_Chi_Nhanh": "Hủ Tiếu Nam Vang Thành Đạt",
+  "Hinh_Anh_Chi_Nhanh": "MiQuangNamSon.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba197716ec7530ecb08d2a"
+  },
+  "DanhSach_CH": [
+    {
+      "$oid": "5eba0ad05f15d311d4d6b683"
+    }
+  ],
+  "Ten_Chi_Nhanh": "Đại Đồng Delivery - Cơm Tấm & Bún Thịt Nướng",
+  "Hinh_Anh_Chi_Nhanh": "TraSua_ChowTea.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba197716ec7530ecb08d2b"
+  },
+  "DanhSach_CH": [
+    {
+      "$oid": "5eba0ad05f15d311d4d6b686"
+    },
+    {
+      "$oid": "5f044425de1f85321c5c6edc"
+    },
+    {
+      "$oid": "5f1329cade327c3ab485d5a0"
+    },
+    {
+      "$oid": "5f1ab95154ae7f4da4415136"
+    },
+    {
+      "$oid": "5f1f04cd211e5c4ca0502a6d"
+    },
+    {
+      "$oid": "5f1f0cf2725136575c597df5"
+    }
+  ],
+  "Ten_Chi_Nhanh": "Bánh Mì Bà Nội - Bánh Mì Thịt Nướng",
+  "Hinh_Anh_Chi_Nhanh": "TraSua_ChowTea.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba197716ec7530ecb08d2c"
+  },
+  "DanhSach_CH": [
+    {
+      "$oid": "5eba0ad05f15d311d4d6b689"
+    },
+    {
+      "$oid": "5ec39da122336e32d01a2401"
+    },
+    {
+      "$oid": "5ec39da122336e32d01a2402"
+    },
+    {
+      "$oid": "5ec39da122336e32d01a2403"
+    },
+    {
+      "$oid": "5ec39da122336e32d01a2404"
+    },
+    {
+      "$oid": "5ec39da122336e32d01a2405"
+    },
+    {
+      "$oid": "5ec39da122336e32d01a2406"
+    }
+  ],
+  "Ten_Chi_Nhanh": "GUTA CAFE",
+  "Hinh_Anh_Chi_Nhanh": "TraSua_ChowTea.jpg"
+},{
+  "_id": {
+    "$oid": "5eba197716ec7530ecb08d2d"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "Cơm Tấm Sườn Que",
+  "Hinh_Anh_Chi_Nhanh": "TraSua_ChowTea.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba197716ec7530ecb08d2f"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "Vita - Nước Ép & Sinh Tố",
+  "Hinh_Anh_Chi_Nhanh": "TraSua_ChowTea.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba197716ec7530ecb08d30"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "Hủ Tiếu Nam Vang Tài Anh",
+  "Hinh_Anh_Chi_Nhanh": "TraSua_ChowTea.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba197716ec7530ecb08d31"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "Súp Cua Mộc",
+  "Hinh_Anh_Chi_Nhanh": "TraSua_ChowTea.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba197716ec7530ecb08d2e"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "Đậu Nành Mix",
+  "Hinh_Anh_Chi_Nhanh": "TraSua_ChowTea.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba197716ec7530ecb08d35"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "Say Coffee 24h",
+  "Hinh_Anh_Chi_Nhanh": "TraSua_ChowTea.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba197716ec7530ecb08d33"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "Juice Me - Nước Ép Trái Cây",
+  "Hinh_Anh_Chi_Nhanh": "TraSua_ChowTea.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba197716ec7530ecb08d36"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "Bánh Mì Má Hải",
+  "Hinh_Anh_Chi_Nhanh": "TraSua_ChowTea.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba197716ec7530ecb08d34"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "Bánh Mì Que Đà Nẵng",
+  "Hinh_Anh_Chi_Nhanh": "TraSua_ChowTea.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba197716ec7530ecb08d32"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "Nũng Nịu - Cơm Gà Xối Mỡ",
+  "Hinh_Anh_Chi_Nhanh": "TraSua_ChowTea.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba197716ec7530ecb08d37"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "Passio Cooffee",
+  "Hinh_Anh_Chi_Nhanh": "TraSua_ChowTea.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5edd16436bcd9c3504b040bf"
+  },
+  "DanhSach_CH": [
+    {
+      "$oid": "5edee725150faa3b583cd691"
+    },
+    {
+      "$oid": "5edee725150faa3b583cd694"
+    },
+    {
+      "$oid": "5edee725150faa3b583cd69a"
+    },
+    {
+      "$oid": "5edee725150faa3b583cd697"
+    },
+    {
+      "$oid": "5edee725150faa3b583cd69d"
+    }
+  ],
+  "Ten_Chi_Nhanh": "Cơm Văn Phòng Libbi",
+  "Hinh_Anh_Chi_Nhanh": "Com_1(1).jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5edd167d8ffa1d2e28e64c26"
+  },
+  "DanhSach_CH": [
+    {
+      "$oid": "5edee82d36e0d90ea87539e8"
+    },
+    {
+      "$oid": "5edee82d36e0d90ea87539eb"
+    },
+    {
+      "$oid": "5edee82d36e0d90ea87539f1"
+    },
+    {
+      "$oid": "5edee82d36e0d90ea87539f4"
+    }
+  ],
+  "Ten_Chi_Nhanh": "Cơm Món Xào",
+  "Hinh_Anh_Chi_Nhanh": "Com_1(2).jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5edd167d8ffa1d2e28e64c2a"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "Cơm Gà",
+  "Hinh_Anh_Chi_Nhanh": "Com_1(4).jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5edd167d8ffa1d2e28e64c28"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "Cơm Sườn Nướng",
+  "Hinh_Anh_Chi_Nhanh": "Com_1(3).jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5edd167d8ffa1d2e28e64c2c"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "Cơm Tấm Thanh",
+  "Hinh_Anh_Chi_Nhanh": "Com_1(5).jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5edd167d8ffa1d2e28e64c30"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "Cơm Tấm Tiến Nhật",
+  "Hinh_Anh_Chi_Nhanh": "Com_1(7).jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5edd167d8ffa1d2e28e64c34"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "Cơm Tấm Tiết Kiệm",
+  "Hinh_Anh_Chi_Nhanh": "Com_1(9).jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5edd167d8ffa1d2e28e64c32"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "Cơm Trưa Văn Phòng",
+  "Hinh_Anh_Chi_Nhanh": "Com_1(8).jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5edd167d8ffa1d2e28e64c2e"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "Cơm Tấm Đêm Mũi Tàu",
+  "Hinh_Anh_Chi_Nhanh": "Com_1(6).jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5edd167d8ffa1d2e28e64c38"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "Mì An Phở Bún Thịt Nướng",
+  "Hinh_Anh_Chi_Nhanh": "BunPho_1.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5edd167d8ffa1d2e28e64c3a"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "Quán Cơm A Trường",
+  "Hinh_Anh_Chi_Nhanh": "BunPho_2.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5edd167d8ffa1d2e28e64c3e"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "Lục Cafe",
+  "Hinh_Anh_Chi_Nhanh": "TraSua_2.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5edd167d8ffa1d2e28e64c3c"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "Tuyết Nhiệt Đới Milk Tea",
+  "Hinh_Anh_Chi_Nhanh": "TraSua_1.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5edd167d8ffa1d2e28e64c36"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "Thế Giới Cơm Tấm",
+  "Hinh_Anh_Chi_Nhanh": "Com_1(10).jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5edd167d8ffa1d2e28e64c46"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "Gờ Cafe",
+  "Hinh_Anh_Chi_Nhanh": "TraSua_6.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5edd167d8ffa1d2e28e64c42"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "Hooga Cafe",
+  "Hinh_Anh_Chi_Nhanh": "TraSua_4.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5edd167d8ffa1d2e28e64c44"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "Phúc Long Coffee",
+  "Hinh_Anh_Chi_Nhanh": "TraSua_5.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5edd167d8ffa1d2e28e64c40"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "Kai Coffee",
+  "Hinh_Anh_Chi_Nhanh": "TraSua_3.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f073df34e250426205f1f62"
+  },
+  "DanhSach_CH": [],
+  "Ten_Chi_Nhanh": "test",
+  "Hinh_Anh_Chi_Nhanh": "1594310131782-429233697_FreshestfromtheTap,PolydactylRedTabby.jpg",
+  "__v": 0
+}]

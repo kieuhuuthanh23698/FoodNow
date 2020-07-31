@@ -1,0 +1,122 @@
+[{
+  "_id": {
+    "$oid": "5eb97ce18e532614d02938cc"
+  },
+  "DanhSach_CH": [
+    {
+      "$oid": "5eba0ad05f15d311d4d6b67f"
+    },
+    {
+      "$oid": "5ec39da122336e32d01a2401"
+    },
+    {
+      "$oid": "5ec39da122336e32d01a2402"
+    },
+    {
+      "$oid": "5ec39da122336e32d01a2403"
+    },
+    {
+      "$oid": "5ec39da122336e32d01a2404"
+    },
+    {
+      "$oid": "5edee82d36e0d90ea87539e8"
+    }
+  ],
+  "Chu_De_Chinh": "FoodNow đi chợ",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eb97ce18e532614d02938cd"
+  },
+  "DanhSach_CH": [
+    {
+      "$oid": "5ec39da122336e32d01a2401"
+    },
+    {
+      "$oid": "5ec39da122336e32d01a2406"
+    },
+    {
+      "$oid": "5eba0ad05f15d311d4d6b687"
+    },
+    {
+      "$oid": "5eba0ad05f15d311d4d6b683"
+    }
+  ],
+  "Chu_De_Chinh": "Ăn vặt ở nhà",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eb97ce18e532614d02938ce"
+  },
+  "DanhSach_CH": [
+    {
+      "$oid": "5eba0ad05f15d311d4d6b688"
+    },
+    {
+      "$oid": "5eba0ad05f15d311d4d6b687"
+    },
+    {
+      "$oid": "5eba0ad05f15d311d4d6b689"
+    },
+    {
+      "$oid": "5ec39da122336e32d01a2401"
+    },
+    {
+      "$oid": "5ec39da122336e32d01a2402"
+    },
+    {
+      "$oid": "5ec39da122336e32d01a2406"
+    }
+  ],
+  "Chu_De_Chinh": "Giải khát ở nhà",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eb97ce18e532614d02938cf"
+  },
+  "DanhSach_CH": [
+    {
+      "$oid": "5eba0ad05f15d311d4d6b67f"
+    },
+    {
+      "$oid": "5ec39da122336e32d01a2401"
+    },
+    {
+      "$oid": "5ec39da122336e32d01a2404"
+    },
+    {
+      "$oid": "5ec39da122336e32d01a2403"
+    },
+    {
+      "$oid": "5ec39da122336e32d01a2402"
+    },
+    {
+      "$oid": "5ec39da122336e32d01a2406"
+    }
+  ],
+  "Chu_De_Chinh": "Ăn mì, bún, phở ở nhà",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5edf78189f6ffd1524eb3557"
+  },
+  "DanhSach_CH": [
+    {
+      "$oid": "5eba0ad05f15d311d4d6b689"
+    },
+    {
+      "$oid": "5ec39da122336e32d01a2402"
+    },
+    {
+      "$oid": "5ec39da122336e32d01a2404"
+    },
+    {
+      "$oid": "5ec39da122336e32d01a2401"
+    },
+    {
+      "$oid": "5ec39da122336e32d01a2406"
+    }
+  ],
+  "Chu_De_Chinh": "Món ăn ngon mỗi ngày",
+  "__v": 0
+}]

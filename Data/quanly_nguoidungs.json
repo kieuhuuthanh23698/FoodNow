@@ -1,0 +1,89 @@
+[{
+  "_id": {
+    "$oid": "5ed5de7e3f18e31378a48906"
+  },
+  "Ten_dang_nhap": "FOODCH000001",
+  "Mat_khau": "FOODCH000001",
+  "Trang_thai": "1",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ed5de7e3f18e31378a48907"
+  },
+  "Ten_dang_nhap": "FOODCN000001",
+  "Mat_khau": "FOODCN000001",
+  "Trang_thai": "1",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ed5de7e3f18e31378a48908"
+  },
+  "Ten_dang_nhap": "FOODAM000001",
+  "Mat_khau": "FOODAM000001",
+  "Trang_thai": "1",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ed5f0f5715159572cf6b628"
+  },
+  "Ten_dang_nhap": "FOODSM000001",
+  "Mat_khau": "FOODSM000001",
+  "Trang_thai": "1",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ee9ca48eee1ba5dfb1b791b"
+  },
+  "Ten_dang_nhap": "FOODCH000002",
+  "Mat_khau": "FOODCH000002",
+  "Trang_thai": "1",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f044425de1f85321c5c6edb"
+  },
+  "Ten_dang_nhap": "FOODCH000003",
+  "Mat_khau": "FOODCH000003",
+  "Trang_thai": "Đang hoạt động",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f0696aa718e5f06dca9dbdd"
+  },
+  "Ten_dang_nhap": "FOODCH000004",
+  "Mat_khau": "FOODCH000004",
+  "Trang_thai": "Đang hoạt động",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1329cade327c3ab485d59f"
+  },
+  "Ten_dang_nhap": "FOODCH000005",
+  "Mat_khau": "1",
+  "Trang_thai": "Đang hoạt động",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1ab95154ae7f4da4415135"
+  },
+  "Ten_dang_nhap": "FOODCH000006",
+  "Mat_khau": "FOODCH000006",
+  "Trang_thai": "sahdgj",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1f04cd211e5c4ca0502a6c"
+  },
+  "Ten_dang_nhap": "FOODCH000007",
+  "Mat_khau": "FOODCH000007",
+  "Trang_thai": "Đang hoạt động",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1f0cf2725136575c597df4"
+  },
+  "Ten_dang_nhap": "FOODCH000008",
+  "Mat_khau": "FOODCH000008",
+  "Trang_thai": "Đang hoạt động",
+  "__v": 0
+}]

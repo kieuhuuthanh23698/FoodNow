@@ -1,0 +1,119 @@
+[{
+  "_id": {
+    "$oid": "5ebabdafe4481445a896a794"
+  },
+  "DanhSach_CH": [
+    {
+      "$oid": "5edee725150faa3b583cd691"
+    },
+    {
+      "$oid": "5edee725150faa3b583cd694"
+    },
+    {
+      "$oid": "5edee725150faa3b583cd69a"
+    },
+    {
+      "$oid": "5edee725150faa3b583cd697"
+    }
+  ],
+  "Thongtin_Chinh": "Nhanh tay đặt món",
+  "Thongtin_Phu": "Giảm 45K cho đơn hàng đầu tiên",
+  "HinhAnh_CH": "TraSua_1.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ebabdafe4481445a896a795"
+  },
+  "DanhSach_CH": [
+    {
+      "$oid": "5edee82d36e0d90ea87539e8"
+    },
+    {
+      "$oid": "5edee82d36e0d90ea87539ee"
+    }
+  ],
+  "Thongtin_Chinh": "Lần đầu đặt món",
+  "Thongtin_Phu": "Giảm 45K cho đơn hàng đầu tiên",
+  "HinhAnh_CH": "TraSua_8.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ebabdafe4481445a896a796"
+  },
+  "DanhSach_CH": [
+    {
+      "$oid": "5edee82d36e0d90ea87539eb"
+    },
+    {
+      "$oid": "5eba0ad05f15d311d4d6b683"
+    },
+    {
+      "$oid": "5eba0ad05f15d311d4d6b686"
+    }
+  ],
+  "Thongtin_Chinh": "Nhậu cùng bạn bè",
+  "Thongtin_Phu": "Giảm 45K cho đơn hàng đầu tiên",
+  "HinhAnh_CH": "TraSua_8.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ebabdafe4481445a896a797"
+  },
+  "DanhSach_CH": [
+    {
+      "$oid": "5eba0ad05f15d311d4d6b68b"
+    },
+    {
+      "$oid": "5eba0ad05f15d311d4d6b686"
+    },
+    {
+      "$oid": "5edee82d36e0d90ea87539e8"
+    }
+  ],
+  "Thongtin_Chinh": "Khai tiệc cùng đồng nghiệp",
+  "Thongtin_Phu": "Giảm 45K cho đơn hàng đầu tiên",
+  "HinhAnh_CH": "TraSua_10.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ee08ed1f5b7a828b89e08fe"
+  },
+  "DanhSach_CH": [
+    {
+      "$oid": "5eba0ad05f15d311d4d6b68a"
+    }
+  ],
+  "Thongtin_Chinh": "Ngày hôm nay ta cùng nhau họp mặt",
+  "Thongtin_Phu": "Nhanh tay chỉ có 45K cho 1 đơn hàng",
+  "HinhAnh_CH": "TraSua_1.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ef1a9b78a78b6407c8ad19c"
+  },
+  "DanhSach_CH": [
+    {
+      "$oid": "5eba0ad05f15d311d4d6b686"
+    }
+  ],
+  "Thongtin_Chinh": "Ngày ăn ngon ngày ăn ngon",
+  "Thongtin_Phu": "Đặt lẹ nào",
+  "HinhAnh_CH": "TraSua_1.jpg",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f0489187992fc2a6465ff91"
+  },
+  "DanhSach_CH": [
+    {
+      "$oid": "5edee82d36e0d90ea87539e8"
+    },
+    {
+      "$oid": "5eba0ad05f15d311d4d6b68b"
+    }
+  ],
+  "Thongtin_Chinh": "Test Thử 7/7/2020",
+  "Thongtin_Phu": "Ăn ngon",
+  "HinhAnh_CH": "1594132760401-70060770_3-Lotto-10-3-Colore-Misto-Torta-Di-Compleanno-Candele-Bella-Festa-Candele-Creativo-Filo-Colorato.jpg",
+  "__v": 0
+}]

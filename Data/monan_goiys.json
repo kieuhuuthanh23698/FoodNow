@@ -1,0 +1,73 @@
+[{
+  "_id": {
+    "$oid": "5ebd6410758ae5310cc052d4"
+  },
+  "Ten_mon_an_goi_y": "Cơm gà",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ebd6410758ae5310cc052d6"
+  },
+  "Ten_mon_an_goi_y": "Hủ tíu",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ebd6410758ae5310cc052d5"
+  },
+  "Ten_mon_an_goi_y": "Bún đậu",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ebd6410758ae5310cc052d7"
+  },
+  "Ten_mon_an_goi_y": "Bún bò",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ebd6410758ae5310cc052d9"
+  },
+  "Ten_mon_an_goi_y": "Pizza",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ebd6410758ae5310cc052da"
+  },
+  "Ten_mon_an_goi_y": "Cháo",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ebd6410758ae5310cc052d8"
+  },
+  "Ten_mon_an_goi_y": "Cơm tấm",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ebd6410758ae5310cc052dc"
+  },
+  "Ten_mon_an_goi_y": "Sinh tố",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ebd6410758ae5310cc052dd"
+  },
+  "Ten_mon_an_goi_y": "Gỏi cuốn",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ebd6410758ae5310cc052df"
+  },
+  "Ten_mon_an_goi_y": "Trà sữa",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ebd6410758ae5310cc052de"
+  },
+  "Ten_mon_an_goi_y": "Chè",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ebd6410758ae5310cc052db"
+  },
+  "Ten_mon_an_goi_y": "Mì cay",
+  "__v": 0
+}]

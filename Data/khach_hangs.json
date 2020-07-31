@@ -1,0 +1,296 @@
+[{
+  "_id": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "Dia_chi_khac": [
+    {
+      "$oid": "5eb987c881378239a8478e70"
+    },
+    {
+      "$oid": "5eb987c881378239a8478e72"
+    }
+  ],
+  "Cua_hang_yeu_thich": [
+    {
+      "$oid": "5ec39da122336e32d01a2401"
+    }
+  ],
+  "Don_hang_id": [],
+  "Ct_Gio_Hang_id": [],
+  "id_user": "864601877337353",
+  "Ten_khach_hang": "Hữu Thành",
+  "So_dien_thoai": "0566731898",
+  "Email": "kieuhuuthanh23698@gmail.com",
+  "Ngay_sinh": {
+    "$date": "1998-06-22T17:00:00Z"
+  },
+  "Gioi_tinh": "male",
+  "Hinh_anh_khach_hang": "https://graph.facebook.com/864601877337353/picture?width=500&height=500",
+  "Dia_chi_nha": {
+    "$oid": "5eb987c881378239a8478e6f"
+  },
+  "Dia_chi_cong_ty": {
+    "$oid": "5eb987c881378239a8478e71"
+  },
+  "__v": 0,
+  "Mat_khau": "01010101",
+  "Ten_dang_nhap": "foodnow_38r49"
+},{
+  "_id": {
+    "$oid": "5ecd329dd3192238e8b35fd1"
+  },
+  "Dia_chi_khac": [
+    {
+      "$oid": "5f0f4b41cd437624ac0f34c3"
+    }
+  ],
+  "Cua_hang_yeu_thich": [],
+  "Don_hang_id": [],
+  "Ct_Gio_Hang_id": [],
+  "id_user": "117751487601230321390",
+  "Ten_khach_hang": "Ayumu Aizawa",
+  "So_dien_thoai": null,
+  "Email": "aizawaayumu123@gmail.com",
+  "Ngay_sinh": null,
+  "Gioi_tinh": "",
+  "Hinh_anh_khach_hang": "https://lh3.googleusercontent.com/a-/AOh14Ggm7d7IoKaczwvQgpcgGR6WnfLvexB7u6zEWUur",
+  "Dia_chi_nha": {
+    "$oid": "5f0f4b25cd437624ac0f34c2"
+  },
+  "Dia_chi_cong_ty": {
+    "$oid": "5f0f4be5cd437624ac0f34c4"
+  },
+  "__v": 1,
+  "Mat_khau": "01010101",
+  "Ten_dang_nhap": "foodnow_xz7ux"
+},{
+  "_id": {
+    "$oid": "5ecd32dcd3192238e8b35fd2"
+  },
+  "Dia_chi_khac": [],
+  "Cua_hang_yeu_thich": [],
+  "Don_hang_id": [],
+  "Ct_Gio_Hang_id": [],
+  "id_user": "106491375577322728919",
+  "Ten_khach_hang": "Thành Kiều Hữu",
+  "So_dien_thoai": "0566731898",
+  "Email": "kieuhuuthanh23698@gmail.com",
+  "Ngay_sinh": null,
+  "Gioi_tinh": "",
+  "Hinh_anh_khach_hang": "https://lh3.googleusercontent.com/a-/AOh14GjriRHyrr_4Gmxya97bJePkIdZyh-ohMAlG35vMqg",
+  "Dia_chi_nha": {
+    "$oid": "5f228469c3eef253f8538013"
+  },
+  "Dia_chi_cong_ty": null,
+  "__v": 0,
+  "Mat_khau": "01010101",
+  "Ten_dang_nhap": "foodnow_41283"
+},{
+  "_id": {
+    "$oid": "5ecd32f1d3192238e8b35fd3"
+  },
+  "Dia_chi_khac": [],
+  "Cua_hang_yeu_thich": [],
+  "Don_hang_id": [],
+  "Ct_Gio_Hang_id": [],
+  "id_user": "115630621020157927107",
+  "Ten_khach_hang": "Rozen Maiden Enju",
+  "So_dien_thoai": null,
+  "Email": "suisouseki123@gmail.com",
+  "Ngay_sinh": null,
+  "Gioi_tinh": "",
+  "Hinh_anh_khach_hang": "https://lh3.googleusercontent.com/a-/AOh14Gg43Yi8yysADeHp2_e_ovCIujsoxRPKg4UbiaoENw",
+  "Dia_chi_nha": null,
+  "Dia_chi_cong_ty": null,
+  "__v": 0,
+  "Mat_khau": "01010101",
+  "Ten_dang_nhap": "foodnow_9749t"
+},{
+  "_id": {
+    "$oid": "5ecd330ed3192238e8b35fd4"
+  },
+  "Dia_chi_khac": [],
+  "Cua_hang_yeu_thich": [],
+  "Don_hang_id": [],
+  "Ct_Gio_Hang_id": [],
+  "id_user": "102938326630334430340",
+  "Ten_khach_hang": "1 clone1",
+  "So_dien_thoai": null,
+  "Email": "clone0072@gmail.com",
+  "Ngay_sinh": null,
+  "Gioi_tinh": "",
+  "Hinh_anh_khach_hang": "",
+  "Dia_chi_nha": null,
+  "Dia_chi_cong_ty": null,
+  "__v": 0,
+  "Mat_khau": "01010101",
+  "Ten_dang_nhap": "foodnow_55uu1"
+},{
+  "_id": {
+    "$oid": "5ee0c121cd740649d8621427"
+  },
+  "Dia_chi_khac": [],
+  "Cua_hang_yeu_thich": [],
+  "Don_hang_id": [],
+  "Ct_Gio_Hang_id": [],
+  "id_user": "5ecd329dd3192238e8b35fd1",
+  "Ten_khach_hang": "test",
+  "So_dien_thoai": "0566731898",
+  "Hinh_anh_khach_hang": "",
+  "Dia_chi_nha": null,
+  "Dia_chi_cong_ty": null,
+  "__v": 0,
+  "Mat_khau": "01010101",
+  "Ten_dang_nhap": "foodnow_55147"
+},{
+  "_id": {
+    "$oid": "5f0d2130856ce617a8aa0ba2"
+  },
+  "Dia_chi_khac": [
+    {
+      "$oid": "5f1fb0518cdf4201dcf75978"
+    },
+    {
+      "$oid": "5f1fcb617c76470710c700f9"
+    },
+    {
+      "$oid": "5f1fcbf97c76470710c700fc"
+    },
+    {
+      "$oid": "5f1ff5d94307f73598e8d5ee"
+    },
+    {
+      "$oid": "5f2004a54307f73598e8d600"
+    }
+  ],
+  "Cua_hang_yeu_thich": [
+    {
+      "$oid": "5ec39da122336e32d01a2402"
+    },
+    {
+      "$oid": "5ec39da122336e32d01a2401"
+    }
+  ],
+  "Don_hang_id": [],
+  "Ct_Gio_Hang_id": [],
+  "id_user": "2761461070740113",
+  "Ten_khach_hang": "Hiền Hài Hước",
+  "So_dien_thoai": "0566731898",
+  "Email": "conyeuchuaratnhieu@yahoo.com",
+  "Ngay_sinh": {
+    "$date": "1998-05-21T17:00:00Z"
+  },
+  "Gioi_tinh": "female",
+  "Hinh_anh_khach_hang": "https://graph.facebook.com/2761461070740113/picture?width=500&height=500",
+  "Dia_chi_nha": {
+    "$oid": "5f1fb0b58cdf4201dcf75979"
+  },
+  "Dia_chi_cong_ty": null,
+  "__v": 5,
+  "Mat_khau": "01010101",
+  "Ten_dang_nhap": "foodnow_5e151"
+},{
+  "_id": {
+    "$oid": "5f0d6ff56385d11fb4cf85b3"
+  },
+  "Dia_chi_khac": [],
+  "Cua_hang_yeu_thich": [],
+  "Don_hang_id": [],
+  "Ct_Gio_Hang_id": [],
+  "id_user": "107843251618660350826",
+  "Ten_khach_hang": "5 Clone 5",
+  "So_dien_thoai": "0566731898",
+  "Email": "567clone@gmail.com",
+  "Ngay_sinh": null,
+  "Gioi_tinh": "",
+  "Hinh_anh_khach_hang": "",
+  "Dia_chi_nha": null,
+  "Dia_chi_cong_ty": null,
+  "__v": 0,
+  "Mat_khau": "01010101",
+  "Ten_dang_nhap": "foodnow_57147"
+},{
+  "_id": {
+    "$oid": "5f19a195dc51852338699f0c"
+  },
+  "Dia_chi_khac": [
+    {
+      "$oid": "5f19a87c30ea1d0b80860545"
+    }
+  ],
+  "Cua_hang_yeu_thich": [],
+  "Don_hang_id": [],
+  "Ct_Gio_Hang_id": [],
+  "id_user": "117934318400257695226",
+  "Ten_khach_hang": "Joyko",
+  "So_dien_thoai": "0566731898",
+  "Email": "thinh21012007@gmail.com",
+  "Ngay_sinh": null,
+  "Gioi_tinh": "",
+  "Hinh_anh_khach_hang": "https://lh3.googleusercontent.com/a-/AOh14GiafYLE52FjhG05PnGFt-7BxsjLtmD9qoKazkic",
+  "Dia_chi_nha": null,
+  "Dia_chi_cong_ty": null,
+  "__v": 1,
+  "Mat_khau": "01010101",
+  "Ten_dang_nhap": "foodnow_532j9"
+},{
+  "_id": {
+    "$oid": "5f1ac6476e527c4068d94736"
+  },
+  "Dia_chi_khac": [],
+  "Cua_hang_yeu_thich": [],
+  "Don_hang_id": [],
+  "Ct_Gio_Hang_id": [],
+  "id_user": "",
+  "Ten_khach_hang": "",
+  "So_dien_thoai": "",
+  "Email": "",
+  "Ngay_sinh": null,
+  "Gioi_tinh": "",
+  "Hinh_anh_khach_hang": "",
+  "Dia_chi_nha": null,
+  "Dia_chi_cong_ty": null,
+  "Ten_dang_nhap": "foodnow_9l03z",
+  "Mat_khau": "01010101",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1ac6e86e527c4068d94737"
+  },
+  "Dia_chi_khac": [],
+  "Cua_hang_yeu_thich": [],
+  "Don_hang_id": [],
+  "Ct_Gio_Hang_id": [],
+  "id_user": "",
+  "Ten_khach_hang": "",
+  "So_dien_thoai": "",
+  "Email": "",
+  "Ngay_sinh": null,
+  "Gioi_tinh": "",
+  "Hinh_anh_khach_hang": "",
+  "Dia_chi_nha": null,
+  "Dia_chi_cong_ty": null,
+  "Ten_dang_nhap": "foodnow_u0396",
+  "Mat_khau": "01010101",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1ac7c96e527c4068d94738"
+  },
+  "Dia_chi_khac": [],
+  "Cua_hang_yeu_thich": [],
+  "Don_hang_id": [],
+  "Ct_Gio_Hang_id": [],
+  "id_user": "",
+  "Ten_khach_hang": "",
+  "So_dien_thoai": "",
+  "Email": "",
+  "Ngay_sinh": null,
+  "Gioi_tinh": "",
+  "Hinh_anh_khach_hang": "",
+  "Dia_chi_nha": null,
+  "Dia_chi_cong_ty": null,
+  "Ten_dang_nhap": "foodnow_0c095",
+  "Mat_khau": "01010101",
+  "__v": 0
+}]

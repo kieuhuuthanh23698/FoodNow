@@ -1,0 +1,91 @@
+[{
+  "_id": {
+    "$oid": "5eba0fb0d1dd3f376cee4b5d"
+  },
+  "DanhSach_CH": [
+    {
+      "$oid": "5eba0ad05f15d311d4d6b682"
+    },
+    {
+      "$oid": "5eba0ad05f15d311d4d6b686"
+    },
+    {
+      "$oid": "5eba0ad05f15d311d4d6b683"
+    },
+    {
+      "$oid": "5edee82d36e0d90ea87539e8"
+    }
+  ],
+  "Ten_Loai_Mon_An": "Đi chợ",
+  "Icon_Loai_Mon_An": "shopping-cart.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba0fb0d1dd3f376cee4b5f"
+  },
+  "DanhSach_CH": [],
+  "Ten_Loai_Mon_An": "Món Hàn",
+  "Icon_Loai_Mon_An": "sashimi.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba0fb0d1dd3f376cee4b5e"
+  },
+  "DanhSach_CH": [],
+  "Ten_Loai_Mon_An": "Chuỗi",
+  "Icon_Loai_Mon_An": "house.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba0fb0d1dd3f376cee4b60"
+  },
+  "DanhSach_CH": [],
+  "Ten_Loai_Mon_An": "Trà sữa",
+  "Icon_Loai_Mon_An": "iced-tea.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba0fb0d1dd3f376cee4b64"
+  },
+  "DanhSach_CH": [],
+  "Ten_Loai_Mon_An": "Ăn vặt",
+  "Icon_Loai_Mon_An": "sandwich.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba0fb0d1dd3f376cee4b62"
+  },
+  "DanhSach_CH": [],
+  "Ten_Loai_Mon_An": "Gà rán",
+  "Icon_Loai_Mon_An": "fried-chicken.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba0fb0d1dd3f376cee4b61"
+  },
+  "DanhSach_CH": [],
+  "Ten_Loai_Mon_An": "Cơm phần",
+  "Icon_Loai_Mon_An": "rice_one.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba0fb0d1dd3f376cee4b63"
+  },
+  "DanhSach_CH": [
+    {
+      "$oid": "5ec39da122336e32d01a2402"
+    },
+    {
+      "$oid": "5edee725150faa3b583cd691"
+    },
+    {
+      "$oid": "5edee725150faa3b583cd694"
+    },
+    {
+      "$oid": "5edee725150faa3b583cd69a"
+    }
+  ],
+  "Ten_Loai_Mon_An": "Bún/Phở",
+  "Icon_Loai_Mon_An": "ramen.png",
+  "__v": 0
+}]

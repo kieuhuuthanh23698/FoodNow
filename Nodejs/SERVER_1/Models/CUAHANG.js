@@ -10,7 +10,7 @@ const cuahangSchema = new mongoose.Schema({
     So_Dien_Thoai: String,
     Email_Nguoi_Dai_Dien: String,
     CMND_Nguoi_Dai_Dien: String,
-    Danh_Gia: String,
+    // Danh_Gia: String,
     Hinh_Anh_Cua_Hang: String,
     Trang_Thai_Cua_Hang: String,
     Tai_Khoan: mongoose.Types.ObjectId ,

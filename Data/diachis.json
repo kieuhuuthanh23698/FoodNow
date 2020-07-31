@@ -1,0 +1,299 @@
+[{
+  "_id": {
+    "$oid": "5eb987c881378239a8478e6f"
+  },
+  "Dia_Chi": "850 Cách Mạng Tháng 8, P.5, Tân Bình, TP.HCM",
+  "Vi_do": 10.787473,
+  "Kinh_do": 106.644833,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eb987c881378239a8478e71"
+  },
+  "Dia_Chi": "140 Trần Khắc Chân, P9, Q.Phú Nhuận, TP.HCM",
+  "Vi_do": 10.760988,
+  "Kinh_do": 106.655089,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eb987c881378239a8478e70"
+  },
+  "Dia_Chi": "18/27 Trần Quang Diệu, Quận 3, TP.HCM",
+  "Vi_do": 10.748228,
+  "Kinh_do": 106.669038,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eb987c881378239a8478e72"
+  },
+  "Dia_Chi": "36B Lê Văn Khương, Hóc Môn, TP.HCM",
+  "Vi_do": 10.881654,
+  "Kinh_do": 106.648632,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eb987c881378239a8478e76"
+  },
+  "Dia_Chi": "45 Gò Dầu, P.Tân Sơn Nhì, Tân Phú, TP.HCM",
+  "Vi_do": 10.8053,
+  "Kinh_do": 106.6238,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eb987c881378239a8478e75"
+  },
+  "Dia_Chi": "288 Lê Văn Thị, P11, Q.Gò Vấp, TP.HCM",
+  "Vi_do": 10.8053,
+  "Kinh_do": 106.6238,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eb987c881378239a8478e74"
+  },
+  "Dia_Chi": "36 Nguyễn Thị Nghĩa, P.Da Kao, Quận 1, TP.HCM",
+  "Vi_do": 10.8053,
+  "Kinh_do": 106.6238,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eb987c881378239a8478e73"
+  },
+  "Dia_Chi": "23 Nguyễn Huy Tự, P. Da Kao, Quận 1, TP.HCM",
+  "Vi_do": 10.8053,
+  "Kinh_do": 106.6238,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eb987c881378239a8478e78"
+  },
+  "Dia_Chi": "116 Tôn Đảo, Quận 4, TP.HCM",
+  "Vi_do": 10.8053,
+  "Kinh_do": 106.6238,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eb987c881378239a8478e77"
+  },
+  "Dia_Chi": "315 Hai Bà Trưng, Quận 3, TP.HCM",
+  "Vi_do": 10.8053,
+  "Kinh_do": 106.6238,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f0434ae516add6968403e83"
+  },
+  "Vi_do": 10.7966723,
+  "Kinh_do": 106.6550897,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f043506516add6968403e86"
+  },
+  "Vi_do": 10.7966723,
+  "Kinh_do": 106.6550897,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f0435a673edec6ff895fe58"
+  },
+  "Vi_do": 10.7966723,
+  "Kinh_do": 106.6550897,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f043a0cd4c8145784778f94"
+  },
+  "Vi_do": 10.7720875,
+  "Kinh_do": 106.7220448,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f043cf9f4f9986620444553"
+  },
+  "Vi_do": 10.769817,
+  "Kinh_do": 106.686658,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f044160a500d968402c7a97"
+  },
+  "Vi_do": 10.769817,
+  "Kinh_do": 106.686658,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f044421de1f85321c5c6eda"
+  },
+  "Dia_Chi": "10/1 Lê Văn Khương, Đông Thạnh, Hóc Môn, Hồ Chí Minh, Việt Nam",
+  "Vi_do": 10.908123,
+  "Kinh_do": 106.644207,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f0696a7718e5f06dca9dbdc"
+  },
+  "Dia_Chi": "140 Lê Trọng Tấn, Tây Thạnh, Tân Phú, Hồ Chí Minh, Việt Nam",
+  "Vi_do": 10.8068929,
+  "Kinh_do": 106.6286026,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f0f490eac005942dcca158a"
+  },
+  "Dia_Chi": "10/1 Lê Văn Khương, Đông Thạnh, Hóc Môn, Hồ Chí Minh, Việt Nam",
+  "Vi_do": 10.908188510045715,
+  "Kinh_do": 106.64409700781108,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f0f4a8dfbd40922148f17f4"
+  },
+  "Dia_Chi": "10/1 Lê Văn Khương, Đông Thạnh, Hóc Môn, Hồ Chí Minh, Việt Nam",
+  "Vi_do": 10.908188510045715,
+  "Kinh_do": 106.64409700781108,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f0f4b25cd437624ac0f34c2"
+  },
+  "Dia_Chi": "10/1 Lê Văn Khương, Đông Thạnh, Hóc Môn, Hồ Chí Minh, Việt Nam",
+  "Vi_do": 10.908188510045715,
+  "Kinh_do": 106.64409700781108,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f0f4b41cd437624ac0f34c3"
+  },
+  "Dia_Chi": "2/12 ấp 5, Đông Thạnh, Hóc Môn, Hồ Chí Minh, Việt Nam",
+  "Vi_do": 10.904036709712026,
+  "Kinh_do": 106.64323300123215,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f0f4be5cd437624ac0f34c4"
+  },
+  "Dia_Chi": "85A Lê Văn Khương, Đông Thạnh, Hóc Môn, Hồ Chí Minh, Việt Nam",
+  "Vi_do": 10.903977778816683,
+  "Kinh_do": 106.64421904832126,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1329c9de327c3ab485d59e"
+  },
+  "Dia_Chi": "140 Lê Trọng Tấn, Tay Thanh, Tân Phú, Ho Chi Minh City, Vietnam",
+  "Vi_do": 10.8068929,
+  "Kinh_do": 106.6286026,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f19a87c30ea1d0b80860545"
+  },
+  "Dia_Chi": "156 Lê Văn Khương, Đông Thạnh, Hóc Môn, Hồ Chí Minh, Việt Nam",
+  "Vi_do": 10.908173036787579,
+  "Kinh_do": 106.64420697838068,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1ab94f54ae7f4da4415134"
+  },
+  "Dia_Chi": "142 Nguyễn Văn Công, Phường 3, Gò Vấp, Ho Chi Minh City, Vietnam",
+  "Vi_do": 10.8236664,
+  "Kinh_do": 106.6762585,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1ee7c2c7cada4f348d6767"
+  },
+  "Dia_Chi": "140 Lê Trọng Tấn, Tay Thanh, Tân Phú, Ho Chi Minh City, Vietnam",
+  "Vi_do": 10.8068929,
+  "Kinh_do": 106.6286026,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1efd3261b7234944a2ce80"
+  },
+  "Dia_Chi": "157 Lê Trọng Tấn, Tay Thanh, Tân Phú, Ho Chi Minh City, Vietnam",
+  "Vi_do": 10.8061466,
+  "Kinh_do": 106.6273765,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1f04c9211e5c4ca0502a6b"
+  },
+  "Dia_Chi": "157 Lê Trọng Tấn, Tay Thanh, Tân Phú, Ho Chi Minh City, Vietnam",
+  "Vi_do": 10.8061466,
+  "Kinh_do": 106.6273765,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1f0cef725136575c597df3"
+  },
+  "Dia_Chi": "156 Lê Trọng Tấn, Khương Mai, Thanh Xuân, Hanoi, Vietnam",
+  "Vi_do": 20.9959515,
+  "Kinh_do": 105.8301058,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fb0518cdf4201dcf75978"
+  },
+  "Dia_Chi": "156 Lê Văn Khương, Đông Thạnh, Hóc Môn, Thành phố Hồ Chí Minh, Việt Nam",
+  "Vi_do": 10.908173036787579,
+  "Kinh_do": 106.64420697838068,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fb0b58cdf4201dcf75979"
+  },
+  "Dia_Chi": "203/14 ấp 7, Đông Thạnh, Hóc Môn, Thành phố Hồ Chí Minh, Việt Nam",
+  "Vi_do": 10.905020425950175,
+  "Kinh_do": 106.64214402437212,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fcb617c76470710c700f9"
+  },
+  "Dia_Chi": "1/9 ấp 5, Đông Thạnh, Hóc Môn, Thành phố Hồ Chí Minh, Việt Nam",
+  "Vi_do": 10.905332198791053,
+  "Kinh_do": 106.6441211476922,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fcbf97c76470710c700fc"
+  },
+  "Dia_Chi": "10/5 ấp 5, Đông Thạnh, Hóc Môn, Thành phố Hồ Chí Minh, Việt Nam",
+  "Vi_do": 10.908204641739518,
+  "Kinh_do": 106.64647109806538,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1ff5d94307f73598e8d5ee"
+  },
+  "Dia_Chi": "29 Nguyễn Đỗ Cung, Tây Thạnh, Tân Phú, Thành phố Hồ Chí Minh, Việt Nam",
+  "Vi_do": 10.806644597613161,
+  "Kinh_do": 106.62875611335039,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f2004a54307f73598e8d600"
+  },
+  "Dia_Chi": "144 Lê Trọng Tấn, Tây Thạnh, Tân Phú, Thành phố Hồ Chí Minh, Việt Nam",
+  "Vi_do": 10.806502985603682,
+  "Kinh_do": 106.62841748446228,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f22845ec3eef253f8538012"
+  },
+  "Dia_Chi": "Ngã tư Đông Thạnh - Ngã 3 đồn, Đông Thạnh, Hóc Môn, Thành phố Hồ Chí Minh, Việt Nam",
+  "Vi_do": 10.910304388207297,
+  "Kinh_do": 106.64466597139834,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f228469c3eef253f8538013"
+  },
+  "Dia_Chi": "156 Lê Văn Khương, Đông Thạnh, Hóc Môn, Thành phố Hồ Chí Minh, Việt Nam",
+  "Vi_do": 10.908173036787579,
+  "Kinh_do": 106.64420697838068,
+  "__v": 0
+}]

@@ -1,0 +1,100 @@
+[{
+  "_id": {
+    "$oid": "5f1e43e52e9dd84a3cb9bfe1"
+  },
+  "MaGiamGia": "test_KM01",
+  "ThongTin_KMCH": "Nhập mã test_KM01",
+  "HanSuDung": "2020-07-28",
+  "ThoiGianGiaoHang": "07/27/2020 - 08/19/2020",
+  "PhanTram_GiamGia": "10",
+  "MoTa": "111",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1f0834ca8fd05070661d5d"
+  },
+  "MaGiamGia": "test",
+  "ThongTin_KMCH": "test",
+  "HanSuDung": "2020-07-08",
+  "ThoiGianGiaoHang": "07/17/2020 - 07/29/2020",
+  "PhanTram_GiamGia": "10",
+  "MoTa": "testt",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1f0911021ea0240880fb5e"
+  },
+  "MaGiamGia": "test",
+  "ThongTin_KMCH": "thong tin",
+  "HanSuDung": "2020-07-09",
+  "ThoiGianGiaoHang": "07/02/2020 - 07/15/2020",
+  "PhanTram_GiamGia": "10",
+  "MoTa": "test test",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1f09cb021ea0240880fb5f"
+  },
+  "MaGiamGia": "123",
+  "ThongTin_KMCH": "123",
+  "HanSuDung": "2020-07-14",
+  "ThoiGianGiaoHang": "07/07/2020 - 07/10/2020",
+  "PhanTram_GiamGia": "12",
+  "MoTa": "1232",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1f0aa4725136575c597df2"
+  },
+  "MaGiamGia": "123",
+  "ThongTin_KMCH": "123",
+  "HanSuDung": "2020-07-14",
+  "ThoiGianGiaoHang": "07/07/2020 - 07/10/2020",
+  "PhanTram_GiamGia": "12",
+  "MoTa": "1232",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fc249422ef826dc0921ac"
+  },
+  "MaGiamGia": "KMHOMNAY",
+  "ThongTin_KMCH": "Khuyến mãi ngay hôm nay",
+  "HanSuDung": "2020-07-29",
+  "ThoiGianGiaoHang": "07/29/2020 - 07/30/2020",
+  "PhanTram_GiamGia": "10",
+  "MoTa": "HHHH",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fc58c4bbf750ba07d5a94"
+  },
+  "MaGiamGia": "KM008",
+  "ThongTin_KMCH": "Nhập mã ngay để được giảm giá",
+  "HanSuDung": "2020-07-23",
+  "ThoiGianGiaoHang": "07/23/2020 - 08/10/2020",
+  "PhanTram_GiamGia": "10",
+  "MoTa": "Chỉ áp dụng khách hàng gần CH",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fe24ee813de36d0f2160a"
+  },
+  "MaGiamGia": "CONOWAO",
+  "ThongTin_KMCH": "Khuyến mãi ngay trong hôm nay",
+  "HanSuDung": "2020-07-29",
+  "ThoiGianGiaoHang": "07/28/2020 - 07/28/2020",
+  "PhanTram_GiamGia": "10",
+  "MoTa": "Áp dụng cho khách hàng có đơn hàng 50K",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f200a5bf9fb0230646ca370"
+  },
+  "MaGiamGia": "MAANTRUA",
+  "ThongTin_KMCH": "Giảm Giá Ngay Hôm Nay",
+  "HanSuDung": "2020-07-29",
+  "ThoiGianGiaoHang": "07/29/2020 - 08/29/2020",
+  "PhanTram_GiamGia": "10",
+  "MoTa": "Áp dụng cho khách hàng đặt đơn 50K",
+  "__v": 0
+}]

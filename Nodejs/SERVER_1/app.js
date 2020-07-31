@@ -101,6 +101,7 @@ const LOAI_MONAN = require('./Models/LOAI_MONAN');
 const MONAN_GOIY = require('./Models/MONAN_GOIY');
 const QUANLY_NGUOIDUNG = require('./Models/QUANLY_NGUOIDUNG');
 const QL_NHOM_NGUOIDUNG = require('./Models/QL_NHOM_NGUOIDUNG');
+const LICH_SU_GIAO_DICH = require('./Models/LICH_SU_GIAO_DICH');
 
 ///-------------------------------------------------------------------TEST SERVER SEND EVENT----------------------------------------------------------------
 
@@ -4386,3 +4387,17 @@ app.post("/capNhatSoDienThoaiKhachHang", urlEncodeParser, function (req, res) {
 			}
 	});
 });
+
+
+var newGiaoDich = new LICH_SU_GIAO_DICH({
+	Ma_Giao_Dich : "2321466669",
+    Ma_Don_Hang : "merchantCode7a10f",
+    Id_Don_Hang : mongoose.Types.ObjectId("5f22842dc3eef253f8538010"),
+	Id_Khach_Hang : mongoose.Types.ObjectId("5ecd32dcd3192238e8b35fd2"),
+	Id_Cua_Hang : mongoose.Types.ObjectId("5ec39da122336e32d01a2401"),
+    So_Tien : 105000,
+    So_Dien_Thoai : "05663731898",
+});
+newGiaoDich.save(function(err, resultAcc) {
+	console.log(err, resultAcc);
+})

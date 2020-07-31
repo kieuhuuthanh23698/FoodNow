@@ -75,8 +75,8 @@ public class InforStoreFoodsAdapter extends RecyclerView.Adapter<InforStoreFoods
                 item.setImg(food.getString("Hinh_anh_mon_an"));
             }
             holder.txtDetailFood.setText(food.getString("Mo_ta_mon_an"));
-            holder.txtCostFood.setText(" " + String.valueOf(food.getDouble("So_luong_mua")));
-            holder.txtLikeFood.setText(" " + String.valueOf(food.getInt("So_luong_thich")));
+//            holder.txtCostFood.setText(" " + String.valueOf(food.getDouble("So_luong_mua")));
+//            holder.txtLikeFood.setText(" " + String.valueOf(food.getInt("So_luong_thich")));
             holder.price = food.getDouble("Don_gia_mon_an");
             holder.txtPriceFood.setText(String.valueOf(food.getDouble("Don_gia_mon_an")) + " đ");
             holder.txtNumItem.setText(item == null ? "0" : item.getCount());

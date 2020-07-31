@@ -1,0 +1,4795 @@
+[{
+  "_id": {
+    "$oid": "5ef8b8dead75773060720590"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-08-13T04:02:40.876Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5ef8b8e2ad75773060720594"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257e"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 28000,
+      "Thanh_tien": 28000
+    },
+    {
+      "_id": {
+        "$oid": "5ef8b8e2ad75773060720595"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104df3"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 39000,
+      "Thanh_tien": 39000
+    },
+    {
+      "_id": {
+        "$oid": "5ef8b8e2ad75773060720596"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104def"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 26000,
+      "Thanh_tien": 26000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-06-28T15:35:58.987Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-21T17:13:50.054Z"
+  },
+  "__v": 2,
+  "Do_dai_duong_di": 3,
+  "Phi_ship": 15000,
+  "Total": 108000,
+  "Total_cart": 93000
+},{
+  "_id": {
+    "$oid": "5f0bdc6e5210614a1427e965"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2402"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-13T04:01:26.016Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0bdc765210614a1427e969"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f0bdc765210614a1427e96a"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257b"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 30000,
+      "Thanh_tien": 30000
+    },
+    {
+      "_id": {
+        "$oid": "5f0bdc765210614a1427e96b"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104ded"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-13T04:00:46.629Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-22T02:10:01.620Z"
+  },
+  "__v": 2,
+  "Do_dai_duong_di": 5,
+  "Phi_ship": 25000,
+  "Total": 105000,
+  "Total_cart": 80000
+},{
+  "_id": {
+    "$oid": "5f0bdcb05210614a1427e96c"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2402"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-13T04:01:59.348Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0bdcb55210614a1427e96e"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257d"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 30000,
+      "Thanh_tien": 30000
+    },
+    {
+      "_id": {
+        "$oid": "5f0bdcb55210614a1427e96f"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-13T04:01:52.376Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-22T02:11:37.010Z"
+  },
+  "__v": 1,
+  "Do_dai_duong_di": 10,
+  "Phi_ship": 50000,
+  "Total": 105000,
+  "Total_cart": 55000
+},{
+  "_id": {
+    "$oid": "5f0bdce05210614a1427e972"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-13T04:02:48.819Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0bdce75210614a1427e976"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257e"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 28000,
+      "Thanh_tien": 28000
+    },
+    {
+      "_id": {
+        "$oid": "5f0bdce75210614a1427e977"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257f"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 39000,
+      "Thanh_tien": 39000
+    },
+    {
+      "_id": {
+        "$oid": "5f0bdce75210614a1427e978"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104def"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 26000,
+      "Thanh_tien": 26000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-13T04:02:40.876Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-22T01:51:01.196Z"
+  },
+  "__v": 2,
+  "Do_dai_duong_di": 13,
+  "Phi_ship": 65000,
+  "Total": 158000,
+  "Total_cart": 93000
+},{
+  "_id": {
+    "$oid": "5f0bdcf55210614a1427e979"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2402"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-13T04:04:23.306Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "1",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0bdd415210614a1427e97d"
+      },
+      "IdMonAn": {
+        "$oid": "5edf47262930ae4c8c78af35"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 44000,
+      "Thanh_tien": 44000
+    },
+    {
+      "_id": {
+        "$oid": "5f0bdd415210614a1427e97e"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104df2"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 45000,
+      "Thanh_tien": 45000
+    },
+    {
+      "_id": {
+        "$oid": "5f0bdd415210614a1427e97f"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257a"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 90000,
+      "Thanh_tien": 90000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-13T04:03:01.987Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-13T04:04:23.309Z"
+  },
+  "__v": 2,
+  "Do_dai_duong_di": 5,
+  "Phi_ship": 25000,
+  "Total": 204000,
+  "Total_cart": 179000
+},{
+  "_id": {
+    "$oid": "5f0d2441856ce617a8aa0ba3"
+  },
+  "IdKhachHang": {
+    "$oid": "5f0d2130856ce617a8aa0ba2"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-28T04:59:59.264Z"
+  },
+  "Dia_chi_giao_hang": "5f1fb0518cdf4201dcf75978",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "2",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0d2441856ce617a8aa0ba4"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-14T03:19:29.902Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T05:06:19.551Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 16,
+  "Phi_ship": 80000,
+  "Total": 127000,
+  "Total_cart": 47000
+},{
+  "_id": {
+    "$oid": "5f0d2acab12b614544be1762"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-14T04:04:42.324Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0d2acbb12b614544be1763"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-14T03:47:23.180Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-22T01:51:16.861Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 21,
+  "Phi_ship": 105000,
+  "Total": 155000,
+  "Total_cart": 50000
+},{
+  "_id": {
+    "$oid": "5f0d2acbb12b614544be1764"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-14T04:14:18.112Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0d2acbb12b614544be1765"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-14T03:47:23.722Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-22T01:54:00.990Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 3,
+  "Phi_ship": 15000,
+  "Total": 40000,
+  "Total_cart": 25000
+},{
+  "_id": {
+    "$oid": "5f0d2ad1b12b614544be1766"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-14T04:16:02.701Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0d2ad2b12b614544be1767"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302579"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 35000,
+      "Thanh_tien": 35000
+    },
+    {
+      "_id": {
+        "$oid": "5f0d2ad2b12b614544be1768"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-14T03:47:30.035Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-22T01:57:11.727Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 6,
+  "Phi_ship": 30000,
+  "Total": 90000,
+  "Total_cart": 60000
+},{
+  "_id": {
+    "$oid": "5f0d2b69b12b614544be1769"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-14T04:18:25.443Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0d2b69b12b614544be176a"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-14T03:50:01.802Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-22T02:03:39.662Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 9,
+  "Phi_ship": 45000,
+  "Total": 70000,
+  "Total_cart": 25000
+},{
+  "_id": {
+    "$oid": "5f0d2b6bb12b614544be176b"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-14T04:18:26.631Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0d2b6cb12b614544be176c"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f0d2b6cb12b614544be176d"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104ded"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-14T03:50:04.555Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-23T05:04:03.014Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 9,
+  "Phi_ship": 45000,
+  "Total": 70000,
+  "Total_cart": 25000
+},{
+  "_id": {
+    "$oid": "5f0d2cb7b12b614544be176e"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-14T04:21:00.055Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0d2cb8b12b614544be176f"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-14T03:55:36.106Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-22T01:59:45.407Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 21,
+  "Phi_ship": 105000,
+  "Total": 190000,
+  "Total_cart": 85000
+},{
+  "_id": {
+    "$oid": "5f0d2cbab12b614544be1770"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-14T04:23:06.534Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "2",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0d2cbab12b614544be1771"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dec"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 22000,
+      "Thanh_tien": 22000
+    },
+    {
+      "_id": {
+        "$oid": "5f0d2cbab12b614544be1772"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-14T03:55:38.986Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-26T04:11:47.358Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 24,
+  "Phi_ship": 120000,
+  "Total": 239000,
+  "Total_cart": 119000
+},{
+  "_id": {
+    "$oid": "5f0d2d9cb12b614544be1773"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-14T04:55:13.178Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0d2d9db12b614544be1774"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-14T03:59:25.116Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-26T04:11:52.560Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 3,
+  "Phi_ship": 15000,
+  "Total": 40000,
+  "Total_cart": 25000
+},{
+  "_id": {
+    "$oid": "5f0d2da7b12b614544be1775"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-14T05:18:21.933Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0d2da7b12b614544be1776"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f0d2da7b12b614544be1777"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104ded"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-14T03:59:35.666Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-26T04:12:09.123Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 9,
+  "Phi_ship": 45000,
+  "Total": 95000,
+  "Total_cart": 50000
+},{
+  "_id": {
+    "$oid": "5f0d323df590834bbce325ca"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-14T05:25:11.028Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0d323df590834bbce325cb"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302579"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 35000,
+      "Thanh_tien": 35000
+    },
+    {
+      "_id": {
+        "$oid": "5f0d323df590834bbce325cc"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-14T04:19:09.866Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-21T17:28:38.736Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 22,
+  "Phi_ship": 110000,
+  "Total": 170000,
+  "Total_cart": 60000
+},{
+  "_id": {
+    "$oid": "5f0d3298f590834bbce325cd"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-15T11:05:23.364Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0d3298f590834bbce325ce"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302579"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 35000,
+      "Thanh_tien": 35000
+    },
+    {
+      "_id": {
+        "$oid": "5f0d3298f590834bbce325cf"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 2,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 50000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-14T04:20:41.001Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-21T17:30:49.727Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 3,
+  "Phi_ship": 15000,
+  "Total": 100000,
+  "Total_cart": 85000
+},{
+  "_id": {
+    "$oid": "5f0d32e6f590834bbce325d0"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-15T14:53:16.848Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0d32e6f590834bbce325d1"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f0d32e6f590834bbce325d2"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dec"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 22000,
+      "Thanh_tien": 22000
+    },
+    {
+      "_id": {
+        "$oid": "5f0d32e6f590834bbce325d3"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257b"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 30000,
+      "Thanh_tien": 30000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-14T04:21:58.512Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-21T17:36:01.875Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 3,
+  "Phi_ship": 15000,
+  "Total": 92000,
+  "Total_cart": 77000
+},{
+  "_id": {
+    "$oid": "5f0d32edf590834bbce325d4"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-15T15:29:34.645Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0d32eef590834bbce325d5"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f0d32eef590834bbce325d6"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dec"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 22000,
+      "Thanh_tien": 22000
+    },
+    {
+      "_id": {
+        "$oid": "5f0d32eef590834bbce325d7"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257c"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 42000,
+      "Thanh_tien": 42000
+    },
+    {
+      "_id": {
+        "$oid": "5f0d32eef590834bbce325d8"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257b"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 30000,
+      "Thanh_tien": 30000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-14T04:22:06.406Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-21T17:37:36.968Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 3,
+  "Phi_ship": 15000,
+  "Total": 134000,
+  "Total_cart": 119000
+},{
+  "_id": {
+    "$oid": "5f0d336bf590834bbce325d9"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2402"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-14T04:29:12.902Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "1",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0d3378f590834bbce325e3"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104df2"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 45000,
+      "Thanh_tien": 45000
+    },
+    {
+      "_id": {
+        "$oid": "5f0d3378f590834bbce325e4"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257d"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 30000,
+      "Thanh_tien": 30000
+    },
+    {
+      "_id": {
+        "$oid": "5f0d3378f590834bbce325e5"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f0d3378f590834bbce325e6"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104df3"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 39000,
+      "Thanh_tien": 39000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-14T04:24:11.658Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-14T04:29:12.915Z"
+  },
+  "__v": 4,
+  "Do_dai_duong_di": 54,
+  "Phi_ship": 270000,
+  "Total": 409000,
+  "Total_cart": 139000
+},{
+  "_id": {
+    "$oid": "5f0d34fdd381d321bc27504c"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2402"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-14T04:31:17.092Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "1",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0d3504d381d321bc275050"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f0d3504d381d321bc275051"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dee"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 34000,
+      "Thanh_tien": 34000
+    },
+    {
+      "_id": {
+        "$oid": "5f0d3504d381d321bc275052"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257c"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 42000,
+      "Thanh_tien": 42000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-14T04:30:54.150Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-14T04:31:17.095Z"
+  },
+  "__v": 2,
+  "Do_dai_duong_di": 59,
+  "Phi_ship": 295000,
+  "Total": 396000,
+  "Total_cart": 101000
+},{
+  "_id": {
+    "$oid": "5f0d360ed381d321bc275053"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2402"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-14T04:35:37.214Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "1",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0d3617d381d321bc275057"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257f"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 39000,
+      "Thanh_tien": 39000
+    },
+    {
+      "_id": {
+        "$oid": "5f0d3617d381d321bc275058"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f0d3617d381d321bc275059"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104df3"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 39000,
+      "Thanh_tien": 39000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-14T04:35:27.725Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-14T04:35:37.217Z"
+  },
+  "__v": 2,
+  "Do_dai_duong_di": 64,
+  "Phi_ship": 320000,
+  "Total": 423000,
+  "Total_cart": 103000
+},{
+  "_id": {
+    "$oid": "5f0d3ca0d381d321bc27505d"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-23T05:13:13.517Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "1",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0d3ca0d381d321bc27505e"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dec"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 22000,
+      "Thanh_tien": 22000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-14T05:03:28.571Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-23T05:13:13.523Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 3,
+  "Phi_ship": 15000,
+  "Total": 37000,
+  "Total_cart": 22000
+},{
+  "_id": {
+    "$oid": "5f0d3ffed381d321bc275062"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-23T05:13:18.463Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "1",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0d3fffd381d321bc275063"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "test",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f0d3fffd381d321bc275064"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104ded"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-14T05:17:51.194Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-23T05:13:18.467Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 3,
+  "Phi_ship": 15000,
+  "Total": 37000,
+  "Total_cart": 22000
+},{
+  "_id": {
+    "$oid": "5f0d4071d381d321bc275065"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2402"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-14T05:19:56.923Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "1",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0d407ad381d321bc275067"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dec"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 22000,
+      "Thanh_tien": 22000
+    },
+    {
+      "_id": {
+        "$oid": "5f0d407ad381d321bc275068"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-14T05:19:46.189Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-14T05:19:56.925Z"
+  },
+  "__v": 1,
+  "Do_dai_duong_di": 14,
+  "Phi_ship": 70000,
+  "Total": 117000,
+  "Total_cart": 47000
+},{
+  "_id": {
+    "$oid": "5f0d409dd381d321bc275069"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2402"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-14T05:21:01.984Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "1",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0d40b2d381d321bc27506d"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302579"
+      },
+      "SoLuong": 1,
+      "GhiChu": "test",
+      "Don_gia": 35000,
+      "Thanh_tien": 35000
+    },
+    {
+      "_id": {
+        "$oid": "5f0d40b2d381d321bc27506e"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-14T05:20:29.297Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-14T05:21:01.987Z"
+  },
+  "__v": 2,
+  "Do_dai_duong_di": 19,
+  "Phi_ship": 95000,
+  "Total": 155000,
+  "Total_cart": 60000
+},{
+  "_id": {
+    "$oid": "5f0d4256d381d321bc27506f"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2402"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-14T05:28:26.886Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "1",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0d425ed381d321bc275076"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257a"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 90000,
+      "Thanh_tien": 90000
+    },
+    {
+      "_id": {
+        "$oid": "5f0d425ed381d321bc275077"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f0d425ed381d321bc275078"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104ded"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-14T05:27:51.770Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-14T05:28:26.888Z"
+  },
+  "__v": 3,
+  "Do_dai_duong_di": 27,
+  "Phi_ship": 135000,
+  "Total": 275000,
+  "Total_cart": 140000
+},{
+  "_id": {
+    "$oid": "5f0eb0c1a7898e13ec15bfaf"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-23T05:13:25.160Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "1",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0eb0c2a7898e13ec15bfb0"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302579"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 35000,
+      "Thanh_tien": 35000
+    },
+    {
+      "_id": {
+        "$oid": "5f0eb0c2a7898e13ec15bfb1"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 2,
+      "GhiChu": "ghi chú cho món ăn tronh đơn hàng",
+      "Don_gia": 25000,
+      "Thanh_tien": 50000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-15T07:31:14.031Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-23T05:13:25.164Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 3,
+  "Phi_ship": 15000,
+  "Total": 37000,
+  "Total_cart": 22000
+},{
+  "_id": {
+    "$oid": "5f0ed7354846e0283c9fe256"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd329dd3192238e8b35fd1"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-23T04:21:59.534Z"
+  },
+  "Dia_chi_giao_hang": "5f0f4b25cd437624ac0f34c2",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "2",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f133b5d7dce201c941c3528"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f133b5d7dce201c941c3529"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104ded"
+      },
+      "SoLuong": 2,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 50000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-15T10:15:17.461Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-23T04:34:55.760Z"
+  },
+  "__v": 2,
+  "Do_dai_duong_di": 16,
+  "Phi_ship": 80000,
+  "Total": 155000,
+  "Total_cart": 75000
+},{
+  "_id": {
+    "$oid": "5f0ed75c4846e0283c9fe25a"
+  },
+  "IdKhachHang": {
+    "$oid": "5f0d6ff56385d11fb4cf85b3"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0ed75c4846e0283c9fe25b"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-15T10:15:56.800Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-15T10:15:56.800Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f0ee1cb4846e0283c9fe25c"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2402"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-15T11:00:54.925Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "1",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0ee1d84846e0283c9fe260"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302579"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 35000,
+      "Thanh_tien": 35000
+    },
+    {
+      "_id": {
+        "$oid": "5f0ee1d84846e0283c9fe261"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f0ee1d84846e0283c9fe262"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257b"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 30000,
+      "Thanh_tien": 30000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-15T11:00:27.925Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-15T11:00:54.930Z"
+  },
+  "__v": 2,
+  "Do_dai_duong_di": 5,
+  "Phi_ship": 25000,
+  "Total": 115000,
+  "Total_cart": 90000
+},{
+  "_id": {
+    "$oid": "5f0ee3664846e0283c9fe263"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2402"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-15T11:07:25.073Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "1",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0ee36a4846e0283c9fe267"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dec"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 22000,
+      "Thanh_tien": 22000
+    },
+    {
+      "_id": {
+        "$oid": "5f0ee36a4846e0283c9fe268"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f0ee36a4846e0283c9fe269"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104ded"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-15T11:07:18.524Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-15T11:07:25.075Z"
+  },
+  "__v": 2,
+  "Do_dai_duong_di": 5,
+  "Phi_ship": 25000,
+  "Total": 97000,
+  "Total_cart": 72000
+},{
+  "_id": {
+    "$oid": "5f0ee4964846e0283c9fe26a"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2402"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-15T11:12:28.322Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "1",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0ee4984846e0283c9fe26c"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dec"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 22000,
+      "Thanh_tien": 22000
+    },
+    {
+      "_id": {
+        "$oid": "5f0ee4984846e0283c9fe26d"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104ded"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-15T11:12:22.492Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-15T11:12:28.325Z"
+  },
+  "__v": 1,
+  "Do_dai_duong_di": 5,
+  "Phi_ship": 25000,
+  "Total": 72000,
+  "Total_cart": 47000
+},{
+  "_id": {
+    "$oid": "5f0ee6ac4846e0283c9fe26e"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2402"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-15T14:40:43.343Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "1",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0ee6ad4846e0283c9fe270"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f0ee6ad4846e0283c9fe271"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104ded"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-15T11:21:16.807Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-15T14:40:43.395Z"
+  },
+  "__v": 1,
+  "Do_dai_duong_di": 5,
+  "Phi_ship": 25000,
+  "Total": 75000,
+  "Total_cart": 50000
+},{
+  "_id": {
+    "$oid": "5f0f16035be1b23ea40d9166"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2402"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-15T14:43:52.498Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "1",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0f16055be1b23ea40d9168"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257d"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 30000,
+      "Thanh_tien": 30000
+    },
+    {
+      "_id": {
+        "$oid": "5f0f16055be1b23ea40d9169"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257b"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 30000,
+      "Thanh_tien": 30000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-15T14:43:16.027Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-15T14:43:52.501Z"
+  },
+  "__v": 1,
+  "Do_dai_duong_di": 5,
+  "Phi_ship": 25000,
+  "Total": 85000,
+  "Total_cart": 60000
+},{
+  "_id": {
+    "$oid": "5f0f16615be1b23ea40d916a"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2402"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-15T14:46:12.235Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "1",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0f16775be1b23ea40d9177"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257d"
+      },
+      "SoLuong": 1,
+      "GhiChu": "test ghi chú ",
+      "Don_gia": 30000,
+      "Thanh_tien": 30000
+    },
+    {
+      "_id": {
+        "$oid": "5f0f16775be1b23ea40d9178"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257c"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 42000,
+      "Thanh_tien": 42000
+    },
+    {
+      "_id": {
+        "$oid": "5f0f16775be1b23ea40d9179"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257b"
+      },
+      "SoLuong": 1,
+      "GhiChu": "tét tét ",
+      "Don_gia": 30000,
+      "Thanh_tien": 30000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-15T14:44:49.942Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-15T14:46:12.241Z"
+  },
+  "__v": 5,
+  "Do_dai_duong_di": 5,
+  "Phi_ship": 25000,
+  "Total": 127000,
+  "Total_cart": 102000
+},{
+  "_id": {
+    "$oid": "5f0f18025be1b23ea40d917a"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2402"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-15T14:53:02.378Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "1",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0f18085be1b23ea40d9181"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302579"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 35000,
+      "Thanh_tien": 35000
+    },
+    {
+      "_id": {
+        "$oid": "5f0f18085be1b23ea40d9182"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257a"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 90000,
+      "Thanh_tien": 90000
+    },
+    {
+      "_id": {
+        "$oid": "5f0f18085be1b23ea40d9183"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f0f18085be1b23ea40d9184"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104ded"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-15T14:51:47.138Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-15T14:53:02.381Z"
+  },
+  "__v": 3,
+  "Do_dai_duong_di": 5,
+  "Phi_ship": 25000,
+  "Total": 200000,
+  "Total_cart": 175000
+},{
+  "_id": {
+    "$oid": "5f0f209d5be1b23ea40d918c"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2402"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-15T15:29:02.965Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "1",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0f20af5be1b23ea40d9193"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302579"
+      },
+      "SoLuong": 1,
+      "GhiChu": "test",
+      "Don_gia": 35000,
+      "Thanh_tien": 35000
+    },
+    {
+      "_id": {
+        "$oid": "5f0f20af5be1b23ea40d9194"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f0f20af5be1b23ea40d9195"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257b"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 30000,
+      "Thanh_tien": 30000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-15T15:28:29.667Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-15T15:29:02.969Z"
+  },
+  "__v": 3,
+  "Do_dai_duong_di": 5,
+  "Phi_ship": 25000,
+  "Total": 115000,
+  "Total_cart": 90000
+},{
+  "_id": {
+    "$oid": "5f0f4bf6cd437624ac0f34c5"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd329dd3192238e8b35fd1"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2402"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-16T02:12:22.976Z"
+  },
+  "Dia_chi_giao_hang": "5f0f4be5cd437624ac0f34c4",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "1",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f0f4bf7cd437624ac0f34c6"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-15T18:33:27.237Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-16T02:12:23.012Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 17,
+  "Phi_ship": 85000,
+  "Total": 110000,
+  "Total_cart": 25000
+},{
+  "_id": {
+    "$oid": "5f19107dad3be42de0ecb99e"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd329dd3192238e8b35fd1"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-23T04:22:32.050Z"
+  },
+  "Dia_chi_giao_hang": "5f0f4b25cd437624ac0f34c2",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f191081ad3be42de0ecb9a2"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257a"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 90000,
+      "Thanh_tien": 90000
+    },
+    {
+      "_id": {
+        "$oid": "5f191081ad3be42de0ecb9a3"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f191081ad3be42de0ecb9a4"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302580"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-23T04:22:21.718Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-23T04:26:26.255Z"
+  },
+  "__v": 2,
+  "Do_dai_duong_di": 16,
+  "Phi_ship": 80000,
+  "Total": 220000,
+  "Total_cart": 140000
+},{
+  "_id": {
+    "$oid": "5f19147995a8f80cd40a3dbe"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd329dd3192238e8b35fd1"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-23T04:39:40.358Z"
+  },
+  "Dia_chi_giao_hang": "5f0f4b25cd437624ac0f34c2",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f19148095a8f80cd40a3dc3"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 2,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 50000
+    },
+    {
+      "_id": {
+        "$oid": "5f19148095a8f80cd40a3dc4"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dee"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 34000,
+      "Thanh_tien": 34000
+    },
+    {
+      "_id": {
+        "$oid": "5f19148095a8f80cd40a3dc5"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257b"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 30000,
+      "Thanh_tien": 30000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-23T04:39:21.467Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-23T04:40:13.214Z"
+  },
+  "__v": 3,
+  "Do_dai_duong_di": 16,
+  "Phi_ship": 80000,
+  "Total": 194000,
+  "Total_cart": 114000
+},{
+  "_id": {
+    "$oid": "5f191505faf9744634b52e9c"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd329dd3192238e8b35fd1"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-23T04:42:04.782Z"
+  },
+  "Dia_chi_giao_hang": "5f0f4b25cd437624ac0f34c2",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "2",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f19150afaf9744634b52ea0"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257e"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 28000,
+      "Thanh_tien": 28000
+    },
+    {
+      "_id": {
+        "$oid": "5f19150afaf9744634b52ea1"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104df0"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 47000,
+      "Thanh_tien": 47000
+    },
+    {
+      "_id": {
+        "$oid": "5f19150afaf9744634b52ea2"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302580"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-23T04:41:42.850Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-23T04:42:36.975Z"
+  },
+  "__v": 2,
+  "Do_dai_duong_di": 16,
+  "Phi_ship": 80000,
+  "Total": 180000,
+  "Total_cart": 100000
+},{
+  "_id": {
+    "$oid": "5f1916fcf024333410d69e61"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd329dd3192238e8b35fd1"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-23T04:50:07.695Z"
+  },
+  "Dia_chi_giao_hang": "5f0f4b25cd437624ac0f34c2",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "2",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1916fdf024333410d69e63"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dec"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 22000,
+      "Thanh_tien": 22000
+    },
+    {
+      "_id": {
+        "$oid": "5f1916fdf024333410d69e64"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-23T04:50:04.452Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-23T04:50:30.852Z"
+  },
+  "__v": 1,
+  "Do_dai_duong_di": 16,
+  "Phi_ship": 80000,
+  "Total": 127000,
+  "Total_cart": 47000
+},{
+  "_id": {
+    "$oid": "5f191743b032e23ea0011f3a"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd329dd3192238e8b35fd1"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-23T04:51:18.761Z"
+  },
+  "Dia_chi_giao_hang": "5f0f4b25cd437624ac0f34c2",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f191744b032e23ea0011f3b"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-23T04:51:16.226Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-23T04:52:08.297Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 16,
+  "Phi_ship": 80000,
+  "Total": 105000,
+  "Total_cart": 25000
+},{
+  "_id": {
+    "$oid": "5f191796b032e23ea0011f3c"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd329dd3192238e8b35fd1"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-23T04:52:40.477Z"
+  },
+  "Dia_chi_giao_hang": "5f0f4b25cd437624ac0f34c2",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "2",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f191796b032e23ea0011f3d"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-23T04:52:38.604Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-23T04:52:49.558Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 16,
+  "Phi_ship": 80000,
+  "Total": 105000,
+  "Total_cart": 25000
+},{
+  "_id": {
+    "$oid": "5f1917ffb032e23ea0011f3e"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd329dd3192238e8b35fd1"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-23T04:54:28.710Z"
+  },
+  "Dia_chi_giao_hang": "5f0f4b25cd437624ac0f34c2",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f191802b032e23ea0011f40"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dec"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 22000,
+      "Thanh_tien": 22000
+    },
+    {
+      "_id": {
+        "$oid": "5f191802b032e23ea0011f41"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-23T04:54:23.779Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-23T04:54:42.570Z"
+  },
+  "__v": 1,
+  "Do_dai_duong_di": 16,
+  "Phi_ship": 80000,
+  "Total": 127000,
+  "Total_cart": 47000
+},{
+  "_id": {
+    "$oid": "5f191871b032e23ea0011f42"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd329dd3192238e8b35fd1"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-23T04:56:22.375Z"
+  },
+  "Dia_chi_giao_hang": "5f0f4b25cd437624ac0f34c2",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "2",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f191871b032e23ea0011f43"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-23T04:56:17.642Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-23T04:56:48.613Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 16,
+  "Phi_ship": 80000,
+  "Total": 105000,
+  "Total_cart": 25000
+},{
+  "_id": {
+    "$oid": "5f191933b032e23ea0011f44"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd329dd3192238e8b35fd1"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-23T04:59:34.171Z"
+  },
+  "Dia_chi_giao_hang": "5f0f4b25cd437624ac0f34c2",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f191933b032e23ea0011f45"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-23T04:59:31.322Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-23T05:00:41.202Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 16,
+  "Phi_ship": 80000,
+  "Total": 105000,
+  "Total_cart": 25000
+},{
+  "_id": {
+    "$oid": "5f191a27b032e23ea0011f46"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd32dcd3192238e8b35fd2"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-23T05:03:46.894Z"
+  },
+  "Dia_chi_giao_hang": "5f0f4b25cd437624ac0f34c2",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "1",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f191a27b032e23ea0011f47"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-23T05:03:35.820Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-23T05:03:46.896Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 16,
+  "Phi_ship": 80000,
+  "Total": 105000,
+  "Total_cart": 25000
+},{
+  "_id": {
+    "$oid": "5f19a82630ea1d0b80860541"
+  },
+  "IdKhachHang": {
+    "$oid": "5f19a195dc51852338699f0c"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-23T15:11:58.713Z"
+  },
+  "Dia_chi_giao_hang": "5f19a87c30ea1d0b80860545",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "2",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f19a82830ea1d0b80860543"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f19a82830ea1d0b80860544"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dec"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 22000,
+      "Thanh_tien": 22000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-23T15:09:26.809Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-23T15:13:34.770Z"
+  },
+  "__v": 1,
+  "Do_dai_duong_di": 16,
+  "Phi_ship": 80000,
+  "Total": 127000,
+  "Total_cart": 47000
+},{
+  "_id": {
+    "$oid": "5f19a8fa30ea1d0b80860546"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd329dd3192238e8b35fd1"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-23T15:13:10.657Z"
+  },
+  "Dia_chi_giao_hang": "5f0f4be5cd437624ac0f34c4",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f19a8fc30ea1d0b80860548"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f19a8fc30ea1d0b80860549"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104ded"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-23T15:12:58.314Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-23T15:13:47.457Z"
+  },
+  "__v": 1,
+  "Do_dai_duong_di": 15,
+  "Phi_ship": 75000,
+  "Total": 125000,
+  "Total_cart": 50000
+},{
+  "_id": {
+    "$oid": "5f1a885c8e6c7c19b45d7542"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1a885c8e6c7c19b45d7541"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1a885d8e6c7c19b45d7543"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-24T07:06:05.094Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-24T07:06:05.094Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1a8d58f49eaa2bac00c862"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1a8d58f49eaa2bac00c861"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1a8d58f49eaa2bac00c863"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-24T07:27:20.424Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-24T07:27:20.424Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1a8daef49eaa2bac00c866"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1a8daef49eaa2bac00c865"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1a8daff49eaa2bac00c867"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f1a8daff49eaa2bac00c868"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dee"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 34000,
+      "Thanh_tien": 34000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-24T07:28:47.278Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-24T07:28:47.278Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1a8e0e6b46af1db0c1c1bf"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1a8e0e6b46af1db0c1c1be"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1a8e106b46af1db0c1c1c1"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257f"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 39000,
+      "Thanh_tien": 39000
+    },
+    {
+      "_id": {
+        "$oid": "5f1a8e106b46af1db0c1c1c2"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f1a8e106b46af1db0c1c1c3"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dee"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 34000,
+      "Thanh_tien": 34000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-24T07:30:24.851Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-24T07:30:24.851Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1a8e126b46af1db0c1c1c5"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1a8e126b46af1db0c1c1c4"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1a8e156b46af1db0c1c1c6"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257f"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 39000,
+      "Thanh_tien": 39000
+    },
+    {
+      "_id": {
+        "$oid": "5f1a8e156b46af1db0c1c1c7"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f1a8e156b46af1db0c1c1c8"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dee"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 34000,
+      "Thanh_tien": 34000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-24T07:30:29.438Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-24T07:30:29.438Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1faf9d8cdf4201dcf75971"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1faf9d8cdf4201dcf75970"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1faf9d8cdf4201dcf75972"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T04:54:53.575Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T04:54:53.575Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fb03b8cdf4201dcf75975"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1fb03b8cdf4201dcf75974"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fb03b8cdf4201dcf75976"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f1fb03b8cdf4201dcf75977"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dec"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 22000,
+      "Thanh_tien": 22000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T04:57:31.595Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T04:57:31.595Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fb0e98cdf4201dcf7597c"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1fb0e98cdf4201dcf7597b"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2402"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fb0e98cdf4201dcf7597d"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dec"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 22000,
+      "Thanh_tien": 22000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T05:00:25.500Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T05:00:25.500Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fb0eb8cdf4201dcf75980"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1fb0eb8cdf4201dcf7597f"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2402"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fb0eb8cdf4201dcf75981"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f1fb0eb8cdf4201dcf75982"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dec"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 22000,
+      "Thanh_tien": 22000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T05:00:27.552Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T05:00:27.552Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fb0ed8cdf4201dcf75985"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1fb0ed8cdf4201dcf75984"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2402"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fb0ee8cdf4201dcf75986"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257b"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 30000,
+      "Thanh_tien": 30000
+    },
+    {
+      "_id": {
+        "$oid": "5f1fb0ee8cdf4201dcf75987"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f1fb0ee8cdf4201dcf75988"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dec"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 22000,
+      "Thanh_tien": 22000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T05:00:30.321Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T05:00:30.321Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fb1b28cdf4201dcf7598b"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1fb1b28cdf4201dcf7598a"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fb1b38cdf4201dcf7598c"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T05:03:47.195Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T05:03:47.195Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fb2658cdf4201dcf7598f"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1fb2658cdf4201dcf7598e"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fb2658cdf4201dcf75990"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104ded"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T05:06:45.677Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T05:06:45.677Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fb2678cdf4201dcf75993"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1fb2678cdf4201dcf75992"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fb2688cdf4201dcf75994"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f1fb2688cdf4201dcf75995"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104ded"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T05:06:48.138Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T05:06:48.138Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fb26e8cdf4201dcf75998"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1fb26e8cdf4201dcf75997"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fb26e8cdf4201dcf75999"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f1fb26e8cdf4201dcf7599a"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104ded"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T05:06:54.721Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T05:06:54.721Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fb2888cdf4201dcf7599d"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1fb2888cdf4201dcf7599c"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fb2888cdf4201dcf7599e"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T05:07:20.726Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T05:07:20.726Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fb2b38cdf4201dcf759a1"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1fb2b38cdf4201dcf759a0"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fb2b38cdf4201dcf759a2"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T05:08:03.755Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T05:08:03.755Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fb3018cdf4201dcf759a5"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1fb3018cdf4201dcf759a4"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fb3018cdf4201dcf759a6"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T05:09:21.640Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T05:09:21.640Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fb3028cdf4201dcf759a9"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1fb3028cdf4201dcf759a8"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fb3038cdf4201dcf759aa"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f1fb3038cdf4201dcf759ab"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104ded"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T05:09:23.127Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T05:09:23.127Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fb36ac2ea040c50a55a43"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1fb36ac2ea040c50a55a42"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fb36ac2ea040c50a55a44"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T05:11:06.769Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T05:11:06.769Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fb3c18217282d74d019af"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1fb3c18217282d74d019ae"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fb3c18217282d74d019b0"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T05:12:33.484Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T05:12:33.484Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fb3ed8217282d74d019b3"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1fb3ed8217282d74d019b2"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fb3ed8217282d74d019b4"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 2,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 50000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T05:13:17.984Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T05:13:17.984Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fb3fd8217282d74d019b7"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1fb3fd8217282d74d019b6"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fb3fd8217282d74d019b8"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T05:13:33.897Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T05:13:33.897Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fb4148217282d74d019bc"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1fb4148217282d74d019bb"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fb4148217282d74d019bd"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T05:13:56.779Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T05:13:56.779Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fb4958b1bbc26281cbc3a"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1fb4958b1bbc26281cbc39"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fb4958b1bbc26281cbc3b"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dec"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 22000,
+      "Thanh_tien": 22000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T05:16:05.765Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T05:16:05.765Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fb4f02eb41a26dcc4699e"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1fb4f02eb41a26dcc4699d"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fb4f02eb41a26dcc4699f"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T05:17:36.390Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T05:17:36.390Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fb57695b7682f3cfbd291"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1fb57695b7682f3cfbd290"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fb57895b7682f3cfbd293"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dec"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 22000,
+      "Thanh_tien": 22000
+    },
+    {
+      "_id": {
+        "$oid": "5f1fb57895b7682f3cfbd294"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T05:19:52.726Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T05:19:52.726Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fb57895b7682f3cfbd296"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1fb57895b7682f3cfbd295"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fb57b95b7682f3cfbd297"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dec"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 22000,
+      "Thanh_tien": 22000
+    },
+    {
+      "_id": {
+        "$oid": "5f1fb57b95b7682f3cfbd298"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T05:19:55.239Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T05:19:55.239Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fb6be88a02413a0b94c04"
+  },
+  "IdKhachHang": {
+    "$oid": "5f1fb6be88a02413a0b94c03"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fb6be88a02413a0b94c05"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T05:25:18.609Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T05:25:18.609Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fb8ed7c76470710c700e1"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd3004dbfd8f2de0bd2063"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": null,
+  "Dia_chi_giao_hang": null,
+  "Hinh_thuc_thanh_toan": "",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "0",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fb8ee7c76470710c700e2"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T05:34:38.322Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T05:34:38.322Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1fb9417c76470710c700e3"
+  },
+  "IdKhachHang": {
+    "$oid": "5f0d2130856ce617a8aa0ba2"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-28T05:36:26.429Z"
+  },
+  "Dia_chi_giao_hang": "5f1fb0b58cdf4201dcf75979",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fb9417c76470710c700e4"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T05:36:01.656Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T05:36:45.719Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 16,
+  "Phi_ship": 80000,
+  "Total": 105000,
+  "Total_cart": 25000
+},{
+  "_id": {
+    "$oid": "5f1fba257c76470710c700e5"
+  },
+  "IdKhachHang": {
+    "$oid": "5f0d2130856ce617a8aa0ba2"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2402"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-28T05:39:56.675Z"
+  },
+  "Dia_chi_giao_hang": "5f1fb0b58cdf4201dcf75979",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fba277c76470710c700e7"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f1fba277c76470710c700e8"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302580"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T05:39:49.470Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T05:40:26.871Z"
+  },
+  "__v": 1,
+  "Do_dai_duong_di": 17,
+  "Phi_ship": 85000,
+  "Total": 135000,
+  "Total_cart": 50000
+},{
+  "_id": {
+    "$oid": "5f1fc9447c76470710c700ee"
+  },
+  "IdKhachHang": {
+    "$oid": "5f0d2130856ce617a8aa0ba2"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-28T06:45:18.357Z"
+  },
+  "Dia_chi_giao_hang": "5f1fb0518cdf4201dcf75978",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fc9577c76470710c700f2"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104ded"
+      },
+      "SoLuong": 1,
+      "GhiChu": "ít đường",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f1fc9577c76470710c700f3"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302579"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 35000,
+      "Thanh_tien": 35000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T06:44:21.219Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T06:45:50.433Z"
+  },
+  "__v": 2,
+  "Do_dai_duong_di": 16,
+  "Phi_ship": 80000,
+  "Total": 140000,
+  "Total_cart": 60000
+},{
+  "_id": {
+    "$oid": "5f1fca757c76470710c700f4"
+  },
+  "IdKhachHang": {
+    "$oid": "5f0d2130856ce617a8aa0ba2"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-28T06:49:40.011Z"
+  },
+  "Dia_chi_giao_hang": "5f1fb0b58cdf4201dcf75979",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fca767c76470710c700f5"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104ded"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T06:49:26.231Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T07:20:50.446Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 16,
+  "Phi_ship": 80000,
+  "Total": 105000,
+  "Total_cart": 25000
+},{
+  "_id": {
+    "$oid": "5f1fcb277c76470710c700f6"
+  },
+  "IdKhachHang": {
+    "$oid": "5f0d2130856ce617a8aa0ba2"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-28T06:56:03.807Z"
+  },
+  "Dia_chi_giao_hang": "5f1fcbf97c76470710c700fc",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "2",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fcbdb7c76470710c700fb"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dec"
+      },
+      "SoLuong": 2,
+      "GhiChu": "ít đường",
+      "Don_gia": 22000,
+      "Thanh_tien": 44000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T06:52:23.516Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T07:41:23.566Z"
+  },
+  "__v": 3,
+  "Do_dai_duong_di": 16,
+  "Phi_ship": 80000,
+  "Total": 124000,
+  "Total_cart": 44000
+},{
+  "_id": {
+    "$oid": "5f1fcc467c76470710c700fd"
+  },
+  "IdKhachHang": {
+    "$oid": "5f0d2130856ce617a8aa0ba2"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-28T06:57:15.780Z"
+  },
+  "Dia_chi_giao_hang": "5f1fcbf97c76470710c700fc",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1fcc467c76470710c700fe"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104ded"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T06:57:10.621Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T07:41:38.010Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 16,
+  "Phi_ship": 80000,
+  "Total": 105000,
+  "Total_cart": 25000
+},{
+  "_id": {
+    "$oid": "5f1ff5b84307f73598e8d5ec"
+  },
+  "IdKhachHang": {
+    "$oid": "5f0d2130856ce617a8aa0ba2"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-28T09:54:49.488Z"
+  },
+  "Dia_chi_giao_hang": "5f1fb0518cdf4201dcf75978",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "1",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f1ff5b84307f73598e8d5ed"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T09:54:00.493Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T09:54:49.498Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 16,
+  "Phi_ship": 80000,
+  "Total": 105000,
+  "Total_cart": 25000
+},{
+  "_id": {
+    "$oid": "5f2001b84307f73598e8d5f4"
+  },
+  "IdKhachHang": {
+    "$oid": "5f0d2130856ce617a8aa0ba2"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-28T10:46:20.200Z"
+  },
+  "Dia_chi_giao_hang": "5f1ff5d94307f73598e8d5ee",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "1",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f2001ec4307f73598e8d5f8"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257b"
+      },
+      "SoLuong": 1,
+      "GhiChu": "ít đường",
+      "Don_gia": 30000,
+      "Thanh_tien": 30000
+    },
+    {
+      "_id": {
+        "$oid": "5f2001ec4307f73598e8d5f9"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dec"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 22000,
+      "Thanh_tien": 22000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T10:45:12.682Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T10:46:20.206Z"
+  },
+  "__v": 2,
+  "Do_dai_duong_di": 5,
+  "Phi_ship": 25000,
+  "Total": 77000,
+  "Total_cart": 52000
+},{
+  "_id": {
+    "$oid": "5f2002c74307f73598e8d5fa"
+  },
+  "IdKhachHang": {
+    "$oid": "5f0d2130856ce617a8aa0ba2"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-28T10:50:14.710Z"
+  },
+  "Dia_chi_giao_hang": "5f1fcbf97c76470710c700fc",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "3",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f2002d44307f73598e8d5fc"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dec"
+      },
+      "SoLuong": 1,
+      "GhiChu": "ít đường",
+      "Don_gia": 22000,
+      "Thanh_tien": 22000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T10:49:43.959Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T10:58:31.461Z"
+  },
+  "__v": 1,
+  "Do_dai_duong_di": 16,
+  "Phi_ship": 80000,
+  "Total": 102000,
+  "Total_cart": 22000
+},{
+  "_id": {
+    "$oid": "5f20048a4307f73598e8d5fd"
+  },
+  "IdKhachHang": {
+    "$oid": "5f0d2130856ce617a8aa0ba2"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-28T10:57:52.028Z"
+  },
+  "Dia_chi_giao_hang": "5f2004a54307f73598e8d600",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "2",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f2004974307f73598e8d5ff"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dec"
+      },
+      "SoLuong": 1,
+      "GhiChu": "ít đường",
+      "Don_gia": 22000,
+      "Thanh_tien": 22000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-28T10:57:14.298Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T10:58:08.564Z"
+  },
+  "__v": 1,
+  "Do_dai_duong_di": 5,
+  "Phi_ship": 25000,
+  "Total": 47000,
+  "Total_cart": 22000
+},{
+  "_id": {
+    "$oid": "5f21b485f665866c24ebb104"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd32dcd3192238e8b35fd2"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-30T04:47:21.227Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "1",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "1",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f21b8cff665866c24ebb108"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f21b8cff665866c24ebb109"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302579"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 35000,
+      "Thanh_tien": 35000
+    },
+    {
+      "_id": {
+        "$oid": "5f21b8cff665866c24ebb10a"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dec"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 22000,
+      "Thanh_tien": 22000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-29T17:40:22.252Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-30T04:47:21.236Z"
+  },
+  "__v": 2,
+  "Do_dai_duong_di": 3,
+  "Phi_ship": 15000,
+  "Total": 97000,
+  "Total_cart": 82000
+},{
+  "_id": {
+    "$oid": "5f2257c3c3eef253f8537ffe"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd32dcd3192238e8b35fd2"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-30T07:21:13.171Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "1",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "1",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f2257c7c3eef253f8538002"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302581"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f2257c7c3eef253f8538003"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302579"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 35000,
+      "Thanh_tien": 35000
+    },
+    {
+      "_id": {
+        "$oid": "5f2257c7c3eef253f8538004"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e456336430257c"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 42000,
+      "Thanh_tien": 42000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-30T05:16:51.924Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-30T07:21:13.195Z"
+  },
+  "__v": 2,
+  "Do_dai_duong_di": 3,
+  "Phi_ship": 15000,
+  "Total": 117000,
+  "Total_cart": 102000
+},{
+  "_id": {
+    "$oid": "5f226e5ec3eef253f8538005"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd32dcd3192238e8b35fd2"
+  },
+  "IdCuaHang": {
+    "$oid": "5eba0ad05f15d311d4d6b689"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-30T08:12:53.378Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "1",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f226e62c3eef253f8538007"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104ded"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    },
+    {
+      "_id": {
+        "$oid": "5f226e62c3eef253f8538008"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104dec"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 22000,
+      "Thanh_tien": 22000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-30T06:53:19.138Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-30T08:12:53.526Z"
+  },
+  "__v": 1,
+  "Do_dai_duong_di": 10,
+  "Phi_ship": 50000,
+  "Total": 97000,
+  "Total_cart": 47000
+},{
+  "_id": {
+    "$oid": "5f2283d5c3eef253f8538009"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd32dcd3192238e8b35fd2"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-30T08:25:49.332Z"
+  },
+  "Dia_chi_giao_hang": "5eb987c881378239a8478e6f",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "",
+  "Trang_thai_don_hang": "1",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f2283e3c3eef253f853800d"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104df1"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 49000,
+      "Thanh_tien": 49000
+    },
+    {
+      "_id": {
+        "$oid": "5f2283e3c3eef253f853800e"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302579"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 35000,
+      "Thanh_tien": 35000
+    },
+    {
+      "_id": {
+        "$oid": "5f2283e3c3eef253f853800f"
+      },
+      "IdMonAn": {
+        "$oid": "5edefd0abdfedb2f4c104df3"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 39000,
+      "Thanh_tien": 39000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-30T08:24:54.292Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-30T08:25:49.335Z"
+  },
+  "__v": 2,
+  "Do_dai_duong_di": 3,
+  "Phi_ship": 15000,
+  "Total": 138000,
+  "Total_cart": 123000
+},{
+  "_id": {
+    "$oid": "5f22842dc3eef253f8538010"
+  },
+  "IdKhachHang": {
+    "$oid": "5ecd32dcd3192238e8b35fd2"
+  },
+  "IdCuaHang": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Ngay_nhan_don_hang": {
+    "$date": "2020-07-30T16:28:15.676Z"
+  },
+  "Dia_chi_giao_hang": "5f228469c3eef253f8538013",
+  "Hinh_thuc_thanh_toan": "0",
+  "Ghi_chu_NVGH": "Ghi chú đơn hàng ",
+  "Trang_thai_don_hang": "1",
+  "Chi_tiet_DH": [
+    {
+      "_id": {
+        "$oid": "5f22842dc3eef253f8538011"
+      },
+      "IdMonAn": {
+        "$oid": "5eba2fe316e4563364302580"
+      },
+      "SoLuong": 1,
+      "GhiChu": "",
+      "Don_gia": 25000,
+      "Thanh_tien": 25000
+    }
+  ],
+  "createdAt": {
+    "$date": "2020-07-30T08:26:21.882Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-30T16:28:15.698Z"
+  },
+  "__v": 0,
+  "Do_dai_duong_di": 16,
+  "Phi_ship": 80000,
+  "Total": 105000,
+  "Total_cart": 25000
+}]

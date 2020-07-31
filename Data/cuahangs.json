@@ -1,0 +1,1073 @@
+[{
+  "_id": {
+    "$oid": "5eba0ad05f15d311d4d6b686"
+  },
+  "Khuyen_Mai_CH": [],
+  "Thong_Tin_KH_Dat_Don": [],
+  "Ten_Cua_Hang": "Bánh Mì Hà Nội - Bánh Mì Thịt Nướng - Nguyễn Sơn",
+  "Dia_Chi_Cua_Hang": {
+    "$oid": "5eb987c881378239a8478e6f"
+  },
+  "Mo_Ta_Cua_Hang": "",
+  "Thoi_Gian_Bat_Dau": "8",
+  "Thoi_Gian_Ket_Thuc": "19",
+  "Danh_Gia": "4",
+  "Hinh_Anh_Cua_Hang": "store.png",
+  "Trang_Thai_Cua_Hang": "1",
+  "__v": 1,
+  "Loai_MonAn": [
+    {
+      "$oid": "5eba211b54974f0b54da7afc"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afe"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afd"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7aff"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7b00"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5eba0ad05f15d311d4d6b683"
+  },
+  "Khuyen_Mai_CH": [],
+  "Thong_Tin_KH_Dat_Don": [],
+  "Ten_Cua_Hang": "Đại Đồng Delivery - Cơm Tấm & Bún Thịt Nướng - Kha Vạn Cận",
+  "Dia_Chi_Cua_Hang": {
+    "$oid": "5eb987c881378239a8478e71"
+  },
+  "Mo_Ta_Cua_Hang": "",
+  "Thoi_Gian_Bat_Dau": "8",
+  "Thoi_Gian_Ket_Thuc": "19",
+  "Danh_Gia": "4",
+  "Hinh_Anh_Cua_Hang": "store.png",
+  "Trang_Thai_Cua_Hang": "1",
+  "__v": 1,
+  "Loai_MonAn": [
+    {
+      "$oid": "5eba211b54974f0b54da7afc"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afe"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afd"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7aff"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7b00"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5eba0ad05f15d311d4d6b68b"
+  },
+  "Khuyen_Mai_CH": [],
+  "Thong_Tin_KH_Dat_Don": [],
+  "Ten_Cua_Hang": "Cơm Tâm Sườn Que - Điện Biên Phủ",
+  "Dia_Chi_Cua_Hang": {
+    "$oid": "5eb987c881378239a8478e70"
+  },
+  "Mo_Ta_Cua_Hang": "",
+  "Thoi_Gian_Bat_Dau": "8",
+  "Thoi_Gian_Ket_Thuc": "19",
+  "Danh_Gia": "4",
+  "Hinh_Anh_Cua_Hang": "store.png",
+  "Trang_Thai_Cua_Hang": "Đang mở cửa",
+  "__v": 1,
+  "Loai_MonAn": [
+    {
+      "$oid": "5eba211b54974f0b54da7afc"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afe"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afd"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7aff"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7b00"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5eba0ad05f15d311d4d6b689"
+  },
+  "Khuyen_Mai_CH": [],
+  "Thong_Tin_KH_Dat_Don": [
+    {
+      "$oid": "5f226e5ec3eef253f8538005"
+    }
+  ],
+  "Ten_Cua_Hang": "GUTA CAFE - Bàu Cát 2",
+  "Dia_Chi_Cua_Hang": {
+    "$oid": "5eb987c881378239a8478e72"
+  },
+  "Mo_Ta_Cua_Hang": "",
+  "Thoi_Gian_Bat_Dau": "8",
+  "Thoi_Gian_Ket_Thuc": "19",
+  "Danh_Gia": "4",
+  "Hinh_Anh_Cua_Hang": "store7.jpg",
+  "Trang_Thai_Cua_Hang": "1",
+  "__v": 1,
+  "Loai_MonAn": [
+    {
+      "$oid": "5eba211b54974f0b54da7afc"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afe"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afd"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7aff"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7b00"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5ec39da122336e32d01a2401"
+  },
+  "Khuyen_Mai_CH": [
+    {
+      "$oid": "5f1d4f0647da08338cd5c658"
+    },
+    {
+      "$oid": "5f1fe24ee813de36d0f2160a"
+    },
+    {
+      "$oid": "5f200a5bf9fb0230646ca370"
+    }
+  ],
+  "Thong_Tin_KH_Dat_Don": [
+    {
+      "$oid": "5ee22203f4a12b3fc450bc58"
+    },
+    {
+      "$oid": "5ee222d7f4a12b3fc450bc63"
+    },
+    {
+      "$oid": "5ee154ff15ac213b4cdc3591"
+    },
+    {
+      "$oid": "5ef8b24fd23d2741fc5391d2"
+    },
+    {
+      "$oid": "5ef8b4251106bb09dc12ba2c"
+    },
+    {
+      "$oid": "5ef8b4ba1106bb09dc12ba31"
+    },
+    {
+      "$oid": "5ef8b55f1106bb09dc12ba3d"
+    },
+    {
+      "$oid": "5ef8b6171d88a33b04a032e2"
+    },
+    {
+      "$oid": "5ef8b6f7ad75773060720577"
+    },
+    {
+      "$oid": "5ef8b766ad75773060720582"
+    },
+    {
+      "$oid": "5ef8b779ad75773060720586"
+    },
+    {
+      "$oid": "5ef8b8dead75773060720590"
+    },
+    {
+      "$oid": "5f0bdce05210614a1427e972"
+    },
+    {
+      "$oid": "5f0d2acab12b614544be1762"
+    },
+    {
+      "$oid": "5f0d2acbb12b614544be1764"
+    },
+    {
+      "$oid": "5f0d2ad1b12b614544be1766"
+    },
+    {
+      "$oid": "5f0d2b69b12b614544be1769"
+    },
+    {
+      "$oid": "5f0d2b6bb12b614544be176b"
+    },
+    {
+      "$oid": "5f0d2cb7b12b614544be176e"
+    },
+    {
+      "$oid": "5f0d2cbab12b614544be1770"
+    },
+    {
+      "$oid": "5f0d2d9cb12b614544be1773"
+    },
+    {
+      "$oid": "5f0d2da7b12b614544be1775"
+    },
+    {
+      "$oid": "5f0d323df590834bbce325ca"
+    },
+    {
+      "$oid": "5f0d3298f590834bbce325cd"
+    },
+    {
+      "$oid": "5f0d32e6f590834bbce325d0"
+    },
+    {
+      "$oid": "5f0d32edf590834bbce325d4"
+    },
+    {
+      "$oid": "5f0ed7354846e0283c9fe256"
+    },
+    {
+      "$oid": "5f19107dad3be42de0ecb99e"
+    },
+    {
+      "$oid": "5f19147995a8f80cd40a3dbe"
+    },
+    {
+      "$oid": "5f191505faf9744634b52e9c"
+    },
+    {
+      "$oid": "5f1916fcf024333410d69e61"
+    },
+    {
+      "$oid": "5f191743b032e23ea0011f3a"
+    },
+    {
+      "$oid": "5f191796b032e23ea0011f3c"
+    },
+    {
+      "$oid": "5f1917ffb032e23ea0011f3e"
+    },
+    {
+      "$oid": "5f191871b032e23ea0011f42"
+    },
+    {
+      "$oid": "5f191933b032e23ea0011f44"
+    },
+    {
+      "$oid": "5f191a27b032e23ea0011f46"
+    },
+    {
+      "$oid": "5f0d3ca0d381d321bc27505d"
+    },
+    {
+      "$oid": "5f0d3ca0d381d321bc27505d"
+    },
+    {
+      "$oid": "5f0d3ffed381d321bc275062"
+    },
+    {
+      "$oid": "5f0eb0c1a7898e13ec15bfaf"
+    },
+    {
+      "$oid": "5f19a82630ea1d0b80860541"
+    },
+    {
+      "$oid": "5f19a8fa30ea1d0b80860546"
+    },
+    {
+      "$oid": "5f0d2441856ce617a8aa0ba3"
+    },
+    {
+      "$oid": "5f1fb9417c76470710c700e3"
+    },
+    {
+      "$oid": "5f1fc9447c76470710c700ee"
+    },
+    {
+      "$oid": "5f1fca757c76470710c700f4"
+    },
+    {
+      "$oid": "5f1fcb277c76470710c700f6"
+    },
+    {
+      "$oid": "5f1fcc467c76470710c700fd"
+    },
+    {
+      "$oid": "5f1ff5b84307f73598e8d5ec"
+    },
+    {
+      "$oid": "5f2001b84307f73598e8d5f4"
+    },
+    {
+      "$oid": "5f2002c74307f73598e8d5fa"
+    },
+    {
+      "$oid": "5f20048a4307f73598e8d5fd"
+    },
+    {
+      "$oid": "5f21b485f665866c24ebb104"
+    },
+    {
+      "$oid": "5f2257c3c3eef253f8537ffe"
+    },
+    {
+      "$oid": "5f2283d5c3eef253f8538009"
+    },
+    {
+      "$oid": "5f22842dc3eef253f8538010"
+    }
+  ],
+  "Ten_Cua_Hang": "Đậu Nành Mix - Lê Văn Sỹ",
+  "Dia_Chi_Cua_Hang": {
+    "$oid": "5eb987c881378239a8478e71"
+  },
+  "Mo_Ta_Cua_Hang": "",
+  "Thoi_Gian_Bat_Dau": "8",
+  "Thoi_Gian_Ket_Thuc": "19",
+  "Danh_Gia": "4",
+  "Hinh_Anh_Cua_Hang": "store.png",
+  "Trang_Thai_Cua_Hang": "1",
+  "__v": 1,
+  "Loai_MonAn": [
+    {
+      "$oid": "5eba211b54974f0b54da7afc"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afe"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afd"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7aff"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7b00"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5ec39da122336e32d01a2402"
+  },
+  "Khuyen_Mai_CH": [
+    {
+      "$oid": "5f1e43e52e9dd84a3cb9bfe1"
+    },
+    {
+      "$oid": "5f1fc249422ef826dc0921ac"
+    },
+    {
+      "$oid": "5f1fc58c4bbf750ba07d5a94"
+    }
+  ],
+  "Thong_Tin_KH_Dat_Don": [
+    {
+      "$oid": "5f0bdc6e5210614a1427e965"
+    },
+    {
+      "$oid": "5f0bdcb05210614a1427e96c"
+    },
+    {
+      "$oid": "5f0bdcf55210614a1427e979"
+    },
+    {
+      "$oid": "5f0d336bf590834bbce325d9"
+    },
+    {
+      "$oid": "5f0d34fdd381d321bc27504c"
+    },
+    {
+      "$oid": "5f0d360ed381d321bc275053"
+    },
+    {
+      "$oid": "5f0d4071d381d321bc275065"
+    },
+    {
+      "$oid": "5f0d409dd381d321bc275069"
+    },
+    {
+      "$oid": "5f0d4256d381d321bc27506f"
+    },
+    {
+      "$oid": "5f0ee1cb4846e0283c9fe25c"
+    },
+    {
+      "$oid": "5f0ee3664846e0283c9fe263"
+    },
+    {
+      "$oid": "5f0ee4964846e0283c9fe26a"
+    },
+    {
+      "$oid": "5f0ee6ac4846e0283c9fe26e"
+    },
+    {
+      "$oid": "5f0f16035be1b23ea40d9166"
+    },
+    {
+      "$oid": "5f0f16615be1b23ea40d916a"
+    },
+    {
+      "$oid": "5f0f18025be1b23ea40d917a"
+    },
+    {
+      "$oid": "5f0f209d5be1b23ea40d918c"
+    },
+    {
+      "$oid": "5f0f4bf6cd437624ac0f34c5"
+    },
+    {
+      "$oid": "5f1fba257c76470710c700e5"
+    }
+  ],
+  "Ten_Cua_Hang": "Đậu Nành Mix - Cách Mạng Tháng 8",
+  "Dia_Chi_Cua_Hang": {
+    "$oid": "5eb987c881378239a8478e70"
+  },
+  "Mo_Ta_Cua_Hang": "",
+  "Thoi_Gian_Bat_Dau": "8",
+  "Thoi_Gian_Ket_Thuc": "19",
+  "Danh_Gia": "4",
+  "Hinh_Anh_Cua_Hang": "store1.jpg",
+  "Trang_Thai_Cua_Hang": "1",
+  "__v": 1,
+  "Loai_MonAn": [
+    {
+      "$oid": "5eba211b54974f0b54da7afc"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afe"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afd"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7aff"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7b00"
+    },
+    {
+      "$oid": "5eef3b0453f08014f0475a61"
+    },
+    {
+      "$oid": "5eef622c7474f315ace6530b"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5ec39da122336e32d01a2403"
+  },
+  "Khuyen_Mai_CH": [],
+  "Thong_Tin_KH_Dat_Don": [],
+  "Ten_Cua_Hang": "Nũng Nịu -Cơm Gà Xối Mỡ - Cây Trâm",
+  "Dia_Chi_Cua_Hang": {
+    "$oid": "5eb987c881378239a8478e72"
+  },
+  "Mo_Ta_Cua_Hang": "",
+  "Thoi_Gian_Bat_Dau": "8",
+  "Thoi_Gian_Ket_Thuc": "19",
+  "Danh_Gia": "4",
+  "Hinh_Anh_Cua_Hang": "store3.jpg",
+  "Trang_Thai_Cua_Hang": "1",
+  "__v": 1,
+  "Loai_MonAn": [
+    {
+      "$oid": "5eba211b54974f0b54da7afc"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afe"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afd"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7aff"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7b00"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5ec39da122336e32d01a2404"
+  },
+  "Khuyen_Mai_CH": [],
+  "Thong_Tin_KH_Dat_Don": [],
+  "Ten_Cua_Hang": "Nũng Nịu -Cơm Gà Xối Mỡ - Lê Đức Thọ",
+  "Dia_Chi_Cua_Hang": {
+    "$oid": "5eb987c881378239a8478e70"
+  },
+  "Mo_Ta_Cua_Hang": "",
+  "Thoi_Gian_Bat_Dau": "8",
+  "Thoi_Gian_Ket_Thuc": "19",
+  "Danh_Gia": "4",
+  "Hinh_Anh_Cua_Hang": "store4.jpg",
+  "Trang_Thai_Cua_Hang": "1",
+  "__v": 1,
+  "Loai_MonAn": [
+    {
+      "$oid": "5eba211b54974f0b54da7afc"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afe"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afd"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7aff"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7b00"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5ec39da122336e32d01a2406"
+  },
+  "Khuyen_Mai_CH": [],
+  "Thong_Tin_KH_Dat_Don": [],
+  "Ten_Cua_Hang": "Đậu Nành Mix - Nguyễn Thái Học",
+  "Dia_Chi_Cua_Hang": {
+    "$oid": "5eb987c881378239a8478e70"
+  },
+  "Mo_Ta_Cua_Hang": "",
+  "Thoi_Gian_Bat_Dau": "8",
+  "Thoi_Gian_Ket_Thuc": "19",
+  "Danh_Gia": "4",
+  "Hinh_Anh_Cua_Hang": "store6.jpg",
+  "Trang_Thai_Cua_Hang": "1",
+  "__v": 1,
+  "Loai_MonAn": [
+    {
+      "$oid": "5eba211b54974f0b54da7afc"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afe"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afd"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7aff"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7b00"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5ec39da122336e32d01a2405"
+  },
+  "Khuyen_Mai_CH": [],
+  "Thong_Tin_KH_Dat_Don": [],
+  "Ten_Cua_Hang": "Nũng Nịu -Cơm Gà Xối Mỡ - Lê Đức Thọ",
+  "Dia_Chi_Cua_Hang": {
+    "$oid": "5eb987c881378239a8478e71"
+  },
+  "Mo_Ta_Cua_Hang": "",
+  "Thoi_Gian_Bat_Dau": "8",
+  "Thoi_Gian_Ket_Thuc": "19",
+  "Danh_Gia": "4",
+  "Hinh_Anh_Cua_Hang": "store5.jpg",
+  "Trang_Thai_Cua_Hang": "1",
+  "__v": 1,
+  "Loai_MonAn": [
+    {
+      "$oid": "5eba211b54974f0b54da7afc"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afe"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afd"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7aff"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7b00"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5ed5dc8a925f5d5444e7e651"
+  },
+  "Khuyen_Mai_CH": [
+    {
+      "$oid": "5ebac4a041540b1a08b7d978"
+    },
+    {
+      "$oid": "5ed2022bde484c12f035191b"
+    },
+    {
+      "$oid": "5ed202b28154a02058331ba0"
+    }
+  ],
+  "Thong_Tin_KH_Dat_Don": [],
+  "Ten_Cua_Hang": "Thành Đạt - Hủ Tiếu Nam Vang - Nguyễn Hữu Cầu",
+  "Mo_Ta_Cua_Hang": "",
+  "Thoi_Gian_Bat_Dau": "8",
+  "Thoi_Gian_Ket_Thuc": "19",
+  "Danh_Gia": "4",
+  "Hinh_Anh_Cua_Hang": "BunBoHue.jpg",
+  "Trang_Thai_Cua_Hang": "Đang mở cửa",
+  "__v": 1,
+  "Dia_Chi_Cua_Hang": {
+    "$oid": "5eb987c881378239a8478e6f"
+  },
+  "Loai_MonAn": [
+    {
+      "$oid": "5eba211b54974f0b54da7afc"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afe"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afd"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7aff"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7b00"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5edee725150faa3b583cd691"
+  },
+  "Khuyen_Mai_CH": [],
+  "Thong_Tin_KH_Dat_Don": [],
+  "Ten_Cua_Hang": "Cơm Văn Phòng Libbi Số 1",
+  "Dia_Chi_Cua_Hang": {
+    "$oid": "5eb987c881378239a8478e74"
+  },
+  "Mo_Ta_Cua_Hang": "",
+  "Thoi_Gian_Bat_Dau": "8",
+  "Thoi_Gian_Ket_Thuc": "19",
+  "Danh_Gia": "4",
+  "Hinh_Anh_Cua_Hang": "Com_1(1).jpg",
+  "Trang_Thai_Cua_Hang": "1",
+  "__v": 1,
+  "Loai_MonAn": [
+    {
+      "$oid": "5eba211b54974f0b54da7afc"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afe"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afd"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7aff"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7b00"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5edee725150faa3b583cd694"
+  },
+  "Khuyen_Mai_CH": [],
+  "Thong_Tin_KH_Dat_Don": [],
+  "Ten_Cua_Hang": "Cơm Văn Phòng Libbi Số 2",
+  "Dia_Chi_Cua_Hang": {
+    "$oid": "5eb987c881378239a8478e73"
+  },
+  "Mo_Ta_Cua_Hang": "",
+  "Thoi_Gian_Bat_Dau": "8",
+  "Thoi_Gian_Ket_Thuc": "19",
+  "Danh_Gia": "4",
+  "Hinh_Anh_Cua_Hang": "Com_1(1).jpg",
+  "Trang_Thai_Cua_Hang": "1",
+  "__v": 1,
+  "Loai_MonAn": [
+    {
+      "$oid": "5eba211b54974f0b54da7afc"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afe"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afd"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7aff"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7b00"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5edee725150faa3b583cd69a"
+  },
+  "Khuyen_Mai_CH": [],
+  "Thong_Tin_KH_Dat_Don": [],
+  "Ten_Cua_Hang": "Cơm Văn Phòng Libbi Số 4",
+  "Dia_Chi_Cua_Hang": {
+    "$oid": "5eb987c881378239a8478e73"
+  },
+  "Mo_Ta_Cua_Hang": "",
+  "Thoi_Gian_Bat_Dau": "8",
+  "Thoi_Gian_Ket_Thuc": "19",
+  "Danh_Gia": "4",
+  "Hinh_Anh_Cua_Hang": "Com_1(1).jpg",
+  "Trang_Thai_Cua_Hang": "1",
+  "__v": 1,
+  "Loai_MonAn": [
+    {
+      "$oid": "5eba211b54974f0b54da7afc"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afe"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afd"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7aff"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7b00"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5edee725150faa3b583cd697"
+  },
+  "Khuyen_Mai_CH": [],
+  "Thong_Tin_KH_Dat_Don": [],
+  "Ten_Cua_Hang": "Cơm Văn Phòng Libbi Số 3",
+  "Dia_Chi_Cua_Hang": {
+    "$oid": "5eb987c881378239a8478e73"
+  },
+  "Mo_Ta_Cua_Hang": "",
+  "Thoi_Gian_Bat_Dau": "8",
+  "Thoi_Gian_Ket_Thuc": "19",
+  "Danh_Gia": "4",
+  "Hinh_Anh_Cua_Hang": "Com_1(1).jpg",
+  "Trang_Thai_Cua_Hang": "1",
+  "__v": 1,
+  "Loai_MonAn": [
+    {
+      "$oid": "5eba211b54974f0b54da7afc"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afe"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afd"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7aff"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7b00"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5edee725150faa3b583cd69d"
+  },
+  "Khuyen_Mai_CH": [],
+  "Thong_Tin_KH_Dat_Don": [],
+  "Ten_Cua_Hang": "Cơm Văn Phòng Libbi Số 5",
+  "Dia_Chi_Cua_Hang": {
+    "$oid": "5eb987c881378239a8478e73"
+  },
+  "Mo_Ta_Cua_Hang": "",
+  "Thoi_Gian_Bat_Dau": "8",
+  "Thoi_Gian_Ket_Thuc": "19",
+  "Danh_Gia": "4",
+  "Hinh_Anh_Cua_Hang": "Com_1(1).jpg",
+  "Trang_Thai_Cua_Hang": "1",
+  "__v": 1,
+  "Loai_MonAn": [
+    {
+      "$oid": "5eba211b54974f0b54da7afc"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afe"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afd"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7aff"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7b00"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5edee82d36e0d90ea87539e8"
+  },
+  "Khuyen_Mai_CH": [],
+  "Thong_Tin_KH_Dat_Don": [],
+  "Ten_Cua_Hang": "Cơm Món Xào Số 1",
+  "Dia_Chi_Cua_Hang": {
+    "$oid": "5eb987c881378239a8478e73"
+  },
+  "Mo_Ta_Cua_Hang": "",
+  "Thoi_Gian_Bat_Dau": "8",
+  "Thoi_Gian_Ket_Thuc": "19",
+  "Danh_Gia": "4",
+  "Hinh_Anh_Cua_Hang": "Com_1(2).jpg",
+  "Trang_Thai_Cua_Hang": "1",
+  "__v": 1,
+  "Loai_MonAn": [
+    {
+      "$oid": "5eba211b54974f0b54da7afc"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afe"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afd"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7aff"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7b00"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5edee82d36e0d90ea87539eb"
+  },
+  "Khuyen_Mai_CH": [],
+  "Thong_Tin_KH_Dat_Don": [],
+  "Ten_Cua_Hang": "Cơm Món Xào Số 2",
+  "Dia_Chi_Cua_Hang": {
+    "$oid": "5eb987c881378239a8478e73"
+  },
+  "Mo_Ta_Cua_Hang": "",
+  "Thoi_Gian_Bat_Dau": "8",
+  "Thoi_Gian_Ket_Thuc": "19",
+  "Danh_Gia": "4",
+  "Hinh_Anh_Cua_Hang": "Com_1(2).jpg",
+  "Trang_Thai_Cua_Hang": "1",
+  "__v": 1,
+  "Loai_MonAn": [
+    {
+      "$oid": "5eba211b54974f0b54da7afc"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afe"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afd"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7aff"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7b00"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5edee82d36e0d90ea87539f1"
+  },
+  "Khuyen_Mai_CH": [],
+  "Thong_Tin_KH_Dat_Don": [],
+  "Ten_Cua_Hang": "Cơm Món Xào Số 4",
+  "Dia_Chi_Cua_Hang": {
+    "$oid": "5eb987c881378239a8478e73"
+  },
+  "Mo_Ta_Cua_Hang": "",
+  "Thoi_Gian_Bat_Dau": "8",
+  "Thoi_Gian_Ket_Thuc": "19",
+  "Danh_Gia": "4",
+  "Hinh_Anh_Cua_Hang": "Com_1(2).jpg",
+  "Trang_Thai_Cua_Hang": "1",
+  "__v": 1,
+  "Loai_MonAn": [
+    {
+      "$oid": "5eba211b54974f0b54da7afc"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afe"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afd"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7aff"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7b00"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5edee82d36e0d90ea87539f4"
+  },
+  "Khuyen_Mai_CH": [],
+  "Thong_Tin_KH_Dat_Don": [],
+  "Ten_Cua_Hang": "Cơm Món Xào Số 5",
+  "Dia_Chi_Cua_Hang": {
+    "$oid": "5eb987c881378239a8478e73"
+  },
+  "Mo_Ta_Cua_Hang": "",
+  "Thoi_Gian_Bat_Dau": "8",
+  "Thoi_Gian_Ket_Thuc": "19",
+  "Danh_Gia": "4",
+  "Hinh_Anh_Cua_Hang": "Com_1(2).jpg",
+  "Trang_Thai_Cua_Hang": "1",
+  "__v": 1,
+  "Loai_MonAn": [
+    {
+      "$oid": "5eba211b54974f0b54da7afc"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afe"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7afd"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7aff"
+    },
+    {
+      "$oid": "5eba211b54974f0b54da7b00"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "5f044425de1f85321c5c6edc"
+  },
+  "Khuyen_Mai_CH": [],
+  "Thong_Tin_KH_Dat_Don": [],
+  "Loai_MonAn": [],
+  "Ten_Cua_Hang": "test tên cửa hàng",
+  "Dia_Chi_Cua_Hang": {
+    "$oid": "5f044421de1f85321c5c6eda"
+  },
+  "Thoi_Gian_Bat_Dau": "10",
+  "Thoi_Gian_Ket_Thuc": "22",
+  "Danh_Gia": "0",
+  "Hinh_Anh_Cua_Hang": "1594115105166-23652575_Freshest from the Tap, Polydactyl Red Tabby.jpg",
+  "Trang_Thai_Cua_Hang": "1",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f0696ab718e5f06dca9dbde"
+  },
+  "Khuyen_Mai_CH": [],
+  "Thong_Tin_KH_Dat_Don": [],
+  "Loai_MonAn": [],
+  "Ten_Cua_Hang": "test tên cửa hàng",
+  "Dia_Chi_Cua_Hang": {
+    "$oid": "5f0696a7718e5f06dca9dbdc"
+  },
+  "Thoi_Gian_Bat_Dau": "10",
+  "Thoi_Gian_Ket_Thuc": "22",
+  "Danh_Gia": "0",
+  "Hinh_Anh_Cua_Hang": "1594267302963-514183672_Freshest from the Tap, Polydactyl Red Tabby.jpg",
+  "Trang_Thai_Cua_Hang": "1",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1329cade327c3ab485d5a0"
+  },
+  "Khuyen_Mai_CH": [
+    {
+      "$oid": "5f1f0834ca8fd05070661d5d"
+    },
+    {
+      "$oid": "5f1f0911021ea0240880fb5e"
+    },
+    {
+      "$oid": "5f1f09cb021ea0240880fb5f"
+    },
+    {
+      "$oid": "5f1f0aa4725136575c597df2"
+    }
+  ],
+  "Thong_Tin_KH_Dat_Don": [],
+  "Loai_MonAn": [],
+  "Ten_Cua_Hang": "Cửa hàng 01",
+  "Dia_Chi_Cua_Hang": {
+    "$oid": "5f1329c9de327c3ab485d59e"
+  },
+  "Thoi_Gian_Bat_Dau": "12",
+  "Thoi_Gian_Ket_Thuc": "15",
+  "Danh_Gia": "0",
+  "Hinh_Anh_Cua_Hang": "1595091401050-978210635_2.jpg",
+  "Trang_Thai_Cua_Hang": "1",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1ab95154ae7f4da4415136"
+  },
+  "Khuyen_Mai_CH": [],
+  "Thong_Tin_KH_Dat_Don": [],
+  "Loai_MonAn": [],
+  "Ten_Cua_Hang": "test",
+  "Dia_Chi_Cua_Hang": {
+    "$oid": "5f1ab94f54ae7f4da4415134"
+  },
+  "Thoi_Gian_Bat_Dau": "18:34",
+  "Thoi_Gian_Ket_Thuc": "17:37",
+  "Danh_Gia": "0",
+  "Hinh_Anh_Cua_Hang": "1595586895252-518657150_3243.jpg_wh860.jpg",
+  "Trang_Thai_Cua_Hang": "1",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1f04cd211e5c4ca0502a6d"
+  },
+  "Khuyen_Mai_CH": [],
+  "Thong_Tin_KH_Dat_Don": [],
+  "Loai_MonAn": [],
+  "Ten_Cua_Hang": "Cửa Hàng Bánh Mì Số 1",
+  "Dia_Chi_Cua_Hang": {
+    "$oid": "5f1f04c9211e5c4ca0502a6b"
+  },
+  "Thoi_Gian_Bat_Dau": "10:00",
+  "Thoi_Gian_Ket_Thuc": "20:00",
+  "Danh_Gia": "0",
+  "Hinh_Anh_Cua_Hang": "1595868361786-265962982_7731e473ab2440520ae151f259337f53.jpg",
+  "Trang_Thai_Cua_Hang": "0",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1f0cf2725136575c597df5"
+  },
+  "Khuyen_Mai_CH": [],
+  "Thong_Tin_KH_Dat_Don": [],
+  "Loai_MonAn": [
+    {
+      "$oid": "5f1f0d37725136575c597df6"
+    },
+    {
+      "$oid": "5f2273180e188e0c8c294f5c"
+    }
+  ],
+  "Ten_Cua_Hang": "Cửa hàng bánh mì thịt nướng Lê Trọng Tấn",
+  "Dia_Chi_Cua_Hang": {
+    "$oid": "5f1f0cef725136575c597df3"
+  },
+  "Thoi_Gian_Bat_Dau": "08:00",
+  "Thoi_Gian_Ket_Thuc": "20:00",
+  "Danh_Gia": "0",
+  "Hinh_Anh_Cua_Hang": "1595870447053-877437968_collections_intro_v4_background_3.jpg",
+  "Trang_Thai_Cua_Hang": "1",
+  "__v": 0
+}]

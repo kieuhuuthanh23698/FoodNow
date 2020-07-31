@@ -1,0 +1,343 @@
+[{
+  "_id": {
+    "$oid": "5eba211b54974f0b54da7afb"
+  },
+  "Danh_sach_mon_an": [
+    {
+      "$oid": "5eba2fe316e4563364302579"
+    },
+    {
+      "$oid": "5eba2fe316e456336430257b"
+    }
+  ],
+  "Ten_loai_mon_an": "Món đặc trưng",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba211b54974f0b54da7afc"
+  },
+  "Danh_sach_mon_an": [
+    {
+      "$oid": "5eba2fe316e4563364302581"
+    },
+    {
+      "$oid": "5edefd0abdfedb2f4c104dec"
+    },
+    {
+      "$oid": "5edefd0abdfedb2f4c104ded"
+    }
+  ],
+  "Ten_loai_mon_an": "Sinh tố",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba211b54974f0b54da7afe"
+  },
+  "Danh_sach_mon_an": [
+    {
+      "$oid": "5edefd0abdfedb2f4c104def"
+    },
+    {
+      "$oid": "5edefd0abdfedb2f4c104dee"
+    },
+    {
+      "$oid": "5eba2fe316e4563364302580"
+    }
+  ],
+  "Ten_loai_mon_an": "Nước ép",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba211b54974f0b54da7afd"
+  },
+  "Danh_sach_mon_an": [
+    {
+      "$oid": "5eba2fe316e4563364302579"
+    },
+    {
+      "$oid": "5eba2fe316e456336430257b"
+    },
+    {
+      "$oid": "5eba2fe316e456336430257a"
+    },
+    {
+      "$oid": "5eba2fe316e456336430257c"
+    },
+    {
+      "$oid": "5eba2fe316e456336430257d"
+    }
+  ],
+  "Ten_loai_mon_an": "Cơm Phần",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba211b54974f0b54da7aff"
+  },
+  "Danh_sach_mon_an": [
+    {
+      "$oid": "5edefd0abdfedb2f4c104df2"
+    },
+    {
+      "$oid": "5edefd0abdfedb2f4c104df3"
+    },
+    {
+      "$oid": "5edefd0abdfedb2f4c104df1"
+    }
+  ],
+  "Ten_loai_mon_an": "Trà nóng",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba211b54974f0b54da7b00"
+  },
+  "Danh_sach_mon_an": [
+    {
+      "$oid": "5eba2fe316e456336430257f"
+    },
+    {
+      "$oid": "5edefd0abdfedb2f4c104df0"
+    },
+    {
+      "$oid": "5eba2fe316e456336430257e"
+    },
+    {
+      "$oid": "5edf47262930ae4c8c78af35"
+    }
+  ],
+  "Ten_loai_mon_an": "Trà Sữa",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba211b54974f0b54da7b01"
+  },
+  "Danh_sach_mon_an": [
+    {
+      "$oid": "5eba2fe316e456336430257a"
+    },
+    {
+      "$oid": "5edeffbd8538581b3017246a"
+    },
+    {
+      "$oid": "5edeffbd8538581b30172468"
+    },
+    {
+      "$oid": "5edeffbd8538581b30172465"
+    }
+  ],
+  "Ten_loai_mon_an": "Điểm tâm sáng",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba211b54974f0b54da7b02"
+  },
+  "Danh_sach_mon_an": [
+    {
+      "$oid": "5edeffbd8538581b3017245f"
+    },
+    {
+      "$oid": "5edeffbd8538581b30172463"
+    },
+    {
+      "$oid": "5edeffbd8538581b30172459"
+    },
+    {
+      "$oid": "5edeffbd8538581b30172460"
+    },
+    {
+      "$oid": "5edeffbd8538581b3017245d"
+    },
+    {
+      "$oid": "5edeffbd8538581b30172464"
+    }
+  ],
+  "Ten_loai_mon_an": "Cơm trưa",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eba211b54974f0b54da7b03"
+  },
+  "Danh_sach_mon_an": [
+    {
+      "$oid": "5edeffbd8538581b30172453"
+    },
+    {
+      "$oid": "5edeffbd8538581b30172457"
+    },
+    {
+      "$oid": "5edeffbd8538581b3017245b"
+    },
+    {
+      "$oid": "5edeffbd8538581b30172463"
+    },
+    {
+      "$oid": "5edeffbd8538581b3017245f"
+    }
+  ],
+  "Ten_loai_mon_an": "Món đặc trưng",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5edf01e2955e171fec5e700e"
+  },
+  "Danh_sach_mon_an": [
+    {
+      "$oid": "5edeffbd8538581b3017244d"
+    },
+    {
+      "$oid": "5edeffbd8538581b3017244e"
+    },
+    {
+      "$oid": "5edeffbd8538581b30172452"
+    },
+    {
+      "$oid": "5edeffbd8538581b30172450"
+    },
+    {
+      "$oid": "5edeffbd8538581b30172456"
+    },
+    {
+      "$oid": "5edeffbd8538581b30172454"
+    },
+    {
+      "$oid": "5edeffbd8538581b3017244c"
+    },
+    {
+      "$oid": "5edeffbd8538581b3017245a"
+    },
+    {
+      "$oid": "5edeffbd8538581b30172451"
+    },
+    {
+      "$oid": "5edeffbd8538581b3017245e"
+    }
+  ],
+  "Ten_loai_mon_an": "Món chính",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5edf01e2955e171fec5e700f"
+  },
+  "Danh_sach_mon_an": [
+    {
+      "$oid": "5edeffbd8538581b30172471"
+    },
+    {
+      "$oid": "5edeffbd8538581b30172470"
+    }
+  ],
+  "Ten_loai_mon_an": "Thức uống",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5edf03cb6b337b2f40ec62b2"
+  },
+  "Danh_sach_mon_an": [
+    {
+      "$oid": "5edeffbd8538581b30172458"
+    },
+    {
+      "$oid": "5edeffbd8538581b30172455"
+    },
+    {
+      "$oid": "5edeffbd8538581b30172462"
+    },
+    {
+      "$oid": "5edeffbd8538581b3017245c"
+    },
+    {
+      "$oid": "5edeffbd8538581b30172459"
+    },
+    {
+      "$oid": "5edeffbd8538581b30172460"
+    },
+    {
+      "$oid": "5edeffbd8538581b3017246a"
+    },
+    {
+      "$oid": "5edeffbd8538581b3017245d"
+    },
+    {
+      "$oid": "5edeffbd8538581b30172464"
+    },
+    {
+      "$oid": "5edeffbd8538581b30172461"
+    },
+    {
+      "$oid": "5edeffbd8538581b3017244f"
+    }
+  ],
+  "Ten_loai_mon_an": "Thực đơn",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eef3811440b481640113b40"
+  },
+  "Danh_sach_mon_an": [],
+  "Ten_loai_mon_an": "function String() { [native code] }",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eef3828440b481640113b41"
+  },
+  "Danh_sach_mon_an": [],
+  "Ten_loai_mon_an": "function String() { [native code] }",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eef398f112a0e06b0a5b698"
+  },
+  "Danh_sach_mon_an": [],
+  "Ten_loai_mon_an": "test thêm loại món ăn",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eef39c6112a0e06b0a5b699"
+  },
+  "Danh_sach_mon_an": [],
+  "Ten_loai_mon_an": "test thêm loại món ăn",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eef3b0453f08014f0475a61"
+  },
+  "Danh_sach_mon_an": [
+    {
+      "$oid": "5eef63f8a4f1861b54a63a24"
+    }
+  ],
+  "Ten_loai_mon_an": "test thêm loại món ăn",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eef622c7474f315ace6530b"
+  },
+  "Danh_sach_mon_an": [
+    {
+      "$oid": "5eef9a22cf6fc946fc2ab1dd"
+    }
+  ],
+  "Ten_loai_mon_an": "test thêm loại món ăn 2",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f1f0d37725136575c597df6"
+  },
+  "Danh_sach_mon_an": [
+    {
+      "$oid": "5f1f0d61725136575c597df7"
+    }
+  ],
+  "Ten_loai_mon_an": "Món đặc trưng",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f2273180e188e0c8c294f5c"
+  },
+  "Danh_sach_mon_an": [
+    {
+      "$oid": "5f2273640e188e0c8c294f5d"
+    }
+  ],
+  "Ten_loai_mon_an": "Món chính",
+  "__v": 0
+}]

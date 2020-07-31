@@ -1,0 +1,72 @@
+[{
+  "_id": {
+    "$oid": "5ed5eec8cfcd901dcccc799c"
+  },
+  "DanhSach_NguoiDung": [
+    {
+      "$oid": "5ed5de7e3f18e31378a48906"
+    },
+    {
+      "$oid": "5ee9ca48eee1ba5dfb1b791b"
+    },
+    {
+      "$oid": "5f043cfef4f9986620444554"
+    },
+    {
+      "$oid": "5f044163a500d968402c7a98"
+    },
+    {
+      "$oid": "5f044425de1f85321c5c6edb"
+    },
+    {
+      "$oid": "5f0696aa718e5f06dca9dbdd"
+    },
+    {
+      "$oid": "5f1329cade327c3ab485d59f"
+    },
+    {
+      "$oid": "5f1ab95154ae7f4da4415135"
+    },
+    {
+      "$oid": "5f1f04cd211e5c4ca0502a6c"
+    },
+    {
+      "$oid": "5f1f0cf2725136575c597df4"
+    }
+  ],
+  "Ten_nhom": "Cuahang",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ed5eec8cfcd901dcccc799e"
+  },
+  "DanhSach_NguoiDung": [
+    {
+      "$oid": "5ed5de7e3f18e31378a48908"
+    }
+  ],
+  "Ten_nhom": "Admin",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ed5eec8cfcd901dcccc799d"
+  },
+  "DanhSach_NguoiDung": [
+    {
+      "$oid": "5ed5de7e3f18e31378a48907"
+    }
+  ],
+  "Ten_nhom": "Chinhanh",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ed5eec8cfcd901dcccc799f"
+  },
+  "DanhSach_NguoiDung": [
+    {
+      "$oid": "5ed5f0f5715159572cf6b628"
+    }
+  ],
+  "Ten_nhom": "SupperAdmin",
+  "__v": 0
+}]

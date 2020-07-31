@@ -1,0 +1,23 @@
+[{
+  "_id": {
+    "$oid": "5f22d8b36867c64298f9faf5"
+  },
+  "DanhSach_CN": [
+    {
+      "$oid": "5eba197716ec7530ecb08d2b"
+    },
+    {
+      "$oid": "5edd16436bcd9c3504b040bf"
+    },
+    {
+      "$oid": "5eba197716ec7530ecb08d29"
+    }
+  ],
+  "MaGiamGia": "KMHETHONG01",
+  "HanSuDung": "2020-07-29",
+  "ThoiGianGiaoHang": "07/31/2020 - 08/24/2020",
+  "Icon": "1596119219863-287120363_DanhGia.png",
+  "PhanTram_GiamGia": "10",
+  "MoTa": "Dành cho cửa hàng khu vực TP HCM",
+  "__v": 0
+}]
