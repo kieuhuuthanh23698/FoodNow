@@ -154,7 +154,7 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
             storeVoucher.setPhanTram_GiamGia(jsonObject.getString("PhanTram_GiamGia"));
             storeVoucher.setMoTa(jsonObject.getString("MoTa"));
             arrayListStoreVouchers.add(storeVoucher);
-            arrayListStoreVouchers.add(storeVoucher);
+//            arrayListStoreVouchers.add(storeVoucher);
         }
     }
 

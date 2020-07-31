@@ -4362,3 +4362,27 @@ app.post("/cuaHangThongKeDonHang", urlEncodeParser, function (req, res) {
 			 }
 	});
 });
+
+
+
+//route cập nhật số điện thoại của khách hàng
+//method post
+//Param  token, phonenumber
+app.post("/capNhatSoDienThoaiKhachHang", urlEncodeParser, function (req, res) {
+	if(req.body.token == null || req.body.token == "" || req.body.phonenumber == null || req.body.phonenumber == "")
+		return res.send({return_code: "0"});
+	if(!verifyUser(req, res))
+		return;
+	KHACH_HANG.findByIdAndUpdate(
+		{_id : mongoose.Types.ObjectId(req.body.idKhachHang)},
+		{
+			$set: { So_dien_thoai: req.body.phonenumber }
+		},
+		function(err, result){
+			if(err || result == null){
+				return res.send({return_code: "0"});
+			} else {
+				return res.send({return_code: "1"});
+			}
+	});
+});

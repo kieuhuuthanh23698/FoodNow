@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".VerifyPhoneNumberActivity">
+
+    <RelativeLayout
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/verrify_phone_act_btnBack"
+            android:layout_margin="10dp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/ic_navigate_before_black_24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="Cập nhật số điện thoại"
+            style="@style/title"
+            android:background="@android:color/white"
+            android:textColor="@android:color/black"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+
+    <ImageView
+        android:layout_margin="80dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/ic_app_1"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+
+
+    <EditText
+        android:id="@+id/verrify_phone_act_input_phone"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/border_button"
+        android:backgroundTint="#F5F2F2"
+        android:ems="10"
+        android:focusable="false"
+        android:hint="Vui lòng nhập số điện thoại"
+        android:padding="10dp"
+        android:inputType="textPersonName"
+        android:paddingLeft="5dp"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/verrify_phone_act_btn_confirm"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:text="Cập nhật"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:textSize="15dp"
+        android:backgroundTint="@android:color/holo_red_light"
+        android:background="@drawable/primary_button"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+</LinearLayout>

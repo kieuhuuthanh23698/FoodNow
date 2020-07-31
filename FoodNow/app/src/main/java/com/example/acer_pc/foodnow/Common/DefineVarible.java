@@ -7,6 +7,7 @@ import com.example.acer_pc.foodnow.Data.DAL_GetInforStore;
 import com.example.acer_pc.foodnow.Data.DAL_ConfirmShoppingCart;
 import com.example.acer_pc.foodnow.Data.DAL_Login;
 import com.example.acer_pc.foodnow.Data.DAL_MyLocation;
+import com.example.acer_pc.foodnow.Data.DAL_UpdatePhonenumber;
 import com.example.acer_pc.foodnow.Data.Dal_RequestMoMo;
 
 public class DefineVarible {
@@ -19,6 +20,7 @@ public class DefineVarible {
     public static DAL_ConfirmShoppingCart dal_confirmShoppingCart;
     public static DAL_AddUserAddress dal_addUserAddress;
     public static Dal_RequestMoMo dal_requestMoMo;
+    public static DAL_UpdatePhonenumber dal_updatePhonenumber;
 
     public static final int getMyLocation = 0;
     public static final int loginToServer = 1;
@@ -28,4 +30,5 @@ public class DefineVarible {
     public static final int confirmCart = 5;
     public static final int setNoteCartDetail = 6;
     public static final int addUserAddress = 7;
+    public static final int updatePhonenumber = 8;
 }

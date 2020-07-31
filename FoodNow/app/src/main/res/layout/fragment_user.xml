@@ -201,116 +201,9 @@
             <FrameLayout
                 style="@style/devider"
                 android:layout_width="match_parent" />
-            <!--
-                        <RelativeLayout
-                            style="@style/user_fm_row"
-                            android:layout_width="match_parent">
-
-                            <TextView
-                                style="@style/title"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:backgroundTint="@android:color/white"
-                                android:drawableLeft="@drawable/ic_perm_identity_black_24dp"
-                                android:gravity="center"
-                                android:text=" Mời bạn bè"
-                                android:textColor="#000000"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_alignParentRight="true"
-                                android:drawableLeft="@drawable/ic_navigate_next_black_24dp" />
-
-                        </RelativeLayout>
-
-                        <FrameLayout
-                            style="@style/devider_small"
-                            android:layout_width="match_parent" />
 
                         <RelativeLayout
-                            style="@style/user_fm_row"
-                            android:layout_width="match_parent">
-
-                            <TextView
-                                style="@style/title"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:backgroundTint="@android:color/white"
-                                android:drawableLeft="@drawable/ic_mail_outline_black_24dp"
-                                android:gravity="center"
-                                android:text=" Góp ý"
-                                android:textColor="#000000"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_alignParentRight="true"
-                                android:drawableLeft="@drawable/ic_navigate_next_black_24dp" />
-
-                        </RelativeLayout>
-
-                        <FrameLayout
-                            style="@style/devider"
-                            android:layout_width="match_parent" />
-
-                        <RelativeLayout
-                            style="@style/user_fm_row"
-                            android:layout_width="match_parent">
-
-                            <TextView
-                                style="@style/title"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:backgroundTint="@android:color/white"
-                                android:drawableLeft="@drawable/ic_store_black_24dp"
-                                android:gravity="center"
-                                android:text=" Ứng dụng cho chủ quán"
-                                android:textColor="#000000"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_alignParentRight="true"
-                                android:drawableLeft="@drawable/ic_navigate_next_black_24dp" />
-
-                        </RelativeLayout>
-
-                        <FrameLayout
-                            style="@style/devider"
-                            android:layout_width="match_parent" />
-
-                        <RelativeLayout
-                            style="@style/user_fm_row"
-                            android:layout_width="match_parent">
-
-                            <TextView
-                                style="@style/title"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:backgroundTint="@android:color/white"
-                                android:drawableLeft="@drawable/ic_help_outline_black_24dp"
-                                android:gravity="center"
-                                android:text=" Chính sách quy định"
-                                android:textColor="#000000"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_alignParentRight="true"
-                                android:drawableLeft="@drawable/ic_navigate_next_black_24dp" />
-
-                        </RelativeLayout>
-
-                        <FrameLayout
-                            style="@style/devider_small"
-                            android:layout_width="match_parent" />
-
-                        <RelativeLayout
+                            android:id="@+id/fragment_user_phone_user_row"
                             style="@style/user_fm_row"
                             android:layout_width="match_parent">
 
@@ -321,7 +214,7 @@
                                 android:backgroundTint="@android:color/white"
                                 android:drawableLeft="@drawable/ic_settings_black_24dp"
                                 android:gravity="center"
-                                android:text=" Cài đặt"
+                                android:text=" Cập nhật số điện thoại"
                                 android:textColor="#000000"
                                 android:textStyle="bold" />
 
@@ -336,30 +229,138 @@
                         <FrameLayout
                             style="@style/devider_small"
                             android:layout_width="match_parent" />
+            <!--
+                                    <RelativeLayout
+                                        style="@style/user_fm_row"
+                                        android:layout_width="match_parent">
 
-                        <RelativeLayout
-                            style="@style/user_fm_row"
-                            android:layout_width="match_parent">
+                                        <TextView
+                                            style="@style/title"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:backgroundTint="@android:color/white"
+                                            android:drawableLeft="@drawable/ic_mail_outline_black_24dp"
+                                            android:gravity="center"
+                                            android:text=" Góp ý"
+                                            android:textColor="#000000"
+                                            android:textStyle="bold" />
 
-                            <TextView
-                                style="@style/title"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:backgroundTint="@android:color/white"
-                                android:drawableLeft="@drawable/ic_error_outline_black2_24dp"
-                                android:gravity="center"
-                                android:text=" Về Now"
-                                android:textColor="#000000"
-                                android:textStyle="bold" />
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:layout_alignParentRight="true"
+                                            android:drawableLeft="@drawable/ic_navigate_next_black_24dp" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_alignParentRight="true"
-                                android:drawableLeft="@drawable/ic_navigate_next_black_24dp" />
+                                    </RelativeLayout>
 
-                        </RelativeLayout>
-            -->
+                                    <FrameLayout
+                                        style="@style/devider"
+                                        android:layout_width="match_parent" />
+
+                                    <RelativeLayout
+                                        style="@style/user_fm_row"
+                                        android:layout_width="match_parent">
+
+                                        <TextView
+                                            style="@style/title"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:backgroundTint="@android:color/white"
+                                            android:drawableLeft="@drawable/ic_store_black_24dp"
+                                            android:gravity="center"
+                                            android:text=" Ứng dụng cho chủ quán"
+                                            android:textColor="#000000"
+                                            android:textStyle="bold" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:layout_alignParentRight="true"
+                                            android:drawableLeft="@drawable/ic_navigate_next_black_24dp" />
+
+                                    </RelativeLayout>
+
+                                    <FrameLayout
+                                        style="@style/devider"
+                                        android:layout_width="match_parent" />
+
+                                    <RelativeLayout
+                                        style="@style/user_fm_row"
+                                        android:layout_width="match_parent">
+
+                                        <TextView
+                                            style="@style/title"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:backgroundTint="@android:color/white"
+                                            android:drawableLeft="@drawable/ic_help_outline_black_24dp"
+                                            android:gravity="center"
+                                            android:text=" Chính sách quy định"
+                                            android:textColor="#000000"
+                                            android:textStyle="bold" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:layout_alignParentRight="true"
+                                            android:drawableLeft="@drawable/ic_navigate_next_black_24dp" />
+
+                                    </RelativeLayout>
+
+                                    <FrameLayout
+                                        style="@style/devider_small"
+                                        android:layout_width="match_parent" />
+
+                                    <RelativeLayout
+                                        style="@style/user_fm_row"
+                                        android:layout_width="match_parent">
+
+                                        <TextView
+                                            style="@style/title"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:backgroundTint="@android:color/white"
+                                            android:drawableLeft="@drawable/ic_settings_black_24dp"
+                                            android:gravity="center"
+                                            android:text=" Cài đặt"
+                                            android:textColor="#000000"
+                                            android:textStyle="bold" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:layout_alignParentRight="true"
+                                            android:drawableLeft="@drawable/ic_navigate_next_black_24dp" />
+
+                                    </RelativeLayout>
+
+                                    <FrameLayout
+                                        style="@style/devider_small"
+                                        android:layout_width="match_parent" />
+
+                                    <RelativeLayout
+                                        style="@style/user_fm_row"
+                                        android:layout_width="match_parent">
+
+                                        <TextView
+                                            style="@style/title"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:backgroundTint="@android:color/white"
+                                            android:drawableLeft="@drawable/ic_error_outline_black2_24dp"
+                                            android:gravity="center"
+                                            android:text=" Về Now"
+                                            android:textColor="#000000"
+                                            android:textStyle="bold" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:layout_alignParentRight="true"
+                                            android:drawableLeft="@drawable/ic_navigate_next_black_24dp" />
+
+                                    </RelativeLayout>
+                        -->
 
             <LinearLayout
                 android:visibility="gone"

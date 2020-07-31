@@ -27,7 +27,7 @@ public class UserFragment extends Fragment {
     ImageView imageView;
     TextView txtName, btnLogin, btnLogout;
     //row
-    RelativeLayout infor_user_row, address_user_row;
+    RelativeLayout infor_user_row, address_user_row, phone_user_row;
 
     @Nullable
     @Override
@@ -58,6 +58,13 @@ public class UserFragment extends Fragment {
                     intent.putExtra("type", 1);
                     startActivity(intent);
                 }
+            }
+        });
+        phone_user_row.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), VerifyPhoneNumberActivity.class);
+                startActivity(intent);
             }
         });
         btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +107,7 @@ public class UserFragment extends Fragment {
         //rows
         infor_user_row = view.findViewById(R.id.fragment_user_infor_user_row);
         address_user_row = view.findViewById(R.id.fragment_user_address_user_row);
+        phone_user_row = view.findViewById(R.id.fragment_user_phone_user_row);
     }
 
     @Override

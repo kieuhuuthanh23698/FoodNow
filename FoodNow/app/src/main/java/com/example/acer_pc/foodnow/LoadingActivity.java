@@ -15,6 +15,7 @@ import com.example.acer_pc.foodnow.Data.DAL_GetInforStore;
 import com.example.acer_pc.foodnow.Data.DAL_ConfirmShoppingCart;
 import com.example.acer_pc.foodnow.Data.DAL_Login;
 import com.example.acer_pc.foodnow.Data.DAL_MyLocation;
+import com.example.acer_pc.foodnow.Data.DAL_UpdatePhonenumber;
 import com.example.acer_pc.foodnow.Data.Dal_RequestMoMo;
 import com.example.acer_pc.foodnow.Data.Utils;
 
@@ -124,6 +125,11 @@ public class LoadingActivity extends AppCompatActivity {
                 String address = intent.getStringExtra("address");
                 dal_addUserAddress = new DAL_AddUserAddress(LoadingActivity.this, type, lat, lng, address);
                 dal_addUserAddress.addUserAddress();
+                break;
+            case DefineVarible.updatePhonenumber:
+                String phonenumber = intent.getStringExtra("phonenumber");
+                dal_updatePhonenumber = new DAL_UpdatePhonenumber(LoadingActivity.this);
+                dal_updatePhonenumber.updatePhonenumber(phonenumber);
                 break;
         }
     }

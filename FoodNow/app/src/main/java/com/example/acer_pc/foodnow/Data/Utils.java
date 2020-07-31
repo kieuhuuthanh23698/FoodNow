@@ -65,6 +65,7 @@ public class Utils {
     public static String urlGetOrderListCustomer = uri + "/getDanhSachDonHangKH" ;
     public static String urlSeachStore = uri + "/Hienthiketqua_timkiemmonan" ;
     public static String urlCancelOrder = uri + "/capNhatTrangThaiDonHang" ;
+    public static String urlUpdatePhonenumber = uri + "/capNhatSoDienThoaiKhachHang" ;
 
     public static String urlRegister = uri + "/addKhachHang" ;
     public static String urlCuaHang = uri + "/cuahang" ;
