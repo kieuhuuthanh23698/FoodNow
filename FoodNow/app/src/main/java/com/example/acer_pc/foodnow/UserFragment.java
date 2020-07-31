@@ -63,8 +63,10 @@ public class UserFragment extends Fragment {
         phone_user_row.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), VerifyPhoneNumberActivity.class);
-                startActivity(intent);
+                if(user != null) {
+                    Intent intent = new Intent(getContext(), VerifyPhoneNumberActivity.class);
+                    startActivity(intent);
+                }
             }
         });
         btnLogout.setOnClickListener(new View.OnClickListener() {
