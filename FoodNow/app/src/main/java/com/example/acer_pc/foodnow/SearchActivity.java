@@ -1,7 +1,9 @@
 package com.example.acer_pc.foodnow;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Color;
+import android.speech.RecognizerIntent;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -48,11 +50,13 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Locale;
 
 public class SearchActivity extends AppCompatActivity implements DAL_SearchStore.SearchStoreListener, SuggestionSearchAdapter.SuggestionSearchItemListener{
     int i = 0;
     private ImageView navigate_before_search_acti;
     private SearchView searchView;
+    private TextView btnMic;
     private DAL_SearchStore dal_searchStore;
     private LinearLayout resultSearch, searchSuggest;
     private SuggestionSearchAdapter suggestionSearchAdapter;
@@ -66,6 +70,7 @@ public class SearchActivity extends AppCompatActivity implements DAL_SearchStore
     void init(){
         navigate_before_search_acti = findViewById(R.id.navigate_before_search_acti);
         recyclerViewSuggestionSearch = findViewById(R.id.suggestion_list);
+        btnMic = findViewById(R.id.search_activity_mic);
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         mViewPager = (ViewPager) findViewById(R.id.container);
         searchView = findViewById(R.id.searchText);
@@ -149,6 +154,31 @@ public class SearchActivity extends AppCompatActivity implements DAL_SearchStore
             }
         });
 
+        btnMic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                        RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+                intent.putExtra(RecognizerIntent.EXTRA_PROMPT, getString(R.string.speech_prompt));
+                try {
+                    startActivityForResult(intent, 100);
+                } catch (ActivityNotFoundException a) {
+                    Toast.makeText(getApplicationContext(), getString(R.string.speech_not_supported), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && null != data) {
+            ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+            onSuggestionSearchItemClick(result.get(0));
+        }
     }
 
     @Override
