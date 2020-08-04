@@ -401,9 +401,9 @@ $(document).ready(function(){
                 localStorage.removeItem('timeEnd');
                 localStorage.removeItem('mota');
                 localStorage.setItem("detailCH", infor._id);
-                window.close();
                 window.open("<?php echo base_url();?>Taikhoan/homeQuanly_taikhoan_cuahang");
                 window.open("<?php echo base_url();?>Quanly_danhmuc/homeDanhmuc_chinhanh");
+                window.close();
               } else if(res.return_code == "0"){
                 toastr.error("Tạo chi nhanh mới thất bại !")
               }

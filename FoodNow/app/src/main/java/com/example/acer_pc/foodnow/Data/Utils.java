@@ -45,7 +45,7 @@ import javax.crypto.spec.SecretKeySpec;
 import static com.example.acer_pc.foodnow.LoginActivity.user;
 
 public class Utils {
-    static String uri = "http://192.168.137.1:3000";
+    public static String uri = "http://192.168.137.1:3000";
 //    static String uri = "http://192.168.1.109:3000";
 
 //    static String ipserver = "10.21.151.197:3000";

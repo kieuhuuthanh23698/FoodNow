@@ -1,15 +1,27 @@
 package com.example.acer_pc.foodnow.Object;
 
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+
+import com.example.acer_pc.foodnow.Adapter.InforStoreFoodsAdapter;
+import com.example.acer_pc.foodnow.Data.CartDetail;
 import com.example.acer_pc.foodnow.Data.Utils;
 import com.example.acer_pc.foodnow.R;
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Date;
 import java.util.Random;
+
+import static com.example.acer_pc.foodnow.InformationStoreActivity.shoppingCart;
 
 public class Food {
     private int img, cost, like;
     private String name;
     private String detail;
+    private String status;
 
     public String getUrlImg() {
         return urlImg;
@@ -54,20 +66,17 @@ public class Food {
         this.note = note;
     }
 
-    public Food() {
-        Date date = new Date();
-        Random rn = new Random();
-        this.id = String.valueOf(date.getTime() + rn.nextInt(2147483647));
-        this.count = 0;
-        this.note = "";
-
-        this.img = R.drawable.food;
-        this.name = "Cơm chiên bò";
-        this.detail = "Giá đã bao gồm 10% VAT";
-        this.cost = 99;//số người đã mua
-        this.like = 99;//số người đã like
-        this.price = 35000.0;
+    public Food(JSONObject jsonObject) throws JSONException {
+        this.id = jsonObject.getString("_id");
+        this.name = jsonObject.getString("Ten_mon_an");
+        this.urlImg = jsonObject.getString("Ten_mon_an");
+        this.urlImg = Utils.getUrlImageFood(jsonObject.getString("Hinh_anh_mon_an"));
+        this.detail = jsonObject.getString("Mo_ta_mon_an");
+        this.price = jsonObject.getDouble("Don_gia_mon_an");
+        this.status = jsonObject.getString("Trang_thai_mon_an");
     }
+
+    public Food() {}
 
     public Food NewFood(){
         Food tmp = new Food();
@@ -135,7 +144,13 @@ public class Food {
         this.like = like;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
     public String getDetail() {
+        if(this.status.equals("0"))
+            return "Quán hết món này !";
         return detail;
     }
 
@@ -149,5 +164,9 @@ public class Food {
 
     public String getTotal(){
         return String.format("%.1f", price*count) + " đ";
+    }
+
+    public void updateStatus(String status) {
+        this.status = status;
     }
 }

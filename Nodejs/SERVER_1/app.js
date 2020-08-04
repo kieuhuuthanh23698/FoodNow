@@ -163,18 +163,34 @@ function getSocketIdWithIdParner(partnerID) {
 	return null;
 }
 
-io.on("connect", function (socket) {
-	socket.on('login', function (data) {
-		if (getSocketIdWithIdParner(data) == null) {
-			socket.join(data);
-			console.log("client with socket id " + socket.id + " just emit id user " + data);
-			var item = { socket_id: socket.id, partner_id: data };
-			list.push(item);
-			socket.emit("hello");
-			console.log('Connecting people are : ' + list.length);
+// io.on("connect", function (socket) {
+// 	socket.on('status_food', function (data) {
+// 		// if (getSocketIdWithIdParner(data) == null) {
+// 		// 	socket.join(data);
+// 		// 	console.log("client with socket id " + socket.id + " just emit id user " + data);
+// 		// 	var item = { socket_id: socket.id, partner_id: data };
+// 		// 	list.push(item);
+// 		// 	socket.emit("hello");
+// 		// 	console.log('Connecting people are : ' + list.length);
+// 		// }
+// 	});
+// });
+
+app.post("/capNhatTrangThaiMonAn", urlEncodeParser, function (req, res) {
+	if(req.body.idCuaHang == null || req.body.idMonAn == null || req.body.status == null ||
+		req.body.idCuaHang == "" || req.body.idMonAn == "" || req.body.status == ""){
+			return res.send({return_code : "0"});
+	}
+	MON_AN.findByIdAndUpdate({_id : mongoose.Types.ObjectId(req.body.idMonAn)}, {}, function (err, result) {
+		if(err || result == null) {
+			return res.send({return_code: "0"});
+		} else {
+			io.sockets.emit("status_food_change" + req.body.idCuaHang, {idCuaHang : req.body.idCuaHang, idMonAn : req.body.idMonAn, status : req.body.status});
+			res.send({return_code: "1", infor: result});
 		}
 	});
 });
+
 
 app.get("/userLogin",function (req, res) {
 	const token = jwt.sign({ "value" : "Thanh" }, secret_key, {
@@ -412,7 +428,7 @@ app.post("/addCuaHang", urlEncodeParser, function (req, res) {
 			Promise.all([
 				createAccountStoreAuto(1),
 				createAddressStore(req.body.Dia_Chi_Cua_Hang, req.body.lat, req.body.lng)
-			]).then(function createAccountAuto(data) {
+			]).Promise.allthen(function createAccountAuto(data) {
 				console.log("tao tai khoan, dia chi", data);
 				var newCuaHang = new CUAHANG({
 					Ten_Cua_Hang: req.body.Ten_cua_hang,
@@ -4389,15 +4405,15 @@ app.post("/capNhatSoDienThoaiKhachHang", urlEncodeParser, function (req, res) {
 });
 
 
-var newGiaoDich = new LICH_SU_GIAO_DICH({
-	Ma_Giao_Dich : "2321466669",
-    Ma_Don_Hang : "merchantCode7a10f",
-    Id_Don_Hang : mongoose.Types.ObjectId("5f22842dc3eef253f8538010"),
-	Id_Khach_Hang : mongoose.Types.ObjectId("5ecd32dcd3192238e8b35fd2"),
-	Id_Cua_Hang : mongoose.Types.ObjectId("5ec39da122336e32d01a2401"),
-    So_Tien : 105000,
-    So_Dien_Thoai : "05663731898",
-});
-newGiaoDich.save(function(err, resultAcc) {
-	console.log(err, resultAcc);
-})
+// var newGiaoDich = new LICH_SU_GIAO_DICH({
+// 	Ma_Giao_Dich : "2321466669",
+//     Ma_Don_Hang : "merchantCode7a10f",
+//     Id_Don_Hang : mongoose.Types.ObjectId("5f22842dc3eef253f8538010"),
+// 	Id_Khach_Hang : mongoose.Types.ObjectId("5ecd32dcd3192238e8b35fd2"),
+// 	Id_Cua_Hang : mongoose.Types.ObjectId("5ec39da122336e32d01a2401"),
+//     So_Tien : 105000,
+//     So_Dien_Thoai : "05663731898",
+// });
+// newGiaoDich.save(function(err, resultAcc) {
+// 	console.log(err, resultAcc);
+// })

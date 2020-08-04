@@ -28,6 +28,7 @@
         <TextView
             android:layout_marginRight="10dp"
             android:background="@android:color/white"
+            android:textColorLink="@color/colorMain"
             app:fontFamily="@font/nunito_extralight"
             android:textColor="#34BEB6"
             android:layout_alignParentRight="true"

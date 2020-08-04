@@ -44,11 +44,15 @@ dependencies {
     implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
 //    implementation 'com.google.firebase:firebase-auth:16.0.2'
 //    implementation 'com.google.firebase:firebase-auth:18.0.0'
-//    implementation 'com.google.firebase:firebase-auth:11.4.0'
+    implementation 'com.google.android.gms:play-services-base:15.0.1'
+    implementation 'com.google.firebase:firebase-auth:16.0.5'
     implementation 'com.google.firebase:firebase-database:16.0.1'
     implementation 'com.google.firebase:firebase-messaging:17.3.4'
     implementation 'com.google.firebase:firebase-core:16.0.6'
     implementation project(':momo_partner_sdk')
+    implementation ('io.socket:socket.io-client:1.0.0') {
+        exclude group: 'org.json', module: 'json'
+    }
 //    implementation 'com.google.gms.google-services'
 }
 apply plugin: 'com.google.gms.google-services'

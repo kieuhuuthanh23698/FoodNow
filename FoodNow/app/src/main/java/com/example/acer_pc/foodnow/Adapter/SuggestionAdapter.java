@@ -7,6 +7,8 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +53,9 @@ public class SuggestionAdapter extends RecyclerView.Adapter<SuggestionAdapter.Su
         holder.suggestion_list_store.setNestedScrollingEnabled(false);
         holder.suggestion_list_store.setAdapter(storeOfSuggestAdapter);
         holder.suggestion_list_store.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL));
+        Spanned text = Html.fromHtml("<a href='#'>Xem tất cả</a>");
+//        text.
+        holder.showAllSuggest.setText(text);
         holder.showAllSuggest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

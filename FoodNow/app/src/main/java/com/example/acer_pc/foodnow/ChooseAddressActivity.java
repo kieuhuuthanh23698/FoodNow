@@ -13,6 +13,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -66,8 +67,8 @@ public class ChooseAddressActivity extends AppCompatActivity implements OnMapRea
                     .addApi(LocationServices.API)
                     .build();
         }
-        map.getMapAsync(ChooseAddressActivity.this);
         confirmAddressDialog = new ConfirmAddressDialog();
+        map.getMapAsync(ChooseAddressActivity.this);
         Intent intent = getIntent();
         type = intent.getIntExtra("type", -1);
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -146,7 +147,8 @@ public class ChooseAddressActivity extends AppCompatActivity implements OnMapRea
             public void onCameraMove() {
                 marker.setVisibility(View.VISIBLE);
 //                btnConfirm.setVisibility(View.GONE);
-                confirmAddressDialog.dismiss();
+                if(confirmAddressDialog != null)
+                    confirmAddressDialog.dismiss();
                 if(curMarker != null)
                     curMarker.remove();
             }
@@ -206,6 +208,7 @@ public class ChooseAddressActivity extends AppCompatActivity implements OnMapRea
 
     @Override
     public void onLocationChanged(Location location) {
+        Log.i("response", "onLocationChanged");
         mLastLocation = location;
     }
 }

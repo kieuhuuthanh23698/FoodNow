@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "377367084193-sk8pos38k26d9qs04t4lmld6pmib6nh2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.acer_pc.foodnow",
+            "certificate_hash": "c0fe10debbb6816b9287b29edae450d0a82725ea"
+          }
+        },
+        {
           "client_id": "377367084193-j5topcsroue1prno7rai19em80qq442o.apps.googleusercontent.com",
           "client_type": 3
         }
