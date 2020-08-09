@@ -42,12 +42,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import io.socket.client.IO;
+import io.socket.emitter.Emitter;
+import io.socket.engineio.client.Socket;
 
 import static com.example.acer_pc.foodnow.LoginActivity.user;
 
 public class InformationStoreActivity extends AppCompatActivity implements View.OnClickListener, DAL_FavoriteStore.FavoriteStoreListener {
+    io.socket.client.Socket socket;
     RelativeLayout relativeLayoutViewHide;
     ShimmerFrameLayout shimmerFrameLayout;
     //data
@@ -82,6 +88,8 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
     LinearLayoutManager friendsLayoutManager;
     InforStoreFoodTypeAdapter inforStoreFoodTypeAdapter;
     RecyclerView recyclerViewListFoods;
+    ArrayList<FoodType> foodTypeArrayList;
+    ArrayList<String> arrFoodDeActive;
     //
     LinearLayout view2;
     //group shopping cart
@@ -90,6 +98,34 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
     TextView infor_store_number_shopping_cart, infor_store_total_cost;
     Button infor_store_confirm_cart_btn;
     boolean scrolling = false;
+
+    private Emitter.Listener onStatusFoodChange = new Emitter.Listener() {
+        @Override
+        public void call(final Object... args) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    JSONObject jsonObject = (JSONObject)args[0];
+                    try {
+                        String idMonAn = jsonObject.getString("idMonAn");
+                        String status = jsonObject.getString("status");
+                        updateStatusFood(idMonAn, status);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    Log.i("response", "call: " + args[0].toString());
+                    Toast.makeText(InformationStoreActivity.this, "Status food change !", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    };
+
+    private void updateStatusFood(String idMonAn, String status){
+        for (int i = 0; i < foodTypeArrayList.size(); i++) {
+            foodTypeArrayList.get(i).updateStatusFood(idMonAn, status);
+        }
+        inforStoreFoodTypeAdapter.notifyDataSetChanged();
+    }
 
     private void init(){
         //data
@@ -100,6 +136,12 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
 //            e.printStackTrace();
 //        }
 //        shoppingCart = new ArrayList<>();
+        try {
+            socket = IO.socket(Utils.uri);
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        socket.connect();
         relativeLayoutViewHide = findViewById(R.id.infor_store_view_hide);
         shimmerFrameLayout = findViewById(R.id.infor_store_act_shimmer_view_container);
         shoppingCart = new HashMap<>();
@@ -132,6 +174,8 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
         friendsLayoutManager.setAutoMeasureEnabled(true);
         recyclerViewListFoods = findViewById(R.id.store_list_foods_type);
         recyclerViewListFoods.setNestedScrollingEnabled(true);
+        foodTypeArrayList = new ArrayList<>();
+        arrFoodDeActive = new ArrayList<>();
         //
         view2 = findViewById(R.id.view2);
         //group shopping cart
@@ -168,6 +212,7 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
             btnFavoriteStore.setImageResource(R.drawable.ic_favorite_border_black_24dp);
             isFavorite = false;
         }
+        socket.on("status_food_change" + idStore, onStatusFoodChange);
         //hình ảnh cửa hàng
         Picasso.get().load(Utils.getUrlImageStore(jsonObjectInforStore.getJSONObject("thongTinCuaHang").getString("Hinh_Anh_Cua_Hang"))).into(imgInforStore);
         //tên cửa hàng
@@ -209,11 +254,14 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
         tabsTypeFood.setTabGravity(TabLayout.GRAVITY_CENTER);
         tabsTypeFood.setTabMode(TabLayout.MODE_SCROLLABLE);
         tabsTypeFood.removeAllTabs();
+        foodTypeArrayList = new ArrayList<>();
         for (int i = 0; i < jsonObjectInforStore.getJSONArray("lstMonAn").length(); i++){
             tabsTypeFood.addTab(tabsTypeFood.newTab().setText(jsonObjectInforStore.getJSONArray("lstMonAn").getJSONObject(i).getString("Ten_loai_mon_an")));
+            foodTypeArrayList.add(new FoodType(jsonObjectInforStore.getJSONArray("lstMonAn").getJSONObject(i)));
         }
         try {
-            inforStoreFoodTypeAdapter = new InforStoreFoodTypeAdapter(jsonObjectInforStore.getJSONArray("lstMonAn"), this);
+//            inforStoreFoodTypeAdapter = new InforStoreFoodTypeAdapter(jsonObjectInforStore.getJSONArray("lstMonAn"), this);
+            inforStoreFoodTypeAdapter = new InforStoreFoodTypeAdapter(foodTypeArrayList, this);
             recyclerViewListFoods.setAdapter(inforStoreFoodTypeAdapter);
             recyclerViewListFoods.setLayoutManager(friendsLayoutManager);
             inforStoreFoodTypeAdapter.notifyDataSetChanged();

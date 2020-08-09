@@ -9,8 +9,8 @@
     </style>
 
     <style name="sizeOfSliderMain_1" parent="@android:style/TextAppearance.DeviceDefault">
-        <item name="android:layout_width">70dp</item>
-        <item name="android:layout_height">70dp</item>
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
     </style>
 
     <style name="menu_item">

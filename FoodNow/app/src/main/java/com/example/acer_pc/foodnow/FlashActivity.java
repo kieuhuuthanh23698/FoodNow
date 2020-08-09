@@ -47,7 +47,7 @@ import static com.example.acer_pc.foodnow.MainActivity.loaded;
 public class FlashActivity extends AppCompatActivity implements LocationListener{
     private Dialog dialogConfirmOpenGPS;
     private SimpleLocation location;
-//    private boolean dialogShow;
+    private boolean dialogShow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,12 +75,13 @@ public class FlashActivity extends AppCompatActivity implements LocationListener
             }
         });
         dialogConfirmOpenGPS.setCanceledOnTouchOutside(false);
-//        dialogConfirmOpenGPS.setOnDismissListener(new DialogInterface.OnDismissListener() {
-//            @Override
-//            public void onDismiss(DialogInterface dialogInterface) {
-//                dialogShow = false;
-//            }
-//        });
+        dialogConfirmOpenGPS.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                dialogShow = false;
+            }
+        });
+
         DAL_MyLocation.address = Utils.getCompleteAddressString(FlashActivity.this, DAL_MyLocation.latitude, DAL_MyLocation.longtitude);
         Intent intent = new Intent(FlashActivity.this, MainActivity.class);
         startActivity(intent);
@@ -88,6 +89,7 @@ public class FlashActivity extends AppCompatActivity implements LocationListener
 
         location.setListener(new SimpleLocation.Listener() {
             public void onPositionChanged() {
+                Toast.makeText(FlashActivity.this, "Đang tìm địa chỉ...", Toast.LENGTH_SHORT).show();
                 if(location != null) {
                     DAL_MyLocation.latitude = location.getLatitude();
                     DAL_MyLocation.longtitude = location.getLongitude();
@@ -110,6 +112,7 @@ public class FlashActivity extends AppCompatActivity implements LocationListener
 
     private void requestOpenGPS(){
 //        if(!dialogShow) {
+            location.beginUpdates();
             dialogConfirmOpenGPS.show();
 //        }
     }
@@ -117,16 +120,16 @@ public class FlashActivity extends AppCompatActivity implements LocationListener
     @Override
     protected void onResume() {
         super.onResume();
-        if (!location.hasLocationEnabled()) {
-            requestOpenGPS();
-        }
         location.beginUpdates();
+//        if (!location.hasLocationEnabled()) {
+            requestOpenGPS();
+//        }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-//        location.endUpdates();
+        location.endUpdates();
     }
 
     @Override

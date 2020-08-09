@@ -16,13 +16,13 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="35dp">
+            android:layout_height="45dp">
 
             <TextView
                 android:id="@+id/fm_home_myAddress"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="5dp"
@@ -69,6 +69,7 @@
                 android:id="@+id/viewPager"
                 android:layout_centerVertical="true"
                 android:layout_width="match_parent"
+                android:layout_marginBottom="10dp"
                 android:layout_height="190dp"/>
 
             <LinearLayout
@@ -100,7 +101,7 @@
                         <TextView
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
-                            android:text="Đi chợ"
+                            android:text="Đi Chợ"
                             android:textStyle="bold"
                             android:textSize="17dp"
                             android:layout_width="wrap_content"
@@ -172,7 +173,7 @@
                         <TextView
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
-                            android:text="Trà sữa"
+                            android:text="Trà Sữa"
                             android:textStyle="bold"
                             android:textSize="17dp"
                             android:layout_width="wrap_content"
@@ -198,13 +199,13 @@
                         <ImageView
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
-                            android:src="@drawable/com_phan"
+                            android:src="@drawable/fried_rice"
                             style="@style/sizeOfSliderMain_1" />
 
                         <TextView
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
-                            android:text="Cơm phần"
+                            android:text="Cơm Phần"
                             android:textStyle="bold"
                             android:textSize="17dp"
                             android:layout_width="wrap_content"
@@ -228,7 +229,7 @@
                         <TextView
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
-                            android:text="Gà rán"
+                            android:text="Gà Rán"
                             android:textStyle="bold"
                             android:textSize="17dp"
                             android:layout_width="wrap_content"
@@ -252,7 +253,7 @@
                         <TextView
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
-                            android:text="Bún phở"
+                            android:text="Bún Phở"
                             android:textStyle="bold"
                             android:textSize="17dp"
                             android:layout_width="wrap_content"
@@ -276,7 +277,7 @@
                         <TextView
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
-                            android:text="Ăn vặt"
+                            android:text="Ăn Vặt"
                             android:textStyle="bold"
                             android:textSize="17dp"
                             android:layout_width="wrap_content"

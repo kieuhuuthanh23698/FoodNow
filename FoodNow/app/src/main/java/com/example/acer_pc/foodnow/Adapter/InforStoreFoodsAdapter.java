@@ -36,12 +36,14 @@ import static com.example.acer_pc.foodnow.InformationStoreActivity.shoppingCart;
 
 public class InforStoreFoodsAdapter extends RecyclerView.Adapter<InforStoreFoodsAdapter.InforStoreFoodsViewHolder>{
     DAL_AddProductToCart dal_addProductToCart;
-    JSONArray jsonArrayFoods;
+//    JSONArray jsonArrayFoods;
+    ArrayList<Food> foodArrayList;
     Context context;
     public static boolean requesting = false;
 
-    public InforStoreFoodsAdapter(JSONArray jsonArrayFoods, Context context) {
-        this.jsonArrayFoods = jsonArrayFoods;
+    public InforStoreFoodsAdapter(ArrayList<Food> foodArrayList, Context context) {
+//        this.jsonArrayFoods = jsonArrayFoods;
+        this.foodArrayList = foodArrayList;
         this.context = context;
         dal_addProductToCart = new DAL_AddProductToCart(context);
     }
@@ -61,24 +63,31 @@ public class InforStoreFoodsAdapter extends RecyclerView.Adapter<InforStoreFoods
 
     @Override
     public void onBindViewHolder(final InforStoreFoodsViewHolder holder, final int position) {
-        JSONObject food = null;
-        try {
-            food = jsonArrayFoods.getJSONObject(position);
-            CartDetail item = shoppingCart.get(food.getString("_id"));
-            holder.idFood = food.getString("_id");
-            holder.img = food.getString("Hinh_anh_mon_an");
-            Picasso.get().load(Utils.getUrlImageFood(food.getString("Hinh_anh_mon_an"))).into(holder.imageView);
-            holder.txtNameFood.setText(food.getString("Ten_mon_an"));
+//        JSONObject food = null;
+        Food food;
+//        try {
+//            food = jsonArrayFoods.getJSONObject(position);
+            food = foodArrayList.get(position);
+            CartDetail item = shoppingCart.get(food.getId());
+            holder.idFood = food.getId();
+            holder.img = food.getUrlImg();
+            Picasso.get().load(food.getUrlImg()).into(holder.imageView);
+            holder.txtNameFood.setText(food.getName());
             if(item != null) {
-                item.setId(food.getString("_id"));
-                item.setName(food.getString("Ten_mon_an"));
-                item.setImg(food.getString("Hinh_anh_mon_an"));
+                item.setId(food.getId());
+                item.setName(food.getName());
+                item.setImg(food.getUrlImg());
             }
-            holder.txtDetailFood.setText(food.getString("Mo_ta_mon_an"));
+            holder.txtDetailFood.setText(food.getDetail());
 //            holder.txtCostFood.setText(" " + String.valueOf(food.getDouble("So_luong_mua")));
 //            holder.txtLikeFood.setText(" " + String.valueOf(food.getInt("So_luong_thich")));
-            holder.price = food.getDouble("Don_gia_mon_an");
-            holder.txtPriceFood.setText(String.valueOf(food.getDouble("Don_gia_mon_an")) + " đ");
+            holder.price = food.getPriceDouble();
+            holder.txtPriceFood.setText(String.valueOf(food.getPriceDouble()) + " đ");
+            if(food.getStatus().equals("0")){
+                holder.view.setEnabled(false);
+                holder.btnAdd.setVisibility(View.GONE);
+                return;
+            }
             holder.txtNumItem.setText(item == null ? "0" : item.getCount());
             if(item != null && item.getCountInt() > 0)
             {
@@ -88,9 +97,9 @@ public class InforStoreFoodsAdapter extends RecyclerView.Adapter<InforStoreFoods
                 holder.btnRemove.setVisibility(View.GONE);
                 holder.txtNumItem.setVisibility(View.GONE);
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
         holder.btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -171,10 +180,12 @@ public class InforStoreFoodsAdapter extends RecyclerView.Adapter<InforStoreFoods
 
     @Override
     public int getItemCount() {
-        return jsonArrayFoods.length();
+        return foodArrayList.size();
+//        return jsonArrayFoods.length();
     }
 
     public class InforStoreFoodsViewHolder extends RecyclerView.ViewHolder {
+        public View view;
         public String idFood, img;
         public double price;
         public ImageView imageView;
@@ -182,6 +193,7 @@ public class InforStoreFoodsAdapter extends RecyclerView.Adapter<InforStoreFoods
         public Button btnRemove, btnAdd;
         public InforStoreFoodsViewHolder(View itemView) {
             super(itemView);
+            this.view = itemView;
             this.idFood = "";
             this.imageView = itemView.findViewById(R.id.imgFood);
             this.txtNameFood = itemView.findViewById(R.id.txtFoodName);

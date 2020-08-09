@@ -233,24 +233,12 @@ public class ConfirmCartActivity extends AppCompatActivity implements View.OnCli
         alertDialog = new AlertDialog.Builder(ConfirmCartActivity.this);
         alertDialog.setTitle("Thông báo");
         alertDialog.setMessage("Đang xử lý đơn hàng....");
+        alertDialog.setCancelable(false);
 //        Intent intentShopping_cart_confirm = new Intent(ConfirmCartActivity.this, LoadingActivity.class);
 //        intentShopping_cart_confirm.setAction(Intent.ACTION_SEND);
 //        intentShopping_cart_confirm.putExtra("typeCast", "1");
 //        startActivityForResult(intentShopping_cart_confirm, confirmCart);
 //        startActivity();
-    }
-
-    private void changeCast(){
-        if(!typeCast){//cur is money
-            btnCastMoney.setBackgroundResource(R.drawable.check_button);
-            btnCastPaypal.setBackgroundResource(R.drawable.un_check_button);
-        } else
-        {
-            btnCastMoney.setBackgroundResource(R.drawable.un_check_button);
-            btnCastPaypal.setBackgroundResource(R.drawable.check_button);
-        }
-        typeCast = !typeCast;
-        Toast.makeText(this, String.valueOf(typeCast), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -269,46 +257,14 @@ public class ConfirmCartActivity extends AppCompatActivity implements View.OnCli
                 customDateTimePicker.show(getSupportFragmentManager(), "CustomDateTimePicker");
                 break;
             case R.id.confirm_shopping_cart_cast_paypal_btn:
-//                AlertDialog.Builder alertDialog = new AlertDialog.Builder(ConfirmCartActivity.this);
-//                alertDialog.setTitle("Thông báo");
-//                alertDialog.setMessage("Bạn muốn thanh toán bằng ví Momo ? !");
-//                alertDialog.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        changeCast();
-//                        dialog.cancel();
-//                    }
-//                });
-//                alertDialog.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        dialog.cancel();
-//                    }
-//                });
-//                alertDialog.show();
                 btnCastMoney.setBackgroundResource(R.drawable.un_check_button);
                 btnCastPaypal.setBackgroundResource(R.drawable.check_button);
                 typeCast = true;
-//                changeCast();
                 break;
             case R.id.confirm_shopping_cart_cast_money_btn:
-//                AlertDialog.Builder alertDialog2 = new AlertDialog.Builder(ConfirmCartActivity.this);
-//                alertDialog2.setTitle("Thông báo");
-//                alertDialog2.setMessage("Bạn muốn thanh toán bằng tiền mặt ? !");
-//                alertDialog2.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        changeCast();
-//                        dialog.cancel();
-//                    }
-//                });
-//                alertDialog2.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        dialog.cancel();
-//                    }
-//                });
-//                alertDialog2.show();
                 btnCastMoney.setBackgroundResource(R.drawable.check_button);
                 btnCastPaypal.setBackgroundResource(R.drawable.un_check_button);
                 typeCast = false;
-//                changeCast();
                 break;
             case R.id.shopping_cart_note_item:
                 Intent intentShopping_cart_note_item = new Intent(ConfirmCartActivity.this, NoteItemActivity.class);
@@ -316,12 +272,9 @@ public class ConfirmCartActivity extends AppCompatActivity implements View.OnCli
                 startActivityForResult(intentShopping_cart_note_item, setNoteCartDetail);
                 break;
             case R.id.confirm_shopping_cart_btn_confirm:
+                if(!checkCart())
+                    return;
                 if(!typeCast){//pay with money
-//                    Intent intentShopping_cart_confirm = new Intent(ConfirmCartActivity.this, LoadingActivity.class);
-//                    intentShopping_cart_confirm.setAction(Intent.ACTION_SEND);
-//                    intentShopping_cart_confirm.putExtra("typeCast", "1");
-//                    startActivityForResult(intentShopping_cart_confirm, confirmCart);
-//                    startActivity(intentShopping_cart_confirm);
                     dal_confirmShoppingCart = new DAL_ConfirmShoppingCart(ConfirmCartActivity.this);
                     dal_confirmShoppingCart.confirmShoppingCart("1");
                     alertDialog.show();
@@ -349,6 +302,20 @@ public class ConfirmCartActivity extends AppCompatActivity implements View.OnCli
                 }
                 break;
         }
+    }
+
+    private boolean checkCart() {
+        if(address.getAddress().trim().isEmpty()){
+            Toast.makeText(ConfirmCartActivity.this, "Bạn chưa chọn địa chỉ giao hàng !", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if(user == null)
+            return false;
+        if(user.getPhone().isEmpty()) {
+            Toast.makeText(ConfirmCartActivity.this, "Bạn chưa chọn địa chỉ giao hàng !", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -435,17 +402,6 @@ public class ConfirmCartActivity extends AppCompatActivity implements View.OnCli
                             " \"description\": \"" + description + "\"\n" +
                             "}";
                     String rsa = Utils.encryptRSA(plaintext, publicKey);
-//                    Intent intentShopping_cart_confirm = new Intent(ConfirmCartActivity.this, LoadingActivity.class);
-//                    intentShopping_cart_confirm.setAction(Intent.ACTION_SEND);
-//                    intentShopping_cart_confirm.putExtra("typeCast", "0");
-//                    intentShopping_cart_confirm.putExtra("token", token);
-//                    intentShopping_cart_confirm.putExtra("phonenumber", phonenumber);
-//                    intentShopping_cart_confirm.putExtra("rsa", rsa);
-//                    intentShopping_cart_confirm.putExtra("partner_code", partner_code);
-//                    intentShopping_cart_confirm.putExtra("merchantCode", merchantCode);
-//                    intentShopping_cart_confirm.putExtra("description", description);
-//                    startActivity(intentShopping_cart_confirm);
-//                    startActivityForResult(intentShopping_cart_confirm, confirmCart);
                     dal_requestMoMo = new Dal_RequestMoMo(ConfirmCartActivity.this);
                     dal_requestMoMo.requestPayment(
                             request_id,

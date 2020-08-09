@@ -219,7 +219,7 @@
                                                                         <tr role="row">
                                                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Mã chi nhánh: activate to sort column descending" aria-sort="ascending">Hình ảnh</th>
                                                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Tên chi nhánh: activate to sort column ascending">Tên món</th>
-                                                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Hình ảnh: activate to sort column ascending">Giá</th>
+                                                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Hình ảnh: activate to sort column ascending">Trạng thái</th>
                                                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Chi tiết: activate to sort column ascending" >Chi tiết</th>
                                                                         </tr>
 
@@ -338,12 +338,14 @@
                             });
                     });
                 }
+                loadMonan_LoaiMonAn(listMonAn[0].DS_LoaiMA._id);
             }
             }
         });
     }
 
     function loadMonan_LoaiMonAn(idLoaiMonAn){
+        debugger;
         click = true;
          for (i=0; i< listMonAn.length; i++){
             var item = listMonAn[i];//1 loại món ăn
@@ -355,9 +357,8 @@
                     table.row.add( [
                     '<img src="' + url + 'Public/Images/'+ monan.Hinh_anh_mon_an+'" alt="Product Image" class="img-size-50">',
                     monan.Ten_mon_an ,
-                    "" + (new Intl.NumberFormat().format(monan.Don_gia_mon_an)),
-                    '<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + monan._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
-                    + "</div>"
+                    monan.Trang_thai_mon_an == "1" ? "Còn món" : "Quán hết món",    
+                    '<div class="icheck-primary d-inline"><input onclick="deactiveMonAn(' + "'" + monan._id + "'" + ')" type="checkbox" id="cb' + monan._id + '"' + (monan.Trang_thai_mon_an == "1" ? "checked" : "") + '><label for="cb' + monan._id + '" id="label' + monan._id + '">' + (monan.Trang_thai_mon_an == "1" ? "checked" : "") + '</label></div>'
                     ] ).draw();
                 }
             }
@@ -443,8 +444,59 @@
         });
     }
 
+    function deactiveMonAn(idMonAn){
+        var state = '';
+        if ($("#cb" + idMonAn).is(':checked')) {
+            state = "1";
+        } else{
+            state = '0';
+        }
+         $.ajax(
+            {
+                url: url + "capNhatTrangThaiMonAn",
+                dataType: 'json',
+                data: {
+                    idCuaHang: <?php echo "'".$id."'";?>,
+                    idMonAn : idMonAn,
+                    status : state
+                },
+                type: 'post',
+                success: function (res) {
+                        if (res.return_code == "1"){
+                    if (state == "1") {
+                      $("#label" + idMonAn).text("checked");
+                    } else if (state == "0") {
+                      $("#label" + idMonAn).text("");
+                    }
+                    updateMonAn(res.infor, state);
+                    toastr.success("Cập nhật trạng thái món ăn thành công.");
+                  } else if (res.return_code == "0"){
+                    toastr.error("Quá trình thực hiện thất bại !");
+                    if (state == "1") {
+                      $("#cb" + idMonAn).attr("checked", false);
+                    } else if (state == "0") {
+                      $("#cb" + idMonAn).attr("checked", true);
+                    }
+                  }
+                }
+            });   
+    }
 
+    function updateMonAn(monan, state){
+        for (var i=0; i< listMonAn.length; i++){
+            var item = listMonAn[i];//1 loại món ăn
+            for(var j = 0; j < item.DS_Monan.length; j++){
+                var itemMonAn = item.DS_Monan[j];
+                if(itemMonAn._id == monan._id){
+                    debugger;
+                    listMonAn[i].DS_Monan[j].Trang_thai_mon_an = state;
+                    loadMonan_LoaiMonAn(item.DS_LoaiMA._id);
+                    return;
+                }
+            }
+        }
 
+    }
 
   function checkTT_CoBan(){
     var result = true;
@@ -468,10 +520,6 @@
     if($.trim($("#Ten_mon_an").val()) == ""){
       result = false;
       toastr.error("Bạn chưa điền tên món ăn !");
-    }
-    if($.trim($("#Mo_ta_mon_an").val()) == ""){
-      result = false;
-      toastr.error("Bạn chưa điền mô tả món ăn !");
     }
     if($.trim($("#Don_gia_mon_an").val()) == ""){
       result = false;

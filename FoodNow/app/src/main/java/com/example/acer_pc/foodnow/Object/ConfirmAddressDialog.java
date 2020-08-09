@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.acer_pc.foodnow.Common.DefineVarible;
+import com.example.acer_pc.foodnow.Data.DAL_MyLocation;
 import com.example.acer_pc.foodnow.Data.Utils;
 import com.example.acer_pc.foodnow.LoadingActivity;
 import com.example.acer_pc.foodnow.R;
@@ -21,6 +22,8 @@ import com.example.acer_pc.foodnow.R;
 import org.json.JSONException;
 
 import okhttp3.internal.Util;
+
+import static com.example.acer_pc.foodnow.LoginActivity.user;
 
 public class ConfirmAddressDialog extends BottomSheetDialogFragment {
 
@@ -55,14 +58,23 @@ public class ConfirmAddressDialog extends BottomSheetDialogFragment {
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentLoading = new Intent(getContext(), LoadingActivity.class);
-                intentLoading.putExtra("lat", lat);
-                intentLoading.putExtra("lng", lng);
-                intentLoading.putExtra("type", type);
-                intentLoading.putExtra("address", address);
-                intentLoading.setAction(Intent.ACTION_SEND);
-                intentLoading.putExtra("action", DefineVarible.addUserAddress);
-                startActivityForResult(intentLoading, DefineVarible.addUserAddress);
+                DAL_MyLocation.latitude = lat;
+                DAL_MyLocation.longtitude = lng;
+                DAL_MyLocation.address = address;
+                if(type == - 1) {
+                    dismiss();
+                    getActivity().finish();
+                }
+                if(user != null){
+                    Intent intentLoading = new Intent(getContext(), LoadingActivity.class);
+                    intentLoading.putExtra("lat", lat);
+                    intentLoading.putExtra("lng", lng);
+                    intentLoading.putExtra("type", type);
+                    intentLoading.putExtra("address", address);
+                    intentLoading.setAction(Intent.ACTION_SEND);
+                    intentLoading.putExtra("action", DefineVarible.addUserAddress);
+                    startActivityForResult(intentLoading, DefineVarible.addUserAddress);
+                }
             }
         });
         return view;

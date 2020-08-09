@@ -88,6 +88,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private void init(View view){
         //text hiển thị đỉa chỉ hiện tại
         txtMyAddress = view.findViewById(R.id.fm_home_myAddress);
+        txtMyAddress.setOnClickListener(this);
         //view chuyển sang activity search
         goToSearchAct = view.findViewById(R.id.fm_home_goToSearchAct);
         //slider
@@ -339,6 +340,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
+        if(view.getId() == R.id.fm_home_myAddress){
+            Intent intent = new Intent(getContext(), ChooseAddressActivity.class);
+            intent.putExtra("type", -1);
+            startActivity(intent);
+            return;
+        }
         Intent intent = new Intent(getContext(), ListDetailActivity.class);
         intent.setAction(Intent.ACTION_SEND);
         intent.putExtra("type", 1);

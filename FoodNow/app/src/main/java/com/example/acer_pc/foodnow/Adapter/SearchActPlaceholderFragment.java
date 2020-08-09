@@ -88,8 +88,8 @@ public class SearchActPlaceholderFragment extends Fragment {
                         food.setId(jsonObjectFood.getString("_id"));
                         food.setName(jsonObjectFood.getString("Ten_mon_an"));
                         food.setUrlImg(jsonObjectFood.getString("Hinh_anh_mon_an"));
-                        food.setCost(jsonObjectFood.getInt("So_luong_mua"));
-                        food.setLike(jsonObjectFood.getInt("So_luong_thich"));
+//                        food.setCost(jsonObjectFood.getInt("So_luong_mua"));
+//                        food.setLike(jsonObjectFood.getInt("So_luong_thich"));
                         arrayListFoods.add(food);
                     }
                     foodType.setArrayListFoods(arrayListFoods);
