@@ -127,7 +127,7 @@
               </li>
             </ul>
           </li> -->
-          <li class="nav-item has-treeview">
+          <!-- <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
@@ -135,7 +135,7 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview"> -->
               
               <!-- <li class="nav-item">
                 <a href="#" class="nav-link">
@@ -153,9 +153,9 @@
               
               <?php echo isset($bao_cao_cua_hang) ? $bao_cao_cua_hang : '';?>
               <?php echo isset($bao_cao_chi_nhanh) ? $bao_cao_chi_nhanh : '';?>
-            </ul>
-          </li>
-          <li class="nav-header">CÀI ĐẶT</li>
+           <!--  </ul>
+          </li> -->
+          <!-- <li class="nav-header">CÀI ĐẶT</li> -->
           <!-- <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
@@ -193,7 +193,7 @@
                 </a>
               </li>     -->
             <!-- </ul> -->
-          </li>
+         <!--  </li> -->
           <!-- <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-plus-square"></i>
@@ -224,7 +224,7 @@
             </ul>
           </li> -->
 
-          <li class="nav-item has-treeview">
+          <!-- <li class="nav-item has-treeview">
             <a href="<?php echo base_url();?>admin/logout" class="nav-link">
               <i class="nav-icon far fa-plus-square"></i>
               <p>
@@ -232,7 +232,7 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-          </li>
+          </li> -->
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
