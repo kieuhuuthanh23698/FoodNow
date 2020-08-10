@@ -231,6 +231,12 @@
        loadKhuyenMaiCuaHang();
     });
 
+
+function setIdDelete(idDelete) {
+        $('#idDelete').val(idDelete);
+    }
+
+
     function loadKhuyenMaiCuaHang(){
          $.ajax(
         {
@@ -260,7 +266,7 @@
                         item.PhanTram_GiamGia + " %",
                         item.MoTa,
                         "<div class='sparkbar' data-color='#00a65a' data-height='20'>"
-                        + '<button class="btn btn-danger" onclick="xoa(' + "'" + item._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+                        + '<button class="btn btn-danger" onclick="setIdDelete(' + "'" + item._id + "'" + ')" data-toggle="modal" data-target=".bd-example-modal-sm"><i class="fas fa-trash-alt"></i></button>'
                         + "</div>"
                         ] ).node().id = item._id;
                         table.draw(false);
@@ -319,7 +325,8 @@
 
     function xoa(id_khuyenmai)
     {
-        alert("xoa" + id_khuyenmai );
+        var id_khuyenmai = $('#idDelete').val();
+        // alert("xoa" + id_khuyenmai );
         $.ajax({
             type    : 'DELETE',
             url     : url + 'deleteKhuyenmaicuahang',
