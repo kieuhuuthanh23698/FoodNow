@@ -309,7 +309,7 @@ function setIdDelete(idDelete) {
                     item.PhanTram_GiamGia,
                     item.MoTa,
                     "<div class='sparkbar' data-color='#00a65a' data-height='20'>"
-                        + '<button class="btn  btn-danger" onclick="xoa(' + "'" + item._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+                        + '<button class="btn  btn-danger" onclick="setIdDelete(' + "'" + item._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
                         + "</div>"
                     ] ).node().id = item._id;
                         table.draw(false);
