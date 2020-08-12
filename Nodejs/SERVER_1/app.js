@@ -176,23 +176,31 @@ function getSocketIdWithIdParner(partnerID) {
 // 	});
 // });
 
-const deleteCuaHang = async(idCuaHang) => {
+const deleteCuaHang = async(idCuaHang, idChiNhanh) => {
 	return new Promise((resolve, reject) => {
-		CUAHANG.findByIdAndDelete({
+		CUAHANG.findById({
 			_id : idCuaHang
 		}, function(err, res){
-			resolve(res);
+			if(res == null){
+				console.log(idChiNhanh.Ten_Chi_Nhanh);
+				CHINHANH.findByIdAndUpdate({_id : idChiNhanh._id},
+					{$pull: { DanhSach_CH : idCuaHang} },
+				function(err1, res2){
+					console.log(res);
+				});
+			}
+			resolve("");
 		})
 	})
 }
 
 const deleteChiNhanh = async(idChiNhanh) => {
 	return new Promise((resolve, reject) => {
-		CHINHANH.findByIdAndDelete({
+		CHINHANH.findById({
 			_id : idChiNhanh._id
 		}, function(err, res){
 			Promise.all(res.DanhSach_CH.map(function (idCuaHang) {
-				return deleteCuaHang(idCuaHang);
+				return deleteCuaHang(idCuaHang, idChiNhanh);
 			})).then(function (data) {
 				resolve(data);
 			});
@@ -200,14 +208,13 @@ const deleteChiNhanh = async(idChiNhanh) => {
 	})
 }
 
-// CHINHANH.find({_id : {$in : ['5edd16436bcd9c3504b040bf', '5eba197716ec7530ecb08d29', '5eba197716ec7530ecb08d2a', '5edd167d8ffa1d2e28e64c26']}}, function (req, res){
-// 	Promise.all(res.map(function (chinhanh) {
-// 		return deleteChiNhanh(chinhanh);
-// 	})).then(function (data) {
-// 		console.log(data);
-// 	});
-// 	// console.log(res);
-// });
+CHINHANH.find({}, function (req, res){
+	Promise.all(res.map(function (chinhanh) {
+		return deleteChiNhanh(chinhanh);
+	})).then(function (data) {
+		console.log(data);
+	});
+});
 
 
 app.post("/capNhatTrangThaiMonAn", urlEncodeParser, function (req, res) {
@@ -3453,8 +3460,15 @@ const danhMucCuaHangChuaCuaHang = async (listIDCuaHang, iCUAHANG) => {
 		DIACHI.findById({_id : mongoose.Types.ObjectId(iCUAHANG.Dia_Chi_Cua_Hang)},function(err, success){
 			if(err|| success == null){
 				resolve(null);
-			} else{		
-				var idx = listIDCuaHang.DanhSach_CH.indexOf(iCUAHANG._id);
+			} else{
+				var idx = -1;
+				listIDCuaHang.DanhSach_CH.forEach(function(item){
+					if(String(item + "") ===  String(iCUAHANG._id + "")){
+						 idx = 0;
+					 }
+				});
+				console.log(listIDCuaHang.DanhSach_CH, iCUAHANG._id, idx);
+						
 				if(idx < 0){
 					resolve({CH : iCUAHANG, isInclude : 0, DiaChi : success});
 				} else {
