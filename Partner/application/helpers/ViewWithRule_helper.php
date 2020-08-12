@@ -57,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
   if(!function_exists('api_url')){
     function api_url($route){
-      return 'http://localhost:3000/'.$route;
+      return 'http://27.75.96.164:3000/'.$route;
     }
   }
 ?>
