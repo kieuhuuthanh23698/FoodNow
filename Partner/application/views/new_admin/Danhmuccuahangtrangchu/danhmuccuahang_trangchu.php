@@ -27,7 +27,7 @@
       <div class="card">
 
 <!-- Thêm cửa hàng vào trang chủ modal -->
- <div class="modal fade" id="modal-lg">
+ <div class="modal fade" id="modal-xl">
               <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                   <div class="modal-header">
