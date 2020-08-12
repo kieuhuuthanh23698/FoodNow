@@ -469,7 +469,7 @@ app.post("/addCuaHang", urlEncodeParser, function (req, res) {
 			Promise.all([
 				createAccountStoreAuto(1),
 				createAddressStore(req.body.Dia_Chi_Cua_Hang, req.body.lat, req.body.lng)
-			]).Promise.allthen(function createAccountAuto(data) {
+			]).then(function createAccountAuto(data) {
 				console.log("tao tai khoan, dia chi", data);
 				var newCuaHang = new CUAHANG({
 					Ten_Cua_Hang: req.body.Ten_cua_hang,
