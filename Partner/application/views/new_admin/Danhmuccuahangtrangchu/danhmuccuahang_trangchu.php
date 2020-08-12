@@ -28,7 +28,7 @@
 
 <!-- Thêm cửa hàng vào trang chủ modal -->
  <div class="modal fade" id="modal-lg">
-              <div class="modal-dialog modal-lg">
+              <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                   <div class="modal-header">
                     <h4 class="modal-title">Danh sách cửa hàng cần hiển thị lên trang chủ</h4>

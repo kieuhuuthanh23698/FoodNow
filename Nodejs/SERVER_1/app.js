@@ -176,6 +176,40 @@ function getSocketIdWithIdParner(partnerID) {
 // 	});
 // });
 
+const deleteCuaHang = async(idCuaHang) => {
+	return new Promise((resolve, reject) => {
+		CUAHANG.findByIdAndDelete({
+			_id : idCuaHang
+		}, function(err, res){
+			resolve(res);
+		})
+	})
+}
+
+const deleteChiNhanh = async(idChiNhanh) => {
+	return new Promise((resolve, reject) => {
+		CHINHANH.findByIdAndDelete({
+			_id : idChiNhanh._id
+		}, function(err, res){
+			Promise.all(res.DanhSach_CH.map(function (idCuaHang) {
+				return deleteCuaHang(idCuaHang);
+			})).then(function (data) {
+				resolve(data);
+			});
+		})
+	})
+}
+
+// CHINHANH.find({_id : {$in : ['5edd16436bcd9c3504b040bf', '5eba197716ec7530ecb08d29', '5eba197716ec7530ecb08d2a', '5edd167d8ffa1d2e28e64c26']}}, function (req, res){
+// 	Promise.all(res.map(function (chinhanh) {
+// 		return deleteChiNhanh(chinhanh);
+// 	})).then(function (data) {
+// 		console.log(data);
+// 	});
+// 	// console.log(res);
+// });
+
+
 app.post("/capNhatTrangThaiMonAn", urlEncodeParser, function (req, res) {
 	if(req.body.idCuaHang == null || req.body.idMonAn == null || req.body.status == null ||
 		req.body.idCuaHang == "" || req.body.idMonAn == "" || req.body.status == ""){
@@ -3518,7 +3552,7 @@ app.post("/getDanhSachCuaDanhMucHomNay", urlEncodeParser, async function (req, r
 				console.log("Query lỗi : " + errDM);
 				res.send({return_code : "0"});
 			} else {
-				CUAHANG.find({ '_id': { $in: successResutltDM.DanhSach_CH } },
+				CUAHANG.find({},
 					function(err, successResutlt){
 						if(err || successResutlt.length == 0){
 							console.log("Query lỗi : " + err);
@@ -3625,13 +3659,14 @@ app.post("/themXoaChiNhanh_DanhMuc_KhuyenMaiHeThong", urlEncodeParser, async fun
 //params : idDanhMuc
 app.post("/getDanhSachCuaHang_LoaiMonAn", urlEncodeParser, async function (req, res) {
 	if(req.body.idDanhMuc != null && req.body.idDanhMuc != ""){
-		DANHMUC_LOAIMONAN.findById({_id : mongoose.Types.ObjectId(req.body.idDanhMuc)},
+		console.log(req.body);
+		DANHMUC_LOAIMONAN.findById({_id : req.body.idDanhMuc},
 		function(errDM, successResutltDM){
 			if(errDM || successResutltDM == null){
-				console.log("Query lỗi : " + errDM);
+				console.log(errDM, successResutltDM);
 				res.send({return_code : "0"});
 			} else {
-				CUAHANG.find({ '_id': { $in: successResutltDM.DanhSach_CH }},
+				CUAHANG.find({},
 					function(err, successResutlt){
 						if(err || successResutlt.length == 0){
 							console.log("Query lỗi : " + err);
