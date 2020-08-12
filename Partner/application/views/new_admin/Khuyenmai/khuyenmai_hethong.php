@@ -353,6 +353,12 @@ var socket;
  //    $('#head').text($('#head').text() + ' - ' + localStorage.getItem('partnerID'));
 });
 
+
+    function setIdDelete(idDelete) {
+        $('#idDelete').val(idDelete);
+    }
+
+
     function loadKhuyenmaiHT(){
 
         $.ajax(
@@ -376,7 +382,7 @@ var socket;
                 "<div class='sparkbar' data-color='#00a65a' data-height='20'>"
                 // + "<a href='#'><i class='nav-icon fas fa-edit'></i></a>"
                 + '<button class="btn btn-info btn_xoa" data-toggle="modal" data-target="#modal-lg" onclick="loadListCN_Thuoc_KM('+ "'" + res[i]._id + "'" + ')""><i class="fas fa-plus"></i></button>'
-                + '<button class="btn btn-danger btn_xoa" onclick="xoa(' + "'" + res[i]._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+                + '<button class="btn btn-danger btn_xoa" onclick="setIdDelete(' + "'" + res[i]._id + "'" + ')" data-toggle="modal" data-target=".bd-example-modal-sm"><i class="fas fa-trash-alt"></i></button>'
                 + "</div>"
                 ] ).draw();
 
@@ -473,7 +479,8 @@ var socket;
 
     function xoa(id_khuyenmai)
     {
-        alert("xoa" + id_khuyenmai );
+        var id_khuyenmai = $('#idDelete').val();
+        // alert("xoa" + id_khuyenmai );
         $.ajax({
             type    : 'DELETE',
             url     : url + 'deleteKhuyenmaihethong',
