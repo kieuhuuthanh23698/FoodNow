@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Cửa hàng hôm nay</h1>
+                    <h1 class="m-0 text-dark">Danh mục cửa hàng</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -32,7 +32,7 @@
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Default Modal</h4>
+                            <h4 class="modal-title">Form nhóm cửa hàng</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -80,7 +80,7 @@
             <div class="modal fade bd-example-modal-sm" tabindex="-1"
             role="dialog" aria-labelledby="myLargeModalLabel"
             aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-dialog modal-xl" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">
@@ -104,11 +104,11 @@
     <!-- Có chắc chắn muốn xóa -->
 
     <!-- Thêm cửa hàng vào danh mục hôm nay -->
-    <div class="modal fade" id="modal-lg">
-        <div class="modal-dialog modal-lg">
+    <div class="modal fade" id="modal-xl">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Danh sách cửa hàng cần hiển thị lên cửa hàng hôm nay</h4>
+                    <h4 class="modal-title">Danh sách cửa hàng cần hiển thị lên nhóm cửa hàng</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -190,7 +190,7 @@ Nguyễn Hữu Cầu</a>
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"><button type="button" onclick="initModalDMCH()" class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg">Thêm danh mục cửa hàng hôm nay</button></h3>
+                    <h3 class="card-title"><button type="button" onclick="initModalDMCH()" class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-xl">Thêm danh mục cửa hàng</button></h3>
 
 
 
@@ -352,7 +352,7 @@ document.getElementById("Chonfile").innerHTML=fileName;
                         res[i].Thongtin_Phu ,
                         '<img src="' + url + 'Public/Images/'+ res[i].HinhAnh_CH+'" alt="Product Image" class="img_chinhanh">',
                         "<div class='sparkbar' data-color='#00a65a' data-height='20'>" 
-                        + '<button class="btn btn-info btn_xoa" data-toggle="modal" data-target="#modal-lg" onclick="loadListCH_Thuoc_DM('+ "'" + res[i]._id + "'" + ')""><i class="fas fa-plus"></i></button>'
+                        + '<button class="btn btn-info btn_xoa" data-toggle="modal" data-target="#modal-xl" onclick="loadListCH_Thuoc_DM('+ "'" + res[i]._id + "'" + ')""><i class="fas fa-plus"></i></button>'
                         + '<button class="btn btn-danger btn_xoa"  onclick="setIdDelete(' + "'" + res[i]._id + "'" + ')" data-toggle="modal" data-target=".bd-example-modal-sm" ><i class="fas fa-trash-alt"></i></button>'
                         + "</div>"
                         ] ).draw();
