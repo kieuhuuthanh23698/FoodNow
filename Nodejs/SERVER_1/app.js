@@ -102,6 +102,7 @@ const MONAN_GOIY = require('./Models/MONAN_GOIY');
 const QUANLY_NGUOIDUNG = require('./Models/QUANLY_NGUOIDUNG');
 const QL_NHOM_NGUOIDUNG = require('./Models/QL_NHOM_NGUOIDUNG');
 const LICH_SU_GIAO_DICH = require('./Models/LICH_SU_GIAO_DICH');
+const NHOM_LOAI_MON_AN = require('./Models/NHOM_LOAI_MON_AN');
 
 ///-------------------------------------------------------------------TEST SERVER SEND EVENT----------------------------------------------------------------
 
@@ -1528,6 +1529,64 @@ const getThongTinCuaHang = async (req, res, error_query) => {
 			});
 	});
 }
+
+const getNhomLoaiMonAn = async (Loai_MonAn) => {
+	return new Promise((resolve, reject) => {
+		//console.log(Loai_MonAn);
+		NHOM_LOAI_MON_AN.find(
+			{list : {$in : Loai_MonAn._id}},
+			function(err, result){
+				if(result.length > 0)
+					Loai_MonAn.Nhom_Loai_Mon_An = result[0].Ten_Nhom;
+				else
+					Loai_MonAn.Nhom_Loai_Mon_An = "";
+				resolve(Loai_MonAn);
+			});
+	})
+}
+
+// CUAHANG.findById(
+// 	{ _id: mongoose.Types.ObjectId("5ec39da122336e32d01a2401") },
+// 	function (err, cuaHang) {
+// 		if (err) {
+// 		}
+// 		else {
+// 			if (cuaHang != null && cuaHang.Loai_MonAn.length > 0) {
+// 				LOAI_MONAN.aggregate(
+// 					[
+// 						{ $match: { _id: { $in: cuaHang.Loai_MonAn } } },
+// 						{
+// 							$lookup: {
+// 								from: 'mon_ans',
+// 								localField: 'Danh_sach_mon_an',
+// 								foreignField: '_id',
+// 								as: 'monans'
+// 							}
+// 						},
+// 						{ $project: { 'Ten_loai_mon_an': 1, 'monans': 1 } }
+// 					], function (err, monans) {
+// 						if (err) {
+// 						}
+// 						else {
+// 							if (monans != null && monans.length > 0) {
+// 								Promise.all(
+// 									monans.map(function (Loai_MonAn) {
+// 										return getNhomLoaiMonAn(Loai_MonAn)
+// 									})).then(function (data) {
+// 										console.log(data);
+// 									});
+// 								// console.timeEnd("getDanhSachMonAnCuaHang" + label);
+// 							} else {
+// 							}
+// 						}
+// 					}
+// 				);
+// 			} else {
+// 			}
+// 		}
+// 	}
+// );
+
 const getDanhSachMonAnCuaHang = async (req, res, error_query) => {
 	// const label = Date.now();
 	// console.time("getDanhSachMonAnCuaHang" + label);
@@ -1560,7 +1619,12 @@ const getDanhSachMonAnCuaHang = async (req, res, error_query) => {
 								}
 								else {
 									if (monans != null && monans.length > 0) {
-										resolve(monans);
+										Promise.all(
+											monans.map(function (Loai_MonAn) {
+												return getNhomLoaiMonAn(Loai_MonAn)
+											})).then(function (data) {
+												resolve(data);
+											});
 										// console.timeEnd("getDanhSachMonAnCuaHang" + label);
 									} else {
 										resolve(null);
