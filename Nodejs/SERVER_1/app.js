@@ -3486,15 +3486,15 @@ const danhMucCuaHangChuaCuaHang = async (listIDCuaHang, iCUAHANG) => {
 				var idx = -1;
 				listIDCuaHang.DanhSach_CH.forEach(function(item){
 					if(String(item + "") ===  String(iCUAHANG._id + "")){
-						 idx = 0;
+						 idx = 1;
 					 }
 				});
-				console.log(listIDCuaHang.DanhSach_CH, iCUAHANG._id, idx);
 						
 				if(idx < 0){
 					resolve({CH : iCUAHANG, isInclude : 0, DiaChi : success});
 				} else {
 					resolve({CH : iCUAHANG, isInclude : 1, DiaChi : success});
+					console.log(iCUAHANG.Ten_Cua_Hang);
 				}
 			}
 		})
