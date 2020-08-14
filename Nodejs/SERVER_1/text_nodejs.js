@@ -5,14 +5,31 @@ const server = require('http').Server(app);
 server.listen(3000);
 // const connectString = 'mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb';
 const connectString = 'mongodb+srv://admin:tVn8kGPaRDD1Hq4j@cluster0-qozmr.mongodb.net/FoodNow?retryWrites=true&w=majority';
+
 mongoose.connect(connectString,
     { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false },
     function (err) {
         if (err)
             console.log("MongoDb connect error : " + err);
         else {
-
             console.log("MongoDb connect success !");
+            NHOM_LOAI_MON_AN.aggregate(
+                [
+                    {
+                        "$lookup": {
+                            "from": "loai_monans",
+                            "localField": "list",
+                            "foreignField": "_id",
+                            "as": "nhom_loai_mon_an"
+                        }
+                    }
+                ],
+                function (err, result) {
+                    console.log(result);
+                    console.log(result[0].nhom_loai_mon_an);
+            });
+
+
             /*Cap nhat KhuVuc*/
             // KHU_VUC.findOneAndUpdate(
             //     { _id: "5db5b2db509fb91fbc18d260" },
@@ -1259,6 +1276,7 @@ const LOAI_MONAN = require('./Models/LOAI_MONAN');
 const MONAN_GOIY = require('./Models/MONAN_GOIY');
 const QUANLY_NGUOIDUNG = require('./Models/QUANLY_NGUOIDUNG');
 const QL_NHOM_NGUOIDUNG = require('./Models/QL_NHOM_NGUOIDUNG');
+const NHOM_LOAI_MON_AN = require('./Models/NHOM_LOAI_MON_AN');
 
 
 //Một CHINHANH có nhiều CUAHANG

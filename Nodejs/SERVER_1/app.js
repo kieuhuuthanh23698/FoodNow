@@ -1545,48 +1545,6 @@ const getNhomLoaiMonAn = async (Loai_MonAn) => {
 	})
 }
 
-// CUAHANG.findById(
-// 	{ _id: mongoose.Types.ObjectId("5ec39da122336e32d01a2401") },
-// 	function (err, cuaHang) {
-// 		if (err) {
-// 		}
-// 		else {
-// 			if (cuaHang != null && cuaHang.Loai_MonAn.length > 0) {
-// 				LOAI_MONAN.aggregate(
-// 					[
-// 						{ $match: { _id: { $in: cuaHang.Loai_MonAn } } },
-// 						{
-// 							$lookup: {
-// 								from: 'mon_ans',
-// 								localField: 'Danh_sach_mon_an',
-// 								foreignField: '_id',
-// 								as: 'monans'
-// 							}
-// 						},
-// 						{ $project: { 'Ten_loai_mon_an': 1, 'monans': 1 } }
-// 					], function (err, monans) {
-// 						if (err) {
-// 						}
-// 						else {
-// 							if (monans != null && monans.length > 0) {
-// 								Promise.all(
-// 									monans.map(function (Loai_MonAn) {
-// 										return getNhomLoaiMonAn(Loai_MonAn)
-// 									})).then(function (data) {
-// 										console.log(data);
-// 									});
-// 								// console.timeEnd("getDanhSachMonAnCuaHang" + label);
-// 							} else {
-// 							}
-// 						}
-// 					}
-// 				);
-// 			} else {
-// 			}
-// 		}
-// 	}
-// );
-
 const getDanhSachMonAnCuaHang = async (req, res, error_query) => {
 	// const label = Date.now();
 	// console.time("getDanhSachMonAnCuaHang" + label);
