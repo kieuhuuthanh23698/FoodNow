@@ -255,7 +255,6 @@ function setIdDelete(idDelete) {
                     toastr.success("Lấy danh sách khuyến mãi cửa hàng thành công !");
                     var table = $('#example1').DataTable();
                     table.clear().draw();
-                    debugger;
                     for (i=0; i< res.infor.length; i++){ 
                         var item = res.infor[i];
                         table.row.add( [
@@ -309,7 +308,7 @@ function setIdDelete(idDelete) {
                     item.PhanTram_GiamGia,
                     item.MoTa,
                     "<div class='sparkbar' data-color='#00a65a' data-height='20'>"
-                        + '<button class="btn  btn-danger" onclick="setIdDelete(' + "'" + item._id + "'" + ')" ><i class="fas fa-trash-alt"></i></button>'
+                        + '<button class="btn  btn-danger" onclick="setIdDelete(' + "'" + item._id + "'" + ')" data-toggle="modal" data-target=".bd-example-modal-sm"><i class="fas fa-trash-alt"></i></button>'
                         + "</div>"
                     ] ).node().id = item._id;
                         table.draw(false);

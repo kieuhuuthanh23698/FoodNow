@@ -102,6 +102,7 @@ const MONAN_GOIY = require('./Models/MONAN_GOIY');
 const QUANLY_NGUOIDUNG = require('./Models/QUANLY_NGUOIDUNG');
 const QL_NHOM_NGUOIDUNG = require('./Models/QL_NHOM_NGUOIDUNG');
 const LICH_SU_GIAO_DICH = require('./Models/LICH_SU_GIAO_DICH');
+const NHOM_LOAI_MON_AN = require('./Models/NHOM_LOAI_MON_AN');
 
 ///-------------------------------------------------------------------TEST SERVER SEND EVENT----------------------------------------------------------------
 
@@ -176,23 +177,31 @@ function getSocketIdWithIdParner(partnerID) {
 // 	});
 // });
 
-const deleteCuaHang = async(idCuaHang) => {
+const deleteCuaHang = async(idCuaHang, idChiNhanh) => {
 	return new Promise((resolve, reject) => {
-		CUAHANG.findByIdAndDelete({
+		CUAHANG.findById({
 			_id : idCuaHang
 		}, function(err, res){
-			resolve(res);
+			if(res == null){
+				console.log(idChiNhanh.Ten_Chi_Nhanh);
+				CHINHANH.findByIdAndUpdate({_id : idChiNhanh._id},
+					{$pull: { DanhSach_CH : idCuaHang} },
+				function(err1, res2){
+					console.log(res);
+				});
+			}
+			resolve("");
 		})
 	})
 }
 
 const deleteChiNhanh = async(idChiNhanh) => {
 	return new Promise((resolve, reject) => {
-		CHINHANH.findByIdAndDelete({
+		CHINHANH.findById({
 			_id : idChiNhanh._id
 		}, function(err, res){
 			Promise.all(res.DanhSach_CH.map(function (idCuaHang) {
-				return deleteCuaHang(idCuaHang);
+				return deleteCuaHang(idCuaHang, idChiNhanh);
 			})).then(function (data) {
 				resolve(data);
 			});
@@ -200,14 +209,13 @@ const deleteChiNhanh = async(idChiNhanh) => {
 	})
 }
 
-// CHINHANH.find({_id : {$in : ['5edd16436bcd9c3504b040bf', '5eba197716ec7530ecb08d29', '5eba197716ec7530ecb08d2a', '5edd167d8ffa1d2e28e64c26']}}, function (req, res){
-// 	Promise.all(res.map(function (chinhanh) {
-// 		return deleteChiNhanh(chinhanh);
-// 	})).then(function (data) {
-// 		console.log(data);
-// 	});
-// 	// console.log(res);
-// });
+CHINHANH.find({}, function (req, res){
+	Promise.all(res.map(function (chinhanh) {
+		return deleteChiNhanh(chinhanh);
+	})).then(function (data) {
+		console.log(data);
+	});
+});
 
 
 app.post("/capNhatTrangThaiMonAn", urlEncodeParser, function (req, res) {
@@ -462,7 +470,7 @@ app.post("/addCuaHang", urlEncodeParser, function (req, res) {
 			Promise.all([
 				createAccountStoreAuto(1),
 				createAddressStore(req.body.Dia_Chi_Cua_Hang, req.body.lat, req.body.lng)
-			]).Promise.allthen(function createAccountAuto(data) {
+			]).then(function createAccountAuto(data) {
 				console.log("tao tai khoan, dia chi", data);
 				var newCuaHang = new CUAHANG({
 					Ten_Cua_Hang: req.body.Ten_cua_hang,
@@ -1521,6 +1529,22 @@ const getThongTinCuaHang = async (req, res, error_query) => {
 			});
 	});
 }
+
+const getNhomLoaiMonAn = async (Loai_MonAn) => {
+	return new Promise((resolve, reject) => {
+		//console.log(Loai_MonAn);
+		NHOM_LOAI_MON_AN.find(
+			{list : {$in : Loai_MonAn._id}},
+			function(err, result){
+				if(result.length > 0)
+					Loai_MonAn.Nhom_Loai_Mon_An = result[0].Ten_Nhom;
+				else
+					Loai_MonAn.Nhom_Loai_Mon_An = "";
+				resolve(Loai_MonAn);
+			});
+	})
+}
+
 const getDanhSachMonAnCuaHang = async (req, res, error_query) => {
 	// const label = Date.now();
 	// console.time("getDanhSachMonAnCuaHang" + label);
@@ -1553,7 +1577,12 @@ const getDanhSachMonAnCuaHang = async (req, res, error_query) => {
 								}
 								else {
 									if (monans != null && monans.length > 0) {
-										resolve(monans);
+										Promise.all(
+											monans.map(function (Loai_MonAn) {
+												return getNhomLoaiMonAn(Loai_MonAn)
+											})).then(function (data) {
+												resolve(data);
+											});
 										// console.timeEnd("getDanhSachMonAnCuaHang" + label);
 									} else {
 										resolve(null);
@@ -3453,12 +3482,19 @@ const danhMucCuaHangChuaCuaHang = async (listIDCuaHang, iCUAHANG) => {
 		DIACHI.findById({_id : mongoose.Types.ObjectId(iCUAHANG.Dia_Chi_Cua_Hang)},function(err, success){
 			if(err|| success == null){
 				resolve(null);
-			} else{		
-				var idx = listIDCuaHang.DanhSach_CH.indexOf(iCUAHANG._id);
+			} else{
+				var idx = -1;
+				listIDCuaHang.DanhSach_CH.forEach(function(item){
+					if(String(item + "") ===  String(iCUAHANG._id + "")){
+						 idx = 1;
+					 }
+				});
+						
 				if(idx < 0){
 					resolve({CH : iCUAHANG, isInclude : 0, DiaChi : success});
 				} else {
 					resolve({CH : iCUAHANG, isInclude : 1, DiaChi : success});
+					console.log(iCUAHANG.Ten_Cua_Hang);
 				}
 			}
 		})

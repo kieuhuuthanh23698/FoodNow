@@ -147,9 +147,9 @@
               <a href="<?php echo base_url();?>Danhmuccuahangtrangchu/homeDanhmuccuahang_homnay" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
-           <div class="col-lg-4 col-6">
+           <!-- <div class="col-lg-4 col-6"> -->
             <!-- small box -->
-            <div class="small-box bg-Olive">
+           <!--  <div class="small-box bg-Olive">
               <div class="inner">
                 <h3 style="color: white">Thống kê báo cáo</h3>
 
@@ -161,7 +161,7 @@
               </div>
               <a href="<?php echo base_url();?>Donhang/Donhang_admin_thonke" class="small-box-footer">Chi tiết <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-          </div>
+          </div> -->
           <!-- ./col -->
         </div>
         </div>
