@@ -6,6 +6,8 @@ const monanSchema = new mongoose.Schema({
     Don_gia_mon_an: Number,
     Hinh_anh_mon_an: String,
     Trang_thai_mon_an: String,
+    Nhom: String,
+    Size: String
     // So_luong_mua: Number,
     // So_luong_thich: Number
 });
