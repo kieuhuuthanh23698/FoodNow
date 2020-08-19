@@ -440,7 +440,8 @@ function createFormDataMonAn(){
     form.append("Mo_ta_mon_an", $("#Mo_ta_mon_an").val());
     form.append("Don_gia_mon_an", $("#Don_gia_mon_an").val());
     form.append("Nhom", $("#selectNhom").val());
-    form.append("Size", $("#groupSize").val());
+    if($("#selectNhom").val() == "1")
+        form.append("Size", $("#groupSize").val());
     return form;
 }
 
