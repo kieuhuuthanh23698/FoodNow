@@ -3373,6 +3373,7 @@ app.post("/them_loaimonan", urlEncodeParser, async function (req, res) {
 	}
 });
 
+
 //Thêm món ăn cho cửa hàng
 //params: idLoaiMonAn, Ten_mon_an, Mo_ta_mon_an, Don_gia_mon_an
 app.post("/them_monan", urlEncodeParser, async function (req, res) {
@@ -3380,16 +3381,29 @@ app.post("/them_monan", urlEncodeParser, async function (req, res) {
 		if(req.body.Ten_mon_an != null && req.body.Ten_mon_an != "" &&
 		req.body.Don_gia_mon_an != null && req.body.Don_gia_mon_an != "" &&
 		req.body.idLoaiMonAn != null && req.body.idLoaiMonAn != "" &&
-		req.file != null && req.file.filename != ""){
-			var newMonAn = new MON_AN({
-				Ten_mon_an: req.body.Ten_mon_an,
-				Mo_ta_mon_an: req.body.Mo_ta_mon_an,
-				Don_gia_mon_an: req.body.Don_gia_mon_an,
-				Hinh_anh_mon_an: req.file.filename,
-				Trang_thai_mon_an: "1",
-				So_luong_mua: 0,
-				So_luong_thich: 0
-			});
+		req.file != null && req.file.filename != "" &&
+		req.body.Nhom != null && req.body.Nhom != "" &&
+		req.body.Size != null && req.body.Size != ""){
+			if(req.body.Nhom == "0"){
+				var newMonAn = new MON_AN({
+					Ten_mon_an: req.body.Ten_mon_an,
+					Mo_ta_mon_an: req.body.Mo_ta_mon_an,
+					Don_gia_mon_an: req.body.Don_gia_mon_an,
+					Hinh_anh_mon_an: req.file.filename,
+					Trang_thai_mon_an: "1",
+					Nhom: "0"
+				});
+			} else if(req.body.Nhom == "1"){
+				var newMonAn = new MON_AN({
+					Ten_mon_an: req.body.Ten_mon_an,
+					Mo_ta_mon_an: req.body.Mo_ta_mon_an,
+					Don_gia_mon_an: req.body.Don_gia_mon_an,
+					Hinh_anh_mon_an: req.file.filename,
+					Trang_thai_mon_an: "1",
+					Nhom : "1", 
+					Size: req.body.Size
+				});
+			}
 			newMonAn.save(function(err, result){
 				if(err){
 					console.log("Thêm món ăn thất bại, lỗi save !");
