@@ -23,7 +23,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://27.75.96.164:3001/FoodNow/Partner/';
+// $config['base_url'] = 'http://27.75.96.164:3001/FoodNow/Partner/';
+$config['base_url'] = 'http://localhost:81/FoodNow/Partner/';
+
 
 /*
 |--------------------------------------------------------------------------

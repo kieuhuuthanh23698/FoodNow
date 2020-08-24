@@ -1,5 +1,5 @@
 
-<div class="content-wrapper">
+a<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -27,7 +27,7 @@
       <div class="card">
 
 <!-- Thêm cửa hàng vào trang chủ modal -->
- <div class="modal fade" id="modal-xl">
+ <div class="modal fade" id="modal-lg">
               <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                   <div class="modal-header">
