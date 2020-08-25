@@ -202,22 +202,22 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         main_view = findViewById(R.id.login_act_main_view);
         group_login_default= findViewById(R.id.login_act_group_login_defalt);
         group_login_extend = findViewById(R.id.login_act_group_login_extend);
-        main_view.getViewTreeObserver().addOnGlobalLayoutListener(new
-         ViewTreeObserver.OnGlobalLayoutListener() {
-             @Override
-             public void onGlobalLayout() {
-                 Rect r = new Rect();
-                 main_view.getWindowVisibleDisplayFrame(r);
-                 int screenHeight = main_view.getRootView().getHeight();
-                 int keypadHeight = screenHeight - r.bottom;
-                 if (keypadHeight > screenHeight * 0.15) {
-                     group_login_default.setVisibility(View.GONE);
-                 } else {
-                     group_login_default.setVisibility(View.VISIBLE);
-                 }
-                 input_username.setText(input_username.getText().toString().trim());
-             }
-         });
+//        main_view.getViewTreeObserver().addOnGlobalLayoutListener(new
+//         ViewTreeObserver.OnGlobalLayoutListener() {
+//             @Override
+//             public void onGlobalLayout() {
+//                 Rect r = new Rect();
+//                 main_view.getWindowVisibleDisplayFrame(r);
+//                 int screenHeight = main_view.getRootView().getHeight();
+//                 int keypadHeight = screenHeight - r.bottom;
+//                 if (keypadHeight > screenHeight * 0.25) {
+//                     group_login_default.setVisibility(View.GONE);
+//                 } else {
+//                     group_login_default.setVisibility(View.VISIBLE);
+//                 }
+//                 input_username.setText(input_username.getText().toString().trim());
+//             }
+//         });
         input_username = findViewById(R.id.login_act_input_username);
         input_password = findViewById(R.id.login_act_input_password);
         input_password.setOnFocusChangeListener(new View.OnFocusChangeListener() {

@@ -43,9 +43,9 @@ public class InforStoreFoodTypeAdapter extends RecyclerView.Adapter<InforStoreFo
     @Override
     public void onBindViewHolder(InforStoreFoodTypeViewHolder holder, int position) {
         FoodType foodType = arrayListFoodType.get(position);
+        holder.txtNameGroup.setText(foodType.getNameGroup());
         holder.txtNameType.setText(foodType.getNameType());
         inforStoreFoodsAdapter = new InforStoreFoodsAdapter(foodType.getArrayListFoods(), this.context);
-
 //        JSONObject item = null;
 //        try {
 //            item = jsonArrayFoods.getJSONObject(position);
@@ -69,10 +69,12 @@ public class InforStoreFoodTypeAdapter extends RecyclerView.Adapter<InforStoreFo
     }
 
     public class InforStoreFoodTypeViewHolder extends RecyclerView.ViewHolder {
+        public TextView txtNameGroup;
         public TextView txtNameType;
         public RecyclerView recyclerViewListFoods;
         public InforStoreFoodTypeViewHolder(View itemView) {
             super(itemView);
+            txtNameGroup = itemView.findViewById(R.id.title_group_food_type);
             txtNameType = itemView.findViewById(R.id.title_food_type);
             recyclerViewListFoods = itemView.findViewById(R.id.list_foods_of_type);
         }

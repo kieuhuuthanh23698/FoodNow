@@ -163,7 +163,7 @@ public class Food {
     }
 
     public String getTotal(){
-        return String.format("%.1f", price*count) + " đ";
+        return String.format("%.0f", price*count) + " đ";
     }
 
     public void updateStatus(String status) {

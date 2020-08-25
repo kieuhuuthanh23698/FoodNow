@@ -25,6 +25,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import okhttp3.internal.Util;
+
 public class DAL_GetInforFragment_Home {
     public Context context;
 
@@ -33,7 +35,7 @@ public class DAL_GetInforFragment_Home {
     }
 
     public void getInforFragmentHome(){
-        Log.i("response", "\n" + Utils.getCurrentTime() + " : start request get information fragment home");
+        Log.i("response", "\n" + Utils.getCurrentTime() + " : start request get information fragment home" + Utils.urlFragment_Home);
         VolleySingleton.getInstance(this.context).getRequestQueue().cancelAll("getInforFragment_Home");
         StringRequest insertRequest = new StringRequest(
                 Request.Method.POST,//method

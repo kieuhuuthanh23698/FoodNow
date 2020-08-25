@@ -141,6 +141,8 @@ public class Store {
     }
 
     public String getDistance() {
+        if(distance == 0.0)
+            return "";
         return " " + String.format("%.1f", distance) + " km";
     }
 

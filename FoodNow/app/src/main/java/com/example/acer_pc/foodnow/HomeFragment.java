@@ -51,6 +51,7 @@ import java.util.TimerTask;
 
 public class HomeFragment extends Fragment implements View.OnClickListener{
     //địa chỉ hiện tại
+    boolean loading;
     TextView txtMyAddress;
     //chuyển sang activity search
     public TextView goToSearchAct;
@@ -86,6 +87,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public RecyclerView recyclerViewStoreNear;
 
     private void init(View view){
+        loading = false;
         //text hiển thị đỉa chỉ hiện tại
         txtMyAddress = view.findViewById(R.id.fm_home_myAddress);
         txtMyAddress.setOnClickListener(this);
@@ -193,11 +195,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         recyclerViewStoreNear.setAdapter(storeNearAdapter);
         recyclerViewStoreNear.setNestedScrollingEnabled(false);
         recyclerViewStoreNear.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+        getData();
+        return view;
+    }
+
+    private void getData(){
+        loading = true;
         Intent intentGetInforFrament = new Intent(getContext(), LoadingActivity.class);
         intentGetInforFrament.setAction(Intent.ACTION_SEND);
         intentGetInforFrament.putExtra("action", DefineVarible.getInforFragment);
         startActivityForResult(intentGetInforFrament, DefineVarible.getInforFragment);
-        return view;
     }
 
     public void changeSlider(){
@@ -222,6 +229,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onResume() {
         super.onResume();
+        if(ChooseAddressActivity.check)
+        {
+            getData();
+            ChooseAddressActivity.check = false;
+        }
         if(timerTask != null)
             timerTask.run();
         if(DAL_MyLocation.latitude != 0 && DAL_MyLocation.longtitude != 0 && !DAL_MyLocation.address.equals("")) {
@@ -241,6 +253,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == DefineVarible.getInforFragment){
+            loading = false;
             new Thread() {
                 public void run() {
 //                    runOnUiThread(new Runnable() {

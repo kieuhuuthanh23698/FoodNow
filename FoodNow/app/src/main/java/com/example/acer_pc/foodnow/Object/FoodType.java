@@ -13,6 +13,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class FoodType {
+    private String nameGroup;
     private String nameType;
     ArrayList<Food> arrayListFoods;
 
@@ -22,6 +23,7 @@ public class FoodType {
     public FoodType(JSONObject jsonObject) throws JSONException{
         this.nameType = "";
         this.arrayListFoods = new ArrayList<>();
+        this.nameGroup = jsonObject.getString("Nhom_Loai_Mon_An");
         this.nameType = jsonObject.getString("Ten_loai_mon_an");
         JSONArray jsonArrayFoods = jsonObject.getJSONArray("monans");
         for (int i = 0; i < jsonArrayFoods.length(); i++) {
@@ -34,6 +36,10 @@ public class FoodType {
                 e.printStackTrace();
             }
         }
+    }
+
+    public String getNameGroup() {
+        return nameGroup;
     }
 
     public String getNameType() {

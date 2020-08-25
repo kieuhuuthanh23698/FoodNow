@@ -12,8 +12,12 @@ import android.widget.TextView;
 
 import com.example.acer_pc.foodnow.Adapter.StoreNearAdapter;
 import com.example.acer_pc.foodnow.Data.DAL_GetStores;
+import com.example.acer_pc.foodnow.Data.DAL_MyLocation;
+import com.example.acer_pc.foodnow.Data.Utils;
 import com.example.acer_pc.foodnow.Object.Store;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.maps.android.SphericalUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -92,12 +96,18 @@ public class ListDetailActivity extends AppCompatActivity implements DAL_GetStor
                     JSONObject jsonObjectThongTinCuaHang = jsonObjectStore.getJSONObject("CH");
                     store.setId(jsonObjectThongTinCuaHang.getString("_id"));
                     store.setName(jsonObjectThongTinCuaHang.getString("Ten_Cua_Hang"));
-                    store.setStar(Double.parseDouble(jsonObjectThongTinCuaHang.getString("Danh_Gia")));
+                    //store.setStar(Double.parseDouble(jsonObjectThongTinCuaHang.getString("Danh_Gia")));
                     store.setUrlImage(jsonObjectThongTinCuaHang.getString("Hinh_Anh_Cua_Hang"));
                     JSONObject jsonObjectDiaChiCuaHang = jsonObjectStore.getJSONObject("DiaChi");
                     store.setAddress(jsonObjectDiaChiCuaHang.getString("Dia_Chi"));
                     store.setLat(Double.parseDouble(jsonObjectDiaChiCuaHang.getString("Vi_do")));
                     store.setLng(Double.parseDouble(jsonObjectDiaChiCuaHang.getString("Kinh_do")));
+                    long distance = 0;
+                    LatLng latLngFrom = new LatLng(store.getLat(), store.getLng());
+                    LatLng latLngTo = new LatLng(DAL_MyLocation.latitude, DAL_MyLocation.longtitude);
+                    distance += SphericalUtil.computeDistanceBetween(latLngFrom, latLngTo);
+                    distance = Math.round((distance*0.001)*10)/10;
+                    store.setDistance(0.0);
                     arrStoreNear.add(store);
                 } catch (JSONException e) {
                     e.printStackTrace();

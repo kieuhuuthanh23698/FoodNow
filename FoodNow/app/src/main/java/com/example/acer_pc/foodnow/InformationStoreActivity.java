@@ -232,7 +232,7 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
         Text = Html.fromHtml("<a href='#'>" + addressStore.getAddress() + "</a>");
         txtAddressStore.setText(Text);
         //đánh giá cửa hàng
-        float rating = Float.parseFloat(jsonObjectInforStore.getJSONObject("thongTinCuaHang").getString("Danh_Gia"));
+        float rating = 0;//Float.parseFloat(jsonObjectInforStore.getJSONObject("thongTinCuaHang").getString("Danh_Gia"));
         if(rating > 0)
             ratingBarStore.setRating(rating);
         else
@@ -451,6 +451,7 @@ public class InformationStoreActivity extends AppCompatActivity implements View.
                                         relativeLayoutViewHide.setVisibility(View.VISIBLE);
                                     } catch (JSONException e) {
                                         e.printStackTrace();
+                                        finish();
                                     }
                                 } else {
                                     finish();

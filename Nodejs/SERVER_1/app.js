@@ -3382,8 +3382,7 @@ app.post("/them_monan", urlEncodeParser, async function (req, res) {
 		req.body.Don_gia_mon_an != null && req.body.Don_gia_mon_an != "" &&
 		req.body.idLoaiMonAn != null && req.body.idLoaiMonAn != "" &&
 		req.file != null && req.file.filename != "" &&
-		req.body.Nhom != null && req.body.Nhom != "" &&
-		req.body.Size != null && req.body.Size != ""){
+		req.body.Nhom != null && req.body.Nhom != ""){
 			if(req.body.Nhom == "0"){
 				var newMonAn = new MON_AN({
 					Ten_mon_an: req.body.Ten_mon_an,

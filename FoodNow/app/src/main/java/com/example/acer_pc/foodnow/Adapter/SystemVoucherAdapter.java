@@ -41,7 +41,7 @@ public class SystemVoucherAdapter extends RecyclerView.Adapter<SystemVoucherAdap
     @Override
     public void onBindViewHolder(SystemVoucherAdapterViewHolder holder, int position) {
         final SystemVoucher systemVoucher = arrayList.get(position);
-        if(systemVoucher.getIcon().trim().isEmpty())
+        if(!systemVoucher.getIcon().trim().isEmpty())
             Picasso.get().load(systemVoucher.getIcon()).into(holder.icon);
         holder.content.setText(systemVoucher.getContent());
         holder.view.getBackground().setTint(Color.parseColor(Utils.getColor(position)));

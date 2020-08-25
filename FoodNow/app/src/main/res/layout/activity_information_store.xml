@@ -185,6 +185,7 @@
                                     android:text="50 Hoa Cúc, P7, Phú Nhuận, TP.HCM"
                                     android:layout_gravity="center"
                                     android:textSize="15dp"
+                                    android:textAlignment="center"
                                     android:layout_marginBottom="10dp"
                                     android:textColor="@android:color/darker_gray"
                                     android:fontFamily="@font/nunito_extralight"

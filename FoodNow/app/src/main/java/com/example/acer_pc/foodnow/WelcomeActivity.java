@@ -2,7 +2,9 @@ package com.example.acer_pc.foodnow;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Debug;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
@@ -12,13 +14,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.acer_pc.foodnow.Adapter.ViewPagerAdapter;
+import com.example.acer_pc.foodnow.Data.Utils;
 import com.example.acer_pc.foodnow.Object.Slider;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import android.support.v7.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
 public class WelcomeActivity extends AppCompatActivity {
+    public static String ipv4 = "";
     private Button btnWelcome;
     private ViewPager viewPager;
     private ArrayList<Integer> arrImg;
@@ -67,6 +77,19 @@ public class WelcomeActivity extends AppCompatActivity {
             sliderDotspanel.addView(dots[i], params);
 
         }
+
+
+        FirebaseApp.initializeApp(getApplicationContext());
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("ipv4");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ipv4 = dataSnapshot.getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {}
+        });
 
         dots[0].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.active_dot));
 

@@ -43,6 +43,7 @@ public class StoreNearAdapter extends RecyclerView.Adapter<StoreNearAdapter.Stor
         holder.txtAddress.setText(store.getAddress());
         holder.txtStar.setText(store.getStar());
         holder.txtTime.setText(store.getTime());
+        String s = store.getDistance();
         holder.txtDistance.setText(store.getDistance());
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override

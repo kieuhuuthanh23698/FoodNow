@@ -441,7 +441,7 @@ function createFormDataMonAn(){
     form.append("Don_gia_mon_an", $("#Don_gia_mon_an").val());
     form.append("Nhom", $("#selectNhom").val());
     if($("#selectNhom").val() == "1")
-        form.append("Size", $("#groupSize").val());
+        form.append("Size", $("#selectSize").val());
     return form;
 }
 

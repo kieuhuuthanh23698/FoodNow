@@ -10,14 +10,35 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/title_food_type"
-            style="@style/title"
-            android:text="Loại món ăn"
-            android:gravity="center_vertical"
-            android:paddingLeft="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="35dp" />
+
+        <RelativeLayout
+            android:background="@android:color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/title_food_type"
+                style="@style/title"
+                android:background="@android:color/white"
+                android:text="Loại món ăn"
+                android:layout_alignParentLeft="true"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp" />
+
+            <TextView
+                android:id="@+id/title_group_food_type"
+                style="@style/title"
+                android:background="@android:color/white"
+                android:text="Nhóm loại món ăn"
+                android:layout_alignParentRight="true"
+                android:gravity="center_vertical"
+                android:paddingRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp" />
+
+        </RelativeLayout>
 
         <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
             android:id="@+id/list_foods_of_type"

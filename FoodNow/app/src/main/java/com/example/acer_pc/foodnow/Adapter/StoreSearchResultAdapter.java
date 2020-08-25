@@ -1,6 +1,7 @@
 package com.example.acer_pc.foodnow.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,8 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.acer_pc.foodnow.Data.Utils;
+import com.example.acer_pc.foodnow.InformationStoreActivity;
 import com.example.acer_pc.foodnow.Object.Store;
 import com.example.acer_pc.foodnow.R;
 import com.squareup.picasso.Picasso;
@@ -35,7 +38,7 @@ public class StoreSearchResultAdapter extends RecyclerView.Adapter<StoreSearchRe
     }
 
     @Override
-    public void onBindViewHolder(StoreSearchResultViewHolder holder, int position) {
+    public void onBindViewHolder(final StoreSearchResultViewHolder holder, int position) {
         final  Store store = arrStore.get(position);
         if(!store.getUrlImage().trim().isEmpty())
             Picasso.get().load(store.getUrlImage().trim()).into(holder.imageView);
@@ -51,6 +54,21 @@ public class StoreSearchResultAdapter extends RecyclerView.Adapter<StoreSearchRe
         holder.recyclerView_Search_Result.setNestedScrollingEnabled(true);
         holder.recyclerView_Search_Result.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL));
         holder.recyclerView_Search_Result.setLayoutManager(friendsLayoutManager);
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(view.getContext(), InformationStoreActivity.class);
+                        intent.setAction(Intent.ACTION_SEND);
+                        intent.putExtra("idStore", store.getId());
+                        Toast.makeText(view.getContext(), "Get information store", Toast.LENGTH_SHORT).show();
+                        view.getContext().startActivity(intent);
+                    }
+                });
+            }
+        });
     }
 
     @Override

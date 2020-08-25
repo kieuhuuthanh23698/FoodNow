@@ -36,6 +36,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class ChooseAddressActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener , LocationListener {
 
+    public static boolean check = false;
     ImageView btnBack, gps;
     GoogleMap mMap;
     MapFragment map;
@@ -48,6 +49,7 @@ public class ChooseAddressActivity extends AppCompatActivity implements OnMapRea
     int type;
 
     void init(){
+        check = true;
         gps  = findViewById(R.id.choose_address_gps);
         map = (MapFragment) getFragmentManager().findFragmentById(R.id.choose_address_act_map);
         btnBack = findViewById(R.id.choose_address_act_btnBack);
@@ -67,7 +69,6 @@ public class ChooseAddressActivity extends AppCompatActivity implements OnMapRea
                     .addApi(LocationServices.API)
                     .build();
         }
-        confirmAddressDialog = new ConfirmAddressDialog();
         map.getMapAsync(ChooseAddressActivity.this);
         Intent intent = getIntent();
         type = intent.getIntExtra("type", -1);
@@ -132,6 +133,7 @@ public class ChooseAddressActivity extends AppCompatActivity implements OnMapRea
                 bundle.putDouble("lat", center.latitude);
                 bundle.putDouble("lng", center.longitude);
                 bundle.putInt("type", type);
+                confirmAddressDialog = new ConfirmAddressDialog();
                 confirmAddressDialog.setArguments(bundle);
                 confirmAddressDialog.show(getSupportFragmentManager(), "ConfirmAddressDialog");
                 if(curMarker != null)

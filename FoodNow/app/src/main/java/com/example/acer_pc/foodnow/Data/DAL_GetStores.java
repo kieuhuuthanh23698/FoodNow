@@ -91,6 +91,7 @@ public class DAL_GetStores {
                 }
             };
             insertRequest.addMarker("getStores");
+            insertRequest.setRetryPolicy(new DefaultRetryPolicy(30000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
             VolleySingleton.getInstance(this.context).getRequestQueue().add(insertRequest);
         } else {
             Toast.makeText(context, "Đang xử lý...", Toast.LENGTH_SHORT).show();

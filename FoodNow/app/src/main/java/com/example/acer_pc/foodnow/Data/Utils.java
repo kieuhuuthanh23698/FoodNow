@@ -20,6 +20,7 @@ import com.example.acer_pc.foodnow.InformationStoreActivity;
 import com.example.acer_pc.foodnow.MainActivity;
 import com.example.acer_pc.foodnow.Object.Food;
 import com.example.acer_pc.foodnow.Object.User;
+import com.example.acer_pc.foodnow.WelcomeActivity;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 
@@ -45,11 +46,7 @@ import javax.crypto.spec.SecretKeySpec;
 import static com.example.acer_pc.foodnow.LoginActivity.user;
 
 public class Utils {
-    public static String uri = "http://192.168.137.1:3000";
-//    static String uri = "http://192.168.1.109:3000";
-
-//    static String ipserver = "10.21.151.197:3000";
-
+    public static String uri = WelcomeActivity.ipv4;
     public static String urlLogin = uri + "/DangNhap" ;
     public static String urlFragment_Home = uri + "/fragment_home" ;
     public static String urlInforStore = uri + "/thongTinCuaHang" ;

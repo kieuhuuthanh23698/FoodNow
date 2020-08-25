@@ -36,12 +36,21 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import im.delight.android.location.SimpleLocation;
 
+import static com.example.acer_pc.foodnow.LoginActivity.user;
 import static com.example.acer_pc.foodnow.MainActivity.loaded;
 
 public class FlashActivity extends AppCompatActivity implements LocationListener{
@@ -81,11 +90,11 @@ public class FlashActivity extends AppCompatActivity implements LocationListener
                 dialogShow = false;
             }
         });
-
-        DAL_MyLocation.address = Utils.getCompleteAddressString(FlashActivity.this, DAL_MyLocation.latitude, DAL_MyLocation.longtitude);
-        Intent intent = new Intent(FlashActivity.this, MainActivity.class);
-        startActivity(intent);
-        finish();
+//
+//        DAL_MyLocation.address = Utils.getCompleteAddressString(FlashActivity.this, DAL_MyLocation.latitude, DAL_MyLocation.longtitude);
+//        Intent intent = new Intent(FlashActivity.this, MainActivity.class);
+//        startActivity(intent);
+//        finish();
 
         location.setListener(new SimpleLocation.Listener() {
             public void onPositionChanged() {
@@ -111,19 +120,17 @@ public class FlashActivity extends AppCompatActivity implements LocationListener
     }
 
     private void requestOpenGPS(){
-//        if(!dialogShow) {
             location.beginUpdates();
             dialogConfirmOpenGPS.show();
-//        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         location.beginUpdates();
-//        if (!location.hasLocationEnabled()) {
+        if (!location.hasLocationEnabled()) {
             requestOpenGPS();
-//        }
+        }
     }
 
     @Override
